@@ -70,6 +70,14 @@ const IMAGES = [
     filename: 'meeting-12-dashboards-comparison.webp',
     prompt: 'Three dashboard tool interfaces side by side: Tableau (enterprise, colorful charts), Metabase (clean open-source, simple graphs), Grafana (dark DevOps theme, monitoring panels). Each shown as a small screen mockup. Clean flat illustration, data visualization comparison, educational.',
   },
+  {
+    filename: 'meeting-02-7-eras-timeline.webp',
+    prompt: 'Horizontal timeline illustration: 7 eras of interface design from 1960s to 2020s. Each era a small icon: 1960s green CLI terminal, 1970s Xerox Alto, 1984 Macintosh, 1990s Web 1.0 page, 2000s Web 2.0 with widgets, 2007+ iPhone, 2020s AI/voice/AR headset. Connected by an evolving line. Flat educational illustration, soft pastel colors, minimalist style, white background, no text labels.',
+  },
+  {
+    filename: 'meeting-02-rams-braun-vs-ios.webp',
+    prompt: 'Side-by-side comparison illustration: left — Braun ET66 calculator (1987) by Dieter Rams in beige/cream with black buttons; right — iOS Calculator app on iPhone with same minimalist black grid and orange operation buttons. Clean industrial design aesthetic, white background, educational illustration, no text.',
+  },
 ];
 
 async function generateImage(item) {

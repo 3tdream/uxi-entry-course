@@ -100,6 +100,12 @@ export const meeting02: Meeting = {
             },
           ],
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-7-eras-timeline.webp',
+          alt: 'Seven eras of interface design: from CLI to AI/AR',
+          caption: 'Seven eras of interface design — from the green CLI terminal of the 1960s to multimodal AI interfaces of the 2020s.',
+        },
 
         { type: 'divider' as const },
 
@@ -325,6 +331,12 @@ export const meeting02: Meeting = {
             'Good design is environmentally friendly',
             'Good design is as little design as possible',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-rams-braun-vs-ios.webp',
+          alt: 'Braun ET66 calculator (1987) and iOS Calculator',
+          caption: 'Left — Dieter Rams\' Braun ET66 (1987). Right — the iOS Calculator app. The similarity is no coincidence: Jony Ive was a devoted admirer of Rams.',
         },
         {
           type: 'callout' as const,

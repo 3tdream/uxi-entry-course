@@ -100,6 +100,12 @@ export const meeting02: Meeting = {
             },
           ],
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-7-eras-timeline.webp',
+          alt: 'Семь эпох дизайна интерфейсов: от CLI до AI/AR',
+          caption: 'Семь эпох интерфейсного дизайна — от зелёного терминала 1960-х до мультимодальных AI-интерфейсов 2020-х.',
+        },
 
         { type: 'divider' as const },
 
@@ -325,6 +331,12 @@ export const meeting02: Meeting = {
             'Хороший дизайн заботится об окружающей среде',
             'Хороший дизайн — это как можно меньше дизайна',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-rams-braun-vs-ios.webp',
+          alt: 'Калькулятор Braun ET66 (1987) и iOS Calculator',
+          caption: 'Слева — Braun ET66 Дитера Рамса (1987). Справа — приложение «Калькулятор» в iOS. Сходство не случайно: Джонни Айв был фанатом Рамса.',
         },
         {
           type: 'callout' as const,
