@@ -41,7 +41,7 @@ function QuizCard({
 }: {
   quiz: Quiz
   index: number
-  onComplete: () => void
+  onComplete: (correct: boolean) => void
 }) {
   const { lang } = useLanguage()
   const l = quizLabels[lang]
@@ -150,7 +150,7 @@ function QuizCard({
       )}
 
       {revealed && (
-        <Button variant="ghost" onClick={onComplete} className="w-full">
+        <Button variant="ghost" onClick={() => onComplete(isCorrect)} className="w-full">
           {l.next} <ArrowRight className="w-4 h-4 ml-1" />
         </Button>
       )}
@@ -171,7 +171,8 @@ export function QuizSection({
   const [score, setScore] = useState(0)
   const [finished, setFinished] = useState(false)
 
-  function handleComplete() {
+  function handleComplete(correct: boolean) {
+    if (correct) setScore((s) => s + 1)
     if (current < quizzes.length - 1) {
       setCurrent((c) => c + 1)
     } else {
