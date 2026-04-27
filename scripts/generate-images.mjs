@@ -4,16 +4,26 @@
  * Usage: node scripts/generate-images.mjs
  */
 
-import { writeFile } from 'fs/promises';
+import { writeFile, readFile, access } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUT_DIR = join(__dirname, '..', 'public', 'images');
+const ROOT = join(__dirname, '..');
+const OUT_DIR = join(ROOT, 'public', 'images');
 
-const FAL_KEY = process.env.FAL_KEY;
+if (!process.env.FAL_KEY && !process.env.FAL_API_KEY) {
+  try {
+    const env = await readFile(join(ROOT, '.env.local'), 'utf8');
+    for (const line of env.split('\n')) {
+      const m = line.match(/^([A-Z_][A-Z0-9_]*)=(.*)$/);
+      if (m) process.env[m[1]] = m[2].trim();
+    }
+  } catch {}
+}
+const FAL_KEY = process.env.FAL_KEY || process.env.FAL_API_KEY;
 if (!FAL_KEY) {
-  console.error('❌ FAL_KEY environment variable is required. Set it: FAL_KEY=your-key node scripts/generate-images.mjs');
+  console.error('❌ FAL key not found. Set FAL_KEY/FAL_API_KEY in env or in .env.local at the project root.');
   process.exit(1);
 }
 
@@ -81,6 +91,12 @@ const IMAGES = [
 ];
 
 async function generateImage(item) {
+  const outPath = join(OUT_DIR, item.filename);
+  try {
+    await access(outPath);
+    console.log(`\n⏭  Skipped (exists): ${item.filename}`);
+    return 'skipped';
+  } catch {}
   console.log(`\n🎨 Generating: ${item.filename}`);
   console.log(`   Prompt: ${item.prompt.substring(0, 80)}...`);
 
@@ -123,34 +139,34 @@ async function generateImage(item) {
   }
 
   const buffer = Buffer.from(await imgResponse.arrayBuffer());
-  const outPath = join(OUT_DIR, item.filename);
   await writeFile(outPath, buffer);
 
   console.log(`   ✅ Saved: ${outPath} (${(buffer.length / 1024).toFixed(0)} KB)`);
-  return true;
+  return 'generated';
 }
 
 async function main() {
   console.log(`🚀 Generating ${IMAGES.length} course illustrations via FAL.ai Flux`);
   console.log(`📁 Output: ${OUT_DIR}\n`);
 
-  let success = 0;
+  let generated = 0;
+  let skipped = 0;
   let fail = 0;
 
   for (const item of IMAGES) {
     try {
-      const ok = await generateImage(item);
-      if (ok) success++;
+      const r = await generateImage(item);
+      if (r === 'generated') generated++;
+      else if (r === 'skipped') skipped++;
       else fail++;
     } catch (err) {
       console.error(`   ❌ Error: ${err.message}`);
       fail++;
     }
-    // Small delay to avoid rate limiting
     await new Promise(r => setTimeout(r, 1000));
   }
 
-  console.log(`\n📊 Done: ${success} success, ${fail} failed out of ${IMAGES.length}`);
+  console.log(`\n📊 Done: ${generated} generated, ${skipped} skipped, ${fail} failed (of ${IMAGES.length})`);
 }
 
 main().catch(console.error);
