@@ -133,7 +133,7 @@ export const meeting09: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=yz4g87XNFh0',
+          src: 'https://www.youtube.com/watch?v=yz4g87XapQ0',
           title: 'The Crazy 8s Method \u2014 Google Design Sprint',
           caption: 'How the Crazy 8s method works in practice',
         },

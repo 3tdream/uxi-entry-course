@@ -182,7 +182,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=cVtBSTC_P_Y',
+          src: 'https://www.youtube.com/watch?v=ICRfPK8ixwo',
           title: 'Как создать UX-портфолио, которое заметят',
           caption:
             'Практические советы по структуре кейсов и платформам для портфолио.',
@@ -296,7 +296,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=SbJ3yVQ8E_E',
+          src: 'https://www.youtube.com/watch?v=79WImUoNZME',
           title: 'Как пройти собеседование на UX-дизайнера',
           caption:
             'Реальные примеры вопросов и стратегии ответов на дизайн-собеседованиях.',
@@ -759,7 +759,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=LPDlPHzRqHI',
+          src: 'https://www.youtube.com/watch?v=lU3hOzfbnGk',
           title: 'Как презентовать дизайн-проект',
           caption:
             'Техники сторителлинга и структурирования презентации для дизайнеров.',
@@ -935,7 +935,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=7wZ3ON_L-YA',
+          src: 'https://www.youtube.com/watch?v=bJY6u0T1-1c',
           title: 'Навыки презентации для дизайнеров',
           caption:
             'Как отвечать на сложные вопросы и демонстрировать уверенность во время защиты проекта.',

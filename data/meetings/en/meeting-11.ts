@@ -112,7 +112,7 @@ export const meeting11: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=FaLJL-K7JJk',
+          src: 'https://www.youtube.com/watch?v=__ABPkb0aF8',
           title: 'Figma Dev Mode — Full Overview',
           caption: 'Official Dev Mode guide from Figma.',
         },
@@ -419,7 +419,7 @@ export const meeting11: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=pLBbkWWsLaY',
+          src: 'https://www.youtube.com/watch?v=EoS30ZEJZ5s',
           title: 'Design Handoff Best Practices',
           caption: 'Best practices for delivering designs from designers to developers.',
         },
@@ -573,7 +573,7 @@ export const meeting11: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=XDoSR2mGMkE',
+          src: 'https://www.youtube.com/watch?v=zFMgpxG-chM',
           title: 'A/B Testing Explained in 5 Minutes',
           caption: 'A quick and clear explanation of A/B testing principles.',
         },
@@ -745,7 +745,7 @@ export const meeting11: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=hkLJDYNMbeE',
+          src: 'https://www.youtube.com/watch?v=hPH4cSa7ASg',
           title: 'How Booking.com Uses A/B Testing',
           caption: 'How Booking.com became a master of A/B testing and experimentation.',
         },
@@ -1033,7 +1033,7 @@ export const meeting11: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=DREuiYPOB5k',
+          src: 'https://www.youtube.com/watch?v=Rrc4QqDTMUE',
           title: 'How to Measure UX \u2014 Key Metrics',
           caption: 'Key metrics for measuring user experience quality.',
         },

@@ -168,7 +168,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=qEKOBdV_ZJY',
+          src: 'https://www.youtube.com/watch?v=x4u1yp3Msao',
           title: 'Responsive Web Design — основы',
           caption: 'Kevin Powell — ведущий эксперт по CSS и responsive design',
         },
@@ -334,7 +334,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=uxmABSrzGsw',
+          src: 'https://www.youtube.com/watch?v=4bguZJwHqsQ',
           title: 'Material Design 3 — что нового',
           caption: 'Google Design — обзор Material You и Dynamic Color',
         },
@@ -423,7 +423,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=K2Zk0PbFYqs',
+          src: 'https://www.youtube.com/watch?v=1oi5YVzxqsE',
           title: 'iOS Design Guidelines — Human Interface Guidelines',
           caption: 'Обзор ключевых принципов Apple HIG для мобильных приложений',
         },
@@ -781,7 +781,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=Eoah0RikIEk',
+          src: 'https://www.youtube.com/watch?v=t3cAUt7sOQg',
           title: 'Dashboard Design — лучшие практики',
           caption: 'Data visualization для аналитических интерфейсов',
         },
@@ -990,7 +990,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=RGMItjHBMko',
+          src: 'https://www.youtube.com/watch?v=5H1JGdqLrWo',
           title: 'Web Accessibility — WCAG 2.1 на практике',
           caption: 'Как проверить и улучшить доступность вашего продукта',
         },
@@ -1029,7 +1029,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          src: 'https://www.youtube.com/watch?v=JNhG2T6dGOY',
           title: 'Dark Mode Design — как правильно',
           caption: 'Принципы проектирования тёмной темы: контрасты, elevation, цвета',
         },

@@ -265,7 +265,7 @@ export const meeting05: Meeting = {
         // ── Видео ──
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=Qq3OiHQ-HCU',
+          src: 'https://www.youtube.com/watch?v=yBYd5USasXg',
           title: 'How to Conduct User Interviews — NNGroup',
           caption:
             'Nielsen Norman Group объясняет ключевые техники пользовательских интервью (15 мин, англ.)',

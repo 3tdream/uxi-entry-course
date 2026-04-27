@@ -168,7 +168,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=qEKOBdV_ZJY',
+          src: 'https://www.youtube.com/watch?v=x4u1yp3Msao',
           title: 'Responsive Web Design — Fundamentals',
           caption: 'Kevin Powell — leading expert on CSS and responsive design',
         },
@@ -334,7 +334,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=uxmABSrzGsw',
+          src: 'https://www.youtube.com/watch?v=4bguZJwHqsQ',
           title: 'Material Design 3 — What\'s New',
           caption: 'Google Design — overview of Material You and Dynamic Color',
         },
@@ -423,7 +423,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=K2Zk0PbFYqs',
+          src: 'https://www.youtube.com/watch?v=1oi5YVzxqsE',
           title: 'iOS Design Guidelines — Human Interface Guidelines',
           caption: 'Overview of key Apple HIG principles for mobile applications',
         },
@@ -781,7 +781,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=Eoah0RikIEk',
+          src: 'https://www.youtube.com/watch?v=t3cAUt7sOQg',
           title: 'Dashboard Design — Best Practices',
           caption: 'Data visualization for analytical interfaces',
         },
@@ -990,7 +990,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=RGMItjHBMko',
+          src: 'https://www.youtube.com/watch?v=5H1JGdqLrWo',
           title: 'Web Accessibility — WCAG 2.1 in Practice',
           caption: 'How to check and improve the accessibility of your product',
         },
@@ -1029,7 +1029,7 @@ export const meeting12: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          src: 'https://www.youtube.com/watch?v=JNhG2T6dGOY',
           title: 'Dark Mode Design — How to Do It Right',
           caption: 'Principles of dark theme design: contrasts, elevation, colors',
         },

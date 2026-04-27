@@ -598,7 +598,7 @@ export const meeting07: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=wJEBA_3ZPhQ',
+          src: 'https://www.youtube.com/watch?v=A2r5UwtBicE',
           title: 'Typography in UI design: rules and examples',
           caption:
             'Practical typography tips for interfaces',
@@ -739,7 +739,7 @@ export const meeting07: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=YqRZJmJA_SQ',
+          src: 'https://www.youtube.com/watch?v=BJwsI4aKcIA',
           title: 'Grids in web design: a complete guide',
           caption:
             'How modular grids create order in interfaces',

@@ -598,7 +598,7 @@ export const meeting07: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=wJEBA_3ZPhQ',
+          src: 'https://www.youtube.com/watch?v=A2r5UwtBicE',
           title: 'Типографика в UI-дизайне: правила и примеры',
           caption:
             'Практические советы по типографике для интерфейсов',
@@ -739,7 +739,7 @@ export const meeting07: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=YqRZJmJA_SQ',
+          src: 'https://www.youtube.com/watch?v=BJwsI4aKcIA',
           title: 'Сетки в веб-дизайне: полное руководство',
           caption:
             'Как модульные сетки создают порядок в интерфейсах',

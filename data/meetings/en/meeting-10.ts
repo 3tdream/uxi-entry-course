@@ -228,7 +228,7 @@ export const meeting10: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=FKGHs5CIViU',
+          src: 'https://www.youtube.com/watch?v=lOaTtmGE-X8',
           title: 'UI Animations — Principles & Techniques',
           caption: 'An overview of key UI animation principles with practical examples',
         },
@@ -284,7 +284,7 @@ export const meeting10: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=yjBAOYMDkLc',
+          src: 'https://www.youtube.com/watch?v=xM23cjStq7A',
           title: 'Figma Prototyping Tutorial — Complete Guide',
           caption: 'Step-by-step guide to prototyping in Figma: transitions, Smart Animate, overlays',
         },
@@ -395,7 +395,7 @@ export const meeting10: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=0xGIZg2JT7s',
+          src: 'https://www.youtube.com/watch?v=VEuwKJAz7Jg',
           title: 'Prototyping in Figma: Advanced Techniques',
           caption: 'Advanced techniques: variables, conditional logic, and multi-level prototypes',
         },

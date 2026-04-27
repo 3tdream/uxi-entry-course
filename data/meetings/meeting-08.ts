@@ -161,7 +161,7 @@ export const meeting08: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=286eSSiMGKg',
+          src: 'https://www.youtube.com/watch?v=wIuVvCuiJhU',
           title: 'Visual Hierarchy in Design — Juxtopposed',
           caption: 'Подробный разбор инструментов визуальной иерархии с примерами реальных продуктов.',
         },
@@ -328,8 +328,8 @@ export const meeting08: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=FQnmIm6lds4',
-          title: 'Gestalt Principles for UI Design — DesignCourse',
+          src: 'https://www.youtube.com/watch?v=DwR0SZTBMTU',
+          title: 'Gestalt Principles for UI Design',
           caption: 'Практическое применение гештальт-принципов в веб-дизайне.',
         },
         {
@@ -638,8 +638,8 @@ export const meeting08: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=pSGFKBBRWao',
-          title: 'Icon Design — The Futur',
+          src: 'https://www.youtube.com/watch?v=9At1yFg901Y',
+          title: 'Icon Design',
           caption: 'Мастер-класс по проектированию иконок: сетка, консистентность, оптический баланс.',
         },
         {

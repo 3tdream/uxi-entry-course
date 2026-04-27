@@ -823,7 +823,7 @@ export const meeting01: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=a5syEhMqMKk',
+          src: 'https://www.youtube.com/watch?v=HkGJtoD_B30',
           title: 'The Business Value of UX Design',
           caption: 'How UX design impacts business metrics (English with subtitles)',
         },

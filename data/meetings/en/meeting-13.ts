@@ -182,7 +182,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=cVtBSTC_P_Y',
+          src: 'https://www.youtube.com/watch?v=ICRfPK8ixwo',
           title: 'How to Create a UX Portfolio That Gets Noticed',
           caption:
             'Practical tips on case study structure and portfolio platforms.',
@@ -296,7 +296,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=SbJ3yVQ8E_E',
+          src: 'https://www.youtube.com/watch?v=79WImUoNZME',
           title: 'How to Pass a UX Designer Interview',
           caption:
             'Real examples of questions and answer strategies for design interviews.',
@@ -759,7 +759,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=LPDlPHzRqHI',
+          src: 'https://www.youtube.com/watch?v=lU3hOzfbnGk',
           title: 'How to Present a Design Project',
           caption:
             'Storytelling techniques and presentation structure for designers.',
@@ -935,7 +935,7 @@ export const meeting13: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=7wZ3ON_L-YA',
+          src: 'https://www.youtube.com/watch?v=bJY6u0T1-1c',
           title: 'Presentation Skills for Designers',
           caption:
             'How to answer tough questions and demonstrate confidence during a project defense.',
