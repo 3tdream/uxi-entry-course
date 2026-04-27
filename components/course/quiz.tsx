@@ -203,7 +203,7 @@ export function QuizSection({
           {current + 1} / {quizzes.length}
         </span>
       </div>
-      <QuizCard quiz={quizzes[current]} index={current} onComplete={handleComplete} />
+      <QuizCard key={current} quiz={quizzes[current]} index={current} onComplete={handleComplete} />
     </div>
   )
 }
