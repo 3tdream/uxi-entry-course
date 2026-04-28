@@ -576,6 +576,12 @@ export const meeting10: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-10-atomic-design.webp',
+          alt: 'Five Atomic Design levels as a vertical ladder',
+          caption: 'Atomic Design: atoms → molecules → organisms → templates → pages.',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
