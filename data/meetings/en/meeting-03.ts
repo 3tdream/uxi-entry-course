@@ -115,6 +115,12 @@ export const meeting03: Meeting = {
             '**Example for an online store shopper:**\n— Thinks: "I hope this isn\'t a knockoff"\n— Says: "I need delivery by the end of the week"\n— Feels: excitement and impatience\n— Does: compares prices across 3 websites, reads reviews\n— Pains: fear of getting the wrong size, complicated returns\n— Gains: fast delivery, honest reviews, easy returns',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-03-empathy-map.webp',
+          alt: 'Empathy map showing four quadrants with pains and gains sections',
+          caption: 'Empathy Map: four quadrants plus pains and gains.',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -127,6 +133,12 @@ export const meeting03: Meeting = {
           type: 'text' as const,
           content:
             'JTBD focuses on the **job**, not the person. The formula: **"When [situation], I want [motivation], so that [expected outcome]"**. This approach complements personas and helps avoid fixating on demographics.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-03-jtbd-formula.webp',
+          alt: 'Jobs To Be Done diagram with three connected blocks',
+          caption: 'JTBD formula: situation → motivation → outcome.',
         },
         {
           type: 'columns' as const,
@@ -319,6 +331,12 @@ export const meeting03: Meeting = {
             'Too Many Personas — more than 4-5 personas = nobody remembers any of them',
             'No Validation — persona based solely on assumptions, without data',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-03-persona-card.webp',
+          alt: 'User persona card on a desk',
+          caption: 'Persona card: avatar, goals, frustrations, quote.',
         },
         {
           type: 'divider' as const,
@@ -649,6 +667,12 @@ export const meeting03: Meeting = {
             '🔴 PAIN POINTS — Problems and obstacles at each stage',
             '💡 OPPORTUNITIES — Ideas for improving each stage',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-03-journey-map-layers.webp',
+          alt: 'User Journey Map structure with emotional curve',
+          caption: 'Journey Map layers: stages, emotions, pain points, opportunities.',
         },
         {
           type: 'callout' as const,

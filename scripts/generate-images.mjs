@@ -88,6 +88,22 @@ const IMAGES = [
     filename: 'meeting-02-rams-braun-vs-ios.webp',
     prompt: 'Side-by-side comparison illustration: left — Braun ET66 calculator (1987) by Dieter Rams in beige/cream with black buttons; right — iOS Calculator app on iPhone with same minimalist black grid and orange operation buttons. Clean industrial design aesthetic, white background, educational illustration, no text.',
   },
+  {
+    filename: 'meeting-03-empathy-map.webp',
+    prompt: 'Clean educational diagram of an Empathy Map, divided into four quadrants around a central head silhouette: top-left "Thinks" with thought-bubble icon, top-right "Says" with speech-bubble icon, bottom-left "Feels" with heart icon, bottom-right "Does" with hand icon. Bottom strip split in two: down-arrow "Pains" and up-arrow "Gains". Flat minimalist UX design illustration, soft pastel colors (lavender, mint, peach), white background, no text labels.',
+  },
+  {
+    filename: 'meeting-03-jtbd-formula.webp',
+    prompt: 'Clean educational illustration of the Jobs To Be Done formula as three connected blocks: a clock icon labelled "Situation", arrow to a heart-with-arrow icon labelled "Motivation", arrow to a target-with-flag icon labelled "Outcome". Above, a small figure of a customer "hiring" a product card. Flat minimalist UX education style, soft pastel colors blue and orange, white background, no decorative text.',
+  },
+  {
+    filename: 'meeting-03-journey-map-layers.webp',
+    prompt: 'Clean educational illustration of a User Journey Map shown as a horizontal table: top row icons for stages (Awareness → Consideration → Decision → Use → Loyalty), beneath them rows for goals, touchpoints, thoughts, an emotional curve drawn as a wavy line going from frown to smile, pain points marked as red dots, opportunities marked as light bulbs. Flat minimalist infographic, soft pastel palette, white background, no decorative labels.',
+  },
+  {
+    filename: 'meeting-03-persona-card.webp',
+    prompt: 'Clean flat illustration of a UX persona card on a desk: avatar circle with a friendly face on the left, three text-block placeholders on the right (no readable text, just lines indicating Goals, Frustrations, Quote), a small phone icon, a coffee cup, and a sticky note with a heart. Flat minimalist UX design illustration, soft pastel colors lavender and peach, white background, gentle shadows.',
+  },
 ];
 
 async function generateImage(item) {
