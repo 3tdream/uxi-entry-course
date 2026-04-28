@@ -408,6 +408,12 @@ export const meeting12: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-12-platform-spectrum.webp',
+          alt: 'Six platform types from website to native application',
+          caption: 'Platform spectrum: from website to native app.',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
