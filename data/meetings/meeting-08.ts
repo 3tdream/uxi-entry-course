@@ -232,6 +232,12 @@ export const meeting08: Meeting = {
           },
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-08-f-z-patterns.webp',
+          alt: 'Сравнение тепловых карт F-паттерна и Z-паттерна',
+          caption: 'F-паттерн для текста, Z-паттерн для лендингов.',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -256,6 +262,12 @@ export const meeting08: Meeting = {
             '🔹 Непрерывность (Continuity) — глаз следует по линиям и кривым. Пример: горизонтальный скролл карточек.',
             '🔹 Фигура-фон (Figure-Ground) — мозг разделяет объект и фон. Пример: модальное окно поверх затемнённого фона.',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-08-gestalt-principles.webp',
+          alt: 'Пять иллюстраций гештальт-принципов в горизонтальной полосе',
+          caption: 'Пять гештальт-принципов восприятия в дизайне.',
         },
         {
           type: 'subheading' as const,
@@ -679,6 +691,12 @@ export const meeting08: Meeting = {
             '│   ●   │       │   ●   │  ← нижние точки: навигация, цена',
             '└───────┴───────┴───────┘',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-08-rule-of-thirds.webp',
+          alt: 'Макет с наложенной сеткой правила третей и точками силы',
+          caption: 'Правило третей: ключевые элементы — на пересечениях линий.',
         },
         {
           type: 'subheading' as const,

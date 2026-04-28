@@ -232,6 +232,12 @@ export const meeting08: Meeting = {
           },
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-08-f-z-patterns.webp',
+          alt: 'Heatmap comparison of F-pattern and Z-pattern',
+          caption: 'F-pattern for text, Z-pattern for landing pages.',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -256,6 +262,12 @@ export const meeting08: Meeting = {
             'Continuity — the eye follows lines and curves. Example: horizontal card scroll.',
             'Figure-Ground — the brain separates an object from its background. Example: a modal window over a dimmed background.',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-08-gestalt-principles.webp',
+          alt: 'Five gestalt-principle illustrations in a horizontal strip',
+          caption: 'Five gestalt principles of perception in design.',
         },
         {
           type: 'subheading' as const,
@@ -679,6 +691,12 @@ export const meeting08: Meeting = {
             '│   ●   │       │   ●   │  <- bottom points: navigation, price',
             '└───────┴───────┴───────┘',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-08-rule-of-thirds.webp',
+          alt: 'Layout with rule-of-thirds grid and power points',
+          caption: 'Rule of thirds: key elements sit on the line intersections.',
         },
         {
           type: 'subheading' as const,

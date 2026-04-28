@@ -168,6 +168,18 @@ const IMAGES = [
     filename: 'meeting-13-graduation-toolkit.webp',
     prompt: 'Clean flat celebratory illustration of a designer\'s "graduation toolkit" laid out on a desk: an open laptop showing a Figma-like canvas, a sketchbook, a colour swatch fan, a tiny diploma scroll with a ribbon, a small trophy, a pen, sticky notes, and a coffee mug. Confetti dots floating above. Warm, friendly, end-of-course feel. Flat minimalist education-illustration style, soft pastel colors with gold and lavender accents, white background, no readable text.',
   },
+  {
+    filename: 'meeting-08-f-z-patterns.webp',
+    prompt: 'Clean educational illustration with two browser-window mockups side by side. Left window has a heatmap overlay forming the letter F: two horizontal red bands across the top and a vertical band down the left edge, lighter cool blue elsewhere. Right window has a heatmap overlay forming the letter Z: from top-left to top-right, diagonal down to bottom-left, then across to bottom-right. Title-area placeholders are abstract grey blocks, no readable text. Flat minimalist UX education style, white background, soft red-orange heatmap on light grey wireframe.',
+  },
+  {
+    filename: 'meeting-08-gestalt-principles.webp',
+    prompt: 'Clean educational poster showing five gestalt principles in a 5-cell strip. Cell 1 "Proximity": dots clustered into two groups. Cell 2 "Similarity": three rows where one row uses circles and others use squares. Cell 3 "Closure": three pac-man shapes arranged so the brain perceives a triangle. Cell 4 "Continuity": a curve passing through points. Cell 5 "Figure-Ground": a vase silhouette that doubles as two faces. Flat minimalist black-and-white educational illustration with one accent color, white background, only short principle name under each cell.',
+  },
+  {
+    filename: 'meeting-08-rule-of-thirds.webp',
+    prompt: 'Clean illustration of a webpage hero mockup with the rule-of-thirds grid overlay: two horizontal and two vertical thin lines dividing the screen into nine equal cells. Four small accent dots placed at the line intersections. A sample hero shows a headline placeholder on the upper-left intersection and a CTA button on the lower-right intersection, plus a flat hero-image silhouette. Flat minimalist UX layout illustration, soft pastel colors, white background, only thin grid lines and dots.',
+  },
 ];
 
 async function generateImage(item) {
