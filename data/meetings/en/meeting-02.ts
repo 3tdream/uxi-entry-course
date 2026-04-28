@@ -155,6 +155,7 @@ export const meeting02: Meeting = {
         },
         {
           type: 'columns' as const,
+          variant: 'stacked' as const,
           columns: [
             {
               title: 'Don Norman',

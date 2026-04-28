@@ -85,7 +85,7 @@ export type Section =
   | { type: 'user-persona'; persona: PersonaData }
   | { type: 'user-flow'; title: string; steps: UserFlowStep[]; connections: UserFlowConnection[] }
   | { type: 'checklist'; title: string; items: string[] }
-  | { type: 'columns'; columns: { title: string; items: string[] }[] }
+  | { type: 'columns'; variant?: 'grid' | 'stacked'; columns: { title: string; items: string[] }[] }
   | { type: 'quote'; text: string; author: string; role?: string }
   | { type: 'divider' }
 

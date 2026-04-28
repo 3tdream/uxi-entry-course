@@ -529,7 +529,32 @@ const colsClass: Record<number, string> = {
   4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
 }
 
-function ColumnsSection({ columns }: { columns: { title: string; items: string[] }[] }) {
+function ColumnsSection({
+  columns,
+  variant = 'grid',
+}: {
+  columns: { title: string; items: string[] }[]
+  variant?: 'grid' | 'stacked'
+}) {
+  if (variant === 'stacked') {
+    return (
+      <div className="space-y-3">
+        {columns.map((col) => (
+          <div key={col.title} className="rounded-xl border bg-card p-4">
+            <h4 className="font-semibold text-sm text-foreground mb-2">{col.title}</h4>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+              {col.items.map((item, i) => (
+                <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                  <span className="text-primary mt-0.5 shrink-0">&#8226;</span>
+                  <RichText content={item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    )
+  }
   const cls = colsClass[Math.min(columns.length, 4)] || colsClass[2]
   return (
     <div className={`grid gap-4 ${cls}`}>
@@ -602,7 +627,7 @@ export function SectionRenderer({ section }: { section: Section }) {
     case 'checklist':
       return <ChecklistSection title={section.title} items={section.items} />
     case 'columns':
-      return <ColumnsSection columns={section.columns} />
+      return <ColumnsSection columns={section.columns} variant={section.variant} />
     case 'quote':
       return <QuoteSection text={section.text} author={section.author} role={section.role} />
     case 'divider':
