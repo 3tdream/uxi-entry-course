@@ -126,6 +126,12 @@ export const meeting09: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-09-crazy-8s.webp',
+          alt: 'Paper sheet split into eight wireframe sketches',
+          caption: 'Crazy 8s: eight ideas in eight minutes.',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
@@ -573,6 +579,12 @@ export const meeting09: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-09-landing-anatomy.webp',
+          alt: 'Landing-page wireframe with nine main sections',
+          caption: 'Landing-page anatomy: nine typical blocks top-to-bottom.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Landing Page Wireframe: Mistakes vs Correct Approach',
           before: {
@@ -728,6 +740,12 @@ export const meeting09: Meeting = {
             'Table \u2014 detailed data table with filters',
             'Action bar \u2014 action buttons (export, filter, add)',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-saas-dashboard-layout.webp',
+          alt: 'Dashboard wireframe with sidebar, KPI cards and a table',
+          caption: 'Typical SaaS dashboard layout: sidebar, KPIs, charts, table.',
         },
         {
           type: 'divider' as const,

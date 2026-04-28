@@ -126,6 +126,12 @@ export const meeting09: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-09-crazy-8s.webp',
+          alt: 'Лист бумаги, поделённый на восемь набросков-вариантов',
+          caption: 'Crazy 8s: восемь идей за восемь минут.',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
@@ -573,6 +579,12 @@ export const meeting09: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-09-landing-anatomy.webp',
+          alt: 'Каркас лендинга с девятью основными секциями',
+          caption: 'Анатомия лендинга: 9 типовых блоков сверху вниз.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Wireframe лендинга: ошибки vs правильный подход',
           before: {
@@ -728,6 +740,12 @@ export const meeting09: Meeting = {
             'Table — таблица с детальными данными и фильтрами',
             'Action bar — кнопки действий (экспорт, фильтр, добавить)',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-saas-dashboard-layout.webp',
+          alt: 'Каркас дашборда с боковой панелью, KPI-карточками и таблицей',
+          caption: 'Типичная раскладка SaaS-дашборда: sidebar, KPI, графики, таблица.',
         },
         {
           type: 'divider' as const,

@@ -180,6 +180,18 @@ const IMAGES = [
     filename: 'meeting-08-rule-of-thirds.webp',
     prompt: 'Clean illustration of a webpage hero mockup with the rule-of-thirds grid overlay: two horizontal and two vertical thin lines dividing the screen into nine equal cells. Four small accent dots placed at the line intersections. A sample hero shows a headline placeholder on the upper-left intersection and a CTA button on the lower-right intersection, plus a flat hero-image silhouette. Flat minimalist UX layout illustration, soft pastel colors, white background, only thin grid lines and dots.',
   },
+  {
+    filename: 'meeting-09-crazy-8s.webp',
+    prompt: 'Clean illustration of a sheet of paper folded into eight rectangles in a 4x2 grid, each rectangle containing a different rough wireframe sketch (header bar, list, card grid, form, dashboard, profile, modal, calendar) drawn in loose pencil-style strokes. A small pencil and a stopwatch in the corner showing 8 minutes. Flat minimalist sketch style, monochrome with one accent color, white background.',
+  },
+  {
+    filename: 'meeting-09-landing-anatomy.webp',
+    prompt: 'Clean wireframe illustration of a landing page anatomy as a tall vertical mockup with labelled blocks stacked from top to bottom: hero with headline placeholder + CTA, social-proof logo strip, three-card benefits row, three-step "how it works" row, two testimonial quotes, three-tier pricing table, FAQ accordion, final CTA, footer. Each block represented by simple grey shapes. Flat minimalist wireframe style, monochrome with one teal accent on CTAs, white background, no readable text.',
+  },
+  {
+    filename: 'meeting-09-saas-dashboard-layout.webp',
+    prompt: 'Clean wireframe illustration of a SaaS dashboard layout: left vertical sidebar with five icon placeholders, top horizontal header with search bar and avatar circle, main area divided into a row of four KPI cards on top, two large chart placeholders below (line chart and bar chart), and a wide data table at the bottom. All elements in grey wireframe style with thin borders, one accent color for active sidebar item. Flat minimalist UX wireframe, white background, no readable text.',
+  },
 ];
 
 async function generateImage(item) {
