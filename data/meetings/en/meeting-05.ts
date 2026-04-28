@@ -109,6 +109,12 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-interview-types.webp',
+          alt: 'Comparison of three user-interview formats',
+          caption: 'Three interview formats: structured, semi-structured, unstructured.',
+        },
+        {
           type: 'subheading' as const,
           content: 'How to Create an Interview Guide',
         },
@@ -248,6 +254,12 @@ export const meeting05: Meeting = {
           variant: 'example' as const,
           content:
             'Example: you\'re designing the navigation for an electronics online store. You create 40 cards: "Headphones," "iPhone Charger," "Samsung Case," "Bluetooth Speaker," "HDMI Cable"... Participants group them. Result: 80% of people group "Headphones" and "Bluetooth Speaker" under "Audio" rather than "Accessories." This means you need a separate "Audio" category in the navigation.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-card-sorting.webp',
+          alt: 'Card sorting illustration with three groups of cards',
+          caption: 'Card sorting: participants group cards into categories.',
         },
         {
           type: 'subheading' as const,
@@ -458,6 +470,12 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-user-story-formula.webp',
+          alt: 'Diagram of the user story formula',
+          caption: 'User Story formula: role → action → value.',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -611,6 +629,12 @@ export const meeting05: Meeting = {
                 'Consciously deferred. Not "never," but "not in this release." Example: multi-language support, AI recommendations.',
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-moscow-priority.webp',
+          alt: 'MoSCoW prioritisation pyramid with four levels',
+          caption: 'MoSCoW: task prioritisation in 60/20/20 split.',
         },
         {
           type: 'callout' as const,

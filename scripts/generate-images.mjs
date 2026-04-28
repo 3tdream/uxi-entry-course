@@ -120,6 +120,22 @@ const IMAGES = [
     filename: 'meeting-04-ux-metrics-dashboard.webp',
     prompt: 'Clean dashboard-style illustration with four small KPI cards arranged 2x2: top-left a horizontal SUS gauge from 0 to 100 with marker around 75, top-right an NPS scale from minus 100 to plus 100 with marker around plus 30, bottom-left a green smiley showing CSAT, bottom-right a stopwatch icon labelled "Time on Task". Flat minimalist data-visualisation style, soft pastel colors, white background, only numeric scale markings visible.',
   },
+  {
+    filename: 'meeting-05-interview-types.webp',
+    prompt: 'Clean educational illustration comparing three interview formats as three rectangular cards side by side. Left card shows a strict ladder of identical question marks (structured). Middle card shows a flexible tree branching outward from a few core questions (semi-structured). Right card shows a free-flowing wavy conversation line (unstructured). Each card has a tiny pair of facing speech-bubble silhouettes at the top. Flat minimalist UX research style, soft pastel colors blue, green, orange, white background.',
+  },
+  {
+    filename: 'meeting-05-card-sorting.webp',
+    prompt: 'Clean flat illustration of a card-sorting exercise on a desk: a stack of small rectangular cards in the centre, three labelled groupings on the right (each a colored bin with three cards inside), and a hand placing one card. Above the bins, a simple dendrogram tree showing groupings. Soft pastel colors green, blue, yellow bins, white background, minimalist UX research style, no readable text on cards.',
+  },
+  {
+    filename: 'meeting-05-user-story-formula.webp',
+    prompt: 'Clean educational illustration of a User Story formula card: three colored chips arranged horizontally with arrows between them — first chip shows a person silhouette with crown labelled "Role", second chip shows a hand pointing at a button labelled "Action", third chip shows a target with checkmark labelled "Value". Above the chips, the words "As a... I want... so that..." in a light handwritten style. Below, three small "Given / When / Then" tags. Flat minimalist Agile-style illustration, soft pastel colors, white background.',
+  },
+  {
+    filename: 'meeting-05-moscow-priority.webp',
+    prompt: 'Clean educational pyramid diagram showing the MoSCoW prioritisation method as four colored horizontal bands stacked top-to-bottom: red "Must have" at the top widest band labelled 60 percent, yellow "Should have" labelled 20 percent, green "Could have" labelled 20 percent, grey "Won\'t have" small band at the bottom. Each band has a tiny task-card icon. Flat minimalist project-management style, soft pastel palette, white background, only the percentages visible.',
+  },
 ];
 
 async function generateImage(item) {

@@ -109,6 +109,12 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-interview-types.webp',
+          alt: 'Сравнение трёх форматов пользовательских интервью',
+          caption: 'Три формата интервью: структурированное, полу- и неструктурированное.',
+        },
+        {
           type: 'subheading' as const,
           content: 'Как составить гайд для интервью',
         },
@@ -248,6 +254,12 @@ export const meeting05: Meeting = {
           variant: 'example' as const,
           content:
             'Пример: вы проектируете навигацию интернет-магазина электроники. Создаёте 40 карточек: «Наушники», «Зарядка для iPhone», «Чехол для Samsung», «Bluetooth-колонка», «HDMI-кабель»... Участники группируют их. Результат: 80% людей объединяют «Наушники» и «Bluetooth-колонку» в «Аудио», а не в «Аксессуары». Значит, нужна отдельная категория «Аудио» в навигации.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-card-sorting.webp',
+          alt: 'Иллюстрация карточной сортировки с тремя группами карточек',
+          caption: 'Карточная сортировка: участники группируют карточки в категории.',
         },
         {
           type: 'subheading' as const,
@@ -458,6 +470,12 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-user-story-formula.webp',
+          alt: 'Схема формулы пользовательской истории',
+          caption: 'Формула User Story: роль → действие → ценность.',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -611,6 +629,12 @@ export const meeting05: Meeting = {
                 'Осознанно откладываем. Не «никогда», а «не в этом релизе». Пример: мультиязычность, AI-рекомендации.',
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-moscow-priority.webp',
+          alt: 'Пирамида приоритизации MoSCoW с четырьмя уровнями',
+          caption: 'MoSCoW: распределение задач по приоритету 60/20/20.',
         },
         {
           type: 'callout' as const,
