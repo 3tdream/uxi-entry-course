@@ -19,18 +19,33 @@ import {
 // ---- Helpers ----
 
 function RichText({ content }: { content: string }) {
-  const parts = content.split(/(\*\*.*?\*\*)/g)
+  const parts = content.split(/(\*\*.*?\*\*|\[[^\]]+\]\([^)]+\))/g)
   return (
     <>
-      {parts.map((part, i) =>
-        part.startsWith('**') && part.endsWith('**') ? (
-          <strong key={i} className="font-semibold text-foreground">
-            {part.slice(2, -2)}
-          </strong>
-        ) : (
-          <span key={i}>{part}</span>
-        )
-      )}
+      {parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return (
+            <strong key={i} className="font-semibold text-foreground">
+              {part.slice(2, -2)}
+            </strong>
+          )
+        }
+        const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+        if (linkMatch) {
+          return (
+            <a
+              key={i}
+              href={linkMatch[2]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-2 hover:text-primary/80"
+            >
+              {linkMatch[1]}
+            </a>
+          )
+        }
+        return <span key={i}>{part}</span>
+      })}
     </>
   )
 }

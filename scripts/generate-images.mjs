@@ -226,11 +226,31 @@ const IMAGES = [
   },
   {
     filename: 'meeting-02-ux-team-roles.webp',
-    prompt: 'Clean educational poster with six role cards arranged in a 3x2 grid, each card showing a flat character silhouette with a tool icon and a role label: 1) UX Researcher with magnifier and clipboard, 2) UX Designer with wireframe and pencil, 3) UI Designer with palette and shapes, 4) UX Writer with quote-marks and notebook, 5) Design Engineer with code brackets and shapes, 6) Product Designer with strategy chart. Flat minimalist UX education style, soft pastel colors (lavender, mint, peach, blue), white background, only short role labels visible.',
+    prompt: 'Clean educational poster: six perfectly identical rectangular cards arranged in a strict 3x2 grid, each card the EXACT same size with EXACT same internal padding and centred content. Each card contains a centred circular avatar of a flat character silhouette (head and shoulders) above a small centred tool icon, and a short role label centred at the bottom. Roles in order: UX Researcher (magnifier), UX Designer (wireframe), UI Designer (palette), UX Writer (notebook), Design Engineer (code brackets), Product Designer (strategy chart). All six characters drawn in the SAME flat illustration style with consistent body proportions and head sizes. Uniform 16px gap between cards, generous margin around the grid. Flat minimalist UX education style, soft pastel palette (lavender, mint, peach, blue), white background, only the short role labels visible, no extra decoration. Clean, symmetrical, poster-like composition.',
   },
   {
     filename: 'meeting-02-double-diamond.webp',
-    prompt: 'Clean canonical Double Diamond design process diagram: two diamonds side by side connected at their tips. Left diamond split in two halves labelled "Discover" (diverging) and "Define" (converging) — under it the word "Problem". Right diamond split in two halves labelled "Develop" (diverging) and "Deliver" (converging) — under it the word "Solution". A small arrow from the bottom of the meeting point of the diamonds points to the right with label "Brief". Flat minimalist UX education style, soft pastel teal and orange palette, white background, only the four phase labels visible.',
+    prompt: 'Clean canonical Double Diamond design process diagram, viewed straight-on, perfectly horizontal: two equal-size diamonds side by side, touching at their inner tips on the centre baseline. Left diamond filled in soft teal, right diamond filled in soft orange. ABOVE each half-diamond a clear Russian phase label in plain sans-serif: above left-half "Исследование", above right-half of left diamond "Определение", above left-half of right diamond "Разработка", above right-half "Реализация". BELOW the diamonds two small captions: under the left diamond "Проблема", under the right "Решение". Flat minimalist UX education style, white background, no extra icons or characters, only the six labels visible.',
+  },
+  {
+    filename: 'meeting-02-artefact-user-flow.webp',
+    prompt: 'Clean educational illustration of a User Flow diagram example: 6 connected boxes representing screens (Login, Search, Product, Cart, Checkout, Confirmation) connected by arrows showing the path. Two side branches with decision-diamonds for "Logged in?" and "Payment OK?". Flat wireframe-style illustration, monochrome grey boxes with one teal accent on the active path, white background, minimalist, no readable text on screens.',
+  },
+  {
+    filename: 'meeting-02-artefact-wireframes.webp',
+    prompt: 'Clean educational illustration of a wireframe example: a single mid-fidelity webpage wireframe centred on the canvas. Shows a header bar with logo placeholder and 3 nav items, a hero block with grey rectangle for image and 2 lines of placeholder bars for headline + paragraph and a CTA button outline, a 3-card row beneath, and a footer strip. All shapes in light grey strokes with no fill colours. Flat minimalist wireframe style, white background, monochrome with one teal accent on CTA button, no readable text.',
+  },
+  {
+    filename: 'meeting-02-artefact-information-architecture.webp',
+    prompt: 'Clean educational illustration of an Information Architecture sitemap: a tree diagram with one root node "Home" at the top, branching into 4 main category nodes ("About", "Products", "Pricing", "Support"), each branching into 2-3 child page nodes. Connecting lines drawn cleanly. Each node a small rounded rectangle with a tiny page-icon. Flat minimalist UX-education style, soft pastel teal nodes, white background, no readable text, only the hierarchy visible.',
+  },
+  {
+    filename: 'meeting-02-artefact-user-story-map.webp',
+    prompt: 'Clean educational illustration of a User Story Map: horizontal swimlanes. Top row: 5 large activity-cards in soft blue ("Browse", "Search", "Compare", "Buy", "Track"). Below each activity, a vertical column of 3-4 smaller user-story sticky-note cards in soft yellow, organised so that the top row of stickies forms the MVP slice, marked with a horizontal dashed line labelled "MVP". Below MVP, two more rows of stickies for later releases. Flat minimalist Agile-design style, soft pastel palette, white background, only short row labels visible.',
+  },
+  {
+    filename: 'meeting-02-artefact-prototypes.webp',
+    prompt: 'Clean educational illustration of an interactive prototype example: a smartphone mockup in the centre showing a single screen with simple UI elements (button, list, icon), connected by curved arrows to two adjacent smaller phone mockups showing the screens it transitions to. A small finger-tap icon on the central button. Above the prototype, a tiny gear-icon and a play-button suggesting Figma-prototype mode. Flat minimalist UX-education style, soft pastel palette, white background, only minimal UI shapes, no readable text.',
   },
   {
     filename: 'meeting-02-team-by-product-type.webp',

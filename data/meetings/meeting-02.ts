@@ -160,7 +160,7 @@ export const meeting02: Meeting = {
               title: 'Дон Норман',
               items: [
                 'Ввёл термин «User Experience» в Apple (1993)',
-                'Книга «Дизайн привычных вещей» — библия UX',
+                'Книга «Дизайн привычных вещей» ([читать](https://jnd.org/books/the-design-of-everyday-things-revised-and-expanded-edition/)) — библия UX',
                 'Концепции affordance и signifier',
                 'Профессор когнитивных наук → дизайн',
               ],
@@ -168,7 +168,7 @@ export const meeting02: Meeting = {
             {
               title: 'Якоб Нильсен',
               items: [
-                '10 эвристик юзабилити (1994) — используются до сих пор',
+                '10 эвристик юзабилити (1994) ([читать](https://www.nngroup.com/articles/ten-usability-heuristics/)) — используются до сих пор',
                 'Основатель Nielsen Norman Group',
                 'Пионер юзабилити-тестирования',
                 '«5 пользователей найдут 85% проблем»',
@@ -186,7 +186,7 @@ export const meeting02: Meeting = {
             {
               title: 'Дитер Рамс',
               items: [
-                '10 принципов хорошего дизайна (Braun)',
+                '10 принципов хорошего дизайна (Braun) ([читать](https://www.vitsoe.com/us/about/good-design))',
                 'Вдохновил Джонни Айва (Apple)',
                 '«Хороший дизайн — как можно меньше дизайна»',
                 'Мост между индустриальным и цифровым дизайном',
@@ -626,6 +626,99 @@ export const meeting02: Meeting = {
 
         { type: 'divider' as const },
 
+        // --- Артефакты UX-дизайнера ---
+        {
+          type: 'heading' as const,
+          content: 'Артефакты UX-дизайнера',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Каждый этап работы дизайнера создаёт **артефакт** — конкретный документ или схему, которую можно показать команде, разработчикам и стейкхолдерам. Это способ превратить идеи в общий язык.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'User Flow — карта пути пользователя',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Схема всех экранов и решений на пути пользователя к цели. Показывает, **куда ведёт каждый клик** и где могут возникнуть тупики или развилки.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-user-flow.webp',
+          alt: 'Пример User Flow: 6 экранов соединены стрелками с двумя ветвлениями',
+          caption: 'User Flow для покупки в интернет-магазине: от логина до подтверждения заказа.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'Wireframes — схематичные макеты без визуала',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Каркас интерфейса в серых блоках: где будет контент, кнопка, картинка. Без шрифтов, цветов и графики — **только структура**. Их легко менять, пока не утверждена логика.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-wireframes.webp',
+          alt: 'Пример wireframe: серый каркас веб-страницы с hero-секцией и тремя карточками',
+          caption: 'Wireframe — структура без украшений: блоки, иерархия, акценты.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'Информационная архитектура (IA)',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Дерево разделов и страниц продукта. Показывает, как контент **сгруппирован и связан** между собой — от корня (Главная) до листьев (конкретных страниц).',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-information-architecture.webp',
+          alt: 'Пример IA: дерево с корнем Home и четырьмя ветками категорий',
+          caption: 'Информационная архитектура: иерархия разделов от Главной до конкретных страниц.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'Карта пользовательских сценариев (User Story Map)',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Горизонтальная карта активностей пользователя с вертикальными «срезами» релизов. Помогает увидеть **MVP**, что может подождать, и в каком порядке выпускать функции.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-user-story-map.webp',
+          alt: 'Пример User Story Map: пять активностей сверху, под ними стикеры по релизам',
+          caption: 'User Story Map: верхний срез — MVP, ниже — последующие релизы.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'Прототипы для тестирования',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Кликабельная версия дизайна: можно нажать на кнопку и попасть на следующий экран. Используется для **юзабилити-тестов**, демо стейкхолдерам и проверки логики до разработки.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-prototypes.webp',
+          alt: 'Пример прототипа: смартфон-мокап с переходами на соседние экраны',
+          caption: 'Прототип: кликабельный поток с переходами между экранами для тестирования.',
+        },
+
+        { type: 'divider' as const },
+
         // --- Double Diamond ---
         {
           type: 'heading' as const,
@@ -639,7 +732,7 @@ export const meeting02: Meeting = {
         {
           type: 'diagram' as const,
           title: 'Четыре фазы Double Diamond',
-          description: 'Расходимся → Сходимся → Расходимся → Сходимся',
+          description: 'Исследование → Определение → Разработка → Реализация',
           items: [
             '1. Discover (Исследование) — понять проблему, собрать данные, интервью, наблюдения',
             '2. Define (Определение) — сформулировать точную проблему, приоритизировать',
@@ -696,6 +789,7 @@ export const meeting02: Meeting = {
                 'Глубокая экспертиза в одной области',
                 'Senior может зарабатывать как менеджер',
                 'Фокус на craft и менторство',
+                '**Ставка в Израиле:** Junior ₪8–14k · Middle ₪14–22k · Senior ₪22–35k · Staff/Principal ₪35–55k+',
               ],
             },
             {
@@ -705,6 +799,7 @@ export const meeting02: Meeting = {
                 'Управление командой и процессами',
                 'Стратегия дизайна на уровне компании',
                 'Меньше hands-on дизайна, больше коммуникации',
+                '**Ставка в Израиле:** Lead ₪28–42k · Head of Design ₪40–60k · VP/CDO ₪60k+',
               ],
             },
             {
@@ -714,6 +809,7 @@ export const meeting02: Meeting = {
                 'Design Systems → DS Architect',
                 'UX Writing → Content Design Lead',
                 'Motion Design → Creative Director',
+                '**Ставка в Израиле:** Lead-уровень ₪25–40k (зависит от ниши и спроса)',
               ],
             },
           ],

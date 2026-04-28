@@ -160,7 +160,7 @@ export const meeting02: Meeting = {
               title: 'Don Norman',
               items: [
                 'Coined the term "User Experience" at Apple (1993)',
-                'Book "The Design of Everyday Things" — the UX bible',
+                'Book "The Design of Everyday Things" ([read](https://jnd.org/books/the-design-of-everyday-things-revised-and-expanded-edition/)) — the UX bible',
                 'Concepts of affordance and signifier',
                 'Cognitive science professor turned designer',
               ],
@@ -168,7 +168,7 @@ export const meeting02: Meeting = {
             {
               title: 'Jakob Nielsen',
               items: [
-                '10 usability heuristics (1994) — still in use today',
+                '10 usability heuristics (1994) ([read](https://www.nngroup.com/articles/ten-usability-heuristics/)) — still in use today',
                 'Founder of Nielsen Norman Group',
                 'Pioneer of usability testing',
                 '"5 users will find 85% of problems"',
@@ -186,7 +186,7 @@ export const meeting02: Meeting = {
             {
               title: 'Dieter Rams',
               items: [
-                '10 principles of good design (Braun)',
+                '10 principles of good design (Braun) ([read](https://www.vitsoe.com/us/about/good-design))',
                 'Inspired Jony Ive (Apple)',
                 '"Good design is as little design as possible"',
                 'Bridge between industrial and digital design',
@@ -626,6 +626,99 @@ export const meeting02: Meeting = {
 
         { type: 'divider' as const },
 
+        // --- UX Designer Artefacts ---
+        {
+          type: 'heading' as const,
+          content: 'UX Designer Artefacts',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Each stage of a designer\'s work produces an **artefact** — a concrete document or diagram you can show to teammates, developers, and stakeholders. It is how ideas turn into a shared language.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'User Flow — the user journey map',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'A diagram of every screen and decision a user makes on the way to their goal. It shows **where each click leads** and where dead ends or branches may appear.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-user-flow.webp',
+          alt: 'User Flow example: 6 screens connected by arrows with two branches',
+          caption: 'User Flow for online shopping: from login to order confirmation.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'Wireframes — schematic mockups without visuals',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'A grey-block skeleton of the interface: where content, buttons, and images go. No fonts, colours, or graphics — **structure only**. Easy to change while the logic is still being decided.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-wireframes.webp',
+          alt: 'Wireframe example: grey skeleton of a webpage with hero section and three cards',
+          caption: 'Wireframe — structure without decoration: blocks, hierarchy, accents.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'Information Architecture (IA)',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'A tree of sections and pages of the product. Shows how content is **grouped and connected** — from the root (Home) all the way to the leaves (specific pages).',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-information-architecture.webp',
+          alt: 'IA example: tree with a Home root and four category branches',
+          caption: 'Information architecture: a hierarchy from Home down to specific pages.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'User Story Map',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'A horizontal map of user activities with vertical "release slices". Helps you see the **MVP**, what can wait, and the right release order.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-user-story-map.webp',
+          alt: 'User Story Map example: five activities on top with stickers per release below',
+          caption: 'User Story Map: the top slice is the MVP; rows below are later releases.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: 'Prototypes for testing',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'A clickable version of the design: tap a button and you go to the next screen. Used for **usability testing**, stakeholder demos, and validating logic before development.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-artefact-prototypes.webp',
+          alt: 'Prototype example: a phone mockup with transitions to neighbouring screens',
+          caption: 'Prototype: a clickable flow with transitions between screens for testing.',
+        },
+
+        { type: 'divider' as const },
+
         // --- Double Diamond ---
         {
           type: 'heading' as const,
@@ -639,7 +732,7 @@ export const meeting02: Meeting = {
         {
           type: 'diagram' as const,
           title: 'The Four Phases of the Double Diamond',
-          description: 'Diverge → Converge → Diverge → Converge',
+          description: 'Discover → Define → Develop → Deliver',
           items: [
             '1. Discover — understand the problem, gather data, interviews, observations',
             '2. Define — formulate the exact problem, prioritize',
@@ -696,6 +789,7 @@ export const meeting02: Meeting = {
                 'Deep expertise in one area',
                 'Seniors can earn as much as managers',
                 'Focus on craft and mentorship',
+                '**Israel salary range:** Junior ₪8–14k · Middle ₪14–22k · Senior ₪22–35k · Staff/Principal ₪35–55k+',
               ],
             },
             {
@@ -705,6 +799,7 @@ export const meeting02: Meeting = {
                 'Managing teams and processes',
                 'Design strategy at the company level',
                 'Less hands-on design, more communication',
+                '**Israel salary range:** Lead ₪28–42k · Head of Design ₪40–60k · VP/CDO ₪60k+',
               ],
             },
             {
@@ -714,6 +809,7 @@ export const meeting02: Meeting = {
                 'Design Systems → DS Architect',
                 'UX Writing → Content Design Lead',
                 'Motion Design → Creative Director',
+                '**Israel salary range:** Lead-level ₪25–40k (depends on niche and demand)',
               ],
             },
           ],
