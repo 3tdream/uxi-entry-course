@@ -59,6 +59,12 @@ export const meeting13: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-13-course-roadmap.webp',
+          alt: 'Горизонтальная карта курса с тринадцатью этапами',
+          caption: 'Дорожная карта курса: 13 встреч в четырёх тематических блоках.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -249,6 +255,12 @@ export const meeting13: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-13-career-ladder.webp',
+          alt: 'Лестница карьерных уровней с боковыми ветвями специализаций',
+          caption: 'Карьерная лестница UX/UI-дизайнера и альтернативные треки.',
         },
         {
           type: 'callout' as const,
@@ -719,6 +731,12 @@ export const meeting13: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-13-rubric-radar.webp',
+          alt: 'Радар-чарт с шестью осями критериев оценки',
+          caption: 'Шесть критериев оценки финального проекта на радар-чарте.',
+        },
+        {
           type: 'callout' as const,
           variant: 'warning' as const,
           content:
@@ -946,6 +964,12 @@ export const meeting13: Meeting = {
         {
           type: 'heading' as const,
           content: 'Поздравляем с завершением курса!',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-13-graduation-toolkit.webp',
+          alt: 'Стол с инструментами дизайнера, дипломом и кубком',
+          caption: 'Полный набор инструментов начинающего UX/UI-дизайнера.',
         },
         {
           type: 'text' as const,

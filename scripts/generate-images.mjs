@@ -152,6 +152,22 @@ const IMAGES = [
     filename: 'meeting-11-iteration-loop.webp',
     prompt: 'Clean educational illustration of a continuous improvement loop drawn as a circular arrow with six labelled stages around the circle: Design (pencil), Build (gear), Launch (rocket), Measure (chart), Analyse (magnifier), Decide (check-mark). Centre of the loop labelled "Iteration". Flat minimalist product-design style, soft pastel colors, white background, only short stage labels around the ring.',
   },
+  {
+    filename: 'meeting-13-course-roadmap.webp',
+    prompt: 'Clean horizontal roadmap illustration with thirteen numbered milestone dots connected by a winding path. Dots grouped into four colored sections corresponding to course blocks: Foundations 1-3 (blue), Research 4-5 (green), Design 7-10 (orange), Profession 11-13 (purple). Tiny relevant icon above each milestone (book, history, palette, microscope, persona, IA tree, wireframe, components, prototype, motion, design-system, handoff, trophy). Flat minimalist education-roadmap style, soft pastel colors, white background, only milestone numbers visible.',
+  },
+  {
+    filename: 'meeting-13-career-ladder.webp',
+    prompt: 'Clean illustration of a four-step ascending staircase, each step labelled with a UX career level: Junior (small figure with sketchbook), Middle (figure with laptop), Senior (figure with laptop and team-icon), Lead/Director (figure on top with team of three behind). Above the ladder, three smaller side branches with icons for alternative tracks: research magnifier, writing pen, design-engineering brackets. Flat minimalist career-illustration style, soft pastel colors, white background, only step labels visible.',
+  },
+  {
+    filename: 'meeting-13-rubric-radar.webp',
+    prompt: 'Clean radar (spider) chart illustration with six axes labelled: Research, Define, Design, Prototype, Testing, Presentation. A filled translucent polygon shows a balanced student score reaching about 4 out of 5 on each axis. Each axis tip has a small relevant icon (magnifier, persona head, palette, layers, stopwatch, microphone). Flat minimalist data-visualisation style, soft pastel teal fill, white background, only axis labels visible.',
+  },
+  {
+    filename: 'meeting-13-graduation-toolkit.webp',
+    prompt: 'Clean flat celebratory illustration of a designer\'s "graduation toolkit" laid out on a desk: an open laptop showing a Figma-like canvas, a sketchbook, a colour swatch fan, a tiny diploma scroll with a ribbon, a small trophy, a pen, sticky notes, and a coffee mug. Confetti dots floating above. Warm, friendly, end-of-course feel. Flat minimalist education-illustration style, soft pastel colors with gold and lavender accents, white background, no readable text.',
+  },
 ];
 
 async function generateImage(item) {

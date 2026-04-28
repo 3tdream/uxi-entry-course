@@ -59,6 +59,12 @@ export const meeting13: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-13-course-roadmap.webp',
+          alt: 'Horizontal course map with thirteen milestones',
+          caption: 'Course roadmap: thirteen meetings across four thematic blocks.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -249,6 +255,12 @@ export const meeting13: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-13-career-ladder.webp',
+          alt: 'Career-level staircase with side branches for specialisations',
+          caption: 'UX/UI designer career ladder with alternative tracks.',
         },
         {
           type: 'callout' as const,
@@ -719,6 +731,12 @@ export const meeting13: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-13-rubric-radar.webp',
+          alt: 'Radar chart with six evaluation-criteria axes',
+          caption: 'Six final-project evaluation criteria on a radar chart.',
+        },
+        {
           type: 'callout' as const,
           variant: 'warning' as const,
           content:
@@ -946,6 +964,12 @@ export const meeting13: Meeting = {
         {
           type: 'heading' as const,
           content: 'Congratulations on Completing the Course!',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-13-graduation-toolkit.webp',
+          alt: 'Desk with designer\'s tools, diploma and trophy',
+          caption: 'A starter UX/UI designer\'s full toolkit.',
         },
         {
           type: 'text' as const,
