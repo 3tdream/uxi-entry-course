@@ -82,6 +82,12 @@ export const meeting11: Meeting = {
             },
           ],
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-handoff-broken-telephone-humor.webp',
+          alt: 'Humorous illustration of broken designer-developer communication',
+          caption: 'When handoff turns into a game of telephone.',
+        },
 
         { type: 'divider' as const },
 

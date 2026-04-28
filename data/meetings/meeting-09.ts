@@ -1000,6 +1000,12 @@ export const meeting09: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-09-wireframe-fail-humor.webp',
+          alt: 'Шуточная иллюстрация про дизайнера, пропустившего этап wireframe',
+          caption: 'Когда сразу прыгнул в hi-fi и пропустил исследование.',
+        },
+        {
           type: 'divider' as const,
         },
 

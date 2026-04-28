@@ -216,6 +216,14 @@ const IMAGES = [
     filename: 'meeting-12-kpi-card-anatomy.webp',
     prompt: 'Clean illustration of a single dashboard KPI card enlarged in the centre with callout arrows pointing to its parts: small label at the top ("Revenue"), large value in the middle ("$142K"), green up-arrow with percentage ("+12.5%"), tiny sparkline graph at the bottom right, and a period note ("vs last month"). Flat minimalist data-dashboard style, soft pastel green and blue accents, white background, only the example numeric values visible.',
   },
+  {
+    filename: 'meeting-09-wireframe-fail-humor.webp',
+    prompt: 'Comic-card style illustration: a designer at a desk proudly presenting a beautifully detailed pixel-perfect mockup, while a small thought bubble shows the user-research persona that was never made and a wireframe step that was skipped. The mockup is gorgeous but a tiny developer character is scratching his head holding a question-mark sign. Tasteful, gentle humour, flat illustration style, soft pastel palette, white background, no readable text.',
+  },
+  {
+    filename: 'meeting-11-handoff-broken-telephone-humor.webp',
+    prompt: 'Comic-card style illustration playing on the "broken telephone" idea: on the left, a designer holds up a beautiful Figma mockup with a clean rounded button; in the middle a tangled string passes between two paper cups; on the right, a developer proudly holds up the implemented version where the same button is mysteriously square, off-color, and slightly tilted. Both characters smile awkwardly. Tasteful, gentle humour, flat illustration style, soft pastel colors, white background, no readable text.',
+  },
 ];
 
 async function generateImage(item) {

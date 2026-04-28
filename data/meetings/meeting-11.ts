@@ -82,6 +82,12 @@ export const meeting11: Meeting = {
             },
           ],
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-handoff-broken-telephone-humor.webp',
+          alt: 'Шуточная иллюстрация про разрыв коммуникации между дизайнером и разработчиком',
+          caption: 'Когда handoff превращается в игру «испорченный телефон».',
+        },
 
         { type: 'divider' as const },
 

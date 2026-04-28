@@ -1000,6 +1000,12 @@ export const meeting09: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-09-wireframe-fail-humor.webp',
+          alt: 'Humorous illustration of a designer skipping the wireframe stage',
+          caption: 'When you skip research and jump straight to hi-fi.',
+        },
+        {
           type: 'divider' as const,
         },
 
