@@ -40,6 +40,12 @@ export const meeting11: Meeting = {
           author: 'Брэд Фрост',
           role: 'Автор Atomic Design',
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-design-to-dev-bridge.webp',
+          alt: 'Иллюстрация моста между дизайном и разработкой',
+          caption: 'Handoff — мост между миром пикселей и миром кода.',
+        },
 
         { type: 'divider' as const },
 
@@ -187,6 +193,12 @@ export const meeting11: Meeting = {
             description:
               'Button/Primary: bg $blue-600, text $white, font-weight 600, font-size 16px, line-height 24px, padding 12px 24px, border-radius 8px, hover: bg $blue-700, active: bg $blue-800, focus: ring 2px $blue-300, disabled: opacity 0.5 cursor not-allowed, transition all 150ms ease.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-button-spec-sheet.webp',
+          alt: 'Кнопка с выносками всех её свойств и состояний',
+          caption: 'Спецификация кнопки: токены, состояния, отступы.',
         },
 
         { type: 'divider' as const },
@@ -606,6 +618,12 @@ export const meeting11: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-11-ab-test-flow.webp',
+          alt: 'Схема A/B теста с двумя ветвями и счётчиками конверсий',
+          caption: 'A/B тест: трафик делится на контрольную и тестовую группы.',
+        },
+        {
           type: 'user-flow' as const,
           title: 'Дерево решений A/B теста',
           steps: [
@@ -883,6 +901,12 @@ export const meeting11: Meeting = {
             'Анализ → Сравниваем с baseline, формулируем инсайты',
             'Решение → Внедряем, откатываем или запускаем новый цикл',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-iteration-loop.webp',
+          alt: 'Круговая схема цикла итеративного улучшения продукта',
+          caption: 'Цикл итеративного дизайна: дизайн → запуск → измерение → решение.',
         },
         {
           type: 'callout' as const,

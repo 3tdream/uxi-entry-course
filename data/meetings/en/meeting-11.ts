@@ -40,6 +40,12 @@ export const meeting11: Meeting = {
           author: 'Brad Frost',
           role: 'Author of Atomic Design',
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-design-to-dev-bridge.webp',
+          alt: 'Illustration of a bridge between design and development',
+          caption: 'Handoff is the bridge between pixels and code.',
+        },
 
         { type: 'divider' as const },
 
@@ -187,6 +193,12 @@ export const meeting11: Meeting = {
             description:
               'Button/Primary: bg $blue-600, text $white, font-weight 600, font-size 16px, line-height 24px, padding 12px 24px, border-radius 8px, hover: bg $blue-700, active: bg $blue-800, focus: ring 2px $blue-300, disabled: opacity 0.5 cursor not-allowed, transition all 150ms ease.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-button-spec-sheet.webp',
+          alt: 'Button with callouts for all its properties and states',
+          caption: 'Button spec sheet: tokens, states, spacing.',
         },
 
         { type: 'divider' as const },
@@ -606,6 +618,12 @@ export const meeting11: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-11-ab-test-flow.webp',
+          alt: 'A/B test diagram with two branches and conversion counters',
+          caption: 'A/B test: traffic split between control and variant groups.',
+        },
+        {
           type: 'user-flow' as const,
           title: 'A/B Test Decision Tree',
           steps: [
@@ -883,6 +901,12 @@ export const meeting11: Meeting = {
             'Analysis \u2192 Compare with baseline, formulate insights',
             'Decision \u2192 Deploy, roll back, or start a new cycle',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-iteration-loop.webp',
+          alt: 'Circular diagram of the iterative product-improvement cycle',
+          caption: 'Iterative design loop: design \u2192 launch \u2192 measure \u2192 decide.',
         },
         {
           type: 'callout' as const,

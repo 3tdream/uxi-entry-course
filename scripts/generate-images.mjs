@@ -136,6 +136,22 @@ const IMAGES = [
     filename: 'meeting-05-moscow-priority.webp',
     prompt: 'Clean educational pyramid diagram showing the MoSCoW prioritisation method as four colored horizontal bands stacked top-to-bottom: red "Must have" at the top widest band labelled 60 percent, yellow "Should have" labelled 20 percent, green "Could have" labelled 20 percent, grey "Won\'t have" small band at the bottom. Each band has a tiny task-card icon. Flat minimalist project-management style, soft pastel palette, white background, only the percentages visible.',
   },
+  {
+    filename: 'meeting-11-design-to-dev-bridge.webp',
+    prompt: 'Clean flat illustration of a stylised bridge connecting two islands: left island has a Figma-like design canvas with shapes and a colour palette, right island has code brackets and component cards. On the bridge, design-token chips and arrows flow between the islands. A designer figure on the left, a developer figure on the right, both reaching toward each other. Flat minimalist UX education style, soft pastel colors blue and orange, white background, no readable text.',
+  },
+  {
+    filename: 'meeting-11-button-spec-sheet.webp',
+    prompt: 'Clean illustration of a "spec sheet" for a button: a single primary button in the centre surrounded by callout lines pointing to its properties — padding 12 by 24, border radius 8, font size 16, background colour token chip, hover state preview, focus ring preview, disabled state preview. Each property shown as a tiny labelled chip. Flat minimalist design-handoff style, soft pastel palette, white background, only short property tags visible.',
+  },
+  {
+    filename: 'meeting-11-ab-test-flow.webp',
+    prompt: 'Clean educational diagram of an A/B test split: at the top, a single icon of a website. An arrow splits to two parallel paths labelled "Group A" and "Group B" — left path shows a screen mockup with a grey button, right path shows the same screen with a green button. Each path leads down to a metric counter ("conversions") and the higher counter is highlighted with a trophy. Flat minimalist analytics illustration, soft pastel colors, white background, only "A" and "B" labels visible.',
+  },
+  {
+    filename: 'meeting-11-iteration-loop.webp',
+    prompt: 'Clean educational illustration of a continuous improvement loop drawn as a circular arrow with six labelled stages around the circle: Design (pencil), Build (gear), Launch (rocket), Measure (chart), Analyse (magnifier), Decide (check-mark). Centre of the loop labelled "Iteration". Flat minimalist product-design style, soft pastel colors, white background, only short stage labels around the ring.',
+  },
 ];
 
 async function generateImage(item) {
