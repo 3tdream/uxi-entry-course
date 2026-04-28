@@ -319,6 +319,12 @@ export const meeting12: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-12-ios-vs-material.webp',
+          alt: 'Two phones side by side comparing iOS and Material Design',
+          caption: 'iOS HIG vs Material Design 3: contrasting mobile UI philosophies.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Delete Dialog — iOS vs Android',
           before: {
@@ -682,6 +688,12 @@ export const meeting12: Meeting = {
             'Sparkline \u2014 miniature trend chart over 30 days',
             'Period \u2014 time range for the data (vs last month)',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-12-kpi-card-anatomy.webp',
+          alt: 'KPI card with callouts for all its elements',
+          caption: 'KPI card anatomy: label, value, change, sparkline.',
         },
         {
           type: 'subheading' as const,

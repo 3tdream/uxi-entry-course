@@ -319,6 +319,12 @@ export const meeting12: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-12-ios-vs-material.webp',
+          alt: 'Два телефона рядом: iOS интерфейс и Material Design интерфейс',
+          caption: 'iOS HIG vs Material Design 3: разные философии мобильного UI.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Диалог удаления — iOS vs Android',
           before: {
@@ -400,6 +406,12 @@ export const meeting12: Meeting = {
             'React Native / Flutter → Близко к нативу, единая кодобаза',
             'Native (Swift/Kotlin) → Максимум возможностей, максимум стоимости',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-12-platform-spectrum.webp',
+          alt: 'Шесть типов платформ от веб-сайта до нативного приложения',
+          caption: 'Спектр платформ: от сайта до нативного приложения.',
         },
         {
           type: 'callout' as const,
@@ -682,6 +694,12 @@ export const meeting12: Meeting = {
             'Sparkline — миниатюрный график тренда за 30 дней',
             'Period — за какой период данные (vs last month)',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-12-kpi-card-anatomy.webp',
+          alt: 'KPI-карточка с подписями всех её элементов',
+          caption: 'Анатомия KPI-карточки: лейбл, значение, изменение, спарклайн.',
         },
         {
           type: 'subheading' as const,

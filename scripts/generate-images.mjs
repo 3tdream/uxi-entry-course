@@ -204,6 +204,18 @@ const IMAGES = [
     filename: 'meeting-10-atomic-design.webp',
     prompt: 'Clean educational illustration of Atomic Design as five horizontal layers stacked from bottom to top, each labelled and represented by a chemistry-inspired icon: Atoms (single atom — dot), Molecules (two atoms bonded — search field), Organisms (atom cluster — header with logo, nav, search), Templates (page wireframe outline), Pages (filled mockup with content). Flat minimalist design-system illustration, soft pastel colors blue and lavender, white background.',
   },
+  {
+    filename: 'meeting-12-ios-vs-material.webp',
+    prompt: 'Clean side-by-side comparison illustration of two phones: left phone in iOS style with rounded square app icons, top navigation bar, bottom tab bar with subtle blur, and a label "iOS HIG" with an Apple-style aesthetic; right phone in Material Design 3 style with a top app bar, floating action button on bottom right, bottom navigation bar with bold pill highlight, and a label "Material 3". Flat minimalist UI illustration, soft pastel colors blue tones for iOS and purple tones for Material, white background.',
+  },
+  {
+    filename: 'meeting-12-platform-spectrum.webp',
+    prompt: 'Clean horizontal spectrum illustration showing six platform types from left to right with small device icons: static website (browser), SPA (browser with refresh icon), PWA (browser with install arrow), Hybrid app (phone with browser inside), React Native or Flutter (phone with cross-platform symbol), Native (iPhone and Android phones). A gradient strip beneath labels two arrows — "Reach" decreasing to the right, "Capabilities" increasing to the right. Flat minimalist tech-education style, soft pastel colors, white background, only short labels under each device.',
+  },
+  {
+    filename: 'meeting-12-kpi-card-anatomy.webp',
+    prompt: 'Clean illustration of a single dashboard KPI card enlarged in the centre with callout arrows pointing to its parts: small label at the top ("Revenue"), large value in the middle ("$142K"), green up-arrow with percentage ("+12.5%"), tiny sparkline graph at the bottom right, and a period note ("vs last month"). Flat minimalist data-dashboard style, soft pastel green and blue accents, white background, only the example numeric values visible.',
+  },
 ];
 
 async function generateImage(item) {
