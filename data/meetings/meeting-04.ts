@@ -125,6 +125,12 @@ export const meeting04: Meeting = {
             'Не подсказывайте участнику! Фразы вроде «Попробуйте нажать на эту кнопку» полностью обесценивают результаты. Если участник застрял, спросите: «Что бы вы сделали, если бы были дома одни?»',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-think-aloud.webp',
+          alt: 'Пользователь выполняет задачу и проговаривает свои мысли исследователю',
+          caption: 'Think-aloud: пользователь проговаривает мысли во время задачи.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -150,6 +156,12 @@ export const meeting04: Meeting = {
             '10 пользователей → ~95% проблем',
             '15 пользователей → ~99% проблем',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-five-users-curve.webp',
+          alt: 'Логарифмическая кривая обнаружения проблем юзабилити',
+          caption: '5 пользователей находят ~85% проблем юзабилити.',
         },
         {
           type: 'callout' as const,
@@ -438,6 +450,12 @@ export const meeting04: Meeting = {
           variant: 'tip' as const,
           content:
             'Эвристическая оценка — это **дёшево и быстро**. 3 эксперта за 2 часа находят ~75% проблем юзабилити. Это отличный старт, но не замена юзабилити-тестирования с реальными пользователями.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-nielsen-10-heuristics.webp',
+          alt: 'Сетка из десяти карточек с иконками эвристик Нильсена',
+          caption: '10 эвристик юзабилити Якоба Нильсена.',
         },
         {
           type: 'divider' as const,
@@ -734,6 +752,12 @@ export const meeting04: Meeting = {
           variant: 'example' as const,
           content:
             '**Формула NPS:** % промоутеров (9-10) - % критиков (0-6). Если из 100 опрошенных: 40 — промоутеры, 30 — пассивные (7-8), 30 — критики, то NPS = 40% - 30% = **+10**. Хороший NPS в SaaS: выше +30.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-ux-metrics-dashboard.webp',
+          alt: 'Дашборд с четырьмя метриками UX',
+          caption: 'Ключевые количественные метрики UX: SUS, NPS, CSAT, Time on Task.',
         },
         {
           type: 'divider' as const,

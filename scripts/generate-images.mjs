@@ -104,6 +104,22 @@ const IMAGES = [
     filename: 'meeting-03-persona-card.webp',
     prompt: 'Clean flat illustration of a UX persona card on a desk: avatar circle with a friendly face on the left, three text-block placeholders on the right (no readable text, just lines indicating Goals, Frustrations, Quote), a small phone icon, a coffee cup, and a sticky note with a heart. Flat minimalist UX design illustration, soft pastel colors lavender and peach, white background, gentle shadows.',
   },
+  {
+    filename: 'meeting-04-five-users-curve.webp',
+    prompt: 'Clean educational line chart showing the Nielsen "5 users" curve: x-axis labelled with user count from 1 to 15, y-axis labelled "problems found" from 0 to 100 percent. Smooth logarithmic curve rising steeply at first then flattening. Five small user-silhouette icons under the x-axis, with a dashed vertical line at user 5 marking 85 percent. Flat minimalist infographic, blue and white, soft pastel accents, white background, only axis numbers visible.',
+  },
+  {
+    filename: 'meeting-04-think-aloud.webp',
+    prompt: 'Clean flat illustration of a usability test in progress: a person sitting at a laptop with a thought bubble showing gears and a question mark above their head, a researcher next to them with a notepad. Screen-recording icon and a small microphone above the laptop. Friendly, focused atmosphere, soft pastel colors, white background, minimalist UX education style, no readable text.',
+  },
+  {
+    filename: 'meeting-04-nielsen-10-heuristics.webp',
+    prompt: 'Clean educational poster-style infographic showing 10 numbered cards arranged in a 5x2 grid, each card with a simple icon representing a Nielsen usability heuristic: eye for visibility, world-globe for real-world match, undo-arrow for user control, equal-sign for consistency, shield for error prevention, lightbulb for recognition, rabbit for efficiency, sparkle for aesthetic minimalism, broken-link for error recovery, life-buoy for help. Each card numbered 1 to 10. Flat minimalist UX design illustration, soft pastel palette, white background.',
+  },
+  {
+    filename: 'meeting-04-ux-metrics-dashboard.webp',
+    prompt: 'Clean dashboard-style illustration with four small KPI cards arranged 2x2: top-left a horizontal SUS gauge from 0 to 100 with marker around 75, top-right an NPS scale from minus 100 to plus 100 with marker around plus 30, bottom-left a green smiley showing CSAT, bottom-right a stopwatch icon labelled "Time on Task". Flat minimalist data-visualisation style, soft pastel colors, white background, only numeric scale markings visible.',
+  },
 ];
 
 async function generateImage(item) {

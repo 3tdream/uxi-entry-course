@@ -125,6 +125,12 @@ export const meeting04: Meeting = {
             'Do not prompt the participant! Phrases like "Try clicking this button" completely invalidate the results. If the participant is stuck, ask: "What would you do if you were at home by yourself?"',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-think-aloud.webp',
+          alt: 'User performing a task while thinking aloud to a researcher',
+          caption: 'Think-aloud: user verbalises thoughts while completing the task.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -150,6 +156,12 @@ export const meeting04: Meeting = {
             '10 users → ~95% of problems',
             '15 users → ~99% of problems',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-five-users-curve.webp',
+          alt: 'Logarithmic curve of usability problem discovery',
+          caption: 'Five users find roughly 85 percent of usability problems.',
         },
         {
           type: 'callout' as const,
@@ -438,6 +450,12 @@ export const meeting04: Meeting = {
           variant: 'tip' as const,
           content:
             'Heuristic evaluation is **cheap and fast**. 3 experts in 2 hours can find ~75% of usability problems. It is a great starting point but not a replacement for usability testing with real users.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-nielsen-10-heuristics.webp',
+          alt: 'Grid of ten cards with icons for Nielsen heuristics',
+          caption: "Nielsen's ten usability heuristics.",
         },
         {
           type: 'divider' as const,
@@ -734,6 +752,12 @@ export const meeting04: Meeting = {
           variant: 'example' as const,
           content:
             '**NPS formula:** % promoters (9-10) - % detractors (0-6). If out of 100 respondents: 40 are promoters, 30 are passives (7-8), and 30 are detractors, then NPS = 40% - 30% = **+10**. A good NPS in SaaS: above +30.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-ux-metrics-dashboard.webp',
+          alt: 'Dashboard showing four UX metrics',
+          caption: 'Key quantitative UX metrics: SUS, NPS, CSAT, Time on Task.',
         },
         {
           type: 'divider' as const,
