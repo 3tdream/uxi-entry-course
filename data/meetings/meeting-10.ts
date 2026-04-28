@@ -134,6 +134,12 @@ export const meeting10: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-10-microinteraction-anatomy.webp',
+          alt: 'Четыре блока модели микроинтеракции Дэна Саффера',
+          caption: 'Анатомия микроинтеракции: триггер, правила, обратная связь, циклы.',
+        },
+        {
           type: 'key-concepts' as const,
           concepts: [
             {
@@ -211,6 +217,12 @@ export const meeting10: Meeting = {
           variant: 'example' as const,
           content:
             'Правило 60 FPS: анимация должна работать на 60 кадрах в секунду. Используйте только свойства **transform** и **opacity** — они не вызывают перерисовку макета (reflow) и работают на GPU.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-10-easing-curves.webp',
+          alt: 'Четыре кривые скорости анимации на одной диаграмме',
+          caption: 'Кривые скорости анимации: ease-in, ease-out, ease-in-out, linear.',
         },
         {
           type: 'before-after' as const,
@@ -562,6 +574,12 @@ export const meeting10: Meeting = {
             '📄 Шаблоны → структура страницы без реального контента: layout с зонами для организмов, wireframe-уровень',
             '📱 Страницы → финальные экраны с реальным контентом: конкретный товар, реальные фото, цены, отзывы',
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-10-atomic-design.webp',
+          alt: 'Пять уровней Atomic Design в виде вертикальной лестницы',
+          caption: 'Atomic Design: атомы → молекулы → организмы → шаблоны → страницы.',
         },
         {
           type: 'callout' as const,

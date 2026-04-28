@@ -192,6 +192,18 @@ const IMAGES = [
     filename: 'meeting-09-saas-dashboard-layout.webp',
     prompt: 'Clean wireframe illustration of a SaaS dashboard layout: left vertical sidebar with five icon placeholders, top horizontal header with search bar and avatar circle, main area divided into a row of four KPI cards on top, two large chart placeholders below (line chart and bar chart), and a wide data table at the bottom. All elements in grey wireframe style with thin borders, one accent color for active sidebar item. Flat minimalist UX wireframe, white background, no readable text.',
   },
+  {
+    filename: 'meeting-10-microinteraction-anatomy.webp',
+    prompt: 'Clean educational illustration showing the four parts of a microinteraction as a horizontal flow: 1) Trigger — a finger tap on a button, 2) Rules — two gears representing logic, 3) Feedback — a button morphing from spinner to green checkmark, 4) Loops — a circular arrow with a small clock. Each part connected by a thin arrow. Flat minimalist UI design illustration, soft pastel colors, white background, only stage-name labels under each icon.',
+  },
+  {
+    filename: 'meeting-10-easing-curves.webp',
+    prompt: 'Clean educational chart showing four easing curves on the same coordinate plane: ease-in (slow start steep end) in red, ease-out (steep start slow end) in blue, ease-in-out (S-curve) in green, linear (straight diagonal) in grey. X-axis labelled "time", Y-axis labelled "progress". Tiny moving-ball icon on each curve. Flat minimalist motion-design illustration, soft pastel colors, white background, only the curve-name labels visible.',
+  },
+  {
+    filename: 'meeting-10-atomic-design.webp',
+    prompt: 'Clean educational illustration of Atomic Design as five horizontal layers stacked from bottom to top, each labelled and represented by a chemistry-inspired icon: Atoms (single atom — dot), Molecules (two atoms bonded — search field), Organisms (atom cluster — header with logo, nav, search), Templates (page wireframe outline), Pages (filled mockup with content). Flat minimalist design-system illustration, soft pastel colors blue and lavender, white background.',
+  },
 ];
 
 async function generateImage(item) {

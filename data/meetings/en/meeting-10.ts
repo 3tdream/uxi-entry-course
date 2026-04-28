@@ -134,6 +134,12 @@ export const meeting10: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-10-microinteraction-anatomy.webp',
+          alt: "Four blocks of Dan Saffer's microinteraction model",
+          caption: 'Microinteraction anatomy: trigger, rules, feedback, loops.',
+        },
+        {
           type: 'key-concepts' as const,
           concepts: [
             {
@@ -211,6 +217,12 @@ export const meeting10: Meeting = {
           variant: 'example' as const,
           content:
             'The 60 FPS rule: animations should run at 60 frames per second. Use only **transform** and **opacity** properties — they do not cause layout reflow and run on the GPU.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-10-easing-curves.webp',
+          alt: 'Four animation easing curves on a single chart',
+          caption: 'Animation easing curves: ease-in, ease-out, ease-in-out, linear.',
         },
         {
           type: 'before-after' as const,
