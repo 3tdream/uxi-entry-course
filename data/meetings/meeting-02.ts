@@ -465,7 +465,7 @@ export const meeting02: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-02-ux-team-roles.webp',
           alt: 'Шесть ключевых ролей в UX/UI-команде с иконками инструментов',
-          caption: 'Researcher, UX, UI, Writer, Design Engineer, Product Designer — шесть ролей, шесть фокусов.',
+          caption: 'UX Researcher, UX Designer, UI Designer, Product Designer, Design System Lead, UX Writer — шесть ролей в команде.',
         },
         {
           type: 'subheading' as const,
@@ -544,7 +544,7 @@ export const meeting02: Meeting = {
             {
               label: 'Инструменты',
               ux: 'Figma (wireframes), Miro, FigJam',
-              ui: 'Figma (hi-fi), Illustrator, After Effects',
+              ui: 'Figma (hi-fi), After Effects, Rive',
             },
             {
               label: 'Метрика успеха',
@@ -574,7 +574,7 @@ export const meeting02: Meeting = {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
-            'В Яндексе, VK и Тинькофф Product Designer работает в одной команде с продакт-менеджером и разработчиками. Он участвует во всех этапах — от исследования до запуска фичи.',
+            'В Яндексе, VK и Т-Банке Product Designer работает в одной команде с продакт-менеджером и разработчиками. Он участвует во всех этапах — от исследования до запуска фичи.',
         },
 
         {
@@ -588,8 +588,8 @@ export const meeting02: Meeting = {
         },
         {
           type: 'diagram' as const,
-          title: 'Структура дизайн-системы',
-          description: 'Компоненты дизайн-системы от базовых токенов до готовых паттернов',
+          title: 'Структура дизайн-системы (Atomic Design)',
+          description: 'Компоненты дизайн-системы от токенов до страниц по методологии Atomic Design Брэда Фроста',
           items: [
             'Токены (цвета, шрифты, отступы, тени)',
             'Атомы (кнопка, инпут, иконка, чекбокс)',
@@ -744,7 +744,7 @@ export const meeting02: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-02-double-diamond.webp',
           alt: 'Диаграмма Double Diamond: Discover, Define, Develop, Deliver',
-          caption: 'Двойной ромб: расходимся → сходимся → расходимся → сходимся.',
+          caption: 'Double Diamond: Исследование → Определение → Разработка → Реализация.',
         },
         {
           type: 'callout' as const,
@@ -789,7 +789,7 @@ export const meeting02: Meeting = {
                 'Глубокая экспертиза в одной области',
                 'Senior может зарабатывать как менеджер',
                 'Фокус на craft и менторство',
-                '**Ставка в Израиле:** Junior ₪8–14k · Middle ₪14–22k · Senior ₪22–35k · Staff/Principal ₪35–55k+',
+                '**Ставка в Израиле:** Junior ₪10–15k · Middle ₪15–24k · Senior ₪24–38k · Staff/Principal ₪40–65k+',
               ],
             },
             {
@@ -887,7 +887,7 @@ export const meeting02: Meeting = {
           persona: {
             name: 'Анна Петрова',
             age: 28,
-            role: 'Middle Product Designer @ Тинькофф',
+            role: 'Middle Product Designer @ Т-Банк',
             bio: 'Закончила курс по UX/UI 3 года назад. Начинала как junior UI designer в небольшой студии. Через 1.5 года перешла в продуктовую компанию. Сейчас ведёт дизайн мобильного банкинга.',
             goals: [
               'Вырасти до Senior Product Designer',
@@ -926,7 +926,7 @@ export const meeting02: Meeting = {
             },
             {
               title: 'UX/UI Design',
-              items: ['Figma', 'Sketch', 'Adobe XD', 'Framer', 'Principle'],
+              items: ['Figma', 'Sketch', 'Framer', 'Penpot', 'Rive'],
             },
             {
               title: 'Дизайн-системы',
@@ -960,7 +960,7 @@ export const meeting02: Meeting = {
           title: 'Домашнее задание',
           items: [
             'Выберите 2-3 роли, которые вас привлекают',
-            'Найдите 3 вакансии каждой роли на hh.ru — сравните требования',
+            'Найдите 3 вакансии каждой роли на LinkedIn / AllJobs (Israel) или hh.ru (RU/CIS) — сравните требования',
             'Прочитайте 1 статью Якоба Нильсена на nngroup.com',
             'Попробуйте описать Double Diamond своими словами',
           ],

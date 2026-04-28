@@ -465,7 +465,7 @@ export const meeting02: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-02-ux-team-roles.webp',
           alt: 'Six key UX/UI team roles with their tool icons',
-          caption: 'Researcher, UX, UI, Writer, Design Engineer, Product Designer — six roles, six focuses.',
+          caption: 'UX Researcher, UX Designer, UI Designer, Product Designer, Design System Lead, UX Writer — six roles in the team.',
         },
         {
           type: 'subheading' as const,
@@ -544,7 +544,7 @@ export const meeting02: Meeting = {
             {
               label: 'Tools',
               ux: 'Figma (wireframes), Miro, FigJam',
-              ui: 'Figma (hi-fi), Illustrator, After Effects',
+              ui: 'Figma (hi-fi), After Effects, Rive',
             },
             {
               label: 'Success Metric',
@@ -588,8 +588,8 @@ export const meeting02: Meeting = {
         },
         {
           type: 'diagram' as const,
-          title: 'Design System Structure',
-          description: 'Design system components from base tokens to ready-made patterns',
+          title: 'Design System Structure (Atomic Design)',
+          description: "Design system components from tokens to pages, following Brad Frost's Atomic Design methodology",
           items: [
             'Tokens (colors, fonts, spacing, shadows)',
             'Atoms (button, input, icon, checkbox)',
@@ -744,7 +744,7 @@ export const meeting02: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-02-double-diamond.webp',
           alt: 'Double Diamond diagram: Discover, Define, Develop, Deliver',
-          caption: 'Double Diamond: diverge → converge → diverge → converge.',
+          caption: 'Double Diamond: Discover → Define → Develop → Deliver.',
         },
         {
           type: 'callout' as const,
@@ -789,7 +789,7 @@ export const meeting02: Meeting = {
                 'Deep expertise in one area',
                 'Seniors can earn as much as managers',
                 'Focus on craft and mentorship',
-                '**Israel salary range:** Junior ₪8–14k · Middle ₪14–22k · Senior ₪22–35k · Staff/Principal ₪35–55k+',
+                '**Israel salary range:** Junior ₪10–15k · Middle ₪15–24k · Senior ₪24–38k · Staff/Principal ₪40–65k+',
               ],
             },
             {
@@ -926,7 +926,7 @@ export const meeting02: Meeting = {
             },
             {
               title: 'UX/UI Design',
-              items: ['Figma', 'Sketch', 'Adobe XD', 'Framer', 'Principle'],
+              items: ['Figma', 'Sketch', 'Framer', 'Penpot', 'Rive'],
             },
             {
               title: 'Design Systems',
@@ -960,7 +960,7 @@ export const meeting02: Meeting = {
           title: 'Homework',
           items: [
             'Choose 2-3 roles that appeal to you',
-            'Find 3 job listings for each role on LinkedIn — compare the requirements',
+            'Find 3 job listings for each role on LinkedIn / AllJobs (Israel) — compare the requirements',
             'Read 1 article by Jakob Nielsen on nngroup.com',
             'Try to describe the Double Diamond in your own words',
           ],
