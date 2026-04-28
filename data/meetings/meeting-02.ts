@@ -462,6 +462,12 @@ export const meeting02: Meeting = {
           content: '6 ключевых ролей в UX/UI команде',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-02-ux-team-roles.webp',
+          alt: 'Шесть ключевых ролей в UX/UI-команде с иконками инструментов',
+          caption: 'Researcher, UX, UI, Writer, Design Engineer, Product Designer — шесть ролей, шесть фокусов.',
+        },
+        {
           type: 'subheading' as const,
           content: '1. UX Researcher (UX-исследователь)',
         },
@@ -642,6 +648,12 @@ export const meeting02: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-02-double-diamond.webp',
+          alt: 'Диаграмма Double Diamond: Discover, Define, Develop, Deliver',
+          caption: 'Двойной ромб: расходимся → сходимся → расходимся → сходимся.',
+        },
+        {
           type: 'callout' as const,
           variant: 'warning' as const,
           content:
@@ -759,6 +771,12 @@ export const meeting02: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-team-by-product-type.webp',
+          alt: 'Сравнение составов команд по типу продукта: стартап, агентство, B2B SaaS, enterprise',
+          caption: 'От 1 дизайнера в стартапе до больших pod-команд в enterprise.',
         },
 
         { type: 'divider' as const },

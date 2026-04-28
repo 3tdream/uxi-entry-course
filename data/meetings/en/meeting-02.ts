@@ -462,6 +462,12 @@ export const meeting02: Meeting = {
           content: '6 Key Roles in a UX/UI Team',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-02-ux-team-roles.webp',
+          alt: 'Six key UX/UI team roles with their tool icons',
+          caption: 'Researcher, UX, UI, Writer, Design Engineer, Product Designer — six roles, six focuses.',
+        },
+        {
           type: 'subheading' as const,
           content: '1. UX Researcher',
         },
@@ -642,6 +648,12 @@ export const meeting02: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-02-double-diamond.webp',
+          alt: 'Double Diamond diagram: Discover, Define, Develop, Deliver',
+          caption: 'Double Diamond: diverge → converge → diverge → converge.',
+        },
+        {
           type: 'callout' as const,
           variant: 'warning' as const,
           content:
@@ -759,6 +771,12 @@ export const meeting02: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-02-team-by-product-type.webp',
+          alt: 'Comparison of design team compositions: startup, agency, B2B SaaS, enterprise',
+          caption: 'From a single designer in a startup to specialised pods in enterprise.',
         },
 
         { type: 'divider' as const },

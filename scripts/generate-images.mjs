@@ -224,6 +224,18 @@ const IMAGES = [
     filename: 'meeting-11-handoff-broken-telephone-humor.webp',
     prompt: 'Comic-card style illustration playing on the "broken telephone" idea: on the left, a designer holds up a beautiful Figma mockup with a clean rounded button; in the middle a tangled string passes between two paper cups; on the right, a developer proudly holds up the implemented version where the same button is mysteriously square, off-color, and slightly tilted. Both characters smile awkwardly. Tasteful, gentle humour, flat illustration style, soft pastel colors, white background, no readable text.',
   },
+  {
+    filename: 'meeting-02-ux-team-roles.webp',
+    prompt: 'Clean educational poster with six role cards arranged in a 3x2 grid, each card showing a flat character silhouette with a tool icon and a role label: 1) UX Researcher with magnifier and clipboard, 2) UX Designer with wireframe and pencil, 3) UI Designer with palette and shapes, 4) UX Writer with quote-marks and notebook, 5) Design Engineer with code brackets and shapes, 6) Product Designer with strategy chart. Flat minimalist UX education style, soft pastel colors (lavender, mint, peach, blue), white background, only short role labels visible.',
+  },
+  {
+    filename: 'meeting-02-double-diamond.webp',
+    prompt: 'Clean canonical Double Diamond design process diagram: two diamonds side by side connected at their tips. Left diamond split in two halves labelled "Discover" (diverging) and "Define" (converging) — under it the word "Problem". Right diamond split in two halves labelled "Develop" (diverging) and "Deliver" (converging) — under it the word "Solution". A small arrow from the bottom of the meeting point of the diamonds points to the right with label "Brief". Flat minimalist UX education style, soft pastel teal and orange palette, white background, only the four phase labels visible.',
+  },
+  {
+    filename: 'meeting-02-team-by-product-type.webp',
+    prompt: 'Clean comparison illustration of four design team compositions arranged horizontally as four columns. Column 1 "Startup": 1 small designer-figure wearing a hat with multiple tool-icons (jack of all trades). Column 2 "Agency": 3 figures with rotating-arrow icons indicating projects rotating in and out. Column 3 "B2B SaaS": 4 figures grouped around a dashboard mockup with researcher, UX, UI, writer roles. Column 4 "Enterprise": 8+ figures organised into pods with manager and specialised silos. Above each column a tiny tag with the team type and average size. Flat minimalist business-illustration style, soft pastel colors, white background, only short team-type labels visible.',
+  },
 ];
 
 async function generateImage(item) {
