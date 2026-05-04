@@ -90,7 +90,15 @@ const IMAGES = [
   },
   {
     filename: 'meeting-03-empathy-map.webp',
-    prompt: 'Clean educational diagram of an Empathy Map, divided into four quadrants around a central head silhouette: top-left "Thinks" with thought-bubble icon, top-right "Says" with speech-bubble icon, bottom-left "Feels" with heart icon, bottom-right "Does" with hand icon. Bottom strip split in two: down-arrow "Pains" and up-arrow "Gains". Flat minimalist UX design illustration, soft pastel colors (lavender, mint, peach), white background, no text labels.',
+    prompt: 'Clean educational poster of an Empathy Map, perfectly symmetrical 2x2 grid of four equal-size quadrants around a centered friendly head silhouette in a circle. Top-left quadrant icon: thought-bubble with cogs ("Thinks"). Top-right quadrant icon: speech-bubble ("Says"). Bottom-left quadrant icon: heart ("Feels"). Bottom-right quadrant icon: pointing-hand or footprints ("Does"). Below the 2x2 grid, a wide horizontal strip split into two equal halves: left half down-arrow with red tint ("Pains"), right half up-arrow with green tint ("Gains"). Plain English sans-serif labels under each icon: Thinks, Says, Feels, Does, Pains, Gains. Flat minimalist UX education style, soft pastel palette (lavender, mint, peach, sky-blue), generous white space, white background, only the six English labels visible.',
+  },
+  {
+    filename: 'meeting-03-game-commuter.webp',
+    prompt: 'Clean flat illustration of a young man riding a city subway train, sitting by the window with headphones on, holding a smartphone in landscape mode and playing a colorful mobile game (visible as a stylised game scene on the phone screen — characters, action, score). Other commuters blurred in the background reading or looking at phones. Window outside shows tunnel lights streaking past. A small clock icon in the corner showing 8:23 AM, and a tiny battery icon at 78%. Friendly, focused mood — short gaming session before work. Flat minimalist UX education style, soft pastel palette (blue, teal, peach), white-ish background, no readable text on the phone or in the scene.',
+  },
+  {
+    filename: 'meeting-03-interview-questionnaire.webp',
+    prompt: 'Clean flat illustration of a UX research interview setup on a wooden desk: a clipboard with a printed interview questionnaire (5 numbered sections visible as labelled rows with placeholder lines, no readable text), a small microphone-recorder icon next to it, a coffee cup with steam, a pen, and a smartphone with a stopwatch showing 45:00. Above the clipboard a soft thought-bubble silhouette of two people facing each other in conversation. The 5 numbered sections on the clipboard are labelled in plain English: 1. Context, 2. Behaviour, 3. Goals, 4. Pains, 5. Triggers. Flat minimalist UX research style, soft pastel palette (lavender, peach, mint), white background, the only readable text on the image is the five short English category labels.',
   },
   {
     filename: 'meeting-03-jtbd-formula.webp',
