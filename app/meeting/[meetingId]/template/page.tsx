@@ -340,6 +340,11 @@ export default function PersonaTemplatePage() {
     notes: t('Заметки…', 'Notes…'),
     fillIn: t('заполните…', 'fill in…'),
 
+    ujmPersonaPh: t('например: Артём', 'e.g. Artem'),
+    ujmScenarioPh: t(
+      'например: устанавливает и втягивается в новую mobile-игру в дороге',
+      'e.g. installs and gets hooked on a new mobile game during commute',
+    ),
     ujmStage1: t('например: Триггер — скука в метро', 'e.g. Trigger — bored on commute'),
     ujmStage2: t('например: Discovery — реклама / друг', 'e.g. Discovery — ad / friend'),
     ujmStage3: t('например: Install + первая сессия', 'e.g. Install + first session'),
@@ -470,12 +475,7 @@ export default function PersonaTemplatePage() {
       'Part 2 — persona journey across 5 stages · one persona · one scenario',
     ),
     ujmPersona: t('Имя персоны', 'Persona name'),
-    ujmPersonaPh: t('например: Артём', 'e.g. Artem'),
     ujmScenario: t('Сценарий', 'Scenario'),
-    ujmScenarioPh: t(
-      'например: устанавливает и втягивается в новую mobile-игру в дороге',
-      'e.g. installs and gets hooked on a new mobile game during commute',
-    ),
     ujmStage: t('Этап', 'Stage'),
     ujmTouchpoint: t('Touchpoint', 'Touchpoint'),
     ujmEmotion: t('Эмоция', 'Emotion'),
