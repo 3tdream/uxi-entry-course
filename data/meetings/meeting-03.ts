@@ -1126,6 +1126,12 @@ export const meeting03: Meeting = {
         },
         {
           type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '📚 **Готовые шаблоны и референсы:**\n\n— [Figma Community → User Persona templates ↗](https://www.figma.com/community/diagramming/user-persona?resource_type=files&editor_type=figjam&price=all&sort_by=all_time&creators=all) — десятки бесплатных FigJam-шаблонов от сообщества. Скопируй понравившийся и адаптируй под свою персону.\n\n— [Buyer Persona Journey — Gonarrative ↗](https://www.gonarrative.com/business-storytelling-blog/map-it-out-understanding-your-buyer-personas-journey) — продвинутая 6-стадийная модель пути персоны (см. ниже в части 2).',
+        },
+        {
+          type: 'callout' as const,
           variant: 'warning' as const,
           content:
             '👉 Если твоя персона **не влияет на продукт** — это просто фанфик.',
@@ -1634,6 +1640,83 @@ export const meeting03: Meeting = {
           variant: 'tip' as const,
           content:
             '**Золотое правило UJM:** карта составляется для **одной персоны** и **одного сценария**. Не пытайтесь уместить всех пользователей в одну карту — получится каша.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Продвинутая модель: 6 этапов (Gonarrative) ---
+        {
+          type: 'heading' as const,
+          content: 'Продвинутая модель: 6 этапов вместо классических 4',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Классическая воронка **AIDA** (Awareness → Interest → Desire → Action) — это для маркетинга, не для UX. Для глубокой Journey Map есть более точная модель из 6 этапов от [Gonarrative ↗](https://www.gonarrative.com/business-storytelling-blog/map-it-out-understanding-your-buyer-personas-journey). Она описывает не только «что человек делает», но и **что чувствует** на каждом шаге — а решения принимаются эмоциями, не логикой.',
+        },
+        {
+          type: 'table' as const,
+          title: '6 этапов пути персоны (Gonarrative framework)',
+          headers: ['#', 'Этап', 'Что происходит', 'Эмоция'],
+          rows: [
+            [
+              '1',
+              '**Awareness**',
+              'Осознание проблемы или потребности («что-то не так / чего-то не хватает»)',
+              'Дискомфорт',
+            ],
+            [
+              '2',
+              '**Realize**',
+              'Понимание, что решения существуют. Начало рыночного ресёрча',
+              'Любопытство',
+            ],
+            [
+              '3',
+              '**Internalize**',
+              'Сопоставление внешних опций с внутренними ограничениями (бюджет, время, риск)',
+              'Сомнение',
+            ],
+            [
+              '4',
+              '**Visualize**',
+              'Представление будущего результата через кейсы, отзывы, сравнения',
+              'Надежда',
+            ],
+            [
+              '5',
+              '**Decide**',
+              'Эмоциональное решение → рациональное оправдание («я выбрал X, потому что…»)',
+              'Уверенность',
+            ],
+            [
+              '6',
+              '**Evangelize**',
+              'Превращение в адвоката бренда: рассказ друзьям, отзывы, рекомендации',
+              'Гордость',
+            ],
+          ],
+          caption:
+            'Для каждого этапа размечают 4 измерения: Story (одно предложение) · Thinking (вопросы момента) · Feeling (эмоция) · Action (что делает в реальности).',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Пример из статьи (бритва Dorco):** автор разбирает свой собственный путь покупки бритвы — от Awareness («бритва тупит, бесит») через Internalize (бюджет vs качество) и Visualize (читает обзоры в YouTube) до Evangelize (рассказывает друзьям про подписочный сервис). Реальный потребительский кейс с эмоциональной разметкой каждого шага.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Когда использовать 6 этапов вместо 4:** при работе с дорогими покупками, B2B-сделками или подпиской — там, где решение растянуто во времени и эмоции колеблются. Для импульсивных покупок (мобильное приложение, fast food) хватит классических 4.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '⚡ **Главный инсайт Gonarrative:** «Решений, основанных только на разуме и логике, не существует — у любого выбора есть эмоциональная составляющая». Контент должен сначала отвечать на эмоцию, потом давать рациональную опору.',
         },
         {
           type: 'divider' as const,
