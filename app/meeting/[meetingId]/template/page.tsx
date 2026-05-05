@@ -154,6 +154,112 @@ function MetaField({ label }: { label: string }) {
   )
 }
 
+function JourneyStageRow({
+  num,
+  stagePh,
+  touchpointPh,
+  emotionPh,
+  painPh,
+  opportunityPh,
+  labels,
+}: {
+  num: number
+  stagePh: string
+  touchpointPh: string
+  emotionPh: string
+  painPh: string
+  opportunityPh: string
+  labels: {
+    stage: string
+    touchpoint: string
+    emotion: string
+    pain: string
+    opportunity: string
+  }
+}) {
+  const sId = useId()
+  const tId = useId()
+  const eId = useId()
+  const pId = useId()
+  const oId = useId()
+  return (
+    <div className="border border-stone-300 rounded-lg p-3 print:border-stone-500 print:rounded-none break-inside-avoid">
+      <div className="flex items-baseline gap-2 mb-2">
+        <span className="text-xs font-bold text-stone-500 print:text-black shrink-0">
+          {num}.
+        </span>
+        <label htmlFor={sId} className="sr-only">
+          {labels.stage}
+        </label>
+        <input
+          id={sId}
+          type="text"
+          placeholder={stagePh}
+          className={`${FIELD_BASE} text-sm font-semibold py-1`}
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div>
+          <label
+            htmlFor={tId}
+            className="block text-[10px] font-semibold uppercase tracking-wide text-stone-600 print:text-black mb-0.5"
+          >
+            {labels.touchpoint}
+          </label>
+          <textarea
+            id={tId}
+            rows={2}
+            placeholder={touchpointPh}
+            className={`${FIELD_BASE} resize-y leading-snug text-xs`}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor={eId}
+            className="block text-[10px] font-semibold uppercase tracking-wide text-stone-600 print:text-black mb-0.5"
+          >
+            {labels.emotion}
+          </label>
+          <textarea
+            id={eId}
+            rows={2}
+            placeholder={emotionPh}
+            className={`${FIELD_BASE} resize-y leading-snug text-xs`}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor={pId}
+            className="block text-[10px] font-semibold uppercase tracking-wide text-stone-600 print:text-black mb-0.5"
+          >
+            {labels.pain}
+          </label>
+          <textarea
+            id={pId}
+            rows={2}
+            placeholder={painPh}
+            className={`${FIELD_BASE} resize-y leading-snug text-xs`}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor={oId}
+            className="block text-[10px] font-semibold uppercase tracking-wide text-stone-600 print:text-black mb-0.5"
+          >
+            {labels.opportunity}
+          </label>
+          <textarea
+            id={oId}
+            rows={2}
+            placeholder={opportunityPh}
+            className={`${FIELD_BASE} resize-y leading-snug text-xs`}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function renderInline(text: string) {
   // Safe **bold** parser: needs an even number of '**' to apply formatting,
   // otherwise renders the original string as plain text (avoids parity bugs).
@@ -233,6 +339,16 @@ export default function PersonaTemplatePage() {
     ),
     notes: t('Заметки…', 'Notes…'),
     fillIn: t('заполните…', 'fill in…'),
+
+    ujmStage1: t('например: Триггер — скука в метро', 'e.g. Trigger — bored on commute'),
+    ujmStage2: t('например: Discovery — реклама / друг', 'e.g. Discovery — ad / friend'),
+    ujmStage3: t('например: Install + первая сессия', 'e.g. Install + first session'),
+    ujmStage4: t('например: Hooked — 3 матча подряд', 'e.g. Hooked — 3 matches in a row'),
+    ujmStage5: t('например: Habit или churn', 'e.g. Habit or churn'),
+    ujmTouch: t('где и через что взаимодействует', 'where and how they interact'),
+    ujmEmo: t('что чувствует на этом этапе', 'what they feel at this stage'),
+    ujmPainPh: t('что мешает / бесит', 'what frustrates / blocks them'),
+    ujmOppPh: t('идея для улучшения', 'idea for improvement'),
   }
 
   const questions = {
@@ -347,6 +463,24 @@ export default function PersonaTemplatePage() {
     qDoes: t('Делает', 'Does'),
     qPains: t('Боли (Pains)', 'Pains'),
     qGains: t('Выгоды (Gains)', 'Gains'),
+
+    ujmTitle: t('User Journey Map', 'User Journey Map'),
+    ujmSubtitle: t(
+      'Часть 2 — путь персоны через 5 этапов · одна персона · один сценарий',
+      'Part 2 — persona journey across 5 stages · one persona · one scenario',
+    ),
+    ujmPersona: t('Имя персоны', 'Persona name'),
+    ujmPersonaPh: t('например: Артём', 'e.g. Artem'),
+    ujmScenario: t('Сценарий', 'Scenario'),
+    ujmScenarioPh: t(
+      'например: устанавливает и втягивается в новую mobile-игру в дороге',
+      'e.g. installs and gets hooked on a new mobile game during commute',
+    ),
+    ujmStage: t('Этап', 'Stage'),
+    ujmTouchpoint: t('Touchpoint', 'Touchpoint'),
+    ujmEmotion: t('Эмоция', 'Emotion'),
+    ujmPain: t('Pain point', 'Pain point'),
+    ujmOpportunity: t('Возможность', 'Opportunity'),
 
     interviewTitle: t('Шаблон интервью', 'Interview Template'),
     interviewSubtitle: t(
@@ -517,6 +651,99 @@ export default function PersonaTemplatePage() {
 
           <div className="mt-6 pt-4 border-t border-dashed text-xs text-stone-500 print:text-black print:border-stone-500">
             {renderInline(ui.antiQ)}
+          </div>
+        </section>
+
+        {/* PAGE 4 — User Journey Map */}
+        <section className="bg-white border rounded-xl p-6 print:border-0 print:rounded-none print:p-0 mt-8 print:mt-0 print:break-before-page">
+          <header className="border-b pb-3 mb-5 print:border-stone-400">
+            <h1 className="text-2xl font-bold print:text-xl">{ui.ujmTitle}</h1>
+            <p className="text-sm text-muted-foreground print:text-black">
+              {ui.ujmSubtitle}
+            </p>
+          </header>
+
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            <TextField label={ui.ujmPersona} placeholder={placeholder.ujmPersonaPh} />
+            <TextField label={ui.ujmScenario} placeholder={placeholder.ujmScenarioPh} />
+          </div>
+
+          <div className="space-y-3">
+            <JourneyStageRow
+              num={1}
+              stagePh={placeholder.ujmStage1}
+              touchpointPh={placeholder.ujmTouch}
+              emotionPh={placeholder.ujmEmo}
+              painPh={placeholder.ujmPainPh}
+              opportunityPh={placeholder.ujmOppPh}
+              labels={{
+                stage: ui.ujmStage,
+                touchpoint: ui.ujmTouchpoint,
+                emotion: ui.ujmEmotion,
+                pain: ui.ujmPain,
+                opportunity: ui.ujmOpportunity,
+              }}
+            />
+            <JourneyStageRow
+              num={2}
+              stagePh={placeholder.ujmStage2}
+              touchpointPh={placeholder.ujmTouch}
+              emotionPh={placeholder.ujmEmo}
+              painPh={placeholder.ujmPainPh}
+              opportunityPh={placeholder.ujmOppPh}
+              labels={{
+                stage: ui.ujmStage,
+                touchpoint: ui.ujmTouchpoint,
+                emotion: ui.ujmEmotion,
+                pain: ui.ujmPain,
+                opportunity: ui.ujmOpportunity,
+              }}
+            />
+            <JourneyStageRow
+              num={3}
+              stagePh={placeholder.ujmStage3}
+              touchpointPh={placeholder.ujmTouch}
+              emotionPh={placeholder.ujmEmo}
+              painPh={placeholder.ujmPainPh}
+              opportunityPh={placeholder.ujmOppPh}
+              labels={{
+                stage: ui.ujmStage,
+                touchpoint: ui.ujmTouchpoint,
+                emotion: ui.ujmEmotion,
+                pain: ui.ujmPain,
+                opportunity: ui.ujmOpportunity,
+              }}
+            />
+            <JourneyStageRow
+              num={4}
+              stagePh={placeholder.ujmStage4}
+              touchpointPh={placeholder.ujmTouch}
+              emotionPh={placeholder.ujmEmo}
+              painPh={placeholder.ujmPainPh}
+              opportunityPh={placeholder.ujmOppPh}
+              labels={{
+                stage: ui.ujmStage,
+                touchpoint: ui.ujmTouchpoint,
+                emotion: ui.ujmEmotion,
+                pain: ui.ujmPain,
+                opportunity: ui.ujmOpportunity,
+              }}
+            />
+            <JourneyStageRow
+              num={5}
+              stagePh={placeholder.ujmStage5}
+              touchpointPh={placeholder.ujmTouch}
+              emotionPh={placeholder.ujmEmo}
+              painPh={placeholder.ujmPainPh}
+              opportunityPh={placeholder.ujmOppPh}
+              labels={{
+                stage: ui.ujmStage,
+                touchpoint: ui.ujmTouchpoint,
+                emotion: ui.ujmEmotion,
+                pain: ui.ujmPain,
+                opportunity: ui.ujmOpportunity,
+              }}
+            />
           </div>
         </section>
       </main>

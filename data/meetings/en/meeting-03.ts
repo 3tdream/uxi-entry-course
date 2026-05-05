@@ -2128,100 +2128,62 @@ export const meeting03: Meeting = {
           type: 'divider' as const,
         },
 
-        // --- Example 3: CRM (SaaS) ---
+        // --- Example 3: Mobile Gaming (Artem) ---
         {
           type: 'heading' as const,
-          content: 'Journey Map Example: CRM System (SaaS)',
+          content: 'Journey Map Example: Mobile Gaming (Artem)',
         },
         {
           type: 'subheading' as const,
           content:
-            'Persona: Elena Petrova — onboarding a new sales rep',
+            'Persona: Artem — finding and getting hooked on a new mobile game during commute',
         },
         {
           type: 'timeline' as const,
           events: [
             {
               year: 'Stage 1',
-              title: 'Invitation',
+              title: 'Trigger — bored on the subway',
               description:
-                'Elena sends an invite link to the new rep. Touchpoint: email invitation. Emotion: hope. Thought: "I hope they can figure it out on their own."',
+                'Artem is on his daily commute again. The previous game got stale, deleted it a week ago. Touchpoint: home screen without his go-to game. Emotion: mild irritation and boredom. Thought: "What can I install so I don\'t get sucked into Instagram?"',
             },
             {
               year: 'Stage 2',
-              title: 'First Login',
+              title: 'Discovery — heard about the game',
               description:
-                'The rep opens the CRM and sees an empty dashboard. Touchpoint: main screen. Pain point: no guidance on what to do first. Emotion: confusion.',
+                'Sees an ad for a new game in a mobile-gaming Reddit thread + a friend drops the link in Telegram. Touchpoint: social network + friend recommendation. Moment of Delight: friend reference removes the pay-to-win fear — "if he plays it, it\'s probably ok." Emotion: curiosity.',
             },
             {
               year: 'Stage 3',
-              title: 'Training',
+              title: 'Install + first session on the subway',
               description:
-                'Elena spends 2 hours explaining. Touchpoint: live training + documentation. Pain point: no interactive tour. Elena\'s emotion: frustration — "Why can\'t the CRM explain itself?"',
+                'Downloaded from App Store, opened it on his next ride. Touchpoint: store page → first launch. Pain point: 12-second splash screen before the main menu — missed his stop. Emotion: impatience. Saved by a short, skippable tutorial.',
             },
             {
               year: 'Stage 4',
-              title: 'First Deal',
+              title: 'Hooked — three matches in a row',
               description:
-                'The rep creates their first deal. Touchpoint: deal creation form. Moment of Delight: auto-fill of client data from email. Emotion: "Oh, that\'s convenient!"',
+                'In one ride he managed 3 matches of 4 minutes each. Touchpoint: core gameplay loop. Moment of Delight: an automatic progress bar fills to 30%, immediately showing "where to grow." Emotion: mild addiction, added the icon to the home screen.',
             },
             {
               year: 'Stage 5',
-              title: 'Regular Usage',
+              title: 'First monetization offer',
               description:
-                'After a week, the rep uses the CRM independently. Touchpoint: daily workflow. Emotion: familiarity. Opportunity: weekly digest with personal KPIs.',
+                'On day 5, a Battle Pass pop-up shows up: $9.99 with a 50% discount and a 24-hour timer. Touchpoint: main-menu pop-up. Pain point: the close-pop-up button is smaller than the buy icon — "tap it by accident and you\'re charged." Emotion: a mix of interest and irritation. Opportunity: make the "Not now" button equal-sized with "Buy."',
+            },
+            {
+              year: 'Stage 6',
+              title: 'Habit or churn',
+              description:
+                'Two weeks in — one of two outcomes. **Scenario A (retention):** Artem plays every morning + evening, bought the Battle Pass. **Scenario B (churn):** the game starts pay-to-walling him at level 7 → he deletes it. Emotion in both cases: decisiveness. Opportunity: at level 5–7, give a "fair" non-pay way to progress so he doesn\'t churn.',
             },
           ],
         },
         {
-          type: 'divider' as const,
-        },
-
-        // --- Example 4: Analytics Dashboard (Data) ---
-        {
-          type: 'heading' as const,
+          type: 'callout' as const,
+          variant: 'warning' as const,
           content:
-            'Journey Map Example: Analytics Dashboard (Data Product)',
-        },
-        {
-          type: 'subheading' as const,
-          content:
-            'Persona: Data Analyst — finding the cause of a conversion drop',
-        },
-        {
-          type: 'timeline' as const,
-          events: [
-            {
-              year: 'Stage 1',
-              title: 'Alert',
-              description:
-                'The analyst receives a Slack notification: "Conversion dropped by 15%." Touchpoint: Slack bot. Emotion: anxiety. Thought: "I need to figure this out fast."',
-            },
-            {
-              year: 'Stage 2',
-              title: 'Drill-down',
-              description:
-                'Opens the dashboard, clicks on the conversion chart. Touchpoint: interactive dashboard. Pain point: 8-second data load time. Emotion: impatience.',
-            },
-            {
-              year: 'Stage 3',
-              title: 'Filtering',
-              description:
-                'Filters by segments: mobile vs desktop, new vs returning. Touchpoint: filter system. Moment of Delight: anomaly detection highlights the mobile segment. Emotion: "Aha, there it is!"',
-            },
-            {
-              year: 'Stage 4',
-              title: 'Root Cause',
-              description:
-                'Discovers that the new version of the mobile payment page is broken on Android. Touchpoint: detailed report. Emotion: confidence.',
-            },
-            {
-              year: 'Stage 5',
-              title: 'Action',
-              description:
-                'Creates a Jira ticket directly from the dashboard. Touchpoint: Jira integration. Moment of Delight: automatically attaches screenshot and data. Emotion: satisfaction.',
-            },
-          ],
+            '**Where Artem most often drops off:** stage 3 (long loading) and stage 5 (aggressive pop-up). Both are **design decisions**, not features. UJM exposes them clearly — without the map they look like "random errors."',
         },
         {
           type: 'divider' as const,
@@ -2338,19 +2300,19 @@ export const meeting03: Meeting = {
             {
               title: 'Free',
               items: [
-                'Miro — UJM templates out of the box',
-                'FigJam — for teams already using Figma',
-                'Google Sheets — a spreadsheet = the simplest UJM',
-                'Canva — beautiful visualization for presentations',
+                '[Miro ↗](https://miro.com/templates/customer-journey-map/) — UJM templates out of the box',
+                '[FigJam ↗](https://www.figma.com/community/tag/customer%20journey%20map/files) — for teams already using Figma',
+                '[Google Sheets ↗](https://docs.google.com/spreadsheets/) — a spreadsheet = the simplest UJM',
+                '[Canva ↗](https://www.canva.com/templates/?query=user-journey-map) — beautiful visualization for presentations',
               ],
             },
             {
               title: 'Paid / Advanced',
               items: [
-                'Smaply — a specialized UJM tool',
-                'UXPressia — templates + collaboration',
-                'Lucidchart — diagrams + integrations',
-                'Notion — for documentation and storage',
+                '[Smaply ↗](https://www.smaply.com/) — a specialized UJM tool',
+                '[UXPressia ↗](https://uxpressia.com/) — templates + collaboration',
+                '[Lucidchart ↗](https://www.lucidchart.com/pages/templates/user-journey-map) — diagrams + integrations',
+                '[Notion ↗](https://www.notion.so/templates/category/customer-journey) — for documentation and storage',
               ],
             },
           ],
@@ -2378,7 +2340,7 @@ export const meeting03: Meeting = {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
-            '**Homework:** Choose a product you use every day. Create: (1) one persona with an empathy map and JTBD, (2) a Journey Map with 5-6 stages including touchpoints, emotions, and pain points.',
+            '**📄 Homework:** Choose a product you use every day. Create: (1) one persona with an empathy map and JTBD, (2) a Journey Map with 5-6 stages including touchpoints, emotions, and pain points.\n\n**[Open the ready PDF template ↗](/meeting/3/template)** — 4 A4 pages (persona + empathy + interview + UJM). Direct copyable link: **uxi-entry-course.vercel.app/meeting/3/template**\n\nPrint 3-5 copies and fill them in during the interview itself.',
         },
       ],
 

@@ -2128,100 +2128,62 @@ export const meeting03: Meeting = {
           type: 'divider' as const,
         },
 
-        // --- Пример 3: CRM (SaaS) ---
+        // --- Пример 3: Mobile Gaming (Артём) ---
         {
           type: 'heading' as const,
-          content: 'Пример Journey Map: CRM-система (SaaS)',
+          content: 'Пример Journey Map: Mobile Gaming (Артём)',
         },
         {
           type: 'subheading' as const,
           content:
-            'Персона: Елена Петрова — онбординг нового менеджера',
+            'Персона: Артём — выбор и втягивание в новую мобильную игру в дороге',
         },
         {
           type: 'timeline' as const,
           events: [
             {
               year: 'Этап 1',
-              title: 'Приглашение',
+              title: 'Триггер — скука в метро',
               description:
-                'Елена отправляет invite-ссылку новому менеджеру. Touchpoint: email-приглашение. Эмоция: надежда. Мысль: «Надеюсь, он разберётся сам».',
+                'Артём в очередной раз едет на работу. Прошлая игра приелась, удалил неделю назад. Touchpoint: домашний экран без любимой игры. Эмоция: лёгкое раздражение и скука. Мысль: «Что бы поставить, чтобы не залипать в инсте?».',
             },
             {
               year: 'Этап 2',
-              title: 'Первый вход',
+              title: 'Discovery — узнал об игре',
               description:
-                'Менеджер открывает CRM, видит пустой дашборд. Touchpoint: главный экран. Pain point: нет подсказок, что делать первым. Эмоция: растерянность.',
+                'Видит рекламу новой игры в Reddit-треде про mobile gaming + друг скинул ссылку в Telegram. Touchpoint: соцсеть + рекомендация друга. Moment of Delight: friend reference снимает страх pay-to-win — «раз он играет, значит ок». Эмоция: любопытство.',
             },
             {
               year: 'Этап 3',
-              title: 'Обучение',
+              title: 'Install + первая сессия в метро',
               description:
-                'Елена тратит 2 часа на объяснение. Touchpoint: живое обучение + документация. Pain point: нет интерактивного тура. Эмоция Елены: раздражение — «Почему CRM не может объяснить себя сама?».',
+                'Скачал в App Store, открыл уже на следующей поездке. Touchpoint: страница в сторе → первый запуск. Pain point: 12 секунд на splash-screen перед main menu — успел проехать станцию. Эмоция: нетерпение. Спасло то, что туториал короткий и можно скипнуть.',
             },
             {
               year: 'Этап 4',
-              title: 'Первая сделка',
+              title: 'Hooked — три катки подряд',
               description:
-                'Менеджер создаёт первый deal. Touchpoint: форма создания сделки. Moment of Delight: автозаполнение данных клиента из email. Эмоция: «О, удобно!».',
+                'За одну поездку успел 3 матча по 4 минуты. Touchpoint: основной игровой цикл. Moment of Delight: автоматический progress bar заполняется на 30%, сразу видно «куда расти». Эмоция: лёгкая зависимость, добавил иконку на главный экран.',
             },
             {
               year: 'Этап 5',
-              title: 'Регулярное использование',
+              title: 'Первый донат-офер',
               description:
-                'Через неделю менеджер использует CRM самостоятельно. Touchpoint: ежедневная работа. Эмоция: привыкание. Возможность: weekly digest с личными KPI.',
+                'На 5-й день вылезает Battle Pass за $9.99 со скидкой 50% и таймером 24 часа. Touchpoint: pop-up в главном меню. Pain point: интерфейс закрытия pop-up меньше иконки покупки — «случайно нажмёшь — спишутся деньги». Эмоция: смесь интереса и раздражения. Возможность: сделать кнопку «Не сейчас» равноразмерной с «Купить».',
+            },
+            {
+              year: 'Этап 6',
+              title: 'Habit или churn',
+              description:
+                'Через 2 недели — один из двух исходов. **Сценарий A (retention):** Артём играет каждое утро + вечер, купил Battle Pass. **Сценарий B (churn):** игра начала pay-to-walling его на 7-м уровне → удалил. Эмоция в обоих случаях — решительность. Возможность: на 5-7 уровне дать «справедливый» способ прокачки без доната, чтобы не отвалился.',
             },
           ],
         },
         {
-          type: 'divider' as const,
-        },
-
-        // --- Пример 4: Analytics Dashboard (Data) ---
-        {
-          type: 'heading' as const,
+          type: 'callout' as const,
+          variant: 'warning' as const,
           content:
-            'Пример Journey Map: Аналитическая панель (Data Product)',
-        },
-        {
-          type: 'subheading' as const,
-          content:
-            'Персона: Data-аналитик — поиск причины падения конверсии',
-        },
-        {
-          type: 'timeline' as const,
-          events: [
-            {
-              year: 'Этап 1',
-              title: 'Алерт',
-              description:
-                'Аналитик получает Slack-уведомление: «Конверсия упала на 15%». Touchpoint: Slack-бот. Эмоция: тревога. Мысль: «Надо быстро разобраться».',
-            },
-            {
-              year: 'Этап 2',
-              title: 'Drill-down',
-              description:
-                'Открывает дашборд, кликает на график конверсии. Touchpoint: интерактивный дашборд. Pain point: загрузка данных 8 секунд. Эмоция: нетерпение.',
-            },
-            {
-              year: 'Этап 3',
-              title: 'Фильтрация',
-              description:
-                'Фильтрует по сегментам: мобайл vs десктоп, новые vs вернувшиеся. Touchpoint: система фильтров. Moment of Delight: anomaly detection подсвечивает мобильный сегмент. Эмоция: «Ага, вот оно!».',
-            },
-            {
-              year: 'Этап 4',
-              title: 'Root Cause',
-              description:
-                'Находит, что новая версия мобильной страницы оплаты ломается на Android. Touchpoint: детальный отчёт. Эмоция: уверенность.',
-            },
-            {
-              year: 'Этап 5',
-              title: 'Действие',
-              description:
-                'Создаёт тикет в Jira прямо из дашборда. Touchpoint: интеграция с Jira. Moment of Delight: автоматически прикрепляет скриншот и данные. Эмоция: удовлетворение.',
-            },
-          ],
+            '**Где Артём отваливается чаще всего:** этап 3 (длинная загрузка) и этап 5 (агрессивный pop-up). Оба — **дизайн-решения**, а не фичи. UJM показывает их явно — без карты они выглядят как «случайные ошибки».',
         },
         {
           type: 'divider' as const,
@@ -2338,19 +2300,19 @@ export const meeting03: Meeting = {
             {
               title: 'Бесплатные',
               items: [
-                'Miro — шаблоны UJM из коробки',
-                'FigJam — для команд, уже работающих в Figma',
-                'Google Sheets — таблица = простейшая UJM',
-                'Canva — красивая визуализация для презентаций',
+                '[Miro ↗](https://miro.com/templates/customer-journey-map/) — шаблоны UJM из коробки',
+                '[FigJam ↗](https://www.figma.com/community/tag/customer%20journey%20map/files) — для команд, уже работающих в Figma',
+                '[Google Sheets ↗](https://docs.google.com/spreadsheets/) — таблица = простейшая UJM',
+                '[Canva ↗](https://www.canva.com/templates/?query=user-journey-map) — красивая визуализация для презентаций',
               ],
             },
             {
               title: 'Платные / продвинутые',
               items: [
-                'Smaply — специализированный инструмент для UJM',
-                'UXPressia — шаблоны + коллаборация',
-                'Lucidchart — диаграммы + интеграции',
-                'Notion — для документирования и хранения',
+                '[Smaply ↗](https://www.smaply.com/) — специализированный инструмент для UJM',
+                '[UXPressia ↗](https://uxpressia.com/) — шаблоны + коллаборация',
+                '[Lucidchart ↗](https://www.lucidchart.com/pages/templates/user-journey-map) — диаграммы + интеграции',
+                '[Notion ↗](https://www.notion.so/templates/category/customer-journey) — для документирования и хранения',
               ],
             },
           ],
@@ -2378,7 +2340,7 @@ export const meeting03: Meeting = {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
-            '**Домашнее задание:** Выберите продукт, которым пользуетесь каждый день. Создайте для него: (1) одну персону с картой эмпатии и JTBD, (2) Journey Map из 5-6 этапов с touchpoints, эмоциями и pain points.',
+            '**📄 Домашнее задание:** Выберите продукт, которым пользуетесь каждый день. Создайте для него: (1) одну персону с картой эмпатии и JTBD, (2) Journey Map из 5-6 этапов с touchpoints, эмоциями и pain points.\n\n**[Открыть готовый PDF-шаблон ↗](/meeting/3/template)** — 4 страницы A4 (персона + эмпатия + интервью + UJM). Прямая ссылка для копирования: **uxi-entry-course.vercel.app/meeting/3/template**\n\nРаспечатайте 3-5 копий и заполните прямо во время интервью.',
         },
       ],
 
