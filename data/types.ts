@@ -86,6 +86,7 @@ export type Section =
   | { type: 'user-flow'; title: string; steps: UserFlowStep[]; connections: UserFlowConnection[] }
   | { type: 'checklist'; title: string; items: string[] }
   | { type: 'columns'; variant?: 'grid' | 'stacked'; columns: { title: string; items: string[] }[] }
+  | { type: 'table'; title?: string; headers: string[]; rows: string[][]; caption?: string }
   | { type: 'quote'; text: string; author: string; role?: string }
   | { type: 'divider' }
 

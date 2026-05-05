@@ -590,6 +590,59 @@ function DividerSection() {
   return <hr className="border-border my-2" />
 }
 
+function TableSection({
+  title,
+  headers,
+  rows,
+  caption,
+}: {
+  title?: string
+  headers: string[]
+  rows: string[][]
+  caption?: string
+}) {
+  return (
+    <div className="space-y-2">
+      {title && <h3 className="text-lg font-semibold text-foreground">{title}</h3>}
+      <div className="overflow-x-auto rounded-xl border border-border">
+        <table className="w-full text-sm">
+          <thead className="bg-accent/60">
+            <tr>
+              {headers.map((h, i) => (
+                <th
+                  key={i}
+                  className="text-left font-semibold text-foreground px-3 py-2 border-b border-border"
+                >
+                  <RichText content={h} />
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, ri) => (
+              <tr key={ri} className="odd:bg-background even:bg-accent/20">
+                {row.map((cell, ci) => (
+                  <td
+                    key={ci}
+                    className="px-3 py-2 align-top text-foreground/80 border-b border-border/60"
+                  >
+                    <RichText content={cell} />
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {caption && (
+        <p className="text-xs text-muted-foreground italic">
+          <RichText content={caption} />
+        </p>
+      )}
+    </div>
+  )
+}
+
 // ---- Main Renderer ----
 
 export function SectionRenderer({ section }: { section: Section }) {
@@ -628,6 +681,15 @@ export function SectionRenderer({ section }: { section: Section }) {
       return <ChecklistSection title={section.title} items={section.items} />
     case 'columns':
       return <ColumnsSection columns={section.columns} variant={section.variant} />
+    case 'table':
+      return (
+        <TableSection
+          title={section.title}
+          headers={section.headers}
+          rows={section.rows}
+          caption={section.caption}
+        />
+      )
     case 'quote':
       return <QuoteSection text={section.text} author={section.author} role={section.role} />
     case 'divider':
