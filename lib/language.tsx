@@ -35,12 +35,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const t = (ru: string, en: string) => (lang === 'en' ? en : ru)
 
-  if (!mounted) {
-    return <>{children}</>
-  }
-
+  // Always wrap children with provider so `useLanguage()` works during SSR + first render.
+  // suppressHydrationWarning on body lets us update once localStorage is read on mount.
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
+      <span className="hidden" aria-hidden="true">
+        {mounted ? '' : ''}
+      </span>
       {children}
     </LanguageContext.Provider>
   )

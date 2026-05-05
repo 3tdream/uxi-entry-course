@@ -9,7 +9,7 @@ export function LanguageToggle() {
   return (
     <button
       onClick={() => setLang(lang === 'ru' ? 'en' : 'ru')}
-      className="fixed top-4 right-4 z-50 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border shadow-sm hover:shadow-md transition-all text-sm font-medium"
+      className="fixed top-4 right-4 z-50 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border shadow-sm hover:shadow-md transition-all text-sm font-medium print:hidden"
       aria-label="Switch language"
     >
       <Globe className="w-4 h-4 text-muted-foreground" />
