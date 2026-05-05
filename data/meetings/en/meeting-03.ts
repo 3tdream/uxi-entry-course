@@ -95,17 +95,77 @@ export const meeting03: Meeting = {
             'An empathy map is a structured way to organize knowledge about the user. It consists of **4 main quadrants** and two additional blocks: **Pains** and **Gains**.',
         },
         {
-          type: 'diagram' as const,
-          title: 'Empathy Map Structure',
-          description:
-            'Four quadrants plus pains and gains. Filled in based on interviews and observations.',
-          items: [
-            '🧠 THINKS — Internal thoughts, doubts, hopes. "What if I make a mistake?"',
-            '💬 SAYS — Direct quotes from interviews. "I need something simple"',
-            '❤️ FEELS — Emotions: fear, joy, frustration, insecurity',
-            '👀 DOES — Observable actions and behavior. Clicks, scrolls, compares',
-            '⬇️ PAINS — Obstacles, fears, risks, negative experiences',
-            '⬆️ GAINS — Desired outcomes, aspirations, success criteria',
+          type: 'subheading' as const,
+          content: '4 quadrants around the user',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'grid' as const,
+          columns: [
+            {
+              title: '🧠 THINKS',
+              items: [
+                'Internal thoughts and beliefs',
+                'Doubts and hopes',
+                'What they don\'t say out loud',
+                '*Example:* "What if this is a knockoff?"',
+              ],
+            },
+            {
+              title: '💬 SAYS',
+              items: [
+                'Direct quotes from interviews',
+                'What they write in reviews and chats',
+                'Words they often repeat',
+                '*Example:* "I need something simple"',
+              ],
+            },
+            {
+              title: '❤️ FEELS',
+              items: [
+                'Emotional state',
+                'Fear, joy, frustration',
+                'Confidence level',
+                '*Example:* anxiety before paying',
+              ],
+            },
+            {
+              title: '👀 DOES',
+              items: [
+                'Observable actions',
+                'Behavior in the product',
+                'Clicks, gestures, screen flow',
+                '*Example:* opens 3 tabs to compare',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Pains and Gains — what drives the decision',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'stacked' as const,
+          columns: [
+            {
+              title: '⬇️ PAINS — what gets in the way',
+              items: [
+                'Obstacles on the way to the goal',
+                'Fears and risks',
+                'Negative past experiences',
+                'Example: "got burned on a return last time"',
+              ],
+            },
+            {
+              title: '⬆️ GAINS — what they want',
+              items: [
+                'Desired outcomes',
+                'Dreams and aspirations',
+                'Success criteria',
+                'Example: "I want my order in 2 days"',
+              ],
+            },
           ],
         },
         {
@@ -116,9 +176,10 @@ export const meeting03: Meeting = {
         },
         {
           type: 'image' as const,
-          src: '/images/meeting-03-empathy-map.webp',
-          alt: 'Empathy map showing four quadrants with pains and gains sections',
-          caption: 'Empathy Map: four quadrants plus pains and gains.',
+          src: '/images/meeting-03-empathy-map-canvas.png',
+          alt: 'Empathy Map Canvas: 4 quadrants (think&feel · see · hear · say&do) + Pains/Gains',
+          caption:
+            'Empathy Map Canvas — the classic template. 4 quadrants around the persona: what they think and feel, see, hear, say and do. At the bottom — Pains and Gains.',
         },
         {
           type: 'divider' as const,
@@ -142,9 +203,10 @@ export const meeting03: Meeting = {
         },
         {
           type: 'columns' as const,
+          variant: 'stacked' as const,
           columns: [
             {
-              title: 'JTBD Examples for Different Products',
+              title: '✅ JTBD Examples for Different Products',
               items: [
                 '🌐 Web: "When I\'m looking for a gift, I want to quickly compare options so I can stay within budget"',
                 '📱 Mobile: "When I\'m hungry at work, I want to order food in 3 taps so I don\'t waste my lunch break"',
@@ -152,16 +214,225 @@ export const meeting03: Meeting = {
                 '📊 Data: "When conversion drops, I want to understand the cause in 2 minutes so I can fix it right away"',
               ],
             },
+          ],
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // ============================================================
+        // 💀 Anti-patterns JTBD — full deep-dive
+        // ============================================================
+        {
+          type: 'heading' as const,
+          content: '💀 Anti-patterns JTBD: what people get wrong',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Half the internet explains JTBD like it\'s a magic spell, not a tool. As a result, people write "When I open app I want fun so I can enjoy" and think they just performed product magic. **No.** That\'s just text for the sake of text. Let\'s lay out the anti-patterns so you spot them on sight and destroy them.',
+        },
+
+        // --- 1. Want a feature ---
+        {
+          type: 'subheading' as const,
+          content: '1. ❌ "I want a feature" instead of a job',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Bad:** "When I play, I want more levels so it\'s more interesting."\n\nThat\'s not a JTBD — that\'s a **wishlist**, like the user just got promoted to PM. You\'re describing a solution, not a problem.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Good:** "When I have 2 minutes on the road, I want to quickly entertain myself so I don\'t get bored."\n\n👉 See the difference? You can come up with **10 different solutions** for one job.',
+        },
+
+        // --- 2. Too abstract ---
+        {
+          type: 'subheading' as const,
+          content: '2. ❌ Too abstract (about nothing)',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Bad:** "I want to have fun."\n\nCongratulations, you just described **99% of humanity**. No context, no constraint, no action.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Good:** "When I\'m on the subway, I want to quickly distract myself so the time flies."\n\n👉 **Context = power.**',
+        },
+
+        // --- 3. No trigger ---
+        {
+          type: 'subheading' as const,
+          content: '3. ❌ No trigger (when?)',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Bad:** "I want to play games."\n\nWhen? Where? In what state? On Mars?',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Good:** "When I\'m waiting for transport or riding the subway…"\n\n👉 A JTBD always **starts with a situation**.',
+        },
+
+        // --- 4. No outcome ---
+        {
+          type: 'subheading' as const,
+          content: '4. ❌ No outcome (why?)',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Bad:** "When I open the game, I want to clear a level."\n\nAnd? You just described an action.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Good:** "…so I don\'t get bored and the commute goes faster."\n\n👉 **JTBD = the reason, not the process.**',
+        },
+
+        // --- 5. One JTBD for everyone ---
+        {
+          type: 'subheading' as const,
+          content: '5. ❌ One JTBD "for everyone"',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Bad:** "The user wants to play in order to have fun."\n\nNo. In the morning he wants one thing. In the evening — another.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Good (Artem):**\n— 🌅 morning → "switch the brain on"\n— 🌙 evening → "wind down"\n\n👉 **One user ≠ one JTBD.**',
+        },
+
+        // --- 6. Emotions and actions in a soup ---
+        {
+          type: 'subheading' as const,
+          content: '6. ❌ Mixing emotions and actions into mush',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Bad:** "I want to relax and clear a level and earn a reward and level up."\n\nYou didn\'t write a JTBD — you caught a **stream of consciousness**.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Good:** "When I\'m tired after work, I want a simple action so I can relax."\n\n👉 Crisp. No salad.',
+        },
+
+        // --- 7. Formula for the formula's sake ---
+        {
+          type: 'subheading' as const,
+          content: '7. ❌ Formula for the formula\'s sake',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Bad:** "When I open the app, I want to have fun, so I can enjoy my time."\n\nThat looks like: 👉 "I filled in the template, now hand me the diploma." No specifics, no pain, no meaning.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 That\'s not a JTBD — it\'s a **LinkedIn post at the level of "be yourself"**.',
+        },
+
+        {
+          type: 'divider' as const,
+        },
+
+        // --- 🧠 Self-check ---
+        {
+          type: 'heading' as const,
+          content: '🧠 How to tell your JTBD is solid',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Walk through the checklist',
+          items: [
+            'There\'s a specific moment (when)',
+            'There\'s an action (what they\'re doing)',
+            'There\'s a reason (why)',
+            'You can come up with **several different solutions** for this job',
+          ],
+        },
+
+        // --- 🎯 Example on Artem ---
+        {
+          type: 'heading' as const,
+          content: '🎯 A solid JTBD example, on Artem',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Evolution of a JTBD statement',
+          before: {
+            label: 'Bad JTBD',
+            description: '"I want to play a game in order to have fun" — no moment, no reason, no constraint. You could build anything from chess to a VR shooter on top of this.',
+          },
+          after: {
+            label: 'Good JTBD',
+            description: '"When I\'m on the subway and I have 2–3 minutes, I want to quickly entertain myself so I don\'t get bored and stop thinking about work." 👉 That you can already turn into a product — short sessions, low cognitive load, offline-first.',
+          },
+        },
+
+        // --- ⚡ Bottom line ---
+        {
+          type: 'heading' as const,
+          content: '⚡ Bottom line, no philosophy',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'grid' as const,
+          columns: [
             {
-              title: 'JTBD Anti-patterns',
+              title: '💀 JTBD breaks when you',
               items: [
-                '❌ Too abstract: "I want to be happy"',
-                '❌ Tied to a solution: "I want a filter button"',
-                '❌ No context: "I want to order food" (when? where? why?)',
-                '✅ Specific + context + outcome',
+                'Write about features instead of the job',
+                'Write too abstractly',
+                'Forget context / trigger',
+                'Fill the template just to check a box',
+                'Describe an action, not the reason',
+              ],
+            },
+            {
+              title: '✅ JTBD works when you',
+              items: [
+                'Describe a **real situation**',
+                'Show the moment when the user feels bad',
+                'Specify what they want to achieve',
+                'Leave room for different solutions',
+                'Can verify "job done / not done"',
               ],
             },
           ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**JTBD isn\'t "what the user wants."**\n\n👉 It\'s "**at what moment things start to suck and what they do to make it normal again**."\n\nYes, it sounds blunt. It also works.',
         },
         {
           type: 'divider' as const,
@@ -268,6 +539,92 @@ export const meeting03: Meeting = {
             quote:
               'I don\'t need a beautiful interface — I need an interface that saves my team 2 hours a day.',
           },
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Top-10 mobile games + Gaming persona ---
+        {
+          type: 'heading' as const,
+          content: 'Case: Mobile Gaming — top 10 games by revenue',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Mobile games are the largest segment of the mobile market ($82B in 2025 per Sensor Tower). Understanding **who** these games make the most money on helps you see real behavior patterns and design a strong gaming persona.',
+        },
+        {
+          type: 'table' as const,
+          title: '🏆 Top 10 mobile games by monthly revenue',
+          headers: ['#', 'Game', 'Publisher', 'Genre', 'Revenue / month'],
+          rows: [
+            ['1', '**Last War: Survival**', 'Funfly', '4X strategy, war', '~$160M'],
+            ['2', '**Whiteout Survival**', 'Century Games', 'Survival strategy', '~$140M'],
+            ['3', '**Royal Match**', 'Dream Games', 'Match-3 puzzle', '~$120M'],
+            ['4', '**MONOPOLY GO!**', 'Scopely', 'Social board game', '~$110M'],
+            ['5', '**Honor of Kings**', 'Tencent', 'MOBA (China)', '~$110M'],
+            ['6', '**Candy Crush Saga**', 'King', 'Match-3', '~$80M'],
+            ['7', '**Coin Master**', 'Moon Active', 'Slot + social', '~$70M'],
+            ['8', '**Roblox**', 'Roblox Corp', 'UGC platform (mobile)', '~$60M'],
+            ['9', '**Game for Peace**', 'Tencent', 'Battle Royale (China)', '~$60M'],
+            ['10', '**Pokémon TCG Pocket**', 'DeNA / Pokémon', 'Digital TCG', '~$40M'],
+          ],
+          caption: 'December 2025, Sensor Tower estimate. Numbers are rounded; actual values fluctuate month to month.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**What the top 10 share:** they\'re all built around **short 5–15 min sessions**, **daily events** (live-ops), and **microtransactions**. That means the main mobile game persona isn\'t a "hardcore gamer" — it\'s **an ordinary person between things**: on a commute, in line, before bed. Source: [Sensor Tower Top 10, Dec 2025](https://sensortower.com/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-december-2025).',
+        },
+
+        // --- Persona: Mobile Gamer (Commute) ---
+        {
+          type: 'subheading' as const,
+          content: 'Persona 4: Game Commuter (Mobile Gaming, Commute)',
+        },
+        {
+          type: 'user-persona' as const,
+          persona: {
+            name: 'Artem Lebedev',
+            age: 29,
+            role: 'System administrator, 1-hour commute each way',
+            bio: '2 hours on the subway/bus every day. Plays mobile games on the commute — morning to wake the brain up, evening to wind down after work. Prefers games with short sessions: one match = one subway stop. Spends $10-30/month on games — battle pass and cosmetics, occasionally boosters.',
+            goals: [
+              'Make the commute pass productively/enjoyably',
+              'Level up during a session — feel the progress',
+              'Don\'t depend on the internet (tunnels happen)',
+              'Compete with friends in spare time',
+            ],
+            frustrations: [
+              'Long game load times — wastes precious minutes',
+              'Pay-to-win — losing only because he didn\'t pay',
+              '30-second ads after every match',
+              'Game interrupted in a tunnel without saving progress',
+            ],
+            traits: [
+              { label: 'Play time per day', value: '40-90 min (two sessions: morning + evening)' },
+              { label: 'Length of one session', value: '5-15 min (stop to stop)' },
+              { label: 'Primary device', value: 'Android smartphone + headphones' },
+              { label: 'Favorite genres', value: 'Battle Royale (Brawl Stars, PUBG Mobile), Match-3 (Royal Match)' },
+              { label: 'Willing to pay for', value: 'Battle Pass ($10/mo), cosmetics, ad removal' },
+              { label: 'Trigger to delete a game', value: 'Pay-to-win, aggressive ads, 5+ sec load times' },
+            ],
+            quote: 'If a game doesn\'t launch in 3 seconds — my next stop is already coming, and I delete it.',
+          },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-03-game-commuter.webp',
+          alt: 'Young man playing a mobile game on the subway',
+          caption: 'Game Commuter — short sessions on the road, morning and evening.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**JTBD for Artem:** "When I\'m on the subway heading to work, I want to play 1-2 matches in 10 minutes, so I walk into the office not feeling like the day started in boredom." You can see how the **context** (subway, limited time, no stable internet) drives every game design decision — from match length to offline mode.',
         },
         {
           type: 'divider' as const,
@@ -460,6 +817,821 @@ export const meeting03: Meeting = {
         },
         {
           type: 'divider' as const,
+        },
+
+        // ============================================================
+        // 10 STEPS IN PRACTICE — the real playbook
+        // ============================================================
+        {
+          type: 'heading' as const,
+          content: '10 steps in practice: how you actually build a persona',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Above is the process diagram. Below is the **playbook with no sugar**: each step + what you actually do + where people usually fall apart. Final demo — on our persona Artem.',
+        },
+
+        // --- Step 1: Begin research ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 1 — Begin research',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Sounds like "well, just start," but there\'s a catch. First you need to answer: **what do you actually want to learn?** Not "about the user" — specifically: why does he play on the commute, what breaks the session, what does he pay for.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '👉 Without that, you walk into the interview like a tourist without a map.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 2: Conduct 5-8 interviews (with full UX script for Artem) ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 2 — Conduct 5–8 interviews',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Classic. Bare minimum so you\'re not talking to yourself. But here\'s the truth:\n\n— **5 interviews** — you\'re only starting to see something\n— **8 interviews** — first patterns appear\n— **10+** — you can actually draw conclusions\n\nAnd yes, one weird respondent can break your whole picture if you\'re inexperienced.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-03-interview-questionnaire.webp',
+          alt: 'Interview template with a recorder and coffee',
+          caption: 'Keep the question template in front of you during the interview.',
+        },
+
+        // --- 🎯 UX Interview for Artem — 7 blocks ---
+        {
+          type: 'heading' as const,
+          content: '🎯 UX Interview for UJP — script on the Artem persona',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'A ready-made script in **7 blocks**, tailored to the Artem persona (mobile gaming, commute). Swap "games" for your domain — the template works for any product.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: '1. Warm-up — life context (without an FBI-grade interrogation)',
+        },
+        {
+          type: 'text' as const,
+          content: '**Goal:** understand real lifestyle, not "I sometimes play."',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Questions',
+          items: [
+            'Tell me about your typical weekday — how does it go?',
+            'When are you most likely to open games?',
+            'What else do you usually do on transport besides games?',
+            'How tiring is your commute on a scale of "fine" → "I want a teleporter"?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content: '👉 Here you\'re hunting for: **fatigue, habits, triggers**.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: '2. In-game behavior — reality, not fantasy',
+        },
+        {
+          type: 'text' as const,
+          content:
+            '**Goal:** understand how he actually plays, not how he "thinks he plays."',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Questions',
+          items: [
+            'What are you playing right now? Why specifically that?',
+            'When did you last delete a game? Why?',
+            'How long does one play session usually last?',
+            'Does it happen that you don\'t finish a match? What do you do then?',
+            'How do you choose a new game?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 This is where the meat starts: **retention, churn, session fit**.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: '3. Usage context — the most important thing, by the way',
+        },
+        {
+          type: 'text' as const,
+          content:
+            '**Goal:** understand environment constraints (the subway is not a couch with a blanket).',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Questions',
+          items: [
+            'Do you have internet all the time, or does it drop sometimes?',
+            'Do you play standing or sitting?',
+            'How comfortable is one-handed play?',
+            'Are there moments when you have to bail out of the game suddenly?',
+            'How important is sound in the game?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '👉 If you don\'t ask this — you\'ll end up designing UI that only works in a vacuum.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: '4. Emotions and motivation — why he\'s doing it at all',
+        },
+        {
+          type: 'text' as const,
+          content:
+            '**Goal:** understand why he plays. Not "to kill time" — that\'s the lazy answer.',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Questions',
+          items: [
+            'What do you want from a game in the morning? And in the evening?',
+            'What makes a game "relaxing" for you?',
+            'What pisses you off most in mobile games?',
+            'When does a game start to feel boring?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 Here you pull out the **core loop and emotional payoff**.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: '5. Money — where people suddenly become logical',
+        },
+        {
+          type: 'text' as const,
+          content: '**Goal:** understand monetization without rose-tinted glasses.',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Questions',
+          items: [
+            'What do you most often pay for in games?',
+            'What has to happen for you to spend?',
+            'Was there a moment when you regretted a purchase?',
+            'How OK are you with "pay to progress"?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 This is where you understand how to build **LTV**, instead of just dreaming about it.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: '6. Problems and screw-ups — UX gold',
+        },
+        {
+          type: 'text' as const,
+          content: '**Goal:** find real pain, not "everything\'s fine."',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Questions',
+          items: [
+            'Recall the last time a game made you furious.',
+            'Was there a moment when you wanted to play but couldn\'t? Why?',
+            'What stops you from playing more often?',
+            'Which games did you drop even though they were "fine"?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 This is straight gold. If you don\'t use it — well, then why bother with the interview at all.',
+        },
+
+        {
+          type: 'subheading' as const,
+          content: '7. Hypothesis check — if you have a product/idea',
+        },
+        {
+          type: 'text' as const,
+          content: '**Goal:** not to sell the idea, but to test it.',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Questions',
+          items: [
+            'How do you feel about a game where one session = 2–3 minutes?',
+            'How important is progress between short sessions?',
+            'Would you rather continue the same game on the commute or play something new each time?',
+            'How important is offline mode?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '👉 And don\'t pitch. Just watch **where he winces**.',
+        },
+
+        // --- Bonus: what you should pull out ---
+        {
+          type: 'subheading' as const,
+          content: '🧠 Bonus — what you should actually walk away with',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'If you don\'t have these after the interview — you just had a nice chat.',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'stacked' as const,
+          columns: [
+            {
+              title: 'Must-have insights after the interview with Artem',
+              items: [
+                '**Session constraint** — 1–3 minutes',
+                '**Interruptibility** — can bail out at any moment',
+                '**One-hand UX** — plays one-handed',
+                '**Cognitive load** — low in the evening, higher in the morning',
+                '**Offline-first** — subway, tunnels, no internet',
+                '**Fast reward loop** — short pleasure cycle',
+                '**Safe monetization** — not annoying, not pay-to-win',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '⚡ **Reality check:** if after this you ship a game with long matches, mandatory internet, complex UI and "wait 30 seconds for the ad" — Artem will delete it before you can open Figma.',
+        },
+        {
+          type: 'divider' as const,
+        },
+        {
+          type: 'columns' as const,
+          variant: 'stacked' as const,
+          columns: [
+            {
+              title: '1️⃣ CONTEXT — who the person is and where they live',
+              items: [
+                'Briefly tell me about yourself — what do you do, what does a typical day look like?',
+                'Where and when do you usually run into [our task]?',
+                'What devices/tools do you use for it?',
+                'Who else is involved in this process (colleagues, family)?',
+              ],
+            },
+            {
+              title: '2️⃣ BEHAVIOR — what they actually do',
+              items: [
+                'Tell me about the last time you [did X]?',
+                'Show me how you usually do this (ask them to share screen/object)?',
+                'What do you do if something goes wrong?',
+                'How often does this happen — once a day, week, month?',
+              ],
+            },
+            {
+              title: '3️⃣ GOALS — why the person does this',
+              items: [
+                'What is a "successful" outcome for this task?',
+                'How do you know the task was done well?',
+                'What do you do right after you finish?',
+                'How does this outcome affect your day/work?',
+              ],
+            },
+            {
+              title: '4️⃣ PAINS — what frustrates them',
+              items: [
+                'What annoys you most in this process?',
+                'Tell me about the worst case that ever happened?',
+                'What takes the most time?',
+                'What do you do when [tool] lets you down?',
+              ],
+            },
+            {
+              title: '5️⃣ TRIGGERS — what kicks the action off',
+              items: [
+                'What usually happens **right before** you [do X]?',
+                'How did you find out about your current tool/method?',
+                'What would have to happen for you to switch?',
+                'Who do you tell when you find a good solution?',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-03-interview-questionnaire.webp',
+          alt: 'Interview question template on a tablet next to a recorder and coffee',
+          caption: 'Template with 5 question groups — print it and keep it in front of you during the interview.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Anti-questions (don\'t do this):** "Would you like a dark theme?", "Would you pay $10 for this feature?", "What would you add to the product?". People lie in hypothetical questions — ask about **past behavior**, not future intentions.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 3: Analytics ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 3 — Gather behavioral analytics',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Here is where most people fall apart. Interviews = "what people say," analytics = "what they actually do."',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'grid' as const,
+          columns: [
+            {
+              title: '📊 If you have a product',
+              items: [
+                '**session length** — session duration',
+                '**retention** — who comes back on day 7 / day 30',
+                '**churn points** — where people drop off',
+                'Events in [Google Analytics 4](https://analytics.google.com/) (free)',
+                '[Hotjar](https://www.hotjar.com/) for heatmaps + session recordings',
+                '[Mixpanel](https://mixpanel.com/) or [Amplitude](https://amplitude.com/) for cohorts',
+              ],
+            },
+            {
+              title: '🕵️ If there\'s no product yet',
+              items: [
+                '**App Store / Play Market** — competitor reviews (gold)',
+                '**Reddit** — yes, a dump, but a useful one',
+                '**YouTube comments** — under game reviews',
+                '**Discord servers** — community gold',
+                '**Twitter/X** — search by themed hashtags',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '👉 **People lie. Data lies less.** If interviews say one thing and analytics say another — trust analytics.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 4: Enough data ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 4 — Enough data?',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Favorite moment, where everyone goes: "well, kinda." **No.**',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'grid' as const,
+          columns: [
+            {
+              title: '✅ Ready to move on if',
+              items: [
+                'You start hearing the same answers',
+                'You\'re already annoyed that people are repeating themselves',
+                '5–8 interviews within one group',
+                'Analytics confirms hypotheses from interviews',
+              ],
+            },
+            {
+              title: '⚠️ You\'re still raw if',
+              items: [
+                'Every new answer "surprises" you',
+                'Less than 5 interviews per group',
+                'Analytics and interviews contradict each other',
+                'Several subgroups are mashed into one',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 If every new answer "surprises" you — you\'re still raw. Run more interviews.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 5: Patterns and clusters ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 5 — Identify patterns and clusters',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'This is where real UX kicks in. You **aren\'t looking for types of people**. You\'re looking for **types of behavior**.',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'stacked' as const,
+          columns: [
+            {
+              title: 'Comparison: what to look for vs what doesn\'t work',
+              items: [
+                '✅ "I play 2–3 minutes"',
+                '✅ "I bail out without regret"',
+                '✅ "I play one-handed"',
+                '❌ "Male, 29, likes coffee" (that\'s not a pattern, that\'s a form)',
+              ],
+            },
+            {
+              title: 'Affinity Mapping (60–90 min with the team in Miro/FigJam)',
+              items: [
+                '**1.** Each observation/quote → a separate sticky note (1 fact = 1 note)',
+                '**2.** Throw the notes onto the board with no structure',
+                '**3.** Group similar ones nearby — without naming the groups',
+                '**4.** When the groups stabilize — name each one briefly',
+                '**5.** Out of 5–7 groups — pick 2–3 main patterns = future personas',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 **Rule of 3–5 personas:** fewer than 3 — you lose nuance; more than 5 — nobody remembers any of them.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 6: Draft persona (with A4 demo) ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 6 — Create persona draft',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'And here everyone suddenly turns into a Dribbble designer. **Don\'t.**\n\nA persona = **goals · behavior · constraints · motivation**.\n\nNOT: "loves Netflix and pizza" (nobody cares).',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'stacked' as const,
+          columns: [
+            {
+              title: '📝 Minimal persona card template (1 A4 page)',
+              items: [
+                '**Name + photo** (stock) — increases empathy',
+                '**Age / role / life context** — 1 line',
+                '**Bio** — 2–3 sentences',
+                '**Goals** — 3–4 items (what they want)',
+                '**Frustrations** — 3–4 items (what gets in the way)',
+                '**Behavioral traits** — device, frequency, triggers',
+                '**Quote** — real words from the interview',
+                '**JTBD** — "When [context], I want [motivation], so that [outcome]"',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-03-persona-card-filled.webp',
+          alt: 'A4 persona card demo with filled-in fields for Artem',
+          caption:
+            'Demo: how a filled-in Artem persona card looks on A4. The interactive template is below.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '📚 **Ready-made templates and references:**\n\n— [Figma Community → User Persona templates ↗](https://www.figma.com/community/diagramming/user-persona?resource_type=files&editor_type=figjam&price=all&sort_by=all_time&creators=all) — dozens of free FigJam templates from the community. Copy a favorite and adapt it to your persona.\n\n— [Buyer Persona Journey — Gonarrative ↗](https://www.gonarrative.com/business-storytelling-blog/map-it-out-understanding-your-buyer-personas-journey) — an advanced 6-stage persona journey model (see Part 2 below).',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '👉 If your persona **doesn\'t affect the product** — it\'s just fanfiction.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 7: Team agrees? ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 7 — Team agrees?',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Half the projects break here. If the team doesn\'t believe in the persona — they ignore it, and you\'re working in a vacuum.',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'grid' as const,
+          columns: [
+            {
+              title: '✅ Signs the persona stuck',
+              items: [
+                'A developer says "yeah, I know people like that"',
+                'PM refers to the persona by name in discussions',
+                'Designer defends a decision via her goals',
+                'A quote from the card gets repeated in chat',
+              ],
+            },
+            {
+              title: '❌ Signs the persona needs a rewrite',
+              items: [
+                '"Wait, does anyone actually do that?"',
+                'Team argues about persona details instead of the product',
+                'PM ignores it and writes about the "average user"',
+                'Two weeks later nobody remembers her',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 The persona should be so obvious that a developer says: **"yeah, I know people like that"**.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 8: Empathy map ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 8 — Empathy map',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Sounds like something out of psychotherapy, but ok. You structure what the persona **thinks, feels, does, and what pisses them off** — for one specific scenario. This is so you don\'t build a product "for logic" but for reality.',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'grid' as const,
+          columns: [
+            {
+              title: '🧠 THINKS (Artem on the morning subway)',
+              items: [
+                '"Another 30-second ad…"',
+                '"Will I finish the event before work?"',
+                '"As long as my phone doesn\'t die"',
+              ],
+            },
+            {
+              title: '💬 SAYS',
+              items: [
+                '"This game doesn\'t distract me from work"',
+                '"Best decompression after the office"',
+                '"Donation banners drive me nuts"',
+              ],
+            },
+            {
+              title: '❤️ FEELS',
+              items: [
+                'Mild anticipation before starting',
+                'Irritation at the ads',
+                'Satisfaction from a win',
+              ],
+            },
+            {
+              title: '👀 DOES',
+              items: [
+                'Launches the game a second before departure',
+                'Plays with headphones',
+                'Closes the game at the transfer station',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Pains:** 30-sec ads, long load, interruption in a tunnel. **Gains:** short 5–15 min matches, progress per session, offline, minimal pay-to-win.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 9: JTBD ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 9 — JTBD (this is where you level up)',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Forget "the user wants to play." The right level — **the reason the product exists at all**.\n\nFormula: **When [trigger], I want [motivation], so that [outcome]**. A good statement is testable and not tied to a solution (no words like "button," "screen," "filter").',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'stacked' as const,
+          columns: [
+            {
+              title: '✅ Artem — two different JTBDs by context',
+              items: [
+                '🌅 *Morning:* "When I\'m on the subway heading to work, I want to switch the brain on through 1–2 matches in 10 minutes, so I don\'t walk into the office in zombie mode"',
+                '🌙 *Evening:* "When I\'m coming back from work, I want to switch off through short low-pressure matches, so I flip from work mode to home mode"',
+              ],
+            },
+            {
+              title: '❌ Don\'t do this',
+              items: [
+                '"I want to be happy" — too abstract',
+                '"I want a filter button" — tied to a solution',
+                '"I want to order food" — no context and no outcome',
+                '"When I\'m tired, I want to open the app" — no "so that what"',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '👉 JTBD = **the reason the product exists at all**. If you can\'t state it — the product isn\'t needed.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Step 10: Finalization and distribution ---
+        {
+          type: 'subheading' as const,
+          content: 'Step 10 — Finalize and distribute',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'And here\'s the saddest moment: **90% of personas die in Notion**. To prevent that — embed it into the team\'s processes.',
+        },
+        {
+          type: 'columns' as const,
+          variant: 'stacked' as const,
+          columns: [
+            {
+              title: '🎯 So the persona stays alive',
+              items: [
+                '**1.** Drop it into the PRD of every feature',
+                '**2.** Tie tickets to the persona ("This feature is for Artem")',
+                '**3.** Use it in discussions instead of the abstract "user"',
+                '**4.** Print and pin it next to the team',
+                '**5.** Get sign-off from 3 key roles: PM, design, engineering',
+                '**6.** Refresh every 6–12 months (behavior shifts)',
+              ],
+            },
+            {
+              title: '☠️ Signs the persona is already dead',
+              items: [
+                'Nobody mentions her name in retros',
+                'PM writes tickets "for the user" instead of "for Artem"',
+                'The card\'s quote never gets quoted',
+                'The persona hasn\'t been updated in over a year',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Live persona test:** in a product discussion, ask "What would Artem say about this feature?". If someone answers in detail — alive. Silence — resuscitate.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '👉 If the persona **isn\'t involved in decisions** — it doesn\'t exist.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- ⚡ Reality nobody tells you ---
+        {
+          type: 'heading' as const,
+          content: '⚡ The reality nobody tells you',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'You\'re not building a "persona." You\'re building a **decision-making tool**.\n\nIf after all this you can\'t answer:',
+        },
+        {
+          type: 'checklist' as const,
+          title: 'Persona usefulness test',
+          items: [
+            'Should we do long sessions?',
+            'Do we need offline mode?',
+            'How do we monetize without annoying people?',
+            'What\'s the optimal match length?',
+            'Where and when do we show ads?',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '...then you just **prettily formatted an interview**. The persona has to answer product questions — otherwise why bother.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Artem example: the essence ---
+        {
+          type: 'heading' as const,
+          content: '🎮 Artem summary: what actually drives the product',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Doesn\'t matter: "Artem, 29, sysadmin." That\'s a form. What matters — what follows from it for the product:',
+        },
+        {
+          type: 'table' as const,
+          title: 'Artem: trait → product decision',
+          headers: ['Trait', 'Type', 'What follows for design'],
+          rows: [
+            [
+              '**Plays in short 5–15 min sessions**',
+              'constraint',
+              'Match ≤ 5 min · fast load · autosave on every step',
+            ],
+            [
+              '**Often interrupted (subway, tunnels)**',
+              'context',
+              'Pause anytime · progress recovery · offline cache',
+            ],
+            [
+              '**Pays for boosts and cosmetics**',
+              'monetization trigger',
+              'Battle Pass $10/mo · skins · ad removal. **NO** pay-to-win',
+            ],
+            [
+              '**Tired in the evening, fresh in the morning**',
+              'emotional state',
+              'Morning — challenge · evening — chill mode with reduced difficulty',
+            ],
+            [
+              '**Plays one-handed with headphones**',
+              'physical UX',
+              'Taps on the right side only · large hit-zones · key feedback via sound',
+            ],
+          ],
+          caption:
+            'This — is already a decision-making tool. Not just a card with a photo and a quote.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- PDF template with explicit URL ---
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '📄 **[Open the PDF persona + empathy map + JTBD template ↗](/meeting/3/template)**\n\nDirect link to copy: **uxi-entry-course.vercel.app/meeting/3/template**\n\nPrint 3–5 copies and fill them in during the interview itself. Includes all three tools from this lesson + a ready question template.',
         },
 
         // --- Quote ---
@@ -679,6 +1851,83 @@ export const meeting03: Meeting = {
           variant: 'tip' as const,
           content:
             '**Golden rule of UJM:** the map is created for **one persona** and **one scenario**. Don\'t try to fit all users into a single map — it will turn into a mess.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // --- Advanced model: 6 stages (Gonarrative) ---
+        {
+          type: 'heading' as const,
+          content: 'Advanced model: 6 stages instead of the classic 4',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'The classic **AIDA** funnel (Awareness → Interest → Desire → Action) is for marketing, not UX. For a deep Journey Map there\'s a more accurate 6-stage model from [Gonarrative ↗](https://www.gonarrative.com/business-storytelling-blog/map-it-out-understanding-your-buyer-personas-journey). It describes not only "what the person does" but also **what they feel** at each step — and decisions are made by emotion, not logic.',
+        },
+        {
+          type: 'table' as const,
+          title: '6 stages of the persona journey (Gonarrative framework)',
+          headers: ['#', 'Stage', 'What happens', 'Emotion'],
+          rows: [
+            [
+              '1',
+              '**Awareness**',
+              'Realizing a problem or need ("something\'s off / something\'s missing")',
+              'Discomfort',
+            ],
+            [
+              '2',
+              '**Realize**',
+              'Understanding that solutions exist. The market research begins',
+              'Curiosity',
+            ],
+            [
+              '3',
+              '**Internalize**',
+              'Matching external options against internal constraints (budget, time, risk)',
+              'Doubt',
+            ],
+            [
+              '4',
+              '**Visualize**',
+              'Picturing the future outcome through case studies, reviews, comparisons',
+              'Hope',
+            ],
+            [
+              '5',
+              '**Decide**',
+              'Emotional decision → rational justification ("I picked X because…")',
+              'Confidence',
+            ],
+            [
+              '6',
+              '**Evangelize**',
+              'Becoming a brand advocate: telling friends, leaving reviews, recommending',
+              'Pride',
+            ],
+          ],
+          caption:
+            'For each stage you map 4 dimensions: Story (one sentence) · Thinking (questions of the moment) · Feeling (emotion) · Action (what they actually do).',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Example from the article (Dorco razor):** the author walks through his own razor purchase journey — from Awareness ("razor is dull, annoying") through Internalize (budget vs quality) and Visualize (reads YouTube reviews) to Evangelize (tells friends about the subscription service). A real consumer case with emotional markup of every step.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**When to use 6 stages instead of 4:** for expensive purchases, B2B deals, or subscriptions — where the decision plays out over time and emotions swing. For impulse purchases (mobile app, fast food) the classic 4 are enough.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '⚡ **Gonarrative\'s key insight:** "There are no decisions based on reason and logic alone — every choice carries an emotional component." Content has to address the emotion first, then provide rational support.',
         },
         {
           type: 'divider' as const,
