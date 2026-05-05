@@ -176,9 +176,10 @@ export const meeting03: Meeting = {
         },
         {
           type: 'image' as const,
-          src: '/images/meeting-03-empathy-map.webp',
-          alt: 'Карта эмпатии с четырьмя квадрантами и блоками болей и выгод',
-          caption: 'Карта эмпатии: 4 квадранта + боли и выгоды.',
+          src: '/images/meeting-03-empathy-map-canvas.png',
+          alt: 'Empathy Map Canvas: 4 квадранта (think&feel · see · hear · say&do) + Pains/Gains',
+          caption:
+            'Empathy Map Canvas — классический шаблон. 4 квадранта вокруг персоны: что думает и чувствует, видит, слышит, говорит и делает. Снизу — Pains и Gains.',
         },
         {
           type: 'divider' as const,
