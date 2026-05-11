@@ -47,6 +47,12 @@ export const meeting04: Meeting = {
           role: 'Author of "Don\'t Make Me Think"',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-krug-core-principle.webp',
+          alt: 'The core principle of usability: the right question is "Can you complete this task?", the wrong one is "Do you like this design?"',
+          caption: 'The right question is about task effectiveness, not aesthetics.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -86,6 +92,12 @@ export const meeting04: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-format-matrix.webp',
+          alt: 'Format comparison matrix: moderated vs unmoderated across 6 dimensions',
+          caption: 'Format Matrix: pick depth or scale (presence, sample size, insight type, cost, ideal stage).',
         },
         {
           type: 'callout' as const,
@@ -177,6 +189,12 @@ export const meeting04: Meeting = {
             '**Iterative approach:** It is better to run 3 rounds of 5 participants (with fixes between rounds) than one round with 15 participants. Each round of fixes reveals a **new layer** of problems.',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-iteration-beats-volume.webp',
+          alt: 'Three concentric cycles of 5 users vs a single ring of 15 — same headcount, three times the insight',
+          caption: 'Iteration Beats Volume: 3 rounds × 5 users expose three layers of issues; 15 in one go reveals only the top one.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -224,6 +242,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-remote-toolstack.webp',
+          alt: 'Three comparison cards: Maze (prototypes), Lookback (in-depth interviews), UserTesting (massive scale and speed)',
+          caption: 'Remote Testing Toolstack: Maze for prototypes, Lookback for in-depth sessions, UserTesting for scale and speed.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -253,6 +277,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-director-script-checklist.webp',
+          alt: 'Director’s preparation checklist: goal, tasks, neutral intro, probing questions, post-test survey, technical and administrative checks',
+          caption: 'Director’s Script: a good script controls the environment, not the actor.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Task Formulation for Testing',
           before: {
@@ -267,6 +297,12 @@ export const meeting04: Meeting = {
           },
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-task-formulation.webp',
+          alt: 'Anti-pattern (UI-bound instruction) vs best practice (realistic scenario without hints)',
+          caption: 'Task Formulation: an instruction kills the test, a scenario unlocks authentic behavior.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -277,6 +313,12 @@ export const meeting04: Meeting = {
           type: 'text' as const,
           content:
             'After conducting the tests, you need to systematize findings. Use a **prioritization matrix** of problems along two axes: **frequency** (how many participants encountered it) and **severity** (how much it blocks the task).',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-prioritisation-matrix.webp',
+          alt: 'Findings prioritisation matrix: 4 quadrants on frequency × severity — Critical Blockers, Major Annoyances, Edge-Case Blockers, Minor Polish',
+          caption: 'Prioritisation Matrix: fix Critical Blockers (high freq + high severity) first; Minor Polish is last.',
         },
         {
           type: 'diagram' as const,
@@ -297,6 +339,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-10-step-lifecycle.webp',
+          alt: '10-step testing lifecycle: Planning (1-4) → Execution (5-6) → Action (7-10)',
+          caption: '10-Step Testing Lifecycle: three phases — Planning, Execution, Action.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Test Results Report',
           before: {
@@ -311,11 +359,23 @@ export const meeting04: Meeting = {
           },
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-report-vague-vs-actionable.webp',
+          alt: 'Two reports side by side: vague ("navigation is confusing") vs actionable (issue #1, severity, evidence, recommendation, expected impact)',
+          caption: 'Vague vs Actionable Report: specifics, severity, evidence, and a business metric on every finding.',
+        },
+        {
           type: 'divider' as const,
         },
         {
           type: 'subheading' as const,
           content: 'Case Study: Usability Testing at Booking.com',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-booking-case-problem.webp',
+          alt: 'Booking.com: 62% conversion, 38% drop-off on the final booking form — problem framing and study setup',
+          caption: 'Booking.com — the problem: 38% drop off on the final booking step. Setup: 5 users × "book a hotel in Barcelona for 3 nights".',
         },
         {
           type: 'case-study' as const,
@@ -351,6 +411,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-booking-case-resolution.webp',
+          alt: 'Booking.com: 3 rounds → 0 critical issues → business result: +78% conversion, −40% completion time, −25% support tickets',
+          caption: 'Booking.com — after 3 rounds: +16 pp conversion, −40% completion time, −25% support tickets.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -365,6 +431,12 @@ export const meeting04: Meeting = {
           variant: 'tip' as const,
           content:
             '**Homework:** Choose any website or app. Write a test scenario with 3 tasks and conduct a mini-test with one friend or colleague using the think-aloud protocol. Record your 3 main findings.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-krug-1day-challenge.webp',
+          alt: 'Steve Krug 1-day challenge: pick a product → draft a 3-task scenario → run a 15-minute test with a colleague → analyse the 3 main findings',
+          caption: 'The Steve Krug 1-Day Challenge: usability testing needs no budget or weeks of planning — prove it to yourself today.',
         },
       ],
       quiz: [
@@ -430,6 +502,77 @@ export const meeting04: Meeting = {
           correctId: 'b',
           explanation:
             'A proper task describes a realistic scenario without navigation hints. The participant chooses their own path, and the researcher observes natural behavior.',
+        },
+        {
+          question:
+            'Why do 3 rounds of 5 users deliver more value than 1 round of 15 users?',
+          options: [
+            { id: 'a', text: 'It is cheaper and saves budget' },
+            { id: 'b', text: '15 people cannot physically be tested in one day' },
+            {
+              id: 'c',
+              text: 'Each round of fixes exposes a new layer of issues; in one batch of 15, everyone hits the same top-layer blocker',
+            },
+            { id: 'd', text: 'Statistically 5 is the minimum for significance' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Iteration Beats Volume: 15 users in a single run will surface the same surface-level problems. 3 rounds of 5 (with fixes between rounds) unlock three different layers — top blockers, secondary friction, then micro-polish.',
+        },
+        {
+          question:
+            'The moderator\'s Golden Rule during think-aloud is to:',
+          options: [
+            { id: 'a', text: 'Prompt the user when they get stuck so they don\'t get frustrated' },
+            { id: 'b', text: 'Never prompt the user; on stuck moments ask neutral probes like "What would you do if you were home alone?"' },
+            { id: 'c', text: 'Explain the entire interface upfront' },
+            { id: 'd', text: 'Record only successful actions' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Any prompt ("Try clicking here") invalidates the test — you would be measuring the user\'s ability to follow instructions, not usability. A neutral probe on stuck moments preserves validity.',
+        },
+        {
+          question:
+            'In the findings prioritisation matrix (frequency × severity), which quadrant do you fix first?',
+          options: [
+            { id: 'a', text: 'Edge-Case Blockers (low frequency, high severity)' },
+            { id: 'b', text: 'Major Annoyances (high frequency, low severity)' },
+            { id: 'c', text: 'Critical Blockers (high frequency, high severity)' },
+            { id: 'd', text: 'Minor Polish (low frequency, low severity)' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Critical Blockers are issues most participants hit AND that block task completion. They cause the biggest damage to business metrics, so they go first. Minor Polish comes last.',
+        },
+        {
+          question:
+            'What is the "vague" report missing compared to the "actionable" one?',
+          options: [
+            { id: 'a', text: 'Just the participant count' },
+            {
+              id: 'b',
+              text: 'Issue specifics, severity, evidence (N/5), a recommendation, and the expected business-metric impact',
+            },
+            { id: 'c', text: 'A list of tools used' },
+            { id: 'd', text: 'The designer\'s and tech-lead\'s signatures' },
+          ],
+          correctId: 'b',
+          explanation:
+            'An actionable report ties each finding to a specific UI element, states severity and the participant fraction (evidence), gives a recommendation, and links it to a business metric — this translates UX observation into product language.',
+        },
+        {
+          question:
+            'In the Booking.com case study, which result proved that 3 rounds of 5-user tests paid off?',
+          options: [
+            { id: 'a', text: 'Form conversion rose from 62% to 78% and support tickets dropped 25%' },
+            { id: 'b', text: 'Conversion increased by 1 percentage point' },
+            { id: 'c', text: 'The research team was cut in half' },
+            { id: 'd', text: 'The prototype won an Awwwards award' },
+          ],
+          correctId: 'a',
+          explanation:
+            'After three rounds of testing with 5 users each: form conversion rose from 62% to 78% (+16 pp), completion time dropped 40%, and booking-related support tickets fell 25%. A textbook usability-testing ROI.',
         },
       ],
     },
