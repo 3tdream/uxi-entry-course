@@ -19,6 +19,13 @@ export const meeting04: Meeting = {
       duration: '45 min',
       sections: [
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-usability-testing-guide.webp',
+          alt: 'Infographic: a strategic guide to usability testing — moderated vs unmoderated methods and the 5-user rule',
+          caption:
+            'Part 1 map: moderated vs unmoderated testing and why 5 users uncover ~85% of issues (Jakob Nielsen).',
+        },
+        {
           type: 'heading' as const,
           content: 'What Is Usability Testing?',
         },
