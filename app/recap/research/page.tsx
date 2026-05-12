@@ -89,7 +89,7 @@ const CONTENT: Record<'ru' | 'en', RecapContent> = {
       {
         type: 'text',
         content:
-          '**Артефакт:** список нарушений эвристик Нильсена по приоритету. Heuristic evaluation — экспертный метод: 3-5 оценщиков за 2 часа находят ~75% проблем. Не замена юзабилити-теста, но **самый дешёвый и быстрый** способ получить первый список находок. 10 эвристик легче помнить, сгруппировав в 5 тем: System Transparency, User Agency, Error Management, Cognitive Friction, Signal to Noise.',
+          '**Артефакт:** список нарушений эвристик Нильсена по приоритету. Heuristic evaluation — экспертный метод: 3-5 оценщиков за 2 часа находят 68%-75% проблем. Не замена юзабилити-теста, но **самый дешёвый и быстрый** способ получить первый список находок. 10 эвристик легче помнить, сгруппировав в 5 тем: System Transparency, User Agency, Error Management, Cognitive Friction, Signal to Noise.',
       },
       {
         type: 'callout',
@@ -413,7 +413,7 @@ const CONTENT: Record<'ru' | 'en', RecapContent> = {
         title: '📊 Оценить и измерить (M4 Part 2)',
         items: [
           '10 эвристик Нильсена в 5 тем',
-          'Heuristic evaluation: 3-5 экспертов, ~75% проблем за 2 часа',
+          'Heuristic evaluation: 3-5 экспертов, 68%-75% проблем за 2 часа',
           'SUS 0-100 (avg 68, > 80 excellent)',
           'NPS = % промоутеров − % критиков',
           'CSAT 1-5 сразу после действия',
@@ -448,7 +448,7 @@ const CONTENT: Record<'ru' | 'en', RecapContent> = {
         question: 'Из M3 ты получаешь persona и UJM. Что ИЗ M4 ты бы взял первым, чтобы дешевле всего проверить найденные на UJM боли?',
         options: [
           { id: 'a', text: 'Опрос на 500 человек через Mixpanel' },
-          { id: 'b', text: 'Эвристическая оценка 3 экспертами по 10 эвристикам (~2 часа, ~75% проблем)' },
+          { id: 'b', text: 'Эвристическая оценка 3 экспертами по 10 эвристикам (~2 часа, 68%-75% проблем)' },
           { id: 'c', text: 'Запуск A/B-теста на проде' },
           { id: 'd', text: 'NPS-замер по всей базе' },
         ],
@@ -599,7 +599,7 @@ const CONTENT: Record<'ru' | 'en', RecapContent> = {
       {
         type: 'text',
         content:
-          '**Artifact:** a prioritised list of Nielsen heuristic violations. Heuristic evaluation is an expert method: 3-5 evaluators in 2 hours uncover ~75% of issues. It does NOT replace usability testing — but it is the **cheapest and fastest** way to produce a first findings list. Remember the 10 heuristics by grouping them into 5 themes: System Transparency, User Agency, Error Management, Cognitive Friction, Signal to Noise.',
+          '**Artifact:** a prioritised list of Nielsen heuristic violations. Heuristic evaluation is an expert method: 3-5 evaluators in 2 hours uncover 68%-75% of issues. It does NOT replace usability testing — but it is the **cheapest and fastest** way to produce a first findings list. Remember the 10 heuristics by grouping them into 5 themes: System Transparency, User Agency, Error Management, Cognitive Friction, Signal to Noise.',
       },
       {
         type: 'callout',
@@ -923,7 +923,7 @@ const CONTENT: Record<'ru' | 'en', RecapContent> = {
         title: '📊 Evaluate and measure (M4 Part 2)',
         items: [
           '10 Nielsen heuristics in 5 themes',
-          'Heuristic evaluation: 3-5 experts, ~75% of issues in 2 hours',
+          'Heuristic evaluation: 3-5 experts, 68%-75% of issues in 2 hours',
           'SUS 0-100 (avg 68, > 80 excellent)',
           'NPS = % promoters − % detractors',
           'CSAT 1-5 right after an action',
@@ -958,7 +958,7 @@ const CONTENT: Record<'ru' | 'en', RecapContent> = {
         question: 'From M3 you have persona and UJM. Which M4 tool do you pick FIRST to validate the friction points cheaply?',
         options: [
           { id: 'a', text: 'A 500-person survey via Mixpanel' },
-          { id: 'b', text: 'Heuristic evaluation by 3 experts against the 10 heuristics (~2 hours, ~75% of issues)' },
+          { id: 'b', text: 'Heuristic evaluation by 3 experts against the 10 heuristics (~2 hours, 68%-75% of issues)' },
           { id: 'c', text: 'Launch an A/B test in production' },
           { id: 'd', text: 'A full-base NPS survey' },
         ],

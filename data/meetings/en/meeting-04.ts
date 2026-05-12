@@ -616,7 +616,7 @@ export const meeting04: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-04-part2-evaluation-toolkit.webp',
-          alt: 'Infographic: the UX Evaluation Toolkit — qualitative heuristics (75% of issues found by 3 experts in 2 hours) and quantitative metrics (SUS, NPS, Task Success), Real-World Impact with Before/After',
+          alt: 'Infographic: the UX Evaluation Toolkit — qualitative heuristics (68%-75% of issues found by 3 experts in 2 hours) and quantitative metrics (SUS, NPS, Task Success), Real-World Impact with Before/After',
           caption: 'Part 2 map: Nielsen heuristics (qualitative) + quantitative metrics (numerical) = a complete picture of UX health.',
         },
         {
@@ -632,7 +632,7 @@ export const meeting04: Meeting = {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
-            'Heuristic evaluation is **cheap and fast**. 3 experts in 2 hours can find ~75% of usability problems. It is a great starting point but not a replacement for usability testing with real users.',
+            'Heuristic evaluation is **cheap and fast**. 3 experts in 2 hours can find 68%-75% of usability problems. It is a great starting point but not a replacement for usability testing with real users.',
         },
         {
           type: 'divider' as const,
@@ -913,7 +913,7 @@ export const meeting04: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-04-two-pillars.webp',
-          alt: 'Two Pillars of UX Evaluation: Qualitative (heuristics, expert method, ~75% of issues) and Quantitative (metrics, objective numbers, progress tracking)',
+          alt: 'Two Pillars of UX Evaluation: Qualitative (heuristics, expert method, 68%-75% of issues) and Quantitative (metrics, objective numbers, progress tracking)',
           caption: 'Two Pillars: heuristics are the "rules", metrics are the "ruler". One without the other leaves blind spots.',
         },
         {
@@ -1189,7 +1189,7 @@ export const meeting04: Meeting = {
           title: '📊 Evaluate and measure (M4 Part 2)',
           items: [
             'Nielsen\'s 10 heuristics grouped into 5 themes (System Transparency, User Agency, Error Management, Cognitive Friction, Signal to Noise)',
-            'Heuristic evaluation: 3-5 experts, ~75% of issues in 2 hours (but NOT a replacement for usability testing)',
+            'Heuristic evaluation: 3-5 experts, 68%-75% of issues in 2 hours (but NOT a replacement for usability testing)',
             'SUS: standardised 10-question survey, 0-100 scale, avg 68, above 80 = excellent UX',
             'NPS: % promoters (9-10) − % detractors (0-6), good SaaS ≥ +30',
             'CSAT: 1-5 right after an action, captures the "hot" emotion',
@@ -1280,12 +1280,12 @@ export const meeting04: Meeting = {
           options: [
             { id: 'a', text: 'It produces deeper insights than testing with real users' },
             { id: 'b', text: 'It fully replaces usability testing' },
-            { id: 'c', text: 'It is cheap and fast — 3 experts in 2 hours find ~75% of issues (but does NOT replace user testing)' },
+            { id: 'c', text: 'It is cheap and fast — 3 experts in 2 hours find 68%-75% of issues (but does NOT replace user testing)' },
             { id: 'd', text: 'It can be done alone — one expert\'s opinion is enough' },
           ],
           correctId: 'c',
           explanation:
-            'Heuristic evaluation is an expert method. No users, no recruiting. 3-5 evaluators with UX expertise find ~75% of issues in a couple of hours. It\'s a great quick start but does NOT replace testing with real users — experts see the interface through expert eyes, not user eyes.',
+            'Heuristic evaluation is an expert method. No users, no recruiting. 3-5 evaluators with UX expertise find 68%-75% of issues in a couple of hours. It\'s a great quick start but does NOT replace testing with real users — experts see the interface through expert eyes, not user eyes.',
         },
         {
           question:
