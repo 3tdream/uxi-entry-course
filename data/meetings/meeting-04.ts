@@ -210,7 +210,7 @@ export const meeting04: Meeting = {
           type: 'columns' as const,
           columns: [
             {
-              title: 'Maze',
+              title: '[Maze ↗](https://maze.co/)',
               items: [
                 'Немодерируемое тестирование прототипов',
                 'Интеграция с Figma и Sketch',
@@ -220,7 +220,7 @@ export const meeting04: Meeting = {
               ],
             },
             {
-              title: 'Lookback',
+              title: '[Lookback ↗](https://www.lookback.com/)',
               items: [
                 'Модерируемое и немодерируемое',
                 'Видеозапись экрана + лица участника',
@@ -230,7 +230,7 @@ export const meeting04: Meeting = {
               ],
             },
             {
-              title: 'UserTesting',
+              title: '[UserTesting ↗](https://www.usertesting.com/)',
               items: [
                 'Доступ к панели из 2M+ тестировщиков',
                 'Результаты за 1-2 часа',
@@ -240,12 +240,6 @@ export const meeting04: Meeting = {
               ],
             },
           ],
-        },
-        {
-          type: 'image' as const,
-          src: '/images/meeting-04-remote-toolstack.webp',
-          alt: 'Три карточки сравнения: Maze (прототипы), Lookback (глубинные интервью), UserTesting (масштаб и скорость)',
-          caption: 'Remote Testing Toolstack: Maze для прототипов, Lookback для глубинных сессий, UserTesting для скорости и масштаба.',
         },
         {
           type: 'divider' as const,

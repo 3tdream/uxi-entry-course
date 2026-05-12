@@ -541,7 +541,7 @@ function ColumnsSection({
       <div className="space-y-3">
         {columns.map((col) => (
           <div key={col.title} className="rounded-xl border bg-card p-4">
-            <h4 className="font-semibold text-sm text-foreground mb-2">{col.title}</h4>
+            <h4 className="font-semibold text-sm text-foreground mb-2"><RichText content={col.title} /></h4>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
               {col.items.map((item, i) => (
                 <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
@@ -560,7 +560,7 @@ function ColumnsSection({
     <div className={`grid gap-4 ${cls}`}>
       {columns.map((col) => (
         <div key={col.title} className="rounded-xl border bg-card p-4">
-          <h4 className="font-semibold text-sm text-foreground mb-3">{col.title}</h4>
+          <h4 className="font-semibold text-sm text-foreground mb-3"><RichText content={col.title} /></h4>
           <ul className="space-y-1.5">
             {col.items.map((item, i) => (
               <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
