@@ -983,7 +983,7 @@ export const meeting04: Meeting = {
           type: 'columns' as const,
           columns: [
             {
-              title: 'Google Analytics',
+              title: '[Google Analytics ↗](https://analytics.google.com/)',
               items: [
                 'Behavioral metrics: bounce rate, session duration',
                 'Conversion funnels: where users drop off',
@@ -993,7 +993,7 @@ export const meeting04: Meeting = {
               ],
             },
             {
-              title: 'Hotjar',
+              title: '[Hotjar ↗](https://www.hotjar.com/)',
               items: [
                 'Click and scroll heatmaps',
                 'Session recordings of real users',
@@ -1003,7 +1003,7 @@ export const meeting04: Meeting = {
               ],
             },
             {
-              title: 'Mixpanel',
+              title: '[Mixpanel ↗](https://mixpanel.com/)',
               items: [
                 'Event-based analytics (event tracking)',
                 'Cohort analysis and retention',
