@@ -1063,6 +1063,71 @@ export const meeting04: Meeting = {
           explanation:
             'Hotjar specializes in visual analytics: heatmaps, session recordings, and scroll maps. Google Analytics is stronger in quantitative analytics, while Mixpanel excels at event-based analytics.',
         },
+        {
+          question:
+            'The "Recognition rather than recall" principle (heuristic #6) means in practice that:',
+          options: [
+            { id: 'a', text: 'Users should memorize the app\'s keyboard shortcuts' },
+            { id: 'b', text: 'Important elements and options should be visible on screen, not stored in the user\'s memory' },
+            { id: 'c', text: 'The interface should only prompt beginners' },
+            { id: 'd', text: 'Buttons should be labelled with codes rather than words' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Recognition rather than recall: show options (dropdowns, recent files, breadcrumbs) instead of forcing users to remember. For example, a username field with autocomplete is better than a blank field that requires recalling the exact spelling.',
+        },
+        {
+          question:
+            'The main upside of heuristic evaluation vs usability testing is:',
+          options: [
+            { id: 'a', text: 'It produces deeper insights than testing with real users' },
+            { id: 'b', text: 'It fully replaces usability testing' },
+            { id: 'c', text: 'It is cheap and fast — 3 experts in 2 hours find ~75% of issues (but does NOT replace user testing)' },
+            { id: 'd', text: 'It can be done alone — one expert\'s opinion is enough' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Heuristic evaluation is an expert method. No users, no recruiting. 3-5 evaluators with UX expertise find ~75% of issues in a couple of hours. It\'s a great quick start but does NOT replace testing with real users — experts see the interface through expert eyes, not user eyes.',
+        },
+        {
+          question:
+            'The CSAT (Customer Satisfaction Score) metric is typically collected:',
+          options: [
+            { id: 'a', text: 'Once a year through a large survey' },
+            { id: 'b', text: 'Right after a specific action on a short scale (e.g. 1-5 "How satisfied are you?")' },
+            { id: 'c', text: 'Only from users who filed a complaint' },
+            { id: 'd', text: 'By analyzing app store reviews' },
+          ],
+          correctId: 'b',
+          explanation:
+            'CSAT is a "hot" metric — it measures satisfaction right after an event (purchase, support contact, task completion). The scale is usually 1-5 or 1-7. It\'s calculated as the share of "satisfied" answers (4-5) out of total responses.',
+        },
+        {
+          question:
+            'Task Completion Rate is:',
+          options: [
+            { id: 'a', text: 'Average task completion time' },
+            { id: 'b', text: 'Number of clicks until the result' },
+            { id: 'c', text: 'Share of participants who successfully completed the task without outside help' },
+            { id: 'd', text: 'Percentage of users who left feedback' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Task Completion Rate (TCR) = (successful completions / total attempts) × 100%. It\'s the baseline effectiveness metric: anything below 78% is a red flag that the task or the interface has a serious problem. Moderator hints or help do NOT count as success.',
+        },
+        {
+          question:
+            'When should you pick Mixpanel over Google Analytics?',
+          options: [
+            { id: 'a', text: 'When you need a report on page views and traffic sources' },
+            { id: 'b', text: 'When you need free out-of-the-box integrations' },
+            { id: 'c', text: 'When you need detailed analytics for product events and user funnels (not pages)' },
+            { id: 'd', text: 'When you need click heatmaps' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Mixpanel is event-driven analytics: you define events ("Sign Up", "Add to Cart", "Checkout Complete"), then build funnels and cohort analysis. Google Analytics is historically page-and-session oriented — better for marketing analytics. Hotjar — for visual behaviour.',
+        },
       ],
     },
   ],
