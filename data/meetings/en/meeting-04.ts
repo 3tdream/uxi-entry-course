@@ -973,12 +973,6 @@ export const meeting04: Meeting = {
           caption: 'Deep Dive — NPS & SUS: NPS = %promoters − %detractors; SUS = standardised 0-100 questionnaire (avg 68, above 80 = excellent).',
         },
         {
-          type: 'image' as const,
-          src: '/images/meeting-04-ux-metrics-dashboard.webp',
-          alt: 'Dashboard showing four UX metrics',
-          caption: 'Key quantitative UX metrics: SUS, NPS, CSAT, Time on Task.',
-        },
-        {
           type: 'divider' as const,
         },
         {

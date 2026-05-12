@@ -973,12 +973,6 @@ export const meeting04: Meeting = {
           caption: 'Deep Dive — NPS и SUS: NPS = %промоутеры − %критики, SUS = стандартизированный опросник 0-100 (avg 68, выше 80 = excellent).',
         },
         {
-          type: 'image' as const,
-          src: '/images/meeting-04-ux-metrics-dashboard.webp',
-          alt: 'Дашборд с четырьмя метриками UX',
-          caption: 'Ключевые количественные метрики UX: SUS, NPS, CSAT, Time on Task.',
-        },
-        {
           type: 'divider' as const,
         },
         {
