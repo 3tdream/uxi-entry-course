@@ -49,7 +49,7 @@ export default function PartPage() {
     <div className="min-h-screen">
       {/* Top bar */}
       <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b">
-        <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-4">
+        <div className="max-w-[1440px] mx-auto px-6 py-3 flex items-center gap-4">
           <Link
             href={`/meeting/${meetingId}`}
             className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -66,7 +66,7 @@ export default function PartPage() {
       </div>
 
       {/* Content */}
-      <article className="max-w-3xl mx-auto px-6 py-10">
+      <article className="max-w-[1440px] mx-auto px-6 py-10">
         <header className="mb-8">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
             <BookOpen className="w-4 h-4" />

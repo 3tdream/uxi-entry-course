@@ -1052,7 +1052,7 @@ export default function ResearchRecapPage() {
     <div className="min-h-screen">
       {/* Top bar */}
       <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b">
-        <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-4">
+        <div className="max-w-[1440px] mx-auto px-6 py-3 flex items-center gap-4">
           <Link
             href="/meeting/4/part/part-2"
             className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -1069,7 +1069,7 @@ export default function ResearchRecapPage() {
       </div>
 
       {/* Content */}
-      <article className="max-w-3xl mx-auto px-6 py-10">
+      <article className="max-w-[1440px] mx-auto px-6 py-10">
         <header className="mb-8">
           <h1 className="text-3xl font-bold mb-2">{c.title}</h1>
           <p className="text-lg text-muted-foreground">{c.tagline}</p>
