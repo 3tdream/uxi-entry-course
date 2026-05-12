@@ -645,7 +645,22 @@ function TableSection({
 
 // ---- Main Renderer ----
 
-export function SectionRenderer({ section }: { section: Section }) {
+// Text-heavy sections render at a comfortable reading line length (max 1280px,
+// matching ~75 chars on body type). Visual sections (images, diagrams, multi-
+// column grids, case-study cards) fill the wider 1440px article container so
+// dense infographics don't get squished.
+const NARROW_TYPES: ReadonlyArray<Section['type']> = [
+  'text',
+  'heading',
+  'subheading',
+  'callout',
+  'quote',
+  'key-concepts',
+  'checklist',
+  'divider',
+]
+
+function renderSection(section: Section) {
   switch (section.type) {
     case 'text':
       return <TextSection content={section.content} />
@@ -697,4 +712,15 @@ export function SectionRenderer({ section }: { section: Section }) {
     default:
       return null
   }
+}
+
+export function SectionRenderer({ section }: { section: Section }) {
+  const rendered = renderSection(section)
+  if (!rendered) return null
+  const isNarrow = NARROW_TYPES.includes(section.type)
+  return (
+    <div className={isNarrow ? 'mx-auto w-full max-w-[1280px]' : ''}>
+      {rendered}
+    </div>
+  )
 }
