@@ -257,17 +257,50 @@ export const meeting04: Meeting = {
           type: 'checklist' as const,
           title: 'Usability Test Preparation Checklist',
           items: [
-            'Define the goal: what exactly do we want to learn?',
-            'Formulate 3-5 tasks for the participant',
-            'Tasks should be realistic scenarios, not instructions',
-            'Write an introductory text (without hints about the product)',
-            'Prepare probing questions for each task',
-            'Create a post-test questionnaire (SUS, general impressions)',
-            'Verify the prototype / product is functional',
-            'Set up screen and audio recording',
-            'Run a pilot test with a colleague',
-            'Prepare an informed consent form',
-            'Plan compensation for participants',
+            {
+              text: 'Define the goal: what exactly do we want to learn?',
+              demo: '"Goal: understand whether new users can find and buy headphones in our store in <2 minutes. Hypothesis: the \'sort by price\' filter is not discovered on the first try."',
+            },
+            {
+              text: 'Formulate 3-5 tasks for the participant',
+              demo: '"Task 1: Find wireless headphones under $80. Task 2: Add a product you like to favorites. Task 3: Place an order for home delivery."',
+            },
+            {
+              text: 'Tasks should be realistic scenarios, not instructions',
+              demo: '❌ "Click Menu → Catalog → Electronics → Headphones." ✅ "Imagine you want to buy headphones for running. Find a suitable option." A scenario doesn\'t hand the path — the participant finds it.',
+            },
+            {
+              text: 'Write an introductory text (without hints about the product)',
+              demo: '"You\'ll see a website. Use it as you normally would. Think out loud — what you see, what you expect, what\'s unclear. There are no right answers: we\'re testing the site, not you." No "we have this cool feature X" — that biases attention.',
+            },
+            {
+              text: 'Prepare probing questions for each task',
+              demo: '"What did you expect to see after that click?", "What\'s unclear right now?", "Where, in your opinion, should this button be?". We do **NOT** ask: "Do you like the design?" — that\'s opinion, not usability.',
+            },
+            {
+              text: 'Create a post-test questionnaire (SUS, general impressions)',
+              demo: '10 SUS statements on a 1-5 scale (e.g., "I would like to use this site frequently" / "I found the site too complex") + 1 open question: "What was most annoying?".',
+            },
+            {
+              text: 'Verify the prototype / product is functional',
+              demo: 'Click through every scenario BEFORE the participants arrive: every Figma prototype button leads where it should, no broken links on staging, the demo account logs in. One broken step = test in the trash.',
+            },
+            {
+              text: 'Set up screen and audio recording',
+              demo: '**Lookback / Maze** — screen + face + mic capture out of the box. DIY: **OBS Studio** (free) + **Zoom** for the remote session. Check your mic levels before the test starts — muddy audio kills analysis.',
+            },
+            {
+              text: 'Run a pilot test with a colleague',
+              demo: 'One day before the test, grab a colleague and walk the full scenario: are they hunting for Play? Does the script flow? Are the wording prompts confusing? Does the prototype hang? Log bugs — fix them before real participants.',
+            },
+            {
+              text: 'Prepare an informed consent form',
+              demo: '"I consent to my session being video-recorded for internal design team analysis. The recording is stored for 6 months and not shared with third parties. I can stop the test at any time." + signature and date.',
+            },
+            {
+              text: 'Plan compensation for participants',
+              demo: 'Standard: $25-50 (or equivalent Amazon / store gift card) for 30-45 min of testing. Without payment, your sample skews to friends and product fans — that contaminates the data.',
+            },
           ],
         },
         {

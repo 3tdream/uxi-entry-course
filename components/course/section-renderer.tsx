@@ -64,6 +64,7 @@ function useSectionLabels() {
     result: lang === 'en' ? 'Result' : 'Результат',
     goals: lang === 'en' ? 'Goals' : 'Цели',
     frustrations: lang === 'en' ? 'Frustrations' : 'Фрустрации',
+    demo: lang === 'en' ? 'Demo:' : 'Демо:',
   }
 }
 
@@ -505,17 +506,41 @@ function UserFlowSection({
   )
 }
 
-function ChecklistSection({ title, items }: { title: string; items: string[] }) {
+function ChecklistSection({
+  title,
+  items,
+}: {
+  title: string
+  items: (string | { text: string; demo?: string })[]
+}) {
+  const labels = useSectionLabels()
   return (
     <div className="space-y-2">
       <h3 className="text-lg font-semibold text-foreground">{title}</h3>
       <div className="space-y-2">
-        {items.map((item, i) => (
-          <div key={i} className="flex items-start gap-2.5 p-2 rounded-lg hover:bg-muted/30 transition-colors">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-            <span className="text-sm text-foreground/80"><RichText content={item} /></span>
-          </div>
-        ))}
+        {items.map((item, i) => {
+          const text = typeof item === 'string' ? item : item.text
+          const demo = typeof item === 'string' ? undefined : item.demo
+          return (
+            <div
+              key={i}
+              className="flex items-start gap-2.5 p-2 rounded-lg hover:bg-muted/30 transition-colors"
+            >
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+              <div className="flex-1 min-w-0">
+                <div className="text-sm text-foreground/80">
+                  <RichText content={text} />
+                </div>
+                {demo && (
+                  <div className="mt-1.5 pl-3 border-l-2 border-emerald-200 text-xs text-muted-foreground leading-relaxed">
+                    <span className="font-semibold text-emerald-700 mr-1">{labels.demo}</span>
+                    <RichText content={demo} />
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

@@ -20,6 +20,11 @@ export interface KeyConcept {
   definition: string
 }
 
+export interface ChecklistItem {
+  text: string
+  demo?: string
+}
+
 export interface ComparisonItem {
   label: string
   ux: string
@@ -84,7 +89,7 @@ export type Section =
   | { type: 'case-study'; title: string; company: string; problem: string; solution: string; result: string; steps?: CaseStudyStep[] }
   | { type: 'user-persona'; persona: PersonaData }
   | { type: 'user-flow'; title: string; steps: UserFlowStep[]; connections: UserFlowConnection[] }
-  | { type: 'checklist'; title: string; items: string[] }
+  | { type: 'checklist'; title: string; items: (string | ChecklistItem)[] }
   | { type: 'columns'; variant?: 'grid' | 'stacked'; columns: { title: string; items: string[] }[] }
   | { type: 'table'; title?: string; headers: string[]; rows: string[][]; caption?: string }
   | { type: 'quote'; text: string; author: string; role?: string }
