@@ -608,12 +608,6 @@ export const meeting04: Meeting = {
             'Heuristic evaluation is **cheap and fast**. 3 experts in 2 hours can find ~75% of usability problems. It is a great starting point but not a replacement for usability testing with real users.',
         },
         {
-          type: 'image' as const,
-          src: '/images/meeting-04-nielsen-10-heuristics.webp',
-          alt: 'Grid of ten cards with icons for Nielsen heuristics',
-          caption: "Nielsen's ten usability heuristics.",
-        },
-        {
           type: 'divider' as const,
         },
         // --- Heuristic 1 ---
