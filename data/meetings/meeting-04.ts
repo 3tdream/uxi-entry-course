@@ -177,12 +177,6 @@ export const meeting04: Meeting = {
           ],
         },
         {
-          type: 'image' as const,
-          src: '/images/meeting-04-five-users-curve.webp',
-          alt: 'Логарифмическая кривая обнаружения проблем юзабилити',
-          caption: '5 пользователей находят ~85% проблем юзабилити.',
-        },
-        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:

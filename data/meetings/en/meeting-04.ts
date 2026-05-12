@@ -177,12 +177,6 @@ export const meeting04: Meeting = {
           ],
         },
         {
-          type: 'image' as const,
-          src: '/images/meeting-04-five-users-curve.webp',
-          alt: 'Logarithmic curve of usability problem discovery',
-          caption: 'Five users find roughly 85 percent of usability problems.',
-        },
-        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
