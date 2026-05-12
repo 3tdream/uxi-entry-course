@@ -1091,6 +1091,99 @@ export const meeting04: Meeting = {
           alt: 'The 5-Screen Challenge: открыть приложение → перейти к 5 экранам → проверить против H1/H4/H5/H8 → записать топ-5 находок — мини-UX-аудит за один присест',
           caption: 'The 5-Screen Challenge: мини-UX-аудит за один присест — 5 экранов × 4 эвристики = первая практическая оценка.',
         },
+        {
+          type: 'divider' as const,
+        },
+        // ================================================
+        // RECAP M3 + M4 — Research Module Summary
+        // ================================================
+        {
+          type: 'heading' as const,
+          content: 'Итоги модуля Research: M3 → M4',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'За два урока ты прошёл полный цикл UX-исследования — от **«кто этот пользователь?»** до **«работает ли наш дизайн и сколько это стоит бизнесу?»**. Ниже — закономерная цепочка из 7 шагов, по которой эти инструменты складываются в единый процесс. Это не «список тем», а **рабочий конвейер**: каждый шаг даёт артефакт для следующего.',
+        },
+        {
+          type: 'diagram' as const,
+          title: 'The Research Loop — 7 шагов от пустого экрана до измеримого результата',
+          description:
+            'M3 строит модель пользователя, M4 проверяет, что дизайн ей соответствует. Цикл замыкается через триангуляцию и итерацию.',
+          items: [
+            '1. EMPATHIZE (M3-P1) — Кто пользователь? → Persona + Empathy Map + JTBD',
+            '2. MAP (M3-P2) — Где он спотыкается? → User Journey Map, 6 stages',
+            '3. HYPOTHESIZE — Чем заменить трение? (мост M3 → M4)',
+            '4. TEST (M4-P1) — Работает ли дизайн? → 5 users + think-aloud + task scenarios',
+            '5. EVALUATE (M4-P2) — Нарушает ли правила? → 10 эвристик + heuristic evaluation',
+            '6. MEASURE (M4-P2) — Какие числа? → TCR, SUS, NPS, CSAT + GA/Hotjar/Mixpanel',
+            '7. TRIANGULATE & ITERATE — Три линзы (UX Triad) + Critical Blockers first + iteration > volume',
+          ],
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Что должно остаться в голове — чек-лист концептов',
+        },
+        {
+          type: 'checklist' as const,
+          title: '🧠 Понять пользователя (M3 Part 1)',
+          items: [
+            'Persona: имя, возраст, роль, цели, фрустрации, цитата',
+            'Empathy Map: 4 квадранта (Thinks / Says / Feels / Does) + Pains/Gains',
+            'JTBD-формула: «Когда [ситуация], я хочу [мотивация], чтобы [результат]»',
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '🗺️ Найти трение (M3 Part 2)',
+          items: [
+            'User Journey Map: 6 стадий (Awareness → Consideration → Decision → Onboarding → Use → Loyalty)',
+            'Touchpoint (где встречается с продуктом) vs Pain point (где спотыкается)',
+            'Эмоциональная кривая — где пользователь злится, а где приятно удивлён',
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '🧪 Проверить дизайн (M4 Part 1)',
+          items: [
+            'Правило 5 пользователей: один раунд находит ~85% проблем (Нильсен 2000)',
+            'Модерируемое vs немодерируемое — глубина или масштаб (Format Matrix)',
+            'Think-aloud + Golden Rule: никогда не подсказывай участнику',
+            'Task formulation: реалистичный сценарий, а не инструкция «нажми сюда»',
+            '10-step lifecycle: Planning → Execution → Action',
+            'Prioritisation Matrix: Critical Blockers (high freq × high severity) — первыми',
+            'Iteration > Volume: 3 раунда × 5 > 1 раунд × 15',
+            'Actionable report: issue + severity + evidence (N/5) + recommendation + business impact',
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '📊 Оценить и измерить (M4 Part 2)',
+          items: [
+            '10 эвристик Нильсена, сгруппированные в 5 тем (System Transparency, User Agency, Error Management, Cognitive Friction, Signal to Noise)',
+            'Heuristic evaluation: 3-5 экспертов, ~75% проблем за 2 часа (но НЕ замена юзабилити-теста)',
+            'SUS: стандартизированный 10-вопросник, шкала 0-100, avg 68, выше 80 — excellent UX',
+            'NPS: % промоутеров (9-10) − % критиков (0-6), хороший SaaS ≥ +30',
+            'CSAT: 1-5 сразу после действия, ловит «горячую» эмоцию',
+            'Task Completion Rate ≥ 78% — норма, ниже = серьёзная проблема юзабилити',
+            'Error Rate (цель 0) и Time on Task (сравнивай pre/post)',
+            'Аналитика: GA — The What (страницы/трафик), Hotjar — The Where (heatmaps), Mixpanel — The Who (события/воронки)',
+            'UX Triad: Analytics × Observation × Heuristics — настоящая ясность только на пересечении',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Доказательства из реальных кейсов модуля:** Booking.com (M4-P1) — 3 раунда по 5 человек дали +16 п.п. конверсии формы и −25% support tickets. Тинькофф (M4-P2) — heuristic evaluation 15 экранов выявил 47 проблем, 8 критических фиксов подняли App Store с 3.2 до 4.6, SUS с 58 до 82.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Полный recap с диаграммой и mini-quiz по двум урокам** → [перейти на /recap/research](/recap/research). Там по каждому шагу — ссылка обратно на конкретный раздел митинга, если нужно освежить.',
+        },
       ],
       quiz: [
         {

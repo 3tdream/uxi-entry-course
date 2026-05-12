@@ -1091,6 +1091,99 @@ export const meeting04: Meeting = {
           alt: 'The 5-Screen Challenge: open an app → navigate to 5 screens → audit against H1/H4/H5/H8 → write up top-5 findings — a mini UX audit in one sitting',
           caption: 'The 5-Screen Challenge: a mini UX audit in one sitting — 5 screens × 4 heuristics = your first practical evaluation.',
         },
+        {
+          type: 'divider' as const,
+        },
+        // ================================================
+        // RECAP M3 + M4 — Research Module Summary
+        // ================================================
+        {
+          type: 'heading' as const,
+          content: 'Research Module Recap: M3 → M4',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Across these two lessons you walked the full UX research cycle — from **"who is this user?"** to **"does our design work and what does it cost the business?"**. Below is a 7-step chain that turns those tools into a single workflow. This is not a "list of topics" — it\'s a **production pipeline**: each step produces the artifact the next one needs.',
+        },
+        {
+          type: 'diagram' as const,
+          title: 'The Research Loop — 7 steps from blank screen to measurable result',
+          description:
+            'M3 builds a user model, M4 tests that the design matches it. The loop closes through triangulation and iteration.',
+          items: [
+            '1. EMPATHIZE (M3-P1) — Who is the user? → Persona + Empathy Map + JTBD',
+            '2. MAP (M3-P2) — Where do they trip? → User Journey Map, 6 stages',
+            '3. HYPOTHESIZE — How to replace friction? (bridge M3 → M4)',
+            '4. TEST (M4-P1) — Does the design work? → 5 users + think-aloud + task scenarios',
+            '5. EVALUATE (M4-P2) — Does it break the rules? → 10 heuristics + heuristic evaluation',
+            '6. MEASURE (M4-P2) — What do the numbers say? → TCR, SUS, NPS, CSAT + GA/Hotjar/Mixpanel',
+            '7. TRIANGULATE & ITERATE — Three lenses (UX Triad) + Critical Blockers first + iteration > volume',
+          ],
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Concept checklist — what should stick',
+        },
+        {
+          type: 'checklist' as const,
+          title: '🧠 Understand the user (M3 Part 1)',
+          items: [
+            'Persona: name, age, role, goals, frustrations, quote',
+            'Empathy Map: 4 quadrants (Thinks / Says / Feels / Does) + Pains/Gains',
+            'JTBD formula: "When [situation], I want to [motivation], so I can [outcome]"',
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '🗺️ Find the friction (M3 Part 2)',
+          items: [
+            'User Journey Map: 6 stages (Awareness → Consideration → Decision → Onboarding → Use → Loyalty)',
+            'Touchpoint (where they meet the product) vs Pain point (where they trip)',
+            'Emotion curve — where users get angry and where they\'re pleasantly surprised',
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '🧪 Test the design (M4 Part 1)',
+          items: [
+            '5-user rule: one round uncovers ~85% of issues (Nielsen 2000)',
+            'Moderated vs unmoderated — depth or scale (Format Matrix)',
+            'Think-aloud + Golden Rule: never prompt the participant',
+            'Task formulation: realistic scenario, not a "click here" instruction',
+            '10-step lifecycle: Planning → Execution → Action',
+            'Prioritisation Matrix: Critical Blockers (high freq × high severity) first',
+            'Iteration > Volume: 3 rounds × 5 > 1 round × 15',
+            'Actionable report: issue + severity + evidence (N/5) + recommendation + business impact',
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '📊 Evaluate and measure (M4 Part 2)',
+          items: [
+            'Nielsen\'s 10 heuristics grouped into 5 themes (System Transparency, User Agency, Error Management, Cognitive Friction, Signal to Noise)',
+            'Heuristic evaluation: 3-5 experts, ~75% of issues in 2 hours (but NOT a replacement for usability testing)',
+            'SUS: standardised 10-question survey, 0-100 scale, avg 68, above 80 = excellent UX',
+            'NPS: % promoters (9-10) − % detractors (0-6), good SaaS ≥ +30',
+            'CSAT: 1-5 right after an action, captures the "hot" emotion',
+            'Task Completion Rate ≥ 78% — baseline; below = serious usability problem',
+            'Error Rate (target 0) and Time on Task (compare pre/post)',
+            'Analytics: GA — The What (pages/traffic), Hotjar — The Where (heatmaps), Mixpanel — The Who (events/funnels)',
+            'UX Triad: Analytics × Observation × Heuristics — true clarity only at the intersection',
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Real-world proof points from this module:** Booking.com (M4-P1) — 3 rounds × 5 users → +16 pp form conversion and −25% support tickets. Tinkoff (M4-P2) — heuristic evaluation of 15 screens surfaced 47 issues; fixing the 8 critical ones lifted App Store from 3.2 to 4.6 and SUS from 58 to 82.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Full recap with diagram and a cross-lesson mini-quiz** → [go to /recap/research](/recap/research). Each step there links back to the exact meeting section, in case you need to refresh.',
+        },
       ],
       quiz: [
         {
