@@ -587,6 +587,12 @@ export const meeting04: Meeting = {
       duration: '45 min',
       sections: [
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-part2-evaluation-toolkit.webp',
+          alt: 'Infographic: the UX Evaluation Toolkit — qualitative heuristics (75% of issues found by 3 experts in 2 hours) and quantitative metrics (SUS, NPS, Task Success), Real-World Impact with Before/After',
+          caption: 'Part 2 map: Nielsen heuristics (qualitative) + quantitative metrics (numerical) = a complete picture of UX health.',
+        },
+        {
           type: 'heading' as const,
           content: '10 Nielsen Heuristics',
         },
@@ -657,6 +663,12 @@ export const meeting04: Meeting = {
             description:
               'Message: "We couldn\'t place your order. Please try again in a minute. If the problem persists, reach out to us via chat — we\'ll help!" Clear and provides a path forward.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme1-system-transparency.webp',
+          alt: 'Theme 1: System Transparency — H1 Visibility of System Status and H2 Match System and Real World, two X/✓ comparisons',
+          caption: 'Theme 1 — system transparency: H1 (visibility of status) + H2 (speak the user\'s language).',
         },
         // --- Heuristic 3 ---
         {
@@ -754,6 +766,12 @@ export const meeting04: Meeting = {
               'The promo code is automatically applied from the banner. "Recently Viewed" items are visible on the homepage. Search suggests results from history and popular queries.',
           },
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme4-cognitive-friction.webp',
+          alt: 'Theme 4: Cognitive Friction — H4 Consistency & Standards and H6 Recognition Rather Than Recall, bad/good pairs',
+          caption: 'Theme 4 — cognitive friction: H4 (consistency and standards) + H6 (recognition over recall).',
+        },
         // --- Heuristic 7 ---
         {
           type: 'subheading' as const,
@@ -777,6 +795,12 @@ export const meeting04: Meeting = {
             description:
               'Ctrl+N instantly creates a document. Command Palette (Ctrl+K) for quick access. The menu is still there for beginners. Notion and VS Code are great examples.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme2-user-agency.webp',
+          alt: 'Theme 2: User Agency & Control — H3 User Control & Freedom and H7 Flexibility & Efficiency of Use',
+          caption: 'Theme 2 — agency and efficiency: H3 (control with an emergency exit) + H7 (accelerators for power users).',
         },
         // --- Heuristic 8 ---
         {
@@ -826,6 +850,12 @@ export const meeting04: Meeting = {
               '"This email is already registered. Log in or use a different email." Inline validation in real time. Stripe shows "Invalid card number — check the last 4 digits."',
           },
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme3-error-management.webp',
+          alt: 'Theme 3: Error Management — H5 Error Prevention and H9 Recognise, Diagnose, Recover from Errors',
+          caption: 'Theme 3 — error management: H5 (prevent errors by design) + H9 (clear diagnosis and a path forward).',
+        },
         // --- Heuristic 10 ---
         {
           type: 'subheading' as const,
@@ -851,7 +881,19 @@ export const meeting04: Meeting = {
           },
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme5-signal-to-noise.webp',
+          alt: 'Theme 5: Signal to Noise — H8 Aesthetic & Minimalist Design and H10 Help & Documentation',
+          caption: 'Theme 5 — signal vs noise: H8 (minimalism without clutter) + H10 (task-oriented help).',
+        },
+        {
           type: 'divider' as const,
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-two-pillars.webp',
+          alt: 'Two Pillars of UX Evaluation: Qualitative (heuristics, expert method, ~75% of issues) and Quantitative (metrics, objective numbers, progress tracking)',
+          caption: 'Two Pillars: heuristics are the "rules", metrics are the "ruler". One without the other leaves blind spots.',
         },
         {
           type: 'subheading' as const,
@@ -905,6 +947,18 @@ export const meeting04: Meeting = {
         },
         {
           type: 'image' as const,
+          src: '/images/meeting-04-metrics-dashboard-vital-signs.webp',
+          alt: 'Vital Signs of UX Health: Task Completion Rate (target ≥78%), Error Rate (target 0), Time on Task (pre/post redesign), CSAT (1-5 stars)',
+          caption: 'Metrics Dashboard: Vital Signs of UX Health — the four indicators you need to quantify a redesign\'s ROI.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-nps-sus-deep-dive.webp',
+          alt: 'Deep Dive: NPS (formula, scale of promoters/passives/detractors) and SUS (standardised 10-question survey, 0-100 scale with Critical Danger / Global Average / Excellent UX bands)',
+          caption: 'Deep Dive — NPS & SUS: NPS = %promoters − %detractors; SUS = standardised 0-100 questionnaire (avg 68, above 80 = excellent).',
+        },
+        {
+          type: 'image' as const,
           src: '/images/meeting-04-ux-metrics-dashboard.webp',
           alt: 'Dashboard showing four UX metrics',
           caption: 'Key quantitative UX metrics: SUS, NPS, CSAT, Time on Task.',
@@ -952,6 +1006,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-analytics-engine-matrix.webp',
+          alt: 'Table: UX Analytics Engine Matrix — Google Analytics (The What / Traffic), Hotjar (The Where / Micro), Mixpanel (The Who / Funnels) with focus, features, and best use case',
+          caption: 'Analytics Engine Matrix: GA answers "what", Hotjar answers "where", Mixpanel answers "who and in which funnel".',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
@@ -961,8 +1021,20 @@ export const meeting04: Meeting = {
           type: 'divider' as const,
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-ux-triad.webp',
+          alt: 'UX Triad: overlapping circles of Analytics (The Where), Observation (The What), and Heuristics (The Why) — true product clarity exists only where all three overlap',
+          caption: 'UX Triad: analytics × observation × heuristics. One source lies, two show, three diagnose.',
+        },
+        {
           type: 'subheading' as const,
           content: 'Case Study: Heuristic Evaluation of a Mobile Bank',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-tinkoff-audit.webp',
+          alt: 'Case Study: Tinkoff Bank Audit — Problem (3.2 store rating), Process (3 experts × 15 screens × 10 heuristics), Findings (47 problems, 8 critical, clusters around H8/H1/H5)',
+          caption: 'Tinkoff Audit: 3 experts × 15 screens × 10 heuristics → 47 findings (8 critical). Top offenders: H8, H1, H5.',
         },
         {
           type: 'case-study' as const,
@@ -998,6 +1070,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-tinkoff-impact.webp',
+          alt: 'Commercial Impact funnel: 15 screens → 47 issues → 8 critical fixed → result: App Store 3.2→4.6, SUS 58→82, Time on Transfer 45s→18s, NPS +12→+45',
+          caption: 'Commercial Impact: 8 critical fixes → App Store 3.2→4.6, SUS 58→82, transfer time 45→18s, NPS +12→+45.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -1012,6 +1090,12 @@ export const meeting04: Meeting = {
           variant: 'tip' as const,
           content:
             '**Homework:** Choose any app on your phone. Conduct a mini heuristic evaluation: go through 5 screens and for each one check whether heuristics #1, #4, #5, and #8 are violated. Record 5 findings.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-5-screen-challenge.webp',
+          alt: 'The 5-Screen Challenge: open an app → navigate to 5 screens → audit against H1/H4/H5/H8 → write up top-5 findings — a mini UX audit in one sitting',
+          caption: 'The 5-Screen Challenge: a mini UX audit in one sitting — 5 screens × 4 heuristics = your first practical evaluation.',
         },
       ],
       quiz: [

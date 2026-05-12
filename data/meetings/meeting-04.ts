@@ -587,6 +587,12 @@ export const meeting04: Meeting = {
       duration: '45 мин',
       sections: [
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-part2-evaluation-toolkit.webp',
+          alt: 'Инфографика: набор инструментов UX-оценки — качественные эвристики (75% проблем находят 3 эксперта за 2 часа) и количественные метрики (SUS, NPS, Task Success), Real-World Impact с Before/After',
+          caption: 'Карта части 2: эвристики Нильсена (качество) + количественные метрики (числа) = полная картина UX-здоровья.',
+        },
+        {
           type: 'heading' as const,
           content: '10 эвристик Нильсена',
         },
@@ -657,6 +663,12 @@ export const meeting04: Meeting = {
             description:
               'Сообщение: «Не удалось оформить заказ. Попробуйте ещё раз через минуту. Если проблема повторится, напишите нам в чат — мы поможем!». Понятно и есть путь решения.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme1-system-transparency.webp',
+          alt: 'Theme 1: System Transparency — H1 Visibility of System Status и H2 Match System and Real World, по два примера X/✓',
+          caption: 'Theme 1 — прозрачность системы: H1 (видимость состояния) + H2 (язык пользователя).',
         },
         // --- Heuristic 3 ---
         {
@@ -754,6 +766,12 @@ export const meeting04: Meeting = {
               'Промокод автоматически применяется из баннера. «Недавно просмотренные» товары видны на главной. Поиск предлагает варианты из истории и популярных запросов.',
           },
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme4-cognitive-friction.webp',
+          alt: 'Theme 4: Cognitive Friction — H4 Consistency & Standards и H6 Recognition Rather Than Recall, пары плохо/хорошо',
+          caption: 'Theme 4 — когнитивное трение: H4 (консистентность) + H6 (узнавание вместо запоминания).',
+        },
         // --- Heuristic 7 ---
         {
           type: 'subheading' as const,
@@ -777,6 +795,12 @@ export const meeting04: Meeting = {
             description:
               'Ctrl+N мгновенно создаёт документ. Command Palette (Ctrl+K) для быстрого доступа. При этом меню для новичков сохраняется. Notion и VS Code — примеры.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme2-user-agency.webp',
+          alt: 'Theme 2: User Agency & Control — H3 User Control & Freedom и H7 Flexibility & Efficiency of Use',
+          caption: 'Theme 2 — свобода и эффективность: H3 (контроль и аварийный выход) + H7 (ускорители для опытных).',
         },
         // --- Heuristic 8 ---
         {
@@ -826,6 +850,12 @@ export const meeting04: Meeting = {
               '«Этот email уже зарегистрирован. Войдите или используйте другой email». Inline-валидация в реальном времени. Stripe показывает «Неверный номер карты — проверьте 4 последние цифры».',
           },
         },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme3-error-management.webp',
+          alt: 'Theme 3: Error Management — H5 Error Prevention и H9 Recognise, Diagnose, Recover from Errors',
+          caption: 'Theme 3 — управление ошибками: H5 (предотвратить ошибку дизайном) + H9 (понятная диагностика и путь решения).',
+        },
         // --- Heuristic 10 ---
         {
           type: 'subheading' as const,
@@ -851,7 +881,19 @@ export const meeting04: Meeting = {
           },
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-theme5-signal-to-noise.webp',
+          alt: 'Theme 5: Signal to Noise — H8 Aesthetic & Minimalist Design и H10 Help & Documentation',
+          caption: 'Theme 5 — сигнал/шум: H8 (минимализм без лишнего) + H10 (помощь, ориентированная на задачи).',
+        },
+        {
           type: 'divider' as const,
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-two-pillars.webp',
+          alt: 'Two Pillars of UX Evaluation: Qualitative (эвристики, экспертный метод, ~75% проблем) и Quantitative (метрики, объективные числа, отслеживание прогресса)',
+          caption: 'Two Pillars: эвристики — «правила», метрики — «линейка». Один без другого не закрывает картину.',
         },
         {
           type: 'subheading' as const,
@@ -905,6 +947,18 @@ export const meeting04: Meeting = {
         },
         {
           type: 'image' as const,
+          src: '/images/meeting-04-metrics-dashboard-vital-signs.webp',
+          alt: 'Vital Signs of UX Health: Task Completion Rate (target ≥78%), Error Rate (цель 0), Time on Task (pre/post redesign), CSAT (1-5 звёзд)',
+          caption: 'Metrics Dashboard: Vital Signs of UX Health — 4 базовых индикатора, без которых нельзя замерить ROI редизайна.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-nps-sus-deep-dive.webp',
+          alt: 'Deep Dive: NPS (формула, шкала промоутеров/пассивных/критиков) и SUS (стандартизированный 10-вопросный опрос, шкала 0-100 с зонами Critical Danger / Global Average / Excellent UX)',
+          caption: 'Deep Dive — NPS и SUS: NPS = %промоутеры − %критики, SUS = стандартизированный опросник 0-100 (avg 68, выше 80 = excellent).',
+        },
+        {
+          type: 'image' as const,
           src: '/images/meeting-04-ux-metrics-dashboard.webp',
           alt: 'Дашборд с четырьмя метриками UX',
           caption: 'Ключевые количественные метрики UX: SUS, NPS, CSAT, Time on Task.',
@@ -952,6 +1006,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-analytics-engine-matrix.webp',
+          alt: 'Таблица: UX Analytics Engine Matrix — Google Analytics (The What / Traffic), Hotjar (The Where / Micro), Mixpanel (The Who / Funnels) с фокусом, фичами и use case',
+          caption: 'Analytics Engine Matrix: GA отвечает на «что», Hotjar — на «где», Mixpanel — на «кто и в какой воронке».',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
@@ -961,8 +1021,20 @@ export const meeting04: Meeting = {
           type: 'divider' as const,
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-ux-triad.webp',
+          alt: 'UX Triad: пересечение Analytics (The Where), Observation (The What) и Heuristics (The Why) — настоящая ясность появляется только там, где все три перекрываются',
+          caption: 'UX Triad: аналитика × наблюдение × эвристики. Один источник врёт, два показывают, три — ставят диагноз.',
+        },
+        {
           type: 'subheading' as const,
           content: 'Кейс: эвристическая оценка мобильного банка',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-tinkoff-audit.webp',
+          alt: 'Case Study: Tinkoff Bank Audit — Problem (3.2 рейтинг в Store), Process (3 эксперта × 15 экранов × 10 эвристик), Findings (47 проблем, 8 критических, кластеры H8/H1/H5)',
+          caption: 'Tinkoff Audit: 3 эксперта × 15 экранов × 10 эвристик → 47 находок (8 критических). Главные нарушители — H8, H1, H5.',
         },
         {
           type: 'case-study' as const,
@@ -998,6 +1070,12 @@ export const meeting04: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-04-tinkoff-impact.webp',
+          alt: 'Commercial Impact воронки: 15 экранов → 47 проблем → 8 критических исправлены → результат: App Store 3.2→4.6, SUS 58→82, Time on Transfer 45с→18с, NPS +12→+45',
+          caption: 'Commercial Impact: 8 критических фиксов → App Store 3.2→4.6, SUS 58→82, время перевода 45→18с, NPS +12→+45.',
+        },
+        {
           type: 'divider' as const,
         },
         {
@@ -1012,6 +1090,12 @@ export const meeting04: Meeting = {
           variant: 'tip' as const,
           content:
             '**Домашнее задание:** Выберите любое приложение на вашем телефоне. Проведите мини-эвристическую оценку: пройдите 5 экранов и для каждого проверьте, нарушаются ли эвристики #1, #4, #5, #8. Запишите 5 находок.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-04-5-screen-challenge.webp',
+          alt: 'The 5-Screen Challenge: открыть приложение → перейти к 5 экранам → проверить против H1/H4/H5/H8 → записать топ-5 находок — мини-UX-аудит за один присест',
+          caption: 'The 5-Screen Challenge: мини-UX-аудит за один присест — 5 экранов × 4 эвристики = первая практическая оценка.',
         },
       ],
       quiz: [
