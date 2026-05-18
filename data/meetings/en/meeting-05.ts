@@ -181,7 +181,48 @@ export const meeting05: Meeting = {
         {
           type: 'text' as const,
           content:
-            'Surveys are a **quantitative** method: they provide numbers and statistics. They are ideal when you need to validate insights from interviews on a large sample. Popular tools: Google Forms (free), Typeform (beautiful forms), SurveyMonkey (analytics), Hotjar (in-product context).',
+            'Surveys are a **quantitative** method: they provide numbers and statistics. They are ideal when you need to validate insights from interviews on a large sample.',
+        },
+        {
+          type: 'columns' as const,
+          columns: [
+            {
+              title: '[Google Forms ↗](https://forms.google.com/)',
+              items: [
+                'Free, no respondent limit',
+                'Fast setup from templates',
+                'Auto-export to Google Sheets',
+                'Downsides: default branding, no conversational UI',
+              ],
+            },
+            {
+              title: '[Typeform ↗](https://www.typeform.com/)',
+              items: [
+                'Conversational UI — one question at a time',
+                'Higher completion rate (~40% lift over baseline)',
+                'Logic branching out of the box',
+                'Paid from $25/mo after the first 10 responses',
+              ],
+            },
+            {
+              title: '[SurveyMonkey ↗](https://www.surveymonkey.com/)',
+              items: [
+                'Ready-made templates: NPS, CSAT, product surveys',
+                'Built-in analytics + industry benchmarks',
+                'Enterprise corporate standard',
+                '10-question cap on the free plan',
+              ],
+            },
+            {
+              title: '[Tally ↗](https://tally.so/)',
+              items: [
+                'Free Typeform-style builder',
+                'No limits on questions or responses',
+                'Conditional logic + payment forms',
+                'Younger product, fewer integrations',
+              ],
+            },
+          ],
         },
         {
           type: 'text' as const,
@@ -244,9 +285,50 @@ export const meeting05: Meeting = {
             '\uD83D\uDFE2 Open: participants create their own categories \u2192 for discovering new IA',
             '\uD83D\uDD35 Closed: categories are fixed \u2192 for validating existing IA',
             '\uD83D\uDFE1 Hybrid: base categories + free-form \u2192 best balance',
-            '\uD83D\uDCCA Tools: Optimal Workshop, Maze, physical cards on a table (offline)',
             '\uD83D\uDC65 Participants: 15-30 people for statistical significance',
             '\uD83D\uDCC8 Result: dendrogram (similarity matrix) for building navigation',
+            '\uD83C\uDCCF Offline option: physical cards on a table \u2014 fine for discovery, hard to scale',
+          ],
+        },
+        {
+          type: 'columns' as const,
+          columns: [
+            {
+              title: '[Optimal Workshop \u2197](https://www.optimalworkshop.com/)',
+              items: [
+                'Gold standard for card sort + tree testing',
+                'All three sort modes + native dendrogram',
+                'Remote unmoderated research at scale',
+                'Paid: from $191/mo, student licenses available',
+              ],
+            },
+            {
+              title: '[Maze \u2197](https://maze.co/)',
+              items: [
+                'Card sort bundled with usability testing',
+                'Native Figma integration \u2014 import prototype directly',
+                'Free plan up to 3 projects',
+                'Caveat: dendrogram is leaner than Optimal\u2019s',
+              ],
+            },
+            {
+              title: '[UXtweak \u2197](https://www.uxtweak.com/)',
+              items: [
+                'Strong free tier (unlimited respondents per study)',
+                'European data residency (GDPR-friendly)',
+                'Card sort + tree testing + first-click test',
+                'Younger product, UI rough in places',
+              ],
+            },
+            {
+              title: '[Lyssna \u2197](https://www.lyssna.com/)',
+              items: [
+                'Formerly UsabilityHub \u2014 rebranded as Lyssna',
+                'Strong first-click test and preference test',
+                'One of the best tree testing tools in its class',
+                'Paid: from $79/mo for serious research',
+              ],
+            },
           ],
         },
         {
@@ -310,14 +392,38 @@ export const meeting05: Meeting = {
           type: 'checklist' as const,
           title: 'Checklist: Preparing for a User Interview',
           items: [
-            'Research goal is defined (1-2 specific questions)',
-            'Guide with 8-12 open-ended questions is prepared',
-            '5-8 participants from the target audience are recruited',
-            'Recording consent is prepared (NDA if needed)',
-            'Pilot interview is conducted (guide test)',
-            'Recording is enabled (video or audio + notes)',
-            'Template for capturing insights is ready (affinity map)',
-            'Report format for stakeholders is defined',
+            {
+              text: 'Research goal is defined (1-2 specific questions)',
+              demo: '"Goal: understand why users don\'t complete onboarding. Hypothesis: step 3 (document upload) is the main barrier." A goal = the question you\'ll return to in the report.',
+            },
+            {
+              text: 'Guide with 8-12 open-ended questions is prepared',
+              demo: 'Four-block structure: 1) **Tell me about yourself** (warmup), 2) **How do you currently solve X?** (current behavior), 3) **The last time you...** (concrete recall), 4) **What was hard?** (pain points). No yes/no questions.',
+            },
+            {
+              text: '5-8 participants from the target audience are recruited',
+              demo: 'Criteria: active users 25-45, shopped online ≥2× per month, **not working in IT/design** (the last one is critical — peers think like you do).',
+            },
+            {
+              text: 'Recording consent is prepared (NDA if needed)',
+              demo: '"I consent to my session being video-recorded for internal analysis. The recording is stored for 6 months and not shared with third parties. I can stop the test at any time." + signature and date.',
+            },
+            {
+              text: 'Pilot interview is conducted (guide test)',
+              demo: 'Run a colleague through every question in the guide. Time it — if > 60 min, trim the main block. Log: where they asked back, which questions stalled.',
+            },
+            {
+              text: 'Recording is enabled (video or audio + notes)',
+              demo: '[Zoom ↗](https://zoom.us/) + cloud recording (auto-transcript). Or [Loom ↗](https://www.loom.com/) — screen + camera in one. **Check the mic before you start** — muddy audio kills analysis.',
+            },
+            {
+              text: 'Template for capturing insights is ready (affinity map)',
+              demo: 'Affinity map in [Miro ↗](https://miro.com/): one insight = one sticky note. After 5 interviews, clusters are visible to the naked eye. Alternative: [Dovetail ↗](https://dovetail.com/) — built for research tagging.',
+            },
+            {
+              text: 'Report format for stakeholders is defined',
+              demo: 'Minimum: **top-3 insights + participant quotes + next steps**. Stakeholders read the first page — everything else is appendix. One slide = one insight.',
+            },
           ],
         },
       ],
@@ -372,6 +478,58 @@ export const meeting05: Meeting = {
           correctId: 'c',
           explanation:
             'For Card Sorting, 15-30 participants are recommended because the method analyzes grouping patterns through a similarity matrix. With fewer participants, the dendrogram will be unreliable. For interviews, 5-8 people are sufficient, but quantitative methods require a larger sample.',
+        },
+        {
+          question:
+            'What is the primary metric Tree Testing measures?',
+          options: [
+            { id: 'a', text: 'Page load time' },
+            { id: 'b', text: 'Success Rate — % of tasks where the user reached the right item without hints' },
+            { id: 'c', text: 'Purchase conversion' },
+            { id: 'd', text: 'NPS — how much the user liked the navigation' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Tree Testing tests **only navigation structure** (no visual design). The headline metric is Success Rate: did the user reach the correct menu item. The other key metric is Directness: did they reach it without backtracking. NNgroup considers ≥ 70% a healthy benchmark.',
+        },
+        {
+          question:
+            'Which tool is considered the "gold standard" for remote card sorting + tree testing with a dendrogram?',
+          options: [
+            { id: 'a', text: 'Google Forms' },
+            { id: 'b', text: 'Hotjar' },
+            { id: 'c', text: 'Optimal Workshop' },
+            { id: 'd', text: 'Notion' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Optimal Workshop (Treejack + OptimalSort) is the gold standard for remote IA testing. All three sort modes + native dendrogram + tree testing in one suite. Alternatives: Maze (simpler, Figma-anchored), UXtweak (broader free plan), Lyssna (strong in tree testing).',
+        },
+        {
+          question:
+            'When is a survey preferable to interviews?',
+          options: [
+            { id: 'a', text: 'When exploring a new unknown area (discovery)' },
+            { id: 'b', text: 'When you need user quotes for a presentation' },
+            { id: 'c', text: 'When you need to validate a hypothesis on a large sample (>50 people)' },
+            { id: 'd', text: 'When you want to understand "why" a user behaves a certain way' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Surveys are a quantitative method. They answer "how many" and "how often", whereas interviews answer "why". In the discovery phase you want interviews (5-8 people, open-ended questions). Once a hypothesis is framed and you need to check its prevalence — switch to a survey of 50-500 respondents.',
+        },
+        {
+          question:
+            'The "5 Whys" technique in an interview is used for:',
+          options: [
+            { id: 'a', text: 'Asking exactly 5 questions and wrapping up in 5 minutes' },
+            { id: 'b', text: 'Reaching the root cause by repeatedly asking "why?" on each answer' },
+            { id: 'c', text: 'Validating 5 different hypotheses at once' },
+            { id: 'd', text: 'Convincing the user the design is correct' },
+          ],
+          correctId: 'b',
+          explanation:
+            '"5 Whys" is a sequential drill-down: each participant answer becomes a fresh "why?" question. By the 5th level, the non-obvious **root cause** usually surfaces, not the symptom. Example: "I don\'t shop online" → "I don\'t trust it" → "My card was blocked once" → "..." — the real pain isn\'t where it first appeared.',
         },
       ],
     },
@@ -556,40 +714,41 @@ export const meeting05: Meeting = {
           content: 'User Stories for Different Product Types',
         },
         {
-          type: 'subheading' as const,
-          content: 'Web: E-commerce',
-        },
-        {
-          type: 'text' as const,
-          content:
-            '- "As a buyer, I want to compare up to 4 products in a table so I can choose the best option by specifications"\n- "As a seller, I want to receive notifications about new reviews so I can quickly respond to negative feedback"\n- "As a guest, I want to place an order without registering so I don\'t waste time creating an account"',
-        },
-        {
-          type: 'subheading' as const,
-          content: 'Mobile: Fitness App',
-        },
-        {
-          type: 'text' as const,
-          content:
-            '- "As a runner, I want to see my route on the map in real time so I don\'t get lost on a new trail"\n- "As an Apple Watch user, I want to receive a vibration when I reach my target heart rate so I don\'t overexert my heart"\n- "As a beginner, I want to receive ready-made workout programs by skill level so I don\'t have to create a plan on my own"',
-        },
-        {
-          type: 'subheading' as const,
-          content: 'SaaS: Project Management',
-        },
-        {
-          type: 'text' as const,
-          content:
-            '- "As a project manager, I want to set dependencies between tasks so I can see the critical path on the Gantt chart"\n- "As a developer, I want to link commits to tasks so the PM can see progress without manual reports"\n- "As a client, I want to see a read-only project dashboard so I can track progress without access to internal discussions"',
-        },
-        {
-          type: 'subheading' as const,
-          content: 'Data: Analytics Dashboard',
-        },
-        {
-          type: 'text' as const,
-          content:
-            '- "As an analyst, I want to build custom reports with drag-and-drop so I don\'t have to write SQL queries for every data slice"\n- "As a CEO, I want to see company KPIs on one screen with 12-month trends so I can make strategic decisions in 30 seconds"\n- "As a marketer, I want to set up automatic email report delivery every Monday so the team can see results without logging into the system"',
+          type: 'columns' as const,
+          columns: [
+            {
+              title: '🛒 Web: E-commerce',
+              items: [
+                '"As a buyer, I want to compare up to 4 products in a table so I can choose the best option by specifications"',
+                '"As a seller, I want to receive notifications about new reviews so I can quickly respond to negative feedback"',
+                '"As a guest, I want to place an order without registering so I don\'t waste time creating an account"',
+              ],
+            },
+            {
+              title: '🏃 Mobile: Fitness App',
+              items: [
+                '"As a runner, I want to see my route on the map in real time so I don\'t get lost on a new trail"',
+                '"As an Apple Watch user, I want to receive a vibration when I reach my target heart rate so I don\'t overexert my heart"',
+                '"As a beginner, I want to receive ready-made workout programs by skill level so I don\'t have to create a plan on my own"',
+              ],
+            },
+            {
+              title: '🛠 SaaS: Project Management',
+              items: [
+                '"As a project manager, I want to set dependencies between tasks so I can see the critical path on the Gantt chart"',
+                '"As a developer, I want to link commits to tasks so the PM can see progress without manual reports"',
+                '"As a client, I want to see a read-only project dashboard so I can track progress without access to internal discussions"',
+              ],
+            },
+            {
+              title: '📊 Data: Analytics Dashboard',
+              items: [
+                '"As an analyst, I want to build custom reports with drag-and-drop so I don\'t have to write SQL queries for every data slice"',
+                '"As a CEO, I want to see company KPIs on one screen with 12-month trends so I can make strategic decisions in 30 seconds"',
+                '"As a marketer, I want to set up automatic email report delivery every Monday so the team can see results without logging into the system"',
+              ],
+            },
+          ],
         },
         {
           type: 'divider' as const,
@@ -712,14 +871,38 @@ export const meeting05: Meeting = {
           type: 'checklist' as const,
           title: 'Checklist: Writing a User Story',
           items: [
-            'A specific role is stated (not "user" but "buyer," "team lead," "beginner")',
-            'The action the user wants to perform is described',
-            'The value / goal is stated (why this is needed)',
-            'The story passes the INVEST check',
-            '2-5 Acceptance Criteria are written in Given-When-Then format',
-            'The story is small enough for a single sprint',
-            'Priority is set using MoSCoW',
-            'The story has been discussed with the team (definition of ready)',
+            {
+              text: 'A specific role is stated (not "user" but "buyer," "team lead," "beginner")',
+              demo: '❌ "As a user, I want..." — ✅ "As an accountant at a small business setting up their tax report for the first time, I want...". The sharper the role, the sharper the solution.',
+            },
+            {
+              text: 'The action the user wants to perform is described',
+              demo: '❌ "...I want to manage tasks" — ✅ "...I want to drag tasks between status columns without a page reload". Action = verb + object + constraint.',
+            },
+            {
+              text: 'The value / goal is stated (why this is needed)',
+              demo: 'Test: ask **"why?"** of the story. If the answer is generic ("so it\'s more convenient") the value isn\'t revealed yet. Find a business metric: "...so approval time drops from 2 days to 2 hours".',
+            },
+            {
+              text: 'The story passes the INVEST check',
+              demo: 'The most common failure is **S (Small)**. If it can\'t fit a single sprint, decompose: "auth" → "email login", "Google login", "password reset". Also check N (Negotiable) — a story is not a technical specification.',
+            },
+            {
+              text: '2-5 Acceptance Criteria are written in Given-When-Then format',
+              demo: '**Given**: user is on a product page; **When**: they tap "Add to favorites"; **Then**: the icon switches to filled, the header counter increments by 1. One scenario = one AC. [Gherkin syntax ↗](https://cucumber.io/docs/gherkin/) is the canonical notation.',
+            },
+            {
+              text: 'The story is small enough for a single sprint',
+              demo: 'Test: can **one engineer** close this in 3-5 working days? If not — split. A 2-week epic is an epic, not a story. Break it into 5-10 stories with independent ACs.',
+            },
+            {
+              text: 'Priority is set using MoSCoW',
+              demo: '**Must**: release blocker. **Should**: important, but a workaround exists. **Could**: "nice to have". **Won\'t**: parked in backlog with "not this quarter". Sprint mix: 60/20/20 (no Won\'t).',
+            },
+            {
+              text: 'The story has been discussed with the team (definition of ready)',
+              demo: '**Definition of Ready**: PO read it → designer attached a mockup → engineer estimated story points → QA wrote test scenarios. Only then does the story enter the sprint. Without DoR, the team burns the sprint on clarifications.',
+            },
           ],
         },
 
@@ -783,6 +966,58 @@ export const meeting05: Meeting = {
           correctId: 'b',
           explanation:
             'T in INVEST stands for Testable \u2014 the story can be verified through acceptance criteria. If clear AC can\'t be written, the story is too abstract and needs to be broken down. INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable.',
+        },
+        {
+          question:
+            'What does the letter "N" stand for in the INVEST principle?',
+          options: [
+            { id: 'a', text: 'New \u2014 the story must describe new functionality' },
+            { id: 'b', text: 'Negotiable \u2014 implementation details are discussed with the team, not locked down' },
+            { id: 'c', text: 'Numbered \u2014 the story must have a unique Jira ID' },
+            { id: 'd', text: 'Necessary \u2014 the story is mandatory for the release' },
+          ],
+          correctId: 'b',
+          explanation:
+            'N in INVEST = Negotiable. A story is **a prompt for a conversation**, not a technical specification. The PO frames "what and why", the team works out "how". A rigidly prescribed solution kills flexibility and team ownership. Jeff Patton: "User stories are about having better conversations."',
+        },
+        {
+          question:
+            'In the Given-When-Then format for an acceptance criterion, what does the "Given" block describe?',
+          options: [
+            { id: 'a', text: 'The action the user takes' },
+            { id: 'b', text: 'The expected result after the action' },
+            { id: 'c', text: 'The initial context / precondition \u2014 the system state before the action' },
+            { id: 'd', text: 'The description of an error that may occur' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Given = **precondition** (what must be true BEFORE the action). When = trigger (what the user does). Then = expected outcome. Example: Given \u2014 user is on a product page; When \u2014 they tap "Add to favorites"; Then \u2014 the icon switches to filled. This is [Gherkin \u2197](https://cucumber.io/docs/gherkin/) notation, born out of BDD.',
+        },
+        {
+          question:
+            'Which method historically comes from Waterfall / RUP rather than Agile?',
+          options: [
+            { id: 'a', text: 'User Stories' },
+            { id: 'b', text: 'Use Case' },
+            { id: 'c', text: 'Story Mapping' },
+            { id: 'd', text: 'MoSCoW' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Use Case was invented by Ivar Jacobson in 1986 in Objectory (later RUP \u2014 Rational Unified Process). It\'s a formal step-by-step scenario with a main and alternative flows. User Stories \u2014 a lightweight Agile format \u2014 emerged from Extreme Programming in the late 1990s (Kent Beck \u2192 Mike Cohn). MoSCoW comes from DSDM (1994). Story Mapping is Agile-native (Jeff Patton, 2005).',
+        },
+        {
+          question:
+            'What is Story Mapping?',
+          options: [
+            { id: 'a', text: 'A way to rewrite a single User Story in multiple variants' },
+            { id: 'b', text: 'A visual technique: user journey horizontally, stories ranked by priority vertically \u2014 used for release planning' },
+            { id: 'c', text: 'Importing stories from Notion into Jira' },
+            { id: 'd', text: 'A method for estimating effort in story points' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Story Mapping (Jeff Patton, 2005) is a backlog visualization technique: **horizontally** \u2014 the user journey stages (Discovery \u2192 Sign-up \u2192 First task \u2192 Habit); **vertically** under each stage \u2014 stories ranked top-down by priority. A horizontal cut line separates MVP / Release 1 / Release 2. Fixes the "flat backlog" problem where stories lack context.',
         },
       ],
     },
