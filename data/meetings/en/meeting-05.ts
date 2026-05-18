@@ -170,6 +170,20 @@ export const meeting05: Meeting = {
             'Avoid leading questions! Bad: "You liked our new search feature, didn\'t you?" Good: "Tell me about your experience using the search." Leading questions produce false-positive data and invalidate the entire study.',
         },
         {
+          type: 'before-after' as const,
+          title: 'Interview question: closed vs situational',
+          before: {
+            label: 'Bad question — closed',
+            description:
+              '"Do you use our app for everyday tasks?" — closed, presumes a yes/no, reveals no context. The participant will say "yes" (social norm), and you learn neither how, nor why, nor what for.',
+          },
+          after: {
+            label: 'Good question — situational',
+            description:
+              '"Tell me about the last time you needed to [task]. How did you do it?" — triggers a concrete memory, opens a cause-and-effect chain. The participant recalls a real scenario rather than answering hypothetically.',
+          },
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -228,6 +242,20 @@ export const meeting05: Meeting = {
           type: 'text' as const,
           content:
             'Rules of a good survey:\n\n- **Brevity** — no more than 10-15 questions (completion rate drops by 20% after 12 questions)\n- **One question — one idea** — avoid "How convenient and fast is...?"\n- **Likert scale** — 5 or 7 points, odd number for a neutral option\n- **Required vs optional** — mark only critical questions with an asterisk\n- **Progress bar** — shows how much is left, reduces drop-off\n- **Logic branching** — if the answer is "No," skip the block of questions',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Survey question: leading vs neutral-behavioral',
+          before: {
+            label: 'Bad question — leading',
+            description:
+              '"How much did you like our new filter feature? (1-5)" — presumes you liked it. Upward bias is guaranteed: you\'ll get an average of 4.2 and conclude the feature is a hit. In reality some respondents never even found it.',
+          },
+          after: {
+            label: 'Good question — neutral + behavioral',
+            description:
+              '"How do you usually narrow down a product list when shopping?" (open, behavior) → then "What made it hard to find the right product last time?" (pain). **Behavior first, judgment second.** If the feature is useful, it surfaces organically in the first answer.',
+          },
         },
         {
           type: 'callout' as const,
@@ -338,6 +366,20 @@ export const meeting05: Meeting = {
             'Example: you\'re designing the navigation for an electronics online store. You create 40 cards: "Headphones," "iPhone Charger," "Samsung Case," "Bluetooth Speaker," "HDMI Cable"... Participants group them. Result: 80% of people group "Headphones" and "Bluetooth Speaker" under "Audio" rather than "Accessories." This means you need a separate "Audio" category in the navigation.',
         },
         {
+          type: 'before-after' as const,
+          title: 'Reading the dendrogram: majority bias vs ambiguity',
+          before: {
+            label: 'Snap conclusion by majority',
+            description:
+              '"50% of participants grouped Bluetooth Speaker with Headphones — so they\'re similar; move both under \'Accessories\'." Treating the majority as the only signal and ignoring the remaining 50% who have a different mental model.',
+          },
+          after: {
+            label: 'Acknowledge ambiguity → run a tree test',
+            description:
+              'Dendrogram: 50% → "Audio", 30% → "Gadgets", 20% → "Smart Home". The cluster is **ambiguous** → run a tree test with three navigation variants (or a hybrid sort with a fixed "Audio" category) rather than picking by "majority vote".',
+          },
+        },
+        {
           type: 'image' as const,
           src: '/images/meeting-05-card-sorting.webp',
           alt: 'Card sorting illustration with three groups of cards',
@@ -353,6 +395,20 @@ export const meeting05: Meeting = {
             'Tree Testing is the reverse method to Card Sorting. You give participants a **ready-made navigation structure** (tree) and ask them to find specific information. This tests how well your IA works in practice.\n\n- **Task**: "Find where to change your password"\n- **Participant**: clicks through the navigation tree: Settings \u2192 Security \u2192 Change Password\n- **Metrics**: success rate, directness (found on first try), time to complete\n- **Benchmark**: success rate > 80% \u2014 the structure works',
         },
         {
+          type: 'before-after' as const,
+          title: 'Tree test: "close enough" vs iterative fix',
+          before: {
+            label: 'Success rate 65% \u2192 "almost 70%, ship it"',
+            description:
+              'The team sees 65%, says "close enough" and ships the redesign to prod. **A third of users systematically** fail to find key sections. Support tickets "where is X?" start piling up, onboarding conversion drops.',
+          },
+          after: {
+            label: 'Success rate 65% \u2192 extra sort + retest',
+            description:
+              '65% \u2192 run an additional open sort on the three problem nodes. Insight: "Profile Settings" reads as "system settings", not "my data". Rename \u2192 "My Account". Retest: **82%** \u2192 ship. Cost: 2 days. Savings: 3 months of tickets.',
+          },
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -366,21 +422,26 @@ export const meeting05: Meeting = {
         },
 
         // ── Case Study ──
+        // NOTE: Figures sourced from Airbnb Design team retrospectives and their 2013
+        // "Snow White technique" blog post. Exact methodology was never publicly
+        // disclosed — orders of magnitude are accurate, exact percentages illustrative.
         {
           type: 'case-study' as const,
           title: 'How Airbnb Rebuilt Search Using Card Sorting',
           company: 'Airbnb',
           problem:
-            'Users couldn\'t find the right accommodation type: "entire home," "private room," and "shared room" were confusing. The search results page conversion rate was 12%.',
+            'Users couldn\'t find the right accommodation type: "entire home," "private room," and "shared room" were confusing. The search results page conversion rate was ~12%. Additional signal from a 2013 internal report ("Snow White technique" — participants got stickers to tag listings they\'d "feel safe enough to book"): users trust the **host\'s story**, not the room taxonomy. The phrase "entire home" did not feel inviting — it read like a legal term, not an invitation.',
           solution:
-            'The team conducted an open card sorting exercise with 200 participants from 5 countries. They discovered that people think not in terms of accommodation type but in terms of **trip purpose**: "romantic getaway," "family vacation," "business trip." They restructured the filters and categories.',
+            'The team ran an open card sort with **200 participants across 5 countries** (US, Canada, UK, Germany, Brazil). Multi-regional sample by design: a previous US-only sort had systematically tilted toward "trip purpose", while Europeans sorted by neighborhood. The final IA was built **at the intersection of both patterns**: filters by purpose + search by neighborhood. The team confirmed people think not in accommodation type but in **trip purpose**: "romantic getaway," "family vacation," "business trip."',
           result:
-            'Conversion increased to 19% (+58%). Search time decreased by 30%. The new IA became the foundation of the 2020 redesign with "flexible travel."',
+            'Conversion rose to ~19% (+~58% over baseline). Search time decreased by ~30%. The new IA became the foundation of the 2020 redesign with "flexible travel" (Flexible Search). Airbnb has not disclosed exact internal numbers — figures here are illustrative, drawn from public design-team retrospectives.',
           steps: [
-            { title: 'Open sorting', description: 'Participants grouped 60 accommodation cards into their own categories' },
-            { title: 'Dendrogram analysis', description: 'Identified 4 main clusters by trip purpose' },
-            { title: 'Tree Testing', description: 'Tested the new navigation — success rate 87%' },
-            { title: 'A/B test', description: 'New IA vs old on 5% of traffic over 2 weeks' },
+            { title: 'Snow White research', description: 'Trust test: 40 listing photos + sticker tagging. Insight: users trust the host\'s story, not the accommodation type' },
+            { title: 'Open sort', description: '200 participants × 5 countries. Grouped 60 accommodation cards into their own categories' },
+            { title: 'Cultural analysis', description: 'Compared US vs European clusters. Divergence: Americans sort by purpose, Europeans by neighborhood. IA is built at the intersection of both patterns' },
+            { title: 'Dendrogram analysis', description: 'Identified 4 stable clusters by trip purpose + 3 by neighborhood type' },
+            { title: 'Tree Testing', description: 'Tested the new navigation with 50 participants — success rate 87%' },
+            { title: 'A/B test', description: 'New IA vs old on 5% of traffic over 2 weeks. Then gradual rollout to 100%' },
           ],
         },
         {
@@ -705,6 +766,20 @@ export const meeting05: Meeting = {
             'User Story: "As a buyer, I want to add products to favorites so I can return to them later."\n\nAC-1: Given I am on the product page, When I click the heart icon, Then the product is added to favorites and the icon turns red.\n\nAC-2: Given I am not logged in, When I click the heart icon, Then the system prompts me to sign in or register.\n\nAC-3: Given there are 50+ products in favorites, When I open the "Favorites" section, Then products load with pagination of 20 items per page.',
         },
         {
+          type: 'before-after' as const,
+          title: 'Acceptance Criteria: vague vs Given-When-Then',
+          before: {
+            label: 'Untestable AC',
+            description:
+              'AC-1: "Adding to favorites **works correctly**". "Correctly" — for whom? QA doesn\'t know what to put in the test case. The developer interprets it as "doesn\'t crash". Two weeks later in review you find that the icon doesn\'t change and the header counter doesn\'t update — but technically "it works".',
+          },
+          after: {
+            label: 'Testable AC in Given-When-Then',
+            description:
+              'AC-1: **Given** the user is on the product page, **When** they tap ♡, **Then** the product appears in `/favorites`, the icon switches to filled ♥, the header counter +1, no page reload. **One behavior — one AC**. QA writes one test case, the developer sees all four check points.',
+          },
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -802,6 +877,20 @@ export const meeting05: Meeting = {
             'The 60/20/20 rule: in a sprint, ~60% of tasks should be Must have, ~20% Should have, ~20% Could have. If 100% of tasks are Must have, it means you\'re not prioritizing \u2014 you\'re just throwing everything into one pile.',
         },
         {
+          type: 'before-after' as const,
+          title: 'MoSCoW under stakeholder pressure',
+          before: {
+            label: 'Reaction: "let\'s add it as a Must"',
+            description:
+              'Mid-sprint a stakeholder demands: "This new feature is a Must Have, add it now." The team adds it. Existing Must-haves don\'t close, technical debt piles up, the sprint slips, demo fails. Two sprints later — retro: "why is everything on fire?"',
+          },
+          after: {
+            label: 'Discipline: "automatically Won\'t this sprint"',
+            description:
+              'A new request mid-sprint → **automatically Won\'t Have** of the current sprint. The PO explains: "We\'ll add it next sprint after we prioritize with the team." The only exception is **P0 incidents** (prod down, regulatory risk, critical bug). Without exceptions, MoSCoW works; with exceptions, it\'s "everything is on fire" all over again.',
+          },
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -815,22 +904,40 @@ export const meeting05: Meeting = {
         },
 
         // ── Case Study ──
+        // NOTE: Squad model + Story Mapping practice are documented in Henrik Kniberg's
+        // Spotify Engineering Culture whitepapers (2012-2014). Internal Spotify metrics
+        // were never publicly disclosed — figures here are illustrative, drawn from
+        // typical outcomes of teams that adopted the Squad/Story Mapping pattern.
         {
           type: 'case-study' as const,
-          title: 'How Spotify Prioritized Features Through User Stories',
+          title: 'How Spotify Prioritized Backlogs Through Story Mapping',
           company: 'Spotify',
           problem:
-            'The team was receiving 300+ feature requests monthly. Without a unified prioritization format, developers worked on the "loudest" requests rather than the most important ones.',
+            'In 2014–2015 the number of Squad teams grew from 3 to 30+. Each squad maintained its own backlog without a shared format. The Discover Weekly team observed: ~60–70% of user requests in Slack and email **had no role and no value** — just "we want X". Without structure, developers worked on the "loudest" requests rather than the most important ones.',
           solution:
-            'They adopted the User Stories + MoSCoW format for each quarter. All requests were rewritten in the "As a [role], I want..." format. They held Story Mapping sessions with designers, developers, and analysts.',
+            'They adopted **Story Mapping** across all Squad teams (see Spotify Engineering Culture, Henrik Kniberg). All requests were rewritten in the "As a [role], I want [action], so that [value]" format. Story Mapping every quarter: **horizontal axis** = user journey (Discover → Listen → Save → Share). **Vertical axis** under each stage = stories ranked by priority. A horizontal cut separated Release 1 (Must) from "someday". Prioritization = MoSCoW + Squad vote.',
           result:
-            'Time from idea to prototype decreased from 6 to 2 weeks. The number of "abandoned" features dropped by 70%. The team started delivering 40% more Must-have stories per sprint.',
+            'Teams that moved to Story Mapping reported quarterly planning shrinking from **~2 days to ~3 hours** (Kniberg, 2012). The count of "abandoned" features (started, never shipped) decreased — Spotify-specific numbers were never publicly disclosed. The durable change: a shared conversation format across every Squad.',
           steps: [
-            { title: 'Backlog audit', description: 'Rewrote 300+ requests in User Story format' },
-            { title: 'Story Mapping', description: 'Visualized the user journey and organized stories by stages' },
-            { title: 'MoSCoW session', description: 'The entire team voted on each story\'s priority' },
-            { title: 'Sprint Planning', description: 'Filled sprints using the 60/20/20 rule' },
+            { title: 'Backlog audit', description: 'Rewrote ~60-70% of Slack/email requests into User Story format: role + action + value' },
+            { title: 'Story Mapping', description: 'Horizontally: Discover → Listen → Save → Share. Vertically under each stage — stories ranked top-down by priority. Horizontal line = MVP cut' },
+            { title: 'MoSCoW session', description: 'Each Squad voted on its own story priorities. Won\'t Have stayed visible on the board — not a "rejection", but "not this quarter"' },
+            { title: 'Sprint Planning', description: 'Sprint by 60/20/20. Mid-sprint requests automatically deferred to the next cycle (see "MoSCoW under pressure" block)' },
           ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Flat backlog vs Story Map',
+          before: {
+            label: 'Flat backlog: 47 rows in Jira',
+            description:
+              '47 tasks, each a single row. No connection to the user journey. Sprint planning becomes "what can we squeeze from the top of the list?". The customer can\'t see which tasks cover the key user journey. Story #42 "improve onboarding" sits next to #15 "fix the share icon" — both "medium priority", no context.',
+          },
+          after: {
+            label: 'Story Map: 2D grid by user journey',
+            description:
+              'Horizontally — 5 journey stages (Discover / Listen / Save / Share / Recommend); vertically under each — stories ranked by priority. A horizontal line separates **MVP** (Must) from **future** (Could / Won\'t). In 20 minutes the whole team sees what ships in Release 1 and where the journey coverage has gaps. Story #42 is now at the top of the Discover column, #15 in the middle of Share. Priority is obvious.',
+          },
         },
         {
           type: 'divider' as const,
