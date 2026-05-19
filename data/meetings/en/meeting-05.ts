@@ -1329,6 +1329,82 @@ export const meeting05: Meeting = {
             },
           ],
         },
+        {
+          type: 'checklist' as const,
+          title: 'Checklist: Writing a Use Case',
+          items: [
+            {
+              text: 'Name in verb + noun format',
+              demo: '❌ "Cart", "Profile" — those are objects, not actions. ✅ "Place Order", "Find Product", "Reset Password". The name describes **a user action** that can be tested as a scenario.',
+            },
+            {
+              text: 'Primary actor identified',
+              demo: 'One use case = **one primary actor**. "Buyer" / "Administrator" / "Guest" / "Cashier Operator". If you have two actors with different goals in the same use case — that\'s **two separate use cases**, split them.',
+            },
+            {
+              text: 'Secondary actors and external systems listed',
+              demo: 'Use case "Place Order": primary = **Buyer**; secondary = **Stripe** (payment), **WMS** (warehouse reserve), **SendGrid** (email). All external systems are mandatory. 80% of integration bugs hide in these handoffs.',
+            },
+            {
+              text: 'Preconditions written down',
+              demo: 'What must be **true BEFORE** the use case starts: user is authenticated, cart has ≥1 item, all items are in stock, profile has a shipping address. Without clear preconditions the developer doesn\'t know which initial state to assume in code.',
+            },
+            {
+              text: 'Main Flow — numbered linear steps, no branches',
+              demo: '1. Buyer opens cart. 2. System shows items and total. 3. Buyer taps "Checkout". 4. System asks for address. 5. Buyer confirms. 6. System charges. 7. System creates the order. Steps in **one linear chain** — every "what if..." moves to alternative flows.',
+            },
+            {
+              text: 'Alternative flows described separately',
+              demo: '**A1** (payment declined): after step 6 → show message, return to step 5. **A2** (item went out-of-stock during checkout): after step 2 → cancel order, return to step 1 with notice. **Each alt flow starts from a specific step of the main flow.**',
+            },
+            {
+              text: 'Postconditions — system state AFTER the use case',
+              demo: 'After successful use case: order saved with status "paid", inventory decremented by N, confirmation email sent, payment recorded in Stripe, telemetry event `order_placed` logged. **Postcondition = QA test case**, translates directly into acceptance criteria.',
+            },
+            {
+              text: 'Exceptions and error handling',
+              demo: 'E1: payment service down → rollback cart, show "try later". E2: internet drops at step 4 → save draft, restore on return. E3: user hits browser-back at step 6 → confirm "are you sure you want to leave?". **Every critical step needs exception flows** — otherwise the user gets stuck in an inconsistent state.',
+            },
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '🎮 Checklist: Writing a Gaming Use Case',
+          items: [
+            {
+              text: 'Name = mechanic, not a screen / feature',
+              demo: '❌ "Shop" (that\'s a screen), "Profile" (a section) — ✅ "Buy a brawler with gems", "Apply a power-up in combat", "Complete matchmaking". A use case describes a **game mechanic**, not a UI object.',
+            },
+            {
+              text: 'Primary actor = the player\'s role in this mechanic',
+              demo: '"Active player in match" (for combat resolution), "Player in lobby" (for matchmaking), "F2P player with no purchases" (for economy). **Not "player in general"** — too broad. Each mechanic behaves differently for new vs hardcore vs spender.',
+            },
+            {
+              text: 'Secondary actors = servers, telemetry, other players, anti-cheat',
+              demo: 'Combat Resolution: primary = **Active Player**; secondary = **Game Server** (resolves outcome), **Other Players** (see my action in sync), **Telemetry Service** (event log), **Anti-Cheat Engine** (validates input). A gaming use case is **network-heavy** — secondary actors almost always include server + network.',
+            },
+            {
+              text: 'Preconditions with network / state conditions',
+              demo: 'Before "land a hit": player in active match, ping < 200ms, server not in lag-mode, player wasn\'t disconnected in the last 5 sec, brawler not in stunned state, attack cooldown = 0. **Network state and game state matter more than in SaaS** — without them behavior is non-deterministic.',
+            },
+            {
+              text: 'Main Flow with determinism guarantees (for replay system)',
+              demo: '1. Player taps attack. 2. Client sends `attack_event` with client_timestamp. 3. Server validates via anti-cheat (rate, position, damage range). 4. Server resolves outcome on authoritative state. 5. Server broadcasts to all clients with server_timestamp. 6. Clients render the animation. **Each step records what is deterministic** — without this the match can\'t be reproduced in replay, and replay is key for tournaments + bug repro.',
+            },
+            {
+              text: 'Alternative flows for network failure',
+              demo: '**A1** (packet loss): server waits 500ms, then restores via rollback. **A2** (player disconnect): 30 sec grace period to reconnect, then match abandons. **A3** (server lag spike): freeze animation on the client, show loading indicator. **A4** (rejoin after crash): load state from 5 sec back. **Network-edge cases are mandatory.** In SaaS you can "retry"; in gaming retry breaks immersion.',
+            },
+            {
+              text: 'Postconditions with telemetry + anti-cheat logs',
+              demo: 'After the use case: match state updated on the authoritative server, telemetry `combat_hit` fires with {damage, accuracy, weapon, brawler_id, distance, time_to_kill}, anti-cheat log records the input pattern, replay buffer updates, leaderboard update queue receives the delta. **Without telemetry postconditions a gaming use case is useless** — you can\'t balance, can\'t catch cheats, can\'t analyze meta.',
+            },
+            {
+              text: 'Exceptions = cheat detection and exploit prevention (first-class)',
+              demo: '**E1:** Player sent `damage = 9999` (impossible given balance) → ban + rollback action. **E2:** Player attacks on a physically impossible frame (cooldown not elapsed, or position unrealistic) → flag + manual review. **E3:** Speed hack detected (>200% normal speed) → kick from match. **E4:** Item duplication exploit detected → rollback last 30 sec + audit log. **Anti-cheat = first-class exception layer**, not a "TODO later". A gaming use case without exploit prevention becomes an exploit vector itself.',
+            },
+          ],
+        },
 
         // ── Quote ──
         {

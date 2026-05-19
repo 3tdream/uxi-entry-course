@@ -1331,6 +1331,82 @@ export const meeting05: Meeting = {
             },
           ],
         },
+        {
+          type: 'checklist' as const,
+          title: 'Чеклист: написание Use Case',
+          items: [
+            {
+              text: 'Название в формате глагол + существительное',
+              demo: '❌ «Корзина», «Профиль» — это объекты, не действия. ✅ «Оформить заказ», «Найти товар», «Восстановить пароль». Имя описывает **действие пользователя**, и его можно протестировать как сценарий.',
+            },
+            {
+              text: 'Указан основной актор (primary actor)',
+              demo: 'Один use case = **один primary actor**. «Покупатель» / «Администратор» / «Гость» / «Кассир-оператор». Если у тебя два actor-а в одной use case с разными целями — это **два разных use case**, разделяй.',
+            },
+            {
+              text: 'Указаны вторичные акторы и внешние системы',
+              demo: 'Use case «Оформить заказ»: primary = **Покупатель**; secondary = **Stripe** (платёж), **WMS** (резерв на складе), **SendGrid** (письмо). Все внешние системы — обязательно. Часто именно в интеграции с ними прячутся 80% багов.',
+            },
+            {
+              text: 'Записаны предусловия (Preconditions)',
+              demo: 'Что должно быть **истинно ДО** запуска: пользователь авторизован, в корзине ≥ 1 товар, все товары в наличии, у профиля заполнен адрес. Без чёткого precondition разработчик не знает, какое начальное состояние ожидать в коде.',
+            },
+            {
+              text: 'Основной поток (Main Flow) — пронумерованные шаги без ветвлений',
+              demo: '1. Покупатель открывает корзину. 2. Система показывает товары и итоговую сумму. 3. Покупатель нажимает «Оформить». 4. Система запрашивает адрес. 5. Покупатель подтверждает данные. 6. Система проводит оплату. 7. Система фиксирует заказ. Шаги в **одной линейной цепи**, всё «а что если...» — в alternative flows.',
+            },
+            {
+              text: 'Альтернативные потоки (Alternative Flows) описаны отдельно',
+              demo: '**A1** (платёж отклонён): после шага 6 → показать сообщение и вернуть на шаг 5. **A2** (товар закончился во время оплаты): после шага 2 → отменить заказ, вернуть на шаг 1 с уведомлением. **Каждый alt flow стартует из конкретного шага основного.**',
+            },
+            {
+              text: 'Постусловия (Postconditions) — состояние системы ПОСЛЕ',
+              demo: 'После успешного use case: заказ в базе со статусом «paid», инвентарь уменьшен на N товаров, email-подтверждение отправлено, платёж зафиксирован в Stripe, telemetry event `order_placed` записан. **Postcondition = test case для QA**, прямо переводится в acceptance criteria.',
+            },
+            {
+              text: 'Исключения и обработка ошибок (Exceptions)',
+              demo: 'E1: упал внешний платёжный сервис → rollback корзины, показать «попробуйте позже». E2: internet пропал на шаге 4 → save draft, восстановить при возврате. E3: пользователь нажал browser-back на шаге 6 → подтверждение «уверены, что хотите выйти?». **Для каждого critical step должны быть exception flows** — иначе пользователь застрянет в неконсистентном состоянии.',
+            },
+          ],
+        },
+        {
+          type: 'checklist' as const,
+          title: '🎮 Чеклист: написание Gaming Use Case',
+          items: [
+            {
+              text: 'Название = механика, а не экран/фича',
+              demo: '❌ «Магазин» (это экран), «Профиль» (это раздел) — ✅ «Купить brawler за gems», «Применить power-up в бою», «Завершить matchmaking». Use case описывает **игровую механику**, не объект интерфейса.',
+            },
+            {
+              text: 'Primary actor = роль игрока в этой механике',
+              demo: '«Активный игрок в матче» (для combat resolution), «Игрок в lobby» (для matchmaking), «F2P-игрок без покупок» (для economy). **Не «игрок вообще»** — слишком широкий контекст. Каждая механика работает по-разному для new vs hardcore vs spender.',
+            },
+            {
+              text: 'Secondary actors = серверы, телеметрия, другие игроки, анти-чит',
+              demo: 'Combat Resolution: primary = **Active Player**; secondary = **Game Server** (определяет исход), **Other Players** (видят моё действие в синхронизации), **Telemetry Service** (event log), **Anti-Cheat Engine** (валидирует input). Gaming use case — **network-heavy**, secondary actors почти всегда включают сервер и сеть.',
+            },
+            {
+              text: 'Предусловия с network / state условиями',
+              demo: 'До запуска «нанести удар»: игрок в active match, ping < 200ms, сервер не в lag-mode, игрок не disconnect-нулся за последние 5 сек, brawler не в stunned state, cooldown атаки = 0. **Network state и game state важнее, чем в SaaS** — без них поведение недетерминированно.',
+            },
+            {
+              text: 'Main Flow с детерминированностью (для replay-системы)',
+              demo: '1. Player taps attack. 2. Client sends `attack_event` с client_timestamp. 3. Server валидирует через anti-cheat (rate, position, damage range). 4. Server определяет исход на authoritative state. 5. Server broadcast всем клиентам с server_timestamp. 6. Все клиенты рендерят анимацию. **На каждом шаге фиксируется, что детерминировано** — без этого матч нельзя воспроизвести в replay, а replay = ключевая фича для tournament + bug repro.',
+            },
+            {
+              text: 'Alternative flows для network failure',
+              demo: '**A1** (packet loss): сервер ждёт 500ms, потом restore через rollback. **A2** (player disconnect): 30 сек grace period для reconnect, потом match abandon. **A3** (server lag spike): freeze animation на клиенте, показать loading indicator. **A4** (rejoin after crash): загрузить state на 5 сек назад. **Network-edge cases — обязательны.** В SaaS можно «retry», в gaming retry разрушает immersion.',
+            },
+            {
+              text: 'Postconditions с telemetry + anti-cheat логами',
+              demo: 'После use case: state матча обновлён на authoritative server, telemetry `combat_hit` с {damage, accuracy, weapon, brawler_id, distance, time_to_kill} fired, anti-cheat log записал input pattern, replay-buffer обновлён, leaderboard update queue получил delta. **Без telemetry postcondition gaming use case бесполезен** — нельзя ни балансить, ни ловить читы, ни анализировать meta.',
+            },
+            {
+              text: 'Exceptions = cheat detection и exploit prevention (first-class)',
+              demo: '**E1:** Player отправил `damage = 9999` (невозможное по балансу значение) → ban + rollback action. **E2:** Player атакует в frame, физически невозможный (cooldown не истёк, либо позиция нереалистична) → flag + manual review. **E3:** Speed hack detected (>200% normal speed) → kick from match. **E4:** Item duplication exploit detected → rollback last 30 sec + audit log. **Anti-cheat = first-class exception layer**, не "TODO потом". В gaming use case без exploit prevention он сам становится exploit vector.',
+            },
+          ],
+        },
 
         // ── Цитата ──
         {
