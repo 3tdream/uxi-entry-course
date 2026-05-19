@@ -891,6 +891,20 @@ export const meeting05: Meeting = {
           },
         },
         {
+          type: 'before-after' as const,
+          title: '🎮 Example 4: Gaming — matchmaking system',
+          before: {
+            label: 'Bad User Story',
+            description:
+              '"As a player, I want good matchmaking." The role is too abstract (which player? Newbie or hardcore?), "good" is unverifiable, no link to behavior or metrics. A developer could read this as "balance by level" or "by trophies" or "by skill" — three different systems.',
+          },
+          after: {
+            label: 'Good User Story',
+            description:
+              '"As a player in the 15–25k trophy range, after **3 losses in a row** I want to be placed into a match against opponents who are 10–15% weaker, so I can recover my motivation to keep playing and avoid churning before the session ends." **AC:** trigger fires on the 3rd loss within 1 hour; opponents are picked from the −10..−15% trophy bucket; the next win returns the player to normal matchmaking; logs are flagged with `loss_streak_breaker`. **Business metric:** D1 retention after a losing streak: 42% → 65%.',
+          },
+        },
+        {
           type: 'divider' as const,
         },
 
