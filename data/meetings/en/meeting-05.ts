@@ -19,6 +19,12 @@ export const meeting05: Meeting = {
         'User interview techniques, survey design, Card Sorting and Tree Testing',
       duration: '45 min',
       sections: [
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-part1-hero.webp',
+          alt: 'Infographic: The UX Research Blueprint — strategic foundations (100:1 ROI, the 5 Whys rule, neutral vs leading questions) and the research toolkit (card sorting, tree test 80%+ benchmark, interviews 5-15 vs surveys 50-500+)',
+          caption: 'Part 1 map: research-practice foundations + core toolkit (interviews, surveys, card sorting, tree testing).',
+        },
         // ── Introduction ──
         {
           type: 'heading' as const,
@@ -34,6 +40,12 @@ export const meeting05: Meeting = {
           variant: 'example' as const,
           content:
             'Before launching, Slack conducted over 200 user interviews. The result: the team discovered that people didn\'t want "yet another messenger" but rather a way to **reduce the amount of email**. This changed the positioning and the entire product design.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-roi-slack-pivot.webp',
+          alt: 'Left: the Forrester insight "$1 → $100" (designing without data = designing blind). Right: The Slack Pivot — 200+ pre-launch user interviews → the key insight "users didn\'t want another messenger, they wanted to reduce email"',
+          caption: 'Without research, design is blind. Slack pivoted its positioning after 200 interviews.',
         },
         {
           type: 'user-flow' as const,
@@ -58,6 +70,12 @@ export const meeting05: Meeting = {
             { from: 'enough', to: 'recruit', label: 'No — need more' },
             { from: 'insights', to: 'apply' },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-research-cycle.webp',
+          alt: 'Closed 8-step research cycle: Define Goal → Choose Method → Recruit → Conduct → Analyse → Check Sufficiency → Extract Insights → Apply to Design — rendered as an infinity loop',
+          caption: 'Research as a loop, not a line item: 8 steps with "not enough data" looping back to recruit.',
         },
         {
           type: 'divider' as const,
@@ -124,10 +142,22 @@ export const meeting05: Meeting = {
             'An interview guide is a conversation plan that helps the interviewer remember key topics and keep the discussion on track. A good guide contains:\n\n- **Introduction** (2-3 min) — introduce yourself, explain the purpose, obtain consent for recording\n- **Warm-up** (3-5 min) — easy questions about the person and their context\n- **Main section** (20-30 min) — questions on the research topics\n- **Wrap-up** (3-5 min) — "Is there anything important we haven\'t discussed?", express gratitude',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-interview-3-pillars.webp',
+          alt: 'Three interview pillars (Structured / Semi-structured / Unstructured) with focus on semi-structured as the industry standard, plus a 45-minute session timeline (Intro 2-3 → Warm-up 3-5 → Main 20-30 → Wrap-up 3-5)',
+          caption: 'The 3 interview pillars + 45-minute session timeline. Semi-structured is the industry standard — depth of unstructured + comparability of structured.',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
             'The "5 Whys" rule: when a participant gives a superficial answer, ask "Why?" up to 5 times in a row. This helps get to the true motivation. Example: "I deleted the app" \u2192 "Why?" \u2192 "There were too many notifications" \u2192 "Why did that bother you?" \u2192 "I use my phone during meetings" \u2192 Insight: a "Do Not Disturb" mode is needed.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-5-whys-framework.webp',
+          alt: '5 Whys framework on a concrete example: "I deleted the app" \u2192 5 layers of "Why?" \u2192 arrived at the real pain "I use my phone during important meetings" \u2192 design insight "build an explicit Do Not Disturb mode for professional contexts"',
+          caption: '5 Whys in action: five "Why?" questions translate a symptom ("deleted the app") into a design insight (need Do Not Disturb mode).',
         },
         {
           type: 'subheading' as const,
@@ -182,6 +212,12 @@ export const meeting05: Meeting = {
             description:
               '"Tell me about the last time you needed to [task]. How did you do it?" — triggers a concrete memory, opens a cause-and-effect chain. The participant recalls a real scenario rather than answering hypothetically.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-question-teardown.webp',
+          alt: 'Question Tear-down: Ask This, Not That. ❌ Closed "Do you use our app daily for tasks?" (triggers social norm, shuts down narrative) vs ✅ open "Tell me about the last time you booked a doctor\'s appointment online" (Open / Situational / Behavioural / Pain / Dream)',
+          caption: 'Question Tear-down: 5 frames of a good question — Open / Situational / Behavioural / Pain / Dream. Closed "do you like it?" only buys you the social norm.',
         },
         {
           type: 'divider' as const,
@@ -239,6 +275,12 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-survey-toolkit-landscape.webp',
+          alt: 'The Survey Tool Landscape: Google Forms (free, default UI), Typeform (conversational, +40% completion), SurveyMonkey (enterprise standard, benchmarks), Tally (free Typeform alternative) — strengths + trade-off for each',
+          caption: 'Survey Tool Landscape: strengths and trade-offs for the 4 main survey platforms in the market.',
+        },
+        {
           type: 'text' as const,
           content:
             'Rules of a good survey:\n\n- **Brevity** — no more than 10-15 questions (completion rate drops by 20% after 12 questions)\n- **One question — one idea** — avoid "How convenient and fast is...?"\n- **Likert scale** — 5 or 7 points, odd number for a neutral option\n- **Required vs optional** — mark only critical questions with an asterisk\n- **Progress bar** — shows how much is left, reduces drop-off\n- **Logic branching** — if the answer is "No," skip the block of questions',
@@ -289,6 +331,12 @@ export const meeting05: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-interviews-vs-surveys-matrix.webp',
+          alt: 'Comparison matrix Qualitative (Interviews) vs Quantitative (Surveys) across 4 axes: Focus, Participants, Time Investment, When to Use',
+          caption: 'Interviews vs Surveys matrix: depth vs scale across 4 method-selection axes.',
         },
         {
           type: 'divider' as const,
@@ -395,6 +443,12 @@ export const meeting05: Meeting = {
             'Tree Testing is the reverse method to Card Sorting. You give participants a **ready-made navigation structure** (tree) and ask them to find specific information. This tests how well your IA works in practice.\n\n- **Task**: "Find where to change your password"\n- **Participant**: clicks through the navigation tree: Settings \u2192 Security \u2192 Change Password\n- **Metrics**: success rate, directness (found on first try), time to complete\n- **Benchmark**: success rate > 80% \u2014 the structure works',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-tree-testing-metrics.webp',
+          alt: 'Validating the Architecture (Tree Testing): a tree structure with the correct path highlighted + 3 metrics on a concrete task "Where to change your password" — Success Rate 85% (target ≥80%), Directness 90% (first try, no backtracking), Time to Complete 3.5s',
+          caption: 'Tree Testing on a live example: 85% / 90% / 3.5s — the three metrics that diagnose an IA.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Tree test: "close enough" vs iterative fix',
           before: {
@@ -422,6 +476,12 @@ export const meeting05: Meeting = {
         },
 
         // ── Case Study ──
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-airbnb-crisis.webp',
+          alt: 'The Airbnb Search Crisis: left column — Problem (conversion stuck at ~12%, legal-sounding categories like "entire home / private room" confused users). Right column — Snow White Discovery (internal qualitative research showed users trusted the host\'s story, not the room taxonomy)',
+          caption: 'Airbnb Search Crisis: 12% conversion + Snow White discovery ("entire home" reads like a legal term, not an invitation).',
+        },
         // NOTE: Figures sourced from Airbnb Design team retrospectives and their 2013
         // "Snow White technique" blog post. Exact methodology was never publicly
         // disclosed — orders of magnitude are accurate, exact percentages illustrative.
@@ -445,10 +505,20 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-airbnb-process.webp',
+          alt: 'Full 6-step Airbnb process: Trust Research → Open Sort → Cultural Analysis → Dendrogram Analysis → Tree Testing (87% success) → A/B Test (5% traffic). Outcome: Conversion ~+58%, Search Time −30%',
+          caption: 'Airbnb process: 6 steps from qualitative trust research to A/B test. Result: conversion ~19% (+58%), search time −30%.',
+        },
+        {
           type: 'divider' as const,
         },
-
-        // ── Checklist ──
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-preflight-checklist.webp',
+          alt: 'The Pre-Flight Research Checklist (8 items): goal → guide → recruiting → consent → pilot → recording → affinity map → report format. Without data, you are designing blind',
+          caption: 'Pre-Flight Research Checklist: 8 items, without which the interview yields noise, not data.',
+        },
         {
           type: 'checklist' as const,
           title: 'Checklist: Preparing for a User Interview',
@@ -605,6 +675,12 @@ export const meeting05: Meeting = {
         'The difference between Use Cases and User Stories, writing format, acceptance criteria, and MoSCoW prioritization',
       duration: '45 min',
       sections: [
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-part2-hero.webp',
+          alt: 'Infographic "User Stories vs Use Cases: Mastering Product Requirements". Function vs Value, INVEST principle, Given-When-Then, the 60/20/20 MoSCoW rule, Story Mapping efficiency, comparative table Use Case vs User Story (focus / origin / best for)',
+          caption: 'Part 2 map: from research insights to requirements — Use Case vs User Story, INVEST, GWT, MoSCoW, Story Mapping.',
+        },
         // ── Introduction ──
         {
           type: 'heading' as const,
@@ -614,6 +690,12 @@ export const meeting05: Meeting = {
           type: 'text' as const,
           content:
             'After conducting interviews and surveys, the question arises: how do you translate insights into clear requirements for the development team? Two tools exist for this: **Use Cases** (usage scenarios) and **User Stories**. Both describe user behavior but from different perspectives.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-research-to-requirements.webp',
+          alt: 'Schematic: messy research notes (squiggly arrow) → structured card with PROJ-1234 (User Login Feature), Description, Core Value, MVP Cut, Acceptance Criteria, Status TODO, Priority HIGH, TESTABLE tag',
+          caption: 'The bridge: insights from research → a structured requirement (with value, AC, priority).',
         },
         {
           type: 'divider' as const,
@@ -641,6 +723,12 @@ export const meeting05: Meeting = {
 
         // ── User Stories ──
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-two-paths.webp',
+          alt: 'Two distinct paths to product clarity: User Research → Use Case (Software Engineering, Ivar Jacobson, 1992) — focuses on interaction sequence; User Story (Agile/Scrum, Kent Beck & Mike Cohn) — focuses on user value',
+          caption: 'One research insight, two paths to requirements. Use Case = function, User Story = value.',
+        },
+        {
           type: 'heading' as const,
           content: 'User Stories',
         },
@@ -650,10 +738,22 @@ export const meeting05: Meeting = {
             'A User Story is a brief description of functionality from the user\'s perspective. The format comes from Agile/Scrum, invented by Kent Beck and popularized by Mike Cohn.\n\nFormula:\n\n**"As a [role], I want [action], so that [value]"**\n\nA User Story focuses not on the interaction steps but on the **value for the user**. This makes the story understandable for the entire team: from the designer to the developer.',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-story-formula.webp',
+          alt: 'Engineering the perfect user story — 3 blocks: As a [Role] (highly specific), I want to [Action] (verb + object + constraint), So that [Value] (measurable business goal)',
+          caption: 'User Story formula: Role (specific) + Action (verb+object+constraint) + Value (business metric, not "for convenience").',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
             'The INVEST principle for good User Stories:\n\n- **I**ndependent \u2014 independent from other stories\n- **N**egotiable \u2014 open to discussion\n- **V**aluable \u2014 delivers value to the user\n- **E**stimable \u2014 effort can be estimated\n- **S**mall \u2014 small enough for a single sprint\n- **T**estable \u2014 acceptance criteria can be verified',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-invest-dial.webp',
+          alt: 'The quality assurance dial: 6 INVEST attributes around a central dial. Independent / Negotiable / Valuable / Estimable / Small / Testable',
+          caption: 'INVEST dial: 6 quality attributes for a User Story. Most common failure is S (Small) \u2014 doesn\'t fit a sprint \u2192 decompose.',
         },
 
         // ── Comparison ──
@@ -690,9 +790,9 @@ export const meeting05: Meeting = {
         },
         {
           type: 'image' as const,
-          src: '/images/meeting-05-user-story-formula.webp',
-          alt: 'Diagram of the user story formula',
-          caption: 'User Story formula: role → action → value.',
+          src: '/images/meeting-05-framework-matrix.webp',
+          alt: 'Choosing the right framework for the task: comparison matrix Use Case vs User Story across 6 axes — Focus, Format, Inclusions, Origin (Waterfall/RUP vs Agile/Scrum), Best For (complex systems vs iterative products), Primary Author (architect vs Product Owner)',
+          caption: 'Framework Matrix: Use Case vs User Story across 6 axes. Use Case — for risky, long, regulated systems; User Story — for iterative products.',
         },
         {
           type: 'divider' as const,
@@ -758,6 +858,12 @@ export const meeting05: Meeting = {
           type: 'text' as const,
           content:
             'Acceptance Criteria (AC) are clear conditions that, when met, mean the User Story is considered complete. Without AC, a story remains ambiguous: the developer and designer may interpret it differently.\n\n**Given-When-Then** format (Gherkin):\n\n- **Given**: initial state\n- **When**: user action\n- **Then**: expected result',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-gwt-boundary-lines.webp',
+          alt: 'Setting definitive boundary lines: three-stage diagram GIVEN (Setup State) → WHEN (Action Node) → THEN (System Response) on a concrete example "user on product page → taps heart → item enters favourites, counter +1, no reload"',
+          caption: 'Given-When-Then sets "definitive boundary lines": setup → action → response. One scenario = one AC.',
         },
         {
           type: 'callout' as const,
@@ -866,9 +972,9 @@ export const meeting05: Meeting = {
         },
         {
           type: 'image' as const,
-          src: '/images/meeting-05-moscow-priority.webp',
-          alt: 'MoSCoW prioritisation pyramid with four levels',
-          caption: 'MoSCoW: task prioritisation in 60/20/20 split.',
+          src: '/images/meeting-05-moscow-60-20-20.webp',
+          alt: 'Managing finite capacity with MoSCoW: 4-quadrant matrix Must / Could / Should / Won\'t + a 60/20/20 pie chart. If 100% of tasks are Must have, you aren\'t prioritizing — you\'re hoarding',
+          caption: 'MoSCoW 4-quadrant + 60/20/20 pie. 100% Must = hoarding, not prioritizing.',
         },
         {
           type: 'callout' as const,
@@ -889,6 +995,12 @@ export const meeting05: Meeting = {
             description:
               'A new request mid-sprint → **automatically Won\'t Have** of the current sprint. The PO explains: "We\'ll add it next sprint after we prioritize with the team." The only exception is **P0 incidents** (prod down, regulatory risk, critical bug). Without exceptions, MoSCoW works; with exceptions, it\'s "everything is on fire" all over again.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-midsprint-pressure.webp',
+          alt: 'The mid-sprint pressure valve: a lab beaker illustration — stakeholder pours a new Must Have into sprint capacity and an existing task automatically falls into "Won\'t Have". Exception only for P0 incidents — discipline maintains the sprint, exceptions burn it down',
+          caption: 'Mid-sprint pressure valve: a new Must → an old task automatically demoted to Won\'t. Exception only for P0 incidents.',
         },
         {
           type: 'divider' as const,
@@ -924,6 +1036,18 @@ export const meeting05: Meeting = {
             { title: 'MoSCoW session', description: 'Each Squad voted on its own story priorities. Won\'t Have stayed visible on the board — not a "rejection", but "not this quarter"' },
             { title: 'Sprint Planning', description: 'Sprint by 60/20/20. Mid-sprint requests automatically deferred to the next cycle (see "MoSCoW under pressure" block)' },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-spotify-turnaround.webp',
+          alt: 'Case Study: The Spotify turnaround. 4 steps: 1. Audit (60-70% vague Slack requests → role/action/value), 2. Map (2D horizontal journey Discover → Listen → Save + MVP cut line), 3. MoSCoW (teams vote on priorities, Won\'t Have visible), 4. Execute (sprint locked, 60/20/20). Result: planning sessions 2 days → 3 hours',
+          caption: 'Spotify turnaround in 4 steps: Audit → Map → MoSCoW → Execute. Quarterly planning: 2 days → 3 hours.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-backlog-vs-storymap.webp',
+          alt: 'Elevating the backlog from list to map: left — a flat list of Task 42, Task 15... stamped CONTEXTLESS; right — a 2D Story Map grid by journey stage Discover / Listen / Save / Share with an MVP Cut Line separating release from future',
+          caption: 'Flat backlog = CONTEXTLESS. Story Map = a 2D grid of priorities aligned to the user journey + MVP Cut Line.',
         },
         {
           type: 'before-after' as const,
@@ -974,6 +1098,12 @@ export const meeting05: Meeting = {
         },
 
         // ── Checklist ──
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-practitioner-checklist.webp',
+          alt: 'The practitioner\'s checklist (8 items): role highly specific / action contains verb-object-constraint / value links to measurable goal / story passes INVEST (completable in 1 sprint) / 2-5 AC in GWT / priority locked via 60/20/20 + Mike Cohn quote "User stories are about having better conversations"',
+          caption: 'Practitioner\'s checklist + Mike Cohn quote: "User stories are not about writing better requirements. They are about having better conversations."',
+        },
         {
           type: 'checklist' as const,
           title: 'Checklist: Writing a User Story',

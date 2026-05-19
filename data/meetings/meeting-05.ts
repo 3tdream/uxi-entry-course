@@ -19,6 +19,12 @@ export const meeting05: Meeting = {
         'Техники пользовательских интервью, дизайн опросов, Card Sorting и Tree Testing',
       duration: '45 мин',
       sections: [
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-part1-hero.webp',
+          alt: 'Инфографика: UX Research Blueprint — стратегические основы (100:1 ROI, правило 5 Whys, нейтральные vs наводящие вопросы) и набор инструментов (card sorting, tree test 80%+, interviews 5-15 vs surveys 50-500+)',
+          caption: 'Карта части 1: фундаменты Research-практики + основной инструментарий (interviews, surveys, card sorting, tree testing).',
+        },
         // ── Введение ──
         {
           type: 'heading' as const,
@@ -34,6 +40,12 @@ export const meeting05: Meeting = {
           variant: 'example' as const,
           content:
             'Slack до запуска провёл более 200 пользовательских интервью. Результат: команда обнаружила, что люди хотят не «ещё один мессенджер», а способ **уменьшить количество email**. Это изменило позиционирование и весь дизайн продукта.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-roi-slack-pivot.webp',
+          alt: 'Слева: Forrester insight «$1 → $100» (без данных = слепой дизайн). Справа: The Slack Pivot — 200+ интервью до запуска → главный инсайт «пользователи хотят сократить email, а не получить ещё один мессенджер»',
+          caption: 'Без исследования — слепой дизайн. Slack повернул позиционирование после 200 интервью.',
         },
         {
           type: 'user-flow' as const,
@@ -58,6 +70,12 @@ export const meeting05: Meeting = {
             { from: 'enough', to: 'recruit', label: 'Нет — нужно больше' },
             { from: 'insights', to: 'apply' },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-research-cycle.webp',
+          alt: 'Замкнутый 8-шаговый цикл research: Define Goal → Choose Method → Recruit → Conduct → Analyse → Check Sufficiency → Extract Insights → Apply to Design — в виде infinity loop',
+          caption: 'Research как цикл, а не line item: 8 шагов с возвратом «данных недостаточно» обратно в рекрутинг.',
         },
         {
           type: 'divider' as const,
@@ -124,10 +142,22 @@ export const meeting05: Meeting = {
             'Interview guide (гайд) — это план беседы, который помогает интервьюеру не забыть ключевые темы и держать разговор в нужном русле. Хороший гайд содержит:\n\n- **Вступление** (2–3 мин) — представиться, объяснить цель, получить согласие на запись\n- **Разогрев** (3–5 мин) — лёгкие вопросы о человеке и его контексте\n- **Основная часть** (20–30 мин) — вопросы по темам исследования\n- **Завершение** (3–5 мин) — «Что ещё важного мы не обсудили?», благодарность',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-interview-3-pillars.webp',
+          alt: '3 типа интервью (структурированное / полу- / неструктурированное) с фокусом на semi-structured как industry standard + таймлайн 45-минутной сессии (Intro 2-3 мин → Warm-up 3-5 → Main 20-30 → Wrap-up 3-5)',
+          caption: '3 опоры интервью + таймлайн 45-минутной сессии. Semi-structured — стандарт индустрии: глубина unstructured + сравнимость structured.',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
             'Правило «5 почему»: когда участник даёт поверхностный ответ, спрашивайте «Почему?» до 5 раз подряд. Это помогает добраться до истинной мотивации. Пример: «Я удалил приложение» → «Почему?» → «Было много уведомлений» → «Почему это мешало?» → «Я использую телефон на совещаниях» → Инсайт: нужен режим «Не беспокоить».',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-5-whys-framework.webp',
+          alt: '5 Whys framework на конкретном примере: «Я удалил приложение» → 5 уровней «Почему?» → дошли до настоящей боли «использую телефон на совещаниях» → дизайн-инсайт «нужен Do Not Disturb для рабочих контекстов»',
+          caption: '5 Whys в деле: 5 вопросов «Почему?» переводят симптом («удалил приложение») в design-инсайт (нужен Do Not Disturb mode).',
         },
         {
           type: 'subheading' as const,
@@ -182,6 +212,12 @@ export const meeting05: Meeting = {
             description:
               '«Расскажите о последнем разе, когда вам нужно было [задача]. Как вы это делали?» — вызывает конкретное воспоминание, открывает причинно-следственную цепочку. Участник вспоминает реальный сценарий, а не отвечает гипотетически.',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-question-teardown.webp',
+          alt: 'Question Tear-down: Ask This, Not That. ❌ Закрытое «Do you use our app daily for tasks?» (triggers social norm, kills narrative) vs ✅ открытое «Tell me about the last time you booked a doctor\'s appointment» (Open / Situational / Behavioural / Pain / Dream)',
+          caption: 'Question Tear-down: 5 фреймов хорошего вопроса — Open / Situational / Behavioural / Pain / Dream. Закрытый «нравится?» — социальная норма, ничего не даёт.',
         },
         {
           type: 'divider' as const,
@@ -239,6 +275,12 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-survey-toolkit-landscape.webp',
+          alt: 'The Survey Tool Landscape: Google Forms (free, default UI), Typeform (conversational, +40% completion), SurveyMonkey (enterprise standard, benchmarks), Tally (free Typeform alternative) — для каждого strengths + trade-off',
+          caption: 'Survey Tool Landscape: strengths и trade-offs для 4 главных тулов опросов на рынке.',
+        },
+        {
           type: 'text' as const,
           content:
             'Правила хорошего опроса:\n\n- **Краткость** — не более 10–15 вопросов (completion rate падает на 20% после 12 вопросов)\n- **Один вопрос — одна мысль** — не «Насколько удобно и быстро...?»\n- **Шкала Ликерта** — 5 или 7 пунктов, нечётное число для нейтрального варианта\n- **Обязательные vs опциональные** — помечайте звёздочкой только критичные вопросы\n- **Прогресс-бар** — показывает, сколько осталось, снижает отток\n- **Логические ветвления** — если ответ «Нет», пропускаем блок вопросов',
@@ -289,6 +331,12 @@ export const meeting05: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-interviews-vs-surveys-matrix.webp',
+          alt: 'Сравнительная матрица Qualitative (Interviews) vs Quantitative (Surveys) по 4 осям: Focus (Why/Depth vs How Many/Breadth), Participants (5-15 vs 50-500+), Time Investment (30-60 мин vs 3-5 мин), When to Use (discovery vs validation)',
+          caption: 'Матрица Interviews vs Surveys: глубина vs масштаб, по 4 осям выбора метода.',
         },
         {
           type: 'divider' as const,
@@ -395,6 +443,12 @@ export const meeting05: Meeting = {
             'Tree Testing — обратный метод к Card Sorting. Вы даёте участникам **готовую структуру навигации** (дерево) и просите найти конкретную информацию. Это проверяет, насколько хорошо ваша ИА работает на практике.\n\n- **Задание**: «Найдите, где изменить пароль»\n- **Участник**: кликает по дереву навигации: Настройки → Безопасность → Сменить пароль\n- **Метрики**: success rate, directness (нашёл с первого раза), time to complete\n- **Норма**: success rate > 80% — структура работает',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-tree-testing-metrics.webp',
+          alt: 'Validating the Architecture (Tree Testing): tree-структура с подсвеченным правильным путём + 3 метрики на конкретном задании «Where to change your password» — Success Rate 85% (target ≥80%), Directness 90% (first try, no backtracking), Time to Complete 3.5s',
+          caption: 'Tree Testing на живом примере: 85% / 90% / 3.5s — три метрики, по которым диагностируется ИА.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Tree test: «почти норм» vs итеративный fix',
           before: {
@@ -422,6 +476,12 @@ export const meeting05: Meeting = {
         },
 
         // ── Кейс ──
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-airbnb-crisis.webp',
+          alt: 'The Airbnb Search Crisis: левая колонка — Problem (конверсия застряла на ~12%, юридические термины «entire home / private room» путали пользователей). Правая колонка — Snow White Discovery (внутреннее качественное исследование показало: пользователи доверяют истории хозяина, а не категории жилья)',
+          caption: 'Airbnb Search Crisis: 12% конверсия + Snow White discovery («entire home» звучит как юридический термин, а не приглашение).',
+        },
         // NOTE: цифры из публичных ретроспектив команды Airbnb Design и блога 2013 года
         // («Snow White technique»). Точная методология не раскрыта — порядки величин ОК,
         // конкретные проценты иллюстративны.
@@ -445,10 +505,22 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-airbnb-process.webp',
+          alt: 'Полный 6-шаговый процесс Airbnb: Trust Research → Open Sort → Cultural Analysis → Dendrogram Analysis → Tree Testing (87% success) → A/B Test (5% traffic). Итог: Conversion ~+58%, Search Time −30%',
+          caption: 'Airbnb process: 6 шагов от качественного trust research до A/B-теста. Результат: конверсия ~19% (+58%), время поиска −30%.',
+        },
+        {
           type: 'divider' as const,
         },
 
         // ── Чеклист ──
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-preflight-checklist.webp',
+          alt: 'The Pre-Flight Research Checklist (8 пунктов): цель → гайд → рекрутинг → consent → пилот → запись → affinity map → формат отчёта. Без данных = слепой дизайн',
+          caption: 'Pre-Flight Research Checklist: 8 пунктов, без которых интервью даст шум, а не данные.',
+        },
         {
           type: 'checklist' as const,
           title: 'Чеклист: подготовка к пользовательскому интервью',
@@ -605,6 +677,12 @@ export const meeting05: Meeting = {
         'Разница между Use Cases и User Stories, формат записи, критерии приёмки и приоритизация MoSCoW',
       duration: '45 мин',
       sections: [
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-part2-hero.webp',
+          alt: 'Инфографика «User Stories vs Use Cases: Mastering Product Requirements». Function vs Value, INVEST principle, Given-When-Then, 60/20/20 MoSCoW rule, Story Mapping efficiency, сравнительная таблица Use Case vs User Story (focus / origin / best for)',
+          caption: 'Карта части 2: от research-инсайтов к требованиям — Use Case vs User Story, INVEST, GWT, MoSCoW, Story Mapping.',
+        },
         // ── Введение ──
         {
           type: 'heading' as const,
@@ -614,6 +692,12 @@ export const meeting05: Meeting = {
           type: 'text' as const,
           content:
             'После проведения интервью и опросов возникает вопрос: как перевести инсайты в понятные требования для команды разработки? Для этого существуют два инструмента: **Use Cases** (сценарии использования) и **User Stories** (пользовательские истории). Оба описывают поведение пользователя, но с разных сторон.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-research-to-requirements.webp',
+          alt: 'Schematic: messy research notes (squiggly arrow) → structured card with PROJ-1234 (User Login Feature), Description, Core Value, MVP Cut, Acceptance Criteria, Status TODO, Priority HIGH, метка TESTABLE',
+          caption: 'Мост: инсайты из research → структурированное требование (с ценностью, AC, приоритетом).',
         },
         {
           type: 'divider' as const,
@@ -639,6 +723,12 @@ export const meeting05: Meeting = {
           type: 'divider' as const,
         },
 
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-two-paths.webp',
+          alt: 'Two distinct paths to product clarity: User Research → ① Use Case (Software Engineering, Ivar Jacobson, 1992) — focuses on sequence of interactions with the system; ② User Story (Agile/Scrum, Kent Beck & Mike Cohn) — focuses on delivering a specific unit of value to the user',
+          caption: 'Из одного research-инсайта — два пути к требованиям. Use Case = функция, User Story = ценность.',
+        },
         // ── User Stories ──
         {
           type: 'heading' as const,
@@ -650,10 +740,22 @@ export const meeting05: Meeting = {
             'User Story — это краткое описание функциональности с точки зрения пользователя. Формат из Agile/Scrum, придуман Кентом Беком и популяризирован Майком Коном.\n\nФормула:\n\n**«Как [роль], я хочу [действие], чтобы [ценность]»**\n\nUser Story фокусируется не на шагах взаимодействия, а на **ценности для пользователя**. Это делает историю понятной для всей команды: от дизайнера до разработчика.',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-05-story-formula.webp',
+          alt: 'Engineering the perfect user story — 3 блока «As a [Role]» (must be highly specific — никогда «user», говори «small business accountant») + «I want to [Action]» (verb + object + constraint) + «So that [Value]» (measurable business goal — если ответ «for convenience», ценности нет)',
+          caption: 'Формула User Story: Role (точная) + Action (глагол+объект+ограничение) + Value (бизнес-метрика, не «для удобства»).',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
             'Принцип INVEST для хороших User Stories:\n\n- **I**ndependent — независимая от других историй\n- **N**egotiable — открыта к обсуждению\n- **V**aluable — несёт ценность для пользователя\n- **E**stimable — можно оценить объём работы\n- **S**mall — достаточно маленькая для одного спринта\n- **T**estable — можно проверить acceptance criteria',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-invest-dial.webp',
+          alt: 'The quality assurance dial: 6 атрибутов INVEST вокруг центрального dial. Independent / Negotiable / Valuable / Estimable / Small / Testable — каждый с короткой расшифровкой',
+          caption: 'INVEST dial: 6 атрибутов качества User Story. Самый частый провал — S (Small): не помещается в спринт → декомпозируй.',
         },
 
         // ── Сравнение ──
@@ -690,9 +792,9 @@ export const meeting05: Meeting = {
         },
         {
           type: 'image' as const,
-          src: '/images/meeting-05-user-story-formula.webp',
-          alt: 'Схема формулы пользовательской истории',
-          caption: 'Формула User Story: роль → действие → ценность.',
+          src: '/images/meeting-05-framework-matrix.webp',
+          alt: 'Choosing the right framework for the task: матрица сравнения Use Case vs User Story по 6 осям — Focus, Format, Inclusions, Origin (Waterfall/RUP vs Agile/Scrum), Best For (сложные системы vs итеративные продукты), Primary Author (архитектор vs Product Owner)',
+          caption: 'Framework Matrix: Use Case vs User Story по 6 осям. Use Case — для рисковых, длинных, регулируемых систем; User Story — для итеративных продуктов.',
         },
         {
           type: 'divider' as const,
@@ -758,6 +860,12 @@ export const meeting05: Meeting = {
           type: 'text' as const,
           content:
             'Acceptance Criteria (AC) — это чёткие условия, при выполнении которых User Story считается реализованной. Без AC история остаётся неоднозначной: разработчик и дизайнер могут понять её по-разному.\n\nФормат **Given-When-Then** (Gherkin):\n\n- **Given** (Допустим): начальное состояние\n- **When** (Когда): действие пользователя\n- **Then** (Тогда): ожидаемый результат',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-gwt-boundary-lines.webp',
+          alt: 'Setting definitive boundary lines: трёхступенчатая схема GIVEN (Setup State) → WHEN (Action Node) → THEN (System Response) на конкретном примере "user on product page → taps heart → item enters favourites, counter +1, no reload"',
+          caption: 'Given-When-Then ставит «definitive boundary lines»: setup → action → response. Один сценарий = один AC.',
         },
         {
           type: 'callout' as const,
@@ -866,9 +974,9 @@ export const meeting05: Meeting = {
         },
         {
           type: 'image' as const,
-          src: '/images/meeting-05-moscow-priority.webp',
-          alt: 'Пирамида приоритизации MoSCoW с четырьмя уровнями',
-          caption: 'MoSCoW: распределение задач по приоритету 60/20/20.',
+          src: '/images/meeting-05-moscow-60-20-20.webp',
+          alt: 'Managing finite capacity with MoSCoW: 4-квадрантная матрица Must / Could / Should / Won\'t + pie chart 60/20/20. Если 100% задач — Must have, вы не приоритизируете, а хоардите',
+          caption: 'MoSCoW 4-квадранта + 60/20/20 pie. 100% Must = вы хоардите, а не приоритизируете.',
         },
         {
           type: 'callout' as const,
@@ -889,6 +997,12 @@ export const meeting05: Meeting = {
             description:
               'Новый запрос в середине спринта → **автоматически Won\'t Have** текущего. PO объясняет: «Добавим в следующий спринт после приоритизации с командой». Исключение только для **P0-инцидентов** (упал прод, регуляторный риск, критический баг). Без исключений MoSCoW работает; с исключениями — это просто «всё горит».',
           },
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-midsprint-pressure.webp',
+          alt: 'The mid-sprint pressure valve: лабораторная иллюстрация — стейкхолдер вливает новый Must Have в спринт-капасити, и существующая задача автоматически выпадает в «Won\'t Have». Исключение только для P0 incidents — discipline maintains the sprint, exceptions burn it down',
+          caption: 'Mid-sprint pressure valve: новый Must → старая задача автоматом в Won\'t. Исключение только для P0 incidents.',
         },
         {
           type: 'divider' as const,
@@ -924,6 +1038,18 @@ export const meeting05: Meeting = {
             { title: 'MoSCoW-сессия', description: 'Каждая Squad голосовала за приоритет своих историй. Won\'t Have — открыто на доске, не «отказ», а «не в этом квартале»' },
             { title: 'Sprint Planning', description: 'Спринт по правилу 60/20/20. Новые запросы в середине — автоматически в следующий цикл (см. блок «MoSCoW под давлением»)' },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-spotify-turnaround.webp',
+          alt: 'Case Study: The Spotify turnaround. 4 шага: 1. Audit (60-70% vague Slack requests → role/action/value), 2. Map (2D horizontal journey Discover → Listen → Save + MVP cut line), 3. MoSCoW (teams vote on priorities, Won\'t Have visible), 4. Execute (sprint locked, 60/20/20). Результат: planning sessions 2 days → 3 hours',
+          caption: 'Spotify turnaround в 4 шага: Audit → Map → MoSCoW → Execute. Планирование квартала: 2 дня → 3 часа.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-backlog-vs-storymap.webp',
+          alt: 'Elevating the backlog from list to map: слева — плоский список Task 42, Task 15... со штампом CONTEXTLESS; справа — Story Map 2D grid по этапам Discover/Listen/Save/Share с MVP Cut Line, разделяющей релиз от future. «A Story Map is a 2D grid that aligns priorities directly against the user journey»',
+          caption: 'Плоский бэклог = CONTEXTLESS. Story Map = 2D-сетка приоритетов по user journey + MVP Cut Line.',
         },
         {
           type: 'before-after' as const,
@@ -974,6 +1100,12 @@ export const meeting05: Meeting = {
         },
 
         // ── Чеклист ──
+        {
+          type: 'image' as const,
+          src: '/images/meeting-05-practitioner-checklist.webp',
+          alt: 'The practitioner\'s checklist (8 пунктов): role highly specific / action contains verb-object-constraint / value links to measurable goal / story passes INVEST (completable in 1 sprint) / 2-5 AC in GWT / priority locked via 60/20/20 + цитата Mike Cohn «User stories are about having better conversations»',
+          caption: 'Practitioner\'s checklist + цитата Майка Кона: «User stories are not about writing better requirements. They are about having better conversations.»',
+        },
         {
           type: 'checklist' as const,
           title: 'Чеклист: написание User Story',
