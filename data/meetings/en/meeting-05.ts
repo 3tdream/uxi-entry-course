@@ -977,6 +977,40 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: '🎮 Bonus track: User Stories for a mobile game',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'In games, "role" is not a job title — it\'s a **player archetype** (new player / hardcore / pay-to-win / F2P grinder / churned). Value is also domain-specific: dopamine hit, status, progression, social proof, FOMO. Below — 4 User Stories for different gaming audiences (using a 3v3 mobile shooter as a running example).',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: '🆕 New player (Day 1-3)',
+              definition:
+                '"As a new player, I want to play my first match against bots with control hints, so I can learn the basic mechanics without fear of losing to real people." **AC:** bots are 30% weaker than a novice; hints appear on the 1st, 3rd, and 5th tap. **Business metric:** D1 retention 60% → 70%.',
+            },
+            {
+              term: '🔥 Hardcore player (Top 1%, 1000+ matches)',
+              definition:
+                '"As a hardcore player at 25k trophies, I want to see the rank distribution on the matchmaking screen before the match, so I understand who I\'m up against and what my odds are." **AC:** shows 6 player avatars + average rank; real nicknames hidden until the match starts. **Business metric:** D30 retention of the top 1% 85% → 92%.',
+            },
+            {
+              term: '💸 F2P grinder (long-tail free user)',
+              definition:
+                '"As an F2P player, I want to see progress toward my next Brawler unlock with one tap from the home screen, so I don\'t have to open a nested menu every time." **AC:** progress bar to the next unlock is visible above-the-fold; click → details. **Business metric:** session length of the grinder segment +12%.',
+            },
+            {
+              term: '👻 Churned player (no login 14+ days)',
+              definition:
+                '"As a player who hasn\'t played in 2 weeks, I want a notification with **specific new content** (new brawler / new mode), not a generic ‘we miss you’, so I can decide whether anything relevant to me has changed." **AC:** push contains the content name + one specific benefit. **Business metric:** D14 win-back 8% → 14%.',
+            },
+          ],
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -1026,6 +1060,62 @@ export const meeting05: Meeting = {
           variant: 'tip' as const,
           content:
             'The 60/20/20 rule: in a sprint, ~60% of tasks should be Must have, ~20% Should have, ~20% Could have. If 100% of tasks are Must have, it means you\'re not prioritizing \u2014 you\'re just throwing everything into one pile.',
+        },
+        {
+          type: 'subheading' as const,
+          content: '\ud83c\udfae Gaming MoSCoW in action',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'In gaming, priorities depend heavily on the **type of release**: a live-ops patch \u2260 a major content drop \u2260 an exploit hotfix. Below is a MoSCoW example for a **season update** of a 3v3 mobile shooter. Note how Must is reserved for **what blocks the release**, not "everything important".',
+        },
+        {
+          type: 'columns' as const,
+          columns: [
+            {
+              title: '\ud83d\udd34 Must Have (release blockers)',
+              items: [
+                'Rebalance 12 brawlers for the new mode (without this PvP is broken)',
+                'Security fixes (cheats, exploits, server-side abuse)',
+                'Brawl Pass progression for existing players (without this they churn after nerfs)',
+                'Crash fix for iPhone 12 and older (>15% of the base)',
+              ],
+            },
+            {
+              title: '\ud83d\udfe1 Should Have (important, not blocking)',
+              items: [
+                'New brawler #1 (main hype driver \u2014 but a 2-week slip won\'t kill the update)',
+                'Quick Rematch button (UX win, workaround exists via menu)',
+                'In-game leaderboard for the new mode (can ship 1-2 weeks later)',
+                'Apple Watch companion notifications',
+              ],
+            },
+            {
+              title: '\ud83d\udfe2 Could Have (nice to have)',
+              items: [
+                'Seasonal cosmetic skins (3-5 of them, can ship mid-season)',
+                'Replay system for top-100 matches',
+                'Custom party emotes',
+                'Localization for 2 additional languages',
+              ],
+            },
+            {
+              title: '\u26ab Won\'t Have (not this season)',
+              items: [
+                'Clan-vs-Clan tournaments (huge feature, needs its own quarter)',
+                'Brand-new game mode (3+ months of balancing)',
+                'Cross-progression iOS \u2194 Android (lawyer + infra blocker)',
+                'Voice chat (privacy + moderation = trap)',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Gaming trap #1:** the new brawler **almost always** wants to be Must Have because marketing built a campaign around it. Discipline: a hype driver is a **Should Have**. If it breaks in QA, the release still ships without it; the brawler ships as a hotfix a week later. That\'s fine. A failed release because of a half-baked brawler is not.',
         },
         {
           type: 'before-after' as const,

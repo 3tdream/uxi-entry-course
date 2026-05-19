@@ -979,6 +979,40 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: '🎮 Bonus track: User Stories для мобильной игры',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'В играх «роль» — это не должность, а **игровой архетип** (новичок / hardcore / pay-to-win / F2P-grinder / churned). Ценность тоже специфическая: dopamine hit, статус, прогрессия, social proof, FOMO. Ниже — 4 примера User Stories для разных gaming-аудиторий (на примере 3v3 mobile-шутера).',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: '🆕 Новый игрок (Day 1-3)',
+              definition:
+                '«Как новый игрок, я хочу сыграть первый матч против ботов с подсказками по управлению, чтобы освоить базовую механику без страха проигрыша реальным людям». **AC:** боты на 30% слабее новичка, подсказки появляются на 1-м, 3-м, 5-м тапе. **Бизнес-метрика:** D1 retention 60% → 70%.',
+            },
+            {
+              term: '🔥 Hardcore игрок (Top 1%, 1000+ матчей)',
+              definition:
+                '«Как hardcore игрок с 25k трофеев, я хочу видеть rank distribution в matchmaking-экране перед матчем, чтобы понимать, кому я противостою и оценить свои шансы». **AC:** показывает 6 player avatars + average rank, скрывает реальные nicknames до начала матча. **Бизнес-метрика:** D30 retention top-1% 85% → 92%.',
+            },
+            {
+              term: '💸 F2P-grinder (бесплатник, играет долго)',
+              definition:
+                '«Как F2P-игрок, я хочу видеть прогресс к следующему Brawler-у в одном тапе с home-screen, чтобы не открывать вложенное меню каждый раз». **AC:** progress bar до следующего unlock виден above-the-fold, click → детали. **Бизнес-метрика:** session length grinder-сегмента +12%.',
+            },
+            {
+              term: '👻 Churned игрок (не заходил 14+ дней)',
+              definition:
+                '«Как игрок, который не заходил 2 недели, я хочу получать persistent notification с **конкретным новым контентом** (новый brawler / новый режим), а не "we miss you", чтобы понять, изменилось ли что-то релевантное мне». **AC:** push-уведомление содержит название контента + одно конкретное преимущество. **Бизнес-метрика:** D14 win-back 8% → 14%.',
+            },
+          ],
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -1028,6 +1062,62 @@ export const meeting05: Meeting = {
           variant: 'tip' as const,
           content:
             'Правило 60/20/20: в спринте ~60% задач — Must have, ~20% — Should have, ~20% — Could have. Если 100% задач — Must have, значит вы не приоритизируете, а просто складываете всё в одну кучу.',
+        },
+        {
+          type: 'subheading' as const,
+          content: '🎮 Gaming MoSCoW в действии',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'В геймдеве приоритеты сильно зависят от **типа релиза**: live-ops патч ≠ major content drop ≠ exploit-hotfix. Ниже — пример MoSCoW для **season update** в 3v3 mobile-шутере. Заметь, как Must относится к **тому, без чего апдейт не выходит**, а не к «всему, что важно».',
+        },
+        {
+          type: 'columns' as const,
+          columns: [
+            {
+              title: '🔴 Must Have (релиз-блокеры)',
+              items: [
+                'Балансировка 12 brawler-ов под новый режим (без этого PvP сломан)',
+                'Security-фиксы (читы, эксплойты, серверные эксплойты)',
+                'Brawl Pass прогрессия для существующих игроков (без этого они churn-нут после nerfs)',
+                'Crash-фикс на iPhone 12 и младше (>15% базы)',
+              ],
+            },
+            {
+              title: '🟡 Should Have (важно, но не блокирует)',
+              items: [
+                'Новый brawler #1 (главный hype-driver, но если опоздает на 2 недели — outweigh не пострадает)',
+                'Quick Rematch button (UX-улучшение, есть workaround через menu)',
+                'In-game leaderboard для нового режима (можно докатить через 1-2 недели)',
+                'Apple Watch companion notifications',
+              ],
+            },
+            {
+              title: '🟢 Could Have (приятный бонус)',
+              items: [
+                'Сезонные cosmetic skins (3-5 шт, можно докатить mid-season)',
+                'Replay system для топ-100 матчей',
+                'Custom party emotes',
+                'Локализация на 2 дополнительных языка',
+              ],
+            },
+            {
+              title: '⚫ Won\'t Have (не в этом сезоне)',
+              items: [
+                'Clan-вс-Clan tournaments (огромная feature, нужен отдельный квартал)',
+                'Полностью новый game mode (нужен балансинг 3+ месяца)',
+                'Cross-progression iOS ↔ Android (lawyer + infra blocker)',
+                'Voice chat (privacy + moderation = ловушка)',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Gaming-ловушка #1:** новый brawler **почти всегда** хочется засунуть в Must Have, потому что маркетинг построил вокруг него кампанию. Дисциплина: hype-driver — это **Should Have**. Если он сломается в QA, релиз всё равно выходит без него, а brawler выкатывается hot-fix-ом через неделю. Это нормально. Сорванный релиз из-за неготового brawler-а — нет.',
         },
         {
           type: 'before-after' as const,
