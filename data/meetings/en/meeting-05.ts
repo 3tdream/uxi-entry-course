@@ -194,6 +194,51 @@ export const meeting05: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: 'Same question types — in a game-dev context',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'The question skeletons are universal; only the domain changes. Below are the same 5 types applied to a game product (using a 3v3 mobile shooter as a running example). Players often **can\'t verbalise** the reason for churn, so situational and behavioural questions yield **sharper** insights in games than "do you like the new skin?".',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Open-ended question (gaming)',
+              definition:
+                '"Tell me how you usually start a session in our game after a long workday?" — reveals the real entry context (metro / couch / lunch break, headphones / no headphones), not a "hypothetical player".',
+            },
+            {
+              term: 'Situational question (gaming)',
+              definition:
+                '"Think about the last time you hit a losing streak — 3 losses in a row. What did you do?" — surfaces real behavior at an emotional peak (quit app, swap brawler, switch to bot games, frustration).',
+            },
+            {
+              term: 'Behavioral question (gaming)',
+              definition:
+                '"How often do you open the in-game Shop? In which situations did you actually buy something in the last 30 days?" — exposes monetization triggers without judgment pressure. Browsing ≠ buying.',
+            },
+            {
+              term: 'Pain point question (gaming)',
+              definition:
+                '"What frustrates you the most about the current matchmaking / brawler progression / Star Drop system?" — focuses on a specific mechanic. Not "what don\'t you like about the game" (too broad).',
+            },
+            {
+              term: 'Aspirational question (gaming)',
+              definition:
+                '"If you could change one thing about the new-player onboarding, what would it be?" — captures the player\'s priority (onboarding, balance, monetization, social), showing where it hurts most.',
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Game-dev research specifics:** experienced players give an "expert bias" — they remember and evaluate the game as designers, not users. Balance your sample: 2-3 hardcore (3+ hrs/day), 2-3 mid (30-60 min), 1-2 churned (played a month ago, no longer logging in). Churned players are the most valuable — they remember **exactly what broke**.',
+        },
+        {
           type: 'callout' as const,
           variant: 'warning' as const,
           content:
