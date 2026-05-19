@@ -1291,6 +1291,44 @@ export const meeting05: Meeting = {
             },
           ],
         },
+        {
+          type: 'checklist' as const,
+          title: '🎮 Checklist: Writing a Gaming User Story',
+          items: [
+            {
+              text: 'Role = player archetype, not "user"',
+              demo: '❌ "As a user, I want..." — ✅ "As an F2P player in the 10–25k trophy range, playing ~30 min/day on the commute, I want...". An archetype = **behavioral segment + entry context**, not a job title. Baseline archetypes: new (D1-3) / mid (steady) / hardcore (top 1%) / F2P grinder / spender / churned.',
+            },
+            {
+              text: 'Action with a trigger and a condition',
+              demo: '❌ "I want better matchmaking" — ✅ "I want to be placed into a match against opponents **10–15% weaker**, **WHEN** I have 3 losses in a row within 1 hour". **Trigger** = when it fires, **condition** = under what parameters, **exit** = when we return to normal.',
+            },
+            {
+              text: 'Value tied to a gaming metric',
+              demo: '"So it\'s more convenient" = a wish. Gaming-ready: "...so that **D1 retention after a losing streak** rises from 42% to 65%", or "...so that **F2P-segment ARPU** +$0.12", or "...so that **session engagement** grows by 8 minutes". Without a metric, the story is a wish list.',
+            },
+            {
+              text: 'INVEST — extra attention to S (Small)',
+              demo: 'Gaming features are notorious for **scope explosion**. "A new brawler" is NOT a story — it\'s an **epic of 15–20 stories**: model + animations + balancing + tutorial + voice lines + skins + monetization tier... Break it into a minimum playable slice + Should-have polish. If you can\'t playtest it in one sprint — the story is too big.',
+            },
+            {
+              text: '2–5 AC in Given-When-Then + telemetry hooks',
+              demo: '**Given** the player is in a match, **When** they land the final hit on the boss, **Then**: victory stinger plays, records screen appears in 2 sec, **analytics fires** `victory_event` with `player_id`, `match_id`, `brawler_id`, `time_to_kill`. **In gaming, an AC without telemetry hooks is useless** — there\'s nothing to analyze post-release.',
+            },
+            {
+              text: 'Small = ships + 1 playtest within one sprint',
+              demo: 'A gaming story must fit so that within a **2–3-week sprint** you can: **ship it → playtest with 5 players → fix the top-3 issues**. If a playtest doesn\'t fit — the story is too big. **Without a playtest, a gaming feature = a guess**, not a validated decision.',
+            },
+            {
+              text: 'Priority via MoSCoW with gaming discipline',
+              demo: '**Trap #1:** a new brawler / new mode / new skin almost always wants to be a **Must Have** because marketing built a campaign around it. Discipline: a hype driver is a **Should Have**. **Must Have** = rebalancing existing systems, security fixes, retention features, crash fixes. See the full "Gaming MoSCoW" block above in this section.',
+            },
+            {
+              text: 'DoR for game-dev = PM + Game Designer + balance numbers',
+              demo: '**Gaming Definition of Ready**: ✅ PM read it → ✅ **Game Designer wrote a design doc** → ✅ artist confirmed assets are in the pipeline (Blender / Maya / Spine) → ✅ **balance numbers** (HP, damage, cooldown, drop rate) signed off by the QA engineer → ✅ telemetry events defined → ✅ playtest protocol ready. **Without a design doc from GD — the sprint is burned** on questions like "wait, how should the bounce mechanic actually work?".',
+            },
+          ],
+        },
 
         // ── Quote ──
         {

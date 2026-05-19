@@ -1293,6 +1293,44 @@ export const meeting05: Meeting = {
             },
           ],
         },
+        {
+          type: 'checklist' as const,
+          title: '🎮 Чеклист: написание Gaming User Story',
+          items: [
+            {
+              text: 'Роль — игровой архетип, а не «игрок»',
+              demo: '❌ «Как игрок, я хочу...» — ✅ «Как F2P-игрок с трофеями 10–25k, играющий ~30 мин/день в метро, я хочу...». Архетип = **поведенческий сегмент + контекст входа**, не job title. Базовые архетипы: new (D1-3) / mid (steady players) / hardcore (top 1%) / F2P-grinder / spender / churned.',
+            },
+            {
+              text: 'Действие с триггером и условием',
+              demo: '❌ «Я хочу лучший матчмейкинг» — ✅ «Я хочу попасть в матч против противников **−10..−15% по силе**, **КОГДА** у меня 3 поражения подряд за 1 час». **Триггер** = когда срабатывает, **условие** = при каких параметрах, **выход** = когда возвращаемся в норму.',
+            },
+            {
+              text: 'Ценность привязана к gaming-метрике',
+              demo: '«Чтобы было удобнее» = пожелание. Gaming-ready: «...чтобы **D1 retention после losing streak** вырос с 42% до 65%», или «...чтобы **ARPU F2P-сегмента** +$0.12», или «...чтобы **engagement-сессия** выросла на 8 минут». Без метрики история = wish list.',
+            },
+            {
+              text: 'INVEST — особое внимание к S (Small)',
+              demo: 'Gaming-фичи славятся **explosion of scope**. «Новый brawler» — это НЕ история, а **epic из 15–20 stories**: модель + анимации + балансировка + tutorial + voice lines + skins + monetization tier... Раздели на minimum playable slice + Should-have polish. Если ты не можешь playtest-нуть за 1 спринт — story слишком большая.',
+            },
+            {
+              text: '2–5 AC в Given-When-Then + telemetry hooks',
+              demo: '**Given** игрок зашёл в матч, **When** он наносит финальный удар по боссу, **Then**: проигрывается победный stinger, screen of records через 2 сек, **в analytics log fires** `victory_event` с `player_id`, `match_id`, `brawler_id`, `time_to_kill`. **В gaming AC без telemetry hooks бесполезен** — нечего анализировать после релиза.',
+            },
+            {
+              text: 'Маленькая = реализуема + 1 playtest за спринт',
+              demo: 'Gaming-история должна укладываться так, чтобы за **2–3 недели спринта** её можно было: **реализовать → провести playtest на 5 игроках → пофиксить top-3 проблемы**. Если playtest не помещается — story слишком большая. **Без playtest gaming-feature = догадка**, а не валидированное решение.',
+            },
+            {
+              text: 'Приоритет по MoSCoW с gaming-дисциплиной',
+              demo: '**Ловушка #1:** новый brawler / новый режим / новый skin почти всегда хочется в **Must Have**, потому что маркетинг построил вокруг них кампанию. Дисциплина: hype-driver = **Should Have**. **Must Have** = балансировка существующего, security-фиксы, retention-функции, crash-фиксы. См. полный «Gaming MoSCoW» выше в этой секции.',
+            },
+            {
+              text: 'DoR для геймдева = PM + GameDesigner + балансовые числа',
+              demo: '**Gaming Definition of Ready**: ✅ PM прочитал → ✅ **Game Designer написал design doc** → ✅ артист подтвердил, что ассеты в пайплайне (Blender / Maya / Spine) → ✅ **балансовые числа** (HP, damage, cooldown, drop rate) защищены QA-инженером → ✅ telemetry events определены → ✅ playtest-протокол готов. **Без design doc от GD — спринт сорван** на уточнениях типа «а как должна работать механика отскока?».',
+            },
+          ],
+        },
 
         // ── Цитата ──
         {
