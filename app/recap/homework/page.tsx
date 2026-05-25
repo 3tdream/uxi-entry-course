@@ -1,793 +1,1039 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, GraduationCap } from 'lucide-react'
+import { motion } from 'framer-motion'
+import {
+  ArrowLeft,
+  ArrowRight,
+  GraduationCap,
+  Target,
+  Quote,
+  ChevronDown,
+  ChevronUp,
+  CheckCircle2,
+  XCircle,
+  Trophy,
+  Heart,
+  Zap,
+  Flame,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { SectionRenderer } from '@/components/course/section-renderer'
 import { useLanguage } from '@/lib/language'
-import type { Section } from '@/data/types'
+import { SnakeGame } from '@/components/homework/SnakeGame'
 
-type Content = {
-  title: string
-  tagline: string
-  intro: string
-  sections: Section[]
-  backLabel: string
-  nextLabel: string
+// ---- Content (bilingual) ----
+
+type Lang = 'ru' | 'en'
+
+type Interview = {
+  name: string
+  emoji: string
+  age: number
+  role: string
+  quote: string
+  fullText: string
+  pain: string
+  insight: string
 }
 
-const CONTENT: Record<'ru' | 'en', Content> = {
-  ru: {
-    title: 'Капстоун: твой первый Research-проект',
-    tagline: '11 артефактов · ~8–15 часов · полный Research Loop от пустого экрана до Story Map',
-    intro:
-      'За 5 уроков ты собрал инструментарий. Сейчас — собери его в один реальный проект. Выбери продукт, проведи через него все шаги Research Loop, создай портфолио-артефакт. Это не тест и не «домашка на вечер» — это твой **первый UX Research проект, который не стыдно показать на собеседовании**. После него ты понимаешь Research не как 5 разрозненных методов, а как ОДИН процесс.',
-    sections: [
-      {
-        type: 'callout',
-        variant: 'tip',
-        content:
-          '**Прокачка против чек-листа:** этот капстоун закрывает M1–M5 — Foundations, UX/UI, Research-основы, Research-практику и Requirements. Если выполнишь его честно — у тебя в портфолио появится **полный артефакт UX Research проекта** размером 10–20 страниц.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Этап 1 — Выбор продукта (~15 минут)' },
-      {
-        type: 'text',
-        content:
-          '**Шаг 1.** Выбери продукт. У тебя три варианта — каждый одинаково валидный, выбирай по тому, где у тебя больше контекста:',
-      },
-      {
-        type: 'columns',
-        columns: [
-          {
-            title: '🅰 Свой продукт / pet project',
-            items: [
-              'Если у тебя уже есть идея или MVP',
-              'Самый ценный для портфолио — реальные пользователи',
-              'Чуть сложнее с рекрутингом — нужны живые люди',
-              'Лучше всего показывает твою практическую ценность',
-            ],
-          },
-          {
-            title: '🎮 Astral Symphony (gaming)',
-            items: [
-              'Готовая persona Артём в [/meeting/3/template](/meeting/3/template)',
-              'Гипотеза готова: «понятно ли, что музыка реагирует на бой?»',
-              'Можно рекрутить геймеров среди друзей',
-              'Готовый референс с примерами в [/recap/research](/recap/research)',
-            ],
-          },
-          {
-            title: '🌐 Любое приложение, которым ты пользуешься',
-            items: [
-              'Slack / Spotify / Wildberries / Tinder / любое',
-              'Не нужно собственного продукта',
-              'Минус: ты сам — не ЦА, нужны другие интервью',
-              'Хороший выбор для первого захода',
-            ],
-          },
-        ],
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 2.** Сформулируй **гипотезу research** (одно предложение). Шаблон: «Я думаю, что [конкретная роль] спотыкается на [конкретный момент], потому что [причина]. Хочу проверить». Например: «Я думаю, что F2P-игроки Astral Symphony churn-ят на 3-й день, потому что не понимают связь музыки с боем».',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 3.** Определи **одну измеримую метрику успеха**. Это твоя проверка, что улучшение реально сработало через 3 месяца. Примеры: D7 retention / Time on Task / NPS / Task Completion Rate / средняя длительность сессии.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Артефакт 1 (из 11): One-pager**. Документ на 1 страницу: продукт + гипотеза + 1 measurable success metric. Это твоё «обещание самому себе» — будешь возвращаться к этой странице на каждом этапе и проверять, движешься ли ты к этой цели или ушёл в сторону.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Этап 2 — Эмпатия (~2–3 часа)' },
-      {
-        type: 'text',
-        content:
-          'Цель этапа: построить **модель целевого пользователя**. Не «среднего интернет-пользователя», а конкретного human-being, для которого ты проектируешь. Без этого следующие шаги шатает в случайные стороны.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 4 — Persona Card.** Имя, возраст, роль, цели (3), фрустрации (3), цитата из жизни. Не «типичный пользователь», а человек с лицом. См. [M3 Part 1](/meeting/3/part/part-1) и шаблон в [/meeting/3/template](/meeting/3/template).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 5 — Empathy Map.** 4 квадранта: **Думает / Говорит / Чувствует / Делает**. Плюс полосы **Pains** (что мешает) и **Gains** (чего хочет). Заполняй цитатами из реальных интервью или из своих наблюдений, не «я придумал».',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 6 — JTBD-формула.** «Когда [ситуация], я хочу [мотивация], чтобы [результат]». Пример: «Когда я еду в метро 35 минут на работу, я хочу убить время с пользой, чтобы не залипать в TikTok». Это раскрывает **функциональную работу**, ради которой пользователь приходит в твой продукт.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Артефакты 2–4:** Persona Card / Empathy Map / JTBD-формулировка. Все три — на одной странице или в одной Miro-доске.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Этап 3 — Картирование пути (~1–2 часа)' },
-      {
-        type: 'text',
-        content:
-          'Цель: показать **где конкретно болит**. Если этап 2 даёт «кто это», то этап 3 даёт «где он спотыкается во времени».',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 7 — User Journey Map.** **5–6 stages** (типично: Discover → Consideration → Onboard → Use → Habit → Loyalty, или адаптируй под свой продукт). Под каждым этапом фиксируешь: **touchpoint** (где встретился с продуктом), **эмоция** (что чувствовал), **pain point** (что мешало), **opportunity** (идея для улучшения).',
-      },
-      {
-        type: 'callout',
-        variant: 'tip',
-        content:
-          '**Эмоциональная кривая** — обязательный элемент. Нарисуй линию по горизонтали: где эмоция падает (frustration) — там самые ценные точки для дизайна. См. [M3 Part 2](/meeting/3/part/part-2).',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Артефакт 5:** UJM на 5–6 stages с эмоциональной кривой и opportunities. Лучше всего в Miro или Figma — тогда можешь приложить screenshot к итоговому документу.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Этап 4 — Интервью (~3–4 часа)' },
-      {
-        type: 'text',
-        content:
-          '**Самый трудоёмкий этап**, но самый ценный. Подготовка → проведение → анализ. Не пропускай рекрутинг — без правильной выборки данные мусор.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 8 — Подготовка.** Гайд из **8–12 открытых вопросов** в 4 блоках: **warm-up** (расскажите о себе) → **поведение** (как сейчас решаете) → **боль** (что было сложным) → **мечта** (если бы могли изменить). Без leading-вопросов («вам ведь нравится...»). См. [M5 Part 1](/meeting/5/part/part-1).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 9 — Рекрутинг.** Минимум **3 интервью**, лучше 5. **Не из своей IT-команды** — нужны люди из реальной ЦА. Если делаешь Astral Symphony — геймеры, не друзья-разработчики. Длительность: 30–45 мин/интервью.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 10 — Проведение и анализ.** Запись с согласия. Используй **think-aloud** + правило «5 Whys» для углубления. После интервью — **affinity map в Miro**: каждый инсайт = отдельный стикер, кластеры выявят паттерны после 3-го интервью.',
-      },
-      {
-        type: 'callout',
-        variant: 'warning',
-        content:
-          '**Golden Rule интервью:** никогда не подсказывай и не задавай leading-вопросов («вам ведь нравится наш новый поиск?»). Если участник застрял — спроси нейтрально: «Что вы ожидали увидеть?» или «Что бы вы сделали дома один?»',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Артефакты 6–8:** Interview guide (1 страница) / 3 заполненных interview write-up\'а / affinity map с топ-3 кластерами инсайтов.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Этап 5 — Юзабилити-тест (~2–3 часа)' },
-      {
-        type: 'text',
-        content:
-          'Если этап 4 даёт **«что говорят»**, то этап 5 — **«что делают»**. Часто это разные вещи: люди говорят, что хотят X, а делают Y. Юзабилити-тест ловит этот разрыв.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 11 — План теста.** Скрипт из **3–5 задач** (реалистичные сценарии, не инструкции!). Пример хорошей задачи: «Представьте, что вы хотите купить наушники для бега. Найдите подходящий вариант». Пример плохой: «Нажмите Меню → Каталог → Электроника → Наушники». См. [M4 Part 1](/meeting/4/part/part-1).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 12 — Проведение.** **5 пользователей** (правило Нильсена: 5 чел = ~85% проблем). Think-aloud протокол. Инструменты: [Lookback ↗](https://www.lookback.com/) / [Maze ↗](https://maze.co/) / [Zoom](https://zoom.us/) + OBS Studio для self-record. Не подсказывай!',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 13 — Анализ.** **Prioritisation Matrix** (frequency × severity): Critical Blockers (high+high) фиксим первыми, Minor Polish (low+low) — последними. Затем **actionable report**: каждая проблема = issue + severity + evidence (N/5) + recommendation + business impact.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Артефакты 9–10:** Test plan (1 страница с задачами и скриптом) + actionable report с топ-3 issues, prioritisation matrix и рекомендациями.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Этап 6 — От research к требованиям (~2–3 часа)' },
-      {
-        type: 'text',
-        content:
-          'Финальный мост: **research-инсайты → User Stories → Story Map**. Это то, что отделяет «UX-исследователя на бумаге» от «UX-исследователя, чьи инсайты дошли до разработки».',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 14 — 5 User Stories.** Каждая в формате «Как [роль], я хочу [действие], чтобы [ценность]». Каждая с **2–5 Acceptance Criteria в Given-When-Then**. Каждая проходит **INVEST**. Приоритет каждой по **MoSCoW**. См. [M5 Part 2](/meeting/5/part/part-2).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Шаг 15 — Story Map.** **По горизонтали** — этапы user journey (можно взять stages из UJM). **По вертикали** под каждым этапом — твои User Stories по приоритету сверху вниз. **Горизонтальная линия** = MVP cut. То, что выше — в Release 1. То, что ниже — в follow-up.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Артефакт 11:** 5 User Stories с AC + Story Map в Miro/Figma/PDF. Это финальный артефакт капстоуна — он показывает, что ты не просто провёл research, а перевёл его в backlog, готовый к разработке.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Сборка и сдача (~15–30 минут)' },
-      {
-        type: 'text',
-        content:
-          'Собери все **11 артефактов** в один документ: **PDF / Notion page / Miro board**. В начале добавь **1-страничное summary**: что узнал, что меняешь, ожидаемый impact на метрику из этапа 1.',
-      },
-      {
-        type: 'text',
-        content:
-          'Итого ~10–20 страниц. Это **первая работа в твоё UX-портфолио** — оформи аккуратно (заголовки, нумерация, скриншоты артефактов). При собеседовании этот документ показывает работодателю больше, чем 5 курсов в резюме.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Самооценка по rubric' },
-      {
-        type: 'text',
-        content:
-          'Прежде чем считать капстоун сданным — пройдись по чек-листу самооценки. **30 баллов максимум**, **21 балл (70%) — порог сдачи**.',
-      },
-      {
-        type: 'checklist',
-        title: 'Rubric — 6 областей по 5 баллов',
-        items: [
-          {
-            text: '🧠 Persona Card',
-            demo: '**1 балл** — есть имя и роль. **3 балла** — + goals + frustrations. **5 баллов** — + цитата + traits + конкретный контекст (где живёт, чем зарабатывает, как использует продукт).',
-          },
-          {
-            text: '❤️ Empathy Map',
-            demo: '**1 балл** — есть 4 квадранта. **3 балла** — + Pains/Gains. **5 баллов** — заполнено **конкретными цитатами из интервью**, а не «общие слова».',
-          },
-          {
-            text: '🗺 User Journey Map',
-            demo: '**1 балл** — 5 stages с подписями. **3 балла** — + touchpoints + эмоциональная кривая. **5 баллов** — + pains + opportunities на каждом этапе. Видно, где конкретно фиксить.',
-          },
-          {
-            text: '🎤 Interviews',
-            demo: '**1 балл** — 1 интервью провёл. **3 балла** — 3 интервью + сырые заметки. **5 баллов** — 3 интервью + **affinity map с топ-3 кластерами инсайтов** + цитаты участников.',
-          },
-          {
-            text: '🧪 Юзабилити-тест',
-            demo: '**1 балл** — план теста готов. **3 балла** — + проведён на 5 пользователях + prioritisation matrix. **5 баллов** — + **actionable report** с issue/severity/evidence/recommendation/impact на бизнес-метрику.',
-          },
-          {
-            text: '📋 User Stories + Story Map',
-            demo: '**1 балл** — 3 User Stories с ценностью. **3 балла** — + 2–5 AC в Given-When-Then. **5 баллов** — + INVEST для каждой + MoSCoW-приоритет + **Story Map с MVP cut line**.',
-          },
-        ],
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Типичные ошибки — не повторяй' },
-      {
-        type: 'before-after',
-        title: 'Persona',
-        before: {
-          label: '❌ Так не надо',
-          description:
-            '«Я сделал персону по своему другу-разработчику». Это **не персона ЦА**, это ты сам в зеркале. Все следующие шаги будут стрелять в свою же команду, а не в реального пользователя.',
-        },
-        after: {
-          label: '✅ Так надо',
-          description:
-            'Persona = собирательный образ **реального** сегмента ЦА. Имя, возраст, контекст входа в продукт, **конкретные ограничения** (время, бюджет, опыт). Если не уверен — проведи 2-3 предварительных интервью с ЦА и собери persona из их историй.',
-        },
-      },
-      {
-        type: 'before-after',
-        title: 'Рекрутинг интервью',
-        before: {
-          label: '❌ Так не надо',
-          description:
-            '«Опросил 3 человека из своей IT-команды и одного дизайнера». **Bias всей выборки**: коллеги думают как ты, оценивают продукт как профессионалы, не как пользователи.',
-        },
-        after: {
-          label: '✅ Так надо',
-          description:
-            'Рекрутируй **из ЦА persona**: для Astral Symphony — геймеров на форумах и в Discord-серверах, для e-commerce — реальных покупателей с Wildberries, для SaaS — людей из конкретной индустрии. Готовь $25–50 вознаграждение (M4 P1 чек-лист).',
-        },
-      },
-      {
-        type: 'before-after',
-        title: 'User Stories',
-        before: {
-          label: '❌ Так не надо',
-          description:
-            'Все 5 User Stories для одной роли «admin» (или «пользователь»). Получишь технические задания, а не пользовательские истории. Команда не поймёт, **для кого** делает.',
-        },
-        after: {
-          label: '✅ Так надо',
-          description:
-            'Каждая User Story — для **конкретного сегмента** из persona. Например: новичок / опытный / churned / power-user. Тогда команда видит, какой кусок аудитории закрывает каждая story и куда есть «дыры».',
-        },
-      },
-      {
-        type: 'before-after',
-        title: 'Story Map',
-        before: {
-          label: '❌ Так не надо',
-          description:
-            '«Story Map = плоский список из 15 задач». Это просто **backlog**, не Story Map. Нет связи с user journey, нет MVP-разделения, нет приоритета по этапам пути.',
-        },
-        after: {
-          label: '✅ Так надо',
-          description:
-            'Story Map = **2D-сетка**: по горизонтали этапы пути (Discover → Onboard → Use → Habit), по вертикали под каждым — stories по приоритету. **Горизонтальная линия** отрезает MVP от future. Команда за 20 мин видит, что закрыто и где дыры.',
-        },
-      },
-      { type: 'divider' },
-      { type: 'heading', content: '🎮 Если выбрал Astral Symphony' },
-      {
-        type: 'text',
-        content:
-          'Для gaming-варианта у тебя уже **половина артефактов готова в качестве референса** — открой [/recap/research](/recap/research) и пройдись по 7-step Brawl Stars walkthrough с Артёмом. Там filled-in пример persona, UJM, гипотез, теста и метрик. Твоя задача — пройти **тот же путь на Astral Symphony**, не копировать дословно.',
-      },
-      {
-        type: 'key-concepts',
-        concepts: [
-          {
-            term: 'Готовая гипотеза',
-            definition:
-              '«F2P-игроки Astral Symphony churn-ят на 3-й день, потому что не понимают связь музыки с боем». Это focal hypothesis курса — проверяй её.',
-          },
-          {
-            term: 'Persona-якорь',
-            definition:
-              'Артём (28, F2P, метро 35 мин × 2, мейн mid-tier brawler). Используй его в шаблоне [/meeting/3/template](/meeting/3/template) и адаптируй под свою гипотезу.',
-          },
-          {
-            term: 'Готовая success-метрика',
-            definition:
-              'D7 retention F2P-сегмента (baseline ~68% → target ~73%). Считай эту дельту в financial impact, как в M5 P2 case-study Spotify.',
-          },
-          {
-            term: 'Готовый playtest-шаблон',
-            definition:
-              'Post-session Google Form (RU+EN версии лежат в session-notes этой неделе) — используй как survey-инструмент в этапе 5.',
-          },
-        ],
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Что дальше' },
-      {
-        type: 'text',
-        content:
-          'После сдачи капстоуна — **Meeting 6: Information Architecture & Sitemaps**. Там ты возьмёшь свои User Stories из этого проекта и спроектируешь под них структуру навигации. UJM + Story Map из капстоуна — прямой input для следующего модуля.',
-      },
-      {
-        type: 'callout',
-        variant: 'tip',
-        content:
-          '**Save your artifacts.** Не выбрасывай файлы после сдачи — Meeting 6, 7, 8 будут просить тебя возвращаться к persona, UJM и stories для следующих этапов проектирования. Капстоун — это не финал, это **input** для остального курса.',
-      },
-    ],
-    backLabel: 'К Meeting 5',
-    nextLabel: 'Перейти к Meeting 6',
+const T = (lang: Lang) => ({
+  hero: {
+    badge: lang === 'en' ? 'Module 1 Capstone · Worked example' : 'Капстоун Модуля 1 · Разбор примера',
+    title: lang === 'en' ? '🐍 Snake: a complete Research case study' : '🐍 Snake: полный Research-разбор',
+    tagline:
+      lang === 'en'
+        ? "We walked Artem through every step of the Research Loop. Here's what we found, with a playable Snake demo so you can feel the pain yourself."
+        : 'Артём прошёл все шаги Research Loop на нашей Snake-игре. Ниже — что мы нашли, с встроенной играбельной демкой, чтобы ты сам почувствовал, где болит.',
+    yourTurnNote:
+      lang === 'en'
+        ? "After reading this — open the template and run the same loop on YOUR product."
+        : 'После прочтения — открой шаблон и пройди тот же цикл на СВОЁМ продукте.',
   },
-  en: {
-    title: 'Capstone: your first Research project',
-    tagline: '11 artifacts · ~8–15 hours · the full Research Loop from blank canvas to Story Map',
-    intro:
-      'You\'ve collected the toolkit over 5 lessons. Now — pull it together into one real project. Pick a product, walk it through every step of the Research Loop, ship a portfolio artifact. This isn\'t a test or "evening homework" — it\'s **your first UX Research project that\'s legitimately portfolio-worthy at an interview**. After it you understand Research not as 5 disconnected methods, but as ONE process.',
-    sections: [
-      {
-        type: 'callout',
-        variant: 'tip',
-        content:
-          '**Skill check vs the rubric:** this capstone closes M1–M5 — Foundations, UX/UI, Research basics, Research practice, and Requirements. Done honestly, it gives you a **complete 10–20-page UX Research artifact** in your portfolio.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Phase 1 — Pick a product (~15 min)' },
-      {
-        type: 'text',
-        content:
-          '**Step 1.** Pick a product. Three equally valid options — choose the one where you have the most context:',
-      },
-      {
-        type: 'columns',
-        columns: [
-          {
-            title: '🅰 Your own product / pet project',
-            items: [
-              'If you already have an idea or MVP',
-              'Most valuable for the portfolio — real users',
-              'Recruiting is a bit harder — you need live people',
-              'Best showcase of your practical value',
-            ],
-          },
-          {
-            title: '🎮 Astral Symphony (gaming)',
-            items: [
-              'Pre-baked persona Artem in [/meeting/3/template](/meeting/3/template)',
-              'Hypothesis ready: "is the music-combat link readable?"',
-              'Easy to recruit gamers from your friends',
-              'Filled example reference in [/recap/research](/recap/research)',
-            ],
-          },
-          {
-            title: '🌐 Any app you actually use',
-            items: [
-              'Slack / Spotify / Wildberries / Tinder / anything',
-              'No need for your own product',
-              'Downside: you aren\'t the target — need interviews with others',
-              'A solid choice for the first run',
-            ],
-          },
-        ],
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 2.** State the **research hypothesis** in one sentence. Template: "I think [specific role] trips at [specific moment] because of [reason]. I want to verify." For example: "I think Astral Symphony F2P players churn on day 3 because they don\'t catch the music-to-combat link."',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 3.** Define **one measurable success metric**. This is how you\'ll verify, 3 months from now, that the change actually worked. Examples: D7 retention / Time on Task / NPS / Task Completion Rate / average session length.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Artifact 1 of 11: one-pager.** A single page: product + hypothesis + 1 measurable success metric. This is your "promise to yourself" — you\'ll return to it at every step to check whether you\'re still moving toward that target or drifted sideways.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Phase 2 — Empathy (~2–3 hours)' },
-      {
-        type: 'text',
-        content:
-          'Phase goal: build the **target user model**. Not "the average internet user", but a concrete human-being you\'re designing for. Skip this and the next steps swing around in random directions.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 4 — Persona Card.** Name, age, role, goals (3), frustrations (3), real-life quote. Not a "typical user" but a person with a face. See [M3 Part 1](/meeting/3/part/part-1) and the template at [/meeting/3/template](/meeting/3/template).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 5 — Empathy Map.** 4 quadrants: **Thinks / Says / Feels / Does**. Plus the **Pains** (what blocks them) and **Gains** (what they want) strips. Fill with quotes from real interviews or observations, not "I made this up".',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 6 — JTBD formula.** "When [situation], I want to [motivation], so that [outcome]." Example: "When I\'m commuting 35 minutes on the metro, I want to kill the time productively, so I don\'t doomscroll TikTok." This surfaces the **functional job** the user hires your product to do.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Artifacts 2–4:** Persona Card / Empathy Map / JTBD statement. All three on one page or one Miro board.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Phase 3 — Map the journey (~1–2 hours)' },
-      {
-        type: 'text',
-        content:
-          'Goal: show **where it specifically hurts**. If phase 2 answers "who is this", phase 3 answers "where do they trip over time."',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 7 — User Journey Map.** **5–6 stages** (typical: Discover → Consideration → Onboard → Use → Habit → Loyalty, or adapt to your product). Under each stage: **touchpoint** (where they meet the product), **emotion** (what they feel), **pain point** (what blocks them), **opportunity** (improvement idea).',
-      },
-      {
-        type: 'callout',
-        variant: 'tip',
-        content:
-          '**Emotion curve** is a mandatory element. Draw a horizontal line: where emotion dips (frustration) are the highest-value design moments. See [M3 Part 2](/meeting/3/part/part-2).',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Artifact 5:** UJM with 5–6 stages, emotion curve, and opportunities. Best in Miro or Figma — then attach a screenshot to the final document.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Phase 4 — Interviews (~3–4 hours)' },
-      {
-        type: 'text',
-        content:
-          'The **most time-consuming phase**, but the most valuable. Prep → conduct → analyze. Don\'t skip recruiting — bad sample, garbage data.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 8 — Prep.** A guide of **8–12 open-ended questions** in 4 blocks: **warm-up** (tell me about yourself) → **behavior** (how do you do it now) → **pain** (what was hard) → **dream** (what would you change). No leading questions ("you do like our..."). See [M5 Part 1](/meeting/5/part/part-1).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 9 — Recruiting.** Minimum **3 interviews**, ideally 5. **Not from your IT team** — you need people from the actual target audience. If you\'re doing Astral Symphony — gamers, not your developer friends. Length: 30–45 min each.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 10 — Conduct + analyze.** Record with consent. Use **think-aloud** + the "5 Whys" rule for deeper digging. After the sessions — **affinity map in Miro**: every insight = a separate sticky, clusters surface after the 3rd interview.',
-      },
-      {
-        type: 'callout',
-        variant: 'warning',
-        content:
-          '**Interview Golden Rule:** never prompt and never lead ("you like our new search, right?"). If a participant gets stuck — ask neutrally: "What did you expect to see?" or "What would you do if you were home alone?"',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Artifacts 6–8:** interview guide (1 page) / 3 completed interview write-ups / affinity map with the top-3 insight clusters.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Phase 5 — Usability test (~2–3 hours)' },
-      {
-        type: 'text',
-        content:
-          'If phase 4 captures **"what they say"**, phase 5 captures **"what they actually do"**. Often these are different: people say they want X but do Y. Usability testing catches the gap.',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 11 — Test plan.** Script with **3–5 tasks** (realistic scenarios, not instructions!). Good task example: "Imagine you want to buy running headphones. Find a suitable option." Bad: "Click Menu → Catalog → Electronics → Headphones." See [M4 Part 1](/meeting/4/part/part-1).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 12 — Conduct.** **5 users** (Nielsen rule: 5 people = ~85% of issues). Think-aloud protocol. Tools: [Lookback ↗](https://www.lookback.com/) / [Maze ↗](https://maze.co/) / [Zoom](https://zoom.us/) + OBS Studio for self-recording. Don\'t prompt!',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 13 — Analyze.** **Prioritisation Matrix** (frequency × severity): Critical Blockers (high+high) get fixed first, Minor Polish (low+low) last. Then an **actionable report**: each issue = problem + severity + evidence (N/5) + recommendation + business impact.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Artifacts 9–10:** test plan (1 page with tasks + script) + actionable report with the top-3 issues, prioritisation matrix, and recommendations.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Phase 6 — From research to requirements (~2–3 hours)' },
-      {
-        type: 'text',
-        content:
-          'The final bridge: **research insights → User Stories → Story Map**. This is what separates "UX researcher on paper" from "UX researcher whose insights actually made it into development".',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 14 — 5 User Stories.** Each in "As a [role], I want to [action], so that [value]" format. Each with **2–5 Acceptance Criteria in Given-When-Then**. Each passes **INVEST**. Each prioritized via **MoSCoW**. See [M5 Part 2](/meeting/5/part/part-2).',
-      },
-      {
-        type: 'text',
-        content:
-          '**Step 15 — Story Map.** **Horizontally** — user journey stages (you can reuse the UJM stages). **Vertically** under each stage — your User Stories ranked top-down by priority. **Horizontal cut line** = MVP. Above the line goes into Release 1. Below — into follow-up.',
-      },
-      {
-        type: 'callout',
-        variant: 'example',
-        content:
-          '**📝 Artifact 11:** 5 User Stories with AC + Story Map in Miro/Figma/PDF. This is the capstone\'s finale — it shows you didn\'t just run research, you translated it into a backlog ready for development.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Assembly + delivery (~15–30 min)' },
-      {
-        type: 'text',
-        content:
-          'Bring all **11 artifacts** into one document: **PDF / Notion page / Miro board**. Up front add a **1-page summary**: what you learned, what you\'re changing, expected impact on the metric from phase 1.',
-      },
-      {
-        type: 'text',
-        content:
-          'Total ~10–20 pages. This is the **first piece in your UX portfolio** — design it cleanly (headers, numbering, artifact screenshots). At an interview this document tells the employer more than 5 courses on your resume.',
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Rubric — self-assessment' },
-      {
-        type: 'text',
-        content:
-          'Before calling the capstone done — walk through the rubric. **30 points max**, **21 points (70%) is the pass threshold**.',
-      },
-      {
-        type: 'checklist',
-        title: 'Rubric — 6 areas × 5 points each',
-        items: [
-          {
-            text: '🧠 Persona Card',
-            demo: '**1 pt** — name and role only. **3 pts** — + goals + frustrations. **5 pts** — + quote + traits + concrete context (where they live, what they do for money, how they use the product).',
-          },
-          {
-            text: '❤️ Empathy Map',
-            demo: '**1 pt** — 4 quadrants present. **3 pts** — + Pains/Gains. **5 pts** — filled with **concrete quotes from interviews**, not "general phrases".',
-          },
-          {
-            text: '🗺 User Journey Map',
-            demo: '**1 pt** — 5 labeled stages. **3 pts** — + touchpoints + emotion curve. **5 pts** — + pains + opportunities per stage. You can tell exactly where to fix.',
-          },
-          {
-            text: '🎤 Interviews',
-            demo: '**1 pt** — 1 interview conducted. **3 pts** — 3 interviews + raw notes. **5 pts** — 3 interviews + **affinity map with top-3 insight clusters** + participant quotes.',
-          },
-          {
-            text: '🧪 Usability test',
-            demo: '**1 pt** — test plan ready. **3 pts** — + conducted on 5 users + prioritisation matrix. **5 pts** — + **actionable report** with issue/severity/evidence/recommendation/business-metric impact.',
-          },
-          {
-            text: '📋 User Stories + Story Map',
-            demo: '**1 pt** — 3 User Stories with value. **3 pts** — + 2–5 AC in Given-When-Then. **5 pts** — + INVEST for each + MoSCoW priority + **Story Map with MVP cut line**.',
-          },
-        ],
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'Common pitfalls — don\'t repeat them' },
-      {
-        type: 'before-after',
-        title: 'Persona',
-        before: {
-          label: '❌ Wrong',
-          description:
-            '"I built the persona based on my developer friend." That\'s **not a target-audience persona**, that\'s you in a mirror. Every subsequent step then aims at your own team, not at the real user.',
-        },
-        after: {
-          label: '✅ Right',
-          description:
-            'Persona = a composite of a **real** audience segment. Name, age, entry context, **concrete constraints** (time, budget, experience). If unsure — run 2–3 pre-interviews with the target audience and build the persona out of their stories.',
-        },
-      },
-      {
-        type: 'before-after',
-        title: 'Interview recruiting',
-        before: {
-          label: '❌ Wrong',
-          description:
-            '"I interviewed 3 people from my own IT team and a designer." **The whole sample is biased**: colleagues think like you do, evaluate the product as professionals, not as users.',
-        },
-        after: {
-          label: '✅ Right',
-          description:
-            'Recruit **from the persona\'s audience**: for Astral Symphony — gamers from forums and Discord servers; for e-commerce — actual shoppers from a marketplace; for SaaS — people from a specific industry. Budget $25–50 per session as compensation (M4 P1 checklist).',
-        },
-      },
-      {
-        type: 'before-after',
-        title: 'User Stories',
-        before: {
-          label: '❌ Wrong',
-          description:
-            'All 5 User Stories for a single "admin" role (or "user"). You\'ll end up with tech tickets, not user stories. The team won\'t know **who** they\'re building for.',
-        },
-        after: {
-          label: '✅ Right',
-          description:
-            'Each User Story targets a **specific segment** from the persona. For example: new player / experienced / churned / power user. Then the team sees which slice of the audience each story serves and where the gaps are.',
-        },
-      },
-      {
-        type: 'before-after',
-        title: 'Story Map',
-        before: {
-          label: '❌ Wrong',
-          description:
-            '"Story Map = a flat list of 15 tasks." That\'s just a **backlog**, not a Story Map. No tie to the user journey, no MVP split, no priority per stage of the path.',
-        },
-        after: {
-          label: '✅ Right',
-          description:
-            'Story Map = a **2D grid**: horizontally the journey stages (Discover → Onboard → Use → Habit), vertically under each — stories ranked top-down by priority. **Horizontal cut line** separates MVP from future. The team sees what\'s covered and where the gaps are in 20 minutes.',
-        },
-      },
-      { type: 'divider' },
-      { type: 'heading', content: '🎮 If you picked Astral Symphony' },
-      {
-        type: 'text',
-        content:
-          'For the gaming variant **half the artifacts already exist as a reference** — open [/recap/research](/recap/research) and walk through the 7-step Brawl Stars walkthrough with Artem. There you have filled-in examples of persona, UJM, hypotheses, the test, and the metrics. Your job is to walk **the same path on Astral Symphony**, not to copy verbatim.',
-      },
-      {
-        type: 'key-concepts',
-        concepts: [
-          {
-            term: 'Pre-baked hypothesis',
-            definition:
-              '"Astral Symphony F2P players churn on day 3 because they don\'t catch the music-combat connection." This is the course\'s focal hypothesis — verify it.',
-          },
-          {
-            term: 'Persona anchor',
-            definition:
-              'Artem (28, F2P, metro 35 min × 2, mid-tier brawler main). Use him from the [/meeting/3/template](/meeting/3/template) template and adapt to your hypothesis.',
-          },
-          {
-            term: 'Ready success metric',
-            definition:
-              'F2P-segment D7 retention (baseline ~68% → target ~73%). Convert the delta into financial impact, just like the Spotify case study in M5 P2.',
-          },
-          {
-            term: 'Ready playtest template',
-            definition:
-              'Post-session Google Form (RU+EN versions in this week\'s session notes) — use as the survey tool in phase 5.',
-          },
-        ],
-      },
-      { type: 'divider' },
-      { type: 'heading', content: 'What\'s next' },
-      {
-        type: 'text',
-        content:
-          'After the capstone — **Meeting 6: Information Architecture & Sitemaps**. There you\'ll take the User Stories from this project and design the navigation structure to support them. UJM + Story Map from the capstone is the direct input to the next module.',
-      },
-      {
-        type: 'callout',
-        variant: 'tip',
-        content:
-          '**Save your artifacts.** Don\'t toss the files after submission — Meeting 6, 7, 8 will keep asking you to return to the persona, UJM, and stories for follow-up design steps. The capstone is not the finish — it\'s the **input** for the rest of the course.',
-      },
-    ],
-    backLabel: 'Back to Meeting 5',
-    nextLabel: 'Go to Meeting 6',
+  hypothesisBox: {
+    label: lang === 'en' ? 'Research hypothesis' : 'Research-гипотеза',
+    text:
+      lang === 'en'
+        ? "I think players trip on stage 2 because it's too hard. I want to verify."
+        : 'Я думаю, что игроки спотыкаются на втором этапе, потому что он сложный. Хочу проверить.',
+    kpiLabel: lang === 'en' ? 'Success metric (KPI)' : 'Метрика успеха (KPI)',
+    kpiText: lang === 'en' ? 'Score ≥100 points' : 'Набить ≥100 очков',
+    productLabel: lang === 'en' ? 'Product' : 'Продукт',
+    productText: 'Snake (mobile arcade)',
+    personaLabel: lang === 'en' ? 'Persona' : 'Персона',
+    personaText: lang === 'en' ? 'Artem, 28 — metro commuter' : 'Артём, 28 — метро-коммьютер',
   },
+  steps: {
+    persona: {
+      step: lang === 'en' ? 'Step 1' : 'Шаг 1',
+      title: lang === 'en' ? 'Persona — Artem' : 'Персона — Артём',
+      lead: lang === 'en' ? 'Built from observation + 3 short interviews.' : 'Собран из наблюдения + 3 коротких интервью.',
+    },
+    play: {
+      step: lang === 'en' ? 'Step 2' : 'Шаг 2',
+      title: lang === 'en' ? 'Feel the pain — play Snake' : 'Почувствуй боль — сыграй в Snake',
+      lead:
+        lang === 'en'
+          ? "Try to reach 100 points. Notice what happens at exactly 50 points. (Hint: that's the focal pain.)"
+          : 'Попробуй набить 100. Запомни, что произойдёт ровно на 50 очках. (Подсказка: это и есть focal pain.)',
+    },
+    journey: {
+      step: lang === 'en' ? 'Step 3' : 'Шаг 3',
+      title: lang === 'en' ? "Artem's emotional curve" : 'Эмоциональная кривая Артёма',
+      lead:
+        lang === 'en'
+          ? '5 stages of one Artem session. Look where the curve dips — that\'s where research should focus.'
+          : '5 этапов одной сессии Артёма. Где кривая падает — туда смотрит research.',
+    },
+    interviews: {
+      step: lang === 'en' ? 'Step 4' : 'Шаг 4',
+      title: lang === 'en' ? '3 interviews — click any card' : '3 интервью — кликни на любую карточку',
+      lead:
+        lang === 'en'
+          ? 'Short snippets up top; the full transcript is one tap away. Notice the recurring word.'
+          : 'Короткие выжимки сверху; полный transcript — в один тап. Заметь повторяющееся слово.',
+    },
+    test: {
+      step: lang === 'en' ? 'Step 5' : 'Шаг 5',
+      title: lang === 'en' ? 'Usability test — 5 players, 3 tasks' : 'Usability-тест — 5 игроков, 3 задачи',
+      lead:
+        lang === 'en'
+          ? 'The test had one goal: can players hit the KPI? Spoiler — no.'
+          : 'У теста была одна цель: смогут ли игроки добить KPI? Спойлер — нет.',
+    },
+    priorities: {
+      step: lang === 'en' ? 'Step 6' : 'Шаг 6',
+      title: lang === 'en' ? 'MoSCoW prioritisation' : 'Приоритизация MoSCoW',
+      lead:
+        lang === 'en'
+          ? "6 user stories from 5 findings. Note: the 'cool new mode' marketing wanted — went to Won't Have."
+          : '6 user stories из 5 находок. Заметь: «прикольный новый режим», которого хотел маркетинг — ушёл в Won\'t Have.',
+    },
+    verdict: {
+      step: lang === 'en' ? 'Step 7' : 'Шаг 7',
+      title: lang === 'en' ? 'Verdict — was the hypothesis right?' : 'Вердикт — гипотеза подтвердилась?',
+    },
+  },
+  persona: {
+    name: 'Артём',
+    age: lang === 'en' ? '28 y/o' : '28 лет',
+    role: lang === 'en' ? 'Junior frontend / marketer' : 'Junior frontend / маркетолог',
+    context: lang === 'en' ? 'Metro commute 35 min × 2/day · iPhone 14 + AirPods' : 'Метро 35 мин × 2/день · iPhone 14 + AirPods',
+    goals: lang === 'en' ? 'Goals' : 'Цели',
+    goalsList:
+      lang === 'en'
+        ? ['Kill commute time with a dopamine hit', 'Beat own high score', "Don't give up in the first minute"]
+        : ['Убить время в метро с дофамином', 'Побить свой high score', 'Не сдаться в первую минуту'],
+    pains: lang === 'en' ? 'Frustrations' : 'Фрустрации',
+    painsList:
+      lang === 'en'
+        ? ['Game gets hard too suddenly', "I don't understand why I died", "There's no visible progression bar"]
+        : ['Игра становится сложной слишком резко', 'Не понимаю, почему я умер', 'Нет визуального progression bar'],
+    quote:
+      lang === 'en'
+        ? "I don't want a tutorial. I want to open the game, play 2-3 minutes, post a high score to my chat."
+        : 'Я не хочу tutorial. Я хочу зайти, поиграть 2-3 минуты и забить high score, чтобы скинуть в чат.',
+  },
+  curve: {
+    stages:
+      lang === 'en'
+        ? [
+            { label: 'Discover', y: 3, emoji: '😐', note: 'Sees app icon · no expectations' },
+            { label: 'Onboard', y: 4, emoji: '🙂', note: 'Press Play · curious' },
+            { label: 'Score 0-40', y: 5, emoji: '😀', note: 'Dopamine · "I got this"' },
+            { label: 'Score 50 ⚡', y: 1, emoji: '😰', note: 'Sudden speed +100% · panic' },
+            { label: 'Game Over', y: 2, emoji: '😞', note: 'Score 47 · "what just happened?"' },
+          ]
+        : [
+            { label: 'Discover', y: 3, emoji: '😐', note: 'Видит иконку · ожиданий нет' },
+            { label: 'Onboard', y: 4, emoji: '🙂', note: 'Жмёт Play · любопытно' },
+            { label: 'Очки 0-40', y: 5, emoji: '😀', note: 'Дофамин · «я в порядке»' },
+            { label: 'Очки 50 ⚡', y: 1, emoji: '😰', note: 'Резкий speed +100% · паника' },
+            { label: 'Game Over', y: 2, emoji: '😞', note: 'Счёт 47 · «что произошло?»' },
+          ],
+    annotation: lang === 'en' ? 'The dip = the hypothesis' : 'Провал кривой = гипотеза',
+  },
+  interviewsData: (lang === 'en'
+    ? [
+        {
+          name: 'Alina',
+          emoji: '👩',
+          age: 24,
+          role: 'Designer',
+          quote: '"I thought it was a bug. The green dot just shot off."',
+          fullText:
+            "I knew Snake from the Nokia days, so I assumed I'd be fine. But when the green dot suddenly shot off — I literally thought there was a lag in the game. Got the score around 55 and was gone. I didn't even understand what changed.",
+          pain: 'No warning about the speed jump',
+          insight: 'Players think it\'s a bug, not a feature.',
+        },
+        {
+          name: 'Dmitry',
+          emoji: '👨',
+          age: 31,
+          role: 'Developer',
+          quote: '"At about 60 points everything just went fast. Irritating."',
+          fullText:
+            "Played about 3 minutes. Somewhere around 60 points it just became too fast and I didn't react. Annoying — I didn't understand how to prepare for it. Like, was there a level 2 coming? No indicator at all.",
+          pain: 'No way to anticipate stage 2',
+          insight: 'Same root cause as Alina.',
+        },
+        {
+          name: 'Maxim',
+          emoji: '🧑',
+          age: 19,
+          role: 'Student',
+          quote: '"I thought I was bad. Then I realized — it\'s the game."',
+          fullText:
+            'First time I thought I was bad at it. But then I noticed every game I die around the same score. Checked the speed — and yes, after 50 points the speed jumps. So it\'s the game, not me. But the way it\'s framed made me blame myself for like 5 tries.',
+          pain: 'Players blame themselves before figuring out the game design',
+          insight: 'Self-blame pattern — bad for retention.',
+        },
+      ]
+    : [
+        {
+          name: 'Алина',
+          emoji: '👩',
+          age: 24,
+          role: 'Дизайнер',
+          quote: '«Я подумала, что это баг. Зелёная точка просто улетела».',
+          fullText:
+            'Snake я помнила по Nokia, поэтому решила что справлюсь. Но когда зеленая точка резко ускорилась — я буквально подумала, что это лаг. Дошла до 55 и всё. Я даже не поняла, что изменилось.',
+          pain: 'Нет предупреждения о ускорении',
+          insight: 'Игроки думают, что это баг, а не feature.',
+        },
+        {
+          name: 'Дмитрий',
+          emoji: '👨',
+          age: 31,
+          role: 'Разработчик',
+          quote: '«Где-то на 60 очках всё стало быстрее, я тупо не отреагировал. Бесит».',
+          fullText:
+            'Играл минуты 3. Где-то на 60 очках стало резко быстрее, и я не успел среагировать. Бесит — не понятно, как готовиться. Был ли level 2? Никакого indicator нет.',
+          pain: 'Не понятно, как готовиться к stage 2',
+          insight: 'Та же корневая причина, что у Алины.',
+        },
+        {
+          name: 'Максим',
+          emoji: '🧑',
+          age: 19,
+          role: 'Студент',
+          quote: '«Я думал, что я отстой. Потом понял — это игра».',
+          fullText:
+            'Первый раз думал, что я плохо играю. Потом заметил — каждый раз умираю на похожем счёте. Проверил скорость — да, после 50 очков она прыгает. Значит дело в игре, а не во мне. Но из-за того, как это поднесено, я первые 5 попыток винил себя.',
+          pain: 'Игрок винит себя, прежде чем разобраться в дизайне',
+          insight: 'Self-blame pattern — плохо для retention.',
+        },
+      ]) as Interview[],
+  affinity:
+    lang === 'en'
+      ? '3 / 3 mention the speed jump at stage 2 · 2 / 3 use the word "sudden" · 1 / 3 thought it was a bug, not a feature'
+      : '3 / 3 упомянули скачок скорости на этапе 2 · 2 / 3 использовали слово «резко» · 1 / 3 решил, что это баг, а не фича',
+  testResults: {
+    setup: lang === 'en' ? 'Setup' : 'Сетап',
+    setupItems:
+      lang === 'en'
+        ? [
+            '5 players from target audience (gamers 18-35, plays in commute)',
+            'Moderated, think-aloud protocol',
+            '15 min per session',
+            '3 tasks, success measured against KPI',
+          ]
+        : [
+            '5 игроков из ЦА (геймеры 18-35, играют в дороге)',
+            'Модерируемый, think-aloud протокол',
+            '15 мин на сессию',
+            '3 задачи, success мерится по KPI',
+          ],
+    tasks: lang === 'en' ? 'Tasks' : 'Задачи',
+    tasksData:
+      lang === 'en'
+        ? [
+            { label: 'Task 1 — Start the game', target: '100%', actual: '100%', success: true },
+            { label: 'Task 2 — Score ≥30', target: '80%', actual: '100%', success: true },
+            { label: 'Task 3 — Score ≥100 (KPI)', target: '60%', actual: '0%', success: false },
+          ]
+        : [
+            { label: 'Задача 1 — Запустить игру', target: '100%', actual: '100%', success: true },
+            { label: 'Задача 2 — Очки ≥30', target: '80%', actual: '100%', success: true },
+            { label: 'Задача 3 — Очки ≥100 (KPI)', target: '60%', actual: '0%', success: false },
+          ],
+    summary: lang === 'en' ? 'Summary' : 'Сводка',
+    summaryItems:
+      lang === 'en'
+        ? [
+            'Average max score: **47 points** · KPI was 100',
+            'Average session: **1 min 40 sec**',
+            'All 5 players died between 50 and 78 points',
+            'After death, **4/5** said "I don\'t know why I died"',
+          ]
+        : [
+            'Средний max score: **47 очков** · KPI был 100',
+            'Средняя сессия: **1 мин 40 сек**',
+            'Все 5 игроков умерли между 50 и 78 очками',
+            'После смерти **4/5** сказали «не понял, почему умер»',
+          ],
+  },
+  moscow: {
+    columns:
+      lang === 'en'
+        ? [
+            {
+              key: 'must',
+              title: 'Must Have',
+              color: 'bg-red-50 border-red-200 text-red-900',
+              dot: 'bg-red-500',
+              items: [
+                {
+                  role: 'As a player who reached 50 points,',
+                  want: 'I want speed to ramp progressively (+50ms per 10pts) instead of jumping suddenly,',
+                  why: 'so I can adapt without dying instantly.',
+                  metric: 'AC: ramp 100→90→80→70ms across 0→50→100→150pts. Average max score 47 → 95+.',
+                },
+                {
+                  role: 'As a new player,',
+                  want: 'I want a 3-second overlay showing controls on first launch,',
+                  why: "so I don't waste my first match figuring out the arrows.",
+                  metric: 'AC: overlay shows on first launch only. D1 retention 38% → 60%.',
+                },
+              ],
+            },
+            {
+              key: 'should',
+              title: 'Should Have',
+              color: 'bg-amber-50 border-amber-200 text-amber-900',
+              dot: 'bg-amber-500',
+              items: [
+                {
+                  role: 'As a player who just died,',
+                  want: 'I want "Died at stage 2 — speed went up here" with a Retry button,',
+                  why: "so I understand what happened and have a clear next action.",
+                  metric: 'AC: death screen names the stage + speed delta. % retry attempts 25% → 65%.',
+                },
+              ],
+            },
+            {
+              key: 'could',
+              title: 'Could Have',
+              color: 'bg-emerald-50 border-emerald-200 text-emerald-900',
+              dot: 'bg-emerald-500',
+              items: [
+                {
+                  role: 'As a returning player,',
+                  want: 'I want my high score saved across sessions,',
+                  why: 'so I can compete with my own previous best.',
+                  metric: 'AC: localStorage persistence. Could ship in week 2.',
+                },
+                {
+                  role: 'As a player who hit a personal best,',
+                  want: 'I want a share button → Telegram / TikTok,',
+                  why: 'so I can post my score and pull friends in.',
+                  metric: 'AC: share generates a card with score + timestamp.',
+                },
+              ],
+            },
+            {
+              key: 'wont',
+              title: "Won't Have (this release)",
+              color: 'bg-stone-100 border-stone-300 text-stone-700',
+              dot: 'bg-stone-500',
+              items: [
+                {
+                  role: 'As a player,',
+                  want: 'I want a brand-new "Ice Mode" map with obstacles,',
+                  why: "(...marketing's idea, but we have no retention to support a new mode yet)",
+                  metric: 'Parked until D7 retention >40%.',
+                },
+              ],
+            },
+          ]
+        : [
+            {
+              key: 'must',
+              title: 'Must Have',
+              color: 'bg-red-50 border-red-200 text-red-900',
+              dot: 'bg-red-500',
+              items: [
+                {
+                  role: 'Как игрок, дошедший до 50 очков,',
+                  want: 'я хочу плавное ускорение (+50ms каждые 10pt) вместо резкого скачка,',
+                  why: 'чтобы успевать адаптироваться, а не умирать через 3 секунды.',
+                  metric: 'AC: ramp 100→90→80→70ms на 0→50→100→150pt. Average max score 47 → 95+.',
+                },
+                {
+                  role: 'Как новый игрок,',
+                  want: 'я хочу 3-секундный overlay с управлением при первом запуске,',
+                  why: 'чтобы не палить первую партию на разбирание стрелок.',
+                  metric: 'AC: overlay показывается только при первом запуске. D1 retention 38% → 60%.',
+                },
+              ],
+            },
+            {
+              key: 'should',
+              title: 'Should Have',
+              color: 'bg-amber-50 border-amber-200 text-amber-900',
+              dot: 'bg-amber-500',
+              items: [
+                {
+                  role: 'Как игрок, только что умерший,',
+                  want: 'я хочу видеть «Умер на этапе 2 — здесь скорость выросла» + кнопку Retry,',
+                  why: 'чтобы понимать, что произошло, и иметь чёткое следующее действие.',
+                  metric: 'AC: экран смерти называет этап + дельту скорости. % retry попыток 25% → 65%.',
+                },
+              ],
+            },
+            {
+              key: 'could',
+              title: 'Could Have',
+              color: 'bg-emerald-50 border-emerald-200 text-emerald-900',
+              dot: 'bg-emerald-500',
+              items: [
+                {
+                  role: 'Как возвращающийся игрок,',
+                  want: 'я хочу сохранение high score между сессиями,',
+                  why: 'чтобы конкурировать сам с собой.',
+                  metric: 'AC: localStorage persistence. Можно докатить на неделе 2.',
+                },
+                {
+                  role: 'Как игрок с personal best,',
+                  want: 'я хочу кнопку Share → Telegram / TikTok,',
+                  why: 'чтобы запостить счёт и притянуть друзей.',
+                  metric: 'AC: share создаёт карточку со счётом + timestamp.',
+                },
+              ],
+            },
+            {
+              key: 'wont',
+              title: 'Won\'t Have (этот релиз)',
+              color: 'bg-stone-100 border-stone-300 text-stone-700',
+              dot: 'bg-stone-500',
+              items: [
+                {
+                  role: 'Как игрок,',
+                  want: 'я хочу новый "Ice Mode" с препятствиями,',
+                  why: '(...идея маркетинга, но retention пока не тянет новый режим)',
+                  metric: 'Отложено до D7 retention >40%.',
+                },
+              ],
+            },
+          ],
+  },
+  verdict: {
+    confirmed: lang === 'en' ? 'Hypothesis CONFIRMED ✅' : 'Гипотеза ПОДТВЕРЖДЕНА ✅',
+    why: lang === 'en' ? 'Why' : 'Почему',
+    whyText:
+      lang === 'en'
+        ? '5/5 in usability test failed to reach KPI. 3/3 interviews independently flagged the stage-2 speed jump. Affinity-map clusters converged.'
+        : '5/5 в usability-тесте не дошли до KPI. 3/3 интервью независимо отметили скачок скорости на этапе 2. Affinity-map кластеры сошлись.',
+    impact: lang === 'en' ? 'Expected impact after fixes' : 'Ожидаемый impact после фиксов',
+    impactItems:
+      lang === 'en'
+        ? [
+            { label: 'Average max score', from: '47', to: '95+', positive: true },
+            { label: '% players reaching KPI ≥100pt', from: '0%', to: '60%+', positive: true },
+            { label: 'D7 retention', from: '12%', to: '35%', positive: true },
+            { label: 'Self-blame rate', from: '60%', to: '<10%', positive: true },
+          ]
+        : [
+            { label: 'Средний max score', from: '47', to: '95+', positive: true },
+            { label: '% игроков, дошедших до KPI ≥100pt', from: '0%', to: '60%+', positive: true },
+            { label: 'D7 retention', from: '12%', to: '35%', positive: true },
+            { label: 'Self-blame rate', from: '60%', to: '<10%', positive: true },
+          ],
+  },
+  yourTurn: {
+    title: lang === 'en' ? "Now — your turn" : 'Теперь — твой ход',
+    text:
+      lang === 'en'
+        ? 'Walk the same 7 steps on YOUR product. Use the template for the boilerplate artifacts (Persona Card / Empathy Map / UJM / interview guide) — fill it in for whatever you picked.'
+        : 'Пройди те же 7 шагов на СВОЁМ продукте. Используй template для базовых артефактов (Persona Card / Empathy Map / UJM / interview-гайд) — заполни на том, что выбрал.',
+    cta: lang === 'en' ? 'Open the template' : 'Открыть шаблон',
+    afterCapstone:
+      lang === 'en'
+        ? "After your capstone — Meeting 6: Information Architecture. UJM and Story Map from this project become the direct input for the next module."
+        : 'После капстоуна — Meeting 6: Information Architecture. UJM и Story Map из проекта становятся прямым input для следующего модуля.',
+  },
+  nav: {
+    back: lang === 'en' ? 'Back to Meeting 5' : 'К Meeting 5',
+    next: lang === 'en' ? 'Continue to Meeting 6' : 'Перейти к Meeting 6',
+  },
+})
+
+// ---- Subcomponents ----
+
+function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
+    >
+      {children}
+    </motion.div>
+  )
 }
+
+function StepBadge({ step, title }: { step: string; title: string }) {
+  return (
+    <div className="flex items-center gap-3 mb-3">
+      <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded">
+        {step}
+      </span>
+      <h2 className="text-2xl font-bold">{title}</h2>
+    </div>
+  )
+}
+
+function PersonaCard({ t }: { t: ReturnType<typeof T> }) {
+  return (
+    <div className="rounded-2xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 to-sky-50 p-6 md:p-8">
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex-shrink-0 flex flex-col items-center md:items-start">
+          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-sky-500 flex items-center justify-center text-5xl shadow-lg">
+            🧑‍💻
+          </div>
+          <div className="mt-3 text-center md:text-left">
+            <div className="text-2xl font-bold">{t.persona.name}</div>
+            <div className="text-sm text-stone-600">{t.persona.age} · {t.persona.role}</div>
+            <div className="text-xs text-stone-500 mt-1">{t.persona.context}</div>
+          </div>
+        </div>
+
+        <div className="flex-1 grid md:grid-cols-2 gap-4">
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-2 flex items-center gap-1.5">
+              <Target className="w-3.5 h-3.5" />
+              {t.persona.goals}
+            </div>
+            <ul className="space-y-1.5">
+              {t.persona.goalsList.map((g, i) => (
+                <li key={i} className="text-sm flex items-start gap-2">
+                  <span className="text-emerald-500 mt-0.5">✓</span>
+                  <span>{g}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-rose-700 mb-2 flex items-center gap-1.5">
+              <XCircle className="w-3.5 h-3.5" />
+              {t.persona.pains}
+            </div>
+            <ul className="space-y-1.5">
+              {t.persona.painsList.map((p, i) => (
+                <li key={i} className="text-sm flex items-start gap-2">
+                  <span className="text-rose-500 mt-0.5">✕</span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 pt-5 border-t border-emerald-200/60">
+        <div className="flex items-start gap-2.5">
+          <Quote className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+          <p className="text-base italic text-stone-700">«{t.persona.quote}»</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function EmotionalCurve({ t }: { t: ReturnType<typeof T> }) {
+  const stages = t.curve.stages
+  const W = 800
+  const H = 240
+  const padX = 60
+  const padY = 30
+  const innerW = W - padX * 2
+  const innerH = H - padY * 2
+
+  const points = stages.map((s, i) => {
+    const x = padX + (innerW * i) / (stages.length - 1)
+    const y = padY + innerH - ((s.y - 1) / 4) * innerH
+    return { ...s, x, y }
+  })
+
+  const path = points
+    .map((p, i) => {
+      if (i === 0) return `M ${p.x} ${p.y}`
+      const prev = points[i - 1]
+      const cpx = (prev.x + p.x) / 2
+      return `Q ${cpx} ${prev.y} ${p.x} ${p.y}`
+    })
+    .join(' ')
+
+  const areaPath = `${path} L ${points[points.length - 1].x} ${H - padY} L ${points[0].x} ${H - padY} Z`
+
+  return (
+    <div className="rounded-2xl border bg-white p-5 md:p-6">
+      <div className="relative">
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
+          <defs>
+            <linearGradient id="curveGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#10b981" stopOpacity="0.04" />
+            </linearGradient>
+          </defs>
+
+          {/* Y axis labels */}
+          {[5, 4, 3, 2, 1].map((y, i) => (
+            <g key={y}>
+              <line
+                x1={padX}
+                y1={padY + (innerH * i) / 4}
+                x2={W - padX}
+                y2={padY + (innerH * i) / 4}
+                stroke="#e7e5e4"
+                strokeWidth="1"
+                strokeDasharray="2 4"
+              />
+              <text
+                x={padX - 8}
+                y={padY + (innerH * i) / 4 + 4}
+                textAnchor="end"
+                className="text-[10px] fill-stone-400 font-mono"
+              >
+                {['😀', '🙂', '😐', '😟', '😡'][i]}
+              </text>
+            </g>
+          ))}
+
+          {/* Filled area */}
+          <path d={areaPath} fill="url(#curveGradient)" />
+          {/* Curve */}
+          <path d={path} fill="none" stroke="#10b981" strokeWidth="3" strokeLinecap="round" />
+
+          {/* Points */}
+          {points.map((p, i) => {
+            const isDip = p.y === Math.max(...points.map((pp) => pp.y))
+            return (
+              <g key={i}>
+                <circle
+                  cx={p.x}
+                  cy={p.y}
+                  r={isDip ? 12 : 8}
+                  fill={isDip ? '#ef4444' : '#10b981'}
+                  stroke="white"
+                  strokeWidth="3"
+                />
+                <text x={p.x} y={p.y + 5} textAnchor="middle" className="text-[14px]">
+                  {p.emoji}
+                </text>
+                <text
+                  x={p.x}
+                  y={H - 8}
+                  textAnchor="middle"
+                  className="text-[11px] fill-stone-600 font-semibold"
+                >
+                  {p.label}
+                </text>
+              </g>
+            )
+          })}
+
+          {/* Annotation arrow on dip */}
+          {(() => {
+            const dipPoint = points.find((p) => p.y === Math.max(...points.map((pp) => pp.y)))
+            if (!dipPoint) return null
+            return (
+              <g>
+                <line
+                  x1={dipPoint.x + 30}
+                  y1={dipPoint.y - 30}
+                  x2={dipPoint.x + 8}
+                  y2={dipPoint.y - 8}
+                  stroke="#ef4444"
+                  strokeWidth="2"
+                />
+                <polygon
+                  points={`${dipPoint.x + 8},${dipPoint.y - 8} ${dipPoint.x + 16},${dipPoint.y - 14} ${dipPoint.x + 14},${dipPoint.y - 4}`}
+                  fill="#ef4444"
+                />
+                <text
+                  x={dipPoint.x + 35}
+                  y={dipPoint.y - 35}
+                  className="text-[12px] fill-red-600 font-bold"
+                >
+                  {t.curve.annotation}
+                </text>
+              </g>
+            )
+          })()}
+        </svg>
+      </div>
+
+      <div className="mt-4 grid md:grid-cols-5 gap-2">
+        {stages.map((s, i) => (
+          <div
+            key={i}
+            className={`text-xs p-2 rounded border ${
+              s.y === Math.max(...stages.map((ss) => ss.y))
+                ? 'bg-red-50 border-red-200'
+                : 'bg-stone-50 border-stone-200'
+            }`}
+          >
+            <div className="font-semibold text-stone-800 mb-1">
+              {s.emoji} {s.label}
+            </div>
+            <div className="text-stone-600">{s.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function InterviewCard({ interview, t }: { interview: Interview; t: ReturnType<typeof T> }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <motion.div
+      layout
+      className="rounded-xl border bg-white p-5 hover:shadow-md transition-shadow"
+    >
+      <div className="flex items-center gap-3 mb-3">
+        <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-2xl">
+          {interview.emoji}
+        </div>
+        <div>
+          <div className="font-bold">{interview.name}</div>
+          <div className="text-xs text-stone-500">
+            {interview.age} · {interview.role}
+          </div>
+        </div>
+      </div>
+      <div className="text-sm italic text-stone-700 mb-3">{interview.quote}</div>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 inline-flex items-center gap-1"
+      >
+        {open ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+        {open ? (t === T('ru') ? 'Свернуть' : 'Collapse') : t === T('ru') ? 'Полная цитата' : 'Full quote'}
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+        transition={{ duration: 0.25 }}
+        className="overflow-hidden"
+      >
+        <div className="pt-4 mt-3 border-t border-stone-200 text-sm text-stone-700 leading-relaxed">
+          {interview.fullText}
+        </div>
+        <div className="mt-3 grid gap-2">
+          <div className="text-xs">
+            <span className="font-semibold text-rose-700">Pain:</span>{' '}
+            <span className="text-stone-700">{interview.pain}</span>
+          </div>
+          <div className="text-xs">
+            <span className="font-semibold text-emerald-700">Insight:</span>{' '}
+            <span className="text-stone-700">{interview.insight}</span>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+function TestResultsBlock({ t }: { t: ReturnType<typeof T> }) {
+  return (
+    <div className="rounded-2xl border bg-white p-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">{t.testResults.setup}</div>
+          <ul className="space-y-1.5 text-sm">
+            {t.testResults.setupItems.map((s, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <div className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">{t.testResults.summary}</div>
+          <ul className="space-y-1.5 text-sm">
+            {t.testResults.summaryItems.map((s, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="text-stone-400 mt-0.5">•</span>
+                <span dangerouslySetInnerHTML={{ __html: s.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-6 pt-5 border-t">
+        <div className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">{t.testResults.tasks}</div>
+        <div className="space-y-3">
+          {t.testResults.tasksData.map((task, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div
+                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                  task.success ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'
+                }`}
+              >
+                {task.success ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-medium text-stone-900 truncate">{task.label}</div>
+                <div className="flex items-center gap-3 mt-1">
+                  <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
+                    <div
+                      className={`h-full ${task.success ? 'bg-emerald-500' : 'bg-rose-500'}`}
+                      style={{ width: task.actual }}
+                    />
+                  </div>
+                  <div className="text-xs tabular-nums text-stone-600 w-32 text-right">
+                    target {task.target} · <span className="font-bold">actual {task.actual}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MoSCoWBoard({ t }: { t: ReturnType<typeof T> }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {t.moscow.columns.map((col) => (
+        <div key={col.key} className={`rounded-xl border-2 p-4 ${col.color}`}>
+          <div className="flex items-center gap-2 mb-3">
+            <span className={`w-3 h-3 rounded-full ${col.dot}`} />
+            <h4 className="font-bold text-sm">{col.title}</h4>
+            <span className="ml-auto text-xs opacity-60">{col.items.length}</span>
+          </div>
+          <div className="space-y-3">
+            {col.items.map((item, i) => (
+              <div key={i} className="rounded-lg bg-white/60 p-3 text-xs">
+                <div className="font-semibold mb-1">{item.role}</div>
+                <div className="text-stone-700">{item.want}</div>
+                <div className="text-stone-600 italic mt-1">{item.why}</div>
+                <div className="mt-2 pt-2 border-t border-stone-200/60 text-[10px] text-stone-500">
+                  {item.metric}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function VerdictBlock({ t }: { t: ReturnType<typeof T> }) {
+  return (
+    <div className="rounded-2xl border-2 border-emerald-300 bg-gradient-to-br from-emerald-50 to-emerald-100/40 p-6 md:p-8">
+      <div className="flex items-center gap-3 mb-4">
+        <Trophy className="w-10 h-10 text-emerald-600" />
+        <div>
+          <div className="text-2xl font-bold text-emerald-900">{t.verdict.confirmed}</div>
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <div className="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">{t.verdict.why}</div>
+        <p className="text-sm text-stone-700">{t.verdict.whyText}</p>
+      </div>
+
+      <div>
+        <div className="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-3">{t.verdict.impact}</div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {t.verdict.impactItems.map((m, i) => (
+            <div key={i} className="rounded-lg bg-white p-3 border border-emerald-200">
+              <div className="text-[11px] text-stone-500 mb-1">{m.label}</div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-stone-400 line-through text-sm">{m.from}</span>
+                <ArrowRight className="w-3 h-3 text-emerald-500" />
+                <span className="text-emerald-700 font-bold text-base">{m.to}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ---- Main Page ----
 
 export default function HomeworkPage() {
   const { lang } = useLanguage()
-  const c = CONTENT[lang]
+  const t = T(lang)
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-white">
       {/* Top bar */}
-      <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-10 bg-white/85 backdrop-blur-md border-b">
         <div className="max-w-[1440px] mx-auto px-6 py-3 flex items-center gap-4">
           <Link
             href="/meeting/5/part/part-2"
-            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-1 text-sm text-stone-600 hover:text-stone-900 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            {c.backLabel}
+            {t.nav.back}
           </Link>
           <div className="flex-1" />
-          <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5 text-xs text-stone-500">
             <GraduationCap className="w-4 h-4" />
-            Capstone · Module 1
+            {t.hero.badge}
           </span>
         </div>
       </div>
 
-      {/* Content */}
       <article className="max-w-[1440px] mx-auto px-6 py-10">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">{c.title}</h1>
-          <p className="text-lg text-muted-foreground">{c.tagline}</p>
-          <p className="mt-4 text-base leading-relaxed">{c.intro}</p>
-        </header>
+        {/* HERO */}
+        <FadeIn>
+          <header className="mb-12 text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.hero.title}</h1>
+            <p className="text-lg text-stone-600 leading-relaxed">{t.hero.tagline}</p>
+          </header>
 
-        <div className="space-y-6">
-          {c.sections.map((section, i) => (
-            <SectionRenderer key={i} section={section} />
-          ))}
-        </div>
+          {/* Hypothesis banner */}
+          <div className="max-w-3xl mx-auto rounded-2xl bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 border-2 border-amber-200 p-6 md:p-8 mb-16">
+            <div className="grid md:grid-cols-3 gap-4 mb-5">
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">
+                  {t.hypothesisBox.productLabel}
+                </div>
+                <div className="text-base font-semibold">{t.hypothesisBox.productText}</div>
+              </div>
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">
+                  {t.hypothesisBox.personaLabel}
+                </div>
+                <div className="text-base font-semibold">{t.hypothesisBox.personaText}</div>
+              </div>
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">
+                  {t.hypothesisBox.kpiLabel}
+                </div>
+                <div className="text-base font-semibold inline-flex items-center gap-1.5">
+                  <Trophy className="w-4 h-4 text-amber-600" />
+                  {t.hypothesisBox.kpiText}
+                </div>
+              </div>
+            </div>
 
-        {/* Navigation */}
-        <nav className="mt-12 pt-6 border-t flex items-center justify-between gap-4">
+            <div className="pt-5 border-t border-amber-200">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-amber-700 mb-2 flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5" />
+                {t.hypothesisBox.label}
+              </div>
+              <p className="text-xl md:text-2xl font-bold leading-snug text-stone-900">
+                «{t.hypothesisBox.text}»
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* STEP 1 — PERSONA */}
+        <FadeIn>
+          <section className="mb-16">
+            <StepBadge step={t.steps.persona.step} title={t.steps.persona.title} />
+            <p className="text-base text-stone-600 mb-5">{t.steps.persona.lead}</p>
+            <PersonaCard t={t} />
+          </section>
+        </FadeIn>
+
+        {/* STEP 2 — PLAY SNAKE */}
+        <FadeIn>
+          <section className="mb-16">
+            <StepBadge step={t.steps.play.step} title={t.steps.play.title} />
+            <p className="text-base text-stone-600 mb-5">{t.steps.play.lead}</p>
+            <div className="rounded-2xl border bg-white p-6 md:p-8">
+              <SnakeGame />
+            </div>
+          </section>
+        </FadeIn>
+
+        {/* STEP 3 — EMOTIONAL CURVE */}
+        <FadeIn>
+          <section className="mb-16">
+            <StepBadge step={t.steps.journey.step} title={t.steps.journey.title} />
+            <p className="text-base text-stone-600 mb-5">{t.steps.journey.lead}</p>
+            <EmotionalCurve t={t} />
+          </section>
+        </FadeIn>
+
+        {/* STEP 4 — INTERVIEWS */}
+        <FadeIn>
+          <section className="mb-16">
+            <StepBadge step={t.steps.interviews.step} title={t.steps.interviews.title} />
+            <p className="text-base text-stone-600 mb-5">{t.steps.interviews.lead}</p>
+            <div className="grid md:grid-cols-3 gap-4 mb-5">
+              {t.interviewsData.map((iv, i) => (
+                <InterviewCard key={i} interview={iv} t={t} />
+              ))}
+            </div>
+            <div className="rounded-xl bg-emerald-50 border border-emerald-200 p-4">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-2 flex items-center gap-1.5">
+                <Heart className="w-3.5 h-3.5" />
+                {lang === 'en' ? 'Affinity map clusters' : 'Кластеры affinity map'}
+              </div>
+              <p className="text-sm text-stone-700">{t.affinity}</p>
+            </div>
+          </section>
+        </FadeIn>
+
+        {/* STEP 5 — USABILITY TEST */}
+        <FadeIn>
+          <section className="mb-16">
+            <StepBadge step={t.steps.test.step} title={t.steps.test.title} />
+            <p className="text-base text-stone-600 mb-5">{t.steps.test.lead}</p>
+            <TestResultsBlock t={t} />
+          </section>
+        </FadeIn>
+
+        {/* STEP 6 — MOSCOW */}
+        <FadeIn>
+          <section className="mb-16">
+            <StepBadge step={t.steps.priorities.step} title={t.steps.priorities.title} />
+            <p className="text-base text-stone-600 mb-5">{t.steps.priorities.lead}</p>
+            <MoSCoWBoard t={t} />
+          </section>
+        </FadeIn>
+
+        {/* STEP 7 — VERDICT */}
+        <FadeIn>
+          <section className="mb-16">
+            <StepBadge step={t.steps.verdict.step} title={t.steps.verdict.title} />
+            <VerdictBlock t={t} />
+          </section>
+        </FadeIn>
+
+        {/* Your turn CTA */}
+        <FadeIn>
+          <section className="mb-12 rounded-2xl bg-gradient-to-br from-stone-900 to-stone-800 text-white p-8 md:p-10 text-center">
+            <Flame className="w-10 h-10 mx-auto mb-4 text-amber-400" />
+            <h2 className="text-3xl font-bold mb-3">{t.yourTurn.title}</h2>
+            <p className="text-stone-200 max-w-2xl mx-auto mb-6 leading-relaxed">{t.yourTurn.text}</p>
+            <Link href="/meeting/3/template">
+              <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-stone-900 font-bold">
+                {t.yourTurn.cta}
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+            <p className="text-xs text-stone-400 mt-5 max-w-xl mx-auto">{t.yourTurn.afterCapstone}</p>
+          </section>
+        </FadeIn>
+
+        {/* Bottom nav */}
+        <nav className="pt-6 border-t flex items-center justify-between gap-4">
           <Link href="/meeting/5/part/part-2">
             <Button variant="outline" className="gap-2">
               <ArrowLeft className="w-4 h-4" />
-              {c.backLabel}
+              {t.nav.back}
             </Button>
           </Link>
           <Link href="/meeting/6">
             <Button className="gap-2">
-              {c.nextLabel}
+              {t.nav.next}
               <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
