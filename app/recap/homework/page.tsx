@@ -59,7 +59,9 @@ const T = (lang: Lang) => ({
     kpiLabel: lang === 'en' ? 'Success metric (KPI)' : 'Метрика успеха (KPI)',
     kpiText: lang === 'en' ? 'Score ≥100 points' : 'Набить ≥100 очков',
     productLabel: lang === 'en' ? 'Product' : 'Продукт',
-    productText: 'Snake (mobile arcade)',
+    productText: lang === 'en' ? '3D Snake — Three.js + React' : '3D Snake — Three.js + React',
+    productHref: 'https://snake-3d-gameweb.vercel.app/game?mode=web',
+    productLinkLabel: lang === 'en' ? 'Open live game ↗' : 'Открыть live-игру ↗',
     personaLabel: lang === 'en' ? 'Persona' : 'Персона',
     personaText: lang === 'en' ? 'Artem, 28 — metro commuter' : 'Артём, 28 — метро-коммьютер',
   },
@@ -902,6 +904,14 @@ export default function HomeworkPage() {
                   {t.hypothesisBox.productLabel}
                 </div>
                 <div className="text-base font-semibold">{t.hypothesisBox.productText}</div>
+                <a
+                  href={t.hypothesisBox.productHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-1 text-xs text-amber-700 hover:text-amber-900 underline underline-offset-2"
+                >
+                  {t.hypothesisBox.productLinkLabel}
+                </a>
               </div>
               <div>
                 <div className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-1">
@@ -946,6 +956,35 @@ export default function HomeworkPage() {
           <section className="mb-16">
             <StepBadge step={t.steps.play.step} title={t.steps.play.title} />
             <p className="text-base text-stone-600 mb-5">{t.steps.play.lead}</p>
+
+            {/* Real 3D game CTA */}
+            <div className="mb-5 rounded-xl border-2 border-purple-200 bg-gradient-to-r from-purple-50 via-violet-50 to-fuchsia-50 p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <div className="text-3xl">🎮</div>
+                <div>
+                  <div className="font-bold text-stone-900 text-base">
+                    {lang === 'en'
+                      ? 'This study is based on a real 3D Snake game'
+                      : 'Этот разбор — на основе реальной 3D Snake игры'}
+                  </div>
+                  <div className="text-sm text-stone-600 mt-1">
+                    {lang === 'en'
+                      ? 'Three.js + React 19 + Vite. Open the production version to feel the actual game first — then come back and try the embedded 2D demo below.'
+                      : 'Three.js + React 19 + Vite. Откройте продакшен-версию, чтобы почувствовать реальную игру — потом вернитесь и попробуйте встроенную 2D-демку ниже.'}
+                  </div>
+                </div>
+              </div>
+              <a
+                href="https://snake-3d-gameweb.vercel.app/game?mode=web"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg text-sm transition-colors"
+              >
+                {lang === 'en' ? 'Play 3D Snake' : 'Играть в 3D Snake'}
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+
             <div className="rounded-2xl border bg-white p-6 md:p-8">
               <SnakeGame />
             </div>
