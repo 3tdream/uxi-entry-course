@@ -230,6 +230,205 @@ const T = (lang: Lang) => ({
     lang === 'en'
       ? '3 / 3 mention the speed jump at stage 2 · 2 / 3 use the word "sudden" · 1 / 3 thought it was a bug, not a feature'
       : '3 / 3 упомянули скачок скорости на этапе 2 · 2 / 3 использовали слово «резко» · 1 / 3 решил, что это баг, а не фича',
+  playerStats: {
+    title: lang === 'en' ? 'Player-by-player breakdown' : 'Разбор по игрокам',
+    lead:
+      lang === 'en'
+        ? 'All 5 players failed Task 3 (KPI ≥100). Notice the pattern: every single one died in stage 2 — the speed jump after 50 points.'
+        : 'Все 5 игроков провалили Task 3 (KPI ≥100). Заметь паттерн: КАЖДЫЙ умер на этапе 2 — после скачка скорости на 50 очках.',
+    headers:
+      lang === 'en'
+        ? {
+            num: '#',
+            player: 'Player',
+            t1: 'T1 · Start',
+            t2: 'T2 · Score ≥30',
+            t3: 'T3 · KPI ≥100',
+            max: 'Max score',
+            stage: 'Died at',
+            time: 'Session',
+            note: 'Key observation',
+          }
+        : {
+            num: '#',
+            player: 'Игрок',
+            t1: 'З1 · Запуск',
+            t2: 'З2 · Очки ≥30',
+            t3: 'З3 · KPI ≥100',
+            max: 'Max очки',
+            stage: 'Умер на',
+            time: 'Сессия',
+            note: 'Ключевое наблюдение',
+          },
+    rows:
+      lang === 'en'
+        ? [
+            {
+              n: 1,
+              emoji: '👩',
+              name: 'Alina',
+              age: 24,
+              role: 'Designer',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 55,
+              stage: 2,
+              time: '1:42',
+              note: 'Thought the speed jump was a bug',
+            },
+            {
+              n: 2,
+              emoji: '👨',
+              name: 'Dmitry',
+              age: 31,
+              role: 'Developer',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 62,
+              stage: 2,
+              time: '1:55',
+              note: 'Couldn\'t anticipate stage 2',
+            },
+            {
+              n: 3,
+              emoji: '🧑',
+              name: 'Maxim',
+              age: 19,
+              role: 'Student',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 38,
+              stage: 2,
+              time: '1:30',
+              note: 'Self-blame for ~5 attempts',
+            },
+            {
+              n: 4,
+              emoji: '👩‍💼',
+              name: 'Katya',
+              age: 27,
+              role: 'PM',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 32,
+              stage: 2,
+              time: '1:25',
+              note: 'Felt the difficulty was unfair',
+            },
+            {
+              n: 5,
+              emoji: '👨‍💻',
+              name: 'Igor',
+              age: 35,
+              role: 'Analyst',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 48,
+              stage: 2,
+              time: '1:48',
+              note: '"Speed bump was too harsh"',
+            },
+          ]
+        : [
+            {
+              n: 1,
+              emoji: '👩',
+              name: 'Алина',
+              age: 24,
+              role: 'Дизайнер',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 55,
+              stage: 2,
+              time: '1:42',
+              note: 'Думала, что скачок скорости — баг',
+            },
+            {
+              n: 2,
+              emoji: '👨',
+              name: 'Дмитрий',
+              age: 31,
+              role: 'Разработчик',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 62,
+              stage: 2,
+              time: '1:55',
+              note: 'Не успел подготовиться к этапу 2',
+            },
+            {
+              n: 3,
+              emoji: '🧑',
+              name: 'Максим',
+              age: 19,
+              role: 'Студент',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 38,
+              stage: 2,
+              time: '1:30',
+              note: 'Винил себя первые ~5 попыток',
+            },
+            {
+              n: 4,
+              emoji: '👩‍💼',
+              name: 'Катя',
+              age: 27,
+              role: 'PM',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 32,
+              stage: 2,
+              time: '1:25',
+              note: 'Ощущение, что сложность нечестная',
+            },
+            {
+              n: 5,
+              emoji: '👨‍💻',
+              name: 'Игорь',
+              age: 35,
+              role: 'Аналитик',
+              t1: true,
+              t2: true,
+              t3: false,
+              max: 48,
+              stage: 2,
+              time: '1:48',
+              note: '«Прыжок скорости слишком резкий»',
+            },
+          ],
+    aggregate:
+      lang === 'en'
+        ? {
+            label: 'Aggregate',
+            t1: '5/5',
+            t2: '5/5',
+            t3: '0/5',
+            max: '47 avg',
+            stage: 'all stage 2',
+            time: '1:40 avg',
+            note: '100% died on the speed jump',
+          }
+        : {
+            label: 'Итого',
+            t1: '5/5',
+            t2: '5/5',
+            t3: '0/5',
+            max: '47 средн.',
+            stage: 'все на этапе 2',
+            time: '1:40 средн.',
+            note: '100% умерли на скачке скорости',
+          },
+  },
   testResults: {
     setup: lang === 'en' ? 'Setup' : 'Сетап',
     setupItems:
@@ -800,6 +999,120 @@ function TestResultsBlock({ t }: { t: ReturnType<typeof T> }) {
   )
 }
 
+function PlayerStatsTable({ t }: { t: ReturnType<typeof T> }) {
+  const headers = t.playerStats.headers
+  const rows = t.playerStats.rows
+  const agg = t.playerStats.aggregate
+
+  const PassFail = ({ ok }: { ok: boolean }) =>
+    ok ? (
+      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700">
+        <CheckCircle2 className="w-4 h-4" />
+      </span>
+    ) : (
+      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-rose-100 text-rose-700">
+        <XCircle className="w-4 h-4" />
+      </span>
+    )
+
+  return (
+    <div className="rounded-2xl border bg-white overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead className="bg-stone-50 border-b">
+            <tr>
+              <th className="px-3 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-stone-600 w-10">
+                {headers.num}
+              </th>
+              <th className="px-3 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-stone-600 min-w-[160px]">
+                {headers.player}
+              </th>
+              <th className="px-3 py-3 text-center text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                {headers.t1}
+              </th>
+              <th className="px-3 py-3 text-center text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                {headers.t2}
+              </th>
+              <th className="px-3 py-3 text-center text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                {headers.t3}
+              </th>
+              <th className="px-3 py-3 text-center text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                {headers.max}
+              </th>
+              <th className="px-3 py-3 text-center text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                {headers.stage}
+              </th>
+              <th className="px-3 py-3 text-center text-[11px] font-bold uppercase tracking-wider text-stone-600">
+                {headers.time}
+              </th>
+              <th className="px-3 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-stone-600 min-w-[200px]">
+                {headers.note}
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-stone-200">
+            {rows.map((r) => (
+              <tr key={r.n} className="hover:bg-stone-50/60 transition-colors">
+                <td className="px-3 py-3 text-stone-500 font-mono text-xs">{r.n}</td>
+                <td className="px-3 py-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-full bg-stone-100 flex items-center justify-center text-lg flex-shrink-0">
+                      {r.emoji}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-stone-900">{r.name}</div>
+                      <div className="text-xs text-stone-500">
+                        {r.age} · {r.role}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td className="px-3 py-3 text-center">
+                  <PassFail ok={r.t1} />
+                </td>
+                <td className="px-3 py-3 text-center">
+                  <PassFail ok={r.t2} />
+                </td>
+                <td className="px-3 py-3 text-center">
+                  <PassFail ok={r.t3} />
+                </td>
+                <td className="px-3 py-3 text-center">
+                  <span
+                    className={`font-mono font-semibold tabular-nums ${r.max >= 100 ? 'text-emerald-700' : 'text-rose-700'}`}
+                  >
+                    {r.max}
+                  </span>
+                </td>
+                <td className="px-3 py-3 text-center">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-red-700 bg-red-50 px-2 py-0.5 rounded">
+                    <Zap className="w-3 h-3" />
+                    {r.stage}
+                  </span>
+                </td>
+                <td className="px-3 py-3 text-center text-xs text-stone-600 font-mono tabular-nums">{r.time}</td>
+                <td className="px-3 py-3 text-xs text-stone-700">{r.note}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr className="bg-stone-50 border-t-2 border-stone-200">
+              <td className="px-3 py-3" />
+              <td className="px-3 py-3 text-xs font-bold uppercase tracking-wider text-stone-700">{agg.label}</td>
+              <td className="px-3 py-3 text-center text-xs font-bold text-emerald-700 tabular-nums">{agg.t1}</td>
+              <td className="px-3 py-3 text-center text-xs font-bold text-emerald-700 tabular-nums">{agg.t2}</td>
+              <td className="px-3 py-3 text-center text-xs font-bold text-rose-700 tabular-nums">{agg.t3}</td>
+              <td className="px-3 py-3 text-center text-xs font-bold text-stone-700 font-mono tabular-nums">{agg.max}</td>
+              <td className="px-3 py-3 text-center text-xs font-bold text-red-700">{agg.stage}</td>
+              <td className="px-3 py-3 text-center text-xs font-bold text-stone-700 font-mono tabular-nums">{agg.time}</td>
+              <td className="px-3 py-3 text-xs font-semibold text-stone-900">{agg.note}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  )
+}
+
 function MoSCoWBoard({ t }: { t: ReturnType<typeof T> }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1026,6 +1339,13 @@ export default function HomeworkPage() {
             <StepBadge step={t.steps.test.step} title={t.steps.test.title} />
             <p className="text-base text-stone-600 mb-5">{t.steps.test.lead}</p>
             <TestResultsBlock t={t} />
+
+            {/* Player-by-player breakdown */}
+            <div className="mt-6">
+              <h3 className="text-lg font-bold mb-2">{t.playerStats.title}</h3>
+              <p className="text-sm text-stone-600 mb-4">{t.playerStats.lead}</p>
+              <PlayerStatsTable t={t} />
+            </div>
           </section>
         </FadeIn>
 
