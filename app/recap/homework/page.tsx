@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
@@ -17,10 +17,41 @@ import {
   Heart,
   Zap,
   Flame,
+  Users,
+  ExternalLink,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/lib/language'
-import { SnakeGame } from '@/components/homework/SnakeGame'
+
+const GAME_URL = 'https://snake-3d-gameweb.vercel.app/'
+
+// ---- Live stats schema (JSON fetched at runtime) ----
+
+type StatsSnapshot = {
+  playersCount: number
+  averageMaxScore: number
+  kpiReachedPercent: number
+  d7Retention: number
+  selfBlameRate: number
+}
+
+type StatsFile = {
+  version: string
+  lastUpdated: string
+  source: string
+  game: { name: string; url: string; stack: string }
+  current: StatsSnapshot
+  afterFix: StatsSnapshot
+}
+
+const FALLBACK_STATS: StatsFile = {
+  version: 'fallback',
+  lastUpdated: '2026-05-13',
+  source: 'fallback',
+  game: { name: '3D Snake', url: GAME_URL, stack: 'React + Three.js' },
+  current: { playersCount: 5, averageMaxScore: 47, kpiReachedPercent: 0, d7Retention: 12, selfBlameRate: 60 },
+  afterFix: { playersCount: 5, averageMaxScore: 95, kpiReachedPercent: 60, d7Retention: 35, selfBlameRate: 8 },
+}
 
 // ---- Content (bilingual) ----
 
@@ -625,21 +656,27 @@ const T = (lang: Lang) => ({
       lang === 'en'
         ? '5/5 in usability test failed to reach KPI. 3/3 interviews independently flagged the stage-2 speed jump. Affinity-map clusters converged.'
         : '5/5 в usability-тесте не дошли до KPI. 3/3 интервью независимо отметили скачок скорости на этапе 2. Affinity-map кластеры сошлись.',
-    impact: lang === 'en' ? 'Expected impact after fixes' : 'Ожидаемый impact после фиксов',
-    impactItems:
+    impact: lang === 'en' ? 'Real player stats — live from JSON' : 'Реальная статистика игроков — live из JSON',
+    impactNote:
       lang === 'en'
-        ? [
-            { label: 'Average max score', from: '47', to: '95+', positive: true },
-            { label: '% players reaching KPI ≥100pt', from: '0%', to: '60%+', positive: true },
-            { label: 'D7 retention', from: '12%', to: '35%', positive: true },
-            { label: 'Self-blame rate', from: '60%', to: '<10%', positive: true },
-          ]
-        : [
-            { label: 'Средний max score', from: '47', to: '95+', positive: true },
-            { label: '% игроков, дошедших до KPI ≥100pt', from: '0%', to: '60%+', positive: true },
-            { label: 'D7 retention', from: '12%', to: '35%', positive: true },
-            { label: 'Self-blame rate', from: '60%', to: '<10%', positive: true },
-          ],
+        ? 'Data fetched at runtime from /data/snake-playtest-stats.json. Update the JSON, refresh the page — no redeploy needed.'
+        : 'Данные грузятся в рантайме из /data/snake-playtest-stats.json. Меняй JSON, обнови страницу — деплоить заново не нужно.',
+    playersCountLabel: lang === 'en' ? 'Players tested' : 'Игроков протестировано',
+    impactLabels:
+      lang === 'en'
+        ? {
+            score: 'Average max score',
+            kpi: '% reaching KPI ≥100pt',
+            d7: 'D7 retention',
+            blame: 'Self-blame rate',
+          }
+        : {
+            score: 'Средний max score',
+            kpi: '% дошедших до KPI ≥100pt',
+            d7: 'D7 retention',
+            blame: 'Self-blame rate',
+          },
+    lastUpdatedLabel: lang === 'en' ? 'Last updated' : 'Обновлено',
   },
   yourTurn: {
     title: lang === 'en' ? "Now — your turn" : 'Теперь — твой ход',
@@ -1141,7 +1178,18 @@ function MoSCoWBoard({ t }: { t: ReturnType<typeof T> }) {
   )
 }
 
-function VerdictBlock({ t }: { t: ReturnType<typeof T> }) {
+function VerdictBlock({ t, stats }: { t: ReturnType<typeof T>; stats: StatsFile }) {
+  const labels = t.verdict.impactLabels
+  const cur = stats.current
+  const fix = stats.afterFix
+
+  const items = [
+    { label: labels.score, from: `${cur.averageMaxScore}`, to: `${fix.averageMaxScore}+` },
+    { label: labels.kpi, from: `${cur.kpiReachedPercent}%`, to: `${fix.kpiReachedPercent}%+` },
+    { label: labels.d7, from: `${cur.d7Retention}%`, to: `${fix.d7Retention}%` },
+    { label: labels.blame, from: `${cur.selfBlameRate}%`, to: `<${Math.max(10, fix.selfBlameRate)}%` },
+  ]
+
   return (
     <div className="rounded-2xl border-2 border-emerald-300 bg-gradient-to-br from-emerald-50 to-emerald-100/40 p-6 md:p-8">
       <div className="flex items-center gap-3 mb-4">
@@ -1156,20 +1204,40 @@ function VerdictBlock({ t }: { t: ReturnType<typeof T> }) {
         <p className="text-sm text-stone-700">{t.verdict.whyText}</p>
       </div>
 
+      {/* Players count badge */}
+      <div className="mb-5 inline-flex items-center gap-2.5 bg-white border-2 border-emerald-300 rounded-full pl-3 pr-4 py-1.5">
+        <Users className="w-4 h-4 text-emerald-600" />
+        <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
+          {t.verdict.playersCountLabel}:
+        </span>
+        <span className="text-base font-bold text-emerald-900 tabular-nums">{cur.playersCount}</span>
+      </div>
+
       <div>
-        <div className="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-3">{t.verdict.impact}</div>
+        <div className="flex items-baseline justify-between mb-3 gap-3 flex-wrap">
+          <div className="text-xs font-bold uppercase tracking-wider text-emerald-800">{t.verdict.impact}</div>
+          <div className="text-[10px] text-stone-500">
+            {t.verdict.lastUpdatedLabel}: <span className="font-mono">{stats.lastUpdated}</span>
+            {stats.version === 'fallback' && (
+              <span className="ml-2 px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-semibold">
+                fallback
+              </span>
+            )}
+          </div>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {t.verdict.impactItems.map((m, i) => (
+          {items.map((m, i) => (
             <div key={i} className="rounded-lg bg-white p-3 border border-emerald-200">
               <div className="text-[11px] text-stone-500 mb-1">{m.label}</div>
               <div className="flex items-baseline gap-2">
-                <span className="text-stone-400 line-through text-sm">{m.from}</span>
+                <span className="text-stone-400 line-through text-sm tabular-nums">{m.from}</span>
                 <ArrowRight className="w-3 h-3 text-emerald-500" />
-                <span className="text-emerald-700 font-bold text-base">{m.to}</span>
+                <span className="text-emerald-700 font-bold text-base tabular-nums">{m.to}</span>
               </div>
             </div>
           ))}
         </div>
+        <p className="text-[11px] text-stone-500 mt-3 italic">{t.verdict.impactNote}</p>
       </div>
     </div>
   )
@@ -1180,6 +1248,22 @@ function VerdictBlock({ t }: { t: ReturnType<typeof T> }) {
 export default function HomeworkPage() {
   const { lang } = useLanguage()
   const t = T(lang)
+  const [stats, setStats] = useState<StatsFile>(FALLBACK_STATS)
+
+  useEffect(() => {
+    let alive = true
+    fetch('/data/snake-playtest-stats.json', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (alive && data) setStats(data as StatsFile)
+      })
+      .catch(() => {
+        /* silently fall back */
+      })
+    return () => {
+      alive = false
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-stone-50 to-white">
@@ -1270,36 +1354,47 @@ export default function HomeworkPage() {
             <StepBadge step={t.steps.play.step} title={t.steps.play.title} />
             <p className="text-base text-stone-600 mb-5">{t.steps.play.lead}</p>
 
-            {/* Real 3D game CTA */}
-            <div className="mb-5 rounded-xl border-2 border-purple-200 bg-gradient-to-r from-purple-50 via-violet-50 to-fuchsia-50 p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-              <div className="flex items-start gap-3">
-                <div className="text-3xl">🎮</div>
-                <div>
-                  <div className="font-bold text-stone-900 text-base">
-                    {lang === 'en'
-                      ? 'This study is based on a real 3D Snake game'
-                      : 'Этот разбор — на основе реальной 3D Snake игры'}
-                  </div>
-                  <div className="text-sm text-stone-600 mt-1">
-                    {lang === 'en'
-                      ? 'Three.js + React 19 + Vite. Open the production version to feel the actual game first — then come back and try the embedded 2D demo below.'
-                      : 'Three.js + React 19 + Vite. Откройте продакшен-версию, чтобы почувствовать реальную игру — потом вернитесь и попробуйте встроенную 2D-демку ниже.'}
+            {/* 3D Snake — full iframe of the real production game */}
+            <div className="rounded-2xl border-2 border-purple-300 bg-gradient-to-br from-purple-50 via-violet-50 to-fuchsia-50 p-4 md:p-5">
+              <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="text-2xl">🎮</div>
+                  <div>
+                    <div className="font-bold text-stone-900 text-sm">
+                      {lang === 'en' ? '3D Snake — live production build' : '3D Snake — live production'}
+                    </div>
+                    <div className="text-xs text-stone-600">
+                      {lang === 'en'
+                        ? 'Three.js + React 19. Press Play, focus the frame, use arrow keys / WASD.'
+                        : 'Three.js + React 19. Нажми Play, кликни на фрейм, играй стрелками / WASD.'}
+                    </div>
                   </div>
                 </div>
+                <a
+                  href={GAME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-md text-xs transition-colors"
+                  title={lang === 'en' ? 'Open game in new tab' : 'Открыть игру в новой вкладке'}
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  {lang === 'en' ? 'Open in new tab' : 'Открыть в новой вкладке'}
+                </a>
               </div>
-              <a
-                href="https://snake-3d-gameweb.vercel.app/game?mode=web"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg text-sm transition-colors"
-              >
-                {lang === 'en' ? 'Play 3D Snake' : 'Играть в 3D Snake'}
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            <div className="rounded-2xl border bg-white p-6 md:p-8">
-              <SnakeGame />
+              <div className="relative w-full bg-stone-900 rounded-lg overflow-hidden border-2 border-purple-200 shadow-inner">
+                <iframe
+                  src={GAME_URL}
+                  title="3D Snake game"
+                  className="w-full h-[600px] md:h-[700px] block bg-stone-900"
+                  allow="autoplay; fullscreen; gamepad; keyboard"
+                  loading="lazy"
+                />
+              </div>
+              <p className="text-[11px] text-stone-500 mt-2 italic">
+                {lang === 'en'
+                  ? 'If the frame is blocked by your browser, use the "Open in new tab" button.'
+                  : 'Если фрейм заблокирован браузером — используй «Открыть в новой вкладке».'}
+              </p>
             </div>
           </section>
         </FadeIn>
@@ -1362,7 +1457,7 @@ export default function HomeworkPage() {
         <FadeIn>
           <section className="mb-16">
             <StepBadge step={t.steps.verdict.step} title={t.steps.verdict.title} />
-            <VerdictBlock t={t} />
+            <VerdictBlock t={t} stats={stats} />
           </section>
         </FadeIn>
 

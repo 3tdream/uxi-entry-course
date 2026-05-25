@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-05-13",
+  "source": "Snake 3D playtest — Module 1 capstone reference dataset",
+  "game": {
+    "name": "3D Snake",
+    "url": "https://snake-3d-gameweb.vercel.app/",
+    "stack": "React 19 + Three.js + Vite"
+  },
+  "current": {
+    "playersCount": 5,
+    "averageMaxScore": 47,
+    "kpiReachedPercent": 0,
+    "d7Retention": 12,
+    "selfBlameRate": 60
+  },
+  "afterFix": {
+    "playersCount": 5,
+    "averageMaxScore": 95,
+    "kpiReachedPercent": 60,
+    "d7Retention": 35,
+    "selfBlameRate": 8
+  },
+  "notes": "Update this JSON after each playtest round. The /recap/homework page fetches it client-side and re-renders the Verdict block automatically without a redeploy. Keep `version` bumped when schema changes."
+}
