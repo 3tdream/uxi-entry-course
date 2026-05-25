@@ -1413,6 +1413,12 @@ export const meeting05: Meeting = {
           author: 'Jeff Patton',
           role: 'Author of "User Story Mapping"',
         },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '🎓 **Ready to turn theory into your first portfolio artifact?** The Module 1 capstone closes everything from M1 through M5: 11 artifacts, ~8–15 hours, the full Research Loop from blank canvas to Story Map → [**go to the capstone**](/recap/homework).',
+        },
       ],
       quiz: [
         {

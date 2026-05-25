@@ -1415,6 +1415,12 @@ export const meeting05: Meeting = {
           author: 'Jeff Patton',
           role: 'Автор книги «User Story Mapping»',
         },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '🎓 **Готов превратить теорию в первый портфолио-артефакт?** Капстоун-задание Модуля 1 закрывает всё, что ты прошёл от M1 до M5: 11 артефактов, ~8–15 часов, полный Research Loop от пустого экрана до Story Map → [**перейти к капстоуну**](/recap/homework).',
+        },
       ],
       quiz: [
         {
