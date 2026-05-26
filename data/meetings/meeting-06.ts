@@ -44,8 +44,8 @@ export const meeting06: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-06-color-emotions.webp',
-          alt: 'Спектр цветов и их влияние на эмоции пользователя',
-          caption: 'Цвет формирует первое впечатление за 50 миллисекунд',
+          alt: 'Спектр цветов с эмоциональными ассоциациями (Red — Strength/Passion, Orange — Playful/Warmth, Yellow — Happiness, Green — Health, Blue — Trust, Purple — Elegance, Black — Power) и реальными бренд-логотипами под каждым цветом (Marvel, Dunkin\', McDonald\'s, Whole Foods, PayPal, Hallmark, Nike)',
+          caption: 'Цвет формирует первое впечатление за 50 миллисекунд — выбор бренда здесь не случаен',
         },
         {
           type: 'divider' as const,
@@ -104,9 +104,15 @@ export const meeting06: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-06-itten-color-wheel.webp',
-          alt: 'Цветовой круг Иттена с 12 цветами и тремя уровнями',
+          alt: 'Канонический круг Иттена: внутренний треугольник — 3 первичных цвета (Y, R, B), средний слой — 3 вторичных (Y+R, Y+B, B+R), внешний слой — 6 третичных ((Y+R)+Y, Y+R)+R и т.д.)',
           caption:
             'Круг Иттена — ваш главный инструмент для подбора цветовых гармоний',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '🎨 **Попробуй сам — Adobe Color Wheel** → [color.adobe.com/create/color-wheel](https://color.adobe.com/create/color-wheel). Подбирай цвет, выбирай тип гармонии (analogous / monochromatic / triad / complementary / split-complementary / square / shades) — палитра пересчитывается мгновенно. Жми Save → экспортируй в CSS / Figma. Бесплатно, без регистрации.',
         },
         {
           type: 'callout' as const,
@@ -206,7 +212,7 @@ export const meeting06: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-06-color-harmonies.webp',
-          alt: 'Шесть типов цветовых гармоний на цветовом круге',
+          alt: '7 типов цветовых гармоний на круге с цветовыми образцами (swatches): 1. Complementary (противоположные), 2. Split-Complementary, 3. Analogous (соседние), 4. Monochromatic, 5. Triadic (треугольник), 6. Tetradic (прямоугольник), 7. Square (квадрат) + пример реального применения',
           caption:
             'Каждый тип гармонии создаёт своё настроение и подходит для разных задач',
         },

@@ -44,8 +44,8 @@ export const meeting06: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-06-color-emotions.webp',
-          alt: 'Color spectrum and its influence on user emotions',
-          caption: 'Color forms a first impression in 50 milliseconds',
+          alt: 'Color spectrum with emotional associations (Red — Strength/Passion, Orange — Playful/Warmth, Yellow — Happiness, Green — Health, Blue — Trust, Purple — Elegance, Black — Power) paired with real brand logos under each color (Marvel, Dunkin\', McDonald\'s, Whole Foods, PayPal, Hallmark, Nike)',
+          caption: 'Color forms a first impression in 50 milliseconds — the brand picks here are not random',
         },
         {
           type: 'divider' as const,
@@ -104,9 +104,15 @@ export const meeting06: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-06-itten-color-wheel.webp',
-          alt: 'Itten color wheel with 12 colors and three levels',
+          alt: 'Canonical Itten color wheel: inner triangle — 3 primary colors (Y, R, B), middle ring — 3 secondary (Y+R, Y+B, B+R), outer ring — 6 tertiary ((Y+R)+Y, (Y+R)+R, etc.)',
           caption:
             'The Itten color wheel is your primary tool for selecting color harmonies',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '🎨 **Try it yourself — Adobe Color Wheel** → [color.adobe.com/create/color-wheel](https://color.adobe.com/create/color-wheel). Pick a base color, choose a harmony type (analogous / monochromatic / triad / complementary / split-complementary / square / shades) — the palette recalculates instantly. Hit Save → export to CSS / Figma. Free, no signup.',
         },
         {
           type: 'callout' as const,
@@ -206,7 +212,7 @@ export const meeting06: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-06-color-harmonies.webp',
-          alt: 'Six types of color harmonies on the color wheel',
+          alt: '7 types of color harmonies on the wheel with swatch examples: 1. Complementary (opposite), 2. Split-Complementary, 3. Analogous (neighbours), 4. Monochromatic, 5. Triadic (triangle), 6. Tetradic (rectangle), 7. Square + a real-world application example',
           caption:
             'Each type of harmony creates its own mood and is suited for different tasks',
         },
