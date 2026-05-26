@@ -410,6 +410,80 @@ export const meeting06: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: 'Real app palettes — industry by industry',
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: 'Calm',
+            appUrl: 'https://www.calm.com/',
+            industry: 'Healthcare • meditation',
+            rationale:
+              'Deep midnight **blue** = calm and sleep (the core use-case). Lavender soothes without aggression, warm peach breaks the cold and removes any "clinical" feel. No red anywhere — it would kill the state.',
+            swatches: [
+              { hex: '#1C2752', role: 'Primary', name: 'Midnight Blue' },
+              { hex: '#6A89E0', role: 'Secondary', name: 'Calm Lavender' },
+              { hex: '#FED6B0', role: 'Accent', name: 'Soft Peach' },
+              { hex: '#FFFFFF', role: 'Surface', name: 'White' },
+            ],
+          },
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: "McDonald's",
+            appUrl: 'https://www.mcdonalds.com/',
+            industry: 'Food • quick service',
+            rationale:
+              'The classic "appetite" combo: **yellow** excites + **red** speeds up decision-making (research shows: people order faster and leave faster — higher table throughput). Black for typography, white so the food in photos stays the hero.',
+            swatches: [
+              { hex: '#FFC72C', role: 'Primary', name: 'Golden Yellow' },
+              { hex: '#DA291C', role: 'Secondary', name: 'Big Mac Red' },
+              { hex: '#27251F', role: 'Text', name: 'Near Black' },
+              { hex: '#FFFFFF', role: 'Surface', name: 'White' },
+            ],
+          },
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: 'PayPal',
+            appUrl: 'https://www.paypal.com/',
+            industry: 'Finance • payments',
+            rationale:
+              '**Dark blue** = trust and stability (a must-have for money). Sky blue lightens it up and makes the UI feel "tech, not bank." Yellow is the only CTA color — used exclusively on the "Pay" button to anchor attention at the moment of truth.',
+            swatches: [
+              { hex: '#003087', role: 'Primary', name: 'PayPal Blue' },
+              { hex: '#009CDE', role: 'Secondary', name: 'Sky Blue' },
+              { hex: '#FFC439', role: 'CTA', name: 'Pay Yellow' },
+              { hex: '#FFFFFF', role: 'Surface', name: 'White' },
+            ],
+          },
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: 'Spotify',
+            appUrl: 'https://www.spotify.com/',
+            industry: 'Entertainment • music',
+            rationale:
+              '**Vivid green** = energy and recognizability from 5 meters away (perfect for a "brand-in-your-pocket"). Near-black background lets album covers "glow" like on a stage. Gray for secondary metadata — so it never steals attention from the music.',
+            swatches: [
+              { hex: '#1DB954', role: 'Primary', name: 'Spotify Green' },
+              { hex: '#191414', role: 'Background', name: 'True Black' },
+              { hex: '#FFFFFF', role: 'Text', name: 'White' },
+              { hex: '#535353', role: 'Muted', name: 'Grey' },
+            ],
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Pattern check:** all 4 palettes use 1 dominant + 1 accent + 2 neutrals. No "seven colors of the rainbow." The **60-30-10 rule** holds even for billion-dollar brands.',
+        },
+        {
           type: 'case-study' as const,
           title: 'Why Is Facebook Blue?',
           company: 'Facebook (Meta)',

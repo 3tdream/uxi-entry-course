@@ -611,6 +611,104 @@ function QuoteSection({ text, author, role }: { text: string; author: string; ro
   )
 }
 
+function ColorPaletteSection({
+  data,
+}: {
+  data: {
+    appName: string
+    appUrl?: string
+    industry?: string
+    imageSrc?: string
+    imageAlt?: string
+    swatches: { hex: string; role: string; name?: string }[]
+    rationale?: string
+  }
+}) {
+  // pick black or white text per swatch for contrast
+  const onColor = (hex: string) => {
+    const m = hex.match(/^#([0-9a-f]{6})$/i)
+    if (!m) return '#000'
+    const n = parseInt(m[1], 16)
+    const r = (n >> 16) & 0xff
+    const g = (n >> 8) & 0xff
+    const b = n & 0xff
+    // perceived luminance
+    const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+    return lum > 0.6 ? '#1f2937' : '#FFFFFF'
+  }
+
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      <div className="flex flex-col md:flex-row gap-0">
+        {data.imageSrc && (
+          <div className="md:w-2/5 bg-stone-50 flex items-center justify-center p-6 md:p-10 border-b md:border-b-0 md:border-r border-stone-200">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={data.imageSrc}
+              alt={data.imageAlt || data.appName}
+              className="max-w-full max-h-[180px] object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
+        <div className="flex-1 p-6 md:p-8">
+          <div className="flex items-baseline gap-3 flex-wrap mb-1">
+            {data.industry && (
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 bg-stone-100 px-2 py-0.5 rounded">
+                {data.industry}
+              </span>
+            )}
+            <h3 className="text-xl font-bold">{data.appName}</h3>
+            {data.appUrl && (
+              <a
+                href={data.appUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-emerald-700 hover:text-emerald-900 underline underline-offset-2"
+              >
+                live ↗
+              </a>
+            )}
+          </div>
+
+          {data.rationale && (
+            <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+              <RichText content={data.rationale} />
+            </p>
+          )}
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+            {data.swatches.map((s, i) => (
+              <div
+                key={i}
+                className="rounded-lg overflow-hidden border border-stone-200 shadow-sm flex flex-col"
+              >
+                <div
+                  className="aspect-square flex items-end justify-start p-2"
+                  style={{ backgroundColor: s.hex }}
+                >
+                  <span
+                    className="text-[11px] font-mono font-bold uppercase tracking-tight"
+                    style={{ color: onColor(s.hex) }}
+                  >
+                    {s.hex}
+                  </span>
+                </div>
+                <div className="px-2.5 py-2 bg-white">
+                  <div className="text-[11px] font-bold text-stone-800 uppercase tracking-wider">
+                    {s.role}
+                  </div>
+                  {s.name && <div className="text-[10px] text-stone-500 mt-0.5">{s.name}</div>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -732,6 +830,8 @@ function renderSection(section: Section) {
       )
     case 'quote':
       return <QuoteSection text={section.text} author={section.author} role={section.role} />
+    case 'color-palette':
+      return <ColorPaletteSection data={section.data} />
     case 'divider':
       return <DividerSection />
     default:

@@ -410,6 +410,80 @@ export const meeting06: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: 'Палитры реальных приложений — индустрия за индустрией',
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: 'Calm',
+            appUrl: 'https://www.calm.com/',
+            industry: 'Здравоохранение • медитация',
+            rationale:
+              'Глубокий ночной **синий** = покой и сон (основной use-case). Лавандовый акцент успокаивает без агрессии, тёплый персиковый разбавляет холод и снимает «клиническое» ощущение. Никакого красного — это убило бы стейт.',
+            swatches: [
+              { hex: '#1C2752', role: 'Primary', name: 'Midnight Blue' },
+              { hex: '#6A89E0', role: 'Secondary', name: 'Calm Lavender' },
+              { hex: '#FED6B0', role: 'Accent', name: 'Soft Peach' },
+              { hex: '#FFFFFF', role: 'Surface', name: 'White' },
+            ],
+          },
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: "McDonald's",
+            appUrl: 'https://www.mcdonalds.com/',
+            industry: 'Еда • быстрое питание',
+            rationale:
+              'Классическая «аппетитная» комбинация: **жёлтый** возбуждает + **красный** ускоряет принятие решения (исследования: люди быстрее заказывают и быстрее уходят — выше пропускная способность стола). Чёрный для типографики, белый — чтобы еда на фото оставалась «героем».',
+            swatches: [
+              { hex: '#FFC72C', role: 'Primary', name: 'Golden Yellow' },
+              { hex: '#DA291C', role: 'Secondary', name: 'Big Mac Red' },
+              { hex: '#27251F', role: 'Text', name: 'Near Black' },
+              { hex: '#FFFFFF', role: 'Surface', name: 'White' },
+            ],
+          },
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: 'PayPal',
+            appUrl: 'https://www.paypal.com/',
+            industry: 'Финансы • платежи',
+            rationale:
+              '**Тёмно-синий** = доверие и стабильность (must-have для денег). Голубой осветляет и делает интерфейс «техничным, не банковским». Жёлтый — единственный CTA-цвет: используется только на кнопке «Pay» и приковывает внимание именно к моменту истины.',
+            swatches: [
+              { hex: '#003087', role: 'Primary', name: 'PayPal Blue' },
+              { hex: '#009CDE', role: 'Secondary', name: 'Sky Blue' },
+              { hex: '#FFC439', role: 'CTA', name: 'Pay Yellow' },
+              { hex: '#FFFFFF', role: 'Surface', name: 'White' },
+            ],
+          },
+        },
+        {
+          type: 'color-palette' as const,
+          data: {
+            appName: 'Spotify',
+            appUrl: 'https://www.spotify.com/',
+            industry: 'Развлечения • музыка',
+            rationale:
+              '**Ярко-зелёный** = энергия и узнаваемость с расстояния 5 метров (идеально для «бренд-в-кармане»). Почти чёрный фон даёт обложкам альбомов «светиться» как на сцене. Серый для второстепенных метаданных — чтобы не воровать внимание у музыки.',
+            swatches: [
+              { hex: '#1DB954', role: 'Primary', name: 'Spotify Green' },
+              { hex: '#191414', role: 'Background', name: 'True Black' },
+              { hex: '#FFFFFF', role: 'Text', name: 'White' },
+              { hex: '#535353', role: 'Muted', name: 'Grey' },
+            ],
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Паттерн читается:** во всех 4 палитрах 1 доминанта + 1 акцент + 2 нейтрала. Никаких «семи цветов радуги». Правило **60-30-10** работает даже у миллиардных брендов.',
+        },
+        {
           type: 'case-study' as const,
           title: 'Почему Facebook синий?',
           company: 'Facebook (Meta)',

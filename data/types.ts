@@ -25,6 +25,22 @@ export interface ChecklistItem {
   demo?: string
 }
 
+export interface ColorSwatch {
+  hex: string
+  role: string
+  name?: string
+}
+
+export interface ColorPaletteData {
+  appName: string
+  appUrl?: string
+  industry?: string
+  imageSrc?: string
+  imageAlt?: string
+  swatches: ColorSwatch[]
+  rationale?: string
+}
+
 export interface ComparisonItem {
   label: string
   ux: string
@@ -93,6 +109,7 @@ export type Section =
   | { type: 'columns'; variant?: 'grid' | 'stacked'; columns: { title: string; items: string[] }[] }
   | { type: 'table'; title?: string; headers: string[]; rows: string[][]; caption?: string }
   | { type: 'quote'; text: string; author: string; role?: string }
+  | { type: 'color-palette'; data: ColorPaletteData }
   | { type: 'divider' }
 
 // ---- Meeting Structure ----
