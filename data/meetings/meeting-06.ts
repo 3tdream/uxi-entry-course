@@ -966,6 +966,12 @@ export const meeting06: Meeting = {
 
         // === КЕЙС AIRBNB ===
         {
+          type: 'image' as const,
+          src: '/images/meeting-06-airbnb-rebrand.webp',
+          alt: 'Сравнение старого синего лого Airbnb 2008–2014 и нового кораллового Belo с 2014',
+          caption: 'До и после: синий Airbnb (2008–2014) → коралловый Rausch Pink #FF5A5F + символ Bélo (2014–наст.)',
+        },
+        {
           type: 'case-study' as const,
           title: 'Ребрендинг цветовой палитры',
           company: 'Airbnb',

@@ -964,6 +964,12 @@ export const meeting06: Meeting = {
 
         // === AIRBNB CASE ===
         {
+          type: 'image' as const,
+          src: '/images/meeting-06-airbnb-rebrand.webp',
+          alt: 'Side-by-side: old blue Airbnb wordmark 2008–2014 vs new coral Bélo mark from 2014',
+          caption: 'Before & after: blue Airbnb (2008–2014) → coral Rausch Pink #FF5A5F + Bélo symbol (2014–today)',
+        },
+        {
           type: 'case-study' as const,
           title: 'Color Palette Rebrand',
           company: 'Airbnb',
