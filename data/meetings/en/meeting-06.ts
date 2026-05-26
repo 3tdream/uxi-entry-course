@@ -1060,11 +1060,29 @@ export const meeting06: Meeting = {
             label: 'Insufficient Contrast',
             description:
               'Light gray text (#999) on a white background (#FFF). Contrast 2.85:1 \u2014 doesn\'t even pass AA. A thin font makes the problem worse. Text is virtually unreadable for users with impaired vision.',
+            visual: {
+              kind: 'text-sample',
+              text: 'This text is nearly impossible to read in bright light or for users with impaired vision.',
+              color: '#999999',
+              background: '#FFFFFF',
+              fontWeight: 'thin',
+              ratio: '2.85:1',
+              ratioLabel: 'fails AA',
+            },
           },
           after: {
             label: 'Sufficient Contrast',
             description:
               'Dark gray text (#4A4A4A) on a white background (#FFF). Contrast 7.73:1 \u2014 passes even AAA. Text is comfortably readable by all users under any lighting conditions.',
+            visual: {
+              kind: 'text-sample',
+              text: 'This text is comfortably readable by all users under any lighting conditions.',
+              color: '#4A4A4A',
+              background: '#FFFFFF',
+              fontWeight: 'normal',
+              ratio: '7.73:1',
+              ratioLabel: 'passes AAA',
+            },
           },
         },
         {
@@ -1074,11 +1092,26 @@ export const meeting06: Meeting = {
             label: 'Color Only',
             description:
               'Required form fields are marked only by a red border. A colorblind person cannot distinguish a red border from a gray one. No text hint is provided.',
+            visual: {
+              kind: 'required-field',
+              label: 'Email',
+              showAsterisk: false,
+              borderColor: '#DC2626',
+              placeholder: 'name@example.com',
+            },
           },
           after: {
             label: 'Color + Text + Icon',
             description:
               'Required fields are marked with an asterisk (*), a red border, and the text "Required field." Three channels of information \u2014 color, text, symbol.',
+            visual: {
+              kind: 'required-field',
+              label: 'Email',
+              showAsterisk: true,
+              borderColor: '#DC2626',
+              placeholder: 'name@example.com',
+              caption: 'Required field',
+            },
           },
         },
         {

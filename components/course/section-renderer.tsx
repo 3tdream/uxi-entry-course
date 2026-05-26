@@ -275,14 +275,96 @@ function VideoSection({ src, title, caption }: { src: string; title: string; cap
   )
 }
 
+type BeforeAfterVisualProp =
+  | {
+      kind: 'text-sample'
+      text: string
+      color: string
+      background: string
+      fontWeight?: 'thin' | 'normal' | 'semibold' | 'bold'
+      ratio?: string
+      ratioLabel?: string
+    }
+  | {
+      kind: 'required-field'
+      label: string
+      showAsterisk?: boolean
+      borderColor?: string
+      caption?: string
+      placeholder?: string
+    }
+
+function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
+  if (visual.kind === 'text-sample') {
+    const weightCls =
+      visual.fontWeight === 'thin'
+        ? 'font-thin'
+        : visual.fontWeight === 'semibold'
+          ? 'font-semibold'
+          : visual.fontWeight === 'bold'
+            ? 'font-bold'
+            : 'font-normal'
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden">
+        <div
+          className="p-4 md:p-5"
+          style={{ backgroundColor: visual.background }}
+        >
+          <p
+            className={`text-sm md:text-[15px] leading-relaxed ${weightCls}`}
+            style={{ color: visual.color }}
+          >
+            {visual.text}
+          </p>
+        </div>
+        {(visual.ratio || visual.ratioLabel) && (
+          <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 flex items-center justify-between gap-2 text-[11px]">
+            <span className="font-mono text-stone-600">
+              {visual.color} on {visual.background}
+            </span>
+            {visual.ratio && (
+              <span className="font-mono font-bold text-stone-800">
+                {visual.ratio}
+                {visual.ratioLabel && (
+                  <span className="ml-1 font-normal text-stone-500">· {visual.ratioLabel}</span>
+                )}
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+    )
+  }
+  // required-field
+  const border = visual.borderColor || '#DC2626'
+  return (
+    <div className="mb-3 rounded-lg border border-stone-200 bg-white p-4">
+      <label className="block text-xs font-semibold text-stone-700 mb-1.5">
+        {visual.label}
+        {visual.showAsterisk && <span className="text-red-600 ml-0.5">*</span>}
+      </label>
+      <input
+        type="text"
+        placeholder={visual.placeholder || ''}
+        readOnly
+        className="w-full px-3 py-2 text-sm rounded-md bg-stone-50 outline-none"
+        style={{ border: `2px solid ${border}` }}
+      />
+      {visual.caption && (
+        <p className="mt-1 text-[11px] text-red-600 font-medium">{visual.caption}</p>
+      )}
+    </div>
+  )
+}
+
 function BeforeAfterSection({
   title,
   before,
   after,
 }: {
   title: string
-  before: { label: string; description: string; image?: string }
-  after: { label: string; description: string; image?: string }
+  before: { label: string; description: string; image?: string; visual?: BeforeAfterVisualProp }
+  after: { label: string; description: string; image?: string; visual?: BeforeAfterVisualProp }
 }) {
   return (
     <div className="space-y-3">
@@ -298,6 +380,7 @@ function BeforeAfterSection({
           {before.image && (
             <img src={before.image} alt={before.label} className="w-full rounded-lg mb-2" loading="lazy" />
           )}
+          {before.visual && <VisualDemo visual={before.visual} />}
           <p className="text-sm text-foreground/70"><RichText content={before.description} /></p>
         </div>
         <div className="rounded-xl border-2 border-emerald-200 bg-emerald-50/50 p-4">
@@ -310,6 +393,7 @@ function BeforeAfterSection({
           {after.image && (
             <img src={after.image} alt={after.label} className="w-full rounded-lg mb-2" loading="lazy" />
           )}
+          {after.visual && <VisualDemo visual={after.visual} />}
           <p className="text-sm text-foreground/70"><RichText content={after.description} /></p>
         </div>
       </div>

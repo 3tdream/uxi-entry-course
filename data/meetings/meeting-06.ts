@@ -1062,11 +1062,29 @@ export const meeting06: Meeting = {
             label: 'Недостаточный контраст',
             description:
               'Светло-серый текст (#999) на белом фоне (#FFF). Контраст 2.85:1 — не проходит даже AA. Тонкий шрифт усугубляет проблему. Текст практически нечитаем для пользователей с ослабленным зрением.',
+            visual: {
+              kind: 'text-sample',
+              text: 'Этот текст почти невозможно прочитать в условиях яркого освещения или с ослабленным зрением.',
+              color: '#999999',
+              background: '#FFFFFF',
+              fontWeight: 'thin',
+              ratio: '2.85:1',
+              ratioLabel: 'fails AA',
+            },
           },
           after: {
             label: 'Достаточный контраст',
             description:
               'Тёмно-серый текст (#4A4A4A) на белом фоне (#FFF). Контраст 7.73:1 — проходит даже AAA. Текст комфортно читается всеми пользователями в любых условиях освещения.',
+            visual: {
+              kind: 'text-sample',
+              text: 'Этот текст комфортно читается всеми пользователями в любых условиях освещения.',
+              color: '#4A4A4A',
+              background: '#FFFFFF',
+              fontWeight: 'normal',
+              ratio: '7.73:1',
+              ratioLabel: 'passes AAA',
+            },
           },
         },
         {
@@ -1076,11 +1094,26 @@ export const meeting06: Meeting = {
             label: 'Только цвет',
             description:
               'Обязательные поля формы отмечены только красным цветом рамки. Дальтоник не отличит красную рамку от серой. Нет текстовой подсказки.',
+            visual: {
+              kind: 'required-field',
+              label: 'Email',
+              showAsterisk: false,
+              borderColor: '#DC2626',
+              placeholder: 'name@example.com',
+            },
           },
           after: {
             label: 'Цвет + текст + иконка',
             description:
               'Обязательные поля отмечены звёздочкой (*), красной рамкой и текстом «Обязательное поле». Три канала передачи информации — цвет, текст, символ.',
+            visual: {
+              kind: 'required-field',
+              label: 'Email',
+              showAsterisk: true,
+              borderColor: '#DC2626',
+              placeholder: 'name@example.com',
+              caption: 'Обязательное поле',
+            },
           },
         },
         {

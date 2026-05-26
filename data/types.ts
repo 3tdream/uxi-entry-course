@@ -64,10 +64,30 @@ export interface PersonaData {
   quote?: string
 }
 
+export type BeforeAfterVisual =
+  | {
+      kind: 'text-sample'
+      text: string
+      color: string
+      background: string
+      fontWeight?: 'thin' | 'normal' | 'semibold' | 'bold'
+      ratio?: string
+      ratioLabel?: string
+    }
+  | {
+      kind: 'required-field'
+      label: string
+      showAsterisk?: boolean
+      borderColor?: string
+      caption?: string
+      placeholder?: string
+    }
+
 export interface BeforeAfterItem {
   label: string
   description: string
   image?: string
+  visual?: BeforeAfterVisual
 }
 
 export interface CaseStudyStep {
