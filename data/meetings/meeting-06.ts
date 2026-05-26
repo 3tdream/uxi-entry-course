@@ -1347,11 +1347,35 @@ export const meeting06: Meeting = {
             label: 'Перегруженный цветом',
             description:
               'Каждый виджет — свой яркий фон (красный, синий, зелёный, оранжевый). Графики в кислотных цветах. 12+ цветов без системы. Глаз устаёт за 5 минут.',
+            visual: {
+              kind: 'dashboard-mock',
+              background: '#FFF5CC',
+              cards: [
+                { label: 'Выручка', value: '$48.2K', bg: '#FF3B30', labelColor: '#FFFFFF', valueColor: '#FFFF00', barColor: '#00FF00', barFill: 0.75 },
+                { label: 'Конверсия', value: '3.4%', bg: '#00B0FF', labelColor: '#FFFF00', valueColor: '#FF00FF', barColor: '#FF6F00', barFill: 0.42 },
+                { label: 'Заказы', value: '1,287', bg: '#00E676', labelColor: '#FF1744', valueColor: '#FFFFFF', barColor: '#FF00FF', barFill: 0.6 },
+                { label: 'CAC', value: '$12.40', bg: '#FF6F00', labelColor: '#00FFFF', valueColor: '#FFFFFF', barColor: '#FFFF00', barFill: 0.55 },
+              ],
+              paletteSwatches: ['#FF3B30', '#00B0FF', '#00E676', '#FF6F00', '#FF00FF', '#FFFF00'],
+              footnote: '6+ ярких hue · нет системы · глаз устаёт',
+            },
           },
           after: {
             label: 'Систематизированная палитра',
             description:
               'Нейтральный фон, карточки с лёгкой тенью. Один primary (индиго) для действий. Графики в последовательной шкале одного hue (от светло-синего к тёмно-синему). 5 цветов + нейтральные.',
+            visual: {
+              kind: 'dashboard-mock',
+              background: '#F8FAFC',
+              cards: [
+                { label: 'Выручка', value: '$48.2K', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#4F46E5', barFill: 0.75 },
+                { label: 'Конверсия', value: '3.4%', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#818CF8', barFill: 0.42 },
+                { label: 'Заказы', value: '1,287', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#A5B4FC', barFill: 0.6 },
+                { label: 'CAC', value: '$12.40', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#C7D2FE', barFill: 0.55 },
+              ],
+              paletteSwatches: ['#F8FAFC', '#FFFFFF', '#0F172A', '#4F46E5', '#818CF8', '#A5B4FC'],
+              footnote: '1 hue · последовательная шкала · спокойно',
+            },
           },
         },
         {

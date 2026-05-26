@@ -96,6 +96,21 @@ export type BeforeAfterVisual =
       paletteSwatches?: string[] // hex values shown as a tiny palette strip
       footnote?: string // e.g. "contrast 1.5:1 — fails AA"
     }
+  | {
+      kind: 'dashboard-mock'
+      background: string
+      cards: {
+        label: string
+        value: string
+        bg: string
+        labelColor: string
+        valueColor: string
+        barColor: string
+        barFill: number // 0..1
+      }[]
+      paletteSwatches?: string[]
+      footnote?: string
+    }
 
 export interface BeforeAfterItem {
   label: string

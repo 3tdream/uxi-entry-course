@@ -1345,11 +1345,35 @@ export const meeting06: Meeting = {
             label: 'Color Overload',
             description:
               'Each widget has its own bright background (red, blue, green, orange). Charts in neon colors. 12+ colors with no system. Eyes fatigue within 5 minutes.',
+            visual: {
+              kind: 'dashboard-mock',
+              background: '#FFF5CC',
+              cards: [
+                { label: 'Revenue', value: '$48.2K', bg: '#FF3B30', labelColor: '#FFFFFF', valueColor: '#FFFF00', barColor: '#00FF00', barFill: 0.75 },
+                { label: 'Conversion', value: '3.4%', bg: '#00B0FF', labelColor: '#FFFF00', valueColor: '#FF00FF', barColor: '#FF6F00', barFill: 0.42 },
+                { label: 'Orders', value: '1,287', bg: '#00E676', labelColor: '#FF1744', valueColor: '#FFFFFF', barColor: '#FF00FF', barFill: 0.6 },
+                { label: 'CAC', value: '$12.40', bg: '#FF6F00', labelColor: '#00FFFF', valueColor: '#FFFFFF', barColor: '#FFFF00', barFill: 0.55 },
+              ],
+              paletteSwatches: ['#FF3B30', '#00B0FF', '#00E676', '#FF6F00', '#FF00FF', '#FFFF00'],
+              footnote: '6+ bright hues · no system · eyes fatigue',
+            },
           },
           after: {
             label: 'Systematized Palette',
             description:
               'Neutral background, cards with subtle shadow. One primary (indigo) for actions. Charts in a sequential scale of a single hue (from light blue to dark blue). 5 colors + neutrals.',
+            visual: {
+              kind: 'dashboard-mock',
+              background: '#F8FAFC',
+              cards: [
+                { label: 'Revenue', value: '$48.2K', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#4F46E5', barFill: 0.75 },
+                { label: 'Conversion', value: '3.4%', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#818CF8', barFill: 0.42 },
+                { label: 'Orders', value: '1,287', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#A5B4FC', barFill: 0.6 },
+                { label: 'CAC', value: '$12.40', bg: '#FFFFFF', labelColor: '#64748B', valueColor: '#0F172A', barColor: '#C7D2FE', barFill: 0.55 },
+              ],
+              paletteSwatches: ['#F8FAFC', '#FFFFFF', '#0F172A', '#4F46E5', '#818CF8', '#A5B4FC'],
+              footnote: '1 hue · sequential scale · calm',
+            },
           },
         },
         {

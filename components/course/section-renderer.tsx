@@ -307,6 +307,21 @@ type BeforeAfterVisualProp =
       paletteSwatches?: string[]
       footnote?: string
     }
+  | {
+      kind: 'dashboard-mock'
+      background: string
+      cards: {
+        label: string
+        value: string
+        bg: string
+        labelColor: string
+        valueColor: string
+        barColor: string
+        barFill: number
+      }[]
+      paletteSwatches?: string[]
+      footnote?: string
+    }
 
 function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
   if (visual.kind === 'text-sample') {
@@ -366,6 +381,75 @@ function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
         />
         {visual.caption && (
           <p className="mt-1 text-[11px] text-red-600 font-medium">{visual.caption}</p>
+        )}
+      </div>
+    )
+  }
+  if (visual.kind === 'dashboard-mock') {
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden shadow-sm">
+        {/* fake browser chrome */}
+        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 border-b border-stone-200">
+          <span className="w-2 h-2 rounded-full bg-red-400" />
+          <span className="w-2 h-2 rounded-full bg-yellow-400" />
+          <span className="w-2 h-2 rounded-full bg-green-400" />
+          <div className="ml-2 flex-1 h-3 rounded bg-stone-200/60" />
+        </div>
+        {/* dashboard area */}
+        <div className="p-3 md:p-4" style={{ backgroundColor: visual.background }}>
+          <div className="grid grid-cols-2 gap-2 md:gap-2.5">
+            {visual.cards.map((c, i) => (
+              <div
+                key={i}
+                className="rounded-md p-2.5 md:p-3"
+                style={{ backgroundColor: c.bg }}
+              >
+                <div
+                  className="text-[10px] md:text-[11px] font-semibold uppercase tracking-wider mb-0.5 truncate"
+                  style={{ color: c.labelColor }}
+                >
+                  {c.label}
+                </div>
+                <div
+                  className="text-base md:text-lg font-bold leading-tight mb-1.5"
+                  style={{ color: c.valueColor }}
+                >
+                  {c.value}
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-black/10 overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${Math.max(0, Math.min(1, c.barFill)) * 100}%`,
+                      backgroundColor: c.barColor,
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* palette strip */}
+        {(visual.paletteSwatches || visual.footnote) && (
+          <div className="px-3 py-1.5 bg-white border-t border-stone-200 flex items-center justify-between gap-2 text-[11px]">
+            {visual.paletteSwatches && visual.paletteSwatches.length > 0 ? (
+              <div className="flex items-center gap-1 flex-wrap">
+                {visual.paletteSwatches.map((s, i) => (
+                  <span
+                    key={i}
+                    className="w-4 h-4 rounded border border-stone-300"
+                    style={{ backgroundColor: s }}
+                    title={s}
+                  />
+                ))}
+              </div>
+            ) : (
+              <span />
+            )}
+            {visual.footnote && (
+              <span className="font-mono text-stone-600">{visual.footnote}</span>
+            )}
+          </div>
         )}
       </div>
     )
