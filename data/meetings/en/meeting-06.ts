@@ -231,6 +231,71 @@ export const meeting06: Meeting = {
           },
         },
         {
+          type: 'subheading' as const,
+          content: '\uD83C\uDFAE Rarity colors in gaming: the universal loot-tier code',
+        },
+        {
+          type: 'text' as const,
+          content:
+            "If you've played any RPG in the last 20 years \u2014 you subconsciously know this scale. **White \u2192 green \u2192 blue \u2192 purple \u2192 orange** isn't an accident, it's a **split-complementary progression with rising chroma**, inherited from Diablo (1996) and locked in by World of Warcraft (2004). Today it's the de-facto standard for loot systems.",
+        },
+        {
+          type: 'columns' as const,
+          columns: [
+            {
+              title: '\u26AA Common',
+              items: [
+                'Hex: `#9D9D9D` (neutral grey)',
+                'Saturation = 0%',
+                'Basic gear, consumables',
+                '~70% drops from regular mobs',
+              ],
+            },
+            {
+              title: '\uD83D\uDFE2 Uncommon',
+              items: [
+                'Hex: `#1EFF00` (bright green)',
+                'Hue 120\u00B0 + max saturation',
+                'First "oh, lucky" threshold',
+                '~25% drops',
+              ],
+            },
+            {
+              title: '\uD83D\uDD35 Rare',
+              items: [
+                'Hex: `#0070DD` (saturated blue)',
+                'Hue 220\u00B0 \u2014 complementary to legendary orange',
+                'Bosses and dungeons',
+                '~4% drops',
+              ],
+            },
+            {
+              title: '\uD83D\uDFE3 Epic',
+              items: [
+                'Hex: `#A335EE` (bright purple)',
+                'Hue 280\u00B0 \u2014 bridge between blue and orange',
+                'Raids, events',
+                '~0.9% drops',
+              ],
+            },
+            {
+              title: '\uD83D\uDFE0 Legendary',
+              items: [
+                'Hex: `#FF8000` (fiery orange)',
+                'Hue 30\u00B0 \u2014 opposite of blue',
+                'The warm "peak" of the scale',
+                '~0.1% drops',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Building a rarity scale principle:** each step must (a) differ **by hue** (not just lightness), (b) be **distinguishable in greyscale** for color-blind players, (c) obey **warmth psychology** \u2014 the last tier is warm (passion, value), the first is cool-neutral. Designing your own loot system? Don\'t reinvent \u2014 use the proven code. In Astral Symphony this maps to brawler-tier and star-drop rarity.',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -270,6 +335,24 @@ export const meeting06: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'subheading' as const,
+          content: '\ud83c\udfae Faction colors in gaming: why NOT red + green',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Team colors: warm/cool pair vs red-green',
+          before: {
+            label: '\u274c Red faction vs green faction',
+            description:
+              'Team A \u2014 red (#E63946), Team B \u2014 green (#2ECC71). Theoretically sound (warm vs cool), but **8% of men with deuteranopia** can\'t tell them apart. On the minimap, friend and enemy merge into a single swampy shade. Friendly-fire incidents spike, App Store reviews fill with "can\'t tell teams apart". Apex Legends Year 1 case: Respawn shipped a fix after 4 months of negative reviews.',
+          },
+          after: {
+            label: '\u2705 Red-blue pairing (like Astral Symphony)',
+            description:
+              'Team A \u2014 red (#FF4136), Team B \u2014 blue (#0074D9). **Warm + cool** + a clear lightness gap. The pair passes all three color-blindness simulations and reads even in greyscale (the master test: if it\'s distinguishable in black-and-white, it\'s distinguishable in any color-blindness form). Same trick \u2014 Overwatch (red vs blue), CS:GO (T vs CT).',
+          },
         },
         {
           type: 'divider' as const,
@@ -352,22 +435,47 @@ export const meeting06: Meeting = {
             'Modern tools allow you to generate palettes, check contrast, and select harmonies in seconds. Here are three must-have tools for a UI designer.',
         },
         {
-          type: 'key-concepts' as const,
-          concepts: [
+          type: 'columns' as const,
+          columns: [
             {
-              term: 'Coolors.co',
-              definition:
-                'A palette generator activated by pressing the spacebar. You can lock colors, adjust shades, and export to CSS/Figma. Free.',
+              title: '[Coolors.co ↗](https://coolors.co/)',
+              items: [
+                'Palette generator on spacebar tap',
+                'Lock individual colors and regenerate the rest',
+                'Fine-tune hue / saturation / lightness',
+                'Export to CSS / SCSS / Figma / Adobe',
+                'Free tier with no limits',
+              ],
             },
             {
-              term: 'Adobe Color (color.adobe.com)',
-              definition:
-                'A color wheel with harmony type selection. Shows palettes from photos, has a library of trending palettes. Integration with Adobe CC.',
+              title: '[Adobe Color ↗](https://color.adobe.com/)',
+              items: [
+                'Color wheel with harmony type picker',
+                'Extract palette from a photo',
+                'Trending palette library from Adobe Stock',
+                'Photoshop / Illustrator / Figma integration',
+                'Free, requires Adobe ID',
+              ],
             },
             {
-              term: 'Realtime Colors (realtimecolors.com)',
-              definition:
-                'Displays a palette directly on a website mockup in real time. You can change primary, secondary, accent and immediately see the result.',
+              title: '[Realtime Colors ↗](https://www.realtimecolors.com/)',
+              items: [
+                'Applies the palette directly on a landing-page mockup',
+                'Change primary / secondary / accent — see the result on a real UI',
+                'Perfect for presenting a palette to a client',
+                'Export CSS variables in one click',
+                'Free',
+              ],
+            },
+            {
+              title: '[Khroma ↗](https://www.khroma.co/)',
+              items: [
+                'AI palette generator trained on thousands of designer combos',
+                'Pick 50 favorite colors — the algorithm generates pairs/triplets',
+                'Personal "taste" improves with use',
+                'Saves history, exports to Figma / Sketch',
+                'Free, sign-up required',
+              ],
             },
           ],
         },
@@ -411,6 +519,46 @@ export const meeting06: Meeting = {
             'Spotify chose a vibrant green (#1DB954) \u2014 a color of energy, freshness, and growth. Combined with a black background, it creates a sense of premium quality and modernity. The green stands out among "blue" competitors.',
           result:
             'Spotify green became one of the most recognizable colors in the tech industry. The brand is associated with music, youth, and innovation.',
+        },
+        {
+          type: 'subheading' as const,
+          content: '🎮 Color as a gaming-brand identity',
+        },
+        {
+          type: 'text' as const,
+          content:
+            "Same 'claim an unowned color' strategy — applied to the gaming market. Games compete for attention on the App Store / Steam shelf, and **the first recognition impulse** comes through icon/logo color.",
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: '🟪 Fortnite — purple (#8A2BE2)',
+              definition:
+                'Battle royale category: Apex Legends — orange/red, PUBG — khaki, CoD: Warzone — grey/green. Fortnite claimed **purple** — no competitor staked a claim. Today purple = Fortnite on a shelf.',
+            },
+            {
+              term: '🟡 Brawl Stars — yellow (#FFC857)',
+              definition:
+                'Mobile shooters are dominated by blue (CoD Mobile, Critical Ops). Supercell picked **sun-yellow** — a triadic complement to the blue map skies and orange brawlers. Spotting a yellow icon among grey ones on a home screen is a reflex.',
+            },
+            {
+              term: '🌈 Among Us — 12-color player palette',
+              definition:
+                'Not one color, **the whole spectrum**. 12 maximally-distinct hues from the Itten wheel (red, blue, green, pink, orange, yellow, black, white, purple, brown, cyan, lime). The brand = the entire palette. Rare move — it only works because the game is built around "pick your color".',
+            },
+            {
+              term: '🟢 Roblox — green-grey',
+              definition:
+                'A platform, not a game — needs an "infrastructure" neutral tone. Green-grey = trust + growth (the educational connotation for parents). Compare with competitors: Minecraft — earthy, Fortnite — purple, Roblox holds the empty note.',
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            "**Artem's takeaway:** game brand color is a **strategic choice**, the same way Airbnb coral or Spotify green is. Open the App Store → your category → look at the top-20 icons. Which colors are taken? Which are empty? If you're branding your game — head into the empty space. If competitors are all blue — your shot is green, purple, orange, or pink.",
         },
       ],
       quiz: [
@@ -465,6 +613,55 @@ export const meeting06: Meeting = {
           correctId: 'c',
           explanation:
             'H stands for Hue \u2014 the position of a color on the wheel from 0\u00B0 to 360\u00B0. S is Saturation, L is Lightness.',
+        },
+        {
+          question: 'What happens if you set Saturation = 0% in HSL?',
+          options: [
+            { id: 'a', text: 'The color becomes maximally bright' },
+            { id: 'b', text: 'The color turns into a shade of grey (or black/white)' },
+            { id: 'c', text: 'The color becomes transparent' },
+            { id: 'd', text: 'Hue flips to the opposite' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Saturation = 0% strips out the "colorness", leaving only the grey scale. Hue is irrelevant at that point — only Lightness matters. Handy trick: test a palette in greyscale — if elements stop being distinguishable, you\'re leaning on color instead of contrast.',
+        },
+        {
+          question: 'Triadic harmony — 3 colors 120° apart. Which products is it most natural for?',
+          options: [
+            { id: 'a', text: 'Minimalist banking apps' },
+            { id: 'b', text: 'Corporate SaaS dashboards' },
+            { id: 'c', text: "Kids' games, entertainment apps, energetic brands" },
+            { id: 'd', text: 'Premium jewelry stores' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Triadic harmony delivers maximum visual variety while staying systematic — that\'s why Mario (red/blue/yellow), kids\' edu apps, and game landing pages love it. Premium goes monochromatic or analogous; triadic is too "loud" for it.',
+        },
+        {
+          question: 'Which harmony is recommended for designing a high-impact CTA button?',
+          options: [
+            { id: 'a', text: 'Analogous — neighbouring colors' },
+            { id: 'b', text: 'Complementary — opposite on the wheel (180°)' },
+            { id: 'c', text: 'Monochromatic — shades of one color' },
+            { id: 'd', text: 'Triadic — three colors 120° apart' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Complementary colors deliver **maximum contrast** — exactly what a CTA needs to pop out of the interface. Example: blue primary + orange "Buy" button. IKEA, Stripe, Notion — all use this trick.',
+        },
+        {
+          question:
+            'What does Spotify\'s pick of green (#1DB954) in 2013 demonstrate from a brand-strategy perspective?',
+          options: [
+            { id: 'a', text: 'A random pick, no strategy' },
+            { id: 'b', text: 'Claiming a "free" color in a category where every competitor was using blue/black' },
+            { id: 'c', text: 'A trend of the season' },
+            { id: 'd', text: 'Cheap printing' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Apple Music — white/pink, Deezer — blue, Pandora — blue. Spotify claimed **green** — the only "free" lane in the category. Brand rule: own a color no competitor uses. Same trick — Fortnite (purple), Twitch (purple), Slack (purple/aubergine).',
         },
       ],
     },
@@ -565,6 +762,46 @@ export const meeting06: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: '\ud83c\udfae Color roles in a gaming HUD: HP / Mana / Shield',
+        },
+        {
+          type: 'text' as const,
+          content:
+            "These three colors are the **universal language of gaming UIs**. From Diablo and Warcraft to Astral Symphony \u2014 players see a red bar and understand 'health' without words, a blue one \u2014 'resource', a yellow one \u2014 'protection'. This is **the direct port of color psychology** into gaming UX: warm = biological danger, cool = controlled resource, neutral-warning = temporary state.",
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: '\u2764\ufe0f HP / Health \u2014 red',
+              definition:
+                'Hex: `#EF4444` (or `hsl(0, 84%, 60%)`). Biological danger signal \u2014 pulse, blood. Below 20% HP, a **pulse animation** plus a screen-edge vignette in the same hue kicks in. Universal: Diablo, WoW, CS:GO, Destiny, Astral Symphony.',
+            },
+            {
+              term: '\ud83d\udc99 Mana / Energy \u2014 blue',
+              definition:
+                'Hex: `#3B82F6` (or `hsl(220, 85%, 60%)`). A cool, controlled, "magical" resource. Recovers over time \u2014 no urgency. Tip: if your game has no mana, use blue for the secondary resource (XP to next level, energy for daily quests).',
+            },
+            {
+              term: '\ud83d\udee1 Shield / Armor \u2014 yellow/gold',
+              definition:
+                'Hex: `#FFC857` (or `hsl(45, 95%, 55%)`). **Warm but not alarming** \u2014 warning without alarm. Temporary state (shield buff), a separate layer above HP. Apex Legends, Overwatch, Astral Symphony \u2014 gold shield indicator everywhere.',
+            },
+            {
+              term: '\ud83d\udc9c Ultimate / Special \u2014 purple',
+              definition:
+                'Hex: `#A855F7` (or `hsl(280, 90%, 60%)`). The "magical", rare, special state \u2014 when an ult is ready. Purple reads premium and magical, never used for base resources to avoid devaluing it. Overwatch ultimate-ready glow, Brawl Stars Star Power.',
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**\ud83c\udfae Game UI rule:** **never make Mana green**, even if "fresh-looking" tempts you. Green = success/ok in UI conventions, mana is a resource you spend. A green mana bar creates cognitive dissonance: "success? no, a resource?". That conflict kills Day-1 onboarding readability.',
+        },
+        {
           type: 'before-after' as const,
           title: 'Feedback Colors in Forms',
           before: {
@@ -577,6 +814,12 @@ export const meeting06: Meeting = {
             description:
               'Invalid field \u2014 red border + red error text + red icon. Successfully filled \u2014 green checkmark. Warning \u2014 yellow icon. The user instantly reads the status of each field.',
           },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            "\ud83c\udfae **Critical UI states in gaming:** at low HP (<20%), games apply a **screen-edge vignette** in desaturated red-grey (`hsl(0, 60%, 35%)`) \u2014 so it doesn't destroy ability-icon readability. Pure red (#FF0000) full-screen is a **WCAG violation inside the game itself**: ability cooldown indicators become unreadable. The feedback-color rule from this lesson works **inside the combat scene too**: never rely on hue alone \u2014 add shape, pulse, sound. In Astral Symphony: low-HP = red vignette + 1Hz pulse + heartbeat SFX = triple redundancy.",
         },
         {
           type: 'divider' as const,
@@ -636,7 +879,7 @@ export const meeting06: Meeting = {
                 'Avoid red-green pairs (color blindness)',
                 'Sequential scales: from light to dark',
                 'Categorical: maximally different hues',
-                'Tool: ColorBrewer2.org',
+                'Tool: [ColorBrewer 2.0 ↗](https://colorbrewer2.org/)',
               ],
             },
           ],
@@ -765,6 +1008,30 @@ export const meeting06: Meeting = {
             'Never use red and green as the only way to distinguish "error" and "success." Approximately 4.5% of men cannot tell these colors apart (protanopia and deuteranopia). Always add text or an icon.',
         },
         {
+          type: 'subheading' as const,
+          content: '🎮 Color-blind mode in gaming: must-have, not nice-to-have',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Color-blind mode for a PvP shooter',
+          before: {
+            label: '❌ "Color-blind mode isn\'t a priority yet"',
+            description:
+              'A game with 1M active players: 8% of men = **80,000 players** with deuteranopia. Without color-blind mode: red-green faction markers merge. App Store reviews start: "can\'t tell teams apart", "constant friendly fire". NPS drops 8–12 points in that segment. Case studies: Apex Legends Year 1 (Respawn shipped a fix after 4 months of reviews), pre-Source-2 CS:GO.',
+          },
+          after: {
+            label: '✅ Color-blind mode with 3 presets',
+            description:
+              '**Protanopia** (no red receptors): faction red → orange (#FF8000), success green → cyan. **Deuteranopia** (green blindness, most common): faction green → blue, success → blue + ✓ icon. **Tritanopia** (no blue): blue → magenta. **Shape redundancy**: on the minimap, ally = circle, enemy = triangle. Astral Symphony surfaces this in the setup menu, not buried in accessibility.',
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '🎮 **Testing a gaming color palette:** run it through [Coblis ↗](https://www.color-blindness.com/coblis-color-blindness-simulator/) — drop a HUD screenshot, see exactly how a color-blind player sees it. Do this **before launch**, not after. Implementing color-blind mode = 3-5 engineer-days; fixing negative reviews post-release = millions in marketing.',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -777,6 +1044,12 @@ export const meeting06: Meeting = {
           type: 'text' as const,
           content:
             'A dark theme is not an inversion of the light one. It is a **separate color system** with its own rules. The main mistake is using pure black (#000) as the background and simply inverting colors.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            "🛠 **Don't reinvent dark mode — use the proven systems.** [Material Design 3 dark mode ↗](https://m3.material.io/styles/color/dark-mode) — Google's official rules (elevation, surface, on-color). [Tailwind palette ↗](https://tailwindcss.com/docs/customizing-colors) — production-grade 50–950 scale per hue, half the internet uses it. [Colour & Contrast ↗](https://colourcontrast.cc/) — instantly shows contrast in **both** themes at once. [Accessible Color Matrix (Cloudflare) ↗](https://cloudflare.design/color) — a full background × foreground grid with AA/AAA status. Don't build dark mode from scratch — start from Tailwind or M3.",
         },
         {
           type: 'columns' as const,
@@ -832,18 +1105,54 @@ export const meeting06: Meeting = {
           type: 'checklist' as const,
           title: 'Checklist for Creating an Accessible Color Palette',
           items: [
-            'Choose a primary color that matches the industry and target audience',
-            'Build a palette based on a harmony type (analogous for calm, complementary for contrast)',
-            'Verify 60-30-10 proportions on main screens',
-            'Define feedback colors: success, error, warning, info',
-            'Check text contrast against WCAG AA (\u2265 4.5:1) \u2014 use WebAIM Contrast Checker',
-            'Ensure information is not conveyed by color alone (+ text, icons)',
-            'Test the palette through a color blindness simulator (Stark, Figma plugin)',
-            'Create dark theme variants: reduce saturation, increase lightness',
-            'Do not use pure black (#000) or pure white (#FFF)',
-            'Test the palette on a real device under different lighting conditions',
-            'Document the palette: CSS variables / Design Tokens in Figma',
-            'Get a review from a colleague or mentor before finalizing',
+            {
+              text: 'Choose a primary color that matches the industry and target audience',
+              demo: 'Fintech / banks \u2192 **blue** (trust, security). Wellness / eco \u2192 **green** (health, growth). Premium / luxury \u2192 **black + gold**. Kids\' games \u2192 **yellow + triadic**. Open [Brand Colors of 2024 \u2014 Pantone Color Institute \u2197](https://www.pantone.com/articles/color-trends) to check trends in your industry.',
+            },
+            {
+              text: 'Build a palette based on a harmony type',
+              demo: 'Analogous (3 neighbours) \u2192 calm, corporate SaaS. Complementary \u2192 CTA contrast, e-commerce. Triadic \u2192 kids / energetic. Monochromatic \u2192 minimalist premium. Use [Adobe Color Wheel \u2197](https://color.adobe.com/create/color-wheel) \u2014 pick harmony type, see the palette instantly.',
+            },
+            {
+              text: 'Verify 60-30-10 proportions on main screens',
+              demo: '60% background + neutral \u00b7 30% secondary (cards, navigation) \u00b7 10% accent (CTA). If the "Buy" button is 30% and background is 10%, the inversion kills hierarchy. Test: look at the home screen from 2 metres away. Just one dominant surface visible? \u2014 proportions work.',
+            },
+            {
+              text: 'Define feedback colors: success, error, warning, info',
+              demo: '**Success** = green (#10B981). **Error** = red (#EF4444). **Warning** = amber/orange (#F59E0B). **Info** = blue (#3B82F6). This is a **universal pattern** \u2014 don\'t reinvent it. Tailwind / Material 3 / Apple HIG all use the same hues for feedback states.',
+            },
+            {
+              text: 'Check text contrast against WCAG AA (\u2265 4.5:1) for body text; AAA (\u2265 7:1) when you can',
+              demo: 'Paste hex pairs into [WebAIM Contrast Checker \u2197](https://webaim.org/resources/contrastchecker/) \u2014 instant AA/AAA status. Example: `#6B7280` on `#FFFFFF` = 4.72:1 \u2014 passes AA, **fails** AAA. For large text (\u226518pt) the bar is lower \u2014 AA = 3:1, AAA = 4.5:1.',
+            },
+            {
+              text: 'Ensure information is not conveyed by color alone',
+              demo: '"Red for error / green for success" \u2014 not enough. Add an icon (\u26a0 / \u2713 / \u2715) and label text. Test: open [Stark Figma plugin \u2197](https://www.getstark.co/) \u2192 enable protanopia/deuteranopia sim \u2192 if the status still reads without color, you\'re passed.',
+            },
+            {
+              text: 'Test the palette through a color blindness simulator',
+              demo: '[Stark \u2197](https://www.getstark.co/) \u2014 for Figma/Sketch. [Coblis \u2197](https://www.color-blindness.com/coblis-color-blindness-simulator/) \u2014 online simulator on a PNG. Check all 3 types: protanopia, deuteranopia, tritanopia. 8% of men is your audience.',
+            },
+            {
+              text: 'Create dark theme variants',
+              demo: 'Do **not** use `invert: 100%`! Drop saturation 20\u201340%, raise lightness of the base. Pure `#FF0000` on `#121212` "vibrates" \u2014 replace with `hsl(0, 70%, 60%)`. Reference: [Material Design 3 dark mode \u2197](https://m3.material.io/styles/color/dark-mode).',
+            },
+            {
+              text: 'Do not use pure black (#000) or pure white (#FFF)',
+              demo: 'Pure black + white text = 21:1 contrast. Eyes burn in minutes. Tailwind, Material 3, Apple HIG all use `#0F0F0F` or `#121212` for dark and `#FAFAFA` for light. Contrast 19:1 \u2014 still AAA, but your eyes don\'t melt.',
+            },
+            {
+              text: 'Test the palette on a real device under different lighting',
+              demo: 'Open the mockup on an iPhone outside in sunlight near a window \u2014 then in a room with a single lamp. Colors that look great on a retina monitor in a studio can lose contrast outside. Actually walk around with the prototype \u2014 see it in the sun.',
+            },
+            {
+              text: 'Document the palette: CSS variables / Design Tokens in Figma',
+              demo: 'CSS: `--color-primary: #4A90D9; --color-primary-light: hsl(210, 60%, 70%);` etc. In Figma \u2014 **Color Variables** with semantic aliases (`--bg-card`, `--text-primary`, `--border-default`). Reference: [Tailwind palette docs \u2197](https://tailwindcss.com/docs/customizing-colors) \u2014 50\u2013950 scale structure per hue.',
+            },
+            {
+              text: 'Get a review from a colleague or mentor before finalizing',
+              demo: 'Show 3 people: a designer, a developer, and someone from the target audience. Ask each: "What color did you notice first? What second? What do you feel like clicking first?" If answers diverge \u2014 hierarchy is broken. Show it in greyscale too \u2014 does structure read without color? If yes, the design is robust.',
+            },
           ],
         },
         {
@@ -999,6 +1308,55 @@ export const meeting06: Meeting = {
           correctId: 'b',
           explanation:
             'About 8% of men and 0.5% of women have color vision deficiencies (color blindness). If information is conveyed only by color, these users will not receive it. Always supplement color with text or an icon.',
+        },
+        {
+          question: 'In the 60-30-10 rule, what role does the 30% secondary color usually play?',
+          options: [
+            { id: 'a', text: 'Main CTA buttons' },
+            { id: 'b', text: 'Card backgrounds, navigation, sections — structuring content without dominating' },
+            { id: 'c', text: 'Body text' },
+            { id: 'd', text: 'Chart and illustration colors' },
+          ],
+          correctId: 'b',
+          explanation:
+            '60% — main background (usually neutral). **30% — secondary**, usually navigation, cards, sections, headings — it structures. 10% — accent, primary CTAs and important highlights. Swap 30% and 10% and the interface becomes "noisy" and loses hierarchy.',
+        },
+        {
+          question:
+            'What WCAG contrast level is required for text to pass AAA — the strictest tier?',
+          options: [
+            { id: 'a', text: '3:1' },
+            { id: 'b', text: '4.5:1' },
+            { id: 'c', text: '7:1' },
+            { id: 'd', text: '12:1' },
+          ],
+          correctId: 'c',
+          explanation:
+            'AAA = **7:1** for normal-size text (4.5:1 is AA, the minimum). AAA matters for apps aimed at low-vision users, government services, medical and financial platforms. General web is fine at AA. Verify: [WebAIM Contrast Checker ↗](https://webaim.org/resources/contrastchecker/).',
+        },
+        {
+          question: 'What are "vibrating colors" in dark mode?',
+          options: [
+            { id: 'a', text: 'Colors with CSS animation' },
+            { id: 'b', text: 'Highly-saturated colors (like pure #FF0000) on a dark background — the eye perceives them as "vibrating", text becomes hard to read' },
+            { id: 'c', text: 'A stroboscopic video effect' },
+            { id: 'd', text: 'Colors that change on scroll' },
+          ],
+          correctId: 'b',
+          explanation:
+            'On a dark background (#121212) pure #FF0000 or #00FF00 "vibrate" — the edges literally shimmer for the eye due to luminance mismatch. Dark mode rule: **drop saturation 20–40%** and raise lightness. Save pure primary colors for light mode only.',
+        },
+        {
+          question: 'For a sequential data scale (heatmap from low → high), what is the best-practice resource?',
+          options: [
+            { id: 'a', text: 'Adobe Color' },
+            { id: 'b', text: 'Coolors' },
+            { id: 'c', text: 'ColorBrewer 2.0 — academic tool for data-viz palettes' },
+            { id: 'd', text: 'Any generator will do' },
+          ],
+          correctId: 'c',
+          explanation:
+            '[ColorBrewer 2.0 ↗](https://colorbrewer2.org/) by Cynthia Brewer — the academic standard. Palettes are deliberately picked for **sequential** (one scale), **diverging** (two sides of a neutral), and **qualitative** (categorical) — with color-blindness and greyscale printing in mind. Adobe Color and Coolors are built for design, not data-viz.',
         },
       ],
     },
