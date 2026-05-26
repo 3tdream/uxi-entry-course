@@ -293,6 +293,20 @@ type BeforeAfterVisualProp =
       caption?: string
       placeholder?: string
     }
+  | {
+      kind: 'landing-mock'
+      background: string
+      heading: string
+      headingColor: string
+      body: string
+      bodyColor: string
+      ctaLabel: string
+      ctaBg: string
+      ctaColor: string
+      accentBg?: string
+      paletteSwatches?: string[]
+      footnote?: string
+    }
 
 function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
   if (visual.kind === 'text-sample') {
@@ -335,23 +349,86 @@ function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
       </div>
     )
   }
-  // required-field
-  const border = visual.borderColor || '#DC2626'
+  if (visual.kind === 'required-field') {
+    const border = visual.borderColor || '#DC2626'
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 bg-white p-4">
+        <label className="block text-xs font-semibold text-stone-700 mb-1.5">
+          {visual.label}
+          {visual.showAsterisk && <span className="text-red-600 ml-0.5">*</span>}
+        </label>
+        <input
+          type="text"
+          placeholder={visual.placeholder || ''}
+          readOnly
+          className="w-full px-3 py-2 text-sm rounded-md bg-stone-50 outline-none"
+          style={{ border: `2px solid ${border}` }}
+        />
+        {visual.caption && (
+          <p className="mt-1 text-[11px] text-red-600 font-medium">{visual.caption}</p>
+        )}
+      </div>
+    )
+  }
+  // landing-mock
   return (
-    <div className="mb-3 rounded-lg border border-stone-200 bg-white p-4">
-      <label className="block text-xs font-semibold text-stone-700 mb-1.5">
-        {visual.label}
-        {visual.showAsterisk && <span className="text-red-600 ml-0.5">*</span>}
-      </label>
-      <input
-        type="text"
-        placeholder={visual.placeholder || ''}
-        readOnly
-        className="w-full px-3 py-2 text-sm rounded-md bg-stone-50 outline-none"
-        style={{ border: `2px solid ${border}` }}
-      />
-      {visual.caption && (
-        <p className="mt-1 text-[11px] text-red-600 font-medium">{visual.caption}</p>
+    <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden shadow-sm">
+      {/* fake browser chrome */}
+      <div className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 border-b border-stone-200">
+        <span className="w-2 h-2 rounded-full bg-red-400" />
+        <span className="w-2 h-2 rounded-full bg-yellow-400" />
+        <span className="w-2 h-2 rounded-full bg-green-400" />
+        <div className="ml-2 flex-1 h-3 rounded bg-stone-200/60" />
+      </div>
+      {/* hero */}
+      <div className="p-5 md:p-6" style={{ backgroundColor: visual.background }}>
+        <h4
+          className="text-base md:text-lg font-bold mb-1.5 leading-tight"
+          style={{ color: visual.headingColor }}
+        >
+          {visual.heading}
+        </h4>
+        <p
+          className="text-[12px] md:text-sm mb-3 leading-snug"
+          style={{ color: visual.bodyColor }}
+        >
+          {visual.body}
+        </p>
+        <button
+          type="button"
+          className="px-3 py-1.5 text-xs md:text-sm font-semibold rounded-md shadow-sm"
+          style={{ backgroundColor: visual.ctaBg, color: visual.ctaColor }}
+        >
+          {visual.ctaLabel}
+        </button>
+        {visual.accentBg && (
+          <div
+            className="mt-3 h-1.5 w-1/2 rounded"
+            style={{ backgroundColor: visual.accentBg }}
+          />
+        )}
+      </div>
+      {/* palette strip */}
+      {(visual.paletteSwatches || visual.footnote) && (
+        <div className="px-3 py-1.5 bg-white border-t border-stone-200 flex items-center justify-between gap-2 text-[11px]">
+          {visual.paletteSwatches && visual.paletteSwatches.length > 0 ? (
+            <div className="flex items-center gap-1">
+              {visual.paletteSwatches.map((s, i) => (
+                <span
+                  key={i}
+                  className="w-4 h-4 rounded border border-stone-300"
+                  style={{ backgroundColor: s }}
+                  title={s}
+                />
+              ))}
+            </div>
+          ) : (
+            <span />
+          )}
+          {visual.footnote && (
+            <span className="font-mono text-stone-600">{visual.footnote}</span>
+          )}
+        </div>
       )}
     </div>
   )

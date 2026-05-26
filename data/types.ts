@@ -82,6 +82,20 @@ export type BeforeAfterVisual =
       caption?: string
       placeholder?: string
     }
+  | {
+      kind: 'landing-mock'
+      background: string
+      heading: string
+      headingColor: string
+      body: string
+      bodyColor: string
+      ctaLabel: string
+      ctaBg: string
+      ctaColor: string
+      accentBg?: string
+      paletteSwatches?: string[] // hex values shown as a tiny palette strip
+      footnote?: string // e.g. "contrast 1.5:1 — fails AA"
+    }
 
 export interface BeforeAfterItem {
   label: string
