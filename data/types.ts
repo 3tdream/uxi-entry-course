@@ -144,6 +144,34 @@ export type BeforeAfterVisual =
       paletteSwatches?: string[]
       footnote?: string
     }
+  | {
+      kind: 'line-height-sample'
+      text: string
+      lineHeight: number // e.g. 1.0, 1.6
+      fontSize?: number // px, default 15
+      fontStack?: string
+      footnote?: string // e.g. 'line-height 1.0 · слипшиеся строки'
+    }
+  | {
+      kind: 'typography-stack'
+      /** Visual frame around the stack. */
+      frame?: 'phone' | 'browser' | 'plain'
+      background?: string
+      rows: {
+        text: string
+        fontSize: number // px
+        fontWeight?: number | 'normal' | 'semibold' | 'bold'
+        color?: string
+        lineHeight?: number
+        fontFamily?: string
+        letterSpacing?: string
+        textTransform?: 'uppercase' | 'none'
+        tabular?: boolean // numeric tabular figures
+        marginTop?: number // extra px above
+      }[]
+      cta?: { label: string; bg: string; color: string; size?: number }
+      footnote?: string
+    }
 
 export interface BeforeAfterItem {
   label: string

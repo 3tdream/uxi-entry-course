@@ -322,6 +322,33 @@ type BeforeAfterVisualProp =
       paletteSwatches?: string[]
       footnote?: string
     }
+  | {
+      kind: 'line-height-sample'
+      text: string
+      lineHeight: number
+      fontSize?: number
+      fontStack?: string
+      footnote?: string
+    }
+  | {
+      kind: 'typography-stack'
+      frame?: 'phone' | 'browser' | 'plain'
+      background?: string
+      rows: {
+        text: string
+        fontSize: number
+        fontWeight?: number | 'normal' | 'semibold' | 'bold'
+        color?: string
+        lineHeight?: number
+        fontFamily?: string
+        letterSpacing?: string
+        textTransform?: 'uppercase' | 'none'
+        tabular?: boolean
+        marginTop?: number
+      }[]
+      cta?: { label: string; bg: string; color: string; size?: number }
+      footnote?: string
+    }
 
 function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
   if (visual.kind === 'text-sample') {
@@ -451,6 +478,117 @@ function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
             )}
           </div>
         )}
+      </div>
+    )
+  }
+  if (visual.kind === 'line-height-sample') {
+    const fs = visual.fontSize || 15
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden">
+        <div className="p-4 md:p-5 bg-white">
+          <p
+            className="text-stone-800"
+            style={{
+              fontSize: `${fs}px`,
+              lineHeight: visual.lineHeight,
+              fontFamily: visual.fontStack || "Inter, system-ui, sans-serif",
+            }}
+          >
+            {visual.text}
+          </p>
+        </div>
+        <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 text-[11px] flex items-center justify-between gap-2">
+          <span className="font-mono text-stone-600">
+            line-height: <strong className="text-stone-900">{visual.lineHeight}</strong>
+            <span className="mx-2 text-stone-400">·</span>
+            font-size: <strong className="text-stone-900">{fs}px</strong>
+          </span>
+          {visual.footnote && (
+            <span className="text-stone-500 truncate">{visual.footnote}</span>
+          )}
+        </div>
+      </div>
+    )
+  }
+  if (visual.kind === 'typography-stack') {
+    const frame = visual.frame || 'plain'
+    const inner = (
+      <div
+        className="p-4 md:p-5"
+        style={{ backgroundColor: visual.background || '#FFFFFF' }}
+      >
+        {visual.rows.map((r, i) => (
+          <div
+            key={i}
+            style={{
+              fontSize: `${r.fontSize}px`,
+              fontWeight: r.fontWeight ?? 'normal',
+              color: r.color || '#0F172A',
+              lineHeight: r.lineHeight ?? 1.3,
+              fontFamily: r.fontFamily || "Inter, system-ui, sans-serif",
+              letterSpacing: r.letterSpacing,
+              textTransform: r.textTransform || 'none',
+              fontVariantNumeric: r.tabular ? 'tabular-nums' : undefined,
+              marginTop: r.marginTop ? `${r.marginTop}px` : i === 0 ? 0 : '4px',
+            }}
+          >
+            {r.text}
+          </div>
+        ))}
+        {visual.cta && (
+          <button
+            type="button"
+            className="mt-3 px-3 py-1.5 font-semibold rounded-md shadow-sm"
+            style={{
+              backgroundColor: visual.cta.bg,
+              color: visual.cta.color,
+              fontSize: `${visual.cta.size || 13}px`,
+            }}
+          >
+            {visual.cta.label}
+          </button>
+        )}
+      </div>
+    )
+    const footer = visual.footnote && (
+      <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 text-[11px] font-mono text-stone-600">
+        {visual.footnote}
+      </div>
+    )
+    if (frame === 'phone') {
+      return (
+        <div className="mb-3 mx-auto" style={{ maxWidth: 260 }}>
+          <div className="rounded-[28px] border-[6px] border-stone-800 overflow-hidden bg-white shadow-md">
+            {/* notch */}
+            <div className="bg-stone-800 h-4 flex items-center justify-center">
+              <div className="w-12 h-1 rounded-full bg-stone-600" />
+            </div>
+            {inner}
+          </div>
+          {footer && (
+            <div className="mt-2 rounded-md border border-stone-200 overflow-hidden">{footer}</div>
+          )}
+        </div>
+      )
+    }
+    if (frame === 'browser') {
+      return (
+        <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden shadow-sm">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 border-b border-stone-200">
+            <span className="w-2 h-2 rounded-full bg-red-400" />
+            <span className="w-2 h-2 rounded-full bg-yellow-400" />
+            <span className="w-2 h-2 rounded-full bg-green-400" />
+            <div className="ml-2 flex-1 h-3 rounded bg-stone-200/60" />
+          </div>
+          {inner}
+          {footer}
+        </div>
+      )
+    }
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden shadow-sm">
+        {inner}
+        {footer}
       </div>
     )
   }

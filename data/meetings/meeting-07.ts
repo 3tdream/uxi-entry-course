@@ -472,11 +472,25 @@ export const meeting07: Meeting = {
             label: 'Плохо: line-height 1.0',
             description:
               'Строки сливаются друг с другом, текст выглядит как сплошная стена. Глаз теряется при переходе на следующую строку. Читать больше двух предложений физически некомфортно.',
+            visual: {
+              kind: 'line-height-sample',
+              text: 'Типографика — это не просто выбор шрифта. Это иерархия, ритм и воздух. Правильный интерлиньяж критически важен: слишком маленький — строки сливаются и глаз теряет место в тексте. Пользователь устаёт за два абзаца и закрывает страницу.',
+              lineHeight: 1.0,
+              fontSize: 15,
+              footnote: 'слипшиеся строки · глаз теряется',
+            },
           },
           after: {
             label: 'Хорошо: line-height 1.6',
             description:
               'Между строками достаточно воздуха. Глаз легко переходит со строки на строку. Текст «дышит», читать комфортно даже длинные параграфы. Профессиональный, аккуратный вид.',
+            visual: {
+              kind: 'line-height-sample',
+              text: 'Типографика — это не просто выбор шрифта. Это иерархия, ритм и воздух. Правильный интерлиньяж критически важен: слишком маленький — строки сливаются и глаз теряет место в тексте. Пользователь устаёт за два абзаца и закрывает страницу.',
+              lineHeight: 1.6,
+              fontSize: 15,
+              footnote: 'текст «дышит» · комфортно для длинных параграфов',
+            },
           },
         },
         {
@@ -609,11 +623,36 @@ export const meeting07: Meeting = {
             label: 'Плохо',
             description:
               'Всё одним размером (14px), одним начертанием (Regular), без иерархии. Заголовки не отличаются от текста. Кнопки сливаются с контентом. Пользователь не понимает, что главное на экране.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: 'Сегодняшние заказы', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'Кофе латте — заказ #1247', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'В пути · 5 минут до доставки', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'Отследить заказ', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'Адрес: ул. Ленина, 42', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+              ],
+              footnote: 'всё 14px Regular · нет иерархии',
+            },
           },
           after: {
             label: 'Хорошо',
             description:
               'Чёткая иерархия: заголовок 24px Bold, подзаголовок 18px Medium, текст 16px Regular, метаданные 12px в приглушённом цвете. Глаз мгновенно считывает структуру экрана.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: 'Сегодняшние заказы', fontSize: 12, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'Кофе латте', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.2, marginTop: 8 },
+                { text: 'Заказ #1247', fontSize: 14, fontWeight: 'normal', color: '#6B7280' },
+                { text: 'В пути · 5 минут до доставки', fontSize: 16, fontWeight: 500, color: '#1F2937', lineHeight: 1.4, marginTop: 10 },
+                { text: 'ул. Ленина, 42', fontSize: 12, color: '#9CA3AF', marginTop: 6 },
+              ],
+              cta: { label: 'Отследить заказ', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
+              footnote: '12 → 14 → 16 → 22px · вес + цвет = иерархия',
+            },
           },
         },
         {
@@ -623,11 +662,41 @@ export const meeting07: Meeting = {
             label: 'Плохо',
             description:
               'Числа в таблице набраны пропорциональным шрифтом — столбцы «прыгают». Заголовки таблицы тем же стилем, что и данные. Нет визуального разделения между секциями.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Выручка', fontSize: 14, fontWeight: 'normal', color: '#1F2937' },
+                { text: '$48,234.50', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+                { text: 'Конверсия', fontSize: 14, fontWeight: 'normal', color: '#1F2937', marginTop: 8 },
+                { text: '3.47%', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+                { text: 'Заказы', fontSize: 14, fontWeight: 'normal', color: '#1F2937', marginTop: 8 },
+                { text: '1,287', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+                { text: 'CAC', fontSize: 14, fontWeight: 'normal', color: '#1F2937', marginTop: 8 },
+                { text: '$12.40', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+              ],
+              footnote: 'header = data · числа «прыгают» · нет визуального разделения',
+            },
           },
           after: {
             label: 'Хорошо',
             description:
               'Числа набраны шрифтом с tabular figures (font-variant-numeric: tabular-nums). Заголовки таблицы — uppercase, уменьшенный размер, увеличенный letter-spacing. Секции чётко разделены типографической иерархией.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Выручка', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase' },
+                { text: '$48,234.50', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+                { text: 'Конверсия', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 14 },
+                { text: '3.47%', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+                { text: 'Заказы', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 14 },
+                { text: '1,287', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+                { text: 'CAC', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 14 },
+                { text: '$12.40', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+              ],
+              footnote: 'eyebrow 11 caps + tabular-nums 22 mono · цифры выровнены',
+            },
           },
         },
         {
@@ -637,11 +706,33 @@ export const meeting07: Meeting = {
             label: 'Плохо',
             description:
               'Заголовок hero-секции — 18px, такой же размер как body-текст. Нет визуального «крючка». CTA-кнопка теряется среди текста. Шрифт Light на светлом фоне — низкий контраст.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAFA',
+              rows: [
+                { text: 'Платформа для управления командой', fontSize: 18, fontWeight: 300, color: '#9CA3AF', lineHeight: 1.3 },
+                { text: 'Всё в одном месте: задачи, тайм-трекинг, отчёты и интеграции.', fontSize: 18, fontWeight: 300, color: '#9CA3AF', lineHeight: 1.3, marginTop: 6 },
+                { text: 'Попробовать бесплатно', fontSize: 16, fontWeight: 'normal', color: '#9CA3AF', marginTop: 10 },
+              ],
+              footnote: 'hero = body = 18px Light · CTA сливается · нет крючка',
+            },
           },
           after: {
             label: 'Хорошо',
             description:
               'Hero-заголовок: 56px Bold, подзаголовок: 20px Regular в приглушённом цвете, CTA-кнопка: 18px Medium. Чёткая визуальная воронка: заголовок → подзаголовок → действие.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Платформа для управления командой', fontSize: 36, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Всё в одном месте: задачи, тайм-трекинг, отчёты и интеграции.', fontSize: 17, fontWeight: 'normal', color: '#4B5563', lineHeight: 1.5, marginTop: 10 },
+              ],
+              cta: { label: 'Попробовать бесплатно', bg: '#4F46E5', color: '#FFFFFF', size: 16 },
+              footnote: '36 → 17 → CTA · ясная визуальная воронка',
+            },
           },
         },
         {
@@ -787,6 +878,78 @@ export const meeting07: Meeting = {
           correctId: 'b',
           explanation:
             'FOUT (Flash of Unstyled Text) — текст сначала отображается системным шрифтом, затем «перескакивает» на загруженный веб-шрифт. font-display: swap делает это предсказуемым, а next/font устраняет проблему полностью.',
+        },
+        {
+          question: 'В чём ключевая разница между Readability и Legibility?',
+          options: [
+            {
+              id: 'a',
+              text: 'Это одно и то же — разные слова для одного понятия',
+            },
+            {
+              id: 'b',
+              text: 'Legibility — можно ли различить отдельные буквы; Readability — комфортно ли читать целые блоки текста',
+            },
+            {
+              id: 'c',
+              text: 'Readability — для печати, Legibility — только для веба',
+            },
+            {
+              id: 'd',
+              text: 'Legibility — для serif, Readability — для sans-serif',
+            },
+          ],
+          correctId: 'b',
+          explanation:
+            'Legibility = разборчивость отдельных символов (зависит от формы букв и размера). Readability = читаемость целых блоков (зависит от line-height, длины строки, контраста). Шрифт может быть разборчивым, но нечитаемым: например, мелкий 10px с line-height 1.0 на 120-символьной строке.',
+        },
+        {
+          question: 'Дашборд показывает финансовые данные в столбиках. Какой типографический выбор обязателен для чисел?',
+          options: [
+            {
+              id: 'a',
+              text: 'Использовать пропорциональный шрифт — он естественнее выглядит',
+            },
+            {
+              id: 'b',
+              text: 'Tabular figures (font-variant-numeric: tabular-nums) — все цифры одной ширины, столбцы не «прыгают»',
+            },
+            {
+              id: 'c',
+              text: 'Уменьшить размер шрифта на 2px относительно текста',
+            },
+            {
+              id: 'd',
+              text: 'Использовать курсив для отрицательных значений',
+            },
+          ],
+          correctId: 'b',
+          explanation:
+            'Tabular figures (моноширинные цифры) делают $48,234.50 и $12.40 выровненными по разрядам — взгляд считывает столбик мгновенно. Без них «1» уже «8» и колонка визуально «прыгает». В CSS — font-variant-numeric: tabular-nums; или Mono-шрифт типа JetBrains Mono / IBM Plex Mono.',
+        },
+        {
+          question: 'На SaaS-лендинге hero-заголовок и body-текст одного размера 18px. Почему это плохо и как чинить?',
+          options: [
+            {
+              id: 'a',
+              text: 'Это нормально — современный минимализм. Менять ничего не надо',
+            },
+            {
+              id: 'b',
+              text: 'Нет визуальной воронки внимания. Hero должен быть в 2–3× крупнее body (например, 40–56px Bold) — иначе глаз не понимает с чего начать',
+            },
+            {
+              id: 'c',
+              text: 'Надо увеличить body до 24px, чтобы соответствовать заголовку',
+            },
+            {
+              id: 'd',
+              text: 'Заменить sans-serif на serif — это исправит иерархию',
+            },
+          ],
+          correctId: 'b',
+          explanation:
+            'Hero-заголовок — это визуальный крючок, который ловит внимание за первые 200ms. Если он одного размера с body, глаз не знает, куда смотреть, и пользователь уходит со страницы. Правило: H1 ≥ 2× body (минимум). Шкала 1.250 даёт ratio H1:body = 39:16 ≈ 2.4× — рабочий минимум.',
         },
       ],
     },

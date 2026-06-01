@@ -472,11 +472,25 @@ export const meeting07: Meeting = {
             label: 'Poor: line-height 1.0',
             description:
               'Lines merge into each other, and the text looks like a solid wall. The eye gets lost when moving to the next line. Reading more than two sentences is physically uncomfortable.',
+            visual: {
+              kind: 'line-height-sample',
+              text: 'Typography is more than picking a font. It is hierarchy, rhythm, and air. The right leading is critical: too tight and lines merge, the eye loses its place. Users get tired within two paragraphs and close the page.',
+              lineHeight: 1.0,
+              fontSize: 15,
+              footnote: 'lines collapse · eye loses its place',
+            },
           },
           after: {
             label: 'Good: line-height 1.6',
             description:
               'There is enough breathing room between lines. The eye easily transitions from line to line. The text "breathes," and even long paragraphs are comfortable to read. A professional, polished look.',
+            visual: {
+              kind: 'line-height-sample',
+              text: 'Typography is more than picking a font. It is hierarchy, rhythm, and air. The right leading is critical: too tight and lines merge, the eye loses its place. Users get tired within two paragraphs and close the page.',
+              lineHeight: 1.6,
+              fontSize: 15,
+              footnote: 'text breathes · comfortable for long paragraphs',
+            },
           },
         },
         {
@@ -609,11 +623,36 @@ export const meeting07: Meeting = {
             label: 'Poor',
             description:
               'Everything in one size (14px), one weight (Regular), no hierarchy. Headings are indistinguishable from body text. Buttons blend into the content. The user cannot tell what is most important on the screen.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: "Today's orders", fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'Coffee latte — order #1247', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'On the way · 5 min to delivery', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'Track order', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+                { text: 'Address: 42 Lenin Street', fontSize: 14, fontWeight: 'normal', color: '#374151' },
+              ],
+              footnote: 'all 14px Regular · no hierarchy',
+            },
           },
           after: {
             label: 'Good',
             description:
               'Clear hierarchy: heading 24px Bold, subheading 18px Medium, body 16px Regular, metadata 12px in a muted color. The eye instantly reads the structure of the screen.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: "Today's orders", fontSize: 12, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'Coffee latte', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.2, marginTop: 8 },
+                { text: 'Order #1247', fontSize: 14, fontWeight: 'normal', color: '#6B7280' },
+                { text: 'On the way · 5 min to delivery', fontSize: 16, fontWeight: 500, color: '#1F2937', lineHeight: 1.4, marginTop: 10 },
+                { text: '42 Lenin Street', fontSize: 12, color: '#9CA3AF', marginTop: 6 },
+              ],
+              cta: { label: 'Track order', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
+              footnote: '12 → 14 → 16 → 22px · weight + color = hierarchy',
+            },
           },
         },
         {
@@ -623,11 +662,41 @@ export const meeting07: Meeting = {
             label: 'Poor',
             description:
               'Numbers in the table are set in a proportional font — columns "jump." Table headers are styled the same as data. There is no visual separation between sections.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Revenue', fontSize: 14, fontWeight: 'normal', color: '#1F2937' },
+                { text: '$48,234.50', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+                { text: 'Conversion', fontSize: 14, fontWeight: 'normal', color: '#1F2937', marginTop: 8 },
+                { text: '3.47%', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+                { text: 'Orders', fontSize: 14, fontWeight: 'normal', color: '#1F2937', marginTop: 8 },
+                { text: '1,287', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+                { text: 'CAC', fontSize: 14, fontWeight: 'normal', color: '#1F2937', marginTop: 8 },
+                { text: '$12.40', fontSize: 14, fontWeight: 'normal', color: '#1F2937', fontFamily: 'Inter, sans-serif' },
+              ],
+              footnote: 'header = data · numbers "jump" · no visual split',
+            },
           },
           after: {
             label: 'Good',
             description:
               'Numbers are set in a font with tabular figures (font-variant-numeric: tabular-nums). Table headers are uppercase, reduced in size, with increased letter-spacing. Sections are clearly separated by typographic hierarchy.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Revenue', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase' },
+                { text: '$48,234.50', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+                { text: 'Conversion', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 14 },
+                { text: '3.47%', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+                { text: 'Orders', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 14 },
+                { text: '1,287', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+                { text: 'CAC', fontSize: 11, fontWeight: 'semibold', color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 14 },
+                { text: '$12.40', fontSize: 22, fontWeight: 'bold', color: '#0F172A', fontFamily: "'JetBrains Mono', monospace", tabular: true, lineHeight: 1.1, marginTop: 2 },
+              ],
+              footnote: 'eyebrow 11 caps + tabular-nums 22 mono · digits align',
+            },
           },
         },
         {
@@ -637,11 +706,33 @@ export const meeting07: Meeting = {
             label: 'Poor',
             description:
               'The hero section heading is 18px, the same size as the body text. There is no visual "hook." The CTA button gets lost among the text. A Light weight on a light background produces low contrast.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAFA',
+              rows: [
+                { text: 'Team management platform', fontSize: 18, fontWeight: 300, color: '#9CA3AF', lineHeight: 1.3 },
+                { text: 'Tasks, time tracking, reports and integrations — all in one place.', fontSize: 18, fontWeight: 300, color: '#9CA3AF', lineHeight: 1.3, marginTop: 6 },
+                { text: 'Try for free', fontSize: 16, fontWeight: 'normal', color: '#9CA3AF', marginTop: 10 },
+              ],
+              footnote: 'hero = body = 18px Light · CTA blends · no hook',
+            },
           },
           after: {
             label: 'Good',
             description:
               'Hero heading: 56px Bold, subtitle: 20px Regular in a muted color, CTA button: 18px Medium. A clear visual funnel: heading -> subtitle -> action.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Team management platform', fontSize: 36, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Tasks, time tracking, reports and integrations — all in one place.', fontSize: 17, fontWeight: 'normal', color: '#4B5563', lineHeight: 1.5, marginTop: 10 },
+              ],
+              cta: { label: 'Try for free', bg: '#4F46E5', color: '#FFFFFF', size: 16 },
+              footnote: '36 → 17 → CTA · clear visual funnel',
+            },
           },
         },
         {
@@ -684,10 +775,10 @@ export const meeting07: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=A2r5UwtBicE',
-          title: 'Typography in UI design: rules and examples',
+          src: 'https://www.youtube.com/watch?v=1GPoUrf0MXg',
+          title: 'Epic Typography Tutorial for Web Design & UI Design',
           caption:
-            'Practical typography tips for interfaces',
+            'Practical typography tips for interfaces — by DesignCourse (Gary Simon)',
         },
         {
           type: 'divider' as const,
@@ -787,6 +878,78 @@ export const meeting07: Meeting = {
           correctId: 'b',
           explanation:
             'FOUT (Flash of Unstyled Text) — text initially renders in a system font, then "jumps" to the loaded web font. font-display: swap makes this predictable, while next/font eliminates the problem entirely.',
+        },
+        {
+          question: 'What is the key difference between Readability and Legibility?',
+          options: [
+            {
+              id: 'a',
+              text: 'They are the same thing — different words for the same concept',
+            },
+            {
+              id: 'b',
+              text: 'Legibility = can you tell individual letters apart; Readability = is it comfortable to read full blocks of text',
+            },
+            {
+              id: 'c',
+              text: 'Readability is for print, Legibility is web-only',
+            },
+            {
+              id: 'd',
+              text: 'Legibility applies to serifs, Readability to sans-serif',
+            },
+          ],
+          correctId: 'b',
+          explanation:
+            'Legibility = how easy it is to distinguish individual characters (depends on glyph shape and size). Readability = how comfortable it is to read longer passages (depends on line-height, line length, contrast). A font can be legible but unreadable: e.g., 10px with line-height 1.0 over a 120-character line.',
+        },
+        {
+          question: 'A dashboard shows financial data in stacked columns. Which typographic choice is essential for the numbers?',
+          options: [
+            {
+              id: 'a',
+              text: 'Use a proportional font — it feels more natural',
+            },
+            {
+              id: 'b',
+              text: 'Tabular figures (font-variant-numeric: tabular-nums) — every digit has the same width so columns do not "jump"',
+            },
+            {
+              id: 'c',
+              text: 'Drop the font-size 2px below body text',
+            },
+            {
+              id: 'd',
+              text: 'Use italics for negative values',
+            },
+          ],
+          correctId: 'b',
+          explanation:
+            'Tabular figures (monospaced digits) keep $48,234.50 and $12.40 aligned by place value — the eye scans the column instantly. Without them "1" and "8" have different widths and the column jumps visually. In CSS use font-variant-numeric: tabular-nums; or a Mono font like JetBrains Mono / IBM Plex Mono.',
+        },
+        {
+          question: 'On a SaaS landing the hero heading and body text are both 18px. Why is that bad and how do you fix it?',
+          options: [
+            {
+              id: 'a',
+              text: 'It is fine — modern minimalism. No change needed',
+            },
+            {
+              id: 'b',
+              text: 'There is no visual funnel of attention. The hero needs to be 2–3× larger than body (e.g., 40–56px Bold) — otherwise the eye does not know where to start',
+            },
+            {
+              id: 'c',
+              text: 'Bump body up to 24px to match the heading',
+            },
+            {
+              id: 'd',
+              text: 'Switch sans-serif to serif — that fixes the hierarchy',
+            },
+          ],
+          correctId: 'b',
+          explanation:
+            'The hero heading is the visual hook that grabs attention in the first 200ms. If it is the same size as body text, the eye does not know where to look and the user leaves. Rule of thumb: H1 ≥ 2× body (minimum). On a 1.250 scale, H1:body = 39:16 ≈ 2.4× — the working baseline.',
         },
       ],
     },
