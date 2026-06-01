@@ -1003,6 +1003,196 @@ function FontShowcaseSection({
   )
 }
 
+type FontPairProp = {
+  headingName: string
+  headingStack: string
+  headingSample?: string
+  bodyName: string
+  bodyStack: string
+  bodySample?: string
+  note: string
+  chaosWords?: { text: string; stack: string }[]
+}
+
+function FontPairCard({ pair, verdict }: { pair: FontPairProp; verdict: 'good' | 'bad' }) {
+  const tone =
+    verdict === 'good'
+      ? 'border-emerald-200 bg-emerald-50/30'
+      : 'border-red-200 bg-red-50/30'
+  const iconTone =
+    verdict === 'good'
+      ? 'bg-emerald-100 text-emerald-700'
+      : 'bg-red-100 text-red-700'
+  return (
+    <div className={`rounded-xl border-2 ${tone} p-4 md:p-5`}>
+      <div className="bg-white rounded-lg border border-stone-200 p-4 mb-3">
+        {pair.chaosWords && pair.chaosWords.length > 0 ? (
+          <h4 className="text-2xl md:text-[28px] font-bold leading-tight mb-2 text-stone-900">
+            {pair.chaosWords.map((w, i) => (
+              <span key={i} style={{ fontFamily: w.stack }}>
+                {i > 0 ? ' ' : ''}
+                {w.text}
+              </span>
+            ))}
+          </h4>
+        ) : (
+          <h4
+            className="text-2xl md:text-[28px] font-bold leading-tight mb-2 text-stone-900"
+            style={{ fontFamily: pair.headingStack }}
+          >
+            {pair.headingSample || 'The quick brown fox'}
+          </h4>
+        )}
+        <p
+          className="text-sm md:text-[15px] text-stone-700 leading-relaxed"
+          style={{ fontFamily: pair.bodyStack }}
+        >
+          {pair.bodySample ||
+            'Jumps over the lazy dog. Five wizards quickly conjure both pixel-perfect glyphs and a clear visual hierarchy.'}
+        </p>
+      </div>
+      <div className="flex items-start gap-2">
+        <span
+          className={`inline-flex w-5 h-5 rounded-full items-center justify-center text-xs font-bold shrink-0 ${iconTone}`}
+        >
+          {verdict === 'good' ? '✓' : '✗'}
+        </span>
+        <div className="text-xs text-stone-700 leading-snug">
+          <span className="font-mono text-stone-900 font-semibold">
+            {pair.headingName} + {pair.bodyName}
+          </span>
+          <span className="block mt-0.5 text-stone-600">{pair.note}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function FontPairShowcaseSection({
+  title,
+  goodLabel,
+  badLabel,
+  good,
+  bad,
+}: {
+  title?: string
+  goodLabel?: string
+  badLabel?: string
+  good: FontPairProp[]
+  bad: FontPairProp[]
+}) {
+  return (
+    <div className="space-y-4">
+      {title && <h3 className="text-lg font-semibold text-foreground">{title}</h3>}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="inline-flex w-6 h-6 rounded-full items-center justify-center text-xs font-bold bg-emerald-100 text-emerald-700">
+              ✓
+            </span>
+            <span className="text-sm font-semibold text-emerald-700">
+              {goodLabel || 'Working pairs'}
+            </span>
+          </div>
+          <div className="space-y-3">
+            {good.map((p, i) => (
+              <FontPairCard key={i} pair={p} verdict="good" />
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="inline-flex w-6 h-6 rounded-full items-center justify-center text-xs font-bold bg-red-100 text-red-700">
+              ✗
+            </span>
+            <span className="text-sm font-semibold text-red-700">
+              {badLabel || 'Poor combinations'}
+            </span>
+          </div>
+          <div className="space-y-3">
+            {bad.map((p, i) => (
+              <FontPairCard key={i} pair={p} verdict="bad" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TypeScaleShowcaseSection({
+  title,
+  description,
+  ratio,
+  base,
+  fontStack,
+  steps,
+}: {
+  title?: string
+  description?: string
+  ratio?: string
+  base?: string
+  fontStack?: string
+  steps: { label: string; px: number; rem: string; usage: string; sample?: string }[]
+}) {
+  const stack = fontStack || "Inter, system-ui, -apple-system, sans-serif"
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      {(title || description) && (
+        <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+          {title && <h3 className="text-base font-semibold text-foreground">{title}</h3>}
+          {(description || ratio || base) && (
+            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-stone-600">
+              {description && <span>{description}</span>}
+              {ratio && (
+                <span className="font-mono">
+                  <span className="text-stone-400">ratio</span> <strong>{ratio}</strong>
+                </span>
+              )}
+              {base && (
+                <span className="font-mono">
+                  <span className="text-stone-400">base</span> <strong>{base}</strong>
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+      <table className="w-full">
+        <thead className="text-[10px] uppercase tracking-wider text-stone-500 bg-stone-50/40">
+          <tr>
+            <th className="text-left px-4 md:px-6 py-2 w-16">Step</th>
+            <th className="text-left px-2 py-2 w-24">Size</th>
+            <th className="text-left px-2 py-2">Sample</th>
+            <th className="text-left px-4 md:px-6 py-2 hidden md:table-cell">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {steps.map((s) => (
+            <tr key={s.label} className="border-t border-stone-100 align-middle">
+              <td className="px-4 md:px-6 py-3 font-mono text-xs font-bold text-stone-900">{s.label}</td>
+              <td className="px-2 py-3 font-mono text-[11px] text-stone-500 whitespace-nowrap">
+                {s.px}px <span className="text-stone-400">· {s.rem}</span>
+              </td>
+              <td className="px-2 py-3 text-stone-900 leading-none">
+                <span
+                  className="font-semibold"
+                  style={{ fontFamily: stack, fontSize: `${s.px}px`, lineHeight: 1.1 }}
+                >
+                  {s.sample || 'Aa Bb Cc'}
+                </span>
+              </td>
+              <td className="px-4 md:px-6 py-3 text-xs text-stone-600 hidden md:table-cell">
+                {s.usage}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -1128,6 +1318,27 @@ function renderSection(section: Section) {
       return <ColorPaletteSection data={section.data} />
     case 'font-showcase':
       return <FontShowcaseSection groups={section.groups} />
+    case 'font-pair-showcase':
+      return (
+        <FontPairShowcaseSection
+          title={section.title}
+          goodLabel={section.goodLabel}
+          badLabel={section.badLabel}
+          good={section.good}
+          bad={section.bad}
+        />
+      )
+    case 'type-scale-showcase':
+      return (
+        <TypeScaleShowcaseSection
+          title={section.title}
+          description={section.description}
+          ratio={section.ratio}
+          base={section.base}
+          fontStack={section.fontStack}
+          steps={section.steps}
+        />
+      )
     case 'divider':
       return <DividerSection />
     default:

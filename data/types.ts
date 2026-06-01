@@ -44,6 +44,26 @@ export interface FontShowcaseGroup {
   families: FontFamilyItem[]
 }
 
+export interface FontPair {
+  headingName: string
+  headingStack: string
+  headingSample?: string // text rendered as the heading
+  bodyName: string
+  bodyStack: string
+  bodySample?: string // text rendered as body
+  note: string // short rationale
+  /** Optional override for visual chaos demos — mixes multiple stacks word-by-word in heading. */
+  chaosWords?: { text: string; stack: string }[]
+}
+
+export interface TypeScaleStep {
+  label: string // e.g. 'xs', 'base', '3xl'
+  px: number // computed pixel size
+  rem: string // e.g. '0.75rem'
+  usage: string // e.g. 'meta-info, captions'
+  sample?: string // override sample text
+}
+
 export interface ColorPaletteData {
   appName: string
   appUrl?: string
@@ -173,6 +193,8 @@ export type Section =
   | { type: 'quote'; text: string; author: string; role?: string }
   | { type: 'color-palette'; data: ColorPaletteData }
   | { type: 'font-showcase'; groups: FontShowcaseGroup[] }
+  | { type: 'font-pair-showcase'; title?: string; goodLabel?: string; badLabel?: string; good: FontPair[]; bad: FontPair[] }
+  | { type: 'type-scale-showcase'; title?: string; description?: string; ratio?: string; base?: string; fontStack?: string; steps: TypeScaleStep[] }
   | { type: 'divider' }
 
 // ---- Meeting Structure ----
