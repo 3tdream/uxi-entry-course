@@ -208,7 +208,7 @@ export type Section =
   | { type: 'timeline'; events: { year: string; title: string; description: string }[] }
   | { type: 'callout'; variant: 'tip' | 'warning' | 'example'; content: string }
   | { type: 'image-placeholder'; alt: string; caption: string }
-  | { type: 'image'; src: string; alt: string; caption?: string }
+  | { type: 'image'; src: string; alt: string; caption?: string; maxWidth?: number }
   | { type: 'video'; src: string; title: string; caption?: string }
   | { type: 'before-after'; title: string; before: BeforeAfterItem; after: BeforeAfterItem }
   | { type: 'diagram'; title: string; description: string; items: string[] }

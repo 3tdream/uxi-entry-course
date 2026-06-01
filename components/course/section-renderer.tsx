@@ -226,9 +226,19 @@ function ImagePlaceholderSection({ alt, caption }: { alt: string; caption: strin
   )
 }
 
-function ImageSection({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
-  return (
-    <figure className="rounded-xl overflow-hidden border">
+function ImageSection({
+  src,
+  alt,
+  caption,
+  maxWidth,
+}: {
+  src: string
+  alt: string
+  caption?: string
+  maxWidth?: number
+}) {
+  const figure = (
+    <figure className="rounded-xl overflow-hidden border bg-white">
       <img src={src} alt={alt} className="w-full h-auto" loading="lazy" />
       {caption && (
         <figcaption className="text-xs text-muted-foreground text-center py-2 px-4 bg-muted/30">
@@ -237,6 +247,14 @@ function ImageSection({ src, alt, caption }: { src: string; alt: string; caption
       )}
     </figure>
   )
+  if (maxWidth) {
+    return (
+      <div className="mx-auto" style={{ maxWidth: `${maxWidth}px` }}>
+        {figure}
+      </div>
+    )
+  }
+  return figure
 }
 
 function VideoSection({ src, title, caption }: { src: string; title: string; caption?: string }) {
@@ -1424,7 +1442,14 @@ function renderSection(section: Section) {
     case 'image-placeholder':
       return <ImagePlaceholderSection alt={section.alt} caption={section.caption} />
     case 'image':
-      return <ImageSection src={section.src} alt={section.alt} caption={section.caption} />
+      return (
+        <ImageSection
+          src={section.src}
+          alt={section.alt}
+          caption={section.caption}
+          maxWidth={section.maxWidth}
+        />
+      )
     case 'video':
       return <VideoSection src={section.src} title={section.title} caption={section.caption} />
     case 'before-after':

@@ -134,6 +134,7 @@ export const meeting07: Meeting = {
           alt: 'Font anatomy diagram: baseline, x-height, ascenders, descenders, serifs',
           caption:
             'Visual guide to font anatomy — memorize these terms',
+          maxWidth: 460,
         },
         {
           type: 'divider' as const,

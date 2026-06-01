@@ -134,6 +134,7 @@ export const meeting07: Meeting = {
           alt: 'Схема анатомии шрифта: baseline, x-height, ascenders, descenders, serifs',
           caption:
             'Визуальное руководство по анатомии шрифта — запомните эти термины',
+          maxWidth: 460,
         },
         {
           type: 'divider' as const,
