@@ -954,6 +954,55 @@ function ColorPaletteSection({
   )
 }
 
+function FontShowcaseSection({
+  groups,
+}: {
+  groups: {
+    title: string
+    kind: 'serif' | 'sans-serif' | 'monospace'
+    families: { name: string; stack: string; description: string; sample?: string }[]
+  }[]
+}) {
+  const kindBadge: Record<string, string> = {
+    serif: 'bg-amber-50 text-amber-700 border-amber-200',
+    'sans-serif': 'bg-sky-50 text-sky-700 border-sky-200',
+    monospace: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  }
+  return (
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      {groups.map((g) => (
+        <div key={g.title} className="rounded-xl border-2 border-stone-200 bg-white overflow-hidden">
+          <div className="px-4 py-3 border-b border-stone-200 flex items-center justify-between gap-2">
+            <h4 className="font-semibold text-sm text-foreground">{g.title}</h4>
+            <span
+              className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${kindBadge[g.kind] || ''}`}
+            >
+              {g.kind}
+            </span>
+          </div>
+          <ul className="divide-y divide-stone-200">
+            {g.families.map((f) => (
+              <li key={f.name} className="px-4 py-3">
+                <div
+                  className="text-2xl leading-none mb-1 text-stone-900"
+                  style={{ fontFamily: f.stack }}
+                >
+                  {f.sample || f.name}
+                </div>
+                <div className="text-[11px] text-stone-500 leading-snug">
+                  <span className="font-mono text-stone-700 font-semibold">{f.name}</span>
+                  <span className="mx-1.5">·</span>
+                  <span>{f.description}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -1077,6 +1126,8 @@ function renderSection(section: Section) {
       return <QuoteSection text={section.text} author={section.author} role={section.role} />
     case 'color-palette':
       return <ColorPaletteSection data={section.data} />
+    case 'font-showcase':
+      return <FontShowcaseSection groups={section.groups} />
     case 'divider':
       return <DividerSection />
     default:

@@ -31,6 +31,19 @@ export interface ColorSwatch {
   name?: string
 }
 
+export interface FontFamilyItem {
+  name: string // display name, e.g. 'Times New Roman'
+  stack: string // CSS font-family stack, e.g. "'Times New Roman', Times, serif"
+  description: string // plain-text caption
+  sample?: string // optional sample text (defaults to the family name)
+}
+
+export interface FontShowcaseGroup {
+  title: string // e.g. 'Serif (with serifs)'
+  kind: 'serif' | 'sans-serif' | 'monospace'
+  families: FontFamilyItem[]
+}
+
 export interface ColorPaletteData {
   appName: string
   appUrl?: string
@@ -159,6 +172,7 @@ export type Section =
   | { type: 'table'; title?: string; headers: string[]; rows: string[][]; caption?: string }
   | { type: 'quote'; text: string; author: string; role?: string }
   | { type: 'color-palette'; data: ColorPaletteData }
+  | { type: 'font-showcase'; groups: FontShowcaseGroup[] }
   | { type: 'divider' }
 
 // ---- Meeting Structure ----

@@ -18,6 +18,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" dir="ltr">
+      <head>
+        {/*
+          Showcase fonts for /meeting/7 typography lesson.
+          Font files load lazily only when CSS font-family references them
+          (font-display: swap), so pages without showcase pay zero cost.
+        */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Merriweather:wght@400;700&family=Lora:wght@400;700&family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Fira+Code:wght@400;700&family=Source+Code+Pro:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Source+Sans+3:wght@400;700&family=Montserrat:wght@400;700&family=Oswald:wght@400;700&family=Lato:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap"
+        />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
         <LanguageProvider>
           <LanguageToggle />

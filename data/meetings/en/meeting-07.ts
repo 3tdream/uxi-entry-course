@@ -181,36 +181,39 @@ export const meeting07: Meeting = {
           ],
         },
         {
-          type: 'columns' as const,
-          columns: [
+          type: 'font-showcase' as const,
+          groups: [
             {
               title: 'Serif (with serifs)',
-              items: [
-                'Times New Roman — a print classic',
-                'Georgia — optimized for screens',
-                'Playfair Display — elegant headings',
-                'Merriweather — excellent on-screen readability',
-                'Lora — soft, friendly style',
+              kind: 'serif' as const,
+              families: [
+                { name: 'Times New Roman', stack: "'Times New Roman', Times, serif", description: 'a print classic' },
+                { name: 'Georgia', stack: "Georgia, 'Times New Roman', serif", description: 'optimized for screens' },
+                { name: 'Playfair Display', stack: "'Playfair Display', Georgia, serif", description: 'elegant headings' },
+                { name: 'Merriweather', stack: "Merriweather, Georgia, serif", description: 'excellent on-screen readability' },
+                { name: 'Lora', stack: "Lora, Georgia, serif", description: 'soft, friendly style' },
               ],
             },
             {
               title: 'Sans-serif (without serifs)',
-              items: [
-                'Inter — the standard for interfaces',
-                'Roboto — Android and Material Design',
-                'SF Pro — Apple (iOS, macOS)',
-                'Helvetica Neue — a timeless classic',
-                'Open Sans — a versatile web font',
+              kind: 'sans-serif' as const,
+              families: [
+                { name: 'Inter', stack: "Inter, system-ui, -apple-system, sans-serif", description: 'the standard for interfaces' },
+                { name: 'Roboto', stack: "Roboto, system-ui, sans-serif", description: 'Android and Material Design' },
+                { name: 'SF Pro', stack: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif", description: 'Apple (iOS, macOS)' },
+                { name: 'Helvetica Neue', stack: "'Helvetica Neue', Helvetica, Arial, sans-serif", description: 'a timeless classic' },
+                { name: 'Open Sans', stack: "'Open Sans', system-ui, sans-serif", description: 'a versatile web font' },
               ],
             },
             {
               title: 'Monospace',
-              items: [
-                'JetBrains Mono — popular among developers',
-                'Fira Code — ligatures for code',
-                'Source Code Pro — Adobe, great readability',
-                'Cascadia Code — Microsoft, VS Code',
-                'IBM Plex Mono — strict, technical style',
+              kind: 'monospace' as const,
+              families: [
+                { name: 'JetBrains Mono', stack: "'JetBrains Mono', 'Cascadia Code', Consolas, monospace", description: 'popular among developers' },
+                { name: 'Fira Code', stack: "'Fira Code', 'JetBrains Mono', Consolas, monospace", description: 'ligatures for code' },
+                { name: 'Source Code Pro', stack: "'Source Code Pro', Consolas, monospace", description: 'Adobe, great readability' },
+                { name: 'Cascadia Code', stack: "'Cascadia Code', 'Cascadia Mono', Consolas, monospace", description: 'Microsoft, VS Code' },
+                { name: 'IBM Plex Mono', stack: "'IBM Plex Mono', Consolas, monospace", description: 'strict, technical style' },
               ],
             },
           ],

@@ -181,36 +181,39 @@ export const meeting07: Meeting = {
           ],
         },
         {
-          type: 'columns' as const,
-          columns: [
+          type: 'font-showcase' as const,
+          groups: [
             {
               title: 'Serif (с засечками)',
-              items: [
-                'Times New Roman — классика печати',
-                'Georgia — оптимизирован для экранов',
-                'Playfair Display — элегантные заголовки',
-                'Merriweather — отличная читаемость на экране',
-                'Lora — мягкий, дружелюбный стиль',
+              kind: 'serif' as const,
+              families: [
+                { name: 'Times New Roman', stack: "'Times New Roman', Times, serif", description: 'классика печати' },
+                { name: 'Georgia', stack: "Georgia, 'Times New Roman', serif", description: 'оптимизирован для экранов' },
+                { name: 'Playfair Display', stack: "'Playfair Display', Georgia, serif", description: 'элегантные заголовки' },
+                { name: 'Merriweather', stack: "Merriweather, Georgia, serif", description: 'отличная читаемость на экране' },
+                { name: 'Lora', stack: "Lora, Georgia, serif", description: 'мягкий, дружелюбный стиль' },
               ],
             },
             {
               title: 'Sans-serif (без засечек)',
-              items: [
-                'Inter — стандарт для интерфейсов',
-                'Roboto — Android и Material Design',
-                'SF Pro — Apple (iOS, macOS)',
-                'Helvetica Neue — вечная классика',
-                'Open Sans — универсальный веб-шрифт',
+              kind: 'sans-serif' as const,
+              families: [
+                { name: 'Inter', stack: "Inter, system-ui, -apple-system, sans-serif", description: 'стандарт для интерфейсов' },
+                { name: 'Roboto', stack: "Roboto, system-ui, sans-serif", description: 'Android и Material Design' },
+                { name: 'SF Pro', stack: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif", description: 'Apple (iOS, macOS)' },
+                { name: 'Helvetica Neue', stack: "'Helvetica Neue', Helvetica, Arial, sans-serif", description: 'вечная классика' },
+                { name: 'Open Sans', stack: "'Open Sans', system-ui, sans-serif", description: 'универсальный веб-шрифт' },
               ],
             },
             {
               title: 'Monospace (моноширинный)',
-              items: [
-                'JetBrains Mono — популярен у разработчиков',
-                'Fira Code — лигатуры для кода',
-                'Source Code Pro — Adobe, хорошая читаемость',
-                'Cascadia Code — Microsoft, VS Code',
-                'IBM Plex Mono — строгий, технический стиль',
+              kind: 'monospace' as const,
+              families: [
+                { name: 'JetBrains Mono', stack: "'JetBrains Mono', 'Cascadia Code', Consolas, monospace", description: 'популярен у разработчиков' },
+                { name: 'Fira Code', stack: "'Fira Code', 'JetBrains Mono', Consolas, monospace", description: 'лигатуры для кода' },
+                { name: 'Source Code Pro', stack: "'Source Code Pro', Consolas, monospace", description: 'Adobe, хорошая читаемость' },
+                { name: 'Cascadia Code', stack: "'Cascadia Code', 'Cascadia Mono', Consolas, monospace", description: 'Microsoft, VS Code' },
+                { name: 'IBM Plex Mono', stack: "'IBM Plex Mono', Consolas, monospace", description: 'строгий, технический стиль' },
               ],
             },
           ],
