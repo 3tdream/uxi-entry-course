@@ -131,10 +131,9 @@ export const meeting07: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-07-font-anatomy.webp',
-          alt: 'Схема анатомии шрифта: baseline, x-height, ascenders, descenders, serifs',
+          alt: 'Полная анатомия шрифта: baseline, x-height, cap height, ascender, descender, terminal, ear, eye, spine, spur, link, loop, tail, stem, stroke, serif, counter, bowl, aperture, finial, shoulder',
           caption:
             'Визуальное руководство по анатомии шрифта — запомните эти термины',
-          maxWidth: 460,
         },
         {
           type: 'divider' as const,
