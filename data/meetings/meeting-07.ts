@@ -1437,6 +1437,50 @@ export const meeting07: Meeting = {
             '**Microsoft Fluent Design** использует похожий подход: 8px grid, адаптивные брейкпоинты, но с акцентом на «depth» (глубину) и «material» (материалы). Три системы (Material, HIG, Fluent) — это три подхода к одним и тем же принципам.',
         },
         {
+          type: 'subheading' as const,
+          content: '🧭 Три большие дизайн-системы — кто есть кто',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Material, HIG и Fluent — это **корпоративные дизайн-системы** трёх гигантов: Google, Apple и Microsoft. Каждая определяет, как должны выглядеть и вести себя приложения в их экосистеме. Понять их различия = выбрать правильный визуальный язык для своего продукта.',
+        },
+        {
+          type: 'table' as const,
+          headers: ['Система', 'Создатель', 'Дебют', 'Главный принцип', 'Узнаваемые детали'],
+          rows: [
+            [
+              '**Material Design**',
+              'Google (Android, Web)',
+              '2014',
+              'Material as metaphor — интерфейс как «бумага и чернила»: поверхности, тени, реалистичная физика',
+              'Яркие цвета, elevation-тени, ripple-эффект на тапе, FAB-кнопка, Roboto',
+            ],
+            [
+              '**HIG** (Human Interface Guidelines)',
+              'Apple (iOS, macOS, watchOS, visionOS)',
+              '1985 → текущий вид с 2013 (iOS 7 flat)',
+              'Clarity, Deference, Depth — чёткость, ненавязчивость, глубина за счёт прозрачности',
+              'SF Pro шрифт, мягкие blur-фоны, нативные жесты swipe, Safe Area, Dynamic Island',
+            ],
+            [
+              '**Fluent Design**',
+              'Microsoft (Windows 11, Office, Teams)',
+              '2017 → Fluent 2 в 2022',
+              'Light, Depth, Motion, Material, Scale — пять «измерений», работает на ПК/мобиле/Xbox/HoloLens',
+              'Acrylic (полупрозрачный blur), Reveal highlight (подсветка под курсором), Mica-материал, Segoe UI',
+            ],
+          ],
+          caption:
+            'Все три используют 8px-сетку и Mobile First. Различия — в визуальном языке и философии.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Где смотреть оригиналы:** [m3.material.io](https://m3.material.io) · [developer.apple.com/design](https://developer.apple.com/design) · [fluent2.microsoft.design](https://fluent2.microsoft.design). Эти три сайта — бесплатные дизайн-учебники мирового класса; листай их хотя бы раз в квартал.',
+        },
+        {
           type: 'divider' as const,
         },
 

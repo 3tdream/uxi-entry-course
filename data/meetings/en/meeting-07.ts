@@ -1437,6 +1437,50 @@ export const meeting07: Meeting = {
             '**Microsoft Fluent Design** uses a similar approach: 8px grid, adaptive breakpoints, but with an emphasis on "depth" and "material." Three systems (Material, HIG, Fluent) represent three approaches to the same principles.',
         },
         {
+          type: 'subheading' as const,
+          content: '🧭 The three big design systems — who is who',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Material, HIG and Fluent are the **corporate design systems** of three giants: Google, Apple, and Microsoft. Each one defines how apps in its ecosystem should look and behave. Understanding the differences = choosing the right visual language for your product.',
+        },
+        {
+          type: 'table' as const,
+          headers: ['System', 'Maker', 'Debut', 'Core principle', 'Signature details'],
+          rows: [
+            [
+              '**Material Design**',
+              'Google (Android, Web)',
+              '2014',
+              'Material as metaphor — UI as "paper and ink": surfaces, shadows, realistic physics',
+              'Bold colors, elevation shadows, ripple on tap, FAB button, Roboto',
+            ],
+            [
+              '**HIG** (Human Interface Guidelines)',
+              'Apple (iOS, macOS, watchOS, visionOS)',
+              '1985 → current form since 2013 (iOS 7 flat)',
+              'Clarity, Deference, Depth — sharp, unobtrusive, depth through translucency',
+              'SF Pro font, soft blur backgrounds, native swipe gestures, Safe Area, Dynamic Island',
+            ],
+            [
+              '**Fluent Design**',
+              'Microsoft (Windows 11, Office, Teams)',
+              '2017 → Fluent 2 in 2022',
+              'Light, Depth, Motion, Material, Scale — five "dimensions," works across PC/mobile/Xbox/HoloLens',
+              'Acrylic (translucent blur), Reveal highlight (cursor glow), Mica material, Segoe UI',
+            ],
+          ],
+          caption:
+            'All three use an 8px grid and Mobile First. Differences live in the visual language and philosophy.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Where to read the originals:** [m3.material.io](https://m3.material.io) · [developer.apple.com/design](https://developer.apple.com/design) · [fluent2.microsoft.design](https://fluent2.microsoft.design). These three sites are world-class free design textbooks — skim them at least once a quarter.',
+        },
+        {
           type: 'divider' as const,
         },
 
