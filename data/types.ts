@@ -238,6 +238,7 @@ export type Section =
   | { type: 'type-scale-showcase'; title?: string; description?: string; ratio?: string; base?: string; fontStack?: string; steps: TypeScaleStep[] }
   | { type: 'spacing-scale-showcase'; title?: string; description?: string; baseUnit?: number; steps: SpacingScaleStep[] }
   | { type: 'column-split-showcase'; title?: string; description?: string; total?: number; rows: ColumnSplitRow[] }
+  | { type: 'iphone-safe-area-demo'; title?: string; description?: string; labels?: { dynamicIsland?: string; statusBar?: string; safeArea?: string; homeIndicator?: string } }
   | { type: 'divider' }
 
 // ---- Meeting Structure ----

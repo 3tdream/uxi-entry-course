@@ -1383,6 +1383,26 @@ export const meeting07: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: '📱 Глоссарий: зоны экрана iPhone',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Перед кейсом Apple — небольшой ликбез по терминам. Современный iPhone — это не один «прямоугольник экрана»: часть пикселей физически занята камерой/датчиками (Dynamic Island), часть зарезервирована системой (Status Bar, Home Indicator). Безопасный регион для твоего контента — **Safe Area**.',
+        },
+        {
+          type: 'iphone-safe-area-demo' as const,
+          title: 'Зоны экрана iPhone (с Dynamic Island)',
+          description: 'Зелёная зона — твоя. Жёлтая, чёрная и розовая — системные.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            'На вебе для PWA и mobile-web используй CSS-переменные **`env(safe-area-inset-top)` / `env(safe-area-inset-bottom)`** + `viewport-fit=cover` в meta-теге — браузер сам подставит правильные отступы под notch и home indicator.',
+        },
+        {
           type: 'case-study' as const,
           title: 'Apple Human Interface Guidelines',
           company: 'Apple',

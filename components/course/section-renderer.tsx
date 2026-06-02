@@ -1463,6 +1463,132 @@ function ColumnSplitShowcaseSection({
   )
 }
 
+function IphoneSafeAreaDemoSection({
+  title,
+  description,
+  labels,
+}: {
+  title?: string
+  description?: string
+  labels?: { dynamicIsland?: string; statusBar?: string; safeArea?: string; homeIndicator?: string }
+}) {
+  const { lang } = useLanguage()
+  const COPY = {
+    ru: {
+      safeAreaCenter: 'Safe Area',
+      safeAreaSub: ['всё, что выше/ниже —', 'системные зоны'],
+      dynamicIsland: 'Dynamic Island / Notch',
+      statusBar: 'Status Bar',
+      safeArea: 'Safe Area (контент)',
+      homeIndicator: 'Home Indicator',
+      dynamicIslandDesc:
+        'Физический «остров» вокруг камеры и сенсоров на iPhone 14 Pro+ (раньше — notch). Туда нельзя класть кликабельные элементы.',
+      statusBarDesc:
+        'Верхняя полоса с часами, сигналом, батареей. Система рисует её поверх — твой контент туда не должен залезать.',
+      safeAreaDesc:
+        '«Зелёная» зона = единственная безопасная область для контента. На iOS получают через ',
+      safeAreaDescTail: ' в CSS.',
+      homeIndicatorDesc:
+        'Тонкая полоса внизу для свайпа в Home. На iPhone без Home-кнопки. CTA-кнопки нужно поднять выше неё, иначе тап случайно закроет приложение.',
+    },
+    en: {
+      safeAreaCenter: 'Safe Area',
+      safeAreaSub: ['anything above/below =', 'system zones'],
+      dynamicIsland: 'Dynamic Island / Notch',
+      statusBar: 'Status Bar',
+      safeArea: 'Safe Area (content)',
+      homeIndicator: 'Home Indicator',
+      dynamicIslandDesc:
+        'Physical "island" around the camera and sensors on iPhone 14 Pro+ (previously a notch). Never place tappable elements there.',
+      statusBarDesc:
+        'Top strip with the clock, signal, battery. The system draws it on top — your content must not bleed into it.',
+      safeAreaDesc:
+        'The green zone = the only safe region for content. On iOS you get it via ',
+      safeAreaDescTail: ' in CSS.',
+      homeIndicatorDesc:
+        'Thin bar at the bottom for swiping Home, on iPhones without a Home button. CTAs must sit above it — otherwise a tap accidentally closes the app.',
+    },
+  } as const
+  const c = COPY[lang]
+  const L = {
+    dynamicIsland: labels?.dynamicIsland || c.dynamicIsland,
+    statusBar: labels?.statusBar || c.statusBar,
+    safeArea: labels?.safeArea || c.safeArea,
+    homeIndicator: labels?.homeIndicator || c.homeIndicator,
+  }
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      {(title || description) && (
+        <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+          {title && <h3 className="text-base font-semibold text-foreground">{title}</h3>}
+          {description && <p className="mt-0.5 text-[12px] text-stone-600">{description}</p>}
+        </div>
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5 md:p-6 items-center">
+        {/* Phone frame */}
+        <div className="flex justify-center">
+          <div className="relative rounded-[40px] border-[8px] border-stone-900 bg-white shadow-lg" style={{ width: 240, height: 480 }}>
+            {/* Dynamic Island */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-2 w-24 h-7 rounded-full bg-stone-900 z-10" />
+            {/* Status bar zone */}
+            <div className="absolute top-0 left-0 right-0 h-12 bg-amber-100/60 border-b border-dashed border-amber-300 flex items-end justify-end px-3 pb-1">
+              <span className="text-[9px] font-mono text-amber-800">9:41 · 100%</span>
+            </div>
+            {/* Safe area / content */}
+            <div className="absolute top-12 bottom-10 left-0 right-0 bg-emerald-50/70 border-y border-dashed border-emerald-300 flex items-center justify-center p-3">
+              <div className="text-center">
+                <div className="text-[11px] font-bold text-emerald-800 mb-1">{c.safeAreaCenter}</div>
+                <div className="text-[9px] text-emerald-700/80 leading-snug">
+                  {c.safeAreaSub[0]}<br/>{c.safeAreaSub[1]}
+                </div>
+              </div>
+            </div>
+            {/* Home indicator zone */}
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-rose-100/60 border-t border-dashed border-rose-300 flex items-end justify-center pb-1.5">
+              <div className="w-20 h-1 rounded-full bg-stone-900" />
+            </div>
+          </div>
+        </div>
+        {/* Legend */}
+        <div className="space-y-3">
+          <div className="flex items-start gap-3">
+            <span className="w-3 h-3 rounded-full bg-stone-900 shrink-0 mt-1" />
+            <div>
+              <div className="text-sm font-bold text-stone-900">{L.dynamicIsland}</div>
+              <p className="text-xs text-stone-600 leading-snug mt-0.5">{c.dynamicIslandDesc}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="w-3 h-3 rounded-sm bg-amber-300 shrink-0 mt-1 border border-amber-400" />
+            <div>
+              <div className="text-sm font-bold text-stone-900">{L.statusBar}</div>
+              <p className="text-xs text-stone-600 leading-snug mt-0.5">{c.statusBarDesc}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="w-3 h-3 rounded-sm bg-emerald-300 shrink-0 mt-1 border border-emerald-400" />
+            <div>
+              <div className="text-sm font-bold text-stone-900">{L.safeArea}</div>
+              <p className="text-xs text-stone-600 leading-snug mt-0.5">
+                {c.safeAreaDesc}
+                <span className="font-mono">env(safe-area-inset-*)</span>
+                {c.safeAreaDescTail}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="w-3 h-3 rounded-sm bg-rose-300 shrink-0 mt-1 border border-rose-400" />
+            <div>
+              <div className="text-sm font-bold text-stone-900">{L.homeIndicator}</div>
+              <p className="text-xs text-stone-600 leading-snug mt-0.5">{c.homeIndicatorDesc}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -1632,6 +1758,14 @@ function renderSection(section: Section) {
           description={section.description}
           total={section.total}
           rows={section.rows}
+        />
+      )
+    case 'iphone-safe-area-demo':
+      return (
+        <IphoneSafeAreaDemoSection
+          title={section.title}
+          description={section.description}
+          labels={section.labels}
         />
       )
     case 'divider':

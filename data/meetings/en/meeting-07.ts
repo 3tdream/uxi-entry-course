@@ -1383,6 +1383,26 @@ export const meeting07: Meeting = {
           ],
         },
         {
+          type: 'subheading' as const,
+          content: '📱 Glossary: iPhone screen zones',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Quick vocab refresh before the Apple case-study. A modern iPhone screen is not one clean rectangle — some pixels are physically taken by the camera/sensors (Dynamic Island), others are reserved by the system (Status Bar, Home Indicator). The safe region for your content is the **Safe Area**.',
+        },
+        {
+          type: 'iphone-safe-area-demo' as const,
+          title: 'iPhone screen zones (with Dynamic Island)',
+          description: 'The green zone is yours. Yellow, black and pink are system-owned.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            'On the web (PWA / mobile web) use the CSS variables **`env(safe-area-inset-top)` / `env(safe-area-inset-bottom)`** + `viewport-fit=cover` in the meta tag — the browser injects the correct insets for notch and home indicator automatically.',
+        },
+        {
           type: 'case-study' as const,
           title: 'Apple Human Interface Guidelines',
           company: 'Apple',
