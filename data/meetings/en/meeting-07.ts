@@ -1586,6 +1586,54 @@ export const meeting07: Meeting = {
           explanation:
             'Mobile First is the standard approach: default styles are written for mobile, and then expanded for larger screens via media queries (or Tailwind md:, lg:). This ensures better performance and UX on mobile devices.',
         },
+        {
+          question: 'What is the difference between Soft Grid and Hard Grid?',
+          options: [
+            { id: 'a', text: 'Soft Grid has rounded corners, Hard Grid has sharp ones' },
+            { id: 'b', text: 'Soft Grid — elements are multiples of 8px but not pinned to strict columns; Hard Grid — strict column structure' },
+            { id: 'c', text: 'Soft Grid is for mobile, Hard Grid is for desktop' },
+            { id: 'd', text: 'They are synonyms — two names for the same idea' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Soft Grid — every size/spacing is a multiple of the base unit (8px) but elements can be placed freely (typical for landings and mobile). Hard Grid — a strict column layout (typical for dashboards and content pages). Hard Grid gives maximum order, Soft gives more flexibility.',
+        },
+        {
+          question: 'A landing page has a container with max-width: 1280px on a 1920px screen. What does the user see?',
+          options: [
+            { id: 'a', text: 'Content stretches across the full 1920px — max-width is ignored' },
+            { id: 'b', text: 'Content is capped at 1280px and (with margin: 0 auto) centers with empty space on both sides' },
+            { id: 'c', text: 'Content scales proportionally to fill 1920px' },
+            { id: 'd', text: 'The browser throws a rendering error' },
+          ],
+          correctId: 'b',
+          explanation:
+            'max-width caps the maximum width; the container never grows beyond 1280px even when the viewport is wider. To center it you need `margin: 0 auto`. The empty space on the sides is normal on wide monitors and an important part of design "breathing room."',
+        },
+        {
+          question: 'Bootstrap, Material Design and Apple HIG all settled on a tablet breakpoint near ~768px. Why that exact number?',
+          options: [
+            { id: 'a', text: 'It is the historical size of the original iPad (768×1024 portrait) — the industry adopted it as the standard' },
+            { id: 'b', text: '768 is a prime number favored by mathematicians' },
+            { id: 'c', text: 'CSS does not support breakpoints below 768px' },
+            { id: 'd', text: 'Coincidence — each system chose it independently' },
+          ],
+          correctId: 'a',
+          explanation:
+            'The first iPad (2010) was 768×1024 in portrait, which de-facto fixed 768px as the lower bound for "tablet" across most design systems. Since then the ecosystem has settled: ≥768 → tablet layout, ≥1024 → desktop. Not perfect, but the "industry treaty" that millions of sites rely on.',
+        },
+        {
+          question: 'A design system button has 12px vertical and 16px horizontal padding. Does that follow the 8px system?',
+          options: [
+            { id: 'a', text: 'No — 12 is not a multiple of 8, the system is broken' },
+            { id: 'b', text: 'Yes — the 8px system allows a 4px half-step for small elements (button padding, icon spacing), and 12 and 16 are both multiples of 4' },
+            { id: 'c', text: 'Only if the button is primary — for secondary it must be 8/16' },
+            { id: 'd', text: 'Depends on the font used inside the button' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The 8px system allows a 4px "half-step" (4, 8, 12, 16, 20, 24…) for small elements — button padding, icon spacing, chip gaps. Larger blocks (cards, sections) stay strictly on multiples of 8 (8, 16, 24, 32…). The key rule is: never introduce arbitrary values like 7px, 13px, 19px.',
+        },
       ],
     },
   ],

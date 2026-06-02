@@ -1,11 +1,57 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { type Quiz } from '@/data/types'
 import { useLanguage } from '@/lib/language'
 import { CheckCircle2, XCircle, HelpCircle, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+
+// --- Deterministic option shuffle ---------------------------------------
+// Authors tend to put the correct answer in slot B. We shuffle options
+// per-question using a seed derived from the question text, so:
+//   - same question always shows the same shuffle (stable on rerender,
+//     no SSR hydration mismatch, no replay confusion)
+//   - correctId is re-mapped to wherever the originally-correct option
+//     landed after the shuffle.
+function hashString(s: string): number {
+  let h = 2166136261 >>> 0
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i)
+    h = Math.imul(h, 16777619) >>> 0
+  }
+  return h >>> 0
+}
+
+function mulberry32(a: number): () => number {
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0
+    let t = a
+    t = Math.imul(t ^ (t >>> 15), t | 1)
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+const ID_SLOTS = ['a', 'b', 'c', 'd', 'e', 'f'] as const
+
+function shuffleQuiz(quiz: Quiz): Quiz {
+  if (!quiz.options || quiz.options.length < 2) return quiz
+  const rand = mulberry32(hashString(quiz.question))
+  // Fisher–Yates on a copy.
+  const shuffled = quiz.options.slice()
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  // Find the original correct option (by its old id), re-id everything by position.
+  const originalCorrect = quiz.options.find((o) => o.id === quiz.correctId)
+  const remapped = shuffled.map((o, i) => ({ ...o, id: ID_SLOTS[i] ?? o.id }))
+  const newCorrect =
+    remapped.find((o) => originalCorrect && o.text === originalCorrect.text)?.id ??
+    quiz.correctId
+  return { ...quiz, options: remapped, correctId: newCorrect }
+}
 
 const quizLabels = {
   ru: {
@@ -35,7 +81,7 @@ const quizLabels = {
 }
 
 function QuizCard({
-  quiz,
+  quiz: rawQuiz,
   index,
   onComplete,
 }: {
@@ -45,6 +91,9 @@ function QuizCard({
 }) {
   const { lang } = useLanguage()
   const l = quizLabels[lang]
+  // Shuffle options deterministically (per-question seed).
+  // Memoize so the order stays stable across rerenders of this card.
+  const quiz = useMemo(() => shuffleQuiz(rawQuiz), [rawQuiz])
   const [selected, setSelected] = useState<string | null>(null)
   const [revealed, setRevealed] = useState(false)
   const isCorrect = selected === quiz.correctId
