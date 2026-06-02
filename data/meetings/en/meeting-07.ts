@@ -1308,11 +1308,37 @@ export const meeting07: Meeting = {
             label: 'Poor: uniform spacing',
             description:
               'Heading — 16px — text — 16px — heading — 16px — text. All spacing is the same. It is unclear which heading belongs to which text. Visual hierarchy is absent.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Delivery', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Your order arrives today between 2pm and 6pm by courier.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+                { text: 'Payment', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: 'Visa **** 4242. Charged after confirmation.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+                { text: 'Support', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: 'Chat and phone 24/7 at support@example.com.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+              ],
+              footnote: 'every gap = 16px · groups do not read',
+            },
           },
           after: {
             label: 'Good: hierarchical spacing',
             description:
               'Heading — 8px — text — 32px — heading — 8px — text. Small spacing within a group, large spacing between groups. It is instantly clear what belongs to what.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Delivery', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Your order arrives today between 2pm and 6pm by courier.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 8 },
+                { text: 'Payment', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 32 },
+                { text: 'Visa **** 4242. Charged after confirmation.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 8 },
+                { text: 'Support', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 32 },
+                { text: 'Chat and phone 24/7 at support@example.com.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 8 },
+              ],
+              footnote: '8px inside groups · 32px between · Law of Proximity reads instantly',
+            },
           },
         },
         {

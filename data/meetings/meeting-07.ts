@@ -1308,11 +1308,37 @@ export const meeting07: Meeting = {
             label: 'Плохо: одинаковые отступы',
             description:
               'Заголовок — 16px — текст — 16px — заголовок — 16px — текст. Все отступы одинаковые. Непонятно, какой заголовок относится к какому тексту. Визуальная иерархия отсутствует.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Доставка', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Заказ доставят сегодня с 14:00 до 18:00 курьером.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+                { text: 'Оплата', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: 'Карта Visa **** 4242. Списание после подтверждения.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+                { text: 'Поддержка', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: 'Чат и звонок 24/7 на support@example.com.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+              ],
+              footnote: 'все gap = 16px · группы не читаются',
+            },
           },
           after: {
             label: 'Хорошо: иерархические отступы',
             description:
               'Заголовок — 8px — текст — 32px — заголовок — 8px — текст. Маленький отступ внутри группы, большой между группами. Мгновенно понятно, что к чему относится.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Доставка', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Заказ доставят сегодня с 14:00 до 18:00 курьером.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 8 },
+                { text: 'Оплата', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 32 },
+                { text: 'Карта Visa **** 4242. Списание после подтверждения.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 8 },
+                { text: 'Поддержка', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 32 },
+                { text: 'Чат и звонок 24/7 на support@example.com.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 8 },
+              ],
+              footnote: 'внутри группы 8px · между группами 32px · закон близости работает',
+            },
           },
         },
         {
