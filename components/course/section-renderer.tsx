@@ -1349,6 +1349,120 @@ function TypeScaleShowcaseSection({
   )
 }
 
+function SpacingScaleShowcaseSection({
+  title,
+  description,
+  baseUnit,
+  steps,
+}: {
+  title?: string
+  description?: string
+  baseUnit?: number
+  steps: { px: number; rem?: string; token?: string; usage: string }[]
+}) {
+  const max = Math.max(...steps.map((s) => s.px), 1)
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      {(title || description) && (
+        <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+          {title && <h3 className="text-base font-semibold text-foreground">{title}</h3>}
+          {(description || baseUnit) && (
+            <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-stone-600">
+              {description && <span>{description}</span>}
+              {baseUnit && (
+                <span className="font-mono">
+                  <span className="text-stone-400">base</span> <strong>{baseUnit}px</strong>
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+      <ul className="divide-y divide-stone-100">
+        {steps.map((s) => {
+          const widthPct = (s.px / max) * 100
+          return (
+            <li key={s.px + (s.token || '')} className="flex items-center gap-3 px-4 md:px-6 py-2.5">
+              <div className="flex items-baseline gap-2 w-28 shrink-0">
+                <span className="font-mono text-sm font-bold text-stone-900">{s.px}px</span>
+                {s.rem && <span className="font-mono text-[11px] text-stone-400">{s.rem}</span>}
+              </div>
+              {s.token && (
+                <span className="font-mono text-[11px] text-emerald-700 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5 hidden md:inline-block">
+                  {s.token}
+                </span>
+              )}
+              <div className="flex-1 relative">
+                <div
+                  className="h-3 rounded-sm bg-indigo-500"
+                  style={{ width: `${widthPct}%` }}
+                  aria-hidden
+                />
+              </div>
+              <span className="text-xs text-stone-600 w-56 md:w-72 shrink-0 truncate">
+                {s.usage}
+              </span>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
+
+function ColumnSplitShowcaseSection({
+  title,
+  description,
+  total,
+  rows,
+}: {
+  title?: string
+  description?: string
+  total?: number
+  rows: { label: string; spans: { span: number; tone?: 'primary' | 'secondary' | 'muted'; label?: string }[]; note?: string }[]
+}) {
+  const N = total || 12
+  const toneCls: Record<string, string> = {
+    primary: 'bg-indigo-500 border-indigo-600 text-white',
+    secondary: 'bg-indigo-200 border-indigo-300 text-indigo-900',
+    muted: 'bg-stone-200 border-stone-300 text-stone-700',
+  }
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      {(title || description) && (
+        <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+          {title && <h3 className="text-base font-semibold text-foreground">{title}</h3>}
+          {description && <p className="mt-0.5 text-[11px] text-stone-600">{description}</p>}
+        </div>
+      )}
+      <ul className="divide-y divide-stone-100">
+        {rows.map((row, ri) => (
+          <li key={ri} className="px-4 md:px-6 py-3">
+            <div className="flex items-baseline justify-between gap-3 mb-1.5">
+              <span className="font-mono text-xs font-semibold text-stone-900">{row.label}</span>
+              {row.note && <span className="text-[11px] text-stone-500">{row.note}</span>}
+            </div>
+            <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${N}, minmax(0, 1fr))` }}>
+              {row.spans.map((s, i) => {
+                const tone = s.tone || (i % 2 === 0 ? 'primary' : 'secondary')
+                return (
+                  <div
+                    key={i}
+                    className={`h-9 md:h-10 rounded-md border flex items-center justify-center text-[10px] md:text-[11px] font-mono font-bold ${toneCls[tone]}`}
+                    style={{ gridColumn: `span ${s.span} / span ${s.span}` }}
+                  >
+                    {s.label || s.span}
+                  </div>
+                )
+              })}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -1500,6 +1614,24 @@ function renderSection(section: Section) {
           base={section.base}
           fontStack={section.fontStack}
           steps={section.steps}
+        />
+      )
+    case 'spacing-scale-showcase':
+      return (
+        <SpacingScaleShowcaseSection
+          title={section.title}
+          description={section.description}
+          baseUnit={section.baseUnit}
+          steps={section.steps}
+        />
+      )
+    case 'column-split-showcase':
+      return (
+        <ColumnSplitShowcaseSection
+          title={section.title}
+          description={section.description}
+          total={section.total}
+          rows={section.rows}
         />
       )
     case 'divider':

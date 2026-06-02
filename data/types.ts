@@ -64,6 +64,19 @@ export interface TypeScaleStep {
   sample?: string // override sample text
 }
 
+export interface SpacingScaleStep {
+  px: number // actual pixel width to render
+  rem?: string // optional rem token, e.g. '1rem'
+  token?: string // optional token alias, e.g. 'p-4'
+  usage: string // e.g. 'card padding, list gap'
+}
+
+export interface ColumnSplitRow {
+  label: string // e.g. '6+6 — двухколоночный (50/50)'
+  spans: { span: number; tone?: 'primary' | 'secondary' | 'muted'; label?: string }[]
+  note?: string
+}
+
 export interface ColorPaletteData {
   appName: string
   appUrl?: string
@@ -223,6 +236,8 @@ export type Section =
   | { type: 'font-showcase'; groups: FontShowcaseGroup[] }
   | { type: 'font-pair-showcase'; title?: string; goodLabel?: string; badLabel?: string; good: FontPair[]; bad: FontPair[] }
   | { type: 'type-scale-showcase'; title?: string; description?: string; ratio?: string; base?: string; fontStack?: string; steps: TypeScaleStep[] }
+  | { type: 'spacing-scale-showcase'; title?: string; description?: string; baseUnit?: number; steps: SpacingScaleStep[] }
+  | { type: 'column-split-showcase'; title?: string; description?: string; total?: number; rows: ColumnSplitRow[] }
   | { type: 'divider' }
 
 // ---- Meeting Structure ----
