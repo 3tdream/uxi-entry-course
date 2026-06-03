@@ -988,10 +988,10 @@ export const meeting07: Meeting = {
         },
         {
           type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=BJwsI4aKcIA',
-          title: 'Grids in web design: a complete guide',
+          src: 'https://www.youtube.com/watch?v=LdNkM1FpGKY',
+          title: 'How to use a 12-column grid system to build better websites',
           caption:
-            'How modular grids create order in interfaces',
+            'How modular grids create order in interfaces — by Wes Bos (English)',
         },
         {
           type: 'divider' as const,
