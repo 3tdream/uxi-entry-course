@@ -371,6 +371,159 @@ export const meeting08: Meeting = {
           type: 'divider' as const,
         },
 
+        // === ЗАКОНЫ КОГНИТИВНОЙ ПСИХОЛОГИИ ===
+        {
+          type: 'heading' as const,
+          content: 'Законы психологии в UI: Fitts, Hick, Miller',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Гештальт-принципы — это про **как мозг группирует** то, что видит. Но есть ещё три «закона», которые **диктуют размеры, количество и скорость**. Их не нужно учить наизусть — нужно один раз понять, и они начнут отвечать на вопросы вроде «какого размера делать CTA?», «сколько пунктов в меню?», «сколько шагов в форме?».',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Закон Фиттса (Fitts\'s Law)',
+              definition:
+                '**Время на достижение цели ∝ расстояние / размер цели**. Чем больше элемент и чем ближе к пальцу/курсору, тем быстрее в него попадают. Поэтому primary CTA — крупная, на расстоянии большого пальца; «Удалить аккаунт» — мелкое, далеко.',
+            },
+            {
+              term: 'Закон Хика (Hick\'s Law)',
+              definition:
+                '**Время на выбор ∝ log₂(количество вариантов)**. Удваивание вариантов добавляет один тик к решению. Меню из 5 пунктов — быстрое, из 20 — паралич. Группируй по 5–7, прячь редкие функции за «More».',
+            },
+            {
+              term: 'Закон Миллера (Miller\'s Law / 7±2)',
+              definition:
+                'Рабочая память человека держит **7 ± 2 элемента** одновременно. Длинный номер карты ломают на 4 группы по 4 цифры. Длинная форма — на шаги по 3–5 полей. Меню навигации — не больше 7 пунктов в одном уровне.',
+            },
+            {
+              term: 'Закон Якоба (Jakob\'s Law)',
+              definition:
+                '**Пользователи проводят больше времени на ДРУГИХ сайтах, чем на твоём**. Они приходят с готовыми ожиданиями: логотип слева, корзина справа, поиск сверху. Нарушение конвенций = нагрузка на обучение = отток. Изобретай новое только когда выгода ≥ цене переучивания.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Fitts\'s Law — размер CTA-кнопки на мобайле',
+          before: {
+            label: 'Слабый Fitts',
+            description:
+              'CTA-кнопка 28×80px в верхнем правом углу. Палец до неё тянется через весь экран, попасть с первого раза трудно. Конверсия проседает на 15-25% против оптимальной геометрии.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: 'Order summary', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Latte × 2 · $9.40', fontSize: 13, color: '#64748B', marginTop: 8 },
+                { text: 'Croissant · $3.20', fontSize: 13, color: '#64748B', marginTop: 4 },
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A', marginTop: 12 },
+              ],
+              cta: { label: 'Pay', bg: '#4F46E5', color: '#FFFFFF', size: 11 },
+              footnote: 'кнопка ~28px высота · легко промахнуться большим пальцем',
+            },
+          },
+          after: {
+            label: 'Правильный Fitts',
+            description:
+              'CTA-кнопка 48×288px на всю ширину, прижата к низу экрана. Палец естественно лежит на ней — большой палец одной руки достаёт без сдвига кисти. Apple HIG минимум 44pt, Material — 48dp.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: 'Order summary', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Latte × 2 · $9.40', fontSize: 13, color: '#64748B', marginTop: 8 },
+                { text: 'Croissant · $3.20', fontSize: 13, color: '#64748B', marginTop: 4 },
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A', marginTop: 12 },
+              ],
+              cta: { label: 'Pay $12.60', bg: '#4F46E5', color: '#FFFFFF', size: 16 },
+              footnote: 'кнопка 48px высота · вся ширина · в thumb-zone · промах исключён',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Hick\'s Law — главное меню навигации',
+          before: {
+            label: 'Слабый Hick',
+            description:
+              '14 пунктов в горизонтальном меню без группировки. Пользователь сканирует все 14, тратит 2-3 секунды на выбор. На мобайле такое меню вообще не помещается — превращается в гамбургер с длинным списком.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Home · Products · Solutions · Industries · Resources · Pricing · Customers · Partners · Developers · About · Blog · Careers · Support · Login', fontSize: 12, color: '#475569', lineHeight: 1.6 },
+              ],
+              footnote: '14 пунктов · log₂(14) ≈ 3.8 «тика» решения · паралич',
+            },
+          },
+          after: {
+            label: 'Правильный Hick',
+            description:
+              '5 пунктов верхнего уровня (Hick срабатывает мгновенно, log₂(5) ≈ 2.3), редкие функции спрятаны в Resources/More. Меньше когнитивной нагрузки, выше скорость доступа к ключевым разделам.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Product   ·   Solutions   ·   Pricing   ·   Resources ▾   ·   Login', fontSize: 14, fontWeight: 'semibold', color: '#0F172A', lineHeight: 1.6 },
+                { text: '↑ 5 пунктов первого уровня. Всё остальное — за «Resources ▾».', fontSize: 11, color: '#94A3B8', marginTop: 8 },
+              ],
+              footnote: '5 пунктов · log₂(5) ≈ 2.3 «тика» решения · мгновенный выбор',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Miller\'s Law — длинная форма онбординга',
+          before: {
+            label: 'Слабый Miller',
+            description:
+              'Одна страница с 12 обязательными полями подряд: имя, фамилия, email, телефон, компания, должность, размер компании, отрасль, страна, город, чем интересуетесь, source. Юзер видит «стену» и закрывает вкладку.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Sign up · Step 1 of 1', fontSize: 12, fontWeight: 'semibold', color: '#64748B', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'Tell us about yourself', fontSize: 22, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: '☐ First name  ☐ Last name  ☐ Email  ☐ Phone  ☐ Company  ☐ Job title  ☐ Company size  ☐ Industry  ☐ Country  ☐ City  ☐ Interest  ☐ Source', fontSize: 12, color: '#475569', lineHeight: 1.8, marginTop: 12 },
+              ],
+              footnote: '12 полей сразу · мозг видит «много» и сдаётся',
+            },
+          },
+          after: {
+            label: 'Правильный Miller',
+            description:
+              'Те же 12 полей разбиты на 3 шага по 4 поля (You · Company · Goals). Каждый экран помещается в рабочую память. Виден прогресс, ощущение «уже близко» — completion rate растёт в 2-3 раза.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Sign up · Step 1 of 3', fontSize: 12, fontWeight: 'semibold', color: '#4F46E5', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'About you', fontSize: 22, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: '☐ First name', fontSize: 13, color: '#475569', lineHeight: 1.7, marginTop: 12 },
+                { text: '☐ Last name', fontSize: 13, color: '#475569', lineHeight: 1.7 },
+                { text: '☐ Email', fontSize: 13, color: '#475569', lineHeight: 1.7 },
+                { text: '☐ Phone', fontSize: 13, color: '#475569', lineHeight: 1.7 },
+                { text: '●○○  ← прогресс-индикатор', fontSize: 11, color: '#94A3B8', marginTop: 12 },
+              ],
+              cta: { label: 'Next →', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: '4 поля на шаге · ≤ 7±2 · видишь прогресс · завершаешь',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Эти 4 закона — твой первый «инженерный» инструментарий.** Когда дизайн «вроде нормальный, но конверсия плохая» — прогони его через них: попадаемся ли в CTA (Fitts), не утомляем ли выбором (Hick), не перегружаем ли память (Miller), не ломаем ли ожидания (Jakob). 9 из 10 проблем UX-новичков — это нарушение одного из этих четырёх.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === КЕЙС-СТАДИ ===
         {
           type: 'heading' as const,

@@ -371,6 +371,159 @@ export const meeting08: Meeting = {
           type: 'divider' as const,
         },
 
+        // === COGNITIVE PSYCHOLOGY LAWS ===
+        {
+          type: 'heading' as const,
+          content: 'Psychology laws in UI: Fitts, Hick, Miller',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Gestalt principles cover **how the brain groups** what it sees. But there are also three "laws" that **dictate sizes, counts, and speed**. You do not memorize them — you understand them once, and they start answering "how big should this CTA be?", "how many menu items?", "how many steps in this form?".',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Fitts\'s Law',
+              definition:
+                '**Time to reach a target ∝ distance / size**. The bigger the element and the closer to the finger/cursor, the faster you hit it. So the primary CTA is large and near the thumb; "Delete account" is small and far away.',
+            },
+            {
+              term: 'Hick\'s Law',
+              definition:
+                '**Decision time ∝ log₂(options)**. Doubling the choices adds one tick. A 5-item menu is fast, a 20-item menu paralyzes. Group into 5–7, hide rare features behind "More".',
+            },
+            {
+              term: 'Miller\'s Law (7±2)',
+              definition:
+                'Working memory holds **7 ± 2 items** at once. A long card number is chunked into 4 groups of 4. A long form into 3–5 field steps. A nav menu stays under 7 items per level.',
+            },
+            {
+              term: 'Jakob\'s Law',
+              definition:
+                '**Users spend most of their time on OTHER sites, not yours**. They arrive with built-in expectations: logo left, cart right, search up top. Breaking conventions = learning tax = churn. Invent something new only when the gain ≥ the re-learning cost.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Fitts\'s Law — CTA size on mobile',
+          before: {
+            label: 'Weak Fitts',
+            description:
+              'A 28×80px CTA in the top-right corner. The thumb has to reach across the screen, hits are unreliable. Conversion drops 15-25% vs. optimal geometry.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: 'Order summary', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Latte × 2 · $9.40', fontSize: 13, color: '#64748B', marginTop: 8 },
+                { text: 'Croissant · $3.20', fontSize: 13, color: '#64748B', marginTop: 4 },
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A', marginTop: 12 },
+              ],
+              cta: { label: 'Pay', bg: '#4F46E5', color: '#FFFFFF', size: 11 },
+              footnote: 'button ≈ 28px tall · easy to miss with a thumb',
+            },
+          },
+          after: {
+            label: 'Strong Fitts',
+            description:
+              'A 48×288px CTA spanning the full width, pinned to the bottom. The thumb naturally rests on it — one-handed reach without shifting your grip. Apple HIG minimum 44pt, Material 48dp.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: 'Order summary', fontSize: 16, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Latte × 2 · $9.40', fontSize: 13, color: '#64748B', marginTop: 8 },
+                { text: 'Croissant · $3.20', fontSize: 13, color: '#64748B', marginTop: 4 },
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A', marginTop: 12 },
+              ],
+              cta: { label: 'Pay $12.60', bg: '#4F46E5', color: '#FFFFFF', size: 16 },
+              footnote: 'button 48px tall · full width · in the thumb-zone · cannot miss',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Hick\'s Law — top-level navigation',
+          before: {
+            label: 'Weak Hick',
+            description:
+              '14 items in a horizontal nav with no grouping. Users scan all 14, taking 2-3 seconds to decide. On mobile this collapses into a hamburger with a long list — even worse.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Home · Products · Solutions · Industries · Resources · Pricing · Customers · Partners · Developers · About · Blog · Careers · Support · Login', fontSize: 12, color: '#475569', lineHeight: 1.6 },
+              ],
+              footnote: '14 items · log₂(14) ≈ 3.8 ticks · paralysis',
+            },
+          },
+          after: {
+            label: 'Strong Hick',
+            description:
+              '5 top-level items (Hick fires instantly, log₂(5) ≈ 2.3), rare features tucked under Resources/More. Less cognitive load, faster access to key sections.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              rows: [
+                { text: 'Product   ·   Solutions   ·   Pricing   ·   Resources ▾   ·   Login', fontSize: 14, fontWeight: 'semibold', color: '#0F172A', lineHeight: 1.6 },
+                { text: '↑ 5 top-level items. Everything else lives under "Resources ▾".', fontSize: 11, color: '#94A3B8', marginTop: 8 },
+              ],
+              footnote: '5 items · log₂(5) ≈ 2.3 ticks · instant choice',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Miller\'s Law — onboarding form length',
+          before: {
+            label: 'Weak Miller',
+            description:
+              'One page with 12 required fields in a row: first name, last name, email, phone, company, role, company size, industry, country, city, interest, source. Users see a "wall" and bounce.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Sign up · Step 1 of 1', fontSize: 12, fontWeight: 'semibold', color: '#64748B', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'Tell us about yourself', fontSize: 22, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: '☐ First name  ☐ Last name  ☐ Email  ☐ Phone  ☐ Company  ☐ Job title  ☐ Company size  ☐ Industry  ☐ Country  ☐ City  ☐ Interest  ☐ Source', fontSize: 12, color: '#475569', lineHeight: 1.8, marginTop: 12 },
+              ],
+              footnote: '12 fields at once · brain sees "too much" and gives up',
+            },
+          },
+          after: {
+            label: 'Strong Miller',
+            description:
+              'The same 12 fields split into 3 steps of 4 (You · Company · Goals). Each screen fits inside working memory. Progress is visible, "almost done" feeling — completion rate 2-3× higher.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Sign up · Step 1 of 3', fontSize: 12, fontWeight: 'semibold', color: '#4F46E5', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'About you', fontSize: 22, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: '☐ First name', fontSize: 13, color: '#475569', lineHeight: 1.7, marginTop: 12 },
+                { text: '☐ Last name', fontSize: 13, color: '#475569', lineHeight: 1.7 },
+                { text: '☐ Email', fontSize: 13, color: '#475569', lineHeight: 1.7 },
+                { text: '☐ Phone', fontSize: 13, color: '#475569', lineHeight: 1.7 },
+                { text: '●○○  ← progress indicator', fontSize: 11, color: '#94A3B8', marginTop: 12 },
+              ],
+              cta: { label: 'Next →', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: '4 fields per step · ≤ 7±2 · visible progress · users complete',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**These four laws are your first "engineering" toolkit for UX.** When a design "looks fine but conversion is bad" — run it through them: is the CTA hittable (Fitts), are users overloaded with choices (Hick), is working memory blown (Miller), are conventions broken (Jakob). 9 out of 10 entry-level UX mistakes are violations of one of these four.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === CASE STUDIES ===
         {
           type: 'heading' as const,
