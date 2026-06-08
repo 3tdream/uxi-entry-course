@@ -318,6 +318,108 @@ export const meeting13: Meeting = {
         },
         {
           type: 'subheading' as const,
+          content: '⚖️ Design ethics and dark patterns',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Within a year on the job you will meet a product manager who asks to "boost retention" or "cut churn." Some ways to do this are **legal and honest** — better UX, clearer value. Others are **manipulative**: using psychology against the user for the sake of metrics. These are called **dark patterns**, and they now carry actual fines (EU Digital Services Act, US FTC). A good designer knows how to say no.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Confirmshaming',
+              definition:
+                'The refusal button shames the user: "No, I do not want to save money." Annoys, erodes trust. Used by LinkedIn and many e-commerce. Alternative: neutral copy ("No thanks").',
+            },
+            {
+              term: 'Roach Motel',
+              definition:
+                'Subscribing is easy, unsubscribing is 5 screens and a phone call. Amazon Prime lost an FTC case for this in 2023. Rule: unsubscribing must take as many clicks as subscribing.',
+            },
+            {
+              term: 'Sneak Into Basket',
+              definition:
+                'Insurance, donations, premium shipping appear in the cart on their own. User did not notice — paid. Outright banned in the EU. Rule: opt-in, not opt-out.',
+            },
+            {
+              term: 'False Urgency',
+              definition:
+                '"Only 2 rooms left!", "Sale ends in 03:24." A fake timer is a lie. A real one is fine, but do not abuse it.',
+            },
+            {
+              term: 'Misdirection',
+              definition:
+                'A huge bright "Accept all cookies" + a tiny gray "Customize." Deliberately funnels users to the business-favorable choice. GDPR now requires **equally prominent** buttons.',
+            },
+            {
+              term: 'Privacy Zuckering',
+              definition:
+                'Opaque privacy settings the user "agrees" to expand without understanding what they signed. Named after Zuckerberg. Rule: privacy-by-default, not privacy-as-opt-in.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Cookie banner — dark vs ethical',
+          before: {
+            label: 'Dark — misdirection + confirmshaming',
+            description:
+              'A huge green "Accept all" + a tiny gray "Manage preferences." A GDPR violation, but companies used this for years until 2022.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#F8FAFC',
+              rows: [
+                { text: 'We use cookies 🍪', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'We respect your privacy. Personalize your experience with cookies for better content.', fontSize: 11, color: '#475569', lineHeight: 1.4, marginTop: 6 },
+                { text: '· · · · Manage preferences · · · ·', fontSize: 9, color: '#CBD5E1', marginTop: 8 },
+              ],
+              cta: { label: '✓ ACCEPT ALL', bg: '#10B981', color: '#FFFFFF', size: 14 },
+              footnote: 'visual hierarchy steers to Accept · Reject is almost invisible',
+            },
+          },
+          after: {
+            label: 'Ethical — equal weight, clear choice',
+            description:
+              'Two equally large buttons: "Accept all" and "Reject all." "Customize" is a third option. Compliant with GDPR + Digital Services Act + common sense.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'We use cookies', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Optional cookies help us improve the product. Required ones make it work.', fontSize: 12, color: '#475569', lineHeight: 1.5, marginTop: 6 },
+                { text: '[ Reject all ]   [ Accept all ]   [ Customize ]', fontSize: 12, color: '#1F2937', marginTop: 12, fontWeight: 'semibold' },
+              ],
+              footnote: '3 equal-weight buttons · honest choice',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Linda Stone\'s test:** "if this pattern went viral on Twitter, would I be ashamed?". If yes — it is a dark pattern, and on a short horizon you get either a fine (EU/CA) or a PR crisis. Ethical UX in 2026 is not idealism — it is **long-term risk strategy**.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Where to see dark patterns documented:** [deceptive.design](https://www.deceptive.design) (formerly darkpatterns.org) — a public catalog with examples and ongoing tracking of major companies. Browse it at least once — you will start recognizing the moves in **your own** products and in others\'.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**When the PM asks for a dark pattern:** do not refuse on ideology — refuse on **risk**. "This will lift subscription by +5%, but the FTC fined Amazon $25M for the same move in 2023. Let us first try honest alternatives — an A/B test will show whether they work just as well." The survival metric of an ethical designer = translating risks into business language.',
+        },
+        {
+          type: 'divider' as const,
+        },
+        {
+          type: 'subheading' as const,
           content: 'Industry Trends 2025-2026',
         },
         {

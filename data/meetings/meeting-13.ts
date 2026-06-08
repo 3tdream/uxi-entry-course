@@ -318,6 +318,108 @@ export const meeting13: Meeting = {
         },
         {
           type: 'subheading' as const,
+          content: '⚖️ Этика дизайна и тёмные паттерны',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Через год работы в продукте ты неизбежно встретишь продукт-менеджера, который попросит «увеличить retention» или «уменьшить отток». Часть способов сделать это **законна и честна** — лучший UX, чёткая ценность. Часть — **манипулятивна**: использует психологию против пользователя ради метрик. Это называется **dark patterns**, и за них могут оштрафовать (EU Digital Services Act, FTC в США). Хороший дизайнер умеет отказаться.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Confirmshaming',
+              definition:
+                'Кнопка отказа стыдит юзера: «Нет, я не хочу экономить деньги». Раздражает, разрушает доверие. Используют LinkedIn, многие e-commerce. Альтернатива: нейтральные кнопки («No thanks»).',
+            },
+            {
+              term: 'Roach Motel',
+              definition:
+                'Войти в подписку легко, выйти — 5 экранов и звонок в поддержку. Amazon Prime проиграл иск FTC в 2023 за это. Правило: отписаться должно занять столько же кликов, сколько подписаться.',
+            },
+            {
+              term: 'Sneak Into Basket',
+              definition:
+                'В корзину сами собой добавляются страховка, donate, premium-доставка. Юзер не заметил — заплатил. Прямой запрет в EU. Правило: opt-in, не opt-out.',
+            },
+            {
+              term: 'False Urgency',
+              definition:
+                '«Осталось 2 номера!», «Скидка истекает через 03:24». Если таймер фейковый — это обман. Если настоящий — нормально, но избегай злоупотребления.',
+            },
+            {
+              term: 'Misdirection',
+              definition:
+                'Большая яркая кнопка «Принять все cookie», крошечная серая «Настроить». Сознательно ведут к выгодному для бизнеса выбору. GDPR требует **равно заметных** кнопок.',
+            },
+            {
+              term: 'Privacy Zuckering',
+              definition:
+                'Сложно понимаемые настройки приватности, которые юзер «соглашается» расширить, не понимая что подписал. Назван в честь Цукерберга. Правило: privacy-by-default, не privacy-as-opt-in.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Cookie banner — dark vs ethical',
+          before: {
+            label: 'Dark — misdirection + confirmshaming',
+            description:
+              'Огромная зелёная «Accept all» + крошечная серая «Manage preferences». GDPR-нарушение, но компании годами этим пользовались до 2022.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#F8FAFC',
+              rows: [
+                { text: 'We use cookies 🍪', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'We respect your privacy. Personalize your experience with cookies for better content.', fontSize: 11, color: '#475569', lineHeight: 1.4, marginTop: 6 },
+                { text: '· · · · Manage preferences · · · ·', fontSize: 9, color: '#CBD5E1', marginTop: 8 },
+              ],
+              cta: { label: '✓ ACCEPT ALL', bg: '#10B981', color: '#FFFFFF', size: 14 },
+              footnote: 'visual hierarchy ведёт к Accept · Reject почти невидим',
+            },
+          },
+          after: {
+            label: 'Ethical — equal weight, clear choice',
+            description:
+              'Две одинаково крупные кнопки: «Accept all» и «Reject all». «Customize» — третий вариант. Соответствует GDPR + Digital Services Act + здравому смыслу.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'We use cookies', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Optional cookies help us improve the product. Required ones make it work.', fontSize: 12, color: '#475569', lineHeight: 1.5, marginTop: 6 },
+                { text: '[ Reject all ]   [ Accept all ]   [ Customize ]', fontSize: 12, color: '#1F2937', marginTop: 12, fontWeight: 'semibold' },
+              ],
+              footnote: '3 равновесных кнопки · честный выбор',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Тест Линды Стоун:** «если этот паттерн раскрутится в Twitter — мне будет стыдно?». Если «да» — это dark pattern, и ты на короткой дистанции получишь либо штраф (EU/CA), либо PR-кризис. Этичный UX в 2026 — это не идеализм, а **долгосрочная риск-стратегия**.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Где смотреть оригиналы dark patterns:** [deceptive.design](https://www.deceptive.design) (бывший darkpatterns.org) — публичный каталог с примерами и постоянным трекингом крупных компаний. Изучи каталог хотя бы раз — узнаешь приёмы и в **своих**, и в чужих продуктах.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Когда продакт-менеджер просит dark pattern:** не отказывай идеологически — отказывай **рисками**. «Это даст +5% к подписке, но FTC выписала Amazon штраф $25M за такое в 2023. Давай попробуем сначала честные альтернативы — A/B-тест покажет, что они работают не хуже». Метрика выживания дизайнера-этика = умение объяснять риски на языке бизнеса.',
+        },
+        {
+          type: 'divider' as const,
+        },
+        {
+          type: 'subheading' as const,
           content: 'Тренды индустрии 2025–2026',
         },
         {
