@@ -493,6 +493,54 @@ export const meeting01: Meeting = {
           explanation:
             'The button visibility issue is a UI problem (visual design). The other options are UX problems (interaction logic, processes).',
         },
+        {
+          question: 'Which of these belongs to UI, not UX?',
+          options: [
+            { id: 'a', text: 'The logic of what order the checkout steps go in' },
+            { id: 'b', text: 'Color, typography, icons, and button states' },
+            { id: 'c', text: 'How easy it is to navigate between sections' },
+            { id: 'd', text: 'How fast the user completes a task' },
+          ],
+          correctId: 'b',
+          explanation:
+            'UI (User Interface) is the visual and interactive layer: colors, fonts, icons, buttons and their states. UX is about logic, flows, ease, and efficiency. UI is "how it looks," UX is "how it works."',
+        },
+        {
+          question: 'Can a product have a beautiful UI but a poor UX?',
+          options: [
+            { id: 'a', text: 'No, a beautiful UI always means good UX' },
+            { id: 'b', text: 'Yes: a product can look stylish yet be confusing, slow, and awkward to use' },
+            { id: 'c', text: 'No, they are the same thing' },
+            { id: 'd', text: 'Only in mobile apps' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A pretty interface does not rescue a bad experience. You can build a visually flawless product where it is impossible to find a feature or complete a checkout. A good product needs both strong UX and quality UI.',
+        },
+        {
+          question: 'What best captures the UX vs UI difference using a restaurant analogy?',
+          options: [
+            { id: 'a', text: 'UX — the taste of the food and speed of service; UI — the menu layout and interior' },
+            { id: 'b', text: 'UX — the price, UI — the name' },
+            { id: 'c', text: 'UX — the chef, UI — the waiter, no real difference' },
+            { id: 'd', text: 'UX and UI do not apply to restaurants' },
+          ],
+          correctId: 'a',
+          explanation:
+            'UX is the whole experience: how tasty, how fast, how easy to book a table, how long the wait. UI is the visual layer: the menu design, the interior, the plating. You can have a beautiful menu (UI) but ruin the impression with a long wait (UX).',
+        },
+        {
+          question: 'Why should UX and UI be designed together rather than separately in isolation?',
+          options: [
+            { id: 'a', text: 'It ships the project faster' },
+            { id: 'b', text: 'UX decisions (structure, flows) and UI decisions (visuals, states) affect each other; a split leads to pretty-but-broken screens or usable-but-rough-looking ones' },
+            { id: 'c', text: 'It is a legal requirement' },
+            { id: 'd', text: 'To save on designers' },
+          ],
+          correctId: 'b',
+          explanation:
+            'UX and UI are two layers of one product. Design a flow without regard for the visual implementation (or vice versa) and problems appear at the seam: nowhere to place an element, an unhandled state, a hierarchy that breaks the logic. So they run in parallel.',
+        },
       ],
     },
     {
@@ -981,6 +1029,54 @@ export const meeting01: Meeting = {
           correctId: 'c',
           explanation:
             'The 1:10:100 rule shows the exponential growth in the cost of fixing an error: at the design stage — 1 unit, during development — 10, after launch — 100.',
+        },
+        {
+          question: 'How does good UX directly cut a business\'s support costs?',
+          options: [
+            { id: 'a', text: 'It does not, support is unrelated to design' },
+            { id: 'b', text: 'A clear interface = fewer questions and support tickets; users self-serve' },
+            { id: 'c', text: 'UX increases support costs' },
+            { id: 'd', text: 'You can just turn off support' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Every support ticket costs money. If the interface is clear and users find answers themselves (good navigation, clear microcopy, thoughtful empty states), ticket volume drops. UX pays off not only in conversion but in support savings.',
+        },
+        {
+          question: 'What is Design Thinking as the foundation of the UX process?',
+          options: [
+            { id: 'a', text: 'Drawing beautifully and by inspiration' },
+            { id: 'b', text: 'An iterative human-centered approach: Empathize → Define → Ideate → Prototype → Test' },
+            { id: 'c', text: 'Copying competitors' },
+            { id: 'd', text: 'Code first, design later' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Design Thinking is a problem-solving methodology centered on the user: Empathize (understand people) → Define (frame the problem) → Ideate (generate options) → Prototype → Test. It is an iterative loop, not a linear conveyor.',
+        },
+        {
+          question: 'A business says "no time for UX, we need to launch faster." What is the strongest counterargument?',
+          options: [
+            { id: 'a', text: '"UX is trendy"' },
+            { id: 'b', text: '"Fixing a UX problem after launch costs ~100× more than at the design stage (the 1:10:100 rule) — UX saves money, it does not spend it"' },
+            { id: 'c', text: '"All competitors do UX"' },
+            { id: 'd', text: '"Without UX the product will not build technically"' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The strongest argument is economic. The 1:10:100 rule: an issue caught at the design stage costs 1, in development 10, after launch (code written, support trained, users gone) 100. The UX stage is cheaper than the rework.',
+        },
+        {
+          question: 'Why does UX/UI give a competitive edge even when products have identical features?',
+          options: [
+            { id: 'a', text: 'It does not, only features matter' },
+            { id: 'b', text: 'At feature parity, users pick whatever is nicer and easier to use — experience becomes the deciding factor' },
+            { id: 'c', text: 'The edge is only in price' },
+            { id: 'd', text: 'The edge is only in advertising' },
+          ],
+          correctId: 'b',
+          explanation:
+            'When everyone "has everything," experience becomes the differentiator. Google beat Yahoo with simplicity, Apple with usability. At equal features, the product that is nicer and clearer to use wins — that is UX as a competitive advantage.',
         },
       ],
     },
