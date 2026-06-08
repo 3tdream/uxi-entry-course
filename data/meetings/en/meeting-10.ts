@@ -177,6 +177,29 @@ export const meeting10: Meeting = {
           type: 'divider' as const,
         },
 
+        // === UX PATTERNS LIBRARY ===
+        {
+          type: 'heading' as const,
+          content: 'UX patterns library — what every designer should know',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Microinteractions are about **how** elements react. UX patterns are about **what kind of element** you pick for the job. Over the last 20 years the industry has settled on a dozen patterns that work: modals, toasts, skeletons, empty states, tabs, pagination… You do not reinvent them — you just learn **when each one fits**.',
+        },
+        {
+          type: 'ux-patterns-library' as const,
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Jakob\'s rule:** do not invent a new pattern until you are sure an existing one does not work. 99% of UX tasks are already solved by this list plus a dozen others. Invention = risk, user re-learning, bugs.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === ANIMATION PRINCIPLES ===
         {
           type: 'heading' as const,
@@ -591,6 +614,24 @@ export const meeting10: Meeting = {
           type: 'text' as const,
           content:
             'Example in code: atom `<Icon />` \u2192 molecule `<IconButton icon={} label={} />` \u2192 organism `<Toolbar><IconButton /><IconButton /><SearchInput /></Toolbar>` \u2192 template `<DashboardLayout><Toolbar /><Sidebar /><Content /></DashboardLayout>` \u2192 page with real data.',
+        },
+        {
+          type: 'subheading' as const,
+          content: '\ud83e\uddf1 Core UI Components library \u2014 the atoms behind every interface',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Before you build molecules and organisms \u2014 you need to know your **atoms**. These are the 10 components that live in **every** design system worldwide: Material, HIG, Fluent, Ant Design, Carbon. Each has variants (primary/secondary, sizes) and states (default/hover/pressed/disabled). Those **variants \u00d7 states** are exactly what design tokens encode.',
+        },
+        {
+          type: 'ui-components-library' as const,
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**"States \u00d7 variants" heuristic:** for every atom ask \u2014 *how many visual variants* (4 buttons: primary/secondary/ghost/destructive) and *how many interactive states* (4: default/hover/pressed/disabled). In a design system that is 4\u00d74 = 16 cells, every one of which must be designed. Genuinely more work than newcomers assume \u2014 which is why good systems take months.',
         },
         {
           type: 'divider' as const,

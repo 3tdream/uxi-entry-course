@@ -177,6 +177,29 @@ export const meeting10: Meeting = {
           type: 'divider' as const,
         },
 
+        // === КАТАЛОГ UX-ПАТТЕРНОВ ===
+        {
+          type: 'heading' as const,
+          content: 'Каталог UX-паттернов: что должен знать каждый дизайнер',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Микроинтеракции — это **как** элементы реагируют. UX-паттерны — это **какие элементы** ты вообще выбираешь для своей задачи. За последние 20 лет индустрия отстояла десяток паттернов, которые работают: модалки, тосты, скелетоны, эмпти-стейты, табы, пагинация… Их не надо переизобретать — нужно знать **когда применять**.',
+        },
+        {
+          type: 'ux-patterns-library' as const,
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Правило Якоба:** не изобретай новый паттерн, пока не убедишься, что существующий не работает. 99% UX-задач уже решены этим списком + ещё десятком похожих. Изобретение = риск, переучивание юзера, баги.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === ПРИНЦИПЫ АНИМАЦИИ ===
         {
           type: 'heading' as const,
@@ -591,6 +614,24 @@ export const meeting10: Meeting = {
           type: 'text' as const,
           content:
             'Пример в коде: атом `<Icon />` → молекула `<IconButton icon={} label={} />` → организм `<Toolbar><IconButton /><IconButton /><SearchInput /></Toolbar>` → шаблон `<DashboardLayout><Toolbar /><Sidebar /><Content /></DashboardLayout>` → страница с реальными данными.',
+        },
+        {
+          type: 'subheading' as const,
+          content: '🧱 Каталог Core UI Components — атомы каждого интерфейса',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Прежде чем строить молекулы и организмы — нужно знать **атомы**. Это 10 компонентов, которые есть в **любой** дизайн-системе мира: Material, HIG, Fluent, Ant Design, Carbon. У каждого есть варианты (primary/secondary, sizes) и состояния (default/hover/pressed/disabled). Именно эти **варианты × состояния** и закладываются в дизайн-токены.',
+        },
+        {
+          type: 'ui-components-library' as const,
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Эвристика «состояния × варианты»:** для каждого атома спрашивай — *сколько визуальных вариантов* (4 кнопки: primary/secondary/ghost/destructive) и *сколько интерактивных состояний* (4: default/hover/pressed/disabled). В дизайн-системе → 4×4 = 16 ячеек, и каждую надо нарисовать. Это правда дороже, чем кажется новичку — поэтому хорошие системы стоят месяцев работы.',
         },
         {
           type: 'divider' as const,

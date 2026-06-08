@@ -1665,6 +1665,286 @@ function NineVisualElementsSection({ title, description }: { title?: string; des
   )
 }
 
+function UxPatternsLibrarySection({ title, description }: { title?: string; description?: string }) {
+  const { lang } = useLanguage()
+  type Card = { key: string; name: string; when: string; tip: string; visual: React.ReactNode }
+  const COPY = {
+    ru: {
+      title: 'Каталог UX-паттернов',
+      desc: '8 классических паттернов поведения интерфейса. Запоминай не только как выглядит — а **когда применять**.',
+      cards: {
+        modal: { name: 'Modal / Dialog', when: 'Когда юзеру нужно решить задачу до возврата к основному потоку (подтверждение, выбор, форма).', tip: 'Всегда показывай Esc-close и затемнение backdrop. Не больше 1 на экране.' },
+        toast: { name: 'Toast / Snackbar', when: 'Подтверждение действия, которое уже произошло («Сохранено», «Удалено»).', tip: 'Авто-скрытие 3-5 сек. Для критичных ошибок — НЕ toast (юзер не успеет прочитать).' },
+        skeleton: { name: 'Skeleton loader', when: 'Загрузка содержимого, у которого известна структура (карточки, лента).', tip: 'Лучше spinner-а: даёт ощущение «уже почти», снижает воспринимаемое время на 20-30%.' },
+        empty: { name: 'Empty State', when: 'Первый запуск, отсутствие данных, очищенный фильтр.', tip: 'Объясни почему пусто + дай **конкретное** первое действие. Не оставляй голым.' },
+        breadcrumb: { name: 'Breadcrumb', when: 'Глубокая иерархия (3+ уровня): магазин, документация, файловая система.', tip: 'Не нужен для одноуровневых сайтов и линейных мастеров.' },
+        tabs: { name: 'Tabs', when: 'Параллельные виды одного объекта (Profile · Activity · Settings).', tip: '≤ 5 табов. Если больше — это не табы, а sidebar или dropdown.' },
+        pagination: { name: 'Pagination', when: 'Поисковая выдача, каталог товаров, где порядок важен и юзер хочет вернуться.', tip: 'На бесконечных лентах — infinite scroll. На сравнении/выборе — pagination.' },
+        searchSug: { name: 'Search with suggestions', when: 'Большая база, юзер не знает точного запроса (товары, статьи, контакты).', tip: 'Показывай top-5 после 2-х букв. Подсвечивай совпадение.' },
+      },
+    },
+    en: {
+      title: 'UX patterns library',
+      desc: '8 classic interface behavior patterns. Memorize not just the look — but **when to use each**.',
+      cards: {
+        modal: { name: 'Modal / Dialog', when: 'When the user must complete one task before returning to the main flow (confirm, choose, fill).', tip: 'Always include Esc-to-close and a backdrop. No more than 1 modal on screen at a time.' },
+        toast: { name: 'Toast / Snackbar', when: 'Confirmation that something already happened ("Saved", "Deleted").', tip: 'Auto-dismiss 3-5s. Critical errors should NOT be toasts (the user may miss them).' },
+        skeleton: { name: 'Skeleton loader', when: 'Loading content with a known structure (cards, lists, feeds).', tip: 'Better than a spinner: feels "almost there" and cuts perceived wait by 20-30%.' },
+        empty: { name: 'Empty State', when: 'First launch, no data, fully filtered out.', tip: 'Explain why empty + give a **specific** first action. Never leave it bare.' },
+        breadcrumb: { name: 'Breadcrumb', when: 'Deep hierarchy (3+ levels): a shop, docs, file system.', tip: 'Not needed for flat sites or linear wizards.' },
+        tabs: { name: 'Tabs', when: 'Parallel views of one object (Profile · Activity · Settings).', tip: '≤ 5 tabs. More than that is not tabs — it is a sidebar or dropdown.' },
+        pagination: { name: 'Pagination', when: 'Search results or catalog where order matters and users want to come back.', tip: 'Infinite feeds → infinite scroll. Choose/compare flows → pagination.' },
+        searchSug: { name: 'Search with suggestions', when: 'Large dataset, user does not know the exact query (products, articles, contacts).', tip: 'Show top-5 after 2 characters typed. Highlight the matched substring.' },
+      },
+    },
+  } as const
+  const c = COPY[lang]
+  // Tiny CSS visuals per pattern
+  const v = {
+    modal: (
+      <div className="relative w-full h-20 bg-stone-900/70 rounded-md overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-12 bg-white rounded-md shadow-lg flex items-center justify-center text-[8px] font-semibold text-stone-700">Confirm?</div>
+      </div>
+    ),
+    toast: (
+      <div className="relative w-full h-20 bg-stone-100 rounded-md overflow-hidden">
+        <div className="absolute left-1/2 bottom-2 -translate-x-1/2 px-2 py-1 bg-stone-900 text-white text-[9px] rounded-md shadow-md whitespace-nowrap">✓ Saved</div>
+      </div>
+    ),
+    skeleton: (
+      <div className="w-full h-20 bg-white border border-stone-200 rounded-md p-2 flex flex-col gap-1.5 overflow-hidden">
+        <div className="h-2 w-2/3 bg-stone-200 rounded animate-pulse" />
+        <div className="h-2 w-full bg-stone-200 rounded animate-pulse" />
+        <div className="h-2 w-1/2 bg-stone-200 rounded animate-pulse" />
+        <div className="h-6 w-1/3 bg-stone-200 rounded animate-pulse mt-auto" />
+      </div>
+    ),
+    empty: (
+      <div className="w-full h-20 bg-white border border-stone-200 rounded-md flex flex-col items-center justify-center text-stone-500">
+        <span className="text-xl">📭</span>
+        <span className="text-[9px] mt-0.5">No items yet</span>
+        <span className="text-[8px] px-1.5 py-0.5 mt-1 bg-indigo-500 text-white rounded">+ Add first</span>
+      </div>
+    ),
+    breadcrumb: (
+      <div className="w-full h-20 bg-white border border-stone-200 rounded-md p-2 flex items-center text-[9px] font-mono text-stone-500 overflow-hidden">
+        <span>Home</span><span className="mx-1">›</span><span>Docs</span><span className="mx-1">›</span><span>API</span><span className="mx-1">›</span><span className="text-stone-900 font-bold">Endpoints</span>
+      </div>
+    ),
+    tabs: (
+      <div className="w-full h-20 bg-white border border-stone-200 rounded-md overflow-hidden">
+        <div className="flex border-b border-stone-200 text-[9px]">
+          <div className="px-2 py-1 border-b-2 border-indigo-600 text-indigo-600 font-semibold">Profile</div>
+          <div className="px-2 py-1 text-stone-500">Activity</div>
+          <div className="px-2 py-1 text-stone-500">Settings</div>
+        </div>
+        <div className="p-2 text-[9px] text-stone-400">Profile content…</div>
+      </div>
+    ),
+    pagination: (
+      <div className="w-full h-20 bg-white border border-stone-200 rounded-md flex items-center justify-center gap-1 text-[10px] font-mono">
+        <span className="px-1.5 py-0.5 bg-stone-100 rounded">‹</span>
+        <span className="px-1.5 py-0.5">1</span>
+        <span className="px-1.5 py-0.5 bg-indigo-500 text-white rounded font-bold">2</span>
+        <span className="px-1.5 py-0.5">3</span>
+        <span className="px-1 text-stone-400">…</span>
+        <span className="px-1.5 py-0.5">10</span>
+        <span className="px-1.5 py-0.5 bg-stone-100 rounded">›</span>
+      </div>
+    ),
+    searchSug: (
+      <div className="w-full h-20 bg-white border border-stone-200 rounded-md overflow-hidden">
+        <div className="px-2 py-1 border-b border-stone-200 text-[9px] text-stone-600 font-mono">🔍 lat…</div>
+        <div className="text-[9px]">
+          <div className="px-2 py-0.5 bg-indigo-50"><strong>Lat</strong>te macchiato</div>
+          <div className="px-2 py-0.5"><strong>Lat</strong>te ice</div>
+          <div className="px-2 py-0.5"><strong>Lat</strong>e checkout</div>
+        </div>
+      </div>
+    ),
+  }
+  const cards: Card[] = [
+    { key: 'modal', ...c.cards.modal, visual: v.modal },
+    { key: 'toast', ...c.cards.toast, visual: v.toast },
+    { key: 'skeleton', ...c.cards.skeleton, visual: v.skeleton },
+    { key: 'empty', ...c.cards.empty, visual: v.empty },
+    { key: 'breadcrumb', ...c.cards.breadcrumb, visual: v.breadcrumb },
+    { key: 'tabs', ...c.cards.tabs, visual: v.tabs },
+    { key: 'pagination', ...c.cards.pagination, visual: v.pagination },
+    { key: 'searchSug', ...c.cards.searchSug, visual: v.searchSug },
+  ]
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+        <h3 className="text-base font-semibold text-foreground">{title || c.title}</h3>
+        <p className="mt-0.5 text-[12px] text-stone-600">{description || c.desc}</p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+        {cards.map((card, i) => (
+          <div
+            key={card.key}
+            className={`p-4 ${i % 2 !== 1 ? 'sm:border-r' : ''} ${i % 4 !== 3 ? 'lg:border-r' : 'sm:border-r-0 lg:border-r-0'} ${i < cards.length - 2 ? 'sm:border-b' : ''} ${i < cards.length - 4 ? 'lg:border-b lg:border-b-0' : ''} border-stone-100`}
+          >
+            {card.visual}
+            <h4 className="text-sm font-bold text-stone-900 mt-3 mb-1">{card.name}</h4>
+            <p className="text-[11px] text-stone-600 leading-snug mb-2"><strong className="text-stone-700">{lang === 'ru' ? 'Когда:' : 'When:'}</strong> {card.when}</p>
+            <p className="text-[11px] text-emerald-700 leading-snug"><strong>{lang === 'ru' ? '💡' : '💡'}</strong> {card.tip}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function UiComponentsLibrarySection({ title, description }: { title?: string; description?: string }) {
+  const { lang } = useLanguage()
+  type Card = { key: string; name: string; states: string; tip: string; visual: React.ReactNode }
+  const COPY = {
+    ru: {
+      title: 'Каталог Core UI Components',
+      desc: '10 атомов, из которых собирается любой интерфейс. Каждый имеет варианты и состояния — это то, что закладывают в дизайн-токены.',
+      cards: {
+        button: { name: 'Button', states: 'primary · secondary · ghost · destructive · sizes sm/md/lg · default/hover/pressed/disabled', tip: '1 primary CTA на экран. Всё остальное — secondary/ghost.' },
+        input: { name: 'Text Input', states: 'default · focus · filled · error · disabled · с label и helper text', tip: 'Подпись СВЕРХУ. Placeholder ≠ label (исчезает при вводе).' },
+        select: { name: 'Select / Dropdown', states: 'closed · open · selected · search-inside (combobox)', tip: 'Если ≤ 5 опций — лучше radio. Select — для длинных списков.' },
+        checkbox: { name: 'Checkbox', states: 'unchecked · checked · indeterminate · disabled', tip: 'Множественный выбор. Для one-of-many — radio.' },
+        radio: { name: 'Radio', states: 'unchecked · selected · disabled', tip: 'Только когда выбор взаимоисключающий. Минимум 2 опции.' },
+        toggle: { name: 'Toggle / Switch', states: 'on · off · disabled', tip: 'Применяется **мгновенно** (без Save). Если нужен Save — это checkbox.' },
+        card: { name: 'Card', states: 'flat · elevated · interactive · selected · loading (skeleton)', tip: 'Радиус, тень и padding — токены дизайн-системы. Не выдумывай свои.' },
+        badge: { name: 'Badge / Tag', states: 'success · warning · error · info · neutral · removable (chip)', tip: 'Короткая (1-2 слова). Для длинных meta — обычный текст.' },
+        avatar: { name: 'Avatar', states: 'image · initials · icon · with status indicator · sizes xs-xl', tip: 'Fallback на initials когда нет фото. Группа — overlap с +N.' },
+        tooltip: { name: 'Tooltip', states: 'hover · focus (a11y!) · top/bottom/left/right placement', tip: 'Никогда не клади туда критичную информацию — на тач-экранах hover нет.' },
+      },
+    },
+    en: {
+      title: 'Core UI Components library',
+      desc: '10 atoms every interface is built from. Each has variants and states — exactly what design tokens encode.',
+      cards: {
+        button: { name: 'Button', states: 'primary · secondary · ghost · destructive · sizes sm/md/lg · default/hover/pressed/disabled', tip: 'One primary CTA per screen. Everything else is secondary/ghost.' },
+        input: { name: 'Text Input', states: 'default · focus · filled · error · disabled · with label and helper text', tip: 'Label ABOVE the field. Placeholder is not a label (disappears on input).' },
+        select: { name: 'Select / Dropdown', states: 'closed · open · selected · searchable (combobox)', tip: '≤ 5 options → use radios. Use Select for long lists.' },
+        checkbox: { name: 'Checkbox', states: 'unchecked · checked · indeterminate · disabled', tip: 'Multiple choice. For one-of-many use radios.' },
+        radio: { name: 'Radio', states: 'unchecked · selected · disabled', tip: 'Only when choices are mutually exclusive. Minimum 2 options.' },
+        toggle: { name: 'Toggle / Switch', states: 'on · off · disabled', tip: 'Applied **instantly** (no Save). If a Save step is needed → checkbox.' },
+        card: { name: 'Card', states: 'flat · elevated · interactive · selected · loading (skeleton)', tip: 'Radius, shadow and padding live in design tokens. Do not improvise.' },
+        badge: { name: 'Badge / Tag', states: 'success · warning · error · info · neutral · removable (chip)', tip: 'Keep it short (1-2 words). For long meta use plain text.' },
+        avatar: { name: 'Avatar', states: 'image · initials · icon · with status dot · sizes xs–xl', tip: 'Fallback to initials when there is no photo. Group avatars overlap with +N.' },
+        tooltip: { name: 'Tooltip', states: 'hover · focus (a11y!) · top/bottom/left/right placement', tip: 'Never put critical info in tooltips — touch devices have no hover.' },
+      },
+    },
+  } as const
+  const c = COPY[lang]
+  const v = {
+    button: (
+      <div className="flex flex-wrap items-center gap-1.5 w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2">
+        <span className="px-2 py-1 bg-indigo-600 text-white text-[9px] font-semibold rounded">Primary</span>
+        <span className="px-2 py-1 bg-white border border-stone-300 text-stone-700 text-[9px] font-semibold rounded">Secondary</span>
+        <span className="px-2 py-1 text-stone-600 text-[9px] font-semibold rounded">Ghost</span>
+        <span className="px-2 py-1 bg-red-600 text-white text-[9px] font-semibold rounded">Delete</span>
+      </div>
+    ),
+    input: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2">
+        <div className="text-[8px] font-semibold text-stone-700 mb-0.5">Email</div>
+        <div className="text-[9px] px-2 py-1 bg-white border-2 border-indigo-500 rounded text-stone-700">name@example.com|</div>
+        <div className="text-[8px] text-stone-500 mt-0.5">We&apos;ll never share it</div>
+      </div>
+    ),
+    select: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2">
+        <div className="text-[8px] font-semibold text-stone-700 mb-0.5">Country</div>
+        <div className="text-[9px] px-2 py-1 bg-white border border-stone-300 rounded flex items-center justify-between">
+          <span>United States</span><span className="text-stone-400">▾</span>
+        </div>
+      </div>
+    ),
+    checkbox: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2 flex flex-col gap-1 text-[9px] text-stone-700">
+        <div className="flex items-center gap-1.5"><span className="w-3 h-3 bg-indigo-600 rounded-sm flex items-center justify-center text-white text-[7px]">✓</span> Subscribe</div>
+        <div className="flex items-center gap-1.5"><span className="w-3 h-3 bg-white border border-stone-400 rounded-sm" /> Marketing</div>
+        <div className="flex items-center gap-1.5"><span className="w-3 h-3 bg-indigo-600 rounded-sm flex items-center justify-center text-white text-[8px] leading-none">−</span> Mixed (indeterminate)</div>
+      </div>
+    ),
+    radio: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2 flex flex-col gap-1 text-[9px] text-stone-700">
+        <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full border-2 border-indigo-600 flex items-center justify-center"><span className="w-1.5 h-1.5 rounded-full bg-indigo-600" /></span> Free</div>
+        <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full border-2 border-stone-400" /> Pro</div>
+        <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full border-2 border-stone-400" /> Enterprise</div>
+      </div>
+    ),
+    toggle: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2 flex flex-col gap-1.5 text-[9px] text-stone-700">
+        <div className="flex items-center gap-2"><span className="w-6 h-3.5 bg-indigo-600 rounded-full relative"><span className="absolute right-0.5 top-0.5 w-2.5 h-2.5 bg-white rounded-full" /></span> Notifications</div>
+        <div className="flex items-center gap-2"><span className="w-6 h-3.5 bg-stone-300 rounded-full relative"><span className="absolute left-0.5 top-0.5 w-2.5 h-2.5 bg-white rounded-full" /></span> Dark mode</div>
+      </div>
+    ),
+    card: (
+      <div className="w-full h-20 bg-white border border-stone-200 rounded-md p-2 shadow-md">
+        <div className="h-7 bg-stone-100 rounded mb-1.5" />
+        <div className="text-[9px] font-bold text-stone-900">Card title</div>
+        <div className="text-[8px] text-stone-500">Card description text</div>
+      </div>
+    ),
+    badge: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2 flex flex-wrap items-center gap-1 text-[9px] font-semibold">
+        <span className="px-1.5 py-0.5 bg-emerald-100 text-emerald-700 rounded-full">✓ Active</span>
+        <span className="px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded-full">Pending</span>
+        <span className="px-1.5 py-0.5 bg-red-100 text-red-700 rounded-full">Failed</span>
+        <span className="px-1.5 py-0.5 bg-indigo-100 text-indigo-700 rounded-full">New</span>
+      </div>
+    ),
+    avatar: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2 flex items-center gap-2">
+        <div className="w-9 h-9 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[11px] font-bold">МШ</div>
+        <div className="flex -space-x-2">
+          <div className="w-7 h-7 rounded-full bg-rose-400 border-2 border-white" />
+          <div className="w-7 h-7 rounded-full bg-emerald-400 border-2 border-white" />
+          <div className="w-7 h-7 rounded-full bg-amber-400 border-2 border-white flex items-center justify-center text-[9px] font-bold text-amber-900">+3</div>
+        </div>
+      </div>
+    ),
+    tooltip: (
+      <div className="w-full h-20 bg-stone-50 border border-stone-200 rounded-md p-2 flex items-center justify-center">
+        <div className="relative">
+          <span className="w-6 h-6 rounded-full bg-stone-300 inline-flex items-center justify-center text-[10px] font-bold text-stone-700">?</span>
+          <div className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 bg-stone-900 text-white text-[8px] rounded whitespace-nowrap shadow-md">Need help?</div>
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[4px] border-t-stone-900" />
+        </div>
+      </div>
+    ),
+  }
+  const cards: Card[] = [
+    { key: 'button', ...c.cards.button, visual: v.button },
+    { key: 'input', ...c.cards.input, visual: v.input },
+    { key: 'select', ...c.cards.select, visual: v.select },
+    { key: 'checkbox', ...c.cards.checkbox, visual: v.checkbox },
+    { key: 'radio', ...c.cards.radio, visual: v.radio },
+    { key: 'toggle', ...c.cards.toggle, visual: v.toggle },
+    { key: 'card', ...c.cards.card, visual: v.card },
+    { key: 'badge', ...c.cards.badge, visual: v.badge },
+    { key: 'avatar', ...c.cards.avatar, visual: v.avatar },
+    { key: 'tooltip', ...c.cards.tooltip, visual: v.tooltip },
+  ]
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+        <h3 className="text-base font-semibold text-foreground">{title || c.title}</h3>
+        <p className="mt-0.5 text-[12px] text-stone-600">{description || c.desc}</p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-0">
+        {cards.map((card) => (
+          <div key={card.key} className="p-4 border-stone-100 border-r border-b">
+            {card.visual}
+            <h4 className="text-sm font-bold text-stone-900 mt-3 mb-1">{card.name}</h4>
+            <p className="text-[10px] text-stone-500 leading-snug mb-1.5 font-mono">{card.states}</p>
+            <p className="text-[11px] text-emerald-700 leading-snug">💡 {card.tip}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -1846,6 +2126,10 @@ function renderSection(section: Section) {
       )
     case 'nine-visual-elements':
       return <NineVisualElementsSection title={section.title} description={section.description} />
+    case 'ux-patterns-library':
+      return <UxPatternsLibrarySection title={section.title} description={section.description} />
+    case 'ui-components-library':
+      return <UiComponentsLibrarySection title={section.title} description={section.description} />
     case 'divider':
       return <DividerSection />
     default:
