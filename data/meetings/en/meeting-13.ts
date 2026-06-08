@@ -592,6 +592,54 @@ export const meeting13: Meeting = {
           explanation:
             'The CJM is created at the Define stage, when we define the problem, study the user journey, and identify pain points. This happens before the Design stage and helps guide the design process.',
         },
+        {
+          question: 'What should a junior UX/UI designer\'s portfolio prioritize most?',
+          options: [
+            { id: 'a', text: 'As many beautiful final screenshots as possible' },
+            { id: 'b', text: 'Case studies showing process: problem → research → options → outcome, not just "pictures"' },
+            { id: 'c', text: 'A list of every tool you have learned' },
+            { id: 'd', text: 'An animated logo on the homepage' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Recruiters and lead designers look for thinking, not just beauty. A strong case shows the problem, what you researched, the options you weighed, why you chose this solution, and the result. "Pretty screens with no process" is a weak portfolio.',
+        },
+        {
+          question: 'A PM asks you to add a dark pattern for +5% subscriptions. What is the best response?',
+          options: [
+            { id: 'a', text: 'Silently refuse on the principle that "it is unethical"' },
+            { id: 'b', text: 'Refuse via risk: cite regulatory fines (FTC/EU) and propose an honest alternative with an A/B test' },
+            { id: 'c', text: 'Just do it, the PM is always right' },
+            { id: 'd', text: 'Quit' },
+          ],
+          correctId: 'b',
+          explanation:
+            'An ideological refusal rarely works. It is more effective to speak the language of business: dark patterns carry regulatory risk (Amazon — a $25M FTC fine, EU Digital Services Act) and PR risk. Propose an honest alternative and validate it with an A/B test — it often performs just as well.',
+        },
+        {
+          question: 'Which "dark pattern" makes unsubscribing far harder than subscribing?',
+          options: [
+            { id: 'a', text: 'Confirmshaming' },
+            { id: 'b', text: 'Roach Motel' },
+            { id: 'c', text: 'False Urgency' },
+            { id: 'd', text: 'Privacy Zuckering' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Roach Motel: easy to get in, hard to get out (5 screens + a support call to cancel). Amazon Prime lost an FTC case over exactly this. The rule: unsubscribing must be as easy as subscribing.',
+        },
+        {
+          question: 'What distinguishes a UX Researcher from a UI Designer as career tracks?',
+          options: [
+            { id: 'a', text: 'UX Researcher draws interfaces, UI Designer runs interviews' },
+            { id: 'b', text: 'UX Researcher focuses on research and user data; UI Designer on the visual layer and components' },
+            { id: 'c', text: 'They are the same thing' },
+            { id: 'd', text: 'UI Designer is a more senior title' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A UX Researcher specializes in understanding users (interviews, tests, analytics, synthesizing insights). A UI Designer focuses on visual execution (mockups, components, design systems, prototypes). In big teams these are separate roles; in small ones one person does both.',
+        },
       ],
     },
 
@@ -1143,6 +1191,54 @@ export const meeting13: Meeting = {
           correctId: 'c',
           explanation:
             'The best answer is one backed by data. Referencing color psychology research and your own survey shows that the decision was made deliberately, not intuitively.',
+        },
+        {
+          question: 'How long should a final project presentation (defense) ideally run?',
+          options: [
+            { id: 'a', text: 'The longer the better — show everything' },
+            { id: 'b', text: 'Clear and structured: problem → process → solution → result, emphasizing key decisions rather than every screen' },
+            { id: 'c', text: 'Just show the final screens with no words' },
+            { id: 'd', text: 'Read the entire documentation word for word' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A good defense is storytelling: what problem you started with, how you researched, what decisions you made and why, what came out. You do not need to show every screen — highlight key decisions and their rationale. Structure beats duration.',
+        },
+        {
+          question: 'What should you NOT do when receiving harsh feedback at a project defense?',
+          options: [
+            { id: 'a', text: 'Thank them for the feedback and ask clarifying questions' },
+            { id: 'b', text: 'Get defensive, make excuses, and argue with every comment' },
+            { id: 'c', text: 'Note the comments for the next iteration' },
+            { id: 'd', text: 'Explain the decision logic while acknowledging constraints' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Defending and arguing every point is the classic junior mistake. Design critique is not a personal attack. A pro thanks, clarifies, explains the context of a decision, and captures what to improve next iteration.',
+        },
+        {
+          question: 'Why does a junior designer need a mentor, and how do you find one?',
+          options: [
+            { id: 'a', text: 'To do the work for you' },
+            { id: 'b', text: 'To accelerate growth via feedback and experience; find one in communities, at portfolio reviews, via ADPList and networking' },
+            { id: 'c', text: 'No mentor needed, YouTube teaches everything' },
+            { id: 'd', text: 'To hand you a job through connections' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A mentor accelerates growth: feedback on your work, shared experience, and help avoiding known pitfalls. Find one on ADPList (free mentors), in design communities, at portfolio reviews. A mentor guides — you still do the work.',
+        },
+        {
+          question: 'Which 2025-2026 UX/UI trend changes the designer\'s role the most?',
+          options: [
+            { id: 'a', text: 'A return to skeuomorphism' },
+            { id: 'b', text: 'AI tools: the designer becomes an "AI director" — guiding, curating, and reviewing rather than drawing every pixel by hand' },
+            { id: 'c', text: 'Abandoning mobile apps' },
+            { id: 'd', text: 'Everyone switching to black-and-white interfaces' },
+          ],
+          correctId: 'b',
+          explanation:
+            'AI shifts the role: routine work (resizing, variants, localization, first-draft generation) gets automated, while the designer\'s value moves to framing the problem, curating, critical selection, and understanding the user. An "AI director," not a "pixel pusher."',
         },
       ],
     },
