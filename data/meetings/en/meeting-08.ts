@@ -621,6 +621,54 @@ export const meeting08: Meeting = {
           explanation:
             'Whitespace is a powerful visual hierarchy tool. Space around an element highlights it, creates "breathing room," and a sense of quality. Premium brands always use generous spacing.',
         },
+        {
+          question: 'A nav menu grew to 16 items and users now take longer to choose. Which law explains it and what do you do?',
+          options: [
+            { id: 'a', text: 'Fitts\'s Law — make the menu items bigger' },
+            { id: 'b', text: 'Hick\'s Law — choice time grows with options; group into 5-7 items, hide rare ones under "More"' },
+            { id: 'c', text: 'Miller\'s Law — add more items to reach exactly 20' },
+            { id: 'd', text: 'Jakob\'s Law — make the menu different from competitors' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Hick\'s Law: decision time ∝ log₂(options). 16 items = a long scan. Group into 5-7 per level, hide rare features under "More"/"Resources".',
+        },
+        {
+          question: 'A designer places a 28px "Pay" CTA in the top corner of a mobile screen. Which principle is violated?',
+          options: [
+            { id: 'a', text: 'Fitts\'s Law — the target is small and far from the thumb zone, hard to hit' },
+            { id: 'b', text: 'Gestalt proximity' },
+            { id: 'c', text: 'Rule of thirds' },
+            { id: 'd', text: 'Nothing — that is fine' },
+          ],
+          correctId: 'a',
+          explanation:
+            'Fitts\'s Law: time-to-target ∝ distance / size. A small button far from the thumb = misses and frustration. A primary mobile CTA should be large (44-48px min) in the bottom thumb-zone.',
+        },
+        {
+          question: 'Which of these is NOT one of the 9 core visual elements?',
+          options: [
+            { id: 'a', text: 'Point' },
+            { id: 'b', text: 'Texture' },
+            { id: 'c', text: 'Value (lightness)' },
+            { id: 'd', text: 'Conversion' },
+          ],
+          correctId: 'd',
+          explanation:
+            'The 9 core elements: point, line, shape, form, color, value, texture, space, type. Conversion is a business metric, not a visual element.',
+        },
+        {
+          question: 'A card feed feels "jolty": card heights and gaps between them vary. Which composition principle is broken?',
+          options: [
+            { id: 'a', text: 'Rhythm — repeated intervals create predictability and easy scanning' },
+            { id: 'b', text: 'Radial balance' },
+            { id: 'c', text: 'Figure-ground' },
+            { id: 'd', text: 'Golden ratio' },
+          ],
+          correctId: 'a',
+          explanation:
+            'Rhythm is the repetition of elements at consistent intervals. When gaps and heights "drift," the eye stumbles. Equal card height + a constant gap (e.g. 16px) = a steady "beat" and fast scanning.',
+        },
       ],
     },
 
@@ -1307,6 +1355,66 @@ export const meeting08: Meeting = {
           correctId: 'b',
           explanation:
             'The rule of thirds: the screen is divided by two horizontal and two vertical lines into 9 parts. The four intersection points are "power points" that naturally attract the eye.',
+        },
+        {
+          question: 'A corporate bank site wants to convey trust and stability. Which type of balance fits best?',
+          options: [
+            { id: 'a', text: 'Symmetrical — a mirrored composition reads as formal, stable, reliable' },
+            { id: 'b', text: 'Asymmetrical — it is more dynamic' },
+            { id: 'c', text: 'Radial — elements from a center' },
+            { id: 'd', text: 'Balance does not matter for banks' },
+          ],
+          correctId: 'a',
+          explanation:
+            'Symmetrical balance (mirrored along an axis) creates a sense of stability, formality, and trust — exactly what a bank needs. Asymmetry is for startups and creative brands where dynamism matters.',
+        },
+        {
+          question: 'What ratio does the golden ratio approximately give, used for column proportions?',
+          options: [
+            { id: 'a', text: '1:1 (50/50)' },
+            { id: 'b', text: '1:1.618 (roughly 62/38)' },
+            { id: 'c', text: '1:2 (33/67)' },
+            { id: 'd', text: '1:3 (25/75)' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The golden ratio ≈ 1:1.618, which as percentages is ~62/38. Twitter (X) uses it on desktop: feed ~62%, sidebar ~38%. It reads as naturally harmonious.',
+        },
+        {
+          question: 'What characterizes "positive" and "negative" space in composition?',
+          options: [
+            { id: 'a', text: 'Positive = light elements, negative = dark ones' },
+            { id: 'b', text: 'Positive = what is drawn (content); negative = the air between elements (whitespace)' },
+            { id: 'c', text: 'Positive = good reviews, negative = bad ones' },
+            { id: 'd', text: 'They are synonyms for margin and padding' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Positive space is the content (text, buttons, images). Negative space (whitespace) is the void between them. Negative space is an active tool, not a "leftover": it creates focus, grouping, and a premium feel.',
+        },
+        {
+          question: 'The FedEx logo (arrow between E and x) and the WWF logo are famous examples of using what?',
+          options: [
+            { id: 'a', text: 'The golden ratio' },
+            { id: 'b', text: 'Negative space — the eye "completes" the image from the void' },
+            { id: 'c', text: 'The rule of thirds' },
+            { id: 'd', text: 'Radial balance' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Both the FedEx arrow and the WWF panda silhouette are formed by negative space — what is NOT drawn. The brain (Gestalt closure) completes the image. It is the peak of mastery in working with empty space.',
+        },
+        {
+          question: 'What does "break the pattern" mean in composition and why do designers do it?',
+          options: [
+            { id: 'a', text: 'It is a mistake, rhythm must never be broken' },
+            { id: 'b', text: 'Deliberately disrupt a repeating pattern in one spot to draw all attention to that element' },
+            { id: 'c', text: 'Reduce the number of animations' },
+            { id: 'd', text: 'Change the font on every line' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A broken rhythm is a powerful accent: when everything repeats identically, the single "odd one out" element instantly grabs the eye. E.g. a contrast CTA in a list of muted rows. Use deliberately and sparingly.',
         },
       ],
     },
