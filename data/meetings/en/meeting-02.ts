@@ -420,6 +420,54 @@ export const meeting02: Meeting = {
           explanation:
             'The iPhone presentation on January 9, 2007 was the turning point. Apple demonstrated that a multitouch screen could completely replace a physical keyboard.',
         },
+        {
+          question: 'One of Dieter Rams\'s 10 principles says "Good design is as little design as possible." What does it mean?',
+          options: [
+            { id: 'a', text: 'The less you work, the better' },
+            { id: 'b', text: 'Focus on the essential, drop the rest — "Less, but better"; nothing distracts from the function' },
+            { id: 'c', text: 'Designers are unnecessary' },
+            { id: 'd', text: 'Minimum colors in the palette' },
+          ],
+          correctId: 'b',
+          explanation:
+            '"Weniger, aber besser" (less, but better) is Rams\'s creed. Good design removes everything superfluous and keeps the essence. These 1970s principles directly shaped Apple\'s design (Jony Ive openly cited Rams).',
+        },
+        {
+          question: 'How do the Web 1.0, Web 2.0, and Web 3.0 eras differ?',
+          options: [
+            { id: 'a', text: 'They are just browser versions' },
+            { id: 'b', text: 'Web 1.0 — static reading; Web 2.0 — interactivity and UGC (social media); Web 3.0 — decentralization, user-owned data, AI/blockchain' },
+            { id: 'c', text: 'It is internet speed: 1, 2, 3 megabits' },
+            { id: 'd', text: 'No difference' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Web 1.0 (1990s) — read-only, static pages. Web 2.0 (2000s) — read-write: users create content (social media, blogs, wikis). Web 3.0 — the concept of decentralization, data ownership, the semantic web, and AI.',
+        },
+        {
+          question: 'Why is it useful for a designer to know the history of interfaces?',
+          options: [
+            { id: 'a', text: 'To show off in an interview' },
+            { id: 'b', text: 'Many "new" solutions are reimagined old ones; understanding the evolution helps avoid repeating mistakes and see why conventions exist' },
+            { id: 'c', text: 'History is useless for practice' },
+            { id: 'd', text: 'To copy old interfaces' },
+          ],
+          correctId: 'b',
+          explanation:
+            'History explains why interfaces look and work as they do (conventions, expectations — Jakob\'s Law). Many trends are cyclical (skeuomorphism → flat → neumorphism). Understanding the evolution guards against reinventing the wheel and helps you break rules deliberately.',
+        },
+        {
+          question: 'The CLI (command line) era gave way to the GUI era. What was the key UX shift?',
+          options: [
+            { id: 'a', text: 'More colors appeared' },
+            { id: 'b', text: 'From "the user must remember commands" to "the user recognizes and clicks" — recognition over recall' },
+            { id: 'c', text: 'Computers got faster' },
+            { id: 'd', text: 'The internet arrived' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The CLI required memorizing commands (recall) — a high barrier. The GUI introduced recognition: you see icons, menus, buttons and pick. That made computers accessible to everyone, not just programmers. Recognition > recall is a fundamental UX principle.',
+        },
       ],
     },
 
@@ -1016,6 +1064,54 @@ export const meeting02: Meeting = {
           correctId: 'c',
           explanation:
             'Data dashboards contain large amounts of data, charts, and metrics. Cognitive load is the primary design challenge.',
+        },
+        {
+          question: 'What does a UX Researcher do, and why is it a role separate from a designer?',
+          options: [
+            { id: 'a', text: 'Draws the final mockups' },
+            { id: 'b', text: 'Plans and runs research (interviews, tests, surveys), synthesizes insights — owns "understand the user," not "draw it"' },
+            { id: 'c', text: 'Writes code' },
+            { id: 'd', text: 'Manages the project budget' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A UX Researcher specializes in the evidence base: who the users are, their pains, how they behave. That needs distinct skills (research methodology, statistics, synthesis). In big teams it is a standalone role; in small ones it merges with design.',
+        },
+        {
+          question: 'What is a User Flow artifact and why is it useful?',
+          options: [
+            { id: 'a', text: 'It is the final visual design' },
+            { id: 'b', text: 'A diagram of the user\'s path through the product: steps, branches, and decisions to reach a goal' },
+            { id: 'c', text: 'A list of the project\'s colors' },
+            { id: 'd', text: 'A designer\'s resume' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A User Flow is a diagram of the steps and decision points a user takes toward a goal (e.g. "place an order"). It reveals extra steps, dead ends, and missing states BEFORE you draw the screens.',
+        },
+        {
+          question: 'What does the first "diamond" in the Double Diamond model describe?',
+          options: [
+            { id: 'a', text: 'Drawing the final design right away' },
+            { id: 'b', text: 'Discover + Define: widen understanding of the problem (research broadly), then focus on the right problem' },
+            { id: 'c', text: 'Testing only' },
+            { id: 'd', text: 'Handoff to development' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The first diamond is about the PROBLEM: Discover (diverge — research broadly) → Define (converge — frame the right problem). The second diamond is about the SOLUTION: Develop → Deliver. Diverging-converging twice guards against solving the wrong problem.',
+        },
+        {
+          question: 'Why is it important to understand that "the UX/UI world is not one person"?',
+          options: [
+            { id: 'a', text: 'To offload responsibility' },
+            { id: 'b', text: 'UX/UI is a team discipline of many roles (research, UX, UI, content, system); knowing the roles helps you fit in and know who to work with' },
+            { id: 'c', text: 'One designer physically cannot cope' },
+            { id: 'd', text: 'It is false, one person does everything' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Mature teams have researchers, UX and UI designers, UX writers, design-system leads, product designers. Knowing the roles helps a newcomer find their place, understand counterparts, and build communication. In a startup one person wears many hats, but the roles are still worth distinguishing.',
         },
       ],
     },
