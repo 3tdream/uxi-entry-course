@@ -980,6 +980,160 @@ export const meeting09: Meeting = {
           type: 'divider' as const,
         },
 
+        // === UX WRITING / MICROCOPY ===
+        {
+          type: 'heading' as const,
+          content: 'UX Writing: текст — это часть дизайна',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Wireframe со словами «Click here», «Submit», «Error» — это **полуготовый wireframe**. Реальные пользователи читают эти слова и решают, доверять ли продукту. **Microcopy** — это короткие интерфейсные тексты: кнопки, плейсхолдеры, тосты, эмпти-стейты, ошибки. Один глагол может удвоить конверсию или убить доверие.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Правило MailChimp Voice & Tone:** *Voice* — постоянная личность бренда (дружелюбный/строгий/игривый). *Tone* — меняется по контексту (бодрый в hero, серьёзный в error). Voice один и тот же на чекауте и в Twitter; tone — разный.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Конкретика побеждает абстракцию',
+              definition:
+                '**«Submit» → «Pay $12.60»**. Глагол + объект + цифра. Юзер видит, что произойдёт. Конверсия растёт на 10-30% (десятки A/B тестов Booking, Airbnb, Shopify).',
+            },
+            {
+              term: 'Активный залог, второе лицо',
+              definition:
+                '**«Your order is being processed» → «We\'re processing your order»** OR **«Processing your order…»**. Активный голос короче, понятнее, теплее. «You» и «we» — главные слова в UX Writing.',
+            },
+            {
+              term: 'Без жаргона',
+              definition:
+                '**«Authentication failed» → «That password didn\'t match»**. Юзер не знает, что такое authentication. «Cache», «token», «session» — это слова разработчиков. На фронт — только язык пользователя.',
+            },
+            {
+              term: 'Признай ошибку, дай выход',
+              definition:
+                '**«Error 500» → «Что-то сломалось у нас. Уже чиним. Попробуй через минуту, или [напиши нам]»**. Объясни что, признай вину, предложи действие. Не вали на пользователя.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Кнопка CTA — generic vs специфичная',
+          before: {
+            label: 'Слабая copy',
+            description:
+              'Generic-глагол без объекта. Юзер должен **сам угадать**, что произойдёт. Кликает осторожно — конверсия падает на 15-30%.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
+                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
+              ],
+              cta: { label: 'Submit', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
+              footnote: '«Submit» · ноль информации · юзер не знает что произойдёт',
+            },
+          },
+          after: {
+            label: 'Сильная copy',
+            description:
+              'Глагол + объект + сумма. Юзер **видит** результат до клика — психологический контракт. Booking и Shopify зафиксировали +12-25% к конверсии на таких заменах.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
+                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
+              ],
+              cta: { label: 'Pay $12.60 →', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
+              footnote: '«Pay $12.60 →» · глагол + объект + сумма · контракт виден',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Error state — обвинить vs помочь',
+          before: {
+            label: 'Слабый error',
+            description:
+              'Технический жаргон («invalid», «error code»), нет инструкции что делать. Юзер чувствует себя виноватым и не понимает следующего шага. Высокий bounce.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#FEF2F2',
+              rows: [
+                { text: '⚠ ERROR 422', fontSize: 12, fontWeight: 'bold', color: '#991B1B', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'Invalid input. Authentication failed.', fontSize: 14, color: '#7F1D1D', marginTop: 8 },
+                { text: 'Please contact support@example.com', fontSize: 12, color: '#7F1D1D', marginTop: 4 },
+              ],
+              footnote: 'жаргон · вина на юзере · нет действия',
+            },
+          },
+          after: {
+            label: 'Сильный error',
+            description:
+              'Конкретика что не так, признание со стороны системы, понятный следующий шаг. Уровень доверия растёт даже на ошибке — это парадокс хорошего UX-копирайтинга.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#FFFBEB',
+              rows: [
+                { text: 'Хм, пароль не подходит', fontSize: 15, fontWeight: 'semibold', color: '#92400E' },
+                { text: 'Возможно, опечатка. Попробуйте ещё раз — или восстановите пароль одним кликом.', fontSize: 13, color: '#78350F', lineHeight: 1.5, marginTop: 6 },
+              ],
+              cta: { label: 'Восстановить пароль', bg: '#F59E0B', color: '#78350F', size: 13 },
+              footnote: 'что не так · мы рядом · вот следующий шаг',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Empty state — «пусто» vs «приглашение»',
+          before: {
+            label: 'Пустой empty state',
+            description:
+              'Голое «No items». Юзер думает «что-то сломалось» или «не понимаю что делать». Откатывается назад или уходит.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'No items.', fontSize: 14, color: '#94A3B8', lineHeight: 1.5 },
+              ],
+              footnote: 'голая констатация · 0 контекста · 0 действий',
+            },
+          },
+          after: {
+            label: 'Empty state как приглашение',
+            description:
+              'Объясняем что и почему пусто, даём **конкретное первое действие**. Empty state — это **onboarding-момент**, а не дыра в продукте. Dropbox, Slack, Notion живут на хороших empty states.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: '📁', fontSize: 32, color: '#94A3B8' },
+                { text: 'Тут пока пусто — но это исправимо', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: 'Загрузите первый файл или импортируйте проект из Dropbox/Notion.', fontSize: 13, color: '#475569', lineHeight: 1.5, marginTop: 6 },
+              ],
+              cta: { label: '+ Загрузить файл', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'объяснение + дружелюбие + конкретное действие = «давай начнём»',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Эвристика для проверки своей microcopy:** прочитай каждую кнопку и плейсхолдер вслух. Если звучит как робот или менеджер банка — переписывай. Если звучит как разговор с человеком — оставляй. Сообщения об ошибках и пустые состояния — два места, где новички теряют 80% всех очков копирайтинга.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === ТИПИЧНЫЕ ОШИБКИ ===
         {
           type: 'heading' as const,

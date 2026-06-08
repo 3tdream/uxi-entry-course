@@ -980,6 +980,160 @@ export const meeting09: Meeting = {
           type: 'divider' as const,
         },
 
+        // === UX WRITING / MICROCOPY ===
+        {
+          type: 'heading' as const,
+          content: 'UX Writing: copy IS part of the design',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'A wireframe with "Click here", "Submit", "Error" is a **half-done wireframe**. Real users read those words and decide whether to trust your product. **Microcopy** is short interface text: buttons, placeholders, toasts, empty states, errors. One verb can double a conversion or kill trust.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**MailChimp Voice & Tone rule:** *Voice* is the constant personality of the brand (friendly / serious / playful). *Tone* shifts with context (bright in hero, grave in an error). Voice stays the same at checkout and on Twitter; tone is different.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Specific beats abstract',
+              definition:
+                '**"Submit" → "Pay $12.60"**. Verb + object + number. The user sees what will happen. Conversion lifts 10-30% (dozens of A/B tests at Booking, Airbnb, Shopify).',
+            },
+            {
+              term: 'Active voice, second person',
+              definition:
+                '**"Your order is being processed" → "We\'re processing your order"** OR **"Processing your order…"**. Active voice is shorter, clearer, warmer. "You" and "we" are the words of UX writing.',
+            },
+            {
+              term: 'No jargon',
+              definition:
+                '**"Authentication failed" → "That password didn\'t match"**. Users do not know what authentication is. "Cache", "token", "session" are developer words. Keep user-facing copy in user language.',
+            },
+            {
+              term: 'Own the error, offer a way out',
+              definition:
+                '**"Error 500" → "Something broke on our side. Already fixing it. Try again in a minute — or [contact us]"**. Explain what, own the blame, propose an action. Do not dump the failure on the user.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'CTA button — generic vs specific',
+          before: {
+            label: 'Weak copy',
+            description:
+              'Generic verb with no object. Users have to **guess** what will happen. They click cautiously — conversion drops 15-30%.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
+                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
+              ],
+              cta: { label: 'Submit', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
+              footnote: '"Submit" · zero info · user does not know what happens',
+            },
+          },
+          after: {
+            label: 'Strong copy',
+            description:
+              'Verb + object + amount. The user **sees** the outcome before they click — a psychological contract. Booking and Shopify measured +12-25% conversion swapping copy alone.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
+                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
+              ],
+              cta: { label: 'Pay $12.60 →', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
+              footnote: '"Pay $12.60 →" · verb + object + amount · contract visible',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Error state — blame vs help',
+          before: {
+            label: 'Weak error',
+            description:
+              'Technical jargon ("invalid", "error code"), no instruction on what to do. The user feels blamed and lost. High bounce.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#FEF2F2',
+              rows: [
+                { text: '⚠ ERROR 422', fontSize: 12, fontWeight: 'bold', color: '#991B1B', letterSpacing: '0.05em', textTransform: 'uppercase' },
+                { text: 'Invalid input. Authentication failed.', fontSize: 14, color: '#7F1D1D', marginTop: 8 },
+                { text: 'Please contact support@example.com', fontSize: 12, color: '#7F1D1D', marginTop: 4 },
+              ],
+              footnote: 'jargon · blame on the user · no path forward',
+            },
+          },
+          after: {
+            label: 'Strong error',
+            description:
+              'Specific about what is wrong, the system owns it, clear next step. Trust actually goes UP on an error — the paradox of good UX copy.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#FFFBEB',
+              rows: [
+                { text: 'Hmm, that password doesn\'t match', fontSize: 15, fontWeight: 'semibold', color: '#92400E' },
+                { text: 'Probably a typo. Give it another go — or reset your password in one click.', fontSize: 13, color: '#78350F', lineHeight: 1.5, marginTop: 6 },
+              ],
+              cta: { label: 'Reset password', bg: '#F59E0B', color: '#78350F', size: 13 },
+              footnote: 'what · we are with you · here is the next step',
+            },
+          },
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Empty state — "nothing" vs "invitation"',
+          before: {
+            label: 'Empty empty state',
+            description:
+              'Just "No items". User thinks "something broke" or "I do not understand what to do". Backs out or leaves.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: 'No items.', fontSize: 14, color: '#94A3B8', lineHeight: 1.5 },
+              ],
+              footnote: 'bare statement · 0 context · 0 actions',
+            },
+          },
+          after: {
+            label: 'Empty state as invitation',
+            description:
+              'Explain why it is empty, give a **specific first action**. An empty state is an **onboarding moment**, not a hole in the product. Dropbox, Slack, Notion live on great empty states.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              rows: [
+                { text: '📁', fontSize: 32, color: '#94A3B8' },
+                { text: 'It is empty here — let\'s fix that', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: 'Upload your first file or import a project from Dropbox/Notion.', fontSize: 13, color: '#475569', lineHeight: 1.5, marginTop: 6 },
+              ],
+              cta: { label: '+ Upload file', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'explanation + warmth + specific action = "let\'s start"',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Microcopy sanity check:** read every button and placeholder out loud. If it sounds like a robot or a bank manager, rewrite. If it sounds like one human talking to another, ship it. Error messages and empty states are the two places where beginners lose 80% of their writing score.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === COMMON MISTAKES ===
         {
           type: 'heading' as const,
