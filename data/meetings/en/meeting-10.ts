@@ -523,6 +523,54 @@ export const meeting10: Meeting = {
           explanation:
             'An animation of 200\u2013500 ms feels smooth and responsive. Less than 100 ms is imperceptible, more than 1 second feels slow and annoying.',
         },
+        {
+          question: 'Content is loading and its structure is known in advance (a card feed). Which loading pattern beats a spinner?',
+          options: [
+            { id: 'a', text: 'Skeleton loader — gray placeholders of the content shape; cuts perceived wait by 20-30%' },
+            { id: 'b', text: 'A centered spinning spinner' },
+            { id: 'c', text: 'A blank white screen' },
+            { id: 'd', text: 'A "Loading…" modal' },
+          ],
+          correctId: 'a',
+          explanation:
+            'A skeleton loader shows the shape of the upcoming content (gray blocks where cards will be). It creates an "almost there" feeling and cuts perceived wait time by 20-30% vs. a spinner.',
+        },
+        {
+          question: 'When should you use a toast/snackbar instead of a modal?',
+          options: [
+            { id: 'a', text: 'For critical errors the user must read' },
+            { id: 'b', text: 'For confirming an action that already happened ("Saved", "Deleted") with auto-dismiss after 3-5s' },
+            { id: 'c', text: 'When you need to collect data via a form' },
+            { id: 'd', text: 'Never, toasts are obsolete' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A toast is for an unobtrusive confirmation of something that already happened, with auto-dismiss. For critical errors a toast is wrong (the user may miss it) — use a modal or an inline message there.',
+        },
+        {
+          question: 'How many tabs are acceptable in one tab switcher before you should pick a different pattern?',
+          options: [
+            { id: 'a', text: 'No more than 2' },
+            { id: 'b', text: '≤ 5; more than that should be a sidebar or dropdown' },
+            { id: 'c', text: 'Up to 15 with no problem' },
+            { id: 'd', text: 'No limit' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Tabs work for ≤ 5 parallel views of one object (Profile · Activity · Settings). Beyond 5 the eye cannot take them in at once (Hick/Miller), so switch to sidebar navigation or a dropdown.',
+        },
+        {
+          question: 'What matters most for an animation to help rather than annoy?',
+          options: [
+            { id: 'a', text: 'The longer and flashier, the better' },
+            { id: 'b', text: 'It must be functional (explain what happened / where things moved), short, and interruptible' },
+            { id: 'c', text: 'Animate everything on screen at once' },
+            { id: 'd', text: 'Use only linear easing' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Good UI animation is functional: it shows the link between states, the direction of a transition, the response to an action. It is short (200-500ms), with natural easing (ease-out), and does not block the user. Decorative "wow" animation gets annoying on repeat.',
+        },
       ],
     },
 
@@ -1011,6 +1059,54 @@ export const meeting10: Meeting = {
           correctId: 'c',
           explanation:
             'In SemVer: MAJOR (X.0.0) \u2014 breaking changes (component removed, API changed). MINOR (1.X.0) \u2014 new features. PATCH (1.0.X) \u2014 bug fixes. Version 2.0.0 means breaking changes.',
+        },
+        {
+          question: 'You need a multiple-choice selection from 8 options. Which component fits best?',
+          options: [
+            { id: 'a', text: 'Radio buttons' },
+            { id: 'b', text: 'Checkboxes (multiple selection) or a multi-select dropdown' },
+            { id: 'c', text: 'A toggle switch' },
+            { id: 'd', text: 'One big button' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Checkboxes are for multiple selection (you can tick several). Radios are for mutually exclusive choices (one-of-many). A toggle is for instantly flipping a single setting. For 8 options with multi-select, use a checkbox list or multi-select.',
+        },
+        {
+          question: 'What is the behavioral difference between a Toggle (switch) and a Checkbox?',
+          options: [
+            { id: 'a', text: 'None, they are the same' },
+            { id: 'b', text: 'A toggle applies instantly (no Save); a checkbox usually requires form submission (Save/Submit)' },
+            { id: 'c', text: 'Toggles are mobile-only' },
+            { id: 'd', text: 'A checkbox cannot be turned off' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A toggle/switch changes state IMMEDIATELY (e.g. "Dark mode" turns on at once). A checkbox is usually part of a form and applies after pressing Save/Submit. If you need a confirmation step, it is a checkbox, not a toggle.',
+        },
+        {
+          question: 'Roughly how many "cells" must you design for a button with 4 variants and 4 states in a design system?',
+          options: [
+            { id: 'a', text: '4 \u2014 one per variant' },
+            { id: 'b', text: '16 (4 variants \u00d7 4 states: default/hover/pressed/disabled)' },
+            { id: 'c', text: '1 \u2014 it is one button' },
+            { id: 'd', text: '8 \u2014 variants plus states' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Variants \u00d7 states = a matrix. 4 variants (primary/secondary/ghost/destructive) \u00d7 4 states (default/hover/pressed/disabled) = 16 cells, each of which must be designed. That is why a full design system takes months, not an evening.',
+        },
+        {
+          question: 'Why should critical information never live only in a tooltip?',
+          options: [
+            { id: 'a', text: 'Tooltips are too small' },
+            { id: 'b', text: 'Touch screens have no hover \u2014 the user physically cannot trigger the tooltip' },
+            { id: 'c', text: 'Tooltips cannot be styled' },
+            { id: 'd', text: 'Tooltips load slowly' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A tooltip is usually triggered on hover, and touch devices (phones, tablets) have no hover. Critical info in a tooltip becomes unreachable for half your users. Tooltips are for supplementary hints, duplicated elsewhere.',
         },
       ],
     },
