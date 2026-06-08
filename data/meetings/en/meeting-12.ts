@@ -489,6 +489,54 @@ export const meeting12: Meeting = {
           explanation:
             'All gestures are invisible — users must know they exist. Gestures should accelerate actions but never be the only path. Always provide a visual alternative (button, menu).',
         },
+        {
+          question: 'Where does primary navigation usually sit on iOS (Tab Bar) and Android (per Material)?',
+          options: [
+            { id: 'a', text: 'Both strictly at the top' },
+            { id: 'b', text: 'iOS — Tab Bar at the bottom; Android — Navigation Bar at the bottom (formerly often a side drawer/hamburger)' },
+            { id: 'c', text: 'iOS bottom, Android only a left hamburger' },
+            { id: 'd', text: 'Placement is unregulated' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Both modern platforms favor bottom navigation (closer to the thumb — Fitts\'s Law). iOS uses a bottom Tab Bar, Material 3 a bottom Navigation Bar. The hamburger (Navigation Drawer) is for secondary sections, not primary ones.',
+        },
+        {
+          question: 'What is a breakpoint in responsive layout?',
+          options: [
+            { id: 'a', text: 'A point where the code crashes' },
+            { id: 'b', text: 'A screen width at which the layout reflows (e.g. ≥768px → tablet layout)' },
+            { id: 'c', text: 'A pause point in an animation' },
+            { id: 'd', text: 'A cap on the number of elements on a page' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A breakpoint is a viewport-width threshold where a media query fires and the layout changes: column count, sidebar visibility, font sizes. Common ones: ~640 (sm), 768 (md, tablet), 1024 (lg), 1280 (xl).',
+        },
+        {
+          question: 'Why is it important to design for the "thumb zone" on mobile?',
+          options: [
+            { id: 'a', text: 'It is an App Store requirement' },
+            { id: 'b', text: 'Most people hold the phone one-handed; top corners are hard to reach, so frequent actions go at the bottom' },
+            { id: 'c', text: 'So the screen gets less dirty' },
+            { id: 'd', text: 'It affects load speed' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The thumb zone is the area a thumb reaches easily in a one-handed grip (bottom and center). Frequent actions (CTA, nav) go there; rare/dangerous ones (delete, sign out) go in the hard-to-reach top corners.',
+        },
+        {
+          question: 'You must ship one product on phone, tablet, and desktop. What is the best approach?',
+          options: [
+            { id: 'a', text: 'Build three completely different designs from scratch' },
+            { id: 'b', text: 'Mobile-first: design the core for mobile, then expand the layout at larger breakpoints (columns, sidebar)' },
+            { id: 'c', text: 'Build desktop and just shrink it to phone' },
+            { id: 'd', text: 'Support phone only' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Mobile-first: the small screen keeps only what matters, forcing you to prioritize. Expanding is easier than cramming. On tablet/desktop you add columns, a sidebar, denser tables — but the core stays the same.',
+        },
       ],
     },
 
@@ -1100,6 +1148,54 @@ export const meeting12: Meeting = {
           correctId: 'b',
           explanation:
             'Not all icons should be mirrored! Navigation arrows — yes, but icons like checkmarks, search, and hearts — no. Only icons that indicate reading direction or movement should be mirrored.',
+        },
+        {
+          question: 'A dashboard shows financial numbers in a table. Which typographic technique is essential?',
+          options: [
+            { id: 'a', text: 'Italics for all numbers' },
+            { id: 'b', text: 'Tabular figures (monospaced digits) — columns align by place value and do not "jump"' },
+            { id: 'c', text: 'Underline the numbers' },
+            { id: 'd', text: 'Numbers always 2× larger than text' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Tabular figures (font-variant-numeric: tabular-nums or a mono font) make every digit the same width. $1,234 and $9,876 align by place value — the eye scans the column instantly. Without them the column visually jitters.',
+        },
+        {
+          question: 'What does the mantra "Details on Demand" mean in dashboard design?',
+          options: [
+            { id: 'a', text: 'Show the maximum data on one screen at once' },
+            { id: 'b', text: 'Reveal details on request (drill-down, hover, click) rather than dumping everything up front' },
+            { id: 'c', text: 'Request data from the server on demand' },
+            { id: 'd', text: 'Show details only to premium users' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Part of Shneiderman\'s mantra: overview first (KPIs), details on request. The user decides where to dig (click a chart → table → a specific record). It cuts cognitive load: not all at once, but layer by layer.',
+        },
+        {
+          question: 'Why can you not simply invert the light theme colors for dark mode?',
+          options: [
+            { id: 'a', text: 'It is forbidden by license' },
+            { id: 'b', text: 'Saturated colors "vibrate" on dark and lose contrast; you need muted tones and elevation via lightness, not shadows' },
+            { id: 'c', text: 'Inversion is too slow' },
+            { id: 'd', text: 'You can, that is the right way' },
+          ],
+          correctId: 'b',
+          explanation:
+            'In dark mode bright saturated colors strain the eye and "vibrate" on dark. They must be desaturated. Elevation (depth) is conveyed by shadows in light mode, but by lighter surface backgrounds in dark mode, since shadows are invisible on black.',
+        },
+        {
+          question: 'What is a responsive data table on a mobile screen?',
+          options: [
+            { id: 'a', text: 'Just show the same wide table with horizontal scroll — the only option' },
+            { id: 'b', text: 'Rethink it: turn rows into cards, hide secondary columns, keep key ones + drill-down' },
+            { id: 'c', text: 'Remove the table on mobile' },
+            { id: 'd', text: 'Shrink the font to 6px so it fits' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A wide table does not fit a phone. Best practice is to rethink rather than squeeze: each row becomes a card with 2-3 key fields, the rest on tap (drill-down). Horizontal scroll is a last resort and uncomfortable for users.',
         },
       ],
     },
