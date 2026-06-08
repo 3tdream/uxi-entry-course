@@ -524,6 +524,54 @@ export const meeting09: Meeting = {
           explanation:
             'Balsamiq is a specialized wireframing tool with an intentionally "hand-drawn" style that emphasizes that it is a skeleton, not a final design.',
         },
+        {
+          question: 'What is the key difference between a lo-fi and a hi-fi wireframe?',
+          options: [
+            { id: 'a', text: 'Lo-fi is on paper, hi-fi is only in Figma' },
+            { id: 'b', text: 'Lo-fi is a rough skeleton (fast, cheap, to validate structure); hi-fi is detailed with real content and spacing (close to final)' },
+            { id: 'c', text: 'Lo-fi is for mobile, hi-fi for desktop' },
+            { id: 'd', text: 'No difference, they are synonyms' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Lo-fi = low detail: gray blocks, placeholder text, fast and cheap; ideal for early structure and flow validation. Hi-fi = high detail: real content, precise spacing, states; close to the final design.',
+        },
+        {
+          question: 'What does "content-first design" mean in wireframing?',
+          options: [
+            { id: 'a', text: 'Draw pretty blocks first, then drop in any text' },
+            { id: 'b', text: 'Design around real content (real headings, text length, item counts) instead of Lorem ipsum' },
+            { id: 'c', text: 'Only copywriters write content, the designer is not involved' },
+            { id: 'd', text: 'All content first, then six months of building' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Content-first: design is built around real content. Lorem ipsum hides problems — real headings run longer, lists run shorter, and empty states get forgotten entirely. Real content surfaces this at the wireframe stage.',
+        },
+        {
+          question: 'Why annotate a wireframe (add explanatory notes)?',
+          options: [
+            { id: 'a', text: 'To fill empty space on the canvas' },
+            { id: 'b', text: 'A wireframe without notes is a puzzle: devs and stakeholders do not know element behavior, states, and logic' },
+            { id: 'c', text: 'Annotations are unnecessary, it is all obvious' },
+            { id: 'd', text: 'To show the client how much work it was' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Annotations explain what a static image cannot: what happens on click, which states exist (loading/error/empty), where data comes from, validation rules. Without them a wireframe spawns dozens of questions.',
+        },
+        {
+          question: 'What does the rule "start with lo-fi, not straight to hi-fi" mean?',
+          options: [
+            { id: 'a', text: 'Hi-fi is never needed' },
+            { id: 'b', text: 'Do not pour hours into details and pixels before the structure is approved — otherwise rework is costly and you hate to throw it away' },
+            { id: 'c', text: 'Lo-fi looks more professional' },
+            { id: 'd', text: 'Clients love gray blocks' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Polishing pixels before the structure is approved is a classic beginner mistake. Once you sink 5 hours into a beautiful screen, it is psychologically hard to scrap it even if the structure is wrong. Lo-fi is cheap to change — so validate structure there.',
+        },
       ],
     },
     {
@@ -1229,6 +1277,54 @@ export const meeting09: Meeting = {
           correctId: 'b',
           explanation:
             'The optimal number is 3\u20135 screens before the moment the user understands the app\u2019s value. A longer onboarding increases the drop-off rate.',
+        },
+        {
+          question: 'A button in the UI says "Submit". How do you improve this microcopy?',
+          options: [
+            { id: 'a', text: 'Leave it \u2014 "Submit" is universal' },
+            { id: 'b', text: 'Replace with verb + object: "Pay $12.60", "Create account", "Send message" \u2014 the user sees what will happen' },
+            { id: 'c', text: 'Make it caps: "SUBMIT"' },
+            { id: 'd', text: 'Replace with an icon, no text' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Specific beats abstract. "Submit" does not say what happens. "Pay $12.60" / "Create account" \u2014 verb + object \u2014 form a psychological contract: the user sees the outcome before clicking. Conversion lifts 10-30%.',
+        },
+        {
+          question: 'How do you write a good error message (error state)?',
+          options: [
+            { id: 'a', text: '"Error 422. Authentication failed."' },
+            { id: 'b', text: 'Explain in plain words what is wrong, own it as a system, give a clear next step' },
+            { id: 'c', text: 'Just "Something went wrong"' },
+            { id: 'd', text: 'Show the stack trace for accuracy' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A good error: no jargon (the user does not know "authentication"), owns the system fault, gives a way out. "Hmm, that password does not match. Maybe a typo \u2014 try again or [reset your password]." Trust rises even on an error.',
+        },
+        {
+          question: 'Why is a bare empty state "No items" bad, and how do you improve it?',
+          options: [
+            { id: 'a', text: 'You cannot, "No items" is complete' },
+            { id: 'b', text: 'An empty state is an onboarding moment: explain why it is empty + give a specific first action ("Upload your first file")' },
+            { id: 'c', text: 'Hide the section until there is data' },
+            { id: 'd', text: 'Show a 404 error' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A bare "No items" triggers "it is broken" or "I do not know what to do." A good empty state explains the situation warmly and offers a first action \u2014 turning the void into an invitation. Dropbox, Slack, Notion live on this.',
+        },
+        {
+          question: 'What do Voice and Tone mean in UX writing?',
+          options: [
+            { id: 'a', text: 'Voice = notification volume, Tone = text color' },
+            { id: 'b', text: 'Voice = the constant brand personality; Tone = shifts with context (upbeat in hero, serious in an error)' },
+            { id: 'c', text: 'They are synonyms' },
+            { id: 'd', text: 'Voice for voice interfaces, Tone for text ones' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Voice is the constant brand personality (friendly/serious/playful), the same everywhere. Tone is the mood that adapts to context: upbeat on a landing, calm and serious in an error or a data-deletion message.',
         },
       ],
     },
