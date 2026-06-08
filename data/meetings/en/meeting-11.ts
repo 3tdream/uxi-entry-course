@@ -517,6 +517,54 @@ export const meeting11: Meeting = {
           explanation:
             'SVG is a vector format that scales without quality loss. Using currentColor for fill allows changing the icon color via CSS, which is critical for design systems.',
         },
+        {
+          question: 'What most often breaks the handoff between designer and developer?',
+          options: [
+            { id: 'a', text: 'Developers cannot open Figma' },
+            { id: 'b', text: 'Missing states and edge cases: only the "ideal" screen is shown, no loading/error/empty/long-text' },
+            { id: 'c', text: 'The design is too beautiful' },
+            { id: 'd', text: 'Figma only runs on Mac' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The main cause of the "broken telephone" is shipping only the happy path. The developer does not know what to show during loading, on error, with an empty list, or with a very long name. Those states must be designed and annotated up front.',
+        },
+        {
+          question: 'Why do you need responsive annotations in a mockup?',
+          options: [
+            { id: 'a', text: 'To make the mockup look nice in a portfolio' },
+            { id: 'b', text: 'To explain how the layout behaves at different breakpoints (what wraps, hides, changes width)' },
+            { id: 'c', text: 'They are unnecessary, the developer will figure it out' },
+            { id: 'd', text: 'To increase the Figma file size' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A static mockup shows one screen size. Responsive annotations explain behavior: on mobile the sidebar becomes a hamburger, 3 columns collapse to one, some block hides. Without them the developer guesses.',
+        },
+        {
+          question: 'What should NOT be part of Design Specs (developer documentation)?',
+          options: [
+            { id: 'a', text: 'Spacing, sizes, colors (tokens)' },
+            { id: 'b', text: 'Component states and interaction behavior' },
+            { id: 'c', text: 'The designer\'s personal opinion that developers "ruin everything"' },
+            { id: 'd', text: 'Responsive rules and edge cases' },
+          ],
+          correctId: 'c',
+          explanation:
+            'Specs are objective technical documentation: tokens, states, responsive, behavior. Emotions and complaints do not belong there. A good handoff is communication and respect, not "throwing it over the wall."',
+        },
+        {
+          question: 'A designer and a developer keep clashing at handoff. What reduces friction best?',
+          options: [
+            { id: 'a', text: 'The designer should dictate pixels to the unit and demand an exact match' },
+            { id: 'b', text: 'Early developer involvement, a shared token language, and discussing features before the final design' },
+            { id: 'c', text: 'Hand over mockups with no comments — let them figure it out' },
+            { id: 'd', text: 'No talking, everything only in tickets' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Friction is lowest where the developer is involved early (saw and discussed decisions), a shared design-token language is used, and features are talked through before the final. Handoff is not a "throw moment" — it is a continuous dialogue.',
+        },
       ],
     },
 
@@ -1148,6 +1196,54 @@ export const meeting11: Meeting = {
           correctId: 'b',
           explanation:
             'Prematurely stopping a test is the most common mistake. Early results are unstable and may be due to chance. You must wait for the calculated sample size to draw reliable conclusions.',
+        },
+        {
+          question: 'How do you correctly phrase an A/B test hypothesis?',
+          options: [
+            { id: 'a', text: '"Let us make the button prettier"' },
+            { id: 'b', text: '"If [change], then [metric] will shift by [number]%, because [rationale]"' },
+            { id: 'c', text: '"I feel green is better than blue"' },
+            { id: 'd', text: '"Change everything at once and see"' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A good hypothesis is measurable and testable: a clear change, a specific metric, an expected effect size, and a rationale. Without it the test cannot be evaluated or reproduced.',
+        },
+        {
+          question: 'What is the difference between an A/B test and a multivariate test (MVT)?',
+          options: [
+            { id: 'a', text: 'They are the same' },
+            { id: 'b', text: 'A/B compares 2 versions (1 variable); MVT tests combinations of several variables at once' },
+            { id: 'c', text: 'MVT can only be done at Google' },
+            { id: 'd', text: 'A/B is for text, MVT for images' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A/B changes one variable (variant A vs B). MVT tests combinations of several elements (headline × button × image) and finds the best mix. MVT needs a MUCH larger sample — not suitable for low traffic.',
+        },
+        {
+          question: 'Why is it important to test only one variable in an A/B test?',
+          options: [
+            { id: 'a', text: 'It is faster' },
+            { id: 'b', text: 'If you change several things at once, you cannot tell which change caused the effect' },
+            { id: 'c', text: 'It is a legal requirement' },
+            { id: 'd', text: 'One variable is easier to draw' },
+          ],
+          correctId: 'b',
+          explanation:
+            'If variant B changes the button color, the text, and the position, a conversion lift gives no clue what worked (or what hurt but got masked). Isolating the variable = a clean cause-and-effect link.',
+        },
+        {
+          question: 'What is Data-Driven Design and where is its limit?',
+          options: [
+            { id: 'a', text: 'Make absolutely every decision purely by numbers, ignoring qualitative research' },
+            { id: 'b', text: 'Back decisions with data, but combine quantitative metrics with a qualitative understanding of "why"' },
+            { id: 'c', text: 'Design that an AI draws from data' },
+            { id: 'd', text: 'Designing only data dashboards' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Data-Driven Design means data-backed decisions, but A/B metrics tell you WHAT works, not WHY. Pair them with qualitative research (interviews, usability tests). Blindly following numbers leads to local maxima and dark patterns.',
         },
       ],
     },
