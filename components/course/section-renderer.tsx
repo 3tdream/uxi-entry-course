@@ -1589,6 +1589,82 @@ function IphoneSafeAreaDemoSection({
   )
 }
 
+function NineVisualElementsSection({ title, description }: { title?: string; description?: string }) {
+  const { lang } = useLanguage()
+  type Demo = { key: string; name: string; def: string; visual: React.ReactNode }
+  const COPY = {
+    ru: {
+      defaultTitle: '9 базовых визуальных элементов',
+      defaultDesc: 'Лексикон, на котором стоит вся графика и интерфейсы. Каждый шрифт, кнопка и иконка — это комбинация этих девяти.',
+      items: {
+        point: { name: 'Точка', def: 'Самый маленький элемент. Привлекает взгляд. Точка перед текстом в списке.' },
+        line: { name: 'Линия', def: 'Соединяет, разделяет, направляет взгляд. Подчёркивания, divider-ы.' },
+        shape: { name: 'Форма', def: '2D-фигура с границей. Кнопка, карточка, иконка — это формы.' },
+        form: { name: 'Объём', def: '3D-ощущение через тени и градиенты. Skeuomorphism + Material elevation.' },
+        color: { name: 'Цвет', def: 'Эмоция и иерархия за миллисекунды. Подробно был в M6.' },
+        value: { name: 'Тон (Value)', def: 'Светлота-темнота, независимо от цвета. Основа контраста.' },
+        texture: { name: 'Текстура', def: 'Визуальное «ощущение» поверхности. Noise, grain, узоры.' },
+        space: { name: 'Пространство', def: 'Воздух между элементами. Самый недооценённый «элемент».' },
+        type: { name: 'Шрифт', def: 'Семейство, начертание, размер. Подробно был в M7.' },
+      },
+    },
+    en: {
+      defaultTitle: '9 core visual elements',
+      defaultDesc: 'The vocabulary that every graphic and interface is built on. Every font, button, icon = a combination of these nine.',
+      items: {
+        point: { name: 'Point', def: 'The smallest element. Draws the eye. The bullet before a list item.' },
+        line: { name: 'Line', def: 'Connects, divides, directs the eye. Underlines, dividers.' },
+        shape: { name: 'Shape', def: '2D form with a boundary. A button, a card, an icon — all are shapes.' },
+        form: { name: 'Form', def: '3D feel via shadows and gradients. Skeuomorphism + Material elevation.' },
+        color: { name: 'Color', def: 'Emotion and hierarchy in milliseconds. Deep dive: M6.' },
+        value: { name: 'Value', def: 'Lightness-darkness independent of hue. The foundation of contrast.' },
+        texture: { name: 'Texture', def: 'The visual "feel" of a surface. Noise, grain, patterns.' },
+        space: { name: 'Space', def: 'The air between elements. The most underrated "element."' },
+        type: { name: 'Type', def: 'Family, weight, size. Deep dive: M7.' },
+      },
+    },
+  } as const
+  const c = COPY[lang]
+  const demos: Demo[] = [
+    { key: 'point', ...c.items.point, visual: <span className="w-2.5 h-2.5 rounded-full bg-stone-900 inline-block" /> },
+    { key: 'line', ...c.items.line, visual: <span className="block w-12 h-[2px] bg-stone-900" /> },
+    { key: 'shape', ...c.items.shape, visual: <span className="block w-7 h-7 bg-indigo-500 rounded-md" /> },
+    { key: 'form', ...c.items.form, visual: <span className="block w-7 h-7 rounded-md" style={{ background: 'linear-gradient(135deg, #6366F1, #312E81)', boxShadow: '2px 3px 6px rgba(15,23,42,0.25)' }} /> },
+    { key: 'color', ...c.items.color, visual: <span className="flex gap-1"><span className="w-3.5 h-7 bg-rose-500 rounded-sm" /><span className="w-3.5 h-7 bg-amber-400 rounded-sm" /><span className="w-3.5 h-7 bg-emerald-500 rounded-sm" /><span className="w-3.5 h-7 bg-sky-500 rounded-sm" /></span> },
+    { key: 'value', ...c.items.value, visual: <span className="block w-14 h-7 rounded-sm" style={{ background: 'linear-gradient(to right, #FFFFFF, #0F172A)', border: '1px solid #d6d3d1' }} /> },
+    { key: 'texture', ...c.items.texture, visual: <span className="block w-12 h-7 rounded-sm" style={{ backgroundImage: 'radial-gradient(#0f172a 1px, transparent 1px)', backgroundSize: '4px 4px', border: '1px solid #d6d3d1' }} /> },
+    { key: 'space', ...c.items.space, visual: <span className="inline-flex items-center gap-5"><span className="w-2.5 h-2.5 rounded-full bg-stone-900 inline-block" /><span className="w-2.5 h-2.5 rounded-full bg-stone-900 inline-block" /></span> },
+    { key: 'type', ...c.items.type, visual: <span className="inline-block text-2xl font-bold leading-none text-stone-900" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>Aa</span> },
+  ]
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+        <h3 className="text-base font-semibold text-foreground">{title || c.defaultTitle}</h3>
+        <p className="mt-0.5 text-[12px] text-stone-600">{description || c.defaultDesc}</p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+        {demos.map((d, i) => (
+          <div
+            key={d.key}
+            className={`p-4 md:p-5 flex items-start gap-4 ${i % 3 !== 2 ? 'lg:border-r' : ''} ${i < demos.length - (demos.length % 3 || 3) ? 'lg:border-b' : ''} border-stone-100`}
+          >
+            <div className="w-14 h-14 rounded-lg border border-stone-200 bg-stone-50 flex items-center justify-center shrink-0">
+              {d.visual}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-2 mb-0.5">
+                <span className="text-[10px] font-mono font-bold text-stone-400">#{i + 1}</span>
+                <h4 className="text-sm font-bold text-stone-900">{d.name}</h4>
+              </div>
+              <p className="text-xs text-stone-600 leading-snug">{d.def}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -1768,6 +1844,8 @@ function renderSection(section: Section) {
           labels={section.labels}
         />
       )
+    case 'nine-visual-elements':
+      return <NineVisualElementsSection title={section.title} description={section.description} />
     case 'divider':
       return <DividerSection />
     default:

@@ -50,6 +50,29 @@ export const meeting08: Meeting = {
           type: 'divider' as const,
         },
 
+        // === 9 CORE VISUAL ELEMENTS ===
+        {
+          type: 'heading' as const,
+          content: 'What every design is built from: the 9 core elements',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Before you can build a hierarchy, you need to know **what it is built from**. Every interface, poster or illustration is a combination of just **9 visual elements**. Strong designers pick them deliberately; beginners grab everything and wonder why nothing reads.',
+        },
+        {
+          type: 'nine-visual-elements' as const,
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            'Whenever you see an interface and think "looks great, but why?" — break it apart into these 9 elements. Which are active, which are dialed down, which are missing entirely? It is the shortest exercise that trains your design eye.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === SIZE CONTRAST ===
         {
           type: 'heading' as const,
@@ -751,12 +774,239 @@ export const meeting08: Meeting = {
             label: 'Imbalance',
             description:
               'A huge photo on the left (70% width) + a small heading on the right (30%). The page "tips" to the left, the text gets lost.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: '◼ ◼ ◼ photo block (huge) ◼ ◼ ◼', fontSize: 24, fontWeight: 'bold', color: '#312E81', lineHeight: 1.0 },
+                { text: 'Tiny headline', fontSize: 12, fontWeight: 'normal', color: '#9CA3AF', marginTop: 8 },
+              ],
+              footnote: 'photo = 70% · text = 30% · composition tips to the left',
+            },
           },
           after: {
             label: 'Asymmetrical balance',
             description:
               'Photo on the left (55%) + large heading, subheading, and CTA button on the right (45%). The photo is "heavier," but three text elements compensate for its weight.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: '◼ photo (55%) ◼', fontSize: 18, fontWeight: 'bold', color: '#312E81' },
+                { text: 'Build better products, faster', fontSize: 24, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1, marginTop: 10 },
+                { text: 'A platform that helps teams ship without burnout.', fontSize: 13, color: '#4B5563', lineHeight: 1.4, marginTop: 6 },
+              ],
+              cta: { label: 'Get started', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'photo 55% + (heading + subhead + CTA) 45% · three elements offset one',
+            },
           },
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Three types of balance — visually',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Symmetrical vs Asymmetrical balance',
+          before: {
+            label: 'Symmetrical (formal)',
+            description:
+              'Mirrored along a central axis. Reads as **stable, formal, trustworthy**. Fits corporate sites, payment forms, banks. Downside — can feel boring.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#F8FAFC',
+              rows: [
+                { text: 'Bank of Trust', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Secure · Reliable · Since 1872', fontSize: 12, color: '#64748B', marginTop: 8 },
+              ],
+              cta: { label: 'Open an account', bg: '#1E3A8A', color: '#FFFFFF', size: 13 },
+              footnote: 'centered stack · single axis of symmetry · corporate tone',
+            },
+          },
+          after: {
+            label: 'Asymmetrical (dynamic)',
+            description:
+              'Different elements balance each other by visual weight, not geometry. **Energy and motion**, modern feel. Fits startups, product landings, creative agencies.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'NEW · Beta', fontSize: 10, fontWeight: 'semibold', color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' },
+                { text: 'Ship faster, sleep better', fontSize: 26, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.05, marginTop: 6 },
+                { text: 'Replace 5 tools with one workflow.', fontSize: 13, color: '#475569', marginTop: 8 },
+              ],
+              cta: { label: 'Try free →', bg: '#0F172A', color: '#FFFFFF', size: 13 },
+              footnote: 'left-aligned · varied element weights · modern/dynamic',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Radial balance** is rare in UI but recognizable: a dashboard with a donut chart in the center surrounded by KPIs, the Apple Watch face with a central focal element, a loading screen with a centered spinner. Elements radiate from the center, the eye keeps returning to focus.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // === RHYTHM & REPETITION ===
+        {
+          type: 'heading' as const,
+          content: 'Rhythm and repetition',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'If **balance** is about distributing weight, **rhythm** is about repeating elements at consistent intervals. Rhythm creates **predictability** (the user knows what to expect) and **scannability** (the eye glides across the list). And **repetition** = the same element with the same styling reused across the interface — the foundation of design systems.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Rhythm',
+              definition:
+                'Repetition of **intervals** — equal spacing between similar elements. The 8px grid from M7 IS rhythm. A list of 320×180 cards with gap-16px reads like "beat-beat-beat."',
+            },
+            {
+              term: 'Repetition',
+              definition:
+                'Repetition of **elements** — the same button, icon, or card pattern used in dozens of places. Cuts cognitive load: the user learns it once and applies it everywhere.',
+            },
+            {
+              term: 'Progressive rhythm',
+              definition:
+                'Intervals or sizes **change by a rule** (e.g. growing by 8px each step). Feels like motion, acceleration. The typographic scale (M7) is a progressive rhythm.',
+            },
+            {
+              term: 'Break the pattern',
+              definition:
+                'Deliberately breaking the rhythm once draws **all attention**. A contrast-colored CTA in a list of muted rows. Use sparingly and deliberately.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Rhythm in a feed list',
+          before: {
+            label: 'No rhythm',
+            description:
+              'Cards of different heights, gap drifts (8 / 14 / 22px). The eye stumbles, the list "jolts." Users scan it more slowly.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: '▢ Card · short', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: '▢ Card · medium height variant', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: '▢ Card · tall variant with extra info', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 14 },
+                { text: '▢ Card · short', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 22 },
+                { text: '▢ Card · medium', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 10 },
+              ],
+              footnote: 'gap = 8/14/22/10px · no beat',
+            },
+          },
+          after: {
+            label: 'With rhythm',
+            description:
+              'All cards the same height, gap = 16px. The list reads evenly, like a metronome. When you need to highlight something, break the rhythm deliberately (a larger promo card).',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+              ],
+              footnote: 'gap = 16/16/16/16px · steady beat · fast to scan',
+            },
+          },
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // === POSITIVE & NEGATIVE SPACE ===
+        {
+          type: 'heading' as const,
+          content: 'Positive and negative space',
+        },
+        {
+          type: 'text' as const,
+          content:
+            '**Positive space** is **what is drawn**: text, buttons, images. **Negative space** (whitespace) is **what is NOT drawn**: the air between elements. Beginners fear the void and fill it. Pros know: **the void is a tool**, not a leftover.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Whitespace ≠ emptiness',
+              definition:
+                'It is an active hero of the design, not "what is left over." Apple uses massive air on its product pages — it signals premium.',
+            },
+            {
+              term: 'Macro vs Micro whitespace',
+              definition:
+                '**Macro** — large gaps between sections (64–128px). Give the page room to breathe. **Micro** — small padding inside components (4–16px). Make each element readable.',
+            },
+            {
+              term: 'Negative space in branding',
+              definition:
+                'The arrow between E and x in the FedEx logo, the elegant curve in the WWF logo — it is negative space that "makes" them. The eye sees what is not there.',
+            },
+            {
+              term: 'Law of Proximity in action',
+              definition:
+                'Remember Gestalt proximity? It is exactly the art of managing negative space: close = group, far = separate groups. Covered in M7 P2.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Whitespace in a hero section',
+          before: {
+            label: 'Cramped — no air',
+            description:
+              'Heading right against the subhead, subhead right against the CTA. Everything "sticks together," the page reads as cheap and stressful. The eye cannot settle.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Modern accounting for modern teams', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.15 },
+                { text: 'Manage invoices, expenses, and payroll in one place.', fontSize: 13, color: '#475569', lineHeight: 1.35, marginTop: 2 },
+              ],
+              cta: { label: 'Try it free', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'gap = 2/0px · glued stack · feels cheap',
+            },
+          },
+          after: {
+            label: 'Breathing — space works',
+            description:
+              'Generous gaps: 16px between heading and subhead, 24px before the CTA. Each element has its own air. The eye focuses step by step — premium feel.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Modern accounting for modern teams', fontSize: 24, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Manage invoices, expenses, and payroll in one place.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+              ],
+              cta: { label: 'Try it free', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'gap = 16/24px · elements breathe · premium feel',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**"Remove and look" heuristic:** if you remove an element and the page is not worse — it was clutter. If you remove the air and the page IS worse — that air was working. Train your eye: open 3 favorite product landings and estimate what % of the screen is content vs space. A great landing = ~30-40% content, the rest is whitespace.',
         },
         {
           type: 'divider' as const,

@@ -50,6 +50,29 @@ export const meeting08: Meeting = {
           type: 'divider' as const,
         },
 
+        // === 9 БАЗОВЫХ ВИЗУАЛЬНЫХ ЭЛЕМЕНТОВ ===
+        {
+          type: 'heading' as const,
+          content: 'Из чего состоит любой дизайн: 9 базовых элементов',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Прежде чем строить иерархию, нужно знать **из чего она строится**. Любой интерфейс, постер или иллюстрация — это комбинация всего из **9 визуальных элементов**. Хороший дизайнер выбирает их осознанно; новичок берёт всё подряд и удивляется, почему не работает.',
+        },
+        {
+          type: 'nine-visual-elements' as const,
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            'Когда смотришь чей-то интерфейс и думаешь «выглядит круто, но почему?» — попробуй разобрать его на эти 9 элементов. Какие активные, какие приглушены, чего вообще нет? Это самое короткое упражнение, которое прокачивает «насмотренность».',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === КОНТРАСТ РАЗМЕРА ===
         {
           type: 'heading' as const,
@@ -751,12 +774,239 @@ export const meeting08: Meeting = {
             label: 'Дисбаланс',
             description:
               'Огромное фото слева (70% ширины) + мелкий заголовок справа (30%). Страница «заваливается» влево, текст теряется.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: '◼ ◼ ◼ photo block (huge) ◼ ◼ ◼', fontSize: 24, fontWeight: 'bold', color: '#312E81', lineHeight: 1.0 },
+                { text: 'Tiny headline', fontSize: 12, fontWeight: 'normal', color: '#9CA3AF', marginTop: 8 },
+              ],
+              footnote: 'фото = 70% · текст = 30% · композиция «заваливается» влево',
+            },
           },
           after: {
             label: 'Асимметричный баланс',
             description:
               'Фото слева (55%) + крупный заголовок, подзаголовок и CTA-кнопка справа (45%). Фото «тяжелее», но три текстовых элемента компенсируют его вес.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: '◼ photo (55%) ◼', fontSize: 18, fontWeight: 'bold', color: '#312E81' },
+                { text: 'Build better products, faster', fontSize: 24, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1, marginTop: 10 },
+                { text: 'A platform that helps teams ship without burnout.', fontSize: 13, color: '#4B5563', lineHeight: 1.4, marginTop: 6 },
+              ],
+              cta: { label: 'Get started', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'фото 55% + (заголовок + подзаг + CTA) 45% · 3 элемента компенсируют 1',
+            },
           },
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Три типа баланса — визуально',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Симметричный vs Асимметричный баланс',
+          before: {
+            label: 'Симметричный (формальный)',
+            description:
+              'Зеркальное отражение по центральной оси. Создаёт ощущение **стабильности, формальности, доверия**. Подходит для корпоративных сайтов, форм оплаты, банков. Минус — может выглядеть скучно.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#F8FAFC',
+              rows: [
+                { text: 'Bank of Trust', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Secure · Reliable · Since 1872', fontSize: 12, color: '#64748B', marginTop: 8 },
+              ],
+              cta: { label: 'Open an account', bg: '#1E3A8A', color: '#FFFFFF', size: 13 },
+              footnote: 'центрированный stack · одна ось симметрии · корпоративный тон',
+            },
+          },
+          after: {
+            label: 'Асимметричный (динамичный)',
+            description:
+              'Разные элементы уравновешивают друг друга по весу, но не по геометрии. **Динамика и энергия**, ощущение современности. Подходит для стартапов, продуктовых лендингов, креативных агентств.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'plain',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'NEW · Beta', fontSize: 10, fontWeight: 'semibold', color: '#DC2626', letterSpacing: '0.1em', textTransform: 'uppercase' },
+                { text: 'Ship faster, sleep better', fontSize: 26, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.05, marginTop: 6 },
+                { text: 'Replace 5 tools with one workflow.', fontSize: 13, color: '#475569', marginTop: 8 },
+              ],
+              cta: { label: 'Try free →', bg: '#0F172A', color: '#FFFFFF', size: 13 },
+              footnote: 'выровнено влево · разные веса элементов · современный/динамичный',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Радиальный баланс** в UI редкий, но узнаваемый: dashboard с круговой диаграммой посередине + KPI вокруг неё, watchface Apple Watch с центральным элементом, экран загрузки со спиннером по центру. Элементы расходятся от центра, взгляд возвращается в фокус.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // === RHYTHM & REPETITION ===
+        {
+          type: 'heading' as const,
+          content: 'Ритм и повторение',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Если **баланс** — это про распределение веса, то **ритм** — это про повторение элементов через одинаковые интервалы. Ритм создаёт **предсказуемость** (юзер знает чего ждать) и **сканируемость** (взгляд легко скользит по списку). А **повторение** = тот же элемент с теми же стилями в разных частях интерфейса — это основа дизайн-систем.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Ритм (Rhythm)',
+              definition:
+                'Повторение **интервалов** — равные расстояния между похожими элементами. 8px-сетка из M7 — это и есть ритм. Список карточек 320×180 с gap-16px читается как «бит-бит-бит».',
+            },
+            {
+              term: 'Повторение (Repetition)',
+              definition:
+                'Повторение **элементов** — одна и та же кнопка, иконка, паттерн карточки в десятках мест. Снижает когнитивную нагрузку: юзер один раз понял «как», и применяет везде.',
+            },
+            {
+              term: 'Прогрессивный ритм',
+              definition:
+                'Интервалы или размеры **меняются по правилу** (например, увеличиваются на 8px каждый шаг). Создаёт ощущение движения, ускорения. Типографическая шкала (M7) — пример прогрессивного ритма.',
+            },
+            {
+              term: 'Сломанный ритм (Break the pattern)',
+              definition:
+                'Намеренно нарушить ритм один раз — и этот элемент **притянет всё внимание**. CTA-кнопка контрастного цвета посреди списка серых строк. Используй осознанно и редко.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Ритм карточек в feed-ленте',
+          before: {
+            label: 'Без ритма',
+            description:
+              'Карточки разной высоты, gap между ними плавает (8 / 14 / 22px). Глаз спотыкается, лента «дёргается». Юзер сканирует медленнее.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: '▢ Card · short', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: '▢ Card · medium height variant', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
+                { text: '▢ Card · tall variant with extra info', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 14 },
+                { text: '▢ Card · short', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 22 },
+                { text: '▢ Card · medium', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 10 },
+              ],
+              footnote: 'gap = 8/14/22/10px · нет «бита»',
+            },
+          },
+          after: {
+            label: 'С ритмом',
+            description:
+              'Все карточки одной высоты, gap = 16px. Лента читается ровно, как метроном. Если нужно выделить элемент — нарушай ритм осознанно (промо-карточка крупнее).',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              rows: [
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A' },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+                { text: '▢ Card', fontSize: 14, fontWeight: 'bold', color: '#0F172A', marginTop: 16 },
+              ],
+              footnote: 'gap = 16/16/16/16px · ровный «бит», сканируется глазами быстро',
+            },
+          },
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // === POSITIVE & NEGATIVE SPACE ===
+        {
+          type: 'heading' as const,
+          content: 'Позитивное и негативное пространство',
+        },
+        {
+          type: 'text' as const,
+          content:
+            '**Позитивное пространство** — это **то, что нарисовано**: текст, кнопки, картинки. **Негативное пространство** (whitespace) — это **то, что НЕ нарисовано**: воздух между элементами. Новички боятся пустоты и заполняют её. Профи знают: **пустота — это инструмент**, а не остаток.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'Whitespace ≠ пустота',
+              definition:
+                'Это активный «герой» дизайна, а не «то, что осталось». Apple использует огромные поля воздуха в своих продуктовых страницах — это сигнал премиума.',
+            },
+            {
+              term: 'Macro vs Micro whitespace',
+              definition:
+                '**Macro** — большие промежутки между секциями (64–128px). Создают «дыхание» страницы. **Micro** — мелкие отступы внутри компонентов (4–16px). Делают элемент читаемым.',
+            },
+            {
+              term: 'Negative space в брендинге',
+              definition:
+                'Стрелка между E и x в логотипе FedEx, изящный изгиб в логотипе WWF — это negative space «делает» логотип. Глаз видит то, чего нет.',
+            },
+            {
+              term: 'Закон близости в действии',
+              definition:
+                'Помнишь Gestalt-proximity? Это и есть управление негативным пространством: близко = группа, далеко = разные группы. Подробно был в M7 P2.',
+            },
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Whitespace в hero-секции',
+          before: {
+            label: 'Cramped — нет воздуха',
+            description:
+              'Заголовок впритык к подзаголовку, подзаголовок впритык к CTA. Всё «слипается», страница выглядит дешёвой и стрессовой. Юзер не успевает сфокусироваться.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Modern accounting for modern teams', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.15 },
+                { text: 'Manage invoices, expenses, and payroll in one place.', fontSize: 13, color: '#475569', lineHeight: 1.35, marginTop: 2 },
+              ],
+              cta: { label: 'Try it free', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'gap = 2/0px · слипшийся стек · ощущение «дёшево»',
+            },
+          },
+          after: {
+            label: 'Breathing — воздух работает',
+            description:
+              'Большие промежутки: 16px между заголовком и подзаголовком, 24px перед CTA. Каждый элемент имеет «свой воздух». Глаз спокойно фокусируется по очереди — premium-ощущение.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Modern accounting for modern teams', fontSize: 24, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Manage invoices, expenses, and payroll in one place.', fontSize: 14, color: '#475569', lineHeight: 1.5, marginTop: 16 },
+              ],
+              cta: { label: 'Try it free', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
+              footnote: 'gap = 16/24px · элементы «дышат» · ощущение premium',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Эвристика «убери и посмотри»**: если убрать элемент и страница не стала хуже — он был лишним. Если убрать воздух и страница стала хуже — этот воздух работал. Тренируй глаз: открой 3 любимых продуктовых лендинга и посчитай, сколько % экрана занимает контент vs пустота. Хороший лендинг = ~30-40% контента, остальное — whitespace.',
         },
         {
           type: 'divider' as const,
