@@ -951,6 +951,18 @@ export const meeting07: Meeting = {
           explanation:
             'The hero heading is the visual hook that grabs attention in the first 200ms. If it is the same size as body text, the eye does not know where to look and the user leaves. Rule of thumb: H1 ≥ 2× body (minimum). On a 1.250 scale, H1:body = 39:16 ≈ 2.4× — the working baseline.',
         },
+        {
+          question: 'What is x-height, and why can two fonts at the same px size look differently large?',
+          options: [
+            { id: 'a', text: 'x-height is the width of the letter "x"; it does not affect size' },
+            { id: 'b', text: 'x-height is the height of lowercase letters without extenders; a font with a large x-height looks bigger and more readable at the same point size' },
+            { id: 'c', text: 'x-height is the spacing between lines' },
+            { id: 'd', text: 'Only serif fonts have an x-height' },
+          ],
+          correctId: 'b',
+          explanation:
+            'x-height is the height of lowercase letters (without ascenders/descenders). At the same px size, a font with a large x-height (e.g. Inter) looks bigger and reads better at small sizes than one with a small x-height. That is why matching x-heights matters when pairing fonts.',
+        },
       ],
     },
 
