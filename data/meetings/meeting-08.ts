@@ -309,11 +309,42 @@ export const meeting08: Meeting = {
             label: 'Одинаковые отступы',
             description:
               'Все поля формы (имя, email, пароль, город, телефон) расположены с одинаковым отступом 16px — непонятно, что «Имя + Email» — это личные данные, а «Пароль» — безопасность.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: '▢ Имя', fontSize: 13, color: '#475569' },
+                { text: '▢ Email', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ Пароль', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ Подтверждение пароля', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ Телефон', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ Город', fontSize: 13, color: '#475569', marginTop: 16 },
+              ],
+              footnote: 'все gap = 16px · 6 полей одной «стеной» · групп не видно',
+            },
           },
           after: {
             label: 'Группировка через отступы',
             description:
               'Группа «Личные данные» (имя, email) с отступом 8px между полями. Отступ 32px. Группа «Безопасность» (пароль, подтверждение). Отступ 32px. Группа «Контакты» (телефон, город). Структура очевидна.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'ЛИЧНЫЕ ДАННЫЕ', fontSize: 10, fontWeight: 'semibold', color: '#94A3B8', letterSpacing: '0.08em', textTransform: 'uppercase' },
+                { text: '▢ Имя', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: '▢ Email', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: 'БЕЗОПАСНОСТЬ', fontSize: 10, fontWeight: 'semibold', color: '#94A3B8', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 28 },
+                { text: '▢ Пароль', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: '▢ Подтверждение пароля', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: 'КОНТАКТЫ', fontSize: 10, fontWeight: 'semibold', color: '#94A3B8', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 28 },
+                { text: '▢ Телефон', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: '▢ Город', fontSize: 13, color: '#475569', marginTop: 8 },
+              ],
+              footnote: 'внутри группы 8px · между группами 32px · 3 группы читаются мгновенно',
+            },
           },
         },
         {

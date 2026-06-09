@@ -309,11 +309,42 @@ export const meeting08: Meeting = {
             label: 'Equal spacing',
             description:
               'All form fields (name, email, password, city, phone) are placed with equal 16px spacing — it is unclear that "Name + Email" are personal data and "Password" is security.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: '▢ Name', fontSize: 13, color: '#475569' },
+                { text: '▢ Email', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ Password', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ Confirm password', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ Phone', fontSize: 13, color: '#475569', marginTop: 16 },
+                { text: '▢ City', fontSize: 13, color: '#475569', marginTop: 16 },
+              ],
+              footnote: 'every gap = 16px · 6 fields as one "wall" · no groups visible',
+            },
           },
           after: {
             label: 'Grouping through spacing',
             description:
               '"Personal Data" group (name, email) with 8px between fields. 32px gap. "Security" group (password, confirmation). 32px gap. "Contacts" group (phone, city). The structure is obvious.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'PERSONAL DATA', fontSize: 10, fontWeight: 'semibold', color: '#94A3B8', letterSpacing: '0.08em', textTransform: 'uppercase' },
+                { text: '▢ Name', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: '▢ Email', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: 'SECURITY', fontSize: 10, fontWeight: 'semibold', color: '#94A3B8', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 28 },
+                { text: '▢ Password', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: '▢ Confirm password', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: 'CONTACTS', fontSize: 10, fontWeight: 'semibold', color: '#94A3B8', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 28 },
+                { text: '▢ Phone', fontSize: 13, color: '#475569', marginTop: 8 },
+                { text: '▢ City', fontSize: 13, color: '#475569', marginTop: 8 },
+              ],
+              footnote: '8px inside groups · 32px between · 3 groups read instantly',
+            },
           },
         },
         {
