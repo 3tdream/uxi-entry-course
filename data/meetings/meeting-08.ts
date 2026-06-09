@@ -1057,6 +1057,13 @@ export const meeting08: Meeting = {
           type: 'rule-of-thirds-grid' as const,
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-08-rule-of-thirds.webp',
+          alt: 'Реальный пример правила третей: ключевые элементы на пересечениях линий сетки',
+          caption: 'Правило третей: ключевые элементы — на пересечениях линий.',
+          maxWidth: 720,
+        },
+        {
           type: 'subheading' as const,
           content: 'Золотое сечение (Golden Ratio)',
         },

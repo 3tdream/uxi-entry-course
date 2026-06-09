@@ -1057,6 +1057,13 @@ export const meeting08: Meeting = {
           type: 'rule-of-thirds-grid' as const,
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-08-rule-of-thirds.webp',
+          alt: 'Real example of the rule of thirds: key elements on the grid line intersections',
+          caption: 'Rule of thirds: key elements sit on the line intersections.',
+          maxWidth: 720,
+        },
+        {
           type: 'subheading' as const,
           content: 'Golden Ratio',
         },
