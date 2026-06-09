@@ -252,6 +252,8 @@ export type Section =
   | { type: 'column-split-showcase'; title?: string; description?: string; total?: number; rows: ColumnSplitRow[] }
   | { type: 'iphone-safe-area-demo'; title?: string; description?: string; labels?: { dynamicIsland?: string; statusBar?: string; safeArea?: string; homeIndicator?: string } }
   | { type: 'nine-visual-elements'; title?: string; description?: string }
+  | { type: 'icon-set-hero' }
+  | { type: 'icon-style-trio' }
   | { type: 'ux-patterns-library'; title?: string; description?: string }
   | { type: 'ui-components-library'; title?: string; description?: string }
   | { type: 'divider' }

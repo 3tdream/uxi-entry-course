@@ -803,6 +803,10 @@ export const meeting08: Meeting = {
       subtitle: 'Системы иконок, стили иллюстраций и принципы композиции в интерфейсах',
       duration: '45 мин',
       sections: [
+        // === HERO ===
+        {
+          type: 'icon-set-hero' as const,
+        },
         // === ВВЕДЕНИЕ ===
         {
           type: 'heading' as const,
@@ -867,6 +871,9 @@ export const meeting08: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'icon-style-trio' as const,
         },
         {
           type: 'before-after' as const,

@@ -803,6 +803,10 @@ export const meeting08: Meeting = {
       subtitle: 'Icon systems, illustration styles, and composition principles in interfaces',
       duration: '45 min',
       sections: [
+        // === HERO ===
+        {
+          type: 'icon-set-hero' as const,
+        },
         // === INTRODUCTION ===
         {
           type: 'heading' as const,
@@ -867,6 +871,9 @@ export const meeting08: Meeting = {
               ],
             },
           ],
+        },
+        {
+          type: 'icon-style-trio' as const,
         },
         {
           type: 'before-after' as const,

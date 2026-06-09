@@ -14,6 +14,12 @@ import {
   ArrowRight,
   Play,
   ImageIcon,
+  Heart,
+  Star,
+  Bell,
+  Bookmark,
+  MapPin,
+  MessageCircle,
 } from 'lucide-react'
 
 // ---- Helpers ----
@@ -2043,6 +2049,121 @@ function UiComponentsLibrarySection({ title, description }: { title?: string; de
   )
 }
 
+function IconSetHeroSection() {
+  const { lang } = useLanguage()
+  const icons = [Heart, Star, Bell, Bookmark, MapPin, MessageCircle]
+  const c = {
+    ru: {
+      eyebrow: 'УРОК 8 · ЧАСТЬ 2',
+      headline: 'Иконки, иллюстрации и композиция',
+      subtext: 'Иконка — это слово. Один глиф — одно значение.',
+      line: 'Линейные',
+      filled: 'Заливка',
+      duotone: 'Дуотон',
+      footer: 'Lucide React · stroke 1.5 · сетка 24px · радиус 8px',
+    },
+    en: {
+      eyebrow: 'MEETING 8 · PART 2',
+      headline: 'Icons, illustrations & composition',
+      subtext: 'An icon is a word. One glyph, one meaning.',
+      line: 'Line',
+      filled: 'Filled',
+      duotone: 'Duotone',
+      footer: 'Lucide React · stroke 1.5 · 24px grid · 8px radius',
+    },
+  }[lang]
+  type RowStyle = 'line' | 'filled' | 'duotone'
+  const rows: { key: RowStyle; label: string; dot: string; text: string; tile: string }[] = [
+    { key: 'line', label: c.line, dot: 'bg-stone-400', text: 'text-stone-600', tile: 'bg-white border-stone-200' },
+    { key: 'filled', label: c.filled, dot: 'bg-indigo-500', text: 'text-indigo-700', tile: 'bg-indigo-50 border-indigo-100' },
+    { key: 'duotone', label: c.duotone, dot: 'bg-indigo-300', text: 'text-indigo-600', tile: 'bg-white border-stone-200' },
+  ]
+  const iconProps = (style: RowStyle) => {
+    if (style === 'filled') return { className: 'w-6 h-6 text-indigo-600', fill: 'currentColor', strokeWidth: 0 }
+    if (style === 'duotone') return { className: 'w-6 h-6 text-indigo-600', fill: '#c7d2fe', strokeWidth: 1.5 }
+    return { className: 'w-6 h-6 text-stone-600', strokeWidth: 1.5 }
+  }
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      <div className="px-6 pt-5 pb-3 bg-gradient-to-br from-indigo-50/60 to-white">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 bg-stone-100 px-2 py-0.5 rounded inline-block mb-2">
+          {c.eyebrow}
+        </span>
+        <h2 className="text-xl md:text-2xl font-bold text-stone-900 leading-tight">{c.headline}</h2>
+        <p className="text-[12px] text-stone-600 mt-1">{c.subtext}</p>
+        <div className="flex items-center gap-4 mt-3">
+          {rows.map((r) => (
+            <span key={r.key} className={`flex items-center gap-1.5 text-[11px] font-semibold ${r.text}`}>
+              <span className={`w-2 h-2 rounded-full ${r.dot}`} />
+              {r.label}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="p-4 md:p-5 bg-stone-50/60 flex flex-col gap-2.5">
+        {rows.map((r) => (
+          <div key={r.key} className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
+            {icons.map((Icon, i) => (
+              <div
+                key={i}
+                aria-hidden
+                className={`rounded-xl border ${r.tile} p-3 md:p-3.5 flex items-center justify-center transition-colors duration-150`}
+              >
+                <Icon {...iconProps(r.key)} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="px-6 py-2.5 bg-stone-50 border-t border-stone-200">
+        <span className="text-[11px] font-mono text-stone-500">{c.footer}</span>
+      </div>
+    </div>
+  )
+}
+
+function IconStyleTrioSection() {
+  const { lang } = useLanguage()
+  const c = {
+    ru: {
+      line: { name: 'Line (контур)', desc: 'Только обводка, без заливки. Лёгкий, нейтральный — стандарт интерфейсов (Lucide, Feather, Material Outlined).' },
+      filled: { name: 'Filled (заливка)', desc: 'Сплошная заливка цветом. «Тяжелее» визуально — для активного состояния таба, выбранного элемента, акцента.' },
+      duotone: { name: 'Duotone (два тона)', desc: 'Светлая заливка + контур того же цвета. Объёмнее и «дороже» на вид (Phosphor Duotone, Streamline).' },
+      hint: 'Один значок «сердце» — три стиля. В одном продукте выбирай ОДИН стиль и держи его везде.',
+    },
+    en: {
+      line: { name: 'Line (outline)', desc: 'Stroke only, no fill. Light, neutral — the interface default (Lucide, Feather, Material Outlined).' },
+      filled: { name: 'Filled (solid)', desc: 'Solid color fill. Visually "heavier" — for an active tab state, a selected item, an accent.' },
+      duotone: { name: 'Duotone (two-tone)', desc: 'Light fill + same-color stroke. Richer and more "premium" looking (Phosphor Duotone, Streamline).' },
+      hint: 'One "heart" glyph — three styles. Within one product pick ONE style and keep it everywhere.',
+    },
+  }[lang]
+  const tiles = [
+    { key: 'line', tile: 'bg-white border-stone-200', iconProps: { className: 'w-12 h-12 text-indigo-600', strokeWidth: 1.5 } as const },
+    { key: 'filled', tile: 'bg-indigo-50 border-indigo-100', iconProps: { className: 'w-12 h-12 text-indigo-600', fill: 'currentColor', strokeWidth: 0 } as const },
+    { key: 'duotone', tile: 'bg-white border-stone-200', iconProps: { className: 'w-12 h-12 text-indigo-600', fill: '#c7d2fe', strokeWidth: 1.5 } as const },
+  ] as const
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {tiles.map((t) => {
+        const copy = c[t.key]
+        return (
+          <div key={t.key} className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden flex flex-col">
+            <div className={`flex items-center justify-center py-8 border-b border-stone-100 ${t.tile}`}>
+              <Heart {...t.iconProps} aria-hidden />
+            </div>
+            <div className="p-4 flex-1">
+              <h4 className="text-sm font-bold text-stone-900">{copy.name}</h4>
+              <p className="text-xs text-stone-600 leading-snug mt-1">{copy.desc}</p>
+            </div>
+          </div>
+        )
+      })}
+      <p className="sm:col-span-3 text-[12px] text-stone-500 text-center mt-1">💡 {c.hint}</p>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -2224,6 +2345,10 @@ function renderSection(section: Section) {
       )
     case 'nine-visual-elements':
       return <NineVisualElementsSection title={section.title} description={section.description} />
+    case 'icon-set-hero':
+      return <IconSetHeroSection />
+    case 'icon-style-trio':
+      return <IconStyleTrioSection />
     case 'ux-patterns-library':
       return <UxPatternsLibrarySection title={section.title} description={section.description} />
     case 'ui-components-library':
