@@ -90,11 +90,33 @@ export const meeting08: Meeting = {
             label: 'No contrast',
             description:
               'Heading 18px, subheading 16px, body 15px — all elements are nearly the same size, the user cannot tell what is more important.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Plans and pricing', fontSize: 18, fontWeight: 'semibold', color: '#0F172A' },
+                { text: 'Choose the plan that fits', fontSize: 16, fontWeight: 'normal', color: '#1F2937', marginTop: 6 },
+                { text: 'All plans include a 14-day free trial and cancel anytime.', fontSize: 15, color: '#374151', lineHeight: 1.4, marginTop: 6 },
+              ],
+              footnote: '18 / 16 / 15px · almost identical · no levels',
+            },
           },
           after: {
             label: 'With contrast',
             description:
               'Heading 36px bold, subheading 20px medium, body 16px regular — three clear levels, the eye instantly reads the structure.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Plans and pricing', fontSize: 34, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Choose the plan that fits', fontSize: 19, fontWeight: 500, color: '#475569', marginTop: 10 },
+                { text: 'All plans include a 14-day free trial and cancel anytime.', fontSize: 15, color: '#64748B', lineHeight: 1.5, marginTop: 8 },
+              ],
+              footnote: '34 / 19 / 15px · three clear levels · structure reads instantly',
+            },
           },
         },
         {
@@ -124,11 +146,33 @@ export const meeting08: Meeting = {
             label: 'Weak contrast',
             description:
               'A gray "Buy" button on a gray background — it blends in with the surroundings, the user does not notice the call to action.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#F1F5F9',
+              rows: [
+                { text: 'Premium subscription', fontSize: 18, fontWeight: 'bold', color: '#334155' },
+                { text: 'Unlimited projects and priority support.', fontSize: 13, color: '#64748B', marginTop: 6 },
+              ],
+              cta: { label: 'Buy', bg: '#CBD5E1', color: '#64748B', size: 14 },
+              footnote: 'gray button on a gray background · the CTA gets lost',
+            },
           },
           after: {
             label: 'Strong contrast',
             description:
               'A bright blue "Buy" button on a white background — it instantly attracts the eye, conversion increases by 20-30%.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Premium subscription', fontSize: 18, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Unlimited projects and priority support.', fontSize: 13, color: '#64748B', marginTop: 6 },
+              ],
+              cta: { label: 'Buy', bg: '#2563EB', color: '#FFFFFF', size: 14 },
+              footnote: 'one bright accent on a neutral background · the eye locks onto the CTA',
+            },
           },
         },
         {
@@ -169,11 +213,34 @@ export const meeting08: Meeting = {
             label: 'Everything crammed together',
             description:
               'Heading, text, button, and image with no spacing — visual clutter, the eye does not know where to stop.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Launch your product in a weekend', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Templates, hosting and analytics out of the box.', fontSize: 13, color: '#475569', lineHeight: 1.3, marginTop: 2 },
+                { text: 'No code. Free to start.', fontSize: 13, color: '#475569', lineHeight: 1.3, marginTop: 2 },
+              ],
+              cta: { label: 'Start', bg: '#2563EB', color: '#FFFFFF', size: 13 },
+              footnote: 'gap = 2px · everything glued · nowhere for the eye to rest',
+            },
           },
           after: {
             label: 'Generous spacing',
             description:
               'Heading with 48px top margin, text with 24px, button with 32px — each element "breathes," the hierarchy is obvious.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Launch your product in a weekend', fontSize: 24, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1, marginTop: 16 },
+                { text: 'Templates, hosting and analytics out of the box. No code, free to start.', fontSize: 14, color: '#475569', lineHeight: 1.6, marginTop: 20 },
+              ],
+              cta: { label: 'Start for free', bg: '#2563EB', color: '#FFFFFF', size: 14 },
+              footnote: 'gap = 16/20/32px · each element breathes · hierarchy is obvious',
+            },
           },
         },
         {

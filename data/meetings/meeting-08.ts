@@ -90,11 +90,33 @@ export const meeting08: Meeting = {
             label: 'Без контраста',
             description:
               'Заголовок 18px, подзаголовок 16px, текст 15px — все элементы почти одинакового размера, пользователь не понимает, что важнее.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Тарифы и подписка', fontSize: 18, fontWeight: 'semibold', color: '#0F172A' },
+                { text: 'Выберите подходящий план', fontSize: 16, fontWeight: 'normal', color: '#1F2937', marginTop: 6 },
+                { text: 'Все планы включают 14 дней бесплатно и отмену в любой момент.', fontSize: 15, color: '#374151', lineHeight: 1.4, marginTop: 6 },
+              ],
+              footnote: '18 / 16 / 15px · почти одно и то же · нет уровней',
+            },
           },
           after: {
             label: 'С контрастом',
             description:
               'Заголовок 36px bold, подзаголовок 20px medium, текст 16px regular — чёткие три уровня, глаз мгновенно считывает структуру.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Тарифы и подписка', fontSize: 34, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Выберите подходящий план', fontSize: 19, fontWeight: 500, color: '#475569', marginTop: 10 },
+                { text: 'Все планы включают 14 дней бесплатно и отмену в любой момент.', fontSize: 15, color: '#64748B', lineHeight: 1.5, marginTop: 8 },
+              ],
+              footnote: '34 / 19 / 15px · три чётких уровня · структура считывается мгновенно',
+            },
           },
         },
         {
@@ -124,11 +146,33 @@ export const meeting08: Meeting = {
             label: 'Слабый контраст',
             description:
               'Серая кнопка «Купить» на сером фоне — сливается с окружением, пользователь не замечает призыв к действию.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#F1F5F9',
+              rows: [
+                { text: 'Premium-подписка', fontSize: 18, fontWeight: 'bold', color: '#334155' },
+                { text: 'Безлимит проектов и приоритетная поддержка.', fontSize: 13, color: '#64748B', marginTop: 6 },
+              ],
+              cta: { label: 'Купить', bg: '#CBD5E1', color: '#64748B', size: 14 },
+              footnote: 'серая кнопка на сером фоне · CTA теряется',
+            },
           },
           after: {
             label: 'Сильный контраст',
             description:
               'Ярко-синяя кнопка «Купить» на белом фоне — моментально притягивает взгляд, конверсия растёт на 20-30%.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Premium-подписка', fontSize: 18, fontWeight: 'bold', color: '#0F172A' },
+                { text: 'Безлимит проектов и приоритетная поддержка.', fontSize: 13, color: '#64748B', marginTop: 6 },
+              ],
+              cta: { label: 'Купить', bg: '#2563EB', color: '#FFFFFF', size: 14 },
+              footnote: 'один яркий акцент на нейтральном фоне · взгляд цепляется за CTA',
+            },
           },
         },
         {
@@ -169,11 +213,34 @@ export const meeting08: Meeting = {
             label: 'Всё прижато',
             description:
               'Заголовок, текст, кнопка и картинка без отступов — визуальная каша, глаз не знает, где остановиться.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Запусти продукт за выходные', fontSize: 22, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1 },
+                { text: 'Шаблоны, хостинг и аналитика из коробки.', fontSize: 13, color: '#475569', lineHeight: 1.3, marginTop: 2 },
+                { text: 'Без кода. Бесплатный старт.', fontSize: 13, color: '#475569', lineHeight: 1.3, marginTop: 2 },
+              ],
+              cta: { label: 'Начать', bg: '#2563EB', color: '#FFFFFF', size: 13 },
+              footnote: 'gap = 2px · всё слиплось · глазу негде остановиться',
+            },
           },
           after: {
             label: 'Щедрые отступы',
             description:
               'Заголовок с отступом 48px сверху, текст с 24px, кнопка с 32px — каждый элемент «дышит», иерархия очевидна.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Запусти продукт за выходные', fontSize: 24, fontWeight: 'bold', color: '#0F172A', lineHeight: 1.1, marginTop: 16 },
+                { text: 'Шаблоны, хостинг и аналитика из коробки. Без кода, бесплатный старт.', fontSize: 14, color: '#475569', lineHeight: 1.6, marginTop: 20 },
+              ],
+              cta: { label: 'Начать бесплатно', bg: '#2563EB', color: '#FFFFFF', size: 14 },
+              footnote: 'gap = 16/20/32px · каждый элемент «дышит» · иерархия очевидна',
+            },
           },
         },
         {
