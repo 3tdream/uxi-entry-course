@@ -363,11 +363,21 @@ export const meeting08: Meeting = {
             label: 'Mixed styles',
             description:
               'One card with a shadow, another with a border, a third with no frame. One with a round image, another with a square. The user does not perceive them as a unified catalog.',
+            visual: {
+              kind: 'cards-similarity',
+              variant: 'mismatched',
+              footnote: 'different frames, corners, images, price weights · not a catalog, a "mishmash"',
+            },
           },
           after: {
             label: 'Consistent style',
             description:
               'All cards: white background, shadow-md, rounded-xl, 1:1 image, 18px semibold title, 24px bold price. Instantly reads as a catalog.',
+            visual: {
+              kind: 'cards-similarity',
+              variant: 'uniform',
+              footnote: 'one style across all · the brain sees a unified catalog (Law of Similarity)',
+            },
           },
         },
         {
@@ -386,11 +396,21 @@ export const meeting08: Meeting = {
             label: 'Weak separation',
             description:
               'A modal window without a dimmed background, thin border — it blends with the page, the user does not realize it is layered above the main content.',
+            visual: {
+              kind: 'modal-figureground',
+              backdrop: false,
+              footnote: 'no backdrop, thin border · the modal blends into the background',
+            },
           },
           after: {
             label: 'Clear separation',
             description:
               'A modal window with a bg-black/50 backdrop, shadow-2xl, rounded-2xl — it instantly "pops" to the foreground, the background recedes.',
+            visual: {
+              kind: 'modal-figureground',
+              backdrop: true,
+              footnote: 'bg-black/50 backdrop + shadow-2xl · modal = "figure", ground recedes',
+            },
           },
         },
         {

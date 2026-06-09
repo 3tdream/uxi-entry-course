@@ -363,11 +363,21 @@ export const meeting08: Meeting = {
             label: 'Разнобой стилей',
             description:
               'Одна карточка с тенью, другая с бордером, третья без рамки. Одна с круглой картинкой, другая с квадратной. Пользователь не воспринимает их как единый каталог.',
+            visual: {
+              kind: 'cards-similarity',
+              variant: 'mismatched',
+              footnote: 'разные рамки, скругления, картинки, вес цены · не каталог, а «солянка»',
+            },
           },
           after: {
             label: 'Единый стиль',
             description:
               'Все карточки: белый фон, тень shadow-md, rounded-xl, картинка 1:1, заголовок 18px semibold, цена 24px bold. Мгновенно считывается как каталог.',
+            visual: {
+              kind: 'cards-similarity',
+              variant: 'uniform',
+              footnote: 'один стиль на все · мозг видит единый каталог (закон сходства)',
+            },
           },
         },
         {
@@ -386,11 +396,21 @@ export const meeting08: Meeting = {
             label: 'Слабое разделение',
             description:
               'Модальное окно без затемнения фона, тонкий бордер — сливается со страницей, пользователь не понимает, что это поверх основного контента.',
+            visual: {
+              kind: 'modal-figureground',
+              backdrop: false,
+              footnote: 'нет backdrop, тонкий бордер · модал сливается с фоном',
+            },
           },
           after: {
             label: 'Чёткое разделение',
             description:
               'Модальное окно с backdrop bg-black/50, тень shadow-2xl, rounded-2xl — моментально «выпрыгивает» на передний план, фон отступает.',
+            visual: {
+              kind: 'modal-figureground',
+              backdrop: true,
+              footnote: 'backdrop bg-black/50 + shadow-2xl · модал = «фигура», фон отступает',
+            },
           },
         },
         {

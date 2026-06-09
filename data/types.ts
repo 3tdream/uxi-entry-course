@@ -185,6 +185,18 @@ export type BeforeAfterVisual =
       cta?: { label: string; bg: string; color: string; size?: number }
       footnote?: string
     }
+  | {
+      kind: 'cards-similarity'
+      /** mismatched = each card a different style; uniform = identical */
+      variant: 'mismatched' | 'uniform'
+      footnote?: string
+    }
+  | {
+      kind: 'modal-figureground'
+      /** true = dimmed backdrop + strong shadow; false = flat, blends in */
+      backdrop: boolean
+      footnote?: string
+    }
 
 export interface BeforeAfterItem {
   label: string

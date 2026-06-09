@@ -784,6 +784,14 @@ export const meeting07: Meeting = {
           type: 'divider' as const,
         },
 
+        {
+          type: 'image' as const,
+          src: '/images/meeting-07-typography-principles.webp',
+          alt: 'Постер «Принципы хорошей типографики»: ключевые элементы, 5 принципов, правила и стили шрифтов',
+          caption: 'Шпаргалка: ключевые элементы типографики, 5 принципов, правила вёрстки текста и стили шрифтов — всё на одном листе.',
+          maxWidth: 440,
+        },
+
         // === ЧЕКЛИСТ ===
         {
           type: 'checklist' as const,

@@ -367,6 +367,8 @@ type BeforeAfterVisualProp =
       cta?: { label: string; bg: string; color: string; size?: number }
       footnote?: string
     }
+  | { kind: 'cards-similarity'; variant: 'mismatched' | 'uniform'; footnote?: string }
+  | { kind: 'modal-figureground'; backdrop: boolean; footnote?: string }
 
 function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
   if (visual.kind === 'text-sample') {
@@ -607,6 +609,80 @@ function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
       <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden shadow-sm">
         {inner}
         {footer}
+      </div>
+    )
+  }
+  if (visual.kind === 'cards-similarity') {
+    const uniform = visual.variant === 'uniform'
+    // three card style descriptors
+    const cards = uniform
+      ? [
+          { wrap: 'bg-white border border-stone-200 shadow-md rounded-xl', img: 'rounded-lg', title: 'text-[11px] font-semibold', price: 'text-[13px] font-bold' },
+          { wrap: 'bg-white border border-stone-200 shadow-md rounded-xl', img: 'rounded-lg', title: 'text-[11px] font-semibold', price: 'text-[13px] font-bold' },
+          { wrap: 'bg-white border border-stone-200 shadow-md rounded-xl', img: 'rounded-lg', title: 'text-[11px] font-semibold', price: 'text-[13px] font-bold' },
+        ]
+      : [
+          { wrap: 'bg-white shadow-lg rounded-2xl', img: 'rounded-full', title: 'text-[13px] font-bold italic', price: 'text-[11px] font-normal' },
+          { wrap: 'bg-stone-50 border-2 border-stone-400 rounded-none', img: 'rounded-none', title: 'text-[10px] font-medium uppercase', price: 'text-[15px] font-black' },
+          { wrap: 'bg-white border border-dashed border-stone-300 rounded-md', img: 'rounded-md', title: 'text-[12px] font-light', price: 'text-[12px] font-semibold underline' },
+        ]
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 bg-stone-50 p-3">
+        <div className="grid grid-cols-3 gap-2">
+          {cards.map((c, i) => (
+            <div key={i} className={`p-2 flex flex-col ${c.wrap}`}>
+              <div className={`aspect-square w-full bg-gradient-to-br from-indigo-200 to-indigo-400 ${c.img}`} />
+              <div className={`mt-1.5 text-stone-800 truncate ${c.title}`}>Товар {i + 1}</div>
+              <div className={`text-stone-900 ${c.price}`}>${(i + 1) * 19}</div>
+            </div>
+          ))}
+        </div>
+        {visual.footnote && (
+          <div className="mt-2 text-[11px] font-mono text-stone-500">{visual.footnote}</div>
+        )}
+      </div>
+    )
+  }
+  if (visual.kind === 'modal-figureground') {
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden shadow-sm">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 border-b border-stone-200">
+          <span className="w-2 h-2 rounded-full bg-red-400" />
+          <span className="w-2 h-2 rounded-full bg-yellow-400" />
+          <span className="w-2 h-2 rounded-full bg-green-400" />
+        </div>
+        <div className="relative h-44 bg-white p-3 overflow-hidden">
+          {/* fake page content behind */}
+          <div className="space-y-1.5">
+            <div className="h-3 w-1/2 bg-stone-200 rounded" />
+            <div className="h-2 w-full bg-stone-100 rounded" />
+            <div className="h-2 w-5/6 bg-stone-100 rounded" />
+            <div className="h-2 w-full bg-stone-100 rounded" />
+            <div className="h-2 w-2/3 bg-stone-100 rounded" />
+          </div>
+          {/* backdrop */}
+          {visual.backdrop && <div className="absolute inset-0 bg-black/50" />}
+          {/* modal */}
+          <div
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 bg-white p-3 ${
+              visual.backdrop
+                ? 'rounded-2xl shadow-2xl'
+                : 'rounded-md border border-stone-200'
+            }`}
+          >
+            <div className="text-[11px] font-bold text-stone-900 mb-1">Подтвердите действие</div>
+            <div className="h-2 w-full bg-stone-100 rounded mb-2" />
+            <div className="flex justify-end gap-1.5">
+              <span className="px-2 py-0.5 text-[9px] rounded bg-stone-100 text-stone-600">Отмена</span>
+              <span className="px-2 py-0.5 text-[9px] rounded bg-indigo-600 text-white">ОК</span>
+            </div>
+          </div>
+        </div>
+        {visual.footnote && (
+          <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 text-[11px] font-mono text-stone-600">
+            {visual.footnote}
+          </div>
+        )}
       </div>
     )
   }
