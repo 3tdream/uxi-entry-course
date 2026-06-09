@@ -277,20 +277,21 @@ export const meeting08: Meeting = {
         {
           type: 'diagram' as const,
           title: 'Gestalt principles in interface design',
-          description: 'Five key principles and how they work in UI',
+          description: 'Six key principles and how they work in UI',
           items: [
             'Proximity — elements placed close together are perceived as a group. Example: form fields with labels.',
             'Similarity — identical elements are perceived as related. Example: all buttons in the same style.',
             'Closure — the brain fills in missing parts. Example: the IBM logo made of stripes.',
             'Continuity — the eye follows lines and curves. Example: horizontal card scroll.',
             'Figure-Ground — the brain separates an object from its background. Example: a modal window over a dimmed background.',
+            'Symmetry — symmetrical elements are perceived as a related, balanced group. Example: paired "Cancel / OK" buttons.',
           ],
         },
         {
           type: 'image' as const,
           src: '/images/meeting-08-gestalt-principles.webp',
-          alt: 'Five gestalt-principle illustrations in a horizontal strip',
-          caption: 'Five gestalt principles of perception in design.',
+          alt: 'Six gestalt-principle illustrations: Good Figure, Proximity, Similarity, Continuation, Closure, Symmetry',
+          caption: 'Six gestalt principles of perception in design.',
         },
         {
           type: 'subheading' as const,
