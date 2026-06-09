@@ -531,6 +531,13 @@ export const meeting08: Meeting = {
           content: 'Кейс-стади: визуальная иерархия в реальных продуктах',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-08-airbnb-listing.webp',
+          alt: 'Карточка объявления Airbnb: фото-герой, название, рейтинг, расстояние и цена в чёткой иерархии',
+          caption: 'Карточка Airbnb: фото-герой → название → мета (рейтинг·расстояние) → цена. Иерархия считывается за 2-3 секунды.',
+          maxWidth: 380,
+        },
+        {
           type: 'case-study' as const,
           title: 'Airbnb — иерархия в карточке объявления',
           company: 'Airbnb',

@@ -531,6 +531,13 @@ export const meeting08: Meeting = {
           content: 'Case Studies: Visual Hierarchy in Real Products',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-08-airbnb-listing.webp',
+          alt: 'Airbnb listing card: hero photo, title, rating, distance and price in a clear hierarchy',
+          caption: 'Airbnb card: hero photo → title → meta (rating·distance) → price. The hierarchy reads in 2-3 seconds.',
+          maxWidth: 380,
+        },
+        {
           type: 'case-study' as const,
           title: 'Airbnb — hierarchy in a listing card',
           company: 'Airbnb',
