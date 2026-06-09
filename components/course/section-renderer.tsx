@@ -703,33 +703,39 @@ function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
   }
   if (visual.kind === 'icon-nav-row') {
     // fake bottom nav: mixed = each icon a different style/weight; unified = all line 1.5
+    const labels = [t('Главная', 'Home'), t('Поиск', 'Search'), t('Профиль', 'Profile'), t('Корзина', 'Cart')]
+    const styleTags = [t('line · тонкий', 'line · thin'), t('filled', 'filled'), t('duotone', 'duotone'), t('line · жирный', 'line · bold')]
     const items = visual.mixed
       ? [
-          { Icon: Home, props: { className: 'w-5 h-5 text-stone-600', strokeWidth: 1 } as const },
-          { Icon: Search, props: { className: 'w-5 h-5 text-indigo-600', fill: 'currentColor', strokeWidth: 0 } as const },
-          { Icon: User, props: { className: 'w-5 h-5 text-indigo-600', fill: '#c7d2fe', strokeWidth: 1.5 } as const },
-          { Icon: ShoppingCart, props: { className: 'w-5 h-5 text-stone-700', strokeWidth: 2.75 } as const },
+          { Icon: Home, props: { className: 'w-6 h-6 text-stone-600', strokeWidth: 1 } as const },
+          { Icon: Search, props: { className: 'w-6 h-6 text-indigo-600', fill: 'currentColor', strokeWidth: 0 } as const },
+          { Icon: User, props: { className: 'w-6 h-6 text-indigo-600', fill: '#c7d2fe', strokeWidth: 1.5 } as const },
+          { Icon: ShoppingCart, props: { className: 'w-6 h-6 text-stone-700', strokeWidth: 3 } as const },
         ]
       : [
-          { Icon: Home, props: { className: 'w-5 h-5 text-indigo-600', strokeWidth: 1.5 } as const },
-          { Icon: Search, props: { className: 'w-5 h-5 text-stone-500', strokeWidth: 1.5 } as const },
-          { Icon: User, props: { className: 'w-5 h-5 text-stone-500', strokeWidth: 1.5 } as const },
-          { Icon: ShoppingCart, props: { className: 'w-5 h-5 text-stone-500', strokeWidth: 1.5 } as const },
+          { Icon: Home, props: { className: 'w-6 h-6 text-indigo-600', strokeWidth: 1.5 } as const },
+          { Icon: Search, props: { className: 'w-6 h-6 text-stone-500', strokeWidth: 1.5 } as const },
+          { Icon: User, props: { className: 'w-6 h-6 text-stone-500', strokeWidth: 1.5 } as const },
+          { Icon: ShoppingCart, props: { className: 'w-6 h-6 text-stone-500', strokeWidth: 1.5 } as const },
         ]
     return (
-      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden">
-        <div className="h-16 bg-stone-50 flex items-center justify-center text-[10px] text-stone-300">
-          {t('контент', 'content')}
+      <div className={`mb-3 rounded-lg border-2 overflow-hidden ${visual.mixed ? 'border-red-200' : 'border-emerald-200'}`}>
+        <div className="h-14 bg-stone-50 flex items-center justify-center text-[10px] text-stone-300">
+          {t('контент приложения', 'app content')}
         </div>
-        <div className="flex items-center justify-around bg-white border-t border-stone-200 py-2.5">
+        <div className="grid grid-cols-4 bg-white border-t border-stone-200 py-2">
           {items.map((it, i) => (
-            <span key={i} aria-hidden className="flex items-center justify-center">
-              <it.Icon {...it.props} />
-            </span>
+            <div key={i} className="flex flex-col items-center gap-1">
+              <it.Icon {...it.props} aria-hidden />
+              <span className={`text-[9px] ${!visual.mixed && i === 0 ? 'text-indigo-600 font-semibold' : 'text-stone-400'}`}>{labels[i]}</span>
+              {visual.mixed && (
+                <span className="text-[7px] font-mono text-red-400 leading-none">{styleTags[i]}</span>
+              )}
+            </div>
           ))}
         </div>
         {visual.footnote && (
-          <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 text-[11px] font-mono text-stone-600">
+          <div className={`px-3 py-1.5 border-t text-[11px] font-mono ${visual.mixed ? 'bg-red-50 border-red-100 text-red-600' : 'bg-emerald-50 border-emerald-100 text-emerald-700'}`}>
             {visual.footnote}
           </div>
         )}
