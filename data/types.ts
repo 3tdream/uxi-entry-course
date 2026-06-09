@@ -197,6 +197,17 @@ export type BeforeAfterVisual =
       backdrop: boolean
       footnote?: string
     }
+  | {
+      kind: 'icon-nav-row'
+      /** true = each icon a different style (bad); false = unified line (good) */
+      mixed: boolean
+      footnote?: string
+    }
+  | {
+      kind: 'empty-state'
+      variant: 'icon' | 'illustration'
+      footnote?: string
+    }
 
 export interface BeforeAfterItem {
   label: string
