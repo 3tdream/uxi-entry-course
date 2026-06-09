@@ -225,7 +225,7 @@ export type Section =
   | { type: 'video'; src: string; title: string; caption?: string }
   | { type: 'before-after'; title: string; before: BeforeAfterItem; after: BeforeAfterItem }
   | { type: 'diagram'; title: string; description: string; items: string[] }
-  | { type: 'case-study'; title: string; company: string; problem: string; solution: string; result: string; steps?: CaseStudyStep[] }
+  | { type: 'case-study'; title: string; company: string; problem: string; solution: string; result: string; steps?: CaseStudyStep[]; image?: string; imageAlt?: string }
   | { type: 'user-persona'; persona: PersonaData }
   | { type: 'user-flow'; title: string; steps: UserFlowStep[]; connections: UserFlowConnection[] }
   | { type: 'checklist'; title: string; items: (string | ChecklistItem)[] }

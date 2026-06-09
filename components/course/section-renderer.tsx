@@ -754,6 +754,8 @@ function CaseStudySection({
   solution,
   result,
   steps,
+  image,
+  imageAlt,
 }: {
   title: string
   company: string
@@ -761,8 +763,42 @@ function CaseStudySection({
   solution: string
   result: string
   steps?: { title: string; description: string }[]
+  image?: string
+  imageAlt?: string
 }) {
   const labels = useSectionLabels()
+  const body = (
+    <div className="p-5 space-y-4 flex-1 min-w-0">
+      <div>
+        <span className="text-xs font-semibold text-red-600 uppercase">{labels.problem}</span>
+        <p className="text-sm text-foreground/80 mt-1"><RichText content={problem} /></p>
+      </div>
+      <div>
+        <span className="text-xs font-semibold text-blue-600 uppercase">{labels.solution}</span>
+        <p className="text-sm text-foreground/80 mt-1"><RichText content={solution} /></p>
+      </div>
+      {steps && steps.length > 0 && (
+        <div className="space-y-2">
+          <span className="text-xs font-semibold text-muted-foreground uppercase">{labels.steps}</span>
+          {steps.map((step, i) => (
+            <div key={i} className="flex gap-3 items-start">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="text-xs font-bold text-primary">{i + 1}</span>
+              </div>
+              <div>
+                <span className="text-sm font-medium text-foreground">{step.title}</span>
+                <p className="text-sm text-muted-foreground"><RichText content={step.description} /></p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="rounded-lg bg-emerald-50 border border-emerald-200 p-3">
+        <span className="text-xs font-semibold text-emerald-700 uppercase">{labels.result}</span>
+        <p className="text-sm text-emerald-800 mt-1"><RichText content={result} /></p>
+      </div>
+    </div>
+  )
   return (
     <div className="rounded-xl border bg-card overflow-hidden">
       <div className="bg-primary/10 px-5 py-3 border-b">
@@ -770,36 +806,22 @@ function CaseStudySection({
         <h3 className="text-lg font-bold text-foreground">{title}</h3>
         <span className="text-sm text-muted-foreground">{company}</span>
       </div>
-      <div className="p-5 space-y-4">
-        <div>
-          <span className="text-xs font-semibold text-red-600 uppercase">{labels.problem}</span>
-          <p className="text-sm text-foreground/80 mt-1"><RichText content={problem} /></p>
-        </div>
-        <div>
-          <span className="text-xs font-semibold text-blue-600 uppercase">{labels.solution}</span>
-          <p className="text-sm text-foreground/80 mt-1"><RichText content={solution} /></p>
-        </div>
-        {steps && steps.length > 0 && (
-          <div className="space-y-2">
-            <span className="text-xs font-semibold text-muted-foreground uppercase">{labels.steps}</span>
-            {steps.map((step, i) => (
-              <div key={i} className="flex gap-3 items-start">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <span className="text-xs font-bold text-primary">{i + 1}</span>
-                </div>
-                <div>
-                  <span className="text-sm font-medium text-foreground">{step.title}</span>
-                  <p className="text-sm text-muted-foreground"><RichText content={step.description} /></p>
-                </div>
-              </div>
-            ))}
+      {image ? (
+        <div className="flex flex-col md:flex-row">
+          {body}
+          <div className="md:w-[300px] lg:w-[340px] shrink-0 border-t md:border-t-0 md:border-l border-border bg-muted/30 flex items-center justify-center p-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={image}
+              alt={imageAlt || title}
+              className="max-h-[460px] w-auto rounded-lg shadow-sm"
+              loading="lazy"
+            />
           </div>
-        )}
-        <div className="rounded-lg bg-emerald-50 border border-emerald-200 p-3">
-          <span className="text-xs font-semibold text-emerald-700 uppercase">{labels.result}</span>
-          <p className="text-sm text-emerald-800 mt-1"><RichText content={result} /></p>
         </div>
-      </div>
+      ) : (
+        body
+      )}
     </div>
   )
 }
@@ -2053,7 +2075,7 @@ function renderSection(section: Section) {
     case 'diagram':
       return <DiagramSection title={section.title} description={section.description} items={section.items} />
     case 'case-study':
-      return <CaseStudySection title={section.title} company={section.company} problem={section.problem} solution={section.solution} result={section.result} steps={section.steps} />
+      return <CaseStudySection title={section.title} company={section.company} problem={section.problem} solution={section.solution} result={section.result} steps={section.steps} image={section.image} imageAlt={section.imageAlt} />
     case 'user-persona':
       return <UserPersonaSection persona={section.persona} />
     case 'user-flow':
