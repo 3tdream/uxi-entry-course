@@ -1754,6 +1754,54 @@ export const meeting03: Meeting = {
           explanation:
             'Self-Referential Design is one of the most dangerous anti-patterns: the designer thinks "I am the user" and designs for themselves. Photos, quotes, and limiting the number of personas are, on the contrary, good practices.',
         },
+        {
+          question: 'How does a JTBD statement fundamentally differ from a User Story?',
+          options: [
+            { id: 'a', text: 'No difference, they are synonyms' },
+            { id: 'b', text: 'JTBD focuses on situation and motivation ("when…, I want…, so that…"), not a role and a feature; the solution is not baked into the statement' },
+            { id: 'c', text: 'JTBD is only for mobile apps' },
+            { id: 'd', text: 'A User Story is longer' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A User Story ("as a [role], I want [feature]…") often bakes in the solution upfront. JTBD describes the situation and desired outcome without tying to a specific feature — leaving room for better solutions. "People don\'t want a drill, they want a hole in the wall."',
+        },
+        {
+          question: 'Player Artyom writes a JTBD: "I want a quick-rematch button." Why is this a poor JTBD and how do you fix it?',
+          options: [
+            { id: 'a', text: 'It is a great JTBD' },
+            { id: 'b', text: 'It is "I want a feature," not a job. Better: "When I lose and feel frustrated, I want to bounce back fast to regain control" — the feature (rematch) becomes one possible solution' },
+            { id: 'c', text: 'Add the player\'s name' },
+            { id: 'd', text: 'Make the button bigger' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The "I want a feature" anti-pattern dictates the solution and closes off alternatives. A proper JTBD describes the situation (a loss), the motivation (bounce back), and the outcome (regain control). Then "quick rematch" is just one option — you might invent something better.',
+        },
+        {
+          question: 'How many personas are optimal for one product, and why?',
+          options: [
+            { id: 'a', text: '15-20, to cover everyone' },
+            { id: 'b', text: '3-5 key ones: more dilutes focus and the team cannot hold them in mind' },
+            { id: 'c', text: 'Exactly 1 — the "average user"' },
+            { id: 'd', text: 'The number does not matter' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Optimal is 3-5 personas. The "average user" (1 persona) is a myth that leads to a product "for everyone and no one." But the team cannot keep 20 personas in focus. 3-5 cover the main segments and stay "alive" in everyone\'s mind.',
+        },
+        {
+          question: 'What are behavioral personas (like Spotify\'s) and why are they stronger than demographic ones?',
+          options: [
+            { id: 'a', text: 'They are personas with nice photos' },
+            { id: 'b', text: 'They are built on behavior and motivation (what people do and why), not age/gender; behavior predicts choices better than demographics' },
+            { id: 'c', text: 'They are only for music services' },
+            { id: 'd', text: 'They are cheaper to make' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Demographics ("woman, 25-34") poorly predict behavior: two people the same age behave differently. Behavioral personas group by WHAT people do and WHY (e.g. "background listener" vs "new-music explorer"). That is more accurate for design decisions.',
+        },
       ],
     },
 
@@ -2410,6 +2458,54 @@ export const meeting03: Meeting = {
           correctId: 'b',
           explanation:
             'The Journey Map showed that the highest drop-off occurred at the listing viewing stage due to poor photos. Users didn\'t trust dark, amateur snapshots. The solution — free professional photography — led to a 2.5x increase in bookings.',
+        },
+        {
+          question: 'Why draw an emotional curve on a UJM?',
+          options: [
+            { id: 'a', text: 'To make the map look nicer' },
+            { id: 'b', text: 'To see where the experience "dips" (low points) — those are the priority places to improve' },
+            { id: 'c', text: 'It is a Figma requirement' },
+            { id: 'd', text: 'Emotions do not matter in UX' },
+          ],
+          correctId: 'b',
+          explanation:
+            'The emotional curve shows the user\'s mood rising and falling across stages. The lowest points are where frustration and drop-off peak. That is where you focus first: fixing the "valley" yields the biggest impact.',
+        },
+        {
+          question: 'What is a "moment of truth" in a Journey Map?',
+          options: [
+            { id: 'a', text: 'The payment moment' },
+            { id: 'b', text: 'A critical point where the key impression forms and the decision to continue or leave is made' },
+            { id: 'c', text: 'The end of the workday' },
+            { id: 'd', text: 'Any click' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A moment of truth is a pivotal point of the journey where the relationship with the product is decided (first app launch, first search result, first support email). The experience must be flawless here — there is no second chance at a first impression.',
+        },
+        {
+          question: 'How does a Customer Journey Map differ from a User Flow?',
+          options: [
+            { id: 'a', text: 'They are synonyms' },
+            { id: 'b', text: 'A UJM is about emotions and experience across all channels (including offline); a User Flow is about specific clicks/steps inside the interface' },
+            { id: 'c', text: 'A UJM is mobile-only' },
+            { id: 'd', text: 'A User Flow is drawn after launch' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A UJM is a broad map of the whole experience: stages, emotions, touchpoints, including offline (ads, packaging, support). A User Flow is a narrow diagram of specific screens and transitions inside the product. The UJM answers "what they feel," the User Flow "where they click."',
+        },
+        {
+          question: 'Your empathy map and persona are built on guesses, with no interviews. What is the main risk?',
+          options: [
+            { id: 'a', text: 'No risk, designer intuition is reliable' },
+            { id: 'b', text: 'It is a "fantasy persona": you will design for an imagined user, not a real one — Self-Referential Design' },
+            { id: 'c', text: 'The map will be too long' },
+            { id: 'd', text: 'You will spend too little time' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A persona with no data is just a projection of the designer (Self-Referential Design). The whole value of a persona and empathy map is that they are grounded in REAL interviews and observations. Without research it is a pretty artifact pointing the wrong way.',
         },
       ],
     },
