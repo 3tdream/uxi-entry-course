@@ -20,6 +20,11 @@ import {
   Bookmark,
   MapPin,
   MessageCircle,
+  Home,
+  Search,
+  ShoppingCart,
+  Inbox,
+  Mail,
 } from 'lucide-react'
 
 // ---- Helpers ----
@@ -375,8 +380,12 @@ type BeforeAfterVisualProp =
     }
   | { kind: 'cards-similarity'; variant: 'mismatched' | 'uniform'; footnote?: string }
   | { kind: 'modal-figureground'; backdrop: boolean; footnote?: string }
+  | { kind: 'icon-nav-row'; mixed: boolean; footnote?: string }
+  | { kind: 'empty-state'; variant: 'icon' | 'illustration'; footnote?: string }
 
 function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
+  const { lang } = useLanguage()
+  const t = (ru: string, en: string) => (lang === 'en' ? en : ru)
   if (visual.kind === 'text-sample') {
     const weightCls =
       visual.fontWeight === 'thin'
@@ -683,6 +692,74 @@ function VisualDemo({ visual }: { visual: BeforeAfterVisualProp }) {
               <span className="px-2 py-0.5 text-[9px] rounded bg-indigo-600 text-white">ОК</span>
             </div>
           </div>
+        </div>
+        {visual.footnote && (
+          <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 text-[11px] font-mono text-stone-600">
+            {visual.footnote}
+          </div>
+        )}
+      </div>
+    )
+  }
+  if (visual.kind === 'icon-nav-row') {
+    // fake bottom nav: mixed = each icon a different style/weight; unified = all line 1.5
+    const items = visual.mixed
+      ? [
+          { Icon: Home, props: { className: 'w-5 h-5 text-stone-600', strokeWidth: 1 } as const },
+          { Icon: Search, props: { className: 'w-5 h-5 text-indigo-600', fill: 'currentColor', strokeWidth: 0 } as const },
+          { Icon: User, props: { className: 'w-5 h-5 text-indigo-600', fill: '#c7d2fe', strokeWidth: 1.5 } as const },
+          { Icon: ShoppingCart, props: { className: 'w-5 h-5 text-stone-700', strokeWidth: 2.75 } as const },
+        ]
+      : [
+          { Icon: Home, props: { className: 'w-5 h-5 text-indigo-600', strokeWidth: 1.5 } as const },
+          { Icon: Search, props: { className: 'w-5 h-5 text-stone-500', strokeWidth: 1.5 } as const },
+          { Icon: User, props: { className: 'w-5 h-5 text-stone-500', strokeWidth: 1.5 } as const },
+          { Icon: ShoppingCart, props: { className: 'w-5 h-5 text-stone-500', strokeWidth: 1.5 } as const },
+        ]
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden">
+        <div className="h-16 bg-stone-50 flex items-center justify-center text-[10px] text-stone-300">
+          {t('контент', 'content')}
+        </div>
+        <div className="flex items-center justify-around bg-white border-t border-stone-200 py-2.5">
+          {items.map((it, i) => (
+            <span key={i} aria-hidden className="flex items-center justify-center">
+              <it.Icon {...it.props} />
+            </span>
+          ))}
+        </div>
+        {visual.footnote && (
+          <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 text-[11px] font-mono text-stone-600">
+            {visual.footnote}
+          </div>
+        )}
+      </div>
+    )
+  }
+  if (visual.kind === 'empty-state') {
+    return (
+      <div className="mb-3 rounded-lg border border-stone-200 overflow-hidden">
+        <div className="flex flex-col items-center justify-center text-center px-4 py-8 bg-white min-h-[180px]">
+          {visual.variant === 'icon' ? (
+            <>
+              <Inbox className="w-12 h-12 text-stone-300" strokeWidth={1.5} aria-hidden />
+              <p className="mt-3 text-sm text-stone-400">{t('Нет сообщений', 'No messages')}</p>
+            </>
+          ) : (
+            <>
+              {/* composed "illustration": colorful blob scene */}
+              <div className="relative w-24 h-20" aria-hidden>
+                <div className="absolute inset-x-3 bottom-0 h-12 rounded-2xl bg-gradient-to-br from-amber-200 to-rose-200" />
+                <div className="absolute left-1/2 -translate-x-1/2 top-0 w-14 h-14 rounded-2xl bg-indigo-500 shadow-md flex items-center justify-center rotate-6">
+                  <Inbox className="w-7 h-7 text-white" strokeWidth={2} />
+                </div>
+                <Heart className="absolute right-1 top-1 w-4 h-4 text-rose-400" fill="currentColor" strokeWidth={0} />
+                <Star className="absolute left-1 top-4 w-3 h-3 text-amber-400" fill="currentColor" strokeWidth={0} />
+              </div>
+              <p className="mt-3 text-sm font-semibold text-stone-800">{t('Всё прочитано!', 'All caught up!')}</p>
+              <p className="text-xs text-stone-500">{t('Время для кофе ☕', 'Time for coffee ☕')}</p>
+            </>
+          )}
         </div>
         {visual.footnote && (
           <div className="px-3 py-1.5 bg-stone-50 border-t border-stone-200 text-[11px] font-mono text-stone-600">
@@ -2164,6 +2241,105 @@ function IconStyleTrioSection() {
   )
 }
 
+function IconVsIllustrationSection() {
+  const { lang } = useLanguage()
+  const t = (ru: string, en: string) => (lang === 'en' ? en : ru)
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {/* ICONS panel */}
+      <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+        <div className="px-4 py-3 border-b border-stone-100 bg-stone-50/60">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500">{t('Иконки', 'Icons')}</span>
+          <p className="text-[12px] text-stone-600 mt-0.5">{t('Компактно · функционально · повторяемо', 'Compact · functional · repeatable')}</p>
+        </div>
+        <div className="p-5 flex flex-col items-center justify-center min-h-[150px]">
+          <div className="grid grid-cols-4 gap-3">
+            {[Home, Search, Bell, ShoppingCart, User, MapPin, Bookmark, Mail].map((Icon, i) => (
+              <span key={i} aria-hidden className="w-9 h-9 rounded-lg bg-stone-100 flex items-center justify-center">
+                <Icon className="w-5 h-5 text-stone-600" strokeWidth={1.5} />
+              </span>
+            ))}
+          </div>
+          <p className="text-[11px] text-stone-400 mt-4 text-center">{t('Навигация, действия, статусы, формы', 'Navigation, actions, statuses, forms')}</p>
+        </div>
+      </div>
+      {/* ILLUSTRATION panel */}
+      <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+        <div className="px-4 py-3 border-b border-stone-100 bg-indigo-50/50">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600">{t('Иллюстрации', 'Illustrations')}</span>
+          <p className="text-[12px] text-stone-600 mt-0.5">{t('Эмоция · история · уникальность бренда', 'Emotion · story · brand uniqueness')}</p>
+        </div>
+        <div className="p-5 flex flex-col items-center justify-center min-h-[150px]">
+          {/* composed colorful scene */}
+          <div className="relative w-32 h-24" aria-hidden>
+            <div className="absolute inset-x-2 bottom-0 h-16 rounded-2xl bg-gradient-to-br from-indigo-200 via-violet-200 to-rose-200" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-1 w-16 h-16 rounded-2xl bg-indigo-500 shadow-md flex items-center justify-center -rotate-6">
+              <MessageCircle className="w-8 h-8 text-white" strokeWidth={2} />
+            </div>
+            <Heart className="absolute right-2 top-2 w-5 h-5 text-rose-400" fill="currentColor" strokeWidth={0} />
+            <Star className="absolute left-1 top-7 w-4 h-4 text-amber-400" fill="currentColor" strokeWidth={0} />
+            <Star className="absolute right-6 bottom-1 w-3 h-3 text-violet-400" fill="currentColor" strokeWidth={0} />
+          </div>
+          <p className="text-[11px] text-stone-400 mt-4 text-center">{t('Пустые состояния, onboarding, 404, лендинги', 'Empty states, onboarding, 404, landings')}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function RuleOfThirdsGridSection() {
+  const { lang } = useLanguage()
+  const t = (ru: string, en: string) => (lang === 'en' ? en : ru)
+  // power points at intersections (percent positions)
+  const points = [
+    { left: '33.33%', top: '33.33%' },
+    { left: '66.66%', top: '33.33%' },
+    { left: '33.33%', top: '66.66%' },
+    { left: '66.66%', top: '66.66%' },
+  ]
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white overflow-hidden">
+      <div className="px-4 md:px-6 py-3 border-b border-stone-200 bg-stone-50/60">
+        <h3 className="text-base font-semibold text-foreground">{t('Правило третей в UI', 'Rule of thirds in UI')}</h3>
+        <p className="mt-0.5 text-[12px] text-stone-600">
+          {t('2 горизонтали + 2 вертикали = 9 равных частей. 4 пересечения — «сильные точки».', '2 horizontals + 2 verticals = 9 equal parts. The 4 intersections are the "power points".')}
+        </p>
+      </div>
+      <div className="p-4 md:p-6">
+        <div className="relative w-full mx-auto rounded-lg overflow-hidden border border-stone-200 bg-gradient-to-br from-stone-50 to-stone-100" style={{ aspectRatio: '16 / 9', maxWidth: 640 }}>
+          {/* grid lines */}
+          <div className="absolute top-0 bottom-0 border-l border-dashed border-stone-400/50" style={{ left: '33.33%' }} />
+          <div className="absolute top-0 bottom-0 border-l border-dashed border-stone-400/50" style={{ left: '66.66%' }} />
+          <div className="absolute left-0 right-0 border-t border-dashed border-stone-400/50" style={{ top: '33.33%' }} />
+          <div className="absolute left-0 right-0 border-t border-dashed border-stone-400/50" style={{ top: '66.66%' }} />
+          {/* mock hero element anchored to top-left power point */}
+          <div className="absolute" style={{ left: '6%', top: '38%' }}>
+            <div className="w-3 h-3 rounded-full bg-indigo-500 mb-2" />
+            <div className="h-3 w-28 md:w-40 rounded bg-stone-800/80 mb-1.5" />
+            <div className="h-2 w-20 md:w-28 rounded bg-stone-400/70 mb-2.5" />
+            <div className="h-6 w-20 md:w-24 rounded-md bg-indigo-600" />
+          </div>
+          {/* mock image block anchored to bottom-right power point */}
+          <div className="absolute rounded-xl bg-gradient-to-br from-indigo-300 to-violet-300" style={{ right: '6%', bottom: '12%', width: '26%', height: '40%' }} />
+          {/* power points */}
+          {points.map((p, i) => (
+            <span
+              key={i}
+              className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-indigo-600 ring-4 ring-indigo-600/20"
+              style={{ left: p.left, top: p.top }}
+              aria-hidden
+            />
+          ))}
+        </div>
+        <div className="mt-3 flex items-center justify-center gap-2 text-[11px] text-stone-500">
+          <span className="w-3 h-3 rounded-full bg-indigo-600 ring-2 ring-indigo-600/20 inline-block" />
+          {t('Сильные точки — клади сюда логотип, заголовок, CTA, ключевое фото.', 'Power points — place your logo, headline, CTA, and key image here.')}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -2349,6 +2525,10 @@ function renderSection(section: Section) {
       return <IconSetHeroSection />
     case 'icon-style-trio':
       return <IconStyleTrioSection />
+    case 'icon-vs-illustration':
+      return <IconVsIllustrationSection />
+    case 'rule-of-thirds-grid':
+      return <RuleOfThirdsGridSection />
     case 'ux-patterns-library':
       return <UxPatternsLibrarySection title={section.title} description={section.description} />
     case 'ui-components-library':

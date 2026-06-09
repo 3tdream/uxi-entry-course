@@ -882,11 +882,21 @@ export const meeting08: Meeting = {
             label: 'Mixed styles',
             description:
               'In navigation: "Home" — line, "Search" — filled, "Profile" — duotone, "Cart" — line with a different stroke width. Chaotic and unprofessional.',
+            visual: {
+              kind: 'icon-nav-row',
+              mixed: true,
+              footnote: 'line + filled + duotone + heavy stroke · 4 styles in one tab bar',
+            },
           },
           after: {
             label: 'Consistent style',
             description:
               'All navigation icons — line, stroke-width 1.5, size 24px, color gray-600 (active: blue-600). A cohesive, professional look.',
+            visual: {
+              kind: 'icon-nav-row',
+              mixed: false,
+              footnote: 'all line · stroke 1.5 · active = indigo · one system',
+            },
           },
         },
         {
@@ -974,6 +984,9 @@ export const meeting08: Meeting = {
           ],
         },
         {
+          type: 'icon-vs-illustration' as const,
+        },
+        {
           type: 'case-study' as const,
           title: 'Slack — illustrations for emotional connection',
           company: 'Slack',
@@ -994,11 +1007,21 @@ export const meeting08: Meeting = {
             label: 'Icon only',
             description:
               'A gray Inbox icon at 48px + "No messages" text — cold, formal, evokes no emotions.',
+            visual: {
+              kind: 'empty-state',
+              variant: 'icon',
+              footnote: 'gray glyph + dry text · cold and formal',
+            },
           },
           after: {
             label: 'With illustration',
             description:
               'A colorful illustration (person checking mail) + "All caught up! Time for coffee" — warm, friendly, memorable.',
+            visual: {
+              kind: 'empty-state',
+              variant: 'illustration',
+              footnote: 'colorful scene + warm text · friendly and memorable',
+            },
           },
         },
         {
@@ -1031,25 +1054,7 @@ export const meeting08: Meeting = {
             'Divide the screen into **9 equal parts** with two horizontal and two vertical lines. Place key elements at the **intersections** of these lines — these points naturally attract the eye. A hero image with text on the left at the 1/3 intersection is a classic landing page technique.',
         },
         {
-          type: 'diagram' as const,
-          title: 'Rule of Thirds in UI',
-          description: 'Four "power points" at line intersections — ideal placement for key elements',
-          items: [
-            '┌───────┬───────┬───────┐',
-            '│       │       │       │',
-            '│   ●   │       │   ●   │  <- top points: logo, CTA',
-            '├───────┼───────┼───────┤',
-            '│       │       │       │',
-            '├───────┼───────┼───────┤',
-            '│   ●   │       │   ●   │  <- bottom points: navigation, price',
-            '└───────┴───────┴───────┘',
-          ],
-        },
-        {
-          type: 'image' as const,
-          src: '/images/meeting-08-rule-of-thirds.webp',
-          alt: 'Layout with rule-of-thirds grid and power points',
-          caption: 'Rule of thirds: key elements sit on the line intersections.',
+          type: 'rule-of-thirds-grid' as const,
         },
         {
           type: 'subheading' as const,

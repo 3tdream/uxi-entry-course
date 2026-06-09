@@ -254,6 +254,8 @@ export type Section =
   | { type: 'nine-visual-elements'; title?: string; description?: string }
   | { type: 'icon-set-hero' }
   | { type: 'icon-style-trio' }
+  | { type: 'icon-vs-illustration' }
+  | { type: 'rule-of-thirds-grid' }
   | { type: 'ux-patterns-library'; title?: string; description?: string }
   | { type: 'ui-components-library'; title?: string; description?: string }
   | { type: 'divider' }
