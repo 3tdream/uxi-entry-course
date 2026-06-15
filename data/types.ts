@@ -267,6 +267,7 @@ export type Section =
   | { type: 'icon-style-trio' }
   | { type: 'icon-vs-illustration' }
   | { type: 'rule-of-thirds-grid' }
+  | { type: 'iframe-embed'; src: string; title: string; caption?: string; aspectRatio?: string; maxWidth?: number }
   | { type: 'ux-patterns-library'; title?: string; description?: string }
   | { type: 'ui-components-library'; title?: string; description?: string }
   | { type: 'divider' }

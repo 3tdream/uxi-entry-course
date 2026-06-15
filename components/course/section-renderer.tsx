@@ -2346,6 +2346,49 @@ function RuleOfThirdsGridSection() {
   )
 }
 
+function IframeEmbedSection({
+  src,
+  title,
+  caption,
+  aspectRatio,
+  maxWidth,
+}: {
+  src: string
+  title: string
+  caption?: string
+  aspectRatio?: string
+  maxWidth?: number
+}) {
+  const ar = aspectRatio || '16 / 9'
+  const block = (
+    <figure className="rounded-xl overflow-hidden border bg-stone-950">
+      <div className="relative w-full bg-stone-950" style={{ aspectRatio: ar }}>
+        <iframe
+          src={src}
+          title={title}
+          loading="lazy"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen"
+          className="absolute inset-0 w-full h-full"
+          style={{ border: 0 }}
+        />
+      </div>
+      {caption && (
+        <figcaption className="text-xs text-muted-foreground text-center py-2 px-4 bg-muted/30">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  )
+  if (maxWidth) {
+    return (
+      <div className="mx-auto" style={{ maxWidth: `${maxWidth}px` }}>
+        {block}
+      </div>
+    )
+  }
+  return block
+}
+
 function DividerSection() {
   return <hr className="border-border my-2" />
 }
@@ -2535,6 +2578,16 @@ function renderSection(section: Section) {
       return <IconVsIllustrationSection />
     case 'rule-of-thirds-grid':
       return <RuleOfThirdsGridSection />
+    case 'iframe-embed':
+      return (
+        <IframeEmbedSection
+          src={section.src}
+          title={section.title}
+          caption={section.caption}
+          aspectRatio={section.aspectRatio}
+          maxWidth={section.maxWidth}
+        />
+      )
     case 'ux-patterns-library':
       return <UxPatternsLibrarySection title={section.title} description={section.description} />
     case 'ui-components-library':

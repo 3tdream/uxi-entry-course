@@ -474,6 +474,13 @@ export const meeting09: Meeting = {
             'Balsamiq, Whimsical, Figma, Excalidraw — разные инструменты для разных задач',
           ],
         },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-crazy8s.html',
+          title: 'Crazy 8s · Gaming · Game Over screen',
+          caption: '🎮 Интерактивный слайд: 8 экранов «Game Over» за 8 минут. Запусти таймер ▶ — карточки с примерами открываются по одной каждую минуту. Поверх своих эскизов, не вместо.',
+          aspectRatio: '16 / 9',
+        },
       ],
       quiz: [
         {
