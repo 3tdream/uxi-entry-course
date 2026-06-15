@@ -584,8 +584,8 @@ export const meeting09: Meeting = {
     {
       id: 'part-2',
       title: 'Wireframe практика',
-      subtitle: 'Wireframing для web, mobile, SaaS: паттерны, ошибки, доступность',
-      duration: '45 мин',
+      subtitle: 'Wireframing для web, mobile, SaaS, games: паттерны, ошибки, доступность',
+      duration: '55 мин',
       sections: [
         // === ВВЕДЕНИЕ ===
         {
@@ -637,7 +637,7 @@ export const meeting09: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-09-landing-anatomy.webp',
           alt: 'Каркас лендинга с девятью основными секциями',
-          caption: 'Анатомия лендинга: 9 типовых блоков сверху вниз.',
+          caption: 'Анатомия лендинга: 9 типовых блоков сверху вниз. Структура по разбору Wix («Anatomy of a Landing Page»): hero → social proof → benefits → how it works → testimonials → pricing → FAQ → final CTA → footer.',
         },
         {
           type: 'before-after' as const,
@@ -645,10 +645,43 @@ export const meeting09: Meeting = {
           before: {
             label: 'Плохой wireframe лендинга',
             description: 'Hero без CTA, 8 пунктов преимуществ (слишком много), нет social proof, тарифы скрыты внизу, 2 разных CTA конкурируют за внимание. Пользователь не понимает, что делать.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '[ NAV · 8 ссылок · нет CTA ]', fontSize: 11, color: '#78716C' },
+                { text: '[ HERO · коллаж картинок · нет CTA ]', fontSize: 13, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
+                { text: '[ Преимущества: 8 пунктов списком ]', fontSize: 11, color: '#44403C', marginTop: 6 },
+                { text: '[ Преимущества: ещё 4 пункта ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ Длинный текст «о нас» ]', fontSize: 11, color: '#44403C', marginTop: 6 },
+                { text: '[ CTA #1 «Submit» ]    [ CTA #2 «Buy now» ]', fontSize: 11, fontWeight: 'semibold', color: '#B91C1C', marginTop: 6 },
+                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 8 },
+              ],
+              footnote: '0 social proof · 2 конкурирующих CTA · тарифов нет',
+            },
           },
           after: {
             label: 'Хороший wireframe лендинга',
             description: 'Чёткий заголовок + один CTA в hero, 3 преимущества, социальное доказательство рядом с CTA, тарифы на видном месте, один повторяющийся CTA. Путь пользователя — прямая линия к конверсии.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '[ NAV · логотип · 3 ссылки · CTA «Start free» ]', fontSize: 11, color: '#44403C' },
+                { text: '[ HERO · H1 · sub · ОДИН CTA · скриншот ]', fontSize: 13, fontWeight: 'bold', color: '#1C1917', marginTop: 8 },
+                { text: '[ Логотипы клиентов · «10 000+ команд» ]', fontSize: 11, color: '#0F766E', marginTop: 6 },
+                { text: '[ 3 карточки преимуществ ]', fontSize: 11, color: '#44403C', marginTop: 6 },
+                { text: '[ Как это работает · 3 шага ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ Отзывы · 2 цитаты ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ Тарифы · 3 плана ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ FAQ accordion ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ CTA повтор · «Start free» ]', fontSize: 11, fontWeight: 'semibold', color: '#0F766E', marginTop: 6 },
+                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 6 },
+              ],
+              footnote: '9 блоков по Wix · 1 призыв · proof сверху',
+            },
           },
         },
         {
@@ -754,10 +787,47 @@ export const meeting09: Meeting = {
           before: {
             label: 'Плохой wireframe ленты',
             description: 'Показан только один пост без контекста, нет навигации, нет состояний (пустая лента, ошибка), нет индикации скролла. Разработчик не понимает, как лента себя ведёт.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'App', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
+                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
+                { text: '▢ Пост (без аватара, без времени)', fontSize: 10, color: '#44403C', marginTop: 6 },
+                { text: '[ image placeholder ]', fontSize: 10, color: '#A8A29E', marginTop: 4 },
+                { text: 'Lorem ipsum dolor sit amet...', fontSize: 10, color: '#78716C', marginTop: 4 },
+                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
+                { text: '(нет других постов)', fontSize: 9, color: '#B91C1C', marginTop: 8 },
+                { text: '(нет tab bar)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
+                { text: '(нет состояний — loading / empty / error)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
+              ],
+              footnote: '1 пост · 0 навигации · 0 состояний',
+            },
           },
           after: {
             label: 'Хороший wireframe ленты',
             description: 'Показаны 2–3 поста разного типа (текст, фото, видео), навигация снизу (tab bar), pull-to-refresh, skeleton-загрузка, пустое состояние с CTA, ошибка с кнопкой «Повторить».',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Feed                🔍   🔔', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
+                { text: '↻ Pull to refresh', fontSize: 9, color: '#0F766E', marginTop: 4 },
+                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '● Алиса · 2ч', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
+                { text: '[ photo ]   ❤ 24   💬 8   ↗', fontSize: 10, color: '#44403C', marginTop: 3 },
+                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '● Boris · 3ч', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
+                { text: '[ ▶ video card ]', fontSize: 10, color: '#44403C', marginTop: 3 },
+                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '▱▱▱ skeleton loading…', fontSize: 10, color: '#A8A29E', marginTop: 4 },
+                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '🏠 🔍 ➕ ✉ 👤', fontSize: 11, color: '#1C1917', marginTop: 6 },
+              ],
+              footnote: '3 типа постов · pull-to-refresh · skeleton · tab bar',
+            },
           },
         },
         {
@@ -800,7 +870,65 @@ export const meeting09: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-09-saas-dashboard-layout.webp',
           alt: 'Каркас дашборда с боковой панелью, KPI-карточками и таблицей',
-          caption: 'Типичная раскладка SaaS-дашборда: sidebar, KPI, графики, таблица.',
+          caption: 'Типичная раскладка SaaS-дашборда: sidebar, KPI, графики, таблица. Структура встречается у Stripe, Linear, Mixpanel и в большинстве шаблонов на Bootstrapdash («SaaS dashboard templates»): 240px sidebar слева, sticky-header сверху, KPI-row → charts → data table в основной зоне.',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'SaaS-дашборд: перегруз vs сканируемая иерархия',
+          before: {
+            label: 'Плохой дашборд',
+            description:
+              '16 KPI-карточек без иерархии, 6 графиков втиснуты в ряд, таблица на 14 колонок — пользователь не понимает, на что смотреть в первую очередь. Информационный шум, но не информация.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '▮ NAV · 12 пунктов · все одного веса', fontSize: 10, color: '#78716C' },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
+                { text: '[chart] [chart] [chart] [chart] [chart] [chart]', fontSize: 10, color: '#B91C1C', marginTop: 6 },
+                { text: '┌── 14 колонок · мелкий шрифт · нет фильтров ──┐', fontSize: 10, color: '#B91C1C', marginTop: 6 },
+                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
+                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
+                { text: '└─────────────────────────────────────────────┘', fontSize: 9, color: '#A8A29E', marginTop: 2 },
+              ],
+              footnote: '16 KPI · 6 графиков · 14 колонок · нет фокуса',
+            },
+          },
+          after: {
+            label: 'Хороший дашборд',
+            description:
+              'Правило 4-2-1: 4 KPI-карточки (Revenue, MRR, Churn, Users) → 2 графика рядом → 1 таблица деталей с фильтрами. Пользователь видит главные числа за 0.5 сек, погружается в детали по необходимости. Паттерн Stripe / Linear / Mixpanel.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '▮ Sidebar · логотип · 5 разделов · ⊞ active', fontSize: 10, color: '#44403C' },
+                { text: 'Header · breadcrumbs · 🔍 · 🔔 · 👤', fontSize: 10, color: '#78716C', marginTop: 6 },
+                { text: '[ Revenue $48K +12% ]  [ MRR $12K +3% ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 8 },
+                { text: '[ Churn 2.1% −0.4% ]   [ Active 1 240 +180 ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 3 },
+                { text: '┌── Revenue (line) ──┐  ┌── Plans (bar) ──┐', fontSize: 10, color: '#1C1917', marginTop: 8 },
+                { text: '│  ╱╲      ╱╲╱╲    │  │  ▮▮ ▮▮▮▮ ▮▮ ▮  │', fontSize: 10, color: '#1C1917', marginTop: 2 },
+                { text: '└────────────────────┘  └──────────────────┘', fontSize: 10, color: '#1C1917', marginTop: 2 },
+                { text: 'Latest customers · фильтр · экспорт CSV', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
+                { text: '─────────────────────────────────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 2 },
+                { text: 'Alice · Pro · $99 · 12 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
+                { text: 'Bob   · Team · $499 · 11 May  🟡', fontSize: 10, color: '#44403C', marginTop: 2 },
+                { text: 'Carol · Pro · $99 · 10 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
+              ],
+              footnote: 'правило 4-2-1 · от общего к частному · фокус виден',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Где смотреть готовые SaaS-каркасы:** *Bootstrapdash* (десятки бесплатных шаблонов с разбором структуры), *Cruip*, *Tailwind UI*, *Figma Community («SaaS dashboard»)*. Цель — не копировать визуал, а **изучить раскладку зон** и пропорции (sidebar 240px, header 64px, KPI 120px, gap 24px). После 10-15 разобранных дашбордов своя структура собирается за минуты.',
         },
         {
           type: 'divider' as const,
@@ -821,6 +949,184 @@ export const meeting09: Meeting = {
           variant: 'example' as const,
           content:
             'Паттерн Stripe/GitHub: вертикальные табы слева (Профиль, Безопасность, Уведомления...) + контент справа. Каждая секция — отдельная форма с кнопкой «Сохранить» внизу. Простой, проверенный, знакомый пользователям.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // === GAMES: HUD, MENUS, GAME LOOP ===
+        {
+          type: 'heading' as const,
+          content: 'Wireframe для игр',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Игровые интерфейсы — отдельная дисциплина wireframing. В играх UI работает на двух уровнях: **out-of-game** (главное меню, выбор персонажа, магазин, настройки) и **in-game** (HUD — health, score, миникарта, способности). Wireframe должен покрыть оба уровня плюс **переходы** между ними: загрузочные экраны, паузу, экран победы и поражения. Игровой flow — это не линия, а **петля**: после game-over игрок возвращается в матч, после победы — на экран наград и снова в игру.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Принцип диегетического UI:** лучший игровой интерфейс — тот, который встроен в мир игры, а не наложен поверх. *Dead Space* показывает health-бар на спине костюма героя, *Metro Exodus* — патроны в реальной обойме, которую достаёт персонаж. В wireframe помечайте, какие элементы можно сделать диегетическими — это снижает когнитивную нагрузку и усиливает погружение.',
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Три слоя игрового UI',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Wireframing игры удобно вести по трём слоям. **Front-end** — экраны до и после геймплея (main menu, character select, settings, store). **HUD** — постоянный оверлей во время игры. **Pop-ups** — окна, прерывающие геймплей (pause, level-up, mission briefing, inventory). Каждый слой имеет свои правила плотности информации и допустимого визуального веса.',
+        },
+        {
+          type: 'diagram' as const,
+          title: 'Зоны HUD в action/RPG',
+          description: 'Типичная раскладка in-game HUD по углам экрана',
+          items: [
+            'Top-left — health, mana, статус-эффекты',
+            'Top-right — миникарта, компас, цель миссии',
+            'Bottom-left — инвентарь, активные способности, hot-bar',
+            'Bottom-right — патроны, quick-slots, кнопка действия',
+            'Center — кроссхейр (только когда нужен), critical alerts',
+            'Top-center — таймер, прогресс волны или раунда',
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'In-game HUD: «всё на экране» vs контекстный HUD',
+          before: {
+            label: 'Плохой HUD',
+            description:
+              'Health, mana, миникарта, инвентарь, чат, квесты, баффы, дебаффы — всё на экране 100% времени. UI съедает 40% площади, игрок не видит саму игру, важная информация (низкое HP) теряется в шуме.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#0F172A',
+              rows: [
+                { text: '❤ 78/100   💧 42/60   ⭐ 12 480   🎯 Quest 2/5', fontSize: 11, color: '#FCA5A5' },
+                { text: '🗺 [minimap]    🎒 [bag]    ⚔ [skills]    💬 [chat]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+                { text: '🔮 Buffs: Haste · Shield · Crit+15% · Speed · Regen', fontSize: 10, color: '#FCD34D', marginTop: 6 },
+                { text: '⚠ Debuffs: Poison · Slow · Burn · Curse', fontSize: 10, color: '#FCA5A5', marginTop: 4 },
+                { text: '[ GAME WORLD — barely visible ]', fontSize: 11, color: '#475569', marginTop: 10 },
+              ],
+              footnote: 'всё видно одновременно · 40% экрана съедено · low-HP теряется',
+            },
+          },
+          after: {
+            label: 'Хороший HUD',
+            description:
+              'Health всегда виден, но компактно. Mana появляется только при использовании, инвентарь — по кнопке. Баффы — иконками без подписей, низкое HP подсвечивается красным мерцанием. 80% экрана — это игра.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#0F172A',
+              rows: [
+                { text: '❤ 78', fontSize: 18, fontWeight: 'bold', color: '#FCA5A5' },
+                { text: '[ GAME WORLD — 80% of screen ]', fontSize: 13, color: '#94A3B8', marginTop: 14 },
+                { text: '🗺                                              ⚔', fontSize: 14, color: '#94A3B8', marginTop: 14 },
+              ],
+              footnote: 'health всегда · остальное по запросу · игра дышит',
+            },
+          },
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Игровой цикл: основной user flow',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'В отличие от линейного flow веб-приложений, игровой цикл — это **петля**: игрок возвращается из game-over обратно в матч, из победы — на экран наград, потом снова в игру. Wireframe должен показать **все выходы** из in-game состояния, иначе разработчик не поймёт, куда вести игрока после смерти или победы.',
+        },
+        {
+          type: 'user-flow' as const,
+          title: 'Core gameplay loop',
+          steps: [
+            { id: 'menu', label: 'Главное меню', type: 'start' as const },
+            { id: 'select', label: 'Выбор уровня / персонажа', type: 'action' as const },
+            { id: 'loading', label: 'Loading screen', type: 'action' as const },
+            { id: 'play', label: 'In-game (HUD)', type: 'action' as const },
+            { id: 'pause', label: 'Pause menu', type: 'action' as const },
+            { id: 'decide', label: 'Исход матча', type: 'decision' as const },
+            { id: 'win', label: 'Победа + награды', type: 'action' as const },
+            { id: 'lose', label: 'Game over', type: 'action' as const },
+            { id: 'restart', label: 'Перезапуск или меню', type: 'end' as const },
+          ],
+          connections: [
+            { from: 'menu', to: 'select' },
+            { from: 'select', to: 'loading' },
+            { from: 'loading', to: 'play' },
+            { from: 'play', to: 'pause', label: 'Esc' },
+            { from: 'pause', to: 'play', label: 'Resume' },
+            { from: 'pause', to: 'menu', label: 'Quit' },
+            { from: 'play', to: 'decide' },
+            { from: 'decide', to: 'win', label: 'Победа' },
+            { from: 'decide', to: 'lose', label: 'Смерть' },
+            { from: 'win', to: 'restart' },
+            { from: 'lose', to: 'restart' },
+            { from: 'restart', to: 'play', label: 'Заново' },
+            { from: 'restart', to: 'menu', label: 'В меню' },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Game UI ≠ Game UX.** UI — это меню, кнопки, HUD. UX игры — это весь геймплей: кривая сложности, обратная связь от ударов, juice (анимация попаданий, screen shake, particle bursts), feel оружия. Wireframe покрывает UI; UX игры требует прототипа или playtest — это уже не задача дизайнера интерфейсов в одиночку.',
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Mobile-game паттерны',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Мобильные игры добавляют свои правила. **Thumb zones** — основные кнопки управления только в нижней трети экрана, там дотягиваются большие пальцы. **Портретный режим** — для casual (Match-3, hyper-casual, idle), **ландшафтный** — для core (MOBA, shooter, MMO). **F2P-петля**: каждый матч ведёт к награде → магазин → battle pass — wireframe должен учитывать монетизационные экраны как **часть основного flow**, а не опциональную ветку.',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Главное меню мобильной игры',
+          before: {
+            label: 'Перегруженное меню',
+            description:
+              '12 кнопок одинакового размера: Play, Shop, Daily, Battle Pass, Friends, Clan, Events, Inventory, Settings, Profile, News, Support. Игрок не понимает, что главное действие — Play. Время до первого матча растёт, retention падает.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#1E293B',
+              rows: [
+                { text: 'GAME LOGO', fontSize: 16, fontWeight: 'bold', color: '#F8FAFC' },
+                { text: '[ Play ]  [ Shop ]  [ Daily ]  [ BP ]', fontSize: 11, color: '#94A3B8', marginTop: 14 },
+                { text: '[ Friends ]  [ Clan ]  [ Events ]  [ Inv ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+                { text: '[ Settings ]  [ Profile ]  [ News ]  [ ? ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+              ],
+              footnote: '12 равноправных кнопок · Play теряется в шуме',
+            },
+          },
+          after: {
+            label: 'Меню с иерархией',
+            description:
+              'Огромная PLAY-кнопка в центре, второстепенные действия (Shop, Battle Pass, Clan) — иконками внизу, профиль и настройки — мелкие иконки в углу. Иерархия очевидна за 0.5 секунды, игрок попадает в матч в один тап.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#1E293B',
+              rows: [
+                { text: '⚙           GAME LOGO           👤', fontSize: 11, color: '#94A3B8' },
+                { text: '▶  PLAY', fontSize: 28, fontWeight: 'bold', color: '#F8FAFC', marginTop: 20 },
+                { text: 'Tap to enter battle', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+                { text: '🛒 Shop      🎟 Battle Pass      👥 Clan', fontSize: 12, color: '#CBD5E1', marginTop: 22 },
+              ],
+              footnote: 'one big action · вторичные иконками · мгновенно понятно',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Кейсы для разбора wireframes игр:** *Hades* (минималистичный наглядный HUD), *Slay the Spire* (карточный UI с подсказками наведения), *Among Us* (диегетические задания как мини-игры), *Vampire Survivors* (весь HUD в одной строке). Открывайте Figma Community и ищите «game UI» — там сотни разобранных скринов с пометками автора.',
         },
         {
           type: 'divider' as const,
@@ -1229,6 +1535,7 @@ export const meeting09: Meeting = {
             'Лента: показать разные типы контента и все состояния',
             'SaaS дашборд: KPI → графики → таблица (от общего к частному)',
             'Настройки: группировка по категориям, вертикальные табы',
+            'Игры: три слоя UI (front-end / HUD / pop-ups), цикл вместо линии, диегетический интерфейс',
             'Страница данных: тип визуализации + фильтры + интерактивность',
             'Типовые паттерны ускоряют wireframing в 3–5 раз',
             'Доступность закладывается на этапе wireframe',
@@ -1338,6 +1645,18 @@ export const meeting09: Meeting = {
           correctId: 'b',
           explanation:
             'Voice — постоянная личность бренда (дружелюбный/строгий/игривый), она одна и та же везде. Tone — настроение, которое адаптируется к контексту: бодрый на лендинге, спокойно-серьёзный в сообщении об ошибке или удалении данных.',
+        },
+        {
+          question: 'Чем wireframe игры принципиально отличается от wireframe веб-приложения?',
+          options: [
+            { id: 'a', text: 'Ничем — это те же экраны, просто красивее' },
+            { id: 'b', text: 'Покрывает три слоя (front-end / HUD / pop-ups), описывает игровой цикл-петлю, а не линию, и помечает, какие элементы можно сделать диегетическими' },
+            { id: 'c', text: 'В игре wireframe не нужен — там сразу делают арт' },
+            { id: 'd', text: 'Игровой wireframe всегда чёрно-белый и без аннотаций' },
+          ],
+          correctId: 'b',
+          explanation:
+            'Игра — это не линейный сценарий, а цикл: matchmaking → играть → пауза/победа/смерть → снова играть. Wireframe должен покрыть три слоя UI (меню, HUD во время игры, всплывающие окна) и показать все выходы из in-game состояния. Диегетический UI (как health-бар на спине героя в Dead Space) — отдельная важная пометка, которую делают именно на этапе wireframe.',
         },
       ],
     },

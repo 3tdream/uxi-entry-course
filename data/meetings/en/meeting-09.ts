@@ -584,8 +584,8 @@ export const meeting09: Meeting = {
     {
       id: 'part-2',
       title: 'Wireframe Practice',
-      subtitle: 'Wireframing for web, mobile, SaaS: patterns, mistakes, accessibility',
-      duration: '45 min',
+      subtitle: 'Wireframing for web, mobile, SaaS, games: patterns, mistakes, accessibility',
+      duration: '55 min',
       sections: [
         // === INTRODUCTION ===
         {
@@ -637,7 +637,7 @@ export const meeting09: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-09-landing-anatomy.webp',
           alt: 'Landing-page wireframe with nine main sections',
-          caption: 'Landing-page anatomy: nine typical blocks top-to-bottom.',
+          caption: 'Landing-page anatomy: nine typical blocks top-to-bottom. Structure adapted from the Wix "Anatomy of a Landing Page" breakdown: hero \u2192 social proof \u2192 benefits \u2192 how it works \u2192 testimonials \u2192 pricing \u2192 FAQ \u2192 final CTA \u2192 footer.',
         },
         {
           type: 'before-after' as const,
@@ -645,10 +645,43 @@ export const meeting09: Meeting = {
           before: {
             label: 'Bad landing page wireframe',
             description: 'Hero without CTA, 8 benefit items (too many), no social proof, pricing hidden at the bottom, 2 different CTAs competing for attention. The user doesn\u2019t know what to do.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '[ NAV \u00b7 8 links \u00b7 no CTA ]', fontSize: 11, color: '#78716C' },
+                { text: '[ HERO \u00b7 image collage \u00b7 no CTA ]', fontSize: 13, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
+                { text: '[ Benefits: 8-item bullet list ]', fontSize: 11, color: '#44403C', marginTop: 6 },
+                { text: '[ Benefits: 4 more bullets ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ Long "about us" block ]', fontSize: 11, color: '#44403C', marginTop: 6 },
+                { text: '[ CTA #1 "Submit" ]    [ CTA #2 "Buy now" ]', fontSize: 11, fontWeight: 'semibold', color: '#B91C1C', marginTop: 6 },
+                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 8 },
+              ],
+              footnote: '0 social proof \u00b7 2 competing CTAs \u00b7 no pricing at all',
+            },
           },
           after: {
             label: 'Good landing page wireframe',
             description: 'Clear headline + one CTA in the hero, 3 benefits, social proof near the CTA, pricing in a prominent position, one repeated CTA. The user\u2019s path is a straight line to conversion.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '[ NAV \u00b7 logo \u00b7 3 links \u00b7 CTA "Start free" ]', fontSize: 11, color: '#44403C' },
+                { text: '[ HERO \u00b7 H1 \u00b7 sub \u00b7 ONE CTA \u00b7 screenshot ]', fontSize: 13, fontWeight: 'bold', color: '#1C1917', marginTop: 8 },
+                { text: '[ Client logos \u00b7 "10,000+ teams" ]', fontSize: 11, color: '#0F766E', marginTop: 6 },
+                { text: '[ 3 benefit cards ]', fontSize: 11, color: '#44403C', marginTop: 6 },
+                { text: '[ How it works \u00b7 3 steps ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ Testimonials \u00b7 2 quotes ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ Pricing \u00b7 3 plans ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ FAQ accordion ]', fontSize: 11, color: '#44403C', marginTop: 4 },
+                { text: '[ Repeated CTA \u00b7 "Start free" ]', fontSize: 11, fontWeight: 'semibold', color: '#0F766E', marginTop: 6 },
+                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 6 },
+              ],
+              footnote: '9 Wix-style blocks \u00b7 one CTA \u00b7 proof up top',
+            },
           },
         },
         {
@@ -754,10 +787,47 @@ export const meeting09: Meeting = {
           before: {
             label: 'Bad feed wireframe',
             description: 'Only one post shown without context, no navigation, no states (empty feed, error), no scroll indicator. The developer doesn\u2019t understand how the feed behaves.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'App', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
+                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
+                { text: '\u25a2 Post (no avatar, no time)', fontSize: 10, color: '#44403C', marginTop: 6 },
+                { text: '[ image placeholder ]', fontSize: 10, color: '#A8A29E', marginTop: 4 },
+                { text: 'Lorem ipsum dolor sit amet\u2026', fontSize: 10, color: '#78716C', marginTop: 4 },
+                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
+                { text: '(no other posts)', fontSize: 9, color: '#B91C1C', marginTop: 8 },
+                { text: '(no tab bar)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
+                { text: '(no states \u2014 loading / empty / error)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
+              ],
+              footnote: '1 post \u00b7 0 navigation \u00b7 0 states',
+            },
           },
           after: {
             label: 'Good feed wireframe',
             description: '2\u20133 posts of different types shown (text, photo, video), bottom navigation (tab bar), pull-to-refresh, skeleton loading, empty state with CTA, error with a "Retry" button.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'phone',
+              background: '#FFFFFF',
+              rows: [
+                { text: 'Feed                \ud83d\udd0d   \ud83d\udd14', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
+                { text: '\u21bb Pull to refresh', fontSize: 9, color: '#0F766E', marginTop: 4 },
+                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '\u25cf Alice \u00b7 2h', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
+                { text: '[ photo ]   \u2764 24   \ud83d\udcac 8   \u2197', fontSize: 10, color: '#44403C', marginTop: 3 },
+                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '\u25cf Boris \u00b7 3h', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
+                { text: '[ \u25b6 video card ]', fontSize: 10, color: '#44403C', marginTop: 3 },
+                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '\u25b1\u25b1\u25b1 skeleton loading\u2026', fontSize: 10, color: '#A8A29E', marginTop: 4 },
+                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
+                { text: '\ud83c\udfe0 \ud83d\udd0d \u2795 \u2709 \ud83d\udc64', fontSize: 11, color: '#1C1917', marginTop: 6 },
+              ],
+              footnote: '3 post types \u00b7 pull-to-refresh \u00b7 skeleton \u00b7 tab bar',
+            },
           },
         },
         {
@@ -800,7 +870,65 @@ export const meeting09: Meeting = {
           type: 'image' as const,
           src: '/images/meeting-09-saas-dashboard-layout.webp',
           alt: 'Dashboard wireframe with sidebar, KPI cards and a table',
-          caption: 'Typical SaaS dashboard layout: sidebar, KPIs, charts, table.',
+          caption: 'Typical SaaS dashboard layout: sidebar, KPIs, charts, table. You\'ll see this pattern at Stripe, Linear, Mixpanel, and in most Bootstrapdash "SaaS dashboard templates": a 240px sidebar on the left, sticky header on top, KPI row → charts → data table in the main area.',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'SaaS Dashboard: Overload vs Scannable Hierarchy',
+          before: {
+            label: 'Bad dashboard',
+            description:
+              '16 KPI cards with no hierarchy, 6 charts crammed into one row, a 14-column table — the user has no idea what to look at first. Information noise, not information.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '▮ NAV · 12 items · all the same weight', fontSize: 10, color: '#78716C' },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
+                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
+                { text: '[chart] [chart] [chart] [chart] [chart] [chart]', fontSize: 10, color: '#B91C1C', marginTop: 6 },
+                { text: '┌── 14 columns · tiny font · no filters ──┐', fontSize: 10, color: '#B91C1C', marginTop: 6 },
+                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
+                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
+                { text: '└──────────────────────────────────────────┘', fontSize: 9, color: '#A8A29E', marginTop: 2 },
+              ],
+              footnote: '16 KPIs · 6 charts · 14 columns · no focus',
+            },
+          },
+          after: {
+            label: 'Good dashboard',
+            description:
+              'The 4-2-1 rule: 4 KPI cards (Revenue, MRR, Churn, Users) → 2 charts side by side → 1 details table with filters. The user sees the headline numbers in 0.5s and drills down only when needed. The Stripe / Linear / Mixpanel pattern.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#FAFAF9',
+              rows: [
+                { text: '▮ Sidebar · logo · 5 sections · ⊞ active', fontSize: 10, color: '#44403C' },
+                { text: 'Header · breadcrumbs · 🔍 · 🔔 · 👤', fontSize: 10, color: '#78716C', marginTop: 6 },
+                { text: '[ Revenue $48K +12% ]  [ MRR $12K +3% ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 8 },
+                { text: '[ Churn 2.1% −0.4% ]   [ Active 1,240 +180 ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 3 },
+                { text: '┌── Revenue (line) ──┐  ┌── Plans (bar) ──┐', fontSize: 10, color: '#1C1917', marginTop: 8 },
+                { text: '│  ╱╲      ╱╲╱╲    │  │  ▮▮ ▮▮▮▮ ▮▮ ▮  │', fontSize: 10, color: '#1C1917', marginTop: 2 },
+                { text: '└────────────────────┘  └──────────────────┘', fontSize: 10, color: '#1C1917', marginTop: 2 },
+                { text: 'Latest customers · filter · CSV export', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
+                { text: '─────────────────────────────────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 2 },
+                { text: 'Alice · Pro · $99 · 12 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
+                { text: 'Bob   · Team · $499 · 11 May  🟡', fontSize: 10, color: '#44403C', marginTop: 2 },
+                { text: 'Carol · Pro · $99 · 10 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
+              ],
+              footnote: '4-2-1 rule · general to specific · focus is visible',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Where to find ready-made SaaS skeletons:** *Bootstrapdash* (dozens of free templates with structural breakdowns), *Cruip*, *Tailwind UI*, *Figma Community ("SaaS dashboard")*. The goal isn\'t to copy the visuals but to **study the zone layout** and proportions (sidebar 240px, header 64px, KPI 120px, gap 24px). After 10-15 dashboards reviewed, your own structure comes together in minutes.',
         },
         {
           type: 'divider' as const,
@@ -821,6 +949,184 @@ export const meeting09: Meeting = {
           variant: 'example' as const,
           content:
             'The Stripe/GitHub pattern: vertical tabs on the left (Profile, Security, Notifications...) + content on the right. Each section is a separate form with a "Save" button at the bottom. Simple, proven, familiar to users.',
+        },
+        {
+          type: 'divider' as const,
+        },
+
+        // === GAMES: HUD, MENUS, GAME LOOP ===
+        {
+          type: 'heading' as const,
+          content: 'Wireframe for Games',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Game UI is a separate wireframing discipline. In games, UI works on two levels: **out-of-game** (main menu, character select, store, settings) and **in-game** (HUD — health, score, minimap, abilities). The wireframe must cover both levels plus the **transitions** between them: loading screens, pause, victory and game-over screens. A game flow is not a line, it is a **loop**: after game-over the player returns to the match, after victory — to the rewards screen and back into play.',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**The diegetic UI principle:** the best game interface is one built into the game world, not overlaid on top of it. *Dead Space* shows the health bar on the back of the hero\'s suit; *Metro Exodus* shows ammo in the real magazine the character pulls out. Mark in the wireframe which elements can be made diegetic — it reduces cognitive load and deepens immersion.',
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Three layers of game UI',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'It helps to wireframe a game in three layers. **Front-end** — screens before and after gameplay (main menu, character select, settings, store). **HUD** — the persistent overlay during play. **Pop-ups** — windows that interrupt gameplay (pause, level-up, mission briefing, inventory). Each layer has its own rules for information density and acceptable visual weight.',
+        },
+        {
+          type: 'diagram' as const,
+          title: 'HUD zones for action/RPG',
+          description: 'Typical in-game HUD layout by screen corner',
+          items: [
+            'Top-left — health, mana, status effects',
+            'Top-right — minimap, compass, mission objective',
+            'Bottom-left — inventory, active abilities, hot-bar',
+            'Bottom-right — ammo, quick-slots, action button',
+            'Center — crosshair (only when needed), critical alerts',
+            'Top-center — timer, wave or round progress',
+          ],
+        },
+        {
+          type: 'before-after' as const,
+          title: 'In-game HUD: "everything on screen" vs contextual HUD',
+          before: {
+            label: 'Bad HUD',
+            description:
+              'Health, mana, minimap, inventory, chat, quests, buffs, debuffs — all on screen 100% of the time. UI eats 40% of the area, the player can\'t see the game itself, and critical info (low HP) gets lost in the noise.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#0F172A',
+              rows: [
+                { text: '❤ 78/100   💧 42/60   ⭐ 12,480   🎯 Quest 2/5', fontSize: 11, color: '#FCA5A5' },
+                { text: '🗺 [minimap]    🎒 [bag]    ⚔ [skills]    💬 [chat]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+                { text: '🔮 Buffs: Haste · Shield · Crit+15% · Speed · Regen', fontSize: 10, color: '#FCD34D', marginTop: 6 },
+                { text: '⚠ Debuffs: Poison · Slow · Burn · Curse', fontSize: 10, color: '#FCA5A5', marginTop: 4 },
+                { text: '[ GAME WORLD — barely visible ]', fontSize: 11, color: '#475569', marginTop: 10 },
+              ],
+              footnote: 'everything visible at once · 40% of screen eaten · low-HP lost',
+            },
+          },
+          after: {
+            label: 'Good HUD',
+            description:
+              'Health is always visible, but compact. Mana appears only when used; inventory opens on a key. Buffs are icons without labels, low HP pulses red. 80% of the screen is the game.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#0F172A',
+              rows: [
+                { text: '❤ 78', fontSize: 18, fontWeight: 'bold', color: '#FCA5A5' },
+                { text: '[ GAME WORLD — 80% of screen ]', fontSize: 13, color: '#94A3B8', marginTop: 14 },
+                { text: '🗺                                              ⚔', fontSize: 14, color: '#94A3B8', marginTop: 14 },
+              ],
+              footnote: 'health always · the rest on demand · the game breathes',
+            },
+          },
+        },
+        {
+          type: 'subheading' as const,
+          content: 'The game loop: core user flow',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Unlike the linear flows of web apps, a game cycle is a **loop**: the player returns from game-over back into a match, from victory — to the rewards screen and then back into play. The wireframe must show **every exit** from the in-game state, otherwise the developer won\'t know where to send the player after death or victory.',
+        },
+        {
+          type: 'user-flow' as const,
+          title: 'Core gameplay loop',
+          steps: [
+            { id: 'menu', label: 'Main menu', type: 'start' as const },
+            { id: 'select', label: 'Level / character select', type: 'action' as const },
+            { id: 'loading', label: 'Loading screen', type: 'action' as const },
+            { id: 'play', label: 'In-game (HUD)', type: 'action' as const },
+            { id: 'pause', label: 'Pause menu', type: 'action' as const },
+            { id: 'decide', label: 'Match outcome', type: 'decision' as const },
+            { id: 'win', label: 'Victory + rewards', type: 'action' as const },
+            { id: 'lose', label: 'Game over', type: 'action' as const },
+            { id: 'restart', label: 'Restart or menu', type: 'end' as const },
+          ],
+          connections: [
+            { from: 'menu', to: 'select' },
+            { from: 'select', to: 'loading' },
+            { from: 'loading', to: 'play' },
+            { from: 'play', to: 'pause', label: 'Esc' },
+            { from: 'pause', to: 'play', label: 'Resume' },
+            { from: 'pause', to: 'menu', label: 'Quit' },
+            { from: 'play', to: 'decide' },
+            { from: 'decide', to: 'win', label: 'Win' },
+            { from: 'decide', to: 'lose', label: 'Death' },
+            { from: 'win', to: 'restart' },
+            { from: 'lose', to: 'restart' },
+            { from: 'restart', to: 'play', label: 'Replay' },
+            { from: 'restart', to: 'menu', label: 'To menu' },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**Game UI ≠ Game UX.** UI is menus, buttons, HUD. Game UX is the entire gameplay: difficulty curve, hit feedback, juice (impact animation, screen shake, particle bursts), the feel of the weapon. A wireframe covers UI; game UX requires a prototype or playtest — that\'s no longer a job for the interface designer alone.',
+        },
+        {
+          type: 'subheading' as const,
+          content: 'Mobile-game patterns',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Mobile games add their own rules. **Thumb zones** — primary controls live only in the bottom third of the screen, where thumbs reach. **Portrait** — for casual (Match-3, hyper-casual, idle); **landscape** — for core (MOBA, shooter, MMO). The **F2P loop**: every match feeds rewards → store → battle pass — the wireframe must treat monetization screens as **part of the core flow**, not an optional branch.',
+        },
+        {
+          type: 'before-after' as const,
+          title: 'Main menu of a mobile game',
+          before: {
+            label: 'Overloaded menu',
+            description:
+              '12 same-sized buttons: Play, Shop, Daily, Battle Pass, Friends, Clan, Events, Inventory, Settings, Profile, News, Support. The player can\'t tell that Play is the primary action. Time-to-first-match grows, retention drops.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#1E293B',
+              rows: [
+                { text: 'GAME LOGO', fontSize: 16, fontWeight: 'bold', color: '#F8FAFC' },
+                { text: '[ Play ]  [ Shop ]  [ Daily ]  [ BP ]', fontSize: 11, color: '#94A3B8', marginTop: 14 },
+                { text: '[ Friends ]  [ Clan ]  [ Events ]  [ Inv ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+                { text: '[ Settings ]  [ Profile ]  [ News ]  [ ? ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+              ],
+              footnote: '12 equal buttons · Play drowns in the noise',
+            },
+          },
+          after: {
+            label: 'Menu with hierarchy',
+            description:
+              'A huge PLAY button in the center; secondary actions (Shop, Battle Pass, Clan) as icons below; profile and settings — tiny icons in the corner. Hierarchy is obvious in 0.5 seconds, one tap to the match.',
+            visual: {
+              kind: 'typography-stack',
+              frame: 'browser',
+              background: '#1E293B',
+              rows: [
+                { text: '⚙           GAME LOGO           👤', fontSize: 11, color: '#94A3B8' },
+                { text: '▶  PLAY', fontSize: 28, fontWeight: 'bold', color: '#F8FAFC', marginTop: 20 },
+                { text: 'Tap to enter battle', fontSize: 11, color: '#94A3B8', marginTop: 6 },
+                { text: '🛒 Shop      🎟 Battle Pass      👥 Clan', fontSize: 12, color: '#CBD5E1', marginTop: 22 },
+              ],
+              footnote: 'one big action · secondaries as icons · obvious instantly',
+            },
+          },
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Game wireframes worth studying:** *Hades* (minimalist, readable HUD), *Slay the Spire* (card UI with hover tooltips), *Among Us* (diegetic tasks as mini-games), *Vampire Survivors* (the entire HUD in a single line). Open Figma Community and search "game UI" — there are hundreds of breakdown decks with author annotations.',
         },
         {
           type: 'divider' as const,
@@ -1229,6 +1535,7 @@ export const meeting09: Meeting = {
             'Feed: show different content types and all states',
             'SaaS dashboard: KPI \u2192 charts \u2192 table (general to specific)',
             'Settings: grouped by category, vertical tabs',
+            'Games: three UI layers (front-end / HUD / pop-ups), a loop not a line, diegetic interface',
             'Data page: visualization type + filters + interactivity',
             'Standard patterns speed up wireframing by 3\u20135x',
             'Accessibility is built in at the wireframe stage',
@@ -1338,6 +1645,18 @@ export const meeting09: Meeting = {
           correctId: 'b',
           explanation:
             'Voice is the constant brand personality (friendly/serious/playful), the same everywhere. Tone is the mood that adapts to context: upbeat on a landing, calm and serious in an error or a data-deletion message.',
+        },
+        {
+          question: 'What fundamentally separates a game wireframe from a web-app wireframe?',
+          options: [
+            { id: 'a', text: 'Nothing — same screens, just prettier' },
+            { id: 'b', text: 'It covers three layers (front-end / HUD / pop-ups), describes a gameplay loop instead of a line, and flags which elements can be made diegetic' },
+            { id: 'c', text: 'Games don\'t need a wireframe — they jump straight to art' },
+            { id: 'd', text: 'Game wireframes are always black-and-white and unannotated' },
+          ],
+          correctId: 'b',
+          explanation:
+            'A game is not a linear scenario but a loop: matchmaking → play → pause/win/death → play again. The wireframe has to cover three UI layers (menus, in-game HUD, pop-ups) and show every exit from the in-game state. Diegetic UI (like the health bar on Dead Space\'s suit) is a separate, important note made specifically at the wireframe stage.',
         },
       ],
     },
