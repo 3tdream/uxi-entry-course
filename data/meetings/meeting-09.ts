@@ -869,8 +869,8 @@ export const meeting09: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-09-saas-dashboard-layout.webp',
-          alt: 'Каркас дашборда с боковой панелью, KPI-карточками и таблицей',
-          caption: 'Типичная раскладка SaaS-дашборда: sidebar, KPI, графики, таблица. Структура встречается у Stripe, Linear, Mixpanel и в большинстве шаблонов на Bootstrapdash («SaaS dashboard templates»): 240px sidebar слева, sticky-header сверху, KPI-row → charts → data table в основной зоне.',
+          alt: 'Шаблон SaaS-дашборда Pollux от Bootstrapdash: sidebar слева, header сверху, KPI-карточки, графики и таблица',
+          caption: 'Типичная раскладка SaaS-дашборда: sidebar, KPI, графики, таблица. Источник: Bootstrapdash, шаблон Pollux. Та же структура у Stripe, Linear, Mixpanel.',
         },
         {
           type: 'before-after' as const,

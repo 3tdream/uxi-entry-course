@@ -869,8 +869,8 @@ export const meeting09: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-09-saas-dashboard-layout.webp',
-          alt: 'Dashboard wireframe with sidebar, KPI cards and a table',
-          caption: 'Typical SaaS dashboard layout: sidebar, KPIs, charts, table. You\'ll see this pattern at Stripe, Linear, Mixpanel, and in most Bootstrapdash "SaaS dashboard templates": a 240px sidebar on the left, sticky header on top, KPI row → charts → data table in the main area.',
+          alt: 'Bootstrapdash Pollux SaaS-dashboard template: left sidebar, top header, KPI cards, charts and a data table',
+          caption: 'Typical SaaS dashboard layout: sidebar, KPIs, charts, table. Source: Bootstrapdash, Pollux template. The same structure powers Stripe, Linear, Mixpanel.',
         },
         {
           type: 'before-after' as const,
