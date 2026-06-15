@@ -1123,10 +1123,37 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'subheading' as const,
+          content: 'Три эталонных HUD: разбор живых примеров',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Прежде чем смотреть на собственный wireframe, изучите эти три кадра — три разных философии in-game UI на одной странице.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-hud-hades.webp',
+          alt: 'In-game скрин Hades: бой с боссом Megaera, минималистичный HUD по углам',
+          caption: 'Hades — минималистичный HUD. Слева внизу: HP 23/100 + cast 1/1; слева в столбик — Lv.3 и Lv.2 boons (активные способности). Справа внизу — монеты и obol. Сверху по центру — имя босса и её red HP-полоса. Всё остальное (40+ дармов, 17 талантов, награды) убрано в pause-меню. Игрок видит игру.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-hud-stspire.webp',
+          alt: 'In-game скрин Slay the Spire: бой The Defect, карты в руке, наведённая карта Zap',
+          caption: 'Slay the Spire — карточный UI с тултипами. Top bar: HP 47/82, gold 86, реликвии, 11th Floor. Низ: рука из 4 карт с явной стоимостью энергии, Energy 4/3 слева, "End Turn" справа, draw/discard piles по углам. Наведённая карта Zap+ всплывает в центре с полным описанием — паттерн tooltip-on-hover.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-hud-deadspace.webp',
+          alt: 'In-game скрин Dead Space (2023): Айзек со спины, светящаяся диегетическая HP-полоса на скафандре',
+          caption: 'Dead Space — эталон диегетического UI. На скриншоте — НИ ОДНОГО элемента overlay. HP-полоса вшита в позвоночник скафандра Айзека (видна как голубое свечение по центру спины), боеприпасы показываются голограммой над оружием при стрельбе. Это меняет роль UI: интерфейс не «накрывает» мир, а живёт в нём — погружение растёт, экран остаётся свободным.',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
-            '**Кейсы для разбора wireframes игр:** *Hades* (минималистичный наглядный HUD), *Slay the Spire* (карточный UI с подсказками наведения), *Among Us* (диегетические задания как мини-игры), *Vampire Survivors* (весь HUD в одной строке). Открывайте Figma Community и ищите «game UI» — там сотни разобранных скринов с пометками автора.',
+            '**Где искать ещё:** *Among Us* (диегетические задания как мини-игры), *Vampire Survivors* (весь HUD в одной строке), *Disco Elysium* (DOM-подобный текстовый UI как часть стиля). На Figma Community ищите «game UI» — там сотни разобранных скринов с пометками автора.',
         },
         {
           type: 'divider' as const,

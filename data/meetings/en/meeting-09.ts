@@ -1123,10 +1123,37 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'subheading' as const,
+          content: 'Three reference HUDs: live examples to study',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Before you look at your own wireframe, study these three frames — three different in-game UI philosophies on one page.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-hud-hades.webp',
+          alt: 'In-game Hades screenshot: boss fight against Megaera with a minimalist corner HUD',
+          caption: 'Hades — a minimalist HUD. Bottom-left: HP 23/100 + Cast 1/1; vertical column on the left — Lv.3 and Lv.2 boons (active abilities). Bottom-right: coins and obol. Top-center: boss name with her red HP bar. Everything else (40+ boons, 17 keepsakes, rewards) is tucked into the pause menu. The player sees the game.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-hud-stspire.webp',
+          alt: 'In-game Slay the Spire screenshot: The Defect mid-combat with cards in hand and a hovered Zap card',
+          caption: 'Slay the Spire — card UI with hover tooltips. Top bar: HP 47/82, gold 86, relics, 11th Floor. Bottom: a hand of 4 cards with explicit energy costs, Energy 4/3 on the left, "End Turn" on the right, draw/discard piles in the corners. The hovered Zap+ card pops up in the center with a full description — the classic tooltip-on-hover pattern.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-09-hud-deadspace.webp',
+          alt: 'In-game Dead Space (2023) screenshot: Isaac viewed from behind, a glowing diegetic HP bar on his suit',
+          caption: 'Dead Space — the textbook case of diegetic UI. There is NOT A SINGLE overlay element in this frame. The HP bar is woven into Isaac\'s suit spine (visible as a blue glow down the middle of his back); ammo appears as a hologram above the gun when firing. This changes the role of UI: the interface doesn\'t cover the world, it lives inside it — immersion goes up, the screen stays clear.',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
-            '**Game wireframes worth studying:** *Hades* (minimalist, readable HUD), *Slay the Spire* (card UI with hover tooltips), *Among Us* (diegetic tasks as mini-games), *Vampire Survivors* (the entire HUD in a single line). Open Figma Community and search "game UI" — there are hundreds of breakdown decks with author annotations.',
+            '**Where else to look:** *Among Us* (diegetic tasks as mini-games), *Vampire Survivors* (the entire HUD in a single line), *Disco Elysium* (DOM-like text UI as part of the style). On Figma Community search "game UI" — there are hundreds of breakdown decks with author annotations.',
         },
         {
           type: 'divider' as const,
