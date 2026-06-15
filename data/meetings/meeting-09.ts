@@ -636,8 +636,8 @@ export const meeting09: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-09-landing-anatomy.webp',
-          alt: 'Каркас лендинга с девятью основными секциями',
-          caption: 'Анатомия лендинга: 9 типовых блоков сверху вниз. Структура по разбору Wix («Anatomy of a Landing Page»): hero → social proof → benefits → how it works → testimonials → pricing → FAQ → final CTA → footer.',
+          alt: 'Иллюстрация Wix: каркас лендинга с девятью основными секциями сверху вниз',
+          caption: 'Анатомия лендинга: 9 типовых блоков сверху вниз. Источник: Wix, «Anatomy of a Landing Page».',
         },
         {
           type: 'before-after' as const,
