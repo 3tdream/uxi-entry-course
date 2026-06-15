@@ -645,43 +645,10 @@ export const meeting09: Meeting = {
           before: {
             label: 'Плохой wireframe лендинга',
             description: 'Hero без CTA, 8 пунктов преимуществ (слишком много), нет social proof, тарифы скрыты внизу, 2 разных CTA конкурируют за внимание. Пользователь не понимает, что делать.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '[ NAV · 8 ссылок · нет CTA ]', fontSize: 11, color: '#78716C' },
-                { text: '[ HERO · коллаж картинок · нет CTA ]', fontSize: 13, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
-                { text: '[ Преимущества: 8 пунктов списком ]', fontSize: 11, color: '#44403C', marginTop: 6 },
-                { text: '[ Преимущества: ещё 4 пункта ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ Длинный текст «о нас» ]', fontSize: 11, color: '#44403C', marginTop: 6 },
-                { text: '[ CTA #1 «Submit» ]    [ CTA #2 «Buy now» ]', fontSize: 11, fontWeight: 'semibold', color: '#B91C1C', marginTop: 6 },
-                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 8 },
-              ],
-              footnote: '0 social proof · 2 конкурирующих CTA · тарифов нет',
-            },
           },
           after: {
             label: 'Хороший wireframe лендинга',
             description: 'Чёткий заголовок + один CTA в hero, 3 преимущества, социальное доказательство рядом с CTA, тарифы на видном месте, один повторяющийся CTA. Путь пользователя — прямая линия к конверсии.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '[ NAV · логотип · 3 ссылки · CTA «Start free» ]', fontSize: 11, color: '#44403C' },
-                { text: '[ HERO · H1 · sub · ОДИН CTA · скриншот ]', fontSize: 13, fontWeight: 'bold', color: '#1C1917', marginTop: 8 },
-                { text: '[ Логотипы клиентов · «10 000+ команд» ]', fontSize: 11, color: '#0F766E', marginTop: 6 },
-                { text: '[ 3 карточки преимуществ ]', fontSize: 11, color: '#44403C', marginTop: 6 },
-                { text: '[ Как это работает · 3 шага ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ Отзывы · 2 цитаты ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ Тарифы · 3 плана ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ FAQ accordion ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ CTA повтор · «Start free» ]', fontSize: 11, fontWeight: 'semibold', color: '#0F766E', marginTop: 6 },
-                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 6 },
-              ],
-              footnote: '9 блоков по Wix · 1 призыв · proof сверху',
-            },
           },
         },
         {
@@ -794,47 +761,10 @@ export const meeting09: Meeting = {
           before: {
             label: 'Плохой wireframe ленты',
             description: 'Показан только один пост без контекста, нет навигации, нет состояний (пустая лента, ошибка), нет индикации скролла. Разработчик не понимает, как лента себя ведёт.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'phone',
-              background: '#FFFFFF',
-              rows: [
-                { text: 'App', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
-                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
-                { text: '▢ Пост (без аватара, без времени)', fontSize: 10, color: '#44403C', marginTop: 6 },
-                { text: '[ image placeholder ]', fontSize: 10, color: '#A8A29E', marginTop: 4 },
-                { text: 'Lorem ipsum dolor sit amet...', fontSize: 10, color: '#78716C', marginTop: 4 },
-                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
-                { text: '(нет других постов)', fontSize: 9, color: '#B91C1C', marginTop: 8 },
-                { text: '(нет tab bar)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
-                { text: '(нет состояний — loading / empty / error)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
-              ],
-              footnote: '1 пост · 0 навигации · 0 состояний',
-            },
           },
           after: {
             label: 'Хороший wireframe ленты',
             description: 'Показаны 2–3 поста разного типа (текст, фото, видео), навигация снизу (tab bar), pull-to-refresh, skeleton-загрузка, пустое состояние с CTA, ошибка с кнопкой «Повторить».',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'phone',
-              background: '#FFFFFF',
-              rows: [
-                { text: 'Feed                🔍   🔔', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
-                { text: '↻ Pull to refresh', fontSize: 9, color: '#0F766E', marginTop: 4 },
-                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '● Алиса · 2ч', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
-                { text: '[ photo ]   ❤ 24   💬 8   ↗', fontSize: 10, color: '#44403C', marginTop: 3 },
-                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '● Boris · 3ч', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
-                { text: '[ ▶ video card ]', fontSize: 10, color: '#44403C', marginTop: 3 },
-                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '▱▱▱ skeleton loading…', fontSize: 10, color: '#A8A29E', marginTop: 4 },
-                { text: '─────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '🏠 🔍 ➕ ✉ 👤', fontSize: 11, color: '#1C1917', marginTop: 6 },
-              ],
-              footnote: '3 типа постов · pull-to-refresh · skeleton · tab bar',
-            },
           },
         },
         {
@@ -893,49 +823,11 @@ export const meeting09: Meeting = {
             label: 'Плохой дашборд',
             description:
               '16 KPI-карточек без иерархии, 6 графиков втиснуты в ряд, таблица на 14 колонок — пользователь не понимает, на что смотреть в первую очередь. Информационный шум, но не информация.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '▮ NAV · 12 пунктов · все одного веса', fontSize: 10, color: '#78716C' },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
-                { text: '[chart] [chart] [chart] [chart] [chart] [chart]', fontSize: 10, color: '#B91C1C', marginTop: 6 },
-                { text: '┌── 14 колонок · мелкий шрифт · нет фильтров ──┐', fontSize: 10, color: '#B91C1C', marginTop: 6 },
-                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
-                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
-                { text: '└─────────────────────────────────────────────┘', fontSize: 9, color: '#A8A29E', marginTop: 2 },
-              ],
-              footnote: '16 KPI · 6 графиков · 14 колонок · нет фокуса',
-            },
           },
           after: {
             label: 'Хороший дашборд',
             description:
               'Правило 4-2-1: 4 KPI-карточки (Revenue, MRR, Churn, Users) → 2 графика рядом → 1 таблица деталей с фильтрами. Пользователь видит главные числа за 0.5 сек, погружается в детали по необходимости. Паттерн Stripe / Linear / Mixpanel.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '▮ Sidebar · логотип · 5 разделов · ⊞ active', fontSize: 10, color: '#44403C' },
-                { text: 'Header · breadcrumbs · 🔍 · 🔔 · 👤', fontSize: 10, color: '#78716C', marginTop: 6 },
-                { text: '[ Revenue $48K +12% ]  [ MRR $12K +3% ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 8 },
-                { text: '[ Churn 2.1% −0.4% ]   [ Active 1 240 +180 ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 3 },
-                { text: '┌── Revenue (line) ──┐  ┌── Plans (bar) ──┐', fontSize: 10, color: '#1C1917', marginTop: 8 },
-                { text: '│  ╱╲      ╱╲╱╲    │  │  ▮▮ ▮▮▮▮ ▮▮ ▮  │', fontSize: 10, color: '#1C1917', marginTop: 2 },
-                { text: '└────────────────────┘  └──────────────────┘', fontSize: 10, color: '#1C1917', marginTop: 2 },
-                { text: 'Latest customers · фильтр · экспорт CSV', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
-                { text: '─────────────────────────────────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 2 },
-                { text: 'Alice · Pro · $99 · 12 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
-                { text: 'Bob   · Team · $499 · 11 May  🟡', fontSize: 10, color: '#44403C', marginTop: 2 },
-                { text: 'Carol · Pro · $99 · 10 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
-              ],
-              footnote: 'правило 4-2-1 · от общего к частному · фокус виден',
-            },
           },
         },
         {
@@ -1020,35 +912,11 @@ export const meeting09: Meeting = {
             label: 'Плохой HUD',
             description:
               'Health, mana, миникарта, инвентарь, чат, квесты, баффы, дебаффы — всё на экране 100% времени. UI съедает 40% площади, игрок не видит саму игру, важная информация (низкое HP) теряется в шуме.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#0F172A',
-              rows: [
-                { text: '❤ 78/100   💧 42/60   ⭐ 12 480   🎯 Quest 2/5', fontSize: 11, color: '#FCA5A5' },
-                { text: '🗺 [minimap]    🎒 [bag]    ⚔ [skills]    💬 [chat]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-                { text: '🔮 Buffs: Haste · Shield · Crit+15% · Speed · Regen', fontSize: 10, color: '#FCD34D', marginTop: 6 },
-                { text: '⚠ Debuffs: Poison · Slow · Burn · Curse', fontSize: 10, color: '#FCA5A5', marginTop: 4 },
-                { text: '[ GAME WORLD — barely visible ]', fontSize: 11, color: '#475569', marginTop: 10 },
-              ],
-              footnote: 'всё видно одновременно · 40% экрана съедено · low-HP теряется',
-            },
           },
           after: {
             label: 'Хороший HUD',
             description:
               'Health всегда виден, но компактно. Mana появляется только при использовании, инвентарь — по кнопке. Баффы — иконками без подписей, низкое HP подсвечивается красным мерцанием. 80% экрана — это игра.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#0F172A',
-              rows: [
-                { text: '❤ 78', fontSize: 18, fontWeight: 'bold', color: '#FCA5A5' },
-                { text: '[ GAME WORLD — 80% of screen ]', fontSize: 13, color: '#94A3B8', marginTop: 14 },
-                { text: '🗺                                              ⚔', fontSize: 14, color: '#94A3B8', marginTop: 14 },
-              ],
-              footnote: 'health всегда · остальное по запросу · игра дышит',
-            },
           },
         },
         {
@@ -1119,35 +987,11 @@ export const meeting09: Meeting = {
             label: 'Перегруженное меню',
             description:
               '12 кнопок одинакового размера: Play, Shop, Daily, Battle Pass, Friends, Clan, Events, Inventory, Settings, Profile, News, Support. Игрок не понимает, что главное действие — Play. Время до первого матча растёт, retention падает.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#1E293B',
-              rows: [
-                { text: 'GAME LOGO', fontSize: 16, fontWeight: 'bold', color: '#F8FAFC' },
-                { text: '[ Play ]  [ Shop ]  [ Daily ]  [ BP ]', fontSize: 11, color: '#94A3B8', marginTop: 14 },
-                { text: '[ Friends ]  [ Clan ]  [ Events ]  [ Inv ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-                { text: '[ Settings ]  [ Profile ]  [ News ]  [ ? ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-              ],
-              footnote: '12 равноправных кнопок · Play теряется в шуме',
-            },
           },
           after: {
             label: 'Меню с иерархией',
             description:
               'Огромная PLAY-кнопка в центре, второстепенные действия (Shop, Battle Pass, Clan) — иконками внизу, профиль и настройки — мелкие иконки в углу. Иерархия очевидна за 0.5 секунды, игрок попадает в матч в один тап.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#1E293B',
-              rows: [
-                { text: '⚙           GAME LOGO           👤', fontSize: 11, color: '#94A3B8' },
-                { text: '▶  PLAY', fontSize: 28, fontWeight: 'bold', color: '#F8FAFC', marginTop: 20 },
-                { text: 'Tap to enter battle', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-                { text: '🛒 Shop      🎟 Battle Pass      👥 Clan', fontSize: 12, color: '#CBD5E1', marginTop: 22 },
-              ],
-              footnote: 'one big action · вторичные иконками · мгновенно понятно',
-            },
           },
         },
         {
@@ -1456,31 +1300,11 @@ export const meeting09: Meeting = {
             label: 'Слабая copy',
             description:
               'Generic-глагол без объекта. Юзер должен **сам угадать**, что произойдёт. Кликает осторожно — конверсия падает на 15-30%.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
-                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
-              ],
-              cta: { label: 'Submit', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
-              footnote: '«Submit» · ноль информации · юзер не знает что произойдёт',
-            },
           },
           after: {
             label: 'Сильная copy',
             description:
               'Глагол + объект + сумма. Юзер **видит** результат до клика — психологический контракт. Booking и Shopify зафиксировали +12-25% к конверсии на таких заменах.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
-                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
-              ],
-              cta: { label: 'Pay $12.60 →', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
-              footnote: '«Pay $12.60 →» · глагол + объект + сумма · контракт виден',
-            },
           },
         },
         {
@@ -1497,33 +1321,11 @@ export const meeting09: Meeting = {
             label: 'Слабый error',
             description:
               'Технический жаргон («invalid», «error code»), нет инструкции что делать. Юзер чувствует себя виноватым и не понимает следующего шага. Высокий bounce.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'plain',
-              background: '#FEF2F2',
-              rows: [
-                { text: '⚠ ERROR 422', fontSize: 12, fontWeight: 'bold', color: '#991B1B', letterSpacing: '0.05em', textTransform: 'uppercase' },
-                { text: 'Invalid input. Authentication failed.', fontSize: 14, color: '#7F1D1D', marginTop: 8 },
-                { text: 'Please contact support@example.com', fontSize: 12, color: '#7F1D1D', marginTop: 4 },
-              ],
-              footnote: 'жаргон · вина на юзере · нет действия',
-            },
           },
           after: {
             label: 'Сильный error',
             description:
               'Конкретика что не так, признание со стороны системы, понятный следующий шаг. Уровень доверия растёт даже на ошибке — это парадокс хорошего UX-копирайтинга.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'plain',
-              background: '#FFFBEB',
-              rows: [
-                { text: 'Хм, пароль не подходит', fontSize: 15, fontWeight: 'semibold', color: '#92400E' },
-                { text: 'Возможно, опечатка. Попробуйте ещё раз — или восстановите пароль одним кликом.', fontSize: 13, color: '#78350F', lineHeight: 1.5, marginTop: 6 },
-              ],
-              cta: { label: 'Восстановить пароль', bg: '#F59E0B', color: '#78350F', size: 13 },
-              footnote: 'что не так · мы рядом · вот следующий шаг',
-            },
           },
         },
         {
@@ -1540,30 +1342,11 @@ export const meeting09: Meeting = {
             label: 'Пустой empty state',
             description:
               'Голое «No items». Юзер думает «что-то сломалось» или «не понимаю что делать». Откатывается назад или уходит.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: 'No items.', fontSize: 14, color: '#94A3B8', lineHeight: 1.5 },
-              ],
-              footnote: 'голая констатация · 0 контекста · 0 действий',
-            },
           },
           after: {
             label: 'Empty state как приглашение',
             description:
               'Объясняем что и почему пусто, даём **конкретное первое действие**. Empty state — это **onboarding-момент**, а не дыра в продукте. Dropbox, Slack, Notion живут на хороших empty states.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: '📁', fontSize: 32, color: '#94A3B8' },
-                { text: 'Тут пока пусто — но это исправимо', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
-                { text: 'Загрузите первый файл или импортируйте проект из Dropbox/Notion.', fontSize: 13, color: '#475569', lineHeight: 1.5, marginTop: 6 },
-              ],
-              cta: { label: '+ Загрузить файл', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
-              footnote: 'объяснение + дружелюбие + конкретное действие = «давай начнём»',
-            },
           },
         },
         {

@@ -645,43 +645,10 @@ export const meeting09: Meeting = {
           before: {
             label: 'Bad landing page wireframe',
             description: 'Hero without CTA, 8 benefit items (too many), no social proof, pricing hidden at the bottom, 2 different CTAs competing for attention. The user doesn\u2019t know what to do.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '[ NAV \u00b7 8 links \u00b7 no CTA ]', fontSize: 11, color: '#78716C' },
-                { text: '[ HERO \u00b7 image collage \u00b7 no CTA ]', fontSize: 13, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
-                { text: '[ Benefits: 8-item bullet list ]', fontSize: 11, color: '#44403C', marginTop: 6 },
-                { text: '[ Benefits: 4 more bullets ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ Long "about us" block ]', fontSize: 11, color: '#44403C', marginTop: 6 },
-                { text: '[ CTA #1 "Submit" ]    [ CTA #2 "Buy now" ]', fontSize: 11, fontWeight: 'semibold', color: '#B91C1C', marginTop: 6 },
-                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 8 },
-              ],
-              footnote: '0 social proof \u00b7 2 competing CTAs \u00b7 no pricing at all',
-            },
           },
           after: {
             label: 'Good landing page wireframe',
             description: 'Clear headline + one CTA in the hero, 3 benefits, social proof near the CTA, pricing in a prominent position, one repeated CTA. The user\u2019s path is a straight line to conversion.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '[ NAV \u00b7 logo \u00b7 3 links \u00b7 CTA "Start free" ]', fontSize: 11, color: '#44403C' },
-                { text: '[ HERO \u00b7 H1 \u00b7 sub \u00b7 ONE CTA \u00b7 screenshot ]', fontSize: 13, fontWeight: 'bold', color: '#1C1917', marginTop: 8 },
-                { text: '[ Client logos \u00b7 "10,000+ teams" ]', fontSize: 11, color: '#0F766E', marginTop: 6 },
-                { text: '[ 3 benefit cards ]', fontSize: 11, color: '#44403C', marginTop: 6 },
-                { text: '[ How it works \u00b7 3 steps ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ Testimonials \u00b7 2 quotes ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ Pricing \u00b7 3 plans ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ FAQ accordion ]', fontSize: 11, color: '#44403C', marginTop: 4 },
-                { text: '[ Repeated CTA \u00b7 "Start free" ]', fontSize: 11, fontWeight: 'semibold', color: '#0F766E', marginTop: 6 },
-                { text: '[ Footer ]', fontSize: 10, color: '#A8A29E', marginTop: 6 },
-              ],
-              footnote: '9 Wix-style blocks \u00b7 one CTA \u00b7 proof up top',
-            },
           },
         },
         {
@@ -794,47 +761,10 @@ export const meeting09: Meeting = {
           before: {
             label: 'Bad feed wireframe',
             description: 'Only one post shown without context, no navigation, no states (empty feed, error), no scroll indicator. The developer doesn\u2019t understand how the feed behaves.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'phone',
-              background: '#FFFFFF',
-              rows: [
-                { text: 'App', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
-                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
-                { text: '\u25a2 Post (no avatar, no time)', fontSize: 10, color: '#44403C', marginTop: 6 },
-                { text: '[ image placeholder ]', fontSize: 10, color: '#A8A29E', marginTop: 4 },
-                { text: 'Lorem ipsum dolor sit amet\u2026', fontSize: 10, color: '#78716C', marginTop: 4 },
-                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 6 },
-                { text: '(no other posts)', fontSize: 9, color: '#B91C1C', marginTop: 8 },
-                { text: '(no tab bar)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
-                { text: '(no states \u2014 loading / empty / error)', fontSize: 9, color: '#B91C1C', marginTop: 2 },
-              ],
-              footnote: '1 post \u00b7 0 navigation \u00b7 0 states',
-            },
           },
           after: {
             label: 'Good feed wireframe',
             description: '2\u20133 posts of different types shown (text, photo, video), bottom navigation (tab bar), pull-to-refresh, skeleton loading, empty state with CTA, error with a "Retry" button.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'phone',
-              background: '#FFFFFF',
-              rows: [
-                { text: 'Feed                \ud83d\udd0d   \ud83d\udd14', fontSize: 12, fontWeight: 'bold', color: '#1C1917' },
-                { text: '\u21bb Pull to refresh', fontSize: 9, color: '#0F766E', marginTop: 4 },
-                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '\u25cf Alice \u00b7 2h', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
-                { text: '[ photo ]   \u2764 24   \ud83d\udcac 8   \u2197', fontSize: 10, color: '#44403C', marginTop: 3 },
-                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '\u25cf Boris \u00b7 3h', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 4 },
-                { text: '[ \u25b6 video card ]', fontSize: 10, color: '#44403C', marginTop: 3 },
-                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '\u25b1\u25b1\u25b1 skeleton loading\u2026', fontSize: 10, color: '#A8A29E', marginTop: 4 },
-                { text: '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', fontSize: 9, color: '#E7E5E4', marginTop: 4 },
-                { text: '\ud83c\udfe0 \ud83d\udd0d \u2795 \u2709 \ud83d\udc64', fontSize: 11, color: '#1C1917', marginTop: 6 },
-              ],
-              footnote: '3 post types \u00b7 pull-to-refresh \u00b7 skeleton \u00b7 tab bar',
-            },
           },
         },
         {
@@ -893,49 +823,11 @@ export const meeting09: Meeting = {
             label: 'Bad dashboard',
             description:
               '16 KPI cards with no hierarchy, 6 charts crammed into one row, a 14-column table — the user has no idea what to look at first. Information noise, not information.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '▮ NAV · 12 items · all the same weight', fontSize: 10, color: '#78716C' },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
-                { text: '[ KPI ] [ KPI ] [ KPI ] [ KPI ]', fontSize: 11, fontWeight: 'semibold', color: '#1C1917', marginTop: 3 },
-                { text: '[chart] [chart] [chart] [chart] [chart] [chart]', fontSize: 10, color: '#B91C1C', marginTop: 6 },
-                { text: '┌── 14 columns · tiny font · no filters ──┐', fontSize: 10, color: '#B91C1C', marginTop: 6 },
-                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
-                { text: '│ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ ▓▓▓ │', fontSize: 9, color: '#A8A29E', marginTop: 2 },
-                { text: '└──────────────────────────────────────────┘', fontSize: 9, color: '#A8A29E', marginTop: 2 },
-              ],
-              footnote: '16 KPIs · 6 charts · 14 columns · no focus',
-            },
           },
           after: {
             label: 'Good dashboard',
             description:
               'The 4-2-1 rule: 4 KPI cards (Revenue, MRR, Churn, Users) → 2 charts side by side → 1 details table with filters. The user sees the headline numbers in 0.5s and drills down only when needed. The Stripe / Linear / Mixpanel pattern.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#FAFAF9',
-              rows: [
-                { text: '▮ Sidebar · logo · 5 sections · ⊞ active', fontSize: 10, color: '#44403C' },
-                { text: 'Header · breadcrumbs · 🔍 · 🔔 · 👤', fontSize: 10, color: '#78716C', marginTop: 6 },
-                { text: '[ Revenue $48K +12% ]  [ MRR $12K +3% ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 8 },
-                { text: '[ Churn 2.1% −0.4% ]   [ Active 1,240 +180 ]', fontSize: 12, fontWeight: 'bold', color: '#0F766E', marginTop: 3 },
-                { text: '┌── Revenue (line) ──┐  ┌── Plans (bar) ──┐', fontSize: 10, color: '#1C1917', marginTop: 8 },
-                { text: '│  ╱╲      ╱╲╱╲    │  │  ▮▮ ▮▮▮▮ ▮▮ ▮  │', fontSize: 10, color: '#1C1917', marginTop: 2 },
-                { text: '└────────────────────┘  └──────────────────┘', fontSize: 10, color: '#1C1917', marginTop: 2 },
-                { text: 'Latest customers · filter · CSV export', fontSize: 10, fontWeight: 'semibold', color: '#1C1917', marginTop: 8 },
-                { text: '─────────────────────────────────────────────', fontSize: 9, color: '#E7E5E4', marginTop: 2 },
-                { text: 'Alice · Pro · $99 · 12 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
-                { text: 'Bob   · Team · $499 · 11 May  🟡', fontSize: 10, color: '#44403C', marginTop: 2 },
-                { text: 'Carol · Pro · $99 · 10 May    🟢', fontSize: 10, color: '#44403C', marginTop: 2 },
-              ],
-              footnote: '4-2-1 rule · general to specific · focus is visible',
-            },
           },
         },
         {
@@ -1020,35 +912,11 @@ export const meeting09: Meeting = {
             label: 'Bad HUD',
             description:
               'Health, mana, minimap, inventory, chat, quests, buffs, debuffs — all on screen 100% of the time. UI eats 40% of the area, the player can\'t see the game itself, and critical info (low HP) gets lost in the noise.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#0F172A',
-              rows: [
-                { text: '❤ 78/100   💧 42/60   ⭐ 12,480   🎯 Quest 2/5', fontSize: 11, color: '#FCA5A5' },
-                { text: '🗺 [minimap]    🎒 [bag]    ⚔ [skills]    💬 [chat]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-                { text: '🔮 Buffs: Haste · Shield · Crit+15% · Speed · Regen', fontSize: 10, color: '#FCD34D', marginTop: 6 },
-                { text: '⚠ Debuffs: Poison · Slow · Burn · Curse', fontSize: 10, color: '#FCA5A5', marginTop: 4 },
-                { text: '[ GAME WORLD — barely visible ]', fontSize: 11, color: '#475569', marginTop: 10 },
-              ],
-              footnote: 'everything visible at once · 40% of screen eaten · low-HP lost',
-            },
           },
           after: {
             label: 'Good HUD',
             description:
               'Health is always visible, but compact. Mana appears only when used; inventory opens on a key. Buffs are icons without labels, low HP pulses red. 80% of the screen is the game.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#0F172A',
-              rows: [
-                { text: '❤ 78', fontSize: 18, fontWeight: 'bold', color: '#FCA5A5' },
-                { text: '[ GAME WORLD — 80% of screen ]', fontSize: 13, color: '#94A3B8', marginTop: 14 },
-                { text: '🗺                                              ⚔', fontSize: 14, color: '#94A3B8', marginTop: 14 },
-              ],
-              footnote: 'health always · the rest on demand · the game breathes',
-            },
           },
         },
         {
@@ -1119,35 +987,11 @@ export const meeting09: Meeting = {
             label: 'Overloaded menu',
             description:
               '12 same-sized buttons: Play, Shop, Daily, Battle Pass, Friends, Clan, Events, Inventory, Settings, Profile, News, Support. The player can\'t tell that Play is the primary action. Time-to-first-match grows, retention drops.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#1E293B',
-              rows: [
-                { text: 'GAME LOGO', fontSize: 16, fontWeight: 'bold', color: '#F8FAFC' },
-                { text: '[ Play ]  [ Shop ]  [ Daily ]  [ BP ]', fontSize: 11, color: '#94A3B8', marginTop: 14 },
-                { text: '[ Friends ]  [ Clan ]  [ Events ]  [ Inv ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-                { text: '[ Settings ]  [ Profile ]  [ News ]  [ ? ]', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-              ],
-              footnote: '12 equal buttons · Play drowns in the noise',
-            },
           },
           after: {
             label: 'Menu with hierarchy',
             description:
               'A huge PLAY button in the center; secondary actions (Shop, Battle Pass, Clan) as icons below; profile and settings — tiny icons in the corner. Hierarchy is obvious in 0.5 seconds, one tap to the match.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              background: '#1E293B',
-              rows: [
-                { text: '⚙           GAME LOGO           👤', fontSize: 11, color: '#94A3B8' },
-                { text: '▶  PLAY', fontSize: 28, fontWeight: 'bold', color: '#F8FAFC', marginTop: 20 },
-                { text: 'Tap to enter battle', fontSize: 11, color: '#94A3B8', marginTop: 6 },
-                { text: '🛒 Shop      🎟 Battle Pass      👥 Clan', fontSize: 12, color: '#CBD5E1', marginTop: 22 },
-              ],
-              footnote: 'one big action · secondaries as icons · obvious instantly',
-            },
           },
         },
         {
@@ -1456,31 +1300,11 @@ export const meeting09: Meeting = {
             label: 'Weak copy',
             description:
               'Generic verb with no object. Users have to **guess** what will happen. They click cautiously — conversion drops 15-30%.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
-                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
-              ],
-              cta: { label: 'Submit', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
-              footnote: '"Submit" · zero info · user does not know what happens',
-            },
           },
           after: {
             label: 'Strong copy',
             description:
               'Verb + object + amount. The user **sees** the outcome before they click — a psychological contract. Booking and Shopify measured +12-25% conversion swapping copy alone.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: 'Total · $12.60', fontSize: 14, fontWeight: 'semibold', color: '#0F172A' },
-                { text: 'Shipping in 2 business days', fontSize: 12, color: '#64748B', marginTop: 4 },
-              ],
-              cta: { label: 'Pay $12.60 →', bg: '#4F46E5', color: '#FFFFFF', size: 14 },
-              footnote: '"Pay $12.60 →" · verb + object + amount · contract visible',
-            },
           },
         },
         {
@@ -1497,33 +1321,11 @@ export const meeting09: Meeting = {
             label: 'Weak error',
             description:
               'Technical jargon ("invalid", "error code"), no instruction on what to do. The user feels blamed and lost. High bounce.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'plain',
-              background: '#FEF2F2',
-              rows: [
-                { text: '⚠ ERROR 422', fontSize: 12, fontWeight: 'bold', color: '#991B1B', letterSpacing: '0.05em', textTransform: 'uppercase' },
-                { text: 'Invalid input. Authentication failed.', fontSize: 14, color: '#7F1D1D', marginTop: 8 },
-                { text: 'Please contact support@example.com', fontSize: 12, color: '#7F1D1D', marginTop: 4 },
-              ],
-              footnote: 'jargon · blame on the user · no path forward',
-            },
           },
           after: {
             label: 'Strong error',
             description:
               'Specific about what is wrong, the system owns it, clear next step. Trust actually goes UP on an error — the paradox of good UX copy.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'plain',
-              background: '#FFFBEB',
-              rows: [
-                { text: 'Hmm, that password doesn\'t match', fontSize: 15, fontWeight: 'semibold', color: '#92400E' },
-                { text: 'Probably a typo. Give it another go — or reset your password in one click.', fontSize: 13, color: '#78350F', lineHeight: 1.5, marginTop: 6 },
-              ],
-              cta: { label: 'Reset password', bg: '#F59E0B', color: '#78350F', size: 13 },
-              footnote: 'what · we are with you · here is the next step',
-            },
           },
         },
         {
@@ -1540,30 +1342,11 @@ export const meeting09: Meeting = {
             label: 'Empty empty state',
             description:
               'Just "No items". User thinks "something broke" or "I do not understand what to do". Backs out or leaves.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: 'No items.', fontSize: 14, color: '#94A3B8', lineHeight: 1.5 },
-              ],
-              footnote: 'bare statement · 0 context · 0 actions',
-            },
           },
           after: {
             label: 'Empty state as invitation',
             description:
               'Explain why it is empty, give a **specific first action**. An empty state is an **onboarding moment**, not a hole in the product. Dropbox, Slack, Notion live on great empty states.',
-            visual: {
-              kind: 'typography-stack',
-              frame: 'browser',
-              rows: [
-                { text: '📁', fontSize: 32, color: '#94A3B8' },
-                { text: 'It is empty here — let\'s fix that', fontSize: 16, fontWeight: 'bold', color: '#0F172A', marginTop: 8 },
-                { text: 'Upload your first file or import a project from Dropbox/Notion.', fontSize: 13, color: '#475569', lineHeight: 1.5, marginTop: 6 },
-              ],
-              cta: { label: '+ Upload file', bg: '#4F46E5', color: '#FFFFFF', size: 13 },
-              footnote: 'explanation + warmth + specific action = "let\'s start"',
-            },
           },
         },
         {
