@@ -1228,6 +1228,12 @@ export const meeting09: Meeting = {
             'Тестирование wireframes обязательно до перехода к визуальному дизайну',
           ],
         },
+        {
+          type: 'video' as const,
+          src: 'https://www.youtube.com/watch?v=XrF7-Ds-0YQ',
+          title: '🎮 Бонус: прототип игры в Figma на Interactive Components',
+          caption: 'Как из wireframe собрать кликабельный игровой прототип в Figma с помощью интерактивных компонентов.',
+        },
       ],
       quiz: [
         {

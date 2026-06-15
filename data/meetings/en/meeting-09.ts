@@ -1228,6 +1228,12 @@ export const meeting09: Meeting = {
             'Wireframe testing is mandatory before moving to visual design',
           ],
         },
+        {
+          type: 'video' as const,
+          src: 'https://www.youtube.com/watch?v=XrF7-Ds-0YQ',
+          title: '🎮 Bonus: game prototypes in Figma with Interactive Components',
+          caption: 'How to turn a wireframe into a clickable game prototype in Figma using interactive components.',
+        },
       ],
       quiz: [
         {
