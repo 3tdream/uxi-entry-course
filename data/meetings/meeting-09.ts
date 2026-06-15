@@ -1150,6 +1150,11 @@ export const meeting09: Meeting = {
           caption: 'Dead Space — эталон диегетического UI. На скриншоте — НИ ОДНОГО элемента overlay. HP-полоса вшита в позвоночник скафандра Айзека (видна как голубое свечение по центру спины), боеприпасы показываются голограммой над оружием при стрельбе. Это меняет роль UI: интерфейс не «накрывает» мир, а живёт в нём — погружение растёт, экран остаётся свободным.',
         },
         {
+          type: 'text' as const,
+          content:
+            'Полный разбор UI Dead Space (главное меню, инвентарь-голограмма, RIG-suit) → [gameuidatabase.com/Dead Space](https://www.gameuidatabase.com/gameData.php?id=581). Game UI Database — каталог из тысячи игр с покадровыми скриншотами каждого экрана.',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:

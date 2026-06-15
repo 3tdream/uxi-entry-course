@@ -1150,6 +1150,11 @@ export const meeting09: Meeting = {
           caption: 'Dead Space — the textbook case of diegetic UI. There is NOT A SINGLE overlay element in this frame. The HP bar is woven into Isaac\'s suit spine (visible as a blue glow down the middle of his back); ammo appears as a hologram above the gun when firing. This changes the role of UI: the interface doesn\'t cover the world, it lives inside it — immersion goes up, the screen stays clear.',
         },
         {
+          type: 'text' as const,
+          content:
+            'Full Dead Space UI breakdown (main menu, hologram inventory, RIG suit) → [gameuidatabase.com/Dead Space](https://www.gameuidatabase.com/gameData.php?id=581). Game UI Database is a catalog of a thousand-plus games with frame-by-frame screenshots of every screen.',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
