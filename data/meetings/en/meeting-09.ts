@@ -1556,6 +1556,27 @@ export const meeting09: Meeting = {
           type: 'divider' as const,
         },
 
+        // === WIREFRAME LIBRARY — BAD vs GOOD ===
+        {
+          type: 'heading' as const,
+          content: 'Wireframe library: bad vs good',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'All eight bad-vs-good comparisons from this part collected as actual low-fidelity wireframe skeletons (grey boxes, placeholders, no final copy). The **Hide / Show annotations** button at the top is a teaching device: hide the callouts, ask students "what\'s wrong?", then reveal.',
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wireframe-library.html',
+          title: 'Wireframe library — Bad vs Good',
+          caption: '8 embeddable skeletons: Landing · Mobile feed · SaaS dashboard · In-game HUD · Mobile game menu · CTA · Error state · Empty state. Scrolls inside the frame; for a full-screen view open the file in a new tab.',
+          aspectRatio: '5 / 6',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === FINAL CHECKLIST ===
         {
           type: 'checklist' as const,

@@ -1556,6 +1556,27 @@ export const meeting09: Meeting = {
           type: 'divider' as const,
         },
 
+        // === WIREFRAME LIBRARY — BAD vs GOOD ===
+        {
+          type: 'heading' as const,
+          content: 'Библиотека wireframes: bad vs good',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Все 8 сравнений «плохо / хорошо» из этой части собраны вместе как настоящие низкодетальные wireframe-каркасы (серые боксы, плейсхолдеры, без финального текста). Сверху кнопка **Hide / Show annotations** — учебный приём: спрячьте выноски, спросите студентов «что не так?», потом раскройте.',
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wireframe-library.html',
+          title: 'Wireframe library — Bad vs Good',
+          caption: '8 встраиваемых каркасов: Landing · Mobile feed · SaaS dashboard · In-game HUD · Mobile game menu · CTA · Error state · Empty state. Скроллится внутри окна; для полного экрана откройте файл в новой вкладке.',
+          aspectRatio: '5 / 6',
+        },
+        {
+          type: 'divider' as const,
+        },
+
         // === ИТОГОВЫЙ ЧЕКЛИСТ ===
         {
           type: 'checklist' as const,
