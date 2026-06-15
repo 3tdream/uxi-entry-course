@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe library — Bad vs Good</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#f4f4f2}
+@keyframes wf-shimmer{0%{opacity:.35}50%{opacity:.8}100%{opacity:.35}}
+@keyframes wf-pulse{0%{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(192,71,59,.35)}70%{box-shadow:0 0 0 2px #fff,0 0 0 10px rgba(192,71,59,0)}100%{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(192,71,59,0)}}
+</style>
+<style>
+html,body{margin:0;background:#f4f4f2}
+body.anno-hidden .anno-block{display:none !important}
+</style>
+<style>
+html,body{margin:0;background:#f4f4f2}
+body.anno-hidden .anno-block{display:none !important}
+</style>
+</head>
+<body>
+<div style="background:#f4f4f2;min-height:100vh;font-family:'Geist',system-ui,sans-serif;color:#26261f;-webkit-font-smoothing:antialiased;padding-bottom:40px">
+
+  <div style="max-width:1140px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <button onclick="toggleAnno()" style="display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border:1px solid #d4d4cc;border-radius:8px;background:#fff;color:#26261f;font-family:'Geist Mono',monospace;font-size:12.5px;letter-spacing:.02em;cursor:pointer">
+      <span style="width:13px;height:13px;border-radius:50%;border:2px solid #26261f;display:inline-block"></span><span id="anno-label">Hide annotations</span>
+    </button>
+    <span style="font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f">Hide → ask "what's wrong?" → reveal.</span>
+  </div>
+  <main>
+    <section style="max-width:1140px;margin:0 auto;padding:8px 28px 28px">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:'Geist Mono',monospace;font-size:14px;color:#c3c3b9;font-weight:500">04</span>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0">In-game HUD</h2>
+      </div>
+      <p style="font-size:15px;line-height:1.55;color:#6b6b62;max-width:720px;margin:8px 0 0">The HUD is an overlay on top of the game. Show only what the player needs right now — surface the rest on demand.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px">
+
+        <!-- BAD HUD -->
+        <div style="border:1px solid #e2e2da;border-radius:10px;overflow:hidden;background:#fff">
+          <div style="display:flex;align-items:center;gap:9px;padding:11px 15px;background:#fbeceb;border-bottom:1px solid #f1d8d5">
+            <span style="width:20px;height:20px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">✗</span>
+            <span style="font-weight:600;font-size:14px;color:#a33a2e">Everything on screen</span>
+          </div>
+          <div style="padding:16px;background:#f4f4f3">
+            <div style="position:relative;height:268px;border-radius:6px;overflow:hidden;background:#36362f;border:1px solid #2c2c26">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;color:#56564d;letter-spacing:.08em">GAME WORLD · barely visible</div>
+              <!-- top-left cluster -->
+              <div style="position:absolute;top:10px;left:10px;display:flex;flex-wrap:wrap;gap:5px;max-width:62%">
+                <span style="padding:4px 7px;border-radius:4px;background:rgba(255,255,255,.85);font-family:'Geist Mono',monospace;font-size:9px;color:#444">❤ 78/100</span>
+                <span style="padding:4px 7px;border-radius:4px;background:rgba(255,255,255,.85);font-family:'Geist Mono',monospace;font-size:9px;color:#444">✦ 42/60</span>
+                <span style="padding:4px 7px;border-radius:4px;background:rgba(255,255,255,.85);font-family:'Geist Mono',monospace;font-size:9px;color:#444">★ 12 480</span>
+                <span style="padding:4px 7px;border-radius:4px;background:rgba(255,255,255,.85);font-family:'Geist Mono',monospace;font-size:9px;color:#444">Quest 2/5</span>
+              </div>
+              <!-- top-right cluster -->
+              <div style="position:absolute;top:10px;right:10px;display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+                <div style="width:60px;height:46px;border-radius:4px;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:8px;color:#666">minimap</div>
+                <div style="display:flex;gap:4px"><span style="width:22px;height:18px;border-radius:3px;background:rgba(255,255,255,.8)"></span><span style="width:22px;height:18px;border-radius:3px;background:rgba(255,255,255,.8)"></span><span style="width:22px;height:18px;border-radius:3px;background:rgba(255,255,255,.8)"></span></div>
+              </div>
+              <!-- buffs / debuffs -->
+              <div style="position:absolute;left:10px;bottom:36px;display:flex;gap:4px"><span style="padding:3px 6px;border-radius:3px;background:rgba(255,255,255,.8);font-family:'Geist Mono',monospace;font-size:8px;color:#555">Haste</span><span style="padding:3px 6px;border-radius:3px;background:rgba(255,255,255,.8);font-family:'Geist Mono',monospace;font-size:8px;color:#555">Shield</span><span style="padding:3px 6px;border-radius:3px;background:rgba(255,255,255,.8);font-family:'Geist Mono',monospace;font-size:8px;color:#555">Crit+15%</span><span style="padding:3px 6px;border-radius:3px;background:rgba(255,255,255,.8);font-family:'Geist Mono',monospace;font-size:8px;color:#555">Regen</span></div>
+              <div style="position:absolute;left:10px;bottom:12px;display:flex;gap:4px"><span style="padding:3px 6px;border-radius:3px;background:rgba(220,180,180,.85);font-family:'Geist Mono',monospace;font-size:8px;color:#7a3b3b">Poison</span><span style="padding:3px 6px;border-radius:3px;background:rgba(220,180,180,.85);font-family:'Geist Mono',monospace;font-size:8px;color:#7a3b3b">Slow</span><span style="padding:3px 6px;border-radius:3px;background:rgba(220,180,180,.85);font-family:'Geist Mono',monospace;font-size:8px;color:#7a3b3b">Burn</span><span style="padding:3px 6px;border-radius:3px;background:rgba(220,180,180,.85);font-family:'Geist Mono',monospace;font-size:8px;color:#7a3b3b">Curse</span></div>
+              <!-- bottom-right -->
+              <div style="position:absolute;right:10px;bottom:12px;display:flex;gap:4px"><span style="width:26px;height:26px;border-radius:4px;background:rgba(255,255,255,.85)"></span><span style="width:26px;height:26px;border-radius:4px;background:rgba(255,255,255,.85)"></span><span style="width:26px;height:26px;border-radius:4px;background:rgba(255,255,255,.85)"></span></div>
+              <div class="anno-block">
+                <div style="position:absolute;inset:0;pointer-events:none">
+                  <div style="position:absolute;top:11%;left:33%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;box-shadow:0 0 0 2px #fff,0 1px 3px rgba(0,0,0,.4);pointer-events:auto">1</div>
+                  <div style="position:absolute;top:18%;left:80%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;box-shadow:0 0 0 2px #fff,0 1px 3px rgba(0,0,0,.4);pointer-events:auto">2</div>
+                  <div style="position:absolute;top:82%;left:24%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;box-shadow:0 0 0 2px #fff,0 1px 3px rgba(0,0,0,.4);pointer-events:auto">3</div>
+                  <div style="position:absolute;top:50%;left:55%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;box-shadow:0 0 0 2px #fff,0 1px 3px rgba(0,0,0,.4);pointer-events:auto">4</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:9px 15px;background:#fafaf8;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11px;color:#90908a;letter-spacing:.02em">UI eats ~40% of the screen · low HP lost in noise</div>
+          <div class="anno-block">
+            <ol style="margin:0;padding:13px 16px;list-style:none;display:flex;flex-direction:column;gap:8px;border-top:1px solid #eee">
+              <li style="display:flex;gap:9px;font-size:12.5px;line-height:1.45;color:#4a4a44"><span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600">1</span><span><b style="font-weight:600">HP, mana, score, quest</b> all maxed out top-left, always on.</span></li>
+              <li style="display:flex;gap:9px;font-size:12.5px;line-height:1.45;color:#4a4a44"><span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600">2</span><span><b style="font-weight:600">Minimap, bag, skills, chat</b> permanently occupy the corners.</span></li>
+              <li style="display:flex;gap:9px;font-size:12.5px;line-height:1.45;color:#4a4a44"><span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600">3</span><span><b style="font-weight:600">Buffs + debuffs as text,</b> on screen 100% of the time.</span></li>
+              <li style="display:flex;gap:9px;font-size:12.5px;line-height:1.45;color:#4a4a44"><span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600">4</span><span><b style="font-weight:600">The game itself is buried</b> under its own interface.</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- GOOD HUD -->
+        <div style="border:1px solid #e2e2da;border-radius:10px;overflow:hidden;background:#fff">
+          <div style="display:flex;align-items:center;gap:9px;padding:11px 15px;background:#eaf3ed;border-bottom:1px solid #d4e7dc">
+            <span style="width:20px;height:20px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">✓</span>
+            <span style="font-weight:600;font-size:14px;color:#2f7350">Contextual HUD</span>
+          </div>
+          <div style="padding:16px;background:#f4f4f3">
+            <div style="position:relative;height:268px;border-radius:6px;overflow:hidden;background:#36362f;border:1px solid #2c2c26">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;color:#6a6a5f;letter-spacing:.08em">GAME WORLD · 80% of screen</div>
+              <div style="position:absolute;top:12px;left:12px;padding:5px 9px;border-radius:5px;background:rgba(255,255,255,.88);font-family:'Geist Mono',monospace;font-size:11px;color:#3a3a34;font-weight:600">❤ 78</div>
+              <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:6px"><span style="width:26px;height:26px;border-radius:5px;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;font-size:11px;color:#3a3a34">▲</span><span style="width:26px;height:26px;border-radius:5px;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;font-size:11px;color:#3a3a34">■</span></div>
+              <div class="anno-block">
+                <div style="position:absolute;inset:0;pointer-events:none">
+                  <div style="position:absolute;top:11%;left:18%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;box-shadow:0 0 0 2px #fff,0 1px 3px rgba(0,0,0,.4);pointer-events:auto">1</div>
+                  <div style="position:absolute;top:88%;left:18%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;box-shadow:0 0 0 2px #fff,0 1px 3px rgba(0,0,0,.4);pointer-events:auto">2</div>
+                  <div style="position:absolute;top:48%;left:60%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;box-shadow:0 0 0 2px #fff,0 1px 3px rgba(0,0,0,.4);pointer-events:auto">3</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:9px 15px;background:#fafaf8;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11px;color:#90908a;letter-spacing:.02em">HP always · rest on demand · the game breathes</div>
+          <div class="anno-block">
+            <ol style="margin:0;padding:13px 16px;list-style:none;display:flex;flex-direction:column;gap:8px;border-top:1px solid #eee">
+              <li style="display:flex;gap:9px;font-size:12.5px;line-height:1.45;color:#4a4a44"><span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600">1</span><span><b style="font-weight:600">HP always visible, but compact.</b> Low HP can flash red when it matters.</span></li>
+              <li style="display:flex;gap:9px;font-size:12.5px;line-height:1.45;color:#4a4a44"><span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600">2</span><span><b style="font-weight:600">Secondary actions as icons.</b> Mana shows on use, inventory on a key.</span></li>
+              <li style="display:flex;gap:9px;font-size:12.5px;line-height:1.45;color:#4a4a44"><span style="flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:10px;font-weight:600">3</span><span><b style="font-weight:600">80% of the screen is the game.</b> The HUD serves it, not the reverse.</span></li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+function toggleAnno(){
+  document.body.classList.toggle('anno-hidden');
+  document.getElementById('anno-label').textContent =
+    document.body.classList.contains('anno-hidden') ? 'Show annotations' : 'Hide annotations';
+}
+</script>
+</body>
+</html>

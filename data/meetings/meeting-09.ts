@@ -685,6 +685,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-landing.html',
+          title: 'Wireframe лендинга — bad vs good (аннотированный)',
+          caption: '🔍 Интерактивный каркас: те же блоки с пронумерованными выносками. Кнопка Hide / Show annotations вверху — спрячьте выноски, спросите «что не так?», потом раскройте.',
+          aspectRatio: '9 / 5',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -831,6 +838,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-feed.html',
+          title: 'Wireframe мобильной ленты — bad vs good (аннотированный)',
+          caption: '🔍 Интерактивный каркас в телефонных рамках: один пост без состояний vs лента с типами контента, pull-to-refresh, skeleton и tab bar. Toggle выносок вверху.',
+          aspectRatio: '3 / 2',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -923,6 +937,13 @@ export const meeting09: Meeting = {
               footnote: 'правило 4-2-1 · от общего к частному · фокус виден',
             },
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-dashboard.html',
+          title: 'Wireframe SaaS-дашборда — bad vs good (аннотированный)',
+          caption: '🔍 Интерактивный каркас: перегруз (16 KPI, 6 графиков, 14 колонок) vs правило 4-2-1. Toggle выносок вверху.',
+          aspectRatio: '2 / 1',
         },
         {
           type: 'callout' as const,
@@ -1031,6 +1052,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-hud.html',
+          title: 'In-game HUD — bad vs good (аннотированный)',
+          caption: '🔍 Интерактивный каркас на тёмном «игровом мире»: «всё на экране» vs контекстный HUD. Toggle выносок вверху.',
+          aspectRatio: '2 / 1',
+        },
+        {
           type: 'subheading' as const,
           content: 'Игровой цикл: основной user flow',
         },
@@ -1121,6 +1149,13 @@ export const meeting09: Meeting = {
               footnote: 'one big action · вторичные иконками · мгновенно понятно',
             },
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-menu.html',
+          title: 'Главное меню мобильной игры — bad vs good (аннотированный)',
+          caption: '🔍 Интерактивный каркас в телефонных рамках: 12 равных кнопок vs одна большая PLAY + иконки. Toggle выносок вверху.',
+          aspectRatio: '3 / 2',
         },
         {
           type: 'subheading' as const,
@@ -1449,6 +1484,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-cta.html',
+          title: 'CTA-кнопка — generic vs specific (аннотированный)',
+          caption: '🔍 Интерактивный каркас: «Submit» vs «Pay $12.60 →». Toggle выносок вверху.',
+          aspectRatio: '4 / 1',
+        },
+        {
           type: 'before-after' as const,
           title: 'Error state — обвинить vs помочь',
           before: {
@@ -1485,6 +1527,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-error.html',
+          title: 'Error state — обвинить vs помочь (аннотированный)',
+          caption: '🔍 Интерактивный каркас: жаргон и вина vs «что не так + следующий шаг». Toggle выносок вверху.',
+          aspectRatio: '4 / 1',
+        },
+        {
           type: 'before-after' as const,
           title: 'Empty state — «пусто» vs «приглашение»',
           before: {
@@ -1516,6 +1565,13 @@ export const meeting09: Meeting = {
               footnote: 'объяснение + дружелюбие + конкретное действие = «давай начнём»',
             },
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-empty.html',
+          title: 'Empty state — «пусто» vs «приглашение» (аннотированный)',
+          caption: '🔍 Интерактивный каркас: голое «No items» vs приглашение с первым действием. Toggle выносок вверху.',
+          aspectRatio: '4 / 1',
         },
         {
           type: 'callout' as const,
@@ -1551,27 +1607,6 @@ export const meeting09: Meeting = {
           src: '/images/meeting-09-wireframe-fail-humor.webp',
           alt: 'Шуточная иллюстрация про дизайнера, пропустившего этап wireframe',
           caption: 'Когда сразу прыгнул в hi-fi и пропустил исследование.',
-        },
-        {
-          type: 'divider' as const,
-        },
-
-        // === WIREFRAME LIBRARY — BAD vs GOOD ===
-        {
-          type: 'heading' as const,
-          content: 'Библиотека wireframes: bad vs good',
-        },
-        {
-          type: 'text' as const,
-          content:
-            'Все 8 сравнений «плохо / хорошо» из этой части собраны вместе как настоящие низкодетальные wireframe-каркасы (серые боксы, плейсхолдеры, без финального текста). Сверху кнопка **Hide / Show annotations** — учебный приём: спрячьте выноски, спросите студентов «что не так?», потом раскройте.',
-        },
-        {
-          type: 'iframe-embed' as const,
-          src: '/slides/m9-wireframe-library.html',
-          title: 'Wireframe library — Bad vs Good',
-          caption: '8 встраиваемых каркасов: Landing · Mobile feed · SaaS dashboard · In-game HUD · Mobile game menu · CTA · Error state · Empty state. Скроллится внутри окна; для полного экрана откройте файл в новой вкладке.',
-          aspectRatio: '5 / 6',
         },
         {
           type: 'divider' as const,

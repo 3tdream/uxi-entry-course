@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe library — Bad vs Good</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#f4f4f2}
+@keyframes wf-shimmer{0%{opacity:.35}50%{opacity:.8}100%{opacity:.35}}
+@keyframes wf-pulse{0%{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(192,71,59,.35)}70%{box-shadow:0 0 0 2px #fff,0 0 0 10px rgba(192,71,59,0)}100%{box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(192,71,59,0)}}
+</style>
+<style>
+html,body{margin:0;background:#f4f4f2}
+body.anno-hidden .anno-block{display:none !important}
+</style>
+<style>
+html,body{margin:0;background:#f4f4f2}
+body.anno-hidden .anno-block{display:none !important}
+</style>
+</head>
+<body>
+<div style="background:#f4f4f2;min-height:100vh;font-family:'Geist',system-ui,sans-serif;color:#26261f;-webkit-font-smoothing:antialiased;padding-bottom:40px">
+
+  <div style="max-width:1140px;margin:0 auto;padding:20px 28px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <button onclick="toggleAnno()" style="display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border:1px solid #d4d4cc;border-radius:8px;background:#fff;color:#26261f;font-family:'Geist Mono',monospace;font-size:12.5px;letter-spacing:.02em;cursor:pointer">
+      <span style="width:13px;height:13px;border-radius:50%;border:2px solid #26261f;display:inline-block"></span><span id="anno-label">Hide annotations</span>
+    </button>
+    <span style="font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f">Hide → ask "what's wrong?" → reveal.</span>
+  </div>
+  <main>
+    <section style="max-width:1140px;margin:0 auto;padding:8px 28px 28px">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:'Geist Mono',monospace;font-size:14px;color:#c3c3b9;font-weight:500">07</span>
+        <h2 style="font-size:24px;font-weight:600;letter-spacing:-0.01em;margin:0">Error state — blame vs help</h2>
+      </div>
+      <p style="font-size:15px;line-height:1.55;color:#6b6b62;max-width:720px;margin:8px 0 0">Say what went wrong, own it, give the next step. No jargon, no blame.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:26px">
+
+        <div style="border:1px solid #e2e2da;border-radius:10px;overflow:hidden;background:#fff">
+          <div style="display:flex;align-items:center;gap:9px;padding:11px 15px;background:#fbeceb;border-bottom:1px solid #f1d8d5"><span style="width:20px;height:20px;border-radius:50%;background:#c0473b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">✗</span><span style="font-weight:600;font-size:14px;color:#a33a2e">Weak error</span></div>
+          <div style="padding:28px 22px;background:#f4f4f3;display:flex;justify-content:center">
+            <div style="width:300px;border:1px solid #e7cfca;border-radius:10px;background:#fff;padding:18px;display:flex;flex-direction:column;gap:8px">
+              <div style="font-family:'Geist Mono',monospace;font-size:12px;color:#b23b2e;font-weight:600">⚠ ERROR 422</div>
+              <div style="font-size:14px;color:#3a3a34">Invalid input. Authentication failed.</div>
+              <div style="font-size:12px;color:#a0a098">Please contact support@example.com</div>
+            </div>
+          </div>
+          <div style="padding:13px 16px;font-size:12.5px;line-height:1.5;color:#4a4a44;border-top:1px solid #eee"><b style="font-weight:600">Jargon, blame, no way out.</b> &quot;Invalid&quot;, an error code, no instruction. The user feels at fault and bounces.</div>
+        </div>
+
+        <div style="border:1px solid #e2e2da;border-radius:10px;overflow:hidden;background:#fff">
+          <div style="display:flex;align-items:center;gap:9px;padding:11px 15px;background:#eaf3ed;border-bottom:1px solid #d4e7dc"><span style="width:20px;height:20px;border-radius:50%;background:#3f7d5a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">✓</span><span style="font-weight:600;font-size:14px;color:#2f7350">Strong error</span></div>
+          <div style="padding:28px 22px;background:#f4f4f3;display:flex;justify-content:center">
+            <div style="width:300px;border:1px solid #e0e0d8;border-radius:10px;background:#fff;padding:18px;display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:15px;font-weight:600;color:#2a2a24">Hmm, that password didn't match</div>
+              <div style="font-size:12.5px;line-height:1.5;color:#6a6a62">Looks like a typo. Try again — or reset your password in one click.</div>
+              <div style="margin-top:8px;align-self:flex-start;padding:9px 14px;border-radius:8px;border:1px solid #b9cdc1;background:#eaf3ed;font-size:13px;font-weight:600;color:#2f7350">Reset password</div>
+            </div>
+          </div>
+          <div style="padding:13px 16px;font-size:12.5px;line-height:1.5;color:#4a4a44;border-top:1px solid #eee"><b style="font-weight:600">What's wrong, we're on it, here's the next step.</b> Trust goes <i>up</i> even on an error — the paradox of good UX copy.</div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+function toggleAnno(){
+  document.body.classList.toggle('anno-hidden');
+  document.getElementById('anno-label').textContent =
+    document.body.classList.contains('anno-hidden') ? 'Show annotations' : 'Hide annotations';
+}
+</script>
+</body>
+</html>

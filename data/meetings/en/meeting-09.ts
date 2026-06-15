@@ -685,6 +685,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-landing.html',
+          title: 'Landing page wireframe \u2014 bad vs good (annotated)',
+          caption: '\ud83d\udd0d Interactive wireframe: same blocks with numbered callouts. The Hide / Show annotations button at the top \u2014 hide the callouts, ask "what\'s wrong?", then reveal.',
+          aspectRatio: '9 / 5',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -831,6 +838,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-feed.html',
+          title: 'Mobile feed wireframe \u2014 bad vs good (annotated)',
+          caption: '\ud83d\udd0d Interactive wireframe in phone frames: one post with no states vs a feed with content types, pull-to-refresh, skeleton and a tab bar. Annotation toggle at the top.',
+          aspectRatio: '3 / 2',
+        },
+        {
           type: 'divider' as const,
         },
 
@@ -923,6 +937,13 @@ export const meeting09: Meeting = {
               footnote: '4-2-1 rule · general to specific · focus is visible',
             },
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-dashboard.html',
+          title: 'SaaS dashboard wireframe — bad vs good (annotated)',
+          caption: '🔍 Interactive wireframe: overload (16 KPIs, 6 charts, 14 columns) vs the 4-2-1 rule. Annotation toggle at the top.',
+          aspectRatio: '2 / 1',
         },
         {
           type: 'callout' as const,
@@ -1031,6 +1052,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-hud.html',
+          title: 'In-game HUD — bad vs good (annotated)',
+          caption: '🔍 Interactive wireframe over a dark "game world": everything-on-screen vs a contextual HUD. Annotation toggle at the top.',
+          aspectRatio: '2 / 1',
+        },
+        {
           type: 'subheading' as const,
           content: 'The game loop: core user flow',
         },
@@ -1121,6 +1149,13 @@ export const meeting09: Meeting = {
               footnote: 'one big action · secondaries as icons · obvious instantly',
             },
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-menu.html',
+          title: 'Mobile game main menu — bad vs good (annotated)',
+          caption: '🔍 Interactive wireframe in phone frames: 12 equal buttons vs one big PLAY + icons. Annotation toggle at the top.',
+          aspectRatio: '3 / 2',
         },
         {
           type: 'subheading' as const,
@@ -1449,6 +1484,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-cta.html',
+          title: 'CTA button — generic vs specific (annotated)',
+          caption: '🔍 Interactive wireframe: "Submit" vs "Pay $12.60 →". Annotation toggle at the top.',
+          aspectRatio: '4 / 1',
+        },
+        {
           type: 'before-after' as const,
           title: 'Error state — blame vs help',
           before: {
@@ -1485,6 +1527,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-error.html',
+          title: 'Error state — blame vs help (annotated)',
+          caption: '🔍 Interactive wireframe: jargon and blame vs "what went wrong + next step". Annotation toggle at the top.',
+          aspectRatio: '4 / 1',
+        },
+        {
           type: 'before-after' as const,
           title: 'Empty state — "nothing" vs "invitation"',
           before: {
@@ -1516,6 +1565,13 @@ export const meeting09: Meeting = {
               footnote: 'explanation + warmth + specific action = "let\'s start"',
             },
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-empty.html',
+          title: 'Empty state — "empty" vs invitation (annotated)',
+          caption: '🔍 Interactive wireframe: bare "No items" vs an invitation with a first action. Annotation toggle at the top.',
+          aspectRatio: '4 / 1',
         },
         {
           type: 'callout' as const,
@@ -1551,27 +1607,6 @@ export const meeting09: Meeting = {
           src: '/images/meeting-09-wireframe-fail-humor.webp',
           alt: 'Humorous illustration of a designer skipping the wireframe stage',
           caption: 'When you skip research and jump straight to hi-fi.',
-        },
-        {
-          type: 'divider' as const,
-        },
-
-        // === WIREFRAME LIBRARY — BAD vs GOOD ===
-        {
-          type: 'heading' as const,
-          content: 'Wireframe library: bad vs good',
-        },
-        {
-          type: 'text' as const,
-          content:
-            'All eight bad-vs-good comparisons from this part collected as actual low-fidelity wireframe skeletons (grey boxes, placeholders, no final copy). The **Hide / Show annotations** button at the top is a teaching device: hide the callouts, ask students "what\'s wrong?", then reveal.',
-        },
-        {
-          type: 'iframe-embed' as const,
-          src: '/slides/m9-wireframe-library.html',
-          title: 'Wireframe library — Bad vs Good',
-          caption: '8 embeddable skeletons: Landing · Mobile feed · SaaS dashboard · In-game HUD · Mobile game menu · CTA · Error state · Empty state. Scrolls inside the frame; for a full-screen view open the file in a new tab.',
-          aspectRatio: '5 / 6',
         },
         {
           type: 'divider' as const,
