@@ -66,11 +66,21 @@ body.anno-hidden .anno-block{display:none !important}
   </main>
 </div>
 <script>
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
 function toggleAnno(){
   document.body.classList.toggle('anno-hidden');
   document.getElementById('anno-label').textContent =
     document.body.classList.contains('anno-hidden') ? 'Show annotations' : 'Hide annotations';
+  setTimeout(reportHeight, 50);
 }
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
 </script>
 </body>
 </html>

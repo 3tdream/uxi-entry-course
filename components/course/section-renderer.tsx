@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect, useRef } from 'react'
 import { type Section } from '@/data/types'
 import { useLanguage } from '@/lib/language'
 import {
@@ -2360,10 +2361,27 @@ function IframeEmbedSection({
   maxWidth?: number
 }) {
   const ar = aspectRatio || '16 / 9'
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const [autoHeight, setAutoHeight] = useState<number | null>(null)
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      const data = e.data
+      if (!data || data.type !== 'wf-resize' || typeof data.height !== 'number') return
+      if (iframeRef.current && e.source === iframeRef.current.contentWindow) {
+        setAutoHeight(Math.ceil(data.height))
+      }
+    }
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [])
+  // A slide that reports its height (wf-resize) drives an exact-fit frame — no scroll.
+  // Slides that stay silent (e.g. crazy8s) keep the fixed aspectRatio.
+  const frameStyle = autoHeight ? { height: `${autoHeight}px` } : { aspectRatio: ar }
   const block = (
     <figure className="rounded-xl overflow-hidden border bg-stone-950">
-      <div className="relative w-full bg-stone-950" style={{ aspectRatio: ar }}>
+      <div className="relative w-full bg-stone-950" style={frameStyle}>
         <iframe
+          ref={iframeRef}
           src={src}
           title={title}
           loading="lazy"

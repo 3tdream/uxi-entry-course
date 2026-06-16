@@ -638,6 +638,7 @@ export const meeting09: Meeting = {
           src: '/images/meeting-09-landing-anatomy.webp',
           alt: 'Wix illustration: landing-page skeleton with nine main sections top-to-bottom',
           caption: 'Landing-page anatomy: nine typical blocks top-to-bottom. Source: Wix, "Anatomy of a Landing Page".',
+          maxWidth: 975,
         },
         {
           type: 'before-after' as const,
@@ -815,6 +816,7 @@ export const meeting09: Meeting = {
           src: '/images/meeting-09-saas-dashboard-layout.webp',
           alt: 'Bootstrapdash Pollux SaaS-dashboard template: left sidebar, top header, KPI cards, charts and a data table',
           caption: 'Typical SaaS dashboard layout: sidebar, KPIs, charts, table. Source: Bootstrapdash, Pollux template. The same structure powers Stripe, Linear, Mixpanel.',
+          maxWidth: 1115,
         },
         {
           type: 'before-after' as const,

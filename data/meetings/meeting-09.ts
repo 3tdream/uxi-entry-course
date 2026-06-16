@@ -638,6 +638,7 @@ export const meeting09: Meeting = {
           src: '/images/meeting-09-landing-anatomy.webp',
           alt: 'Иллюстрация Wix: каркас лендинга с девятью основными секциями сверху вниз',
           caption: 'Анатомия лендинга: 9 типовых блоков сверху вниз. Источник: Wix, «Anatomy of a Landing Page».',
+          maxWidth: 975,
         },
         {
           type: 'before-after' as const,
@@ -815,6 +816,7 @@ export const meeting09: Meeting = {
           src: '/images/meeting-09-saas-dashboard-layout.webp',
           alt: 'Шаблон SaaS-дашборда Pollux от Bootstrapdash: sidebar слева, header сверху, KPI-карточки, графики и таблица',
           caption: 'Типичная раскладка SaaS-дашборда: sidebar, KPI, графики, таблица. Источник: Bootstrapdash, шаблон Pollux. Та же структура у Stripe, Linear, Mixpanel.',
+          maxWidth: 1115,
         },
         {
           type: 'before-after' as const,
