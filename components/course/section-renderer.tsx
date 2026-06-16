@@ -2368,7 +2368,10 @@ function IframeEmbedSection({
       const data = e.data
       if (!data || data.type !== 'wf-resize' || typeof data.height !== 'number') return
       if (iframeRef.current && e.source === iframeRef.current.contentWindow) {
-        setAutoHeight(Math.ceil(data.height))
+        const next = Math.ceil(data.height)
+        // Ignore sub-pixel jitter so a reflow can't feed back into an
+        // ever-growing height (the infinite-scroll loop).
+        setAutoHeight((prev) => (prev !== null && Math.abs(prev - next) <= 2 ? prev : next))
       }
     }
     window.addEventListener('message', onMessage)
