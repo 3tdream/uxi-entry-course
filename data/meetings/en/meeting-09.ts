@@ -1168,6 +1168,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-regform.html',
+          title: 'Registration form — bad vs good (annotated)',
+          caption: '🔍 Interactive wireframe: a "wall" of 12 fields vs a 3-step form with a progress bar. Annotation toggle at the top.',
+          aspectRatio: '9 / 5',
+        },
+        {
           type: 'before-after' as const,
           title: 'SaaS Navigation Wireframe',
           before: {
@@ -1178,6 +1185,13 @@ export const meeting09: Meeting = {
             label: 'After: Grouped by category',
             description: 'Groups: "Core" (Dashboard, Analytics, Reports), "Management" (Users, Team, Billing), "Settings" (Settings, Security, Integrations). Dividers and icons help with orientation.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-saasnav.html',
+          title: 'SaaS navigation — bad vs good (annotated)',
+          caption: '🔍 Interactive wireframe: 15 items in a flat list vs 3 groups (Main / Manage / Settings) with an active item. Annotation toggle at the top.',
+          aspectRatio: '9 / 5',
         },
         {
           type: 'divider' as const,

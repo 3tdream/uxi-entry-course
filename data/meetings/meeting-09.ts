@@ -1168,6 +1168,13 @@ export const meeting09: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-regform.html',
+          title: 'Форма регистрации — bad vs good (аннотированный)',
+          caption: '🔍 Интерактивный каркас: «стена» из 12 полей vs 3-шаговая форма с прогресс-баром. Toggle выносок вверху.',
+          aspectRatio: '9 / 5',
+        },
+        {
           type: 'before-after' as const,
           title: 'Wireframe навигации SaaS',
           before: {
@@ -1178,6 +1185,13 @@ export const meeting09: Meeting = {
             label: 'После: группировка по категориям',
             description: 'Группы: «Основное» (Dashboard, Analytics, Reports), «Управление» (Users, Team, Billing), «Настройки» (Settings, Security, Integrations). Разделители и иконки помогают ориентироваться.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m9-wf-saasnav.html',
+          title: 'Навигация SaaS — bad vs good (аннотированный)',
+          caption: '🔍 Интерактивный каркас: 15 пунктов плоским списком vs 3 группы (Main / Manage / Settings) с активным пунктом. Toggle выносок вверху.',
+          aspectRatio: '9 / 5',
         },
         {
           type: 'divider' as const,
