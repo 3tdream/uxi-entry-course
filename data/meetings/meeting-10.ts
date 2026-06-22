@@ -43,9 +43,9 @@ export const meeting10: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-10-prototype-fidelity.webp',
-          alt: 'Спектр точности прототипов: от бумажного скетча до кликабельного hi-fi',
+          alt: 'Процесс прототипирования: 01 бумага → 02 lo-fi → 03 hi-fi → 04 код',
           caption:
-            'Прототипы варьируются по точности — от бумажных набросков до почти готовых приложений',
+            'Процесс прототипирования по нарастанию точности: бумажный набросок → lo-fi → hi-fi → код. Источник: HTMLBurger.',
         },
         {
           type: 'divider' as const,

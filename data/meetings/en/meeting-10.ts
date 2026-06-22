@@ -43,9 +43,9 @@ export const meeting10: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-10-prototype-fidelity.webp',
-          alt: 'Prototype fidelity spectrum: from paper sketch to clickable hi-fi',
+          alt: 'The prototyping process: 01 paper → 02 lo-fi → 03 hi-fi → 04 coding',
           caption:
-            'Prototypes vary in fidelity — from paper sketches to near-finished applications',
+            'The prototyping process by increasing fidelity: paper sketch → lo-fi → hi-fi → code. Source: HTMLBurger.',
         },
         {
           type: 'divider' as const,
