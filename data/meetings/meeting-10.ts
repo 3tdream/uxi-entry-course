@@ -174,6 +174,13 @@ export const meeting10: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m10-cart-microinteraction.html',
+          title: 'Кнопка «Добавить в корзину» — живое демо',
+          caption: '🛒 Интерактивное демо: тыкните обе кнопки несколько раз и почувствуйте разницу. Слева — счётчик молча инкрементится, добавил ли товар — непонятно. Справа — scale на нажатии, success-состояние с галочкой, bounce-счётчик корзины.',
+          aspectRatio: '7 / 3',
+        },
+        {
           type: 'divider' as const,
         },
 

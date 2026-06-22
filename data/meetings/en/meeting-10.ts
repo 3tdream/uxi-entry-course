@@ -174,6 +174,13 @@ export const meeting10: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m10-cart-microinteraction.html',
+          title: '"Add to Cart" button — live demo',
+          caption: '🛒 Interactive demo: tap both buttons a few times and feel the difference. Left — the counter silently increments and you can\'t tell if anything was added. Right — scale on press, success state with a checkmark, bouncing cart counter.',
+          aspectRatio: '7 / 3',
+        },
+        {
           type: 'divider' as const,
         },
 
