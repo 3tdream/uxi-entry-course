@@ -251,8 +251,8 @@ export const meeting10: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-10-easing-curves.webp',
-          alt: 'Four animation easing curves on a single chart',
-          caption: 'Animation easing curves: ease-in, ease-out, ease-in-out, linear.',
+          alt: 'Five animation easing curves on a single chart: linear, ease-out, ease-in, ease-in-out, ease',
+          caption: 'Animation easing curves: linear, ease, ease-in, ease-out, ease-in-out. Source: Programonaut.',
         },
         {
           type: 'before-after' as const,

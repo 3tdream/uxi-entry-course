@@ -251,8 +251,8 @@ export const meeting10: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-10-easing-curves.webp',
-          alt: 'Четыре кривые скорости анимации на одной диаграмме',
-          caption: 'Кривые скорости анимации: ease-in, ease-out, ease-in-out, linear.',
+          alt: 'Пять кривых скорости анимации на одной координатной плоскости: linear, ease-out, ease-in, ease-in-out, ease',
+          caption: 'Кривые скорости анимации: linear, ease, ease-in, ease-out, ease-in-out. Источник: Programonaut.',
         },
         {
           type: 'before-after' as const,
