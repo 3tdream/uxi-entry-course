@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design tokens — live theme demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:#f4f4f2;color:#26261f}
+
+/* ===== ALIAS TOKENS — the only thing that changes between themes ===== */
+:root{
+  --color-bg:hsl(0 0% 100%);
+  --color-surface:hsl(0 0% 98%);
+  --color-fg:hsl(0 0% 6%);
+  --color-muted:hsl(0 0% 95%);
+  --color-muted-fg:hsl(0 0% 38%);
+  --color-border:hsl(0 0% 88%);
+  --color-primary:hsl(220 70% 50%);
+  --color-primary-fg:hsl(0 0% 100%);
+  --color-destructive:hsl(0 84% 60%);
+  --color-success:hsl(150 60% 38%);
+}
+[data-theme="dark"]{
+  --color-bg:hsl(0 0% 7%);
+  --color-surface:hsl(0 0% 11%);
+  --color-fg:hsl(0 0% 96%);
+  --color-muted:hsl(0 0% 16%);
+  --color-muted-fg:hsl(0 0% 65%);
+  --color-border:hsl(0 0% 22%);
+  --color-primary:hsl(220 80% 64%);
+  --color-primary-fg:hsl(0 0% 8%);
+  --color-destructive:hsl(0 70% 65%);
+  --color-success:hsl(150 60% 55%);
+}
+
+/* ===== SIZING + TYPOGRAPHY tokens — theme-independent ===== */
+:root{
+  --spacing-xs:4px; --spacing-sm:8px; --spacing-md:16px; --spacing-lg:24px; --spacing-xl:32px;
+  --radius-sm:4px; --radius-md:8px; --radius-lg:12px;
+  --font-family:'Inter',sans-serif;
+  --font-xs:12px; --font-sm:14px; --font-base:16px; --font-lg:20px; --font-xl:24px;
+  --weight-normal:400; --weight-semibold:600;
+}
+
+.page{max-width:1140px;margin:0 auto;padding:28px}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:18px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase}
+.toggle{display:inline-flex;border:1px solid #d4d4cc;border-radius:9px;background:#fff;overflow:hidden;font-family:'Geist Mono',monospace}
+.toggle button{appearance:none;border:0;background:transparent;padding:9px 16px;font:inherit;font-size:12.5px;color:#26261f;cursor:pointer;letter-spacing:.01em;display:inline-flex;align-items:center;gap:7px}
+.toggle button[aria-pressed=true]{background:#26261f;color:#fff}
+.toggle button .dot{width:10px;height:10px;border-radius:50%;border:1px solid currentColor;display:inline-block}
+.toggle button[data-theme=dark][aria-pressed=true] .dot{background:#fff;border-color:#fff}
+.toggle button[data-theme=light][aria-pressed=true] .dot{background:#fff;border-color:#fff}
+
+.grid{display:grid;grid-template-columns:1.15fr 1fr;gap:24px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+
+/* The Live UI panel — every property uses var(--token) */
+.live{border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-bg);color:var(--color-fg);padding:var(--spacing-xl);transition:background .25s,color .25s,border-color .25s}
+.live h2{font-family:var(--font-family);font-size:var(--font-xl);font-weight:var(--weight-semibold);margin:0 0 var(--spacing-xs)}
+.live p{font-family:var(--font-family);font-size:var(--font-base);color:var(--color-muted-fg);margin:0 0 var(--spacing-md);line-height:1.5}
+.live .row{display:flex;gap:var(--spacing-sm);align-items:center;flex-wrap:wrap;margin-bottom:var(--spacing-md)}
+.live .input{appearance:none;font:inherit;font-size:var(--font-sm);padding:var(--spacing-sm) var(--spacing-md);border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface);color:var(--color-fg);min-width:200px;flex:1;transition:background .25s,border-color .25s,color .25s}
+.live .input::placeholder{color:var(--color-muted-fg);opacity:.7}
+.live .btn{appearance:none;font:inherit;font-size:var(--font-sm);font-weight:var(--weight-semibold);padding:var(--spacing-sm) var(--spacing-lg);border-radius:var(--radius-md);border:1px solid transparent;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.live .btn-primary{background:var(--color-primary);color:var(--color-primary-fg)}
+.live .btn-secondary{background:transparent;color:var(--color-fg);border-color:var(--color-border)}
+.live .btn-destructive{background:var(--color-destructive);color:var(--color-primary-fg)}
+.live .badges{display:flex;gap:var(--spacing-sm);flex-wrap:wrap;margin-top:var(--spacing-md)}
+.live .badge{font-size:var(--font-xs);font-weight:var(--weight-semibold);padding:3px var(--spacing-sm);border-radius:999px;background:var(--color-muted);color:var(--color-muted-fg)}
+.live .badge-success{background:var(--color-success);color:var(--color-primary-fg)}
+
+.scales{margin-top:var(--spacing-lg);padding-top:var(--spacing-lg);border-top:1px solid var(--color-border);display:grid;gap:var(--spacing-md)}
+.scale-block{font-family:'Geist Mono',monospace;font-size:var(--font-xs);color:var(--color-muted-fg)}
+.scale-block .lbl{display:block;margin-bottom:6px;letter-spacing:.05em;text-transform:uppercase}
+.spacing-ladder{display:flex;align-items:flex-end;gap:8px}
+.spacing-ladder span{background:var(--color-primary);border-radius:var(--radius-sm);display:inline-block;color:var(--color-primary-fg);font-size:10px;padding:3px 4px}
+.spacing-ladder .s-xs{width:var(--spacing-xs);height:var(--spacing-xs)}
+.spacing-ladder .s-sm{width:var(--spacing-sm);height:var(--spacing-sm)}
+.spacing-ladder .s-md{width:var(--spacing-md);height:var(--spacing-md)}
+.spacing-ladder .s-lg{width:var(--spacing-lg);height:var(--spacing-lg)}
+.spacing-ladder .s-xl{width:var(--spacing-xl);height:var(--spacing-xl)}
+.type-ladder{display:flex;flex-direction:column;gap:6px;color:var(--color-fg)}
+.type-ladder .t{font-family:var(--font-family);font-weight:var(--weight-semibold)}
+.type-ladder .t-xs{font-size:var(--font-xs)}
+.type-ladder .t-sm{font-size:var(--font-sm)}
+.type-ladder .t-base{font-size:var(--font-base)}
+.type-ladder .t-lg{font-size:var(--font-lg)}
+.type-ladder .t-xl{font-size:var(--font-xl)}
+.radius-row{display:flex;gap:8px;align-items:center}
+.radius-row .r{width:36px;height:36px;background:var(--color-primary)}
+.radius-row .r-sm{border-radius:var(--radius-sm)}
+.radius-row .r-md{border-radius:var(--radius-md)}
+.radius-row .r-lg{border-radius:var(--radius-lg)}
+
+/* Token tables — light scaffolding, themed by the slide chrome (NOT the live theme) */
+.tokens{display:flex;flex-direction:column;gap:14px}
+.t-card{border:1px solid #e2e2da;border-radius:12px;background:#fff;overflow:hidden}
+.t-card .t-head{padding:11px 16px;background:#fafaf8;border-bottom:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#6b6b62;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.t-card .t-head .pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3f7d5a;box-shadow:0 0 0 0 rgba(63,125,90,.5);animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,125,90,.5)}100%{box-shadow:0 0 0 9px rgba(63,125,90,0)}}
+.t-list{margin:0;padding:0;list-style:none}
+.t-list li{display:flex;align-items:center;gap:11px;padding:8px 16px;border-bottom:1px solid #f3f3ef;font-family:'Geist Mono',monospace;font-size:12px}
+.t-list li:last-child{border-bottom:0}
+.t-list .name{color:#3a3a33;min-width:155px;flex-shrink:0}
+.t-list .val{color:#6b6b62;flex:1;text-align:right}
+.t-list .swatch{width:18px;height:18px;border-radius:5px;border:1px solid #d4d4cc;flex-shrink:0}
+.tip{margin-top:22px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bar">
+    <div class="hint">Theme = alias-token redefinition · sizing &amp; typography stay the same</div>
+    <div class="toggle" role="group" aria-label="Theme">
+      <button data-theme="light" aria-pressed="true"><span class="dot"></span>Light</button>
+      <button data-theme="dark"  aria-pressed="false"><span class="dot"></span>Dark</button>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <!-- LIVE UI — every property uses var(--token) -->
+    <div class="live" id="liveRoot">
+      <h2>Project subscription</h2>
+      <p>One source of design decisions for every screen. Switch the theme above — only the alias colors change, every component reskins itself.</p>
+      <div class="row">
+        <input class="input" type="email" placeholder="you@example.com" aria-label="Email">
+        <button class="btn btn-primary">Subscribe</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-secondary">Cancel</button>
+        <button class="btn btn-destructive">Delete</button>
+      </div>
+      <div class="badges">
+        <span class="badge">v2.4 beta</span>
+        <span class="badge badge-success">Synced</span>
+        <span class="badge">12 collaborators</span>
+      </div>
+
+      <div class="scales">
+        <div class="scale-block">
+          <span class="lbl">spacing scale</span>
+          <div class="spacing-ladder"><span class="s-xs"></span><span class="s-sm"></span><span class="s-md"></span><span class="s-lg"></span><span class="s-xl"></span></div>
+        </div>
+        <div class="scale-block">
+          <span class="lbl">type scale</span>
+          <div class="type-ladder">
+            <span class="t t-xs">Tiny (xs · 12)</span>
+            <span class="t t-sm">Small (sm · 14)</span>
+            <span class="t t-base">Body (base · 16)</span>
+            <span class="t t-lg">Subhead (lg · 20)</span>
+            <span class="t t-xl">Heading (xl · 24)</span>
+          </div>
+        </div>
+        <div class="scale-block">
+          <span class="lbl">radius scale</span>
+          <div class="radius-row"><span class="r r-sm"></span><span class="r r-md"></span><span class="r r-lg"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOKEN PANELS — values read live from getComputedStyle(:root) -->
+    <div class="tokens">
+      <div class="t-card">
+        <div class="t-head"><span>Color tokens · alias</span><span class="pulse" title="changes with theme"></span></div>
+        <ul class="t-list" id="colorTokens">
+          <li><span class="swatch" data-token="--color-bg"></span><span class="name">--color-bg</span><span class="val" data-val="--color-bg">—</span></li>
+          <li><span class="swatch" data-token="--color-fg"></span><span class="name">--color-fg</span><span class="val" data-val="--color-fg">—</span></li>
+          <li><span class="swatch" data-token="--color-surface"></span><span class="name">--color-surface</span><span class="val" data-val="--color-surface">—</span></li>
+          <li><span class="swatch" data-token="--color-muted"></span><span class="name">--color-muted</span><span class="val" data-val="--color-muted">—</span></li>
+          <li><span class="swatch" data-token="--color-border"></span><span class="name">--color-border</span><span class="val" data-val="--color-border">—</span></li>
+          <li><span class="swatch" data-token="--color-primary"></span><span class="name">--color-primary</span><span class="val" data-val="--color-primary">—</span></li>
+          <li><span class="swatch" data-token="--color-destructive"></span><span class="name">--color-destructive</span><span class="val" data-val="--color-destructive">—</span></li>
+          <li><span class="swatch" data-token="--color-success"></span><span class="name">--color-success</span><span class="val" data-val="--color-success">—</span></li>
+        </ul>
+      </div>
+
+      <div class="t-card">
+        <div class="t-head"><span>Size tokens · theme-independent</span><span style="font-size:10px;color:#a8a89f">unchanged</span></div>
+        <ul class="t-list">
+          <li><span class="name">--spacing-xs</span><span class="val">4px</span></li>
+          <li><span class="name">--spacing-sm</span><span class="val">8px</span></li>
+          <li><span class="name">--spacing-md</span><span class="val">16px</span></li>
+          <li><span class="name">--spacing-lg</span><span class="val">24px</span></li>
+          <li><span class="name">--spacing-xl</span><span class="val">32px</span></li>
+          <li><span class="name">--radius-sm / md / lg</span><span class="val">4 / 8 / 12px</span></li>
+        </ul>
+      </div>
+
+      <div class="t-card">
+        <div class="t-head"><span>Typography · theme-independent</span><span style="font-size:10px;color:#a8a89f">unchanged</span></div>
+        <ul class="t-list">
+          <li><span class="name">--font-family</span><span class="val">Inter, sans-serif</span></li>
+          <li><span class="name">--font-xs / sm / base</span><span class="val">12 / 14 / 16px</span></li>
+          <li><span class="name">--font-lg / xl</span><span class="val">20 / 24px</span></li>
+          <li><span class="name">--weight-normal / semibold</span><span class="val">400 / 600</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tip">Flip Light ↔ Dark — only the 9 alias colors above repaint. The same components, the same spacing, the same type scale.</div>
+</div>
+
+<script>
+function toHex(rgbStr){
+  var m = rgbStr.match(/\d+(\.\d+)?/g);
+  if(!m || m.length<3) return rgbStr;
+  return '#' + m.slice(0,3).map(function(n){return ('0'+Math.round(+n).toString(16)).slice(-2)}).join('');
+}
+
+function syncTokens(){
+  var cs = getComputedStyle(document.documentElement);
+  document.querySelectorAll('[data-token]').forEach(function(el){
+    var v = cs.getPropertyValue(el.dataset.token).trim();
+    el.style.background = v;
+  });
+  document.querySelectorAll('[data-val]').forEach(function(el){
+    var v = cs.getPropertyValue(el.dataset.val).trim();
+    // Resolve hsl(...) to hex for readability
+    if(v.startsWith('hsl')){
+      var tmp = document.createElement('span');
+      tmp.style.color = v;
+      document.body.appendChild(tmp);
+      var rgb = getComputedStyle(tmp).color;
+      tmp.remove();
+      el.textContent = toHex(rgb) + '  ·  ' + v;
+    } else {
+      el.textContent = v;
+    }
+  });
+  reportHeight();
+}
+
+document.querySelectorAll('.toggle button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.documentElement.dataset.theme = b.dataset.theme;
+    document.querySelectorAll('.toggle button').forEach(function(x){
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+    });
+    syncTokens();
+  });
+});
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', function(){ syncTokens(); reportHeight(); });
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ syncTokens(); reportHeight(); });
+setTimeout(function(){ syncTokens(); reportHeight(); }, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

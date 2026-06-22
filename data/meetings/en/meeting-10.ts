@@ -764,6 +764,13 @@ export const meeting10: Meeting = {
             'Theme switching: just change the alias tokens. --color-background: white \u2192 black, --color-foreground: black \u2192 white. All components update automatically because they reference alias tokens, not specific colors.',
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m10-design-tokens.html',
+          title: 'Design tokens \u2014 Light/Dark on the same UI',
+          caption: '\ud83c\udfa8 Live demo: flip Light \u2194 Dark \u2014 only the **9 alias colors** (--color-bg, --color-fg, --color-primary\u2026) change, and the entire card (buttons, input, badges) reskins itself. Spacing and typography are a separate layer, independent of the theme. On the right \u2014 the tokens with their currently resolved values.',
+          aspectRatio: '7 / 6',
+        },
+        {
           type: 'divider' as const,
         },
 

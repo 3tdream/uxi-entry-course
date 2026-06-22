@@ -764,6 +764,13 @@ export const meeting10: Meeting = {
             'Переключение темы: достаточно изменить alias-токены. --color-background: white → black, --color-foreground: black → white. Все компоненты обновятся автоматически, потому что ссылаются на alias-токены, а не на конкретные цвета.',
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m10-design-tokens.html',
+          title: 'Дизайн-токены — Light/Dark на одном UI',
+          caption: '🎨 Живое демо: переключи Light ↔ Dark — меняются только **9 alias-цветов** (--color-bg, --color-fg, --color-primary…), а вся карточка (кнопки, инпут, бейджи) перекрашивается автоматически. Spacing и типографика — отдельный слой, не зависят от темы. Справа — токены, подсвеченные текущими значениями.',
+          aspectRatio: '7 / 6',
+        },
+        {
           type: 'divider' as const,
         },
 
