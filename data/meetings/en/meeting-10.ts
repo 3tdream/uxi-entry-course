@@ -663,8 +663,8 @@ export const meeting10: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-10-atomic-design.webp',
-          alt: 'Five Atomic Design levels as a vertical ladder',
-          caption: 'Atomic Design: atoms → molecules → organisms → templates → pages.',
+          alt: 'Six Atomic Design levels in a horizontal sequence: tokens → atoms → molecules → organisms → templates → pages',
+          caption: 'Atomic Design (extended): tokens → atoms → molecules → organisms → templates → pages. Each level is composed from the previous one. Source: Parallel.',
         },
         {
           type: 'callout' as const,
