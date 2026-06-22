@@ -136,8 +136,8 @@ export const meeting10: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-10-microinteraction-anatomy.webp',
-          alt: "Four blocks of Dan Saffer's microinteraction model",
-          caption: 'Microinteraction anatomy: trigger, rules, feedback, loops.',
+          alt: "Dan Saffer's four microinteraction components: Trigger → Rules → Feedback → Loops and Modes",
+          caption: "Key components of a microinteraction per Dan Saffer's model: Trigger → Rules → Feedback → Loops and Modes. Source: Daffodil.",
         },
         {
           type: 'key-concepts' as const,

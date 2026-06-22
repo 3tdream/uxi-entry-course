@@ -136,8 +136,8 @@ export const meeting10: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-10-microinteraction-anatomy.webp',
-          alt: 'Четыре блока модели микроинтеракции Дэна Саффера',
-          caption: 'Анатомия микроинтеракции: триггер, правила, обратная связь, циклы.',
+          alt: 'Четыре компонента микроинтеракции по Дэну Сафферу: Trigger → Rules → Feedback → Loops and Modes',
+          caption: 'Ключевые компоненты микроинтеракции по модели Дэна Саффера: Trigger → Rules → Feedback → Loops and Modes. Источник: Daffodil.',
         },
         {
           type: 'key-concepts' as const,
