@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building a Button — chaos vs design system</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#f4f4f2;font-family:'Geist',system-ui,sans-serif;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:28px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{border:1px solid #e2e2da;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.card.bad .head{background:#fbeceb;border-bottom:1px solid #f1d8d5;color:#a33a2e}
+.card.good .head{background:#eaf3ed;border-bottom:1px solid #d4e7dc;color:#2f7350}
+.head{display:flex;align-items:center;gap:9px;padding:11px 16px;font-weight:600;font-size:14px}
+.head .dot{width:20px;height:20px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.bad .head .dot{background:#c0473b}
+.good .head .dot{background:#3f7d5a}
+.body{padding:22px 22px 8px;flex:1;display:flex;flex-direction:column;gap:16px}
+.body .who{font-family:'Geist Mono',monospace;font-size:11px;color:#90908a;letter-spacing:.04em;text-transform:uppercase}
+.chaos-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.chaos-cluster{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border:1px dashed #e2dad7;border-radius:8px;background:#fff8f6}
+.chaos-tag{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.04em;color:#a33a2e;opacity:.7}
+/* 8 hand-rolled buttons, each by a different dev */
+.b1{background:#2563eb;color:#fff;border:0;padding:9px 17px;border-radius:4px;font-family:Arial,sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.b2{background:#10b981;color:#fff;border:0;padding:14px 20px;border-radius:24px;font-family:'Geist',sans-serif;font-size:13px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.08em}
+.b3{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:7px 14px;border-radius:0;font-family:Georgia,serif;font-size:15px;font-weight:600;cursor:pointer}
+.b4{background:#7c3aed;color:#fff;border:0;padding:11px 28px;border-radius:8px;font-family:'Courier New',monospace;font-size:12px;font-weight:400;cursor:pointer;text-transform:lowercase}
+.b5{background:linear-gradient(180deg,#fbbf24,#f59e0b);color:#26261f;border:1px solid #b45309;padding:8px 16px;border-radius:6px;font-family:'Geist',sans-serif;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 2px 0 #92400e}
+.b6{background:#26261f;color:#fbbf24;border:0;padding:13px 18px;border-radius:2px;font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;cursor:pointer;text-transform:uppercase}
+.b7{background:#fff;color:#1e293b;border:1px solid #cbd5e1;padding:10px 22px;border-radius:14px;font-family:Helvetica,sans-serif;font-size:13px;font-weight:500;cursor:pointer}
+.b8{background:#ec4899;color:#fff;border:0;padding:16px 24px;border-radius:50px;font-family:'Geist',sans-serif;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.04em}
+.footnote{padding:11px 16px;background:#fafaf8;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.02em}
+.bad .footnote{color:#a33a2e}
+.good .footnote{color:#2f7350}
+/* Controls */
+.controls{display:flex;flex-direction:column;gap:14px}
+.control-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.control-label{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.04em;color:#90908a;text-transform:uppercase;min-width:62px}
+.chip{appearance:none;border:1px solid #d4d4cc;background:#fff;color:#26261f;padding:7px 12px;border-radius:8px;font-family:'Geist Mono',monospace;font-size:12px;cursor:pointer;letter-spacing:.01em;transition:all .12s ease}
+.chip:hover{border-color:#a8a89f}
+.chip[aria-pressed=true]{background:#26261f;color:#fff;border-color:#26261f}
+.stage{margin-top:6px;padding:32px 22px;display:flex;align-items:center;justify-content:center;background:#fafaf8;border:1px solid #eee;border-radius:10px;min-height:120px}
+/* Design-system Button — single source of truth */
+.dsbtn{display:inline-flex;align-items:center;justify-content:center;font-family:'Geist',sans-serif;font-weight:600;border:1px solid transparent;cursor:pointer;transition:opacity .15s,transform .12s;letter-spacing:.005em;line-height:1}
+.dsbtn:active{transform:scale(.97)}
+/* sizes */
+.dsbtn.sz-sm{padding:7px 13px;font-size:12.5px;border-radius:7px}
+.dsbtn.sz-md{padding:10px 18px;font-size:14px;border-radius:8px}
+.dsbtn.sz-lg{padding:13px 24px;font-size:15.5px;border-radius:9px}
+/* variants */
+.dsbtn.v-primary{background:#26261f;color:#fff;border-color:#26261f}
+.dsbtn.v-secondary{background:#fff;color:#26261f;border-color:#d4d4cc}
+.dsbtn.v-ghost{background:transparent;color:#26261f;border-color:transparent}
+.dsbtn.v-ghost:hover{background:rgba(0,0,0,.04)}
+.dsbtn.v-destructive{background:#c0473b;color:#fff;border-color:#c0473b}
+/* JSX snippet */
+.snippet{margin-top:8px;padding:11px 14px;background:#1a1a17;color:#e8e8e2;border-radius:8px;font-family:'Geist Mono',monospace;font-size:12px;line-height:1.55;overflow-x:auto}
+.snippet .tag{color:#7dd3a0}.snippet .attr{color:#fbbf24}.snippet .str{color:#a5b4fc}
+.tip{margin-top:22px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">Same product label · two engineering realities</div>
+  <div class="grid">
+
+    <div class="card bad">
+      <div class="head"><span class="dot">✗</span><span>Без дизайн-системы · No design system</span></div>
+      <div class="body">
+        <div class="who">8 different devs, 8 different "Save" buttons</div>
+        <div class="chaos-row">
+          <div class="chaos-cluster"><span class="chaos-tag">Anna · Mar 3</span><button class="b1">Save</button></div>
+          <div class="chaos-cluster"><span class="chaos-tag">Petr · Mar 8</span><button class="b2">Save</button></div>
+          <div class="chaos-cluster"><span class="chaos-tag">Inga · Mar 11</span><button class="b3">Save</button></div>
+          <div class="chaos-cluster"><span class="chaos-tag">Marc · Mar 14</span><button class="b4">save</button></div>
+          <div class="chaos-cluster"><span class="chaos-tag">Lina · Mar 17</span><button class="b5">Save</button></div>
+          <div class="chaos-cluster"><span class="chaos-tag">Oleg · Mar 21</span><button class="b6">SAVE</button></div>
+          <div class="chaos-cluster"><span class="chaos-tag">Yael · Mar 25</span><button class="b7">Save</button></div>
+          <div class="chaos-cluster"><span class="chaos-tag">Dan · Mar 28</span><button class="b8">Save</button></div>
+        </div>
+      </div>
+      <div class="footnote">8 colors · 8 radii · 6 fonts · 3 casings · zero shared truth</div>
+    </div>
+
+    <div class="card good">
+      <div class="head"><span class="dot">✓</span><span>С дизайн-системой · With a design system</span></div>
+      <div class="body">
+        <div class="who">One &lt;Button&gt; component · 4 variants × 3 sizes</div>
+        <div class="controls">
+          <div class="control-row">
+            <span class="control-label">variant</span>
+            <button class="chip" data-variant="primary" aria-pressed="true">primary</button>
+            <button class="chip" data-variant="secondary" aria-pressed="false">secondary</button>
+            <button class="chip" data-variant="ghost" aria-pressed="false">ghost</button>
+            <button class="chip" data-variant="destructive" aria-pressed="false">destructive</button>
+          </div>
+          <div class="control-row">
+            <span class="control-label">size</span>
+            <button class="chip" data-size="sm" aria-pressed="false">sm</button>
+            <button class="chip" data-size="md" aria-pressed="true">md</button>
+            <button class="chip" data-size="lg" aria-pressed="false">lg</button>
+          </div>
+        </div>
+        <div class="stage">
+          <button id="dsBtn" class="dsbtn v-primary sz-md">Save</button>
+        </div>
+        <div class="snippet"><span class="tag">&lt;Button</span> <span class="attr">variant</span>=<span class="str">"<span id="snipVariant">primary</span>"</span> <span class="attr">size</span>=<span class="str">"<span id="snipSize">md</span>"</span><span class="tag">&gt;</span>Save<span class="tag">&lt;/Button&gt;</span></div>
+      </div>
+      <div class="footnote">one source · 4 × 3 = 12 valid combos · new button = 1 line</div>
+    </div>
+
+  </div>
+  <div class="tip">Tap the chips on the right — every combination is the same component, configured by props.</div>
+</div>
+
+<script>
+var btn = document.getElementById('dsBtn');
+var snipV = document.getElementById('snipVariant');
+var snipS = document.getElementById('snipSize');
+var state = { variant: 'primary', size: 'md' };
+
+function apply(){
+  btn.className = 'dsbtn v-' + state.variant + ' sz-' + state.size;
+  snipV.textContent = state.variant;
+  snipS.textContent = state.size;
+}
+
+document.querySelectorAll('.chip[data-variant]').forEach(function(c){
+  c.addEventListener('click', function(){
+    state.variant = c.dataset.variant;
+    document.querySelectorAll('.chip[data-variant]').forEach(function(x){
+      x.setAttribute('aria-pressed', x === c ? 'true' : 'false');
+    });
+    apply();
+  });
+});
+document.querySelectorAll('.chip[data-size]').forEach(function(c){
+  c.addEventListener('click', function(){
+    state.size = c.dataset.size;
+    document.querySelectorAll('.chip[data-size]').forEach(function(x){
+      x.setAttribute('aria-pressed', x === c ? 'true' : 'false');
+    });
+    apply();
+  });
+});
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

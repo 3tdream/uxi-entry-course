@@ -627,6 +627,13 @@ export const meeting10: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m10-button-design-system.html',
+          title: 'Кнопка «Save» — хаос vs дизайн-система',
+          caption: '🔘 Живое демо: слева — 8 разных «Save» от 8 разных разработчиков (разные цвета, радиусы, шрифты, casing — типичный визуальный хаос). Справа — один компонент Button, переключи variant и size чипами, JSX-сниппет обновляется в реальном времени.',
+          aspectRatio: '5 / 3',
+        },
+        {
           type: 'divider' as const,
         },
 
