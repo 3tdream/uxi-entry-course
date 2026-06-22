@@ -840,6 +840,50 @@ export const meeting10: Meeting = {
             'iOS apps feel "native" thanks to HIG compliance. Developers get UIKit/SwiftUI with built-in patterns. Users do not have to relearn in each app.',
         },
         {
+          type: 'case-study' as const,
+          title: 'IBM Carbon Design System',
+          company: 'IBM',
+          problem:
+            'IBM ships hundreds of products — Cloud, Watson, Security, hardware interfaces. Each team rebuilt UI from scratch, accessibility was checked as an afterthought, and corporate typography and color clashed across products.',
+          solution:
+            'Carbon — an open-source design system with **accessibility as a baseline** (WCAG 2.1 AA out of the box). Implementations for React, Web Components, Angular, and Vue. Four background themes (white, gray-10, gray-90, gray-100) flip with a single token.',
+          result:
+            'A single language for every IBM product. Open-sourced on GitHub under Apache-2.0, actively used outside IBM. Carbon became the benchmark for "how to build an enterprise system with a11y as a first-class concern" — SAP and Salesforce cite its patterns.',
+        },
+        {
+          type: 'case-study' as const,
+          title: 'Shopify Polaris',
+          company: 'Shopify',
+          problem:
+            'Hundreds of teams inside Shopify and tens of thousands of third-party app developers ship UI for an admin used by millions of merchants. Inconsistent UI and tone confuse a merchant who spends 8+ hours a day in the platform.',
+          solution:
+            'Polaris — a design system where **content guidelines** (UX writing, voice & tone) are first-class alongside components. It bundles components, icons, Spot/Hero illustrations, and plain-language rules: "don\'t scare users with words like fatal error," "speak like an experienced coworker."',
+          result:
+            'The Shopify admin feels like one product even though 100+ teams build it. Third-party apps using Polaris are visually indistinguishable from native screens. The Polaris content guidelines have become a reference across the e-commerce industry.',
+        },
+        {
+          type: 'case-study' as const,
+          title: 'Atlassian Design System (ADS)',
+          company: 'Atlassian',
+          problem:
+            'Jira, Confluence, Bitbucket, Trello — products from different eras and stacks (legacy Java, early React, Ember). They diverged visually, and switching between them felt jarring. The 2017 rebrand only widened the gap.',
+          solution:
+            'ADS — a unified React component library plus **Foundations** (tokens for color, typography, spacing, motion). A major 2023 brand refresh introduced the new Charcoal/Sky palette and the "one Atlassian" approach. Clear migration paths from the older Atlaskit.',
+          result:
+            'Atlassian Cloud products now share a visual language — moving from Jira to Confluence costs no cognitive load. Docs are public at atlassian.design and are a common reference for multi-product companies (Linear and Notion cite the theming approach).',
+        },
+        {
+          type: 'case-study' as const,
+          title: '🎮 Xbox — Fluent for Games',
+          company: 'Microsoft (Xbox)',
+          problem:
+            'The Xbox ecosystem lives on **very different devices**: the console (10 feet from a TV, controller input), the Game Pass app on PC (mouse), the mobile app (touch), xbox.com (desktop), and in-game overlays (on top of any game). Each context demands its own hit targets, focus indicator, and information density — but they all have to feel like one brand.',
+          solution:
+            'Microsoft Fluent adapted for games: bigger hit targets and explicit focus rings for controllers, **acrylic / mica** materials for overlays (translucent layers on top of a running game), a shared "Xbox green" palette, and system typography. The console dashboard has been rebuilt three times (Xbox One 2013 → New Xbox Experience 2017 → Series X|S 2020) — each time to get to the games faster.',
+          result:
+            'A player switches between console, phone, and Game Pass on PC without relearning the UI. The tab bar, game tiles, and Quick Resume cards are the same primitives in three contexts. The Xbox UX team publishes retros on Xbox Wire and microsoft.design — a rare case of open documentation for a gaming-brand UX stack.',
+        },
+        {
           type: 'comparison' as const,
           title: 'Design Systems Comparison',
           items: [
