@@ -85,8 +85,9 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-handoff-broken-telephone-humor.webp',
-          alt: 'Humorous illustration of broken designer-developer communication',
-          caption: 'When handoff turns into a game of telephone.',
+          alt: '@designershumor meme: caption "when you accidentally type 20px stroke weight" with a photo of a woman whose eyebrows look like huge square blocks instead of thin lines',
+          caption: 'When handoff turns into a game of telephone: one typo in the spec — 20px stroke instead of 2px — and the implementation looks exactly like this. Meme by @designershumor.',
+          maxWidth: 560,
         },
 
         { type: 'divider' as const },
