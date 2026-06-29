@@ -169,12 +169,29 @@ function KeyConceptsSection({
   )
 }
 
+const COMPARISON_COLOR: Record<string, string> = {
+  purple: 'text-purple-600',
+  blue: 'text-blue-600',
+  emerald: 'text-emerald-600',
+  amber: 'text-amber-600',
+  rose: 'text-rose-600',
+  slate: 'text-slate-600',
+}
+
 function ComparisonSection({
   title,
   items,
+  leftLabel = 'UX',
+  rightLabel = 'UI',
+  leftColor = 'purple',
+  rightColor = 'blue',
 }: {
   title: string
   items: { label: string; ux: string; ui: string }[]
+  leftLabel?: string
+  rightLabel?: string
+  leftColor?: 'purple' | 'blue' | 'emerald' | 'amber' | 'rose' | 'slate'
+  rightColor?: 'purple' | 'blue' | 'emerald' | 'amber' | 'rose' | 'slate'
 }) {
   return (
     <div className="space-y-3">
@@ -182,8 +199,8 @@ function ComparisonSection({
       <div className="rounded-xl border overflow-hidden">
         <div className="grid grid-cols-3 bg-muted/50 text-sm font-semibold">
           <div className="p-3 text-muted-foreground"></div>
-          <div className="p-3 text-center text-purple-600">UX</div>
-          <div className="p-3 text-center text-blue-600">UI</div>
+          <div className={`p-3 text-center ${COMPARISON_COLOR[leftColor]}`}>{leftLabel}</div>
+          <div className={`p-3 text-center ${COMPARISON_COLOR[rightColor]}`}>{rightLabel}</div>
         </div>
         {items.map((item, i) => (
           <div
@@ -2497,7 +2514,16 @@ function renderSection(section: Section) {
     case 'key-concepts':
       return <KeyConceptsSection concepts={section.concepts} />
     case 'comparison':
-      return <ComparisonSection title={section.title} items={section.items} />
+      return (
+        <ComparisonSection
+          title={section.title}
+          items={section.items}
+          leftLabel={section.leftLabel}
+          rightLabel={section.rightLabel}
+          leftColor={section.leftColor}
+          rightColor={section.rightColor}
+        />
+      )
     case 'timeline':
       return <TimelineSection events={section.events} />
     case 'image-placeholder':

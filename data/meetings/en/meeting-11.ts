@@ -319,6 +319,10 @@ export const meeting11: Meeting = {
         {
           type: 'comparison' as const,
           title: 'Generated vs Production Code',
+          leftLabel: 'Auto-generated',
+          rightLabel: 'Production',
+          leftColor: 'rose' as const,
+          rightColor: 'emerald' as const,
           items: [
             {
               label: 'Positioning',
@@ -427,6 +431,10 @@ export const meeting11: Meeting = {
         {
           type: 'comparison' as const,
           title: 'Handoff Tools Comparison',
+          leftLabel: 'Strengths',
+          rightLabel: 'Trade-offs',
+          leftColor: 'emerald' as const,
+          rightColor: 'amber' as const,
           items: [
             {
               label: 'Figma Dev Mode',
@@ -827,6 +835,10 @@ export const meeting11: Meeting = {
         {
           type: 'comparison' as const,
           title: 'A/B Testing Tools Comparison',
+          leftLabel: 'Strengths',
+          rightLabel: 'Trade-offs',
+          leftColor: 'emerald' as const,
+          rightColor: 'amber' as const,
           items: [
             {
               label: 'Google Optimize (shut down in 2023)',

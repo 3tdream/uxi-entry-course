@@ -240,7 +240,17 @@ export type Section =
   | { type: 'heading'; content: string }
   | { type: 'subheading'; content: string }
   | { type: 'key-concepts'; concepts: KeyConcept[] }
-  | { type: 'comparison'; title: string; items: ComparisonItem[] }
+  | {
+      type: 'comparison'
+      title: string
+      items: ComparisonItem[]
+      /** Override the column headers. Defaults to 'UX' / 'UI' for backward compatibility. */
+      leftLabel?: string
+      rightLabel?: string
+      /** Override the column header tint. Defaults purple / blue. */
+      leftColor?: 'purple' | 'blue' | 'emerald' | 'amber' | 'rose' | 'slate'
+      rightColor?: 'purple' | 'blue' | 'emerald' | 'amber' | 'rose' | 'slate'
+    }
   | { type: 'timeline'; events: { year: string; title: string; description: string }[] }
   | { type: 'callout'; variant: 'tip' | 'warning' | 'example'; content: string }
   | { type: 'image-placeholder'; alt: string; caption: string }
