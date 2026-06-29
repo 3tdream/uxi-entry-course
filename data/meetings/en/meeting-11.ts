@@ -453,6 +453,12 @@ export const meeting11: Meeting = {
 
         // --- Summary ---
         {
+          type: 'image' as const,
+          src: '/images/meeting-11-handoff-dev-mode-guide.webp',
+          alt: 'Infographic "Streamlining Handoff: A Developer\'s Guide to Figma Dev Mode" with two halves: Inspect & Compare and Implement & Integrate',
+          caption: 'Everything covered in Part 1 on a single map: on the left — what a developer **reads** in Dev Mode (Ready for Dev status, version history, Component Playground); on the right — what they **do** next (code generation, Figma for VS Code, native sync with GitHub/Asana). Source: NotebookLM.',
+        },
+        {
           type: 'heading' as const,
           content: 'Summary: 5 Principles of the Perfect Handoff',
         },
