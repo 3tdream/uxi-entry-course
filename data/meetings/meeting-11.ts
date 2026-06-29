@@ -750,6 +750,13 @@ export const meeting11: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-hypothesis-anatomy.html',
+          title: 'Анатомия гипотезы — bad vs good (живое демо)',
+          caption: '🧪 Гипотеза = 4 блока: **Change → Outcome → Reasoning → Evidence**. Слева плохая — заполнен только 1 блок из 4 (3 «пропуска» заштрихованы). Справа хорошая — все 4 заполнены, конкретная метрика, обоснование, evidence. Внизу легенда «что значит каждый блок».',
+          aspectRatio: '5 / 4',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
@@ -1054,6 +1061,13 @@ export const meeting11: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-checkout-iteration.html',
+          title: 'Checkout: v1 → v6 — живое демо',
+          caption: '🛒 Переключатель v1 ↔ v6: одна длинная форма из 12 полей vs 3-шаговая (с прогресс-баром и автозаполнением адреса). При флипе метрики справа дорисовываются (bounce 68% → 41%, конверсия 2.1% → 3.8%, time on task 4.2 → 1.8 мин), цитата пользователя меняется. Список «что изменилось в v6» делает невидимые UX-ставки явными.',
+          aspectRatio: '4 / 5',
+        },
+        {
           type: 'before-after' as const,
           title: 'Мобильная навигация приложения',
           before: {
@@ -1066,6 +1080,13 @@ export const meeting11: Meeting = {
             description:
               'Bottom tab bar с 5 ключевыми разделами. Engagement вырос до 64% (+433%). Время сессии увеличилось с 2.1 до 4.7 мин. Retention +18%.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-mobile-nav-pattern.html',
+          title: 'Burger → Tab bar — живое демо',
+          caption: '📱 Слева — реальный телефон с переключателем pattern: тыкни «Burger» и кликни иконку — выезжает drawer-меню; тыкни «Tab bar» — снизу появляется bar из 5 разделов. Справа — engagement по разделам анимируется (Search: 14% → 71%), и три KPI (menu opens, session time, retention) переключают значения. Discoverability — это свойство навигации, а не контента.',
+          aspectRatio: '4 / 5',
         },
 
         { type: 'divider' as const },

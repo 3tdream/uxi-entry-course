@@ -750,6 +750,13 @@ export const meeting11: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-hypothesis-anatomy.html',
+          title: 'Hypothesis anatomy \u2014 bad vs good (live demo)',
+          caption: '\ud83e\uddea A hypothesis = 4 blocks: **Change \u2192 Outcome \u2192 Reasoning \u2192 Evidence**. On the left, the bad one \u2014 only 1 of 4 blocks is filled (the other 3 are hatched as "missing"). On the right \u2014 all 4 filled, a concrete metric, the reasoning, and the evidence. Legend at the bottom explains what each block answers.',
+          aspectRatio: '5 / 4',
+        },
+        {
           type: 'callout' as const,
           variant: 'example' as const,
           content:
@@ -1054,6 +1061,13 @@ export const meeting11: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-checkout-iteration.html',
+          title: 'Checkout: v1 \u2192 v6 \u2014 live demo',
+          caption: '\ud83d\uded2 Flip v1 \u2194 v6: one long 12-field form vs a 3-step one (with a progress bar and address autofill). On flip, the metrics on the right repaint (bounce 68% \u2192 41%, conversion 2.1% \u2192 3.8%, time on task 4.2 \u2192 1.8 min), and the user quote swaps. The "what changed in v6" list makes the otherwise invisible UX bets explicit.',
+          aspectRatio: '4 / 5',
+        },
+        {
           type: 'before-after' as const,
           title: 'Mobile App Navigation',
           before: {
@@ -1066,6 +1080,13 @@ export const meeting11: Meeting = {
             description:
               'Bottom tab bar with 5 key sections. Engagement rose to 64% (+433%). Session time increased from 2.1 to 4.7 min. Retention +18%.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-mobile-nav-pattern.html',
+          title: 'Burger → Tab bar — live demo',
+          caption: '📱 A real phone with a pattern switch on the left: tap "Burger" and click the icon — a drawer slides in; tap "Tab bar" — a 5-section bar appears at the bottom. On the right — per-section engagement animates (Search: 14% → 71%), and three KPIs (menu opens, session time, retention) swap values. Discoverability is a property of navigation, not of content.',
+          aspectRatio: '4 / 5',
         },
 
         { type: 'divider' as const },

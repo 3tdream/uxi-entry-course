@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile nav — burger vs tab bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:28px}
+.bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase}
+.toggle{display:inline-flex;border:1px solid #d4d4cc;border-radius:9px;background:#fff;overflow:hidden;font-family:'Geist Mono',monospace}
+.toggle button{appearance:none;border:0;background:transparent;padding:9px 16px;font:inherit;font-size:12.5px;color:#26261f;cursor:pointer;letter-spacing:.01em}
+.toggle button[aria-pressed=true]{background:#26261f;color:#fff}
+
+.grid{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+.phone-wrap{display:flex;justify-content:center}
+.phone{width:300px;border-radius:30px;border:8px solid #26261f;background:#fff;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);position:relative}
+.phone .notch{background:#26261f;height:18px;display:flex;align-items:center;justify-content:center}
+.phone .notch span{width:48px;height:4px;border-radius:3px;background:#3a3a33}
+.screen{position:relative;height:540px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.statusbar{padding:8px 16px 0;display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:10px;color:#3a3a33}
+.appbar{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0efea}
+.appbar .title{font-weight:600;font-size:15px}
+.burger{display:flex;flex-direction:column;gap:3.5px;cursor:pointer;padding:5px;border-radius:6px;transition:background .15s}
+.burger span{width:18px;height:2px;background:#26261f;border-radius:1px}
+.feed{flex:1;overflow:hidden;padding:14px 16px;display:flex;flex-direction:column;gap:11px;background:#fafaf8}
+.feed .ttl{font-family:'Geist Mono',monospace;font-size:9.5px;color:#a8a89f;letter-spacing:.06em;text-transform:uppercase}
+.feed .card{background:#fff;border:1px solid #efeeea;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:5px;font-size:11.5px}
+.feed .card .h{font-weight:600;color:#26261f}
+.feed .card .b{color:#6b6b62;line-height:1.4;font-size:10.5px}
+.tabbar{display:none;border-top:1px solid #f0efea;padding:8px 6px 12px;background:#fff}
+.tabbar .row{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.tabbar .t{display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 2px;border-radius:7px;color:#90908a;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.04em;text-transform:uppercase}
+.tabbar .t .ico{font-size:17px;line-height:1}
+.tabbar .t.active{color:#26261f;font-weight:600}
+.tabbar .t.active .ico{color:#26261f}
+
+/* drawer overlay for burger mode */
+.drawer{position:absolute;inset:0;background:rgba(0,0,0,.0);pointer-events:none;transition:background .25s ease}
+.drawer .panel{position:absolute;top:0;left:0;bottom:0;width:78%;background:#fff;transform:translateX(-100%);transition:transform .3s ease;display:flex;flex-direction:column;padding:24px 18px 18px;gap:9px}
+.drawer .panel .it{padding:11px 10px;font-size:13px;color:#26261f;border-radius:8px;display:flex;align-items:center;gap:10px}
+.drawer .panel .it .dot{width:6px;height:6px;border-radius:50%;background:#d4d4cc}
+.drawer .panel .it.active{background:#fafaf8;font-weight:600}
+.drawer .panel .it.active .dot{background:#26261f}
+.drawer.open{background:rgba(0,0,0,.42);pointer-events:auto}
+.drawer.open .panel{transform:translateX(0)}
+
+.screen.tabbar-mode .tabbar{display:block}
+.screen.burger-mode .burger{display:flex}
+.screen.tabbar-mode .burger{display:none}
+
+.right{display:flex;flex-direction:column;gap:14px}
+.card-right{background:#fff;border:1px solid #e2e2da;border-radius:11px;padding:14px 16px}
+.card-right h3{margin:0 0 8px;font-size:13px;font-family:'Geist Mono',monospace;font-weight:600;color:#3a3a33;letter-spacing:.04em;text-transform:uppercase}
+.engagement{display:flex;flex-direction:column;gap:7px}
+.engagement .row{display:flex;align-items:center;gap:11px;font-size:12px}
+.engagement .label{width:75px;color:#6b6b62}
+.engagement .barwrap{flex:1;height:8px;background:#f4f4f2;border-radius:5px;overflow:hidden;position:relative}
+.engagement .fill{height:100%;border-radius:5px;background:#3f7d5a;width:0;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.engagement .pct{font-family:'Geist Mono',monospace;font-size:11.5px;color:#3a3a33;font-weight:600;width:42px;text-align:right}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi .k{background:#fafaf8;border:1px solid #efeeea;border-radius:9px;padding:10px 11px}
+.kpi .k .n{font-family:'Geist Mono',monospace;font-size:10px;color:#90908a;letter-spacing:.05em;text-transform:uppercase}
+.kpi .k .v{font-size:18px;font-weight:600;color:#26261f;margin-top:3px}
+.kpi .k .d{font-family:'Geist Mono',monospace;font-size:10.5px;color:#2f7350;margin-top:2px;font-weight:600}
+.tip{margin-top:22px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bar">
+    <div class="hint">Same app · two navigation patterns</div>
+    <div class="toggle" role="group" aria-label="Pattern">
+      <button data-p="burger" aria-pressed="true">Burger menu (before)</button>
+      <button data-p="tabbar" aria-pressed="false">Bottom tab bar (after)</button>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"><span></span></div>
+        <div class="screen burger-mode" id="screen">
+          <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
+          <div class="appbar">
+            <span class="burger" id="burger"><span></span><span></span><span></span></span>
+            <span class="title">Discover</span>
+            <span style="font-size:14px;color:#90908a">🔍</span>
+          </div>
+          <div class="feed">
+            <span class="ttl">For you</span>
+            <div class="card"><span class="h">Spring collection · 30% off</span><span class="b">Browse curated picks from your favorites</span></div>
+            <div class="card"><span class="h">2 friends just joined</span><span class="b">See what they're up to in your circle</span></div>
+            <div class="card"><span class="h">New article</span><span class="b">5 ways to use the new dashboard</span></div>
+            <div class="card"><span class="h">Daily challenge</span><span class="b">Complete to earn 50 points</span></div>
+          </div>
+          <div class="tabbar">
+            <div class="row">
+              <div class="t active"><span class="ico">⌂</span>Home</div>
+              <div class="t"><span class="ico">⌕</span>Search</div>
+              <div class="t"><span class="ico">＋</span>Post</div>
+              <div class="t"><span class="ico">✉</span>Inbox</div>
+              <div class="t"><span class="ico">●</span>Me</div>
+            </div>
+          </div>
+
+          <div class="drawer" id="drawer">
+            <div class="panel">
+              <div class="it active"><span class="dot"></span>Home</div>
+              <div class="it"><span class="dot"></span>Search</div>
+              <div class="it"><span class="dot"></span>Inbox</div>
+              <div class="it"><span class="dot"></span>Post</div>
+              <div class="it"><span class="dot"></span>Profile</div>
+              <div class="it"><span class="dot"></span>Settings</div>
+              <div class="it"><span class="dot"></span>Help</div>
+              <div class="it"><span class="dot"></span>Sign out</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+
+      <div class="card-right">
+        <h3>Section engagement (% of users)</h3>
+        <div class="engagement" id="eng">
+          <div class="row"><span class="label">Home</span><div class="barwrap"><div class="fill" data-burger="88" data-tabbar="92"></div></div><span class="pct"></span></div>
+          <div class="row"><span class="label">Search</span><div class="barwrap"><div class="fill" data-burger="14" data-tabbar="71"></div></div><span class="pct"></span></div>
+          <div class="row"><span class="label">Post</span><div class="barwrap"><div class="fill" data-burger="9" data-tabbar="48"></div></div><span class="pct"></span></div>
+          <div class="row"><span class="label">Inbox</span><div class="barwrap"><div class="fill" data-burger="18" data-tabbar="76"></div></div><span class="pct"></span></div>
+          <div class="row"><span class="label">Me</span><div class="barwrap"><div class="fill" data-burger="11" data-tabbar="55"></div></div><span class="pct"></span></div>
+        </div>
+      </div>
+
+      <div class="kpi">
+        <div class="k">
+          <div class="n">Menu opens</div>
+          <div class="v" id="menuVal">27%</div>
+          <div class="d" id="menuD">—</div>
+        </div>
+        <div class="k">
+          <div class="n">Session time</div>
+          <div class="v" id="sessVal">2.1 min</div>
+          <div class="d" id="sessD">—</div>
+        </div>
+        <div class="k">
+          <div class="n">Retention 7d</div>
+          <div class="v" id="retVal">36%</div>
+          <div class="d" id="retD">—</div>
+        </div>
+      </div>
+
+      <div class="card-right">
+        <h3>What changed</h3>
+        <p style="font-size:12px;line-height:1.55;color:#3a3a33;margin:0">5 key sections lifted from a hidden drawer onto a permanent <b>bottom tab bar</b>. Tap targets are always visible, always reachable with the thumb. Drawer is reserved for low-frequency stuff (Settings, Help, Sign out).</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tip">Flip the pattern — Search engagement jumps from 14% to 71%. Discoverability is a navigation property, not a content one.</div>
+</div>
+
+<script>
+var screen = document.getElementById('screen');
+var burger = document.getElementById('burger');
+var drawer = document.getElementById('drawer');
+var fills = document.querySelectorAll('#eng .fill');
+var pcts = document.querySelectorAll('#eng .pct');
+
+burger.addEventListener('click', function(){ drawer.classList.toggle('open'); });
+drawer.addEventListener('click', function(e){ if (e.target === drawer) drawer.classList.remove('open'); });
+
+function apply(p){
+  screen.classList.toggle('burger-mode', p === 'burger');
+  screen.classList.toggle('tabbar-mode', p === 'tabbar');
+  if (p === 'tabbar') drawer.classList.remove('open');
+
+  fills.forEach(function(el, i){
+    var v = el.dataset[p];
+    el.style.width = '0';
+    void el.offsetWidth;
+    el.style.width = v + '%';
+    pcts[i].textContent = v + '%';
+  });
+
+  document.getElementById('menuVal').textContent = p === 'burger' ? '27%' : '92%';
+  document.getElementById('menuD').textContent = p === 'burger' ? 'only 1 in 4 opens menu' : 'tab bar always reachable';
+  document.getElementById('sessVal').textContent = p === 'burger' ? '2.1 min' : '4.7 min';
+  document.getElementById('sessD').textContent = p === 'burger' ? '— baseline' : '+124%';
+  document.getElementById('retVal').textContent = p === 'burger' ? '36%' : '54%';
+  document.getElementById('retD').textContent = p === 'burger' ? '— baseline' : '+18pp';
+
+  setTimeout(reportHeight, 60);
+}
+
+document.querySelectorAll('.toggle button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.toggle button').forEach(function(x){
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+    });
+    apply(b.dataset.p);
+  });
+});
+
+apply('burger');
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

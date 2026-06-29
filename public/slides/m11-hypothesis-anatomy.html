@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hypothesis anatomy — bad vs good</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:28px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{border:1px solid #e2e2da;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.card.bad .head{background:#fbeceb;border-bottom:1px solid #f1d8d5;color:#a33a2e}
+.card.good .head{background:#eaf3ed;border-bottom:1px solid #d4e7dc;color:#2f7350}
+.head{display:flex;align-items:center;gap:9px;padding:11px 16px;font-weight:600;font-size:14px}
+.head .dot{width:20px;height:20px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.bad .head .dot{background:#c0473b}
+.good .head .dot{background:#3f7d5a}
+.quote{padding:18px 22px 12px;font-style:italic;color:#3a3a33;font-size:15px;line-height:1.55;border-bottom:1px solid #f0efea;background:#fafaf8}
+.bad .quote{color:#7f1d1d}
+.good .quote{color:#1f3f30}
+.anatomy{padding:18px 22px 8px;display:flex;flex-direction:column;gap:12px}
+.block{border:1px dashed #d4d4cc;border-radius:9px;padding:10px 14px;background:#fff;transition:all .15s ease;position:relative}
+.block.empty{opacity:.5;border-style:dashed;background:repeating-linear-gradient(45deg,#fafaf8,#fafaf8 6px,#f4f4f2 6px,#f4f4f2 10px)}
+.block.empty .body{font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f;font-style:italic}
+.block .lab{display:inline-flex;align-items:center;gap:7px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.07em;color:#90908a;text-transform:uppercase;margin-bottom:4px}
+.block .lab .pin{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#e7e5e1;color:#6b6b62;font-size:10px;font-weight:600;font-family:'Geist',sans-serif}
+.good .block:not(.empty) .lab .pin{background:#3f7d5a;color:#fff}
+.bad .block:not(.empty) .lab .pin{background:#c0473b;color:#fff}
+.block .body{font-size:13px;line-height:1.5;color:#26261f}
+.foot{padding:11px 16px;background:#fafaf8;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.02em}
+.bad .foot{color:#a33a2e}
+.good .foot{color:#2f7350}
+.legend{margin-top:24px;background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:18px 22px}
+.legend .ttl{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.06em;color:#6b6b62;text-transform:uppercase;margin-bottom:10px}
+.legend ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:720px){.legend ol{grid-template-columns:repeat(2,1fr)}}
+.legend li{display:flex;flex-direction:column;gap:5px}
+.legend li .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#26261f;color:#fff;font-size:11px;font-weight:600;font-family:'Geist',sans-serif}
+.legend li .ttl2{font-weight:600;font-size:13.5px;color:#26261f}
+.legend li .desc{font-size:12px;color:#6b6b62;line-height:1.45}
+.tip{margin-top:22px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">Anatomy of a hypothesis · 4 blocks each</div>
+
+  <div class="grid">
+
+    <div class="card bad">
+      <div class="head"><span class="dot">✗</span><span>Bad hypothesis — guesswork</span></div>
+      <div class="quote">«Let's make the button green — maybe conversion will go up.»</div>
+      <div class="anatomy">
+        <div class="block">
+          <div class="lab"><span class="pin">1</span>change</div>
+          <div class="body">button → green</div>
+        </div>
+        <div class="block empty">
+          <div class="lab"><span class="pin">2</span>outcome</div>
+          <div class="body">— no metric named</div>
+        </div>
+        <div class="block empty">
+          <div class="lab"><span class="pin">3</span>reasoning</div>
+          <div class="body">— why green?</div>
+        </div>
+        <div class="block empty">
+          <div class="lab"><span class="pin">4</span>evidence</div>
+          <div class="body">— no data, just a hunch</div>
+        </div>
+      </div>
+      <div class="foot">1 of 4 blocks filled · "maybe" is not a metric · cannot be tested</div>
+    </div>
+
+    <div class="card good">
+      <div class="head"><span class="dot">✓</span><span>Good hypothesis — testable</span></div>
+      <div class="quote">«We believe that changing the CTA from grey to green will lift CTR by 15%, because green reads as action and the current grey CTA blends into the background — heatmap shows 70% of users miss the CTA.»</div>
+      <div class="anatomy">
+        <div class="block">
+          <div class="lab"><span class="pin">1</span>change</div>
+          <div class="body">CTA · grey → green</div>
+        </div>
+        <div class="block">
+          <div class="lab"><span class="pin">2</span>outcome</div>
+          <div class="body">CTR ↑ by 15%</div>
+        </div>
+        <div class="block">
+          <div class="lab"><span class="pin">3</span>reasoning</div>
+          <div class="body">green = action; grey blends in</div>
+        </div>
+        <div class="block">
+          <div class="lab"><span class="pin">4</span>evidence</div>
+          <div class="body">heatmap: 70% miss the CTA</div>
+        </div>
+      </div>
+      <div class="foot">4 of 4 blocks filled · concrete metric · can be A/B tested</div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <div class="ttl">What each block answers</div>
+    <ol>
+      <li><span class="n">1</span><span class="ttl2">Change</span><span class="desc">What exactly are you altering? One thing, named precisely.</span></li>
+      <li><span class="n">2</span><span class="ttl2">Outcome</span><span class="desc">Which metric moves, by how much, in which direction.</span></li>
+      <li><span class="n">3</span><span class="ttl2">Reasoning</span><span class="desc">The mental model that connects change → outcome.</span></li>
+      <li><span class="n">4</span><span class="ttl2">Evidence</span><span class="desc">What you already know (heatmap, interview, prior test) that justifies the bet.</span></li>
+    </ol>
+  </div>
+
+  <div class="tip">If you can't fill all four — you're not ready to test. Go back and find the missing block first.</div>
+</div>
+
+<script>
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>
