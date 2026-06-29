@@ -43,8 +43,8 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-design-to-dev-bridge.webp',
-          alt: 'Illustration of a bridge between design and development',
-          caption: 'Handoff is the bridge between pixels and code.',
+          alt: 'A real static-handoff example: a mobile wallet screen with explicit dimensions (20px, 16px, 8px, 144px, 80px, 174px, 48px) and the same components broken out separately on the right',
+          caption: "Handoff isn't a metaphorical bridge — it's **a concrete document**: every gap is labelled, every component is pulled out separately with its dimensions. Left: the full screen. Right: the same components at 144 / 80 / 174 / 48px. Source: UX Mastery.",
         },
 
         { type: 'divider' as const },
