@@ -215,13 +215,6 @@ export const meeting11: Meeting = {
           caption: '🔘 All 5 button states (default / hover / active / focus / disabled) shown side by side. Hover any card — the matching tokens in the right-hand panel light up. Base tokens (font / padding / radius / transition) stay highlighted for every state. This is what "complete handoff" for one button looks like.',
           aspectRatio: '7 / 4',
         },
-        {
-          type: 'image' as const,
-          src: '/images/meeting-11-button-spec-sheet.webp',
-          alt: 'Rangle infographic showing eight types of design tokens: Colors, Typography, Elevation, Opacity, Sizing, Spacing, Border Width, Border Radius',
-          caption: 'The eight token types every button spec above is built from: Colors · Typography · Elevation · Opacity · Sizing · Spacing · Border Width · Border Radius. When the designer writes "$blue-600 · $radius-md · $gap-md" in Dev Mode, they\'re referencing exactly these categories. Source: Rangle.',
-        },
-
         { type: 'divider' as const },
 
         // --- Asset Export ---
@@ -346,13 +339,6 @@ export const meeting11: Meeting = {
             },
           ],
         },
-        {
-          type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=B242nuM3y2s',
-          title: 'Figma to Code \u2014 The Right Way',
-          caption: 'How to turn designs into production code without losing quality.',
-        },
-
         { type: 'divider' as const },
 
         // --- Communication ---

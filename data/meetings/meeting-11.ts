@@ -215,13 +215,6 @@ export const meeting11: Meeting = {
           caption: '🔘 Все 5 состояний кнопки (default / hover / active / focus / disabled) показаны одновременно. Наведи курсор на любую карточку — соответствующие токены в правой панели подсветятся жёлтым. Базовые токены (font / padding / radius / transition) всегда активны. Это и есть «полный handoff» одной кнопки.',
           aspectRatio: '7 / 4',
         },
-        {
-          type: 'image' as const,
-          src: '/images/meeting-11-button-spec-sheet.webp',
-          alt: 'Инфографика Rangle с восемью типами дизайн-токенов: Colors, Typography, Elevation, Opacity, Sizing, Spacing, Border Width, Border Radius',
-          caption: 'Восемь типов дизайн-токенов, из которых собирается любой спек кнопки выше: Colors · Typography · Elevation · Opacity · Sizing · Spacing · Border Width · Border Radius. Когда дизайнер пишет в Dev Mode «$blue-600 · $radius-md · $gap-md» — он ссылается ровно на эти категории. Источник: Rangle.',
-        },
-
         { type: 'divider' as const },
 
         // --- Экспорт ассетов ---
@@ -346,13 +339,6 @@ export const meeting11: Meeting = {
             },
           ],
         },
-        {
-          type: 'video' as const,
-          src: 'https://www.youtube.com/watch?v=B242nuM3y2s',
-          title: 'Figma to Code — как правильно',
-          caption: 'Как превращать дизайн в продакшен-код без потери качества.',
-        },
-
         { type: 'divider' as const },
 
         // --- Коммуникация ---
