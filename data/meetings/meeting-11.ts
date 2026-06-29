@@ -218,8 +218,8 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-button-spec-sheet.webp',
-          alt: 'Кнопка с выносками всех её свойств и состояний',
-          caption: 'Спецификация кнопки: токены, состояния, отступы.',
+          alt: 'Инфографика Rangle с восемью типами дизайн-токенов: Colors, Typography, Elevation, Opacity, Sizing, Spacing, Border Width, Border Radius',
+          caption: 'Восемь типов дизайн-токенов, из которых собирается любой спек кнопки выше: Colors · Typography · Elevation · Opacity · Sizing · Spacing · Border Width · Border Radius. Когда дизайнер пишет в Dev Mode «$blue-600 · $radius-md · $gap-md» — он ссылается ровно на эти категории. Источник: Rangle.',
         },
 
         { type: 'divider' as const },

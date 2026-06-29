@@ -218,8 +218,8 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-button-spec-sheet.webp',
-          alt: 'Button with callouts for all its properties and states',
-          caption: 'Button spec sheet: tokens, states, spacing.',
+          alt: 'Rangle infographic showing eight types of design tokens: Colors, Typography, Elevation, Opacity, Sizing, Spacing, Border Width, Border Radius',
+          caption: 'The eight token types every button spec above is built from: Colors · Typography · Elevation · Opacity · Sizing · Spacing · Border Width · Border Radius. When the designer writes "$blue-600 · $radius-md · $gap-md" in Dev Mode, they\'re referencing exactly these categories. Source: Rangle.',
         },
 
         { type: 'divider' as const },
