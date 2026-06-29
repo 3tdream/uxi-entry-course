@@ -188,6 +188,13 @@ export const meeting11: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-handoff-form.html',
+          title: 'Handoff формы регистрации — bad vs good (живое демо)',
+          caption: '📩 Слева — реальная Slack-переписка: скриншот PNG + «реализуй», разработчик задаёт 4 вопроса, дизайнер отвечает «делай как обычно». Справа — Dev Mode с overlay: токены, 6 состояний поля, breakpoints, анимация ошибки. Тоггл Annotations Off — Dev Mode мгновенно превращается в такой же бесконтекстный скриншот.',
+          aspectRatio: '5 / 3',
+        },
+        {
           type: 'before-after' as const,
           title: 'Спецификация кнопки',
           before: {
@@ -200,6 +207,13 @@ export const meeting11: Meeting = {
             description:
               'Button/Primary: bg $blue-600, text $white, font-weight 600, font-size 16px, line-height 24px, padding 12px 24px, border-radius 8px, hover: bg $blue-700, active: bg $blue-800, focus: ring 2px $blue-300, disabled: opacity 0.5 cursor not-allowed, transition all 150ms ease.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-button-states.html',
+          title: 'Кнопка: 5 состояний и все токены (живое демо)',
+          caption: '🔘 Все 5 состояний кнопки (default / hover / active / focus / disabled) показаны одновременно. Наведи курсор на любую карточку — соответствующие токены в правой панели подсветятся жёлтым. Базовые токены (font / padding / radius / transition) всегда активны. Это и есть «полный handoff» одной кнопки.',
+          aspectRatio: '7 / 4',
         },
         {
           type: 'image' as const,

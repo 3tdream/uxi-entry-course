@@ -188,6 +188,13 @@ export const meeting11: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-handoff-form.html',
+          title: 'Registration-form handoff — bad vs good (live demo)',
+          caption: '📩 Left: a real Slack thread — a PNG screenshot plus "please implement", the dev asks 4 questions, the designer answers "just do something similar". Right: Dev Mode with overlay — tokens, 6 field states, breakpoints, error animation. Toggle Annotations Off and the Dev-Mode card instantly degrades into the same context-free screenshot.',
+          aspectRatio: '5 / 3',
+        },
+        {
           type: 'before-after' as const,
           title: 'Button Specification',
           before: {
@@ -200,6 +207,13 @@ export const meeting11: Meeting = {
             description:
               'Button/Primary: bg $blue-600, text $white, font-weight 600, font-size 16px, line-height 24px, padding 12px 24px, border-radius 8px, hover: bg $blue-700, active: bg $blue-800, focus: ring 2px $blue-300, disabled: opacity 0.5 cursor not-allowed, transition all 150ms ease.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-button-states.html',
+          title: 'Button — 5 states and every token (live demo)',
+          caption: '🔘 All 5 button states (default / hover / active / focus / disabled) shown side by side. Hover any card — the matching tokens in the right-hand panel light up. Base tokens (font / padding / radius / transition) stay highlighted for every state. This is what "complete handoff" for one button looks like.',
+          aspectRatio: '7 / 4',
         },
         {
           type: 'image' as const,
