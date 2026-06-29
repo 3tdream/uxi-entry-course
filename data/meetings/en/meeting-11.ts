@@ -804,6 +804,13 @@ export const meeting11: Meeting = {
           content:
             '**Beginner\'s mistake:** stopping the test on day 3 because "variant B is already leading by 30%." Early results are misleading! Wait for the calculated sample size.',
         },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-sample-size-calculator.html',
+          title: 'Sample-size calculator — live tool',
+          caption: '🧮 A real calculator: drag baseline conversion + MDE + α/power + daily traffic — get sample size and a duration estimate. Under the hood: the 2-proportion z-test formula. Try MDE 5% on a 2% baseline at 95/80 — that\'s why "small" tests need weeks of traffic. Halving MDE multiplies the sample by ~4×.',
+          aspectRatio: '6 / 5',
+        },
 
         { type: 'divider' as const },
 
@@ -890,6 +897,13 @@ export const meeting11: Meeting = {
           variant: 'warning' as const,
           content:
             'MVT requires **significantly more traffic** than an A/B test. With 12 combinations, you need roughly 6 times more users than for a simple A/B test.',
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m11-mvt-vs-ab.html',
+          title: 'A/B vs MVT — traffic combinatorics (live demo)',
+          caption: '⚖️ Left: A/B grid (2, 3, or 4 variants of one factor). Right: MVT matrix — 2×2 / 3×2 / 3×3 / 2×2×2. Tap 2×2×2 — 8 cells appear, each a concrete combination (CTA × Headline × Hero). At the bottom, the side-by-side cost: MVT 3×3 at the same statistical bar needs **9× the sample** of a simple A/B.',
+          aspectRatio: '4 / 3',
         },
 
         { type: 'divider' as const },

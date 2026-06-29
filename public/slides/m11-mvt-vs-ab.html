@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A/B vs MVT — combinatorial explosion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:28px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:#fff;border:1px solid #e2e2da;border-radius:11px;padding:14px 16px;margin-bottom:20px}
+.controls .l{font-family:'Geist Mono',monospace;font-size:12px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase}
+.seg{display:inline-flex;border:1px solid #d4d4cc;border-radius:8px;background:#fff;overflow:hidden;font-family:'Geist Mono',monospace}
+.seg button{appearance:none;border:0;background:transparent;padding:7px 12px;font:inherit;font-size:11.5px;color:#26261f;cursor:pointer}
+.seg button[aria-pressed=true]{background:#26261f;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #e2e2da;border-radius:12px;overflow:hidden}
+.card.ab .h{background:#eaf3ed;color:#2f7350}
+.card.mvt .h{background:#e8eef8;color:#1e40af}
+.h{padding:11px 16px;font-weight:600;font-size:14px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #efeeea}
+.h .small{font-family:'Geist Mono',monospace;font-size:11px;opacity:.7;font-weight:500}
+.body{padding:18px}
+.formula{font-family:'Geist Mono',monospace;font-size:11px;color:#90908a;letter-spacing:.04em;margin-bottom:14px}
+.formula b{color:#26261f;font-weight:600}
+.matrix{display:grid;gap:6px}
+.cell{aspect-ratio:1.4 / 1;background:#fafaf8;border:1px solid #efeeea;border-radius:7px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:10.5px;color:#3a3a33;position:relative}
+.cell .id{font-weight:600;font-size:10px;color:#90908a;letter-spacing:.04em;text-transform:uppercase}
+.cell .desc{font-size:10.5px;line-height:1.4;color:#3a3a33}
+.cell.ctl{background:#fff;border-color:#d4d4cc}
+.cell.ctl .id{color:#3a3a33}
+.cell.a{background:#eaf3ed;border-color:#d4e7dc}
+.cell.b{background:#e8eef8;border-color:#cfdaf0}
+.cell.c{background:#fef5e7;border-color:#f0d6a4}
+.cell.d{background:#fbeceb;border-color:#f1d8d5}
+.foot{padding:12px 16px;background:#fafaf8;border-top:1px solid #efeeea;font-family:'Geist Mono',monospace;font-size:11.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.foot .k{color:#90908a;letter-spacing:.04em;text-transform:uppercase;font-size:10px}
+.foot .v{color:#26261f;font-weight:600;font-size:13px;display:block;margin-top:2px}
+.foot .col{min-width:90px}
+.ab .foot .v{color:#2f7350}
+.mvt .foot .v{color:#1e40af}
+.mvt .matrix{grid-template-columns:repeat(var(--cols),1fr)}
+.ab .matrix{grid-template-columns:repeat(var(--cols),1fr)}
+
+.bottom{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:900px){.bottom{grid-template-columns:1fr}}
+.note{background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:16px 18px}
+.note .h2{font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px}
+.note p{margin:0;font-size:13px;line-height:1.55;color:#3a3a33}
+.compare{background:#1a1a17;color:#e8e8e2;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:11px}
+.compare .h2{font-family:'Geist Mono',monospace;font-size:11px;color:#a8a89f;letter-spacing:.06em;text-transform:uppercase}
+.compare .row{display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px solid #2d2d27;font-family:'Geist Mono',monospace;font-size:12px}
+.compare .row:last-child{border:0}
+.compare .lab{color:#a8a89f}
+.compare .v{color:#e8e8e2;font-weight:500}
+.compare .v.up{color:#fca5a5}
+.compare .v.ok{color:#7dd3a0}
+.tip{margin-top:22px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">A/B is 1 dimension · MVT is dimensions multiplied · pick how many variants and watch the cost</div>
+
+  <div class="controls">
+    <span class="l">A/B variants</span>
+    <div class="seg" role="group">
+      <button data-ab="2" aria-pressed="true">2</button>
+      <button data-ab="3" aria-pressed="false">3</button>
+      <button data-ab="4" aria-pressed="false">4</button>
+    </div>
+    <span class="l" style="margin-left:14px">MVT factors</span>
+    <div class="seg" role="group">
+      <button data-mvt="2x2" aria-pressed="true">2 × 2</button>
+      <button data-mvt="3x2" aria-pressed="false">3 × 2</button>
+      <button data-mvt="3x3" aria-pressed="false">3 × 3</button>
+      <button data-mvt="2x2x2" aria-pressed="false">2 × 2 × 2</button>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card ab">
+      <div class="h"><span>A/B test — one factor at a time</span><span class="small" id="abSmall">2 variants</span></div>
+      <div class="body">
+        <div class="formula">arms = <b id="abArms">2</b> · traffic per arm = <b>50%</b></div>
+        <div class="matrix" id="abMatrix"></div>
+      </div>
+      <div class="foot">
+        <div class="col"><span class="k">total arms</span><span class="v" id="abTotal">2</span></div>
+        <div class="col"><span class="k">sample × baseline</span><span class="v" id="abSample">1.0×</span></div>
+        <div class="col"><span class="k">test duration</span><span class="v" id="abDur">2w</span></div>
+      </div>
+    </div>
+
+    <div class="card mvt">
+      <div class="h"><span>MVT — every combination tested at once</span><span class="small" id="mvtSmall">2 × 2 = 4</span></div>
+      <div class="body">
+        <div class="formula">arms = <b id="mvtFormula">2 × 2 = 4</b> · traffic per arm = <b id="mvtTraf">25%</b></div>
+        <div class="matrix" id="mvtMatrix"></div>
+      </div>
+      <div class="foot">
+        <div class="col"><span class="k">total arms</span><span class="v" id="mvtTotal">4</span></div>
+        <div class="col"><span class="k">sample × baseline</span><span class="v" id="mvtSample">2.0×</span></div>
+        <div class="col"><span class="k">test duration</span><span class="v" id="mvtDur">4w</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    <div class="note">
+      <div class="h2">When A/B wins</div>
+      <p>Pick A/B when <b>one factor matters</b> and you want a clean, fast read. Traffic and stats are cheaper, the result is unambiguous («the green CTA beat grey»).</p>
+    </div>
+    <div class="note">
+      <div class="h2">When MVT wins</div>
+      <p>Pick MVT when you suspect <b>interaction effects</b> — green CTA works only with the new headline. MVT shows them, A/B doesn't. The price: every new factor multiplies the arms, and each arm needs its own sample.</p>
+    </div>
+  </div>
+
+  <div class="compare">
+    <span class="h2">Same statistical bar · different cost</span>
+    <div class="row"><span class="lab">A/B with current selection</span><span class="v ok" id="cmpAB">2 arms · 1.0× sample · ~2w</span></div>
+    <div class="row"><span class="lab">MVT with current selection</span><span class="v up" id="cmpMVT">4 arms · 2.0× sample · ~4w</span></div>
+    <div class="row"><span class="lab">MVT / A/B cost ratio</span><span class="v up" id="cmpRatio">2.0× more traffic, 2.0× longer</span></div>
+  </div>
+
+  <div class="tip">Slide MVT to "2 × 2 × 2" — that's 8 arms. Same audience, eight times the wait. Sometimes worth it. Often not.</div>
+</div>
+
+<script>
+var st = { ab: 2, mvt: '2x2' };
+
+function parseMvt(s){
+  return s.split('x').map(function(x){ return +x; });
+}
+function product(arr){ return arr.reduce(function(a,b){ return a*b; }, 1); }
+
+function abCells(n){
+  var labels = ['Control','Variant A','Variant B','Variant C'];
+  var classes = ['ctl','a','b','c'];
+  var descs = ['baseline','green CTA','green CTA · bold copy','green CTA · bold · hero swap'];
+  var out = [];
+  for (var i=0; i<n; i++){
+    out.push('<div class="cell '+classes[i]+'"><span class="id">'+labels[i]+'</span><span class="desc">'+descs[i]+'</span></div>');
+  }
+  return out.join('');
+}
+
+function mvtCells(dims){
+  // dims is array like [2,2] or [3,2] or [2,2,2]
+  var combos = [];
+  function go(d, prefix){
+    if (d === dims.length){ combos.push(prefix.slice()); return; }
+    for (var i=0; i<dims[d]; i++){ prefix.push(i); go(d+1, prefix); prefix.pop(); }
+  }
+  go(0, []);
+
+  var colorMap = ['ctl','a','b','c','d'];
+  var factorNames = ['CTA','Headline','Hero'];
+  var levelNames = [
+    ['grey','green','blue'],
+    ['default','bold'],
+    ['photo','illust','none']
+  ];
+  // adjust for 3-factor case
+  if (dims.length === 3) levelNames[1] = ['default','bold','italic'];
+
+  return combos.map(function(c){
+    var isControl = c.every(function(x){ return x === 0; });
+    var cls = isControl ? 'ctl' : (colorMap[(c[0]||0)+(c[1]||0)] || 'a');
+    var descParts = c.map(function(v, idx){
+      var fn = factorNames[idx];
+      var ln = (levelNames[idx]||[])[v] || ('lv'+v);
+      return fn+': '+ln;
+    });
+    var id = isControl ? 'Control' : 'Arm '+c.join('-');
+    return '<div class="cell '+cls+'"><span class="id">'+id+'</span><span class="desc">'+descParts.join(' · ')+'</span></div>';
+  }).join('');
+}
+
+function fmtDur(sampleMult){
+  var weeks = 2 * sampleMult;
+  if (weeks < 1) return Math.round(weeks*7) + 'd';
+  if (weeks < 6) return (weeks % 1 === 0 ? weeks : weeks.toFixed(1).replace(/\.0$/,'')) + 'w';
+  return (weeks/4).toFixed(1).replace(/\.0$/,'') + 'mo';
+}
+
+function render(){
+  var abArms = st.ab;
+  var mvtDims = parseMvt(st.mvt);
+  var mvtArms = product(mvtDims);
+
+  // ===== A/B side =====
+  document.getElementById('abMatrix').style.setProperty('--cols', Math.min(abArms, 2));
+  document.getElementById('abMatrix').innerHTML = abCells(abArms);
+  document.getElementById('abArms').textContent = abArms;
+  document.getElementById('abTotal').textContent = abArms;
+  document.getElementById('abSmall').textContent = abArms + ' variants';
+  var abSample = abArms / 2;
+  document.getElementById('abSample').textContent = abSample.toFixed(1).replace(/\.0$/,'') + '×';
+  document.getElementById('abDur').textContent = fmtDur(abSample);
+
+  // ===== MVT side =====
+  var mvtCols = mvtDims[mvtDims.length-1]; // last dim as columns
+  if (mvtArms > 4) mvtCols = (mvtArms === 6 ? 3 : 4);
+  document.getElementById('mvtMatrix').style.setProperty('--cols', mvtCols);
+  document.getElementById('mvtMatrix').innerHTML = mvtCells(mvtDims);
+  document.getElementById('mvtFormula').textContent = mvtDims.join(' × ') + ' = ' + mvtArms;
+  document.getElementById('mvtSmall').textContent = mvtDims.join(' × ') + ' = ' + mvtArms;
+  document.getElementById('mvtTraf').textContent = Math.round(100/mvtArms) + '%';
+  document.getElementById('mvtTotal').textContent = mvtArms;
+  var mvtSample = mvtArms / 2;
+  document.getElementById('mvtSample').textContent = mvtSample.toFixed(1).replace(/\.0$/,'') + '×';
+  document.getElementById('mvtDur').textContent = fmtDur(mvtSample);
+
+  // ===== comparison =====
+  document.getElementById('cmpAB').textContent =
+    abArms + ' arm' + (abArms>1?'s':'') + ' · ' + abSample.toFixed(1).replace(/\.0$/,'') + '× sample · ~' + fmtDur(abSample);
+  document.getElementById('cmpMVT').textContent =
+    mvtArms + ' arms · ' + mvtSample.toFixed(1).replace(/\.0$/,'') + '× sample · ~' + fmtDur(mvtSample);
+  var ratio = mvtSample / abSample;
+  document.getElementById('cmpRatio').textContent =
+    ratio.toFixed(1).replace(/\.0$/,'') + '× more traffic, ' + ratio.toFixed(1).replace(/\.0$/,'') + '× longer';
+
+  setTimeout(reportHeight, 50);
+}
+
+document.querySelectorAll('.seg button[data-ab]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.seg button[data-ab]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    st.ab = +b.dataset.ab;
+    render();
+  });
+});
+document.querySelectorAll('.seg button[data-mvt]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.seg button[data-mvt]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    st.mvt = b.dataset.mvt;
+    render();
+  });
+});
+
+render();
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

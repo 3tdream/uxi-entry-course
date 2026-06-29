@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A/B sample-size calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:28px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1.05fr;gap:24px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:22px}
+.card h3{margin:0 0 16px;font-size:13px;font-family:'Geist Mono',monospace;font-weight:600;color:#3a3a33;letter-spacing:.04em;text-transform:uppercase}
+.field{margin-bottom:18px}
+.field:last-child{margin-bottom:0}
+.field .label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.field .lab{font-size:13px;font-weight:600;color:#26261f}
+.field .val{font-family:'Geist Mono',monospace;font-size:13.5px;color:#0f766e;font-weight:600;background:#eaf3ed;padding:2px 9px;border-radius:5px;border:1px solid #d4e7dc}
+.field .desc{font-size:11.5px;color:#90908a;margin-top:2px;line-height:1.5;font-family:'Geist Mono',monospace}
+.field input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:4px;background:linear-gradient(90deg,#3f7d5a var(--p,40%),#e7e5e1 var(--p,40%));outline:none;margin-top:8px}
+.field input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:#26261f;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:pointer}
+.field input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#26261f;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:pointer}
+.seg{display:inline-flex;border:1px solid #d4d4cc;border-radius:8px;background:#fff;overflow:hidden;font-family:'Geist Mono',monospace;margin-top:6px}
+.seg button{appearance:none;border:0;background:transparent;padding:7px 14px;font:inherit;font-size:11.5px;color:#26261f;cursor:pointer;letter-spacing:.02em}
+.seg button[aria-pressed=true]{background:#26261f;color:#fff}
+
+/* result panel */
+.result{background:linear-gradient(135deg,#1a1a17 0%,#26261f 100%);color:#e8e8e2;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:20px}
+.result .head{font-family:'Geist Mono',monospace;font-size:11px;color:#a8a89f;letter-spacing:.06em;text-transform:uppercase}
+.result .big{font-size:46px;font-weight:700;color:#7dd3a0;line-height:1;font-feature-settings:"tnum"}
+.result .per{font-family:'Geist Mono',monospace;font-size:13px;color:#a5b4fc;margin-top:7px}
+.result .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:18px;border-top:1px solid #2d2d27}
+.result .split .k{font-family:'Geist Mono',monospace;font-size:10.5px;color:#a8a89f;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+.result .split .v{font-size:21px;font-weight:600;color:#e8e8e2;font-feature-settings:"tnum"}
+.result .split .small{font-family:'Geist Mono',monospace;font-size:11px;color:#a5b4fc;margin-top:3px}
+.result .durations{display:flex;flex-direction:column;gap:8px;font-family:'Geist Mono',monospace;font-size:12px}
+.result .durations .row{display:flex;justify-content:space-between;color:#a8a89f}
+.result .durations .row .v{color:#e8e8e2;font-weight:500}
+.result .warn{background:rgba(192,71,59,.18);color:#fca5a5;border:1px solid rgba(192,71,59,.3);border-radius:8px;padding:9px 12px;font-family:'Geist Mono',monospace;font-size:11.5px;line-height:1.5}
+.formula{margin-top:18px;padding:18px 22px;background:#fafaf8;border:1px solid #efeeea;border-radius:12px;font-family:'Geist Mono',monospace;font-size:11.5px;line-height:1.6;color:#3a3a33}
+.formula .h{font-size:10.5px;color:#90908a;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.formula .v{color:#0f766e}
+.tip{margin-top:22px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+.notep{font-family:'Geist',sans-serif;font-size:13px;color:#3a3a33;line-height:1.55;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">A/B sample size calculator · slide the inputs, watch the answer</div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Inputs</h3>
+
+      <div class="field">
+        <div class="label"><span class="lab">Baseline conversion rate</span><span class="val" id="vBase">3.0%</span></div>
+        <input id="iBase" type="range" min="0.1" max="30" step="0.1" value="3">
+        <div class="desc">Your current conversion before the change.</div>
+      </div>
+
+      <div class="field">
+        <div class="label"><span class="lab">Minimum detectable effect (MDE)</span><span class="val" id="vMde">10%</span></div>
+        <input id="iMde" type="range" min="1" max="50" step="0.5" value="10">
+        <div class="desc">The smallest relative lift you care to detect. Smaller MDE = much larger sample.</div>
+      </div>
+
+      <div class="field">
+        <div class="label"><span class="lab">Statistical significance</span><span class="val" id="vAlpha">95%</span></div>
+        <div class="seg" role="group" aria-label="alpha">
+          <button data-a="0.10" aria-pressed="false">90%</button>
+          <button data-a="0.05" aria-pressed="true">95%</button>
+          <button data-a="0.01" aria-pressed="false">99%</button>
+        </div>
+        <div class="desc">1 − α · how often you'd be wrong about a real effect.</div>
+      </div>
+
+      <div class="field">
+        <div class="label"><span class="lab">Statistical power</span><span class="val" id="vPow">80%</span></div>
+        <div class="seg" role="group" aria-label="power">
+          <button data-b="0.20" aria-pressed="true">80%</button>
+          <button data-b="0.10" aria-pressed="false">90%</button>
+        </div>
+        <div class="desc">1 − β · chance of detecting an effect that's really there.</div>
+      </div>
+
+      <div class="field">
+        <div class="label"><span class="lab">Daily visitors per variant</span><span class="val" id="vTraf">1,000</span></div>
+        <input id="iTraf" type="range" min="50" max="20000" step="50" value="1000">
+        <div class="desc">How many users you can route into each arm per day.</div>
+      </div>
+    </div>
+
+    <div class="result">
+      <div>
+        <div class="head">Sample size per variant</div>
+        <div class="big" id="rN">—</div>
+        <div class="per">2 variants · total <span id="rTotal">—</span></div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="k">Test duration</div>
+          <div class="v" id="rDur">—</div>
+          <div class="small" id="rDurNote">at current traffic</div>
+        </div>
+        <div>
+          <div class="k">Effect target</div>
+          <div class="v" id="rTarget">—</div>
+          <div class="small">if real, you'll detect it</div>
+        </div>
+      </div>
+
+      <div class="durations">
+        <div class="head">If MDE doubles / halves</div>
+        <div class="row"><span>MDE × 0.5</span><span class="v" id="rHalf">—</span></div>
+        <div class="row"><span>MDE × 2</span><span class="v" id="rDouble">—</span></div>
+      </div>
+
+      <div class="warn" id="warn" style="display:none"></div>
+    </div>
+
+  </div>
+
+  <div class="formula">
+    <div class="h">Under the hood — 2-proportion z-test</div>
+    <div>n = (z<sub>α/2</sub>·√(2·p̄·(1−p̄)) + z<sub>β</sub>·√(p₁·(1−p₁) + p₂·(1−p₂)))² / (p₂ − p₁)²</div>
+    <div style="margin-top:6px;color:#6b6b62">where p₁ = baseline, p₂ = baseline × (1 + MDE), z<sub>α/2</sub> for 95% = <span class="v">1.96</span>, z<sub>β</sub> for 80% power = <span class="v">0.84</span>.</div>
+    <p class="notep">Power ↑ from 80% to 90% adds roughly <b>+35% sample</b>. Significance ↑ from 95% to 99% adds another <b>+70%</b>. Halving the MDE multiplies the sample by <b>~4×</b>.</p>
+  </div>
+
+  <div class="tip">Try MDE 5% on a 2% baseline at 95/80 — that's why most "small" tests need weeks of traffic.</div>
+</div>
+
+<script>
+var st = { base: 3, mde: 10, alpha: 0.05, power: 0.20, traf: 1000 };
+var Z = { 0.10: 1.6449, 0.05: 1.9600, 0.01: 2.5758 };
+var Zb = { 0.20: 0.8416, 0.10: 1.2816 };
+
+function fmt(n){
+  if (!isFinite(n)) return '—';
+  return Math.round(n).toLocaleString();
+}
+function fmtDur(days){
+  if (!isFinite(days)) return '—';
+  if (days < 1) return Math.ceil(days * 24) + ' h';
+  if (days < 14) return Math.ceil(days) + ' days';
+  if (days < 90) return (days/7).toFixed(1).replace(/\.0$/,'') + ' weeks';
+  return (days/30).toFixed(1).replace(/\.0$/,'') + ' months';
+}
+
+function calc(base, mde, alpha, beta){
+  var p1 = base / 100;
+  var p2 = p1 * (1 + mde / 100);
+  if (p2 >= 1) return Infinity;
+  var pbar = (p1 + p2) / 2;
+  var za = Z[alpha];
+  var zb = Zb[beta];
+  var num = za * Math.sqrt(2 * pbar * (1 - pbar)) + zb * Math.sqrt(p1*(1-p1) + p2*(1-p2));
+  var n = (num * num) / Math.pow(p2 - p1, 2);
+  return n;
+}
+
+function render(){
+  var n = calc(st.base, st.mde, st.alpha, st.power);
+  var total = n * 2;
+  var days = total / Math.max(1, st.traf * 2);
+  var p1 = st.base, p2 = (st.base * (1 + st.mde/100));
+
+  document.getElementById('vBase').textContent = st.base.toFixed(1) + '%';
+  document.getElementById('vMde').textContent = st.mde.toFixed(1) + '%';
+  document.getElementById('vTraf').textContent = st.traf.toLocaleString();
+
+  document.getElementById('rN').textContent = fmt(n);
+  document.getElementById('rTotal').textContent = fmt(total);
+  document.getElementById('rDur').textContent = fmtDur(days);
+  document.getElementById('rTarget').textContent = p1.toFixed(1) + '% → ' + p2.toFixed(2) + '%';
+  document.getElementById('rDurNote').textContent = 'at ' + st.traf.toLocaleString() + ' / day per arm';
+
+  document.getElementById('rHalf').textContent = fmt(calc(st.base, st.mde*0.5, st.alpha, st.power));
+  document.getElementById('rDouble').textContent = fmt(calc(st.base, st.mde*2, st.alpha, st.power));
+
+  // slider gradient
+  var b = document.getElementById('iBase');
+  b.style.setProperty('--p', ((st.base-0.1)/(30-0.1))*100 + '%');
+  var m = document.getElementById('iMde');
+  m.style.setProperty('--p', ((st.mde-1)/(50-1))*100 + '%');
+  var t = document.getElementById('iTraf');
+  t.style.setProperty('--p', ((st.traf-50)/(20000-50))*100 + '%');
+
+  // warnings
+  var w = document.getElementById('warn');
+  if (days > 60) {
+    w.style.display = 'block';
+    w.textContent = '⚠ ' + Math.ceil(days) + ' days at ' + st.traf.toLocaleString() + '/arm/day. Seasonality and behaviour drift will mess up your read — consider raising MDE or rolling the test on a higher-traffic surface.';
+  } else if (days < 0.25) {
+    w.style.display = 'block';
+    w.textContent = '⚠ The test would finish in ' + Math.ceil(days*24) + ' h — too short to cover weekly cycles. Run for at least 7 days even if the sample is reached earlier.';
+  } else {
+    w.style.display = 'none';
+  }
+
+  setTimeout(reportHeight, 30);
+}
+
+document.getElementById('iBase').addEventListener('input', function(e){ st.base = +e.target.value; render(); });
+document.getElementById('iMde').addEventListener('input', function(e){ st.mde = +e.target.value; render(); });
+document.getElementById('iTraf').addEventListener('input', function(e){ st.traf = +e.target.value; render(); });
+
+document.querySelectorAll('.seg button[data-a]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.seg button[data-a]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    st.alpha = +b.dataset.a;
+    document.getElementById('vAlpha').textContent = (b.dataset.a === '0.10' ? '90%' : b.dataset.a === '0.05' ? '95%' : '99%');
+    render();
+  });
+});
+document.querySelectorAll('.seg button[data-b]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.seg button[data-b]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    st.power = +b.dataset.b;
+    document.getElementById('vPow').textContent = (b.dataset.b === '0.20' ? '80%' : '90%');
+    render();
+  });
+});
+
+render();
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>
