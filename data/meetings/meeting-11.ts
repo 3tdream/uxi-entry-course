@@ -29,6 +29,12 @@ export const meeting11: Meeting = {
             'Design Handoff (передача дизайна) — это процесс, при котором дизайнер передаёт готовый макет разработчику с **полной документацией**: размеры, отступы, цвета, шрифты, анимации, состояния компонентов. Это **мост** между миром пикселей и миром кода.',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-11-handoff-vs-devmode-hub.webp',
+          alt: 'Сравнение двух стилей handoff: слева — традиционный с хаотичными стрелками между разрозненными инструментами; справа — единый Dev Mode Workspace-хаб с пятью ветками: Design Specs, Code Snippets, Assets, Documentation, Version Control',
+          caption: 'Традиционный handoff — это «дизайнер кидает файл через стену» (слева, хаос стрелок между разрозненными инструментами). Современный Dev Mode — единый хаб с пятью входами: спецификации, сниппеты кода, ассеты, документация, version control. Разработчик остаётся в потоке.',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
@@ -58,6 +64,12 @@ export const meeting11: Meeting = {
           type: 'text' as const,
           content:
             'По статистике **60% дизайнерских решений** теряются при передаче в разработку. Причины: неполные спецификации, отсутствие документации состояний, разные «языки» у дизайнера и разработчика, отсутствие единого источника правды.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-handoff-context-switching.webp',
+          alt: 'Диагностическая таблица context-switching: четыре строки (Version Control, Component Context, Extracting Specs, Work Environment), сравнивающие Traditional Handoff и The Dev Mode Workflow',
+          caption: 'Где именно ломается traditional handoff — 4 измерения переключения контекста. Ручная сверка версий, рытьё в репозиториях, измерение пикселей вручную, постоянный alt-tab между приложениями. Dev Mode закрывает каждое из них.',
         },
         {
           type: 'columns' as const,
@@ -122,6 +134,18 @@ export const meeting11: Meeting = {
               definition: 'Метка, которую дизайнер ставит на фрейм, когда он готов к передаче.',
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-devmode-ready-for-dev.webp',
+          alt: 'Скриншот Figma Dev Mode с зелёным badge «Ready for dev» поверх фрейма дизайн-макета',
+          caption: '«Ready for dev» — явный сигнал готовности. Пока badge не стоит, фрейм всё ещё дизайнерская песочница; как только badge появился — фрейм заперт под кодовую базу, разработчик может брать в работу без вопросов «это финал?».',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-devmode-frame-history.webp',
+          alt: 'Frame History в Dev Mode: две карточки рядом — Previous Version и Current Version с подсвеченным изменением background-color #E0E7FF',
+          caption: 'Frame History — мгновенное сравнение версий: что было, что стало, какие именно стили/имена/слои изменились. Дизайнер не пишет changelog в Slack, разработчик не сверяет вручную — Inspect Panel сам показывает дельту.',
         },
         {
           type: 'video' as const,
@@ -302,6 +326,12 @@ export const meeting11: Meeting = {
           type: 'text' as const,
           content:
             'Современные инструменты позволяют генерировать код прямо из дизайна. Figma Dev Mode генерирует **CSS**, плагины вроде **Anima** и **Locofy** создают React-компоненты. Но автогенерация — это **отправная точка**, а не финальный код.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-devmode-code-generation.webp',
+          alt: 'Три блока слева направо: Visual Layer (кнопка Submit в Figma) → Box Model (схема с margin/border/padding) → Generated Code (CSS с margin, border, padding)',
+          caption: 'Как из визуального слоя получается код: Figma переводит видимый дизайн → в Box Model (margin / border / padding) → в готовый CSS-сниппет. Переключи фреймворк в Dev Mode — получишь Swift или Jetpack Compose. Сам мост между «вижу» и «пишу».',
         },
         {
           type: 'callout' as const,

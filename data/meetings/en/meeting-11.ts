@@ -29,6 +29,12 @@ export const meeting11: Meeting = {
             'Design Handoff is the process in which a designer delivers a finished mockup to a developer with **complete documentation**: dimensions, spacing, colors, fonts, animations, and component states. It is the **bridge** between the world of pixels and the world of code.',
         },
         {
+          type: 'image' as const,
+          src: '/images/meeting-11-handoff-vs-devmode-hub.webp',
+          alt: 'Two handoff styles compared: left — the traditional one, with chaotic arrows between scattered tools; right — a single Dev Mode Workspace hub branching to five outputs: Design Specs, Code Snippets, Assets, Documentation, Version Control',
+          caption: 'Traditional handoff is "the designer throws a file over the wall" (left, a tangle of arrows between scattered tools). The modern Dev Mode workflow is a single hub with five outputs: specs, code snippets, assets, docs, version control. The developer stays in flow.',
+        },
+        {
           type: 'callout' as const,
           variant: 'tip' as const,
           content:
@@ -58,6 +64,12 @@ export const meeting11: Meeting = {
           type: 'text' as const,
           content:
             'According to statistics, **60% of design decisions** are lost during the handoff to development. The reasons: incomplete specifications, undocumented states, different "languages" between designers and developers, and the absence of a single source of truth.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-handoff-context-switching.webp',
+          alt: 'Context-switching diagnostic table with four rows (Version Control, Component Context, Extracting Specs, Work Environment) comparing Traditional Handoff and The Dev Mode Workflow',
+          caption: 'Exactly where traditional handoff breaks — four context-switching dimensions. Manual version cross-checks, digging through repositories, measuring pixels by hand, constant app-switching. Dev Mode closes every one of them.',
         },
         {
           type: 'columns' as const,
@@ -122,6 +134,18 @@ export const meeting11: Meeting = {
               definition: 'A label that the designer places on a frame when it is ready for handoff.',
             },
           ],
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-devmode-ready-for-dev.webp',
+          alt: 'Figma Dev Mode screenshot with a green "Ready for dev" badge overlaid on a design-mockup frame',
+          caption: '"Ready for dev" — an explicit go-signal. Until the badge appears, the frame is still a designer sandbox; once it lands, the frame is locked against the codebase and the developer can pick it up without "is this final?" pings.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-devmode-frame-history.webp',
+          alt: 'Frame History inside Dev Mode: two cards side by side — Previous Version and Current Version, with a highlighted background-color #E0E7FF change',
+          caption: 'Frame History — instant version diffing: what was, what is, exactly which styles, names, or layers changed. No designer-written changelog in Slack, no manual diff by the developer — the Inspect Panel surfaces the delta.',
         },
         {
           type: 'video' as const,
@@ -302,6 +326,12 @@ export const meeting11: Meeting = {
           type: 'text' as const,
           content:
             'Modern tools allow generating code directly from designs. Figma Dev Mode generates **CSS**, plugins like **Anima** and **Locofy** create React components. However, auto-generated code is a **starting point**, not the final code.',
+        },
+        {
+          type: 'image' as const,
+          src: '/images/meeting-11-devmode-code-generation.webp',
+          alt: 'Three blocks left to right: Visual Layer (a Submit button in Figma) → Box Model (a diagram with margin/border/padding) → Generated Code (CSS with margin, border, padding)',
+          caption: 'How a visual layer becomes code: Figma translates the design you see → into a Box Model (margin / border / padding) → into a ready CSS snippet. Switch the framework in Dev Mode and you get Swift or Jetpack Compose. The actual bridge between "I see it" and "I write it".',
         },
         {
           type: 'callout' as const,
