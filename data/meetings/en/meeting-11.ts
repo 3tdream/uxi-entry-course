@@ -233,11 +233,10 @@ export const meeting11: Meeting = {
           },
         },
         {
-          type: 'iframe-embed' as const,
-          src: '/slides/m11-button-states.html',
-          title: 'Button — 5 states and every token (live demo)',
-          caption: '🔘 All 5 button states (default / hover / active / focus / disabled) shown side by side. Hover any card — the matching tokens in the right-hand panel light up. Base tokens (font / padding / radius / transition) stay highlighted for every state. This is what "complete handoff" for one button looks like.',
-          aspectRatio: '7 / 4',
+          type: 'image' as const,
+          src: '/images/meeting-11-button-spec-sheet.webp',
+          alt: 'Rangle infographic showing eight types of design tokens: Colors, Typography, Elevation, Opacity, Sizing, Spacing, Border Width, Border Radius',
+          caption: 'The eight token categories every button spec above is built from: Colors · Typography · Elevation · Opacity · Sizing · Spacing · Border Width · Border Radius. When Dev Mode surfaces `$blue-600 · $radius-md · $gap-md` — those are references to exactly these buckets. Source: Rangle.',
         },
         { type: 'divider' as const },
 

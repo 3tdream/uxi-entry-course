@@ -233,11 +233,10 @@ export const meeting11: Meeting = {
           },
         },
         {
-          type: 'iframe-embed' as const,
-          src: '/slides/m11-button-states.html',
-          title: 'Кнопка: 5 состояний и все токены (живое демо)',
-          caption: '🔘 Все 5 состояний кнопки (default / hover / active / focus / disabled) показаны одновременно. Наведи курсор на любую карточку — соответствующие токены в правой панели подсветятся жёлтым. Базовые токены (font / padding / radius / transition) всегда активны. Это и есть «полный handoff» одной кнопки.',
-          aspectRatio: '7 / 4',
+          type: 'image' as const,
+          src: '/images/meeting-11-button-spec-sheet.webp',
+          alt: 'Инфографика Rangle с восемью типами дизайн-токенов: Colors, Typography, Elevation, Opacity, Sizing, Spacing, Border Width, Border Radius',
+          caption: 'Восемь категорий токенов, из которых собирается любой button-spec выше: Colors · Typography · Elevation · Opacity · Sizing · Spacing · Border Width · Border Radius. Когда в Dev Mode появляется `$blue-600 · $radius-md · $gap-md` — это ссылки именно на эти ведра. Источник: Rangle.',
         },
         { type: 'divider' as const },
 
