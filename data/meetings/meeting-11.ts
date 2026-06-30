@@ -718,8 +718,9 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-ab-test-flow.webp',
-          alt: 'Схема A/B теста с двумя ветвями и счётчиками конверсий',
-          caption: 'A/B тест: трафик делится на контрольную и тестовую группы.',
+          alt: 'Инфографика Semrush: 6 пользователей сверху, трафик 50/50 разделяется на две версии страницы — Variation A (фиолетовый header) и Variation B (розовый header), внизу — конверсия X% vs Y%',
+          caption: 'A/B тест на одном кадре: 50% трафика идёт на Variation A, 50% — на Variation B (отличаются ровно одним элементом, тут — цветом header), снизу сравнивают конверсии X% vs Y%. Тот, у кого выше — выигрывает. Источник: Semrush.',
+          maxWidth: 620,
         },
         {
           type: 'user-flow' as const,

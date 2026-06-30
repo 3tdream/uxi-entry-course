@@ -718,8 +718,9 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-ab-test-flow.webp',
-          alt: 'A/B test diagram with two branches and conversion counters',
-          caption: 'A/B test: traffic split between control and variant groups.',
+          alt: 'Semrush infographic: 6 users at the top, 50/50 traffic split to two page versions — Variation A (purple header) and Variation B (pink header), bottom row shows Conversion Rate X% vs Y%',
+          caption: 'An A/B test in one frame: 50% of traffic goes to Variation A, 50% to Variation B (they differ by exactly one element — here the header color), the bottom row compares Conversion Rates X% vs Y%. Whichever is higher wins. Source: Semrush.',
+          maxWidth: 620,
         },
         {
           type: 'user-flow' as const,
