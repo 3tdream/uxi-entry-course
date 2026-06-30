@@ -1029,8 +1029,8 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-iteration-loop.webp',
-          alt: 'Круговая схема цикла итеративного улучшения продукта',
-          caption: 'Цикл итеративного дизайна: дизайн → запуск → измерение → решение.',
+          alt: 'Бесконечная петля Design Thinking с шестью этапами: Empathise, Define, Ideate, Prototype, Test, Implement',
+          caption: 'Design Thinking как бесконечная петля: Empathise → Define → Ideate → Prototype → Test → Implement. Классическая шестиэтапная модель Stanford d.school показывает, что итеративность — не A/B-тест поверх готового продукта, а фундаментальная стратегия принятия дизайнерских решений. После Test возвращаешься в Empathise — петля никогда не замыкается.',
         },
         {
           type: 'callout' as const,

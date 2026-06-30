@@ -1029,8 +1029,8 @@ export const meeting11: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-11-iteration-loop.webp',
-          alt: 'Circular diagram of the iterative product-improvement cycle',
-          caption: 'Iterative design loop: design \u2192 launch \u2192 measure \u2192 decide.',
+          alt: 'Design Thinking infinity loop with six stages: Empathise, Define, Ideate, Prototype, Test, Implement',
+          caption: "Design Thinking as an infinity loop: Empathise \u2192 Define \u2192 Ideate \u2192 Prototype \u2192 Test \u2192 Implement. The classic Stanford d.school six-stage model frames iteration not as an A/B test bolted on after launch but as the underlying decision-making strategy. After Test you go back to Empathise \u2014 the loop never closes.",
         },
         {
           type: 'callout' as const,
