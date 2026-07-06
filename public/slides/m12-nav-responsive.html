@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsive nav — slide the viewport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:24px 28px 16px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:14px}
+.controls{background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:16px 20px;margin-bottom:18px}
+.slider-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.slider-row .l{font-family:'Geist Mono',monospace;font-size:11.5px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase;min-width:82px}
+.slider-row .val{font-family:'Geist Mono',monospace;font-size:13.5px;color:#0f766e;font-weight:600;background:#eaf3ed;padding:3px 10px;border-radius:5px;border:1px solid #d4e7dc;min-width:82px;text-align:center}
+.slider-row input[type=range]{flex:1;min-width:180px;-webkit-appearance:none;appearance:none;height:6px;border-radius:4px;background:linear-gradient(90deg,#3f7d5a var(--p,50%),#e7e5e1 var(--p,50%));outline:none}
+.slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:#26261f;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:pointer}
+.slider-row input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#26261f;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:pointer}
+.presets{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.presets .l{font-family:'Geist Mono',monospace;font-size:10.5px;color:#90908a;letter-spacing:.04em;text-transform:uppercase;margin-right:4px;align-self:center}
+.preset{appearance:none;font:inherit;font-family:'Geist Mono',monospace;font-size:11px;padding:5px 11px;border:1px solid #d4d4cc;border-radius:7px;background:#fff;color:#26261f;cursor:pointer;letter-spacing:.02em}
+.preset[aria-pressed=true]{background:#26261f;color:#fff;border-color:#26261f}
+
+.stage{background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:22px;overflow:hidden}
+.mode-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:6px}
+.mode-badge{font-family:'Geist Mono',monospace;font-size:11px;padding:3px 10px;border-radius:12px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+.mode-badge.mobile{background:#fff8e8;color:#92400e;border:1px solid #f0d6a4}
+.mode-badge.tablet{background:#eef4ff;color:#1e40af;border:1px solid #d7e3f5}
+.mode-badge.desktop{background:#eaf3ed;color:#2f7350;border:1px solid #d4e7dc}
+.what{font-family:'Geist Mono',monospace;font-size:11px;color:#90908a}
+
+/* the viewport — a frame that shrinks to the chosen width */
+.viewport-wrap{display:flex;justify-content:center}
+.viewport{border:1px solid #d4d4cc;border-radius:10px;overflow:hidden;background:#fafaf8;box-shadow:0 3px 12px rgba(0,0,0,.05);transition:width .18s ease}
+.chrome{display:flex;align-items:center;gap:6px;padding:7px 11px;background:#ececea;border-bottom:1px solid #ddddd6}
+.chrome span{width:7px;height:7px;border-radius:50%;background:#cfcfc8}
+.chrome .url{flex:1;height:12px;border-radius:6px;background:#e2e2dc;margin-left:5px}
+.site{background:#fff;min-height:280px;position:relative}
+
+/* NAV — desktop mode (large width) */
+.nav{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #f0efea;font-family:'Geist',sans-serif;gap:14px}
+.nav .logo{font-weight:700;font-size:14px;color:#26261f;letter-spacing:-.01em}
+.nav .links{display:flex;gap:14px;flex:1;font-size:12.5px;color:#3a3a33}
+.nav .search{width:130px;height:26px;background:#f4f4f2;border-radius:5px;display:flex;align-items:center;padding:0 8px;font-size:11px;color:#a8a89f;font-family:'Geist Mono',monospace}
+.nav .cta{background:#26261f;color:#fff;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600}
+.nav .burger{display:none;flex-direction:column;gap:3px;cursor:pointer;padding:5px;margin-right:6px}
+.nav .burger span{width:16px;height:2px;background:#26261f;border-radius:1px}
+.nav .mobile-right{display:none;gap:10px;color:#26261f;font-size:16px;margin-left:auto}
+
+/* Content mock */
+.content{padding:18px;display:flex;flex-direction:column;gap:12px}
+.content .row{display:flex;gap:10px}
+.content .box{background:#e7e5e1;border-radius:3px;height:9px;flex:1}
+.content .card{background:#fafaf8;border:1px solid #efeeea;border-radius:8px;padding:10px;flex:1;display:flex;flex-direction:column;gap:5px}
+.content .card .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#e2e2dc,#c4c4bc);border-radius:5px;margin-bottom:5px}
+.content .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.content .short{width:40%;flex:none;background:#26261f}
+.content .mid{width:70%;flex:none}
+
+/* mobile bottom bar (only when viewport is narrow) */
+.tabbar{display:none;border-top:1px solid #f0efea;padding:8px 6px 12px;background:#fff}
+.tabbar .row{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.tabbar .t{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 2px;color:#90908a;font-family:'Geist Mono',monospace;font-size:9px;letter-spacing:.04em;text-transform:uppercase}
+.tabbar .t .ico{font-size:15px;line-height:1}
+.tabbar .t.active{color:#26261f;font-weight:600}
+
+/* Mode switches */
+.viewport.mobile .nav .links{display:none}
+.viewport.mobile .nav .search{display:none}
+.viewport.mobile .nav .cta{display:none}
+.viewport.mobile .nav .burger{display:flex}
+.viewport.mobile .nav .mobile-right{display:flex}
+.viewport.mobile .nav .logo{margin:0 auto;font-size:13px}
+.viewport.mobile .tabbar{display:block}
+.viewport.mobile .content .grid{grid-template-columns:1fr}
+.viewport.mobile .content{padding:14px;gap:10px}
+
+.viewport.tablet .nav .links{gap:9px;font-size:11.5px}
+.viewport.tablet .nav .search{width:80px}
+.viewport.tablet .nav .cta{font-size:11px;padding:5px 10px}
+.viewport.tablet .content .grid{grid-template-columns:repeat(2,1fr)}
+
+.viewport.desktop .content .grid{grid-template-columns:repeat(3,1fr)}
+
+.notes{margin-top:20px;background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:18px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:720px){.notes{grid-template-columns:1fr}}
+.notes h4{margin:0 0 6px;font-family:'Geist Mono',monospace;font-size:10.5px;color:#6b6b62;letter-spacing:.05em;text-transform:uppercase}
+.notes p{margin:0;font-size:12.5px;line-height:1.5;color:#3a3a33}
+.notes .active{background:#eaf3ed;border:1px solid #d4e7dc;padding:11px 13px;border-radius:9px;margin:-11px -13px}
+.tip{margin-top:20px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">Same site · slide the viewport width · watch the nav rewire</div>
+
+  <div class="controls">
+    <div class="slider-row">
+      <span class="l">viewport</span>
+      <input id="iW" type="range" min="320" max="1440" step="1" value="1200">
+      <span class="val"><span id="vW">1200</span> px</span>
+    </div>
+    <div class="presets">
+      <span class="l">jump to</span>
+      <button class="preset" data-w="375">375 · phone</button>
+      <button class="preset" data-w="768">768 · tablet</button>
+      <button class="preset" data-w="1024">1024 · laptop</button>
+      <button class="preset" data-w="1440">1440 · desktop</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="mode-row">
+      <span class="mode-badge desktop" id="badge">DESKTOP</span>
+      <span class="what" id="what">horizontal nav · full logo · inline search · primary CTA in header</span>
+    </div>
+    <div class="viewport-wrap">
+      <div class="viewport desktop" id="vp" style="width:900px">
+        <div class="chrome"><span></span><span></span><span></span><div class="url"></div></div>
+        <div class="site">
+          <nav class="nav">
+            <span class="burger"><span></span><span></span><span></span></span>
+            <span class="logo">Kabinet</span>
+            <div class="links"><span>Product</span><span>Solutions</span><span>Pricing</span><span>Customers</span><span>Docs</span><span>Blog</span><span>Contact</span></div>
+            <div class="search">🔍 search</div>
+            <span class="cta">Start free</span>
+            <div class="mobile-right"><span>🔍</span><span>👤</span></div>
+          </nav>
+          <div class="content">
+            <div class="row"><div class="box short"></div></div>
+            <div class="row"><div class="box mid"></div></div>
+            <div class="grid">
+              <div class="card"><div class="thumb"></div><div class="box short"></div><div class="box"></div></div>
+              <div class="card"><div class="thumb"></div><div class="box short"></div><div class="box"></div></div>
+              <div class="card"><div class="thumb"></div><div class="box short"></div><div class="box"></div></div>
+            </div>
+          </div>
+          <div class="tabbar">
+            <div class="row">
+              <div class="t active"><span class="ico">⌂</span>Home</div>
+              <div class="t"><span class="ico">⌕</span>Search</div>
+              <div class="t"><span class="ico">＋</span>New</div>
+              <div class="t"><span class="ico">✉</span>Inbox</div>
+              <div class="t"><span class="ico">●</span>Me</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div id="noteMob">
+      <h4>Mobile · &lt; 720px</h4>
+      <p>Burger + centered logo + right icons. Primary CTA moves to a fixed bottom bar. Grid collapses to 1 column.</p>
+    </div>
+    <div id="noteTab">
+      <h4>Tablet · 720–1023px</h4>
+      <p>Horizontal nav returns, links tighten up, search shrinks, CTA gets smaller padding. Grid: 2 columns.</p>
+    </div>
+    <div id="noteDesk">
+      <h4>Desktop · ≥ 1024px</h4>
+      <p>Full nav, inline search, primary CTA in the header. Grid: 3 columns. Hover states become an option.</p>
+    </div>
+  </div>
+
+  <div class="tip">Design mobile first — the desktop already fits when you scale up. Trying the other way around usually costs a whole design pass.</div>
+</div>
+
+<script>
+var vp = document.getElementById('vp');
+var iW = document.getElementById('iW');
+var vW = document.getElementById('vW');
+var badge = document.getElementById('badge');
+var what = document.getElementById('what');
+var whats = {
+  mobile: 'burger menu · centered logo · icons only · CTA moves to bottom tab bar',
+  tablet: 'horizontal nav returns · links tighten · smaller CTA in header',
+  desktop: 'horizontal nav · full logo · inline search · primary CTA in header'
+};
+var badges = { mobile: 'MOBILE', tablet: 'TABLET', desktop: 'DESKTOP' };
+var noteEls = { mobile: document.getElementById('noteMob'), tablet: document.getElementById('noteTab'), desktop: document.getElementById('noteDesk') };
+
+function mode(w){
+  if (w < 720) return 'mobile';
+  if (w < 1024) return 'tablet';
+  return 'desktop';
+}
+
+function apply(w){
+  vp.style.width = w + 'px';
+  vp.classList.remove('mobile','tablet','desktop');
+  var m = mode(w);
+  vp.classList.add(m);
+  vW.textContent = w;
+  badge.textContent = badges[m];
+  badge.className = 'mode-badge ' + m;
+  what.textContent = whats[m];
+
+  Object.keys(noteEls).forEach(function(k){
+    noteEls[k].querySelector('h4') && (noteEls[k].firstChild ? null : null);
+    noteEls[k].classList.toggle('active', k === m);
+  });
+
+  iW.style.setProperty('--p', ((w-320)/(1440-320))*100 + '%');
+  document.querySelectorAll('.preset').forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.w === w ? 'true' : 'false'); });
+  setTimeout(reportHeight, 30);
+}
+
+iW.addEventListener('input', function(e){ apply(+e.target.value); });
+document.querySelectorAll('.preset').forEach(function(b){
+  b.addEventListener('click', function(){ iW.value = b.dataset.w; apply(+b.dataset.w); });
+});
+
+apply(1200);
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

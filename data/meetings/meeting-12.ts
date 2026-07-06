@@ -106,6 +106,13 @@ export const meeting12: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-hero-landing.html',
+          title: 'Hero-секция — bad vs good (живое демо)',
+          caption: '🖥 Два реальных hero side-by-side: слева — «Welcome to our website» с 3 конкурирующими CTA и размытым слайдером; справа — конкретный value prop «Run projects without the chaos», одна CTA + скриншот продукта + social proof. 3-second test: закрой chrome браузера и спроси у прохожего «что это?».',
+          aspectRatio: '5 / 3',
+        },
+        {
           type: 'subheading' as const,
           content: 'Карточки (Cards)',
         },
@@ -339,6 +346,13 @@ export const meeting12: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-ios-vs-material-dialog.html',
+          title: 'iOS Alert vs Material Dialog — живое демо',
+          caption: '📱 Тот же момент «удалить фото» — два реальных диалога в phone-frame\'ах. Слева: iOS Alert (SF Pro, полупрозрачный blur, красный destructive Delete). Справа: Material 3 Dialog (Roboto, иконка сверху, текст-кнопки справа внизу, равный вес). Тыкни «Show both dialogs» — оба открываются параллельно. Ниже — расшифровка философий двух платформ.',
+          aspectRatio: '3 / 2',
+        },
+        {
           type: 'video' as const,
           src: 'https://www.youtube.com/watch?v=4bguZJwHqsQ',
           title: 'Material Design 3 — что нового',
@@ -432,6 +446,13 @@ export const meeting12: Meeting = {
             description:
               'Hamburger-меню (☰) слева, логотип по центру, иконка поиска и профиль справа. При нажатии на ☰ — полноэкранный overlay с вертикальным списком. CTA-кнопка фиксирована внизу экрана.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-nav-responsive.html',
+          title: 'Responsive nav — двигай ширину viewport (живое демо)',
+          caption: '📐 Слайдер ширины 320 → 1440px, или нажми пресет (375 / 768 / 1024 / 1440). Один и тот же сайт живьём переверстывается: burger + иконки на mobile → горизонтальная nav на tablet → полная nav с inline-search и CTA на desktop. Внизу подсвечивается активный breakpoint. Mobile-first в действии.',
+          aspectRatio: '3 / 2',
         },
         {
           type: 'video' as const,

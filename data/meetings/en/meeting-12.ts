@@ -106,6 +106,13 @@ export const meeting12: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-hero-landing.html',
+          title: 'Hero section — bad vs good (live demo)',
+          caption: '🖥 Two real hero layouts side by side: left — "Welcome to our website" with 3 competing CTAs and a blurry slider; right — a concrete value prop "Run projects without the chaos", one CTA + product screenshot + social proof. The 3-second test: hide the browser chrome and ask a stranger "what is this?".',
+          aspectRatio: '5 / 3',
+        },
+        {
           type: 'subheading' as const,
           content: 'Cards',
         },
@@ -339,6 +346,13 @@ export const meeting12: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-ios-vs-material-dialog.html',
+          title: 'iOS Alert vs Material Dialog — live demo',
+          caption: '📱 Same "delete photo" moment — two real dialogs inside phone frames. Left: iOS Alert (SF Pro, translucent blur, red destructive Delete). Right: Material 3 Dialog (Roboto, icon on top, text buttons bottom-right, equal weight). Hit "Show both dialogs" — both open in parallel. Below: a side-by-side legend of the two platform philosophies.',
+          aspectRatio: '3 / 2',
+        },
+        {
           type: 'video' as const,
           src: 'https://www.youtube.com/watch?v=4bguZJwHqsQ',
           title: 'Material Design 3 — What\'s New',
@@ -432,6 +446,13 @@ export const meeting12: Meeting = {
             description:
               'Hamburger menu (\u2630) on the left, logo centered, search icon and profile on the right. Tapping \u2630 opens a full-screen overlay with a vertical list. CTA button is fixed at the bottom of the screen.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-nav-responsive.html',
+          title: 'Responsive nav \u2014 drag the viewport width (live demo)',
+          caption: '\ud83d\udcd0 Drag the viewport width 320 \u2192 1440px, or hit a preset (375 / 768 / 1024 / 1440). The same site rewires live: burger + icons on mobile \u2192 horizontal nav on tablet \u2192 full nav with inline search + primary CTA on desktop. The active breakpoint gets highlighted below. Mobile-first in action.',
+          aspectRatio: '3 / 2',
         },
         {
           type: 'video' as const,

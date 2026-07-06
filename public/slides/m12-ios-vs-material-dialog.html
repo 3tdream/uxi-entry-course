@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iOS Alert vs Material Dialog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=SF+Pro+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:24px 28px 16px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:16px}
+.trigger{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.trigger .l{font-family:'Geist Mono',monospace;font-size:12px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase}
+.trigger button{appearance:none;font:inherit;font-size:12.5px;font-family:'Geist Mono',monospace;padding:8px 14px;border:1px solid #d4d4cc;border-radius:8px;background:#fff;color:#26261f;cursor:pointer}
+.trigger button:hover{background:#f0f0ec;border-color:#bdbdb4}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{border:1px solid #e2e2da;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.card.ios .head{background:#eef4ff;border-bottom:1px solid #d7e3f5;color:#1e40af}
+.card.md .head{background:#f0eefe;border-bottom:1px solid #d9d3f6;color:#6d28d9}
+.head{display:flex;align-items:center;gap:9px;padding:11px 16px;font-weight:600;font-size:14px}
+.head .dot{width:20px;height:20px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.ios .head .dot{background:#0a84ff;font-family:'SF Pro Display',sans-serif}
+.md .head .dot{background:#6d28d9}
+
+.phone-wrap{padding:24px;background:#fafaf8;flex:1;display:flex;justify-content:center;align-items:center}
+.phone{width:262px;border-radius:30px;border:8px solid #26261f;background:#000;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.08);position:relative}
+.phone .notch{background:#000;height:20px;display:flex;align-items:center;justify-content:center}
+.phone .notch span{width:52px;height:6px;border-radius:4px;background:#111}
+.screen{position:relative;height:440px;background:#f2f2f7;overflow:hidden}
+
+/* App content behind dialog */
+.appbg{padding:14px;display:flex;flex-direction:column;gap:9px}
+.md .screen .appbg{background:#fff}
+.thumb{aspect-ratio:1/1;background:linear-gradient(135deg,#a8b6c8 0%,#7d8fa7 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px}
+.stats{display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:9.5px;color:#6b6b62}
+.actions-row{display:flex;justify-content:space-around;padding:7px 0;border-top:1px solid #e5e5ea}
+.actions-row span{font-size:16px;color:#8e8e93}
+.ios .screen .appbg .thumb+.stats{margin-top:2px}
+
+/* dim backdrop */
+.backdrop{position:absolute;inset:0;background:rgba(0,0,0,.44);opacity:0;pointer-events:none;transition:opacity .28s ease;display:flex;align-items:center;justify-content:center;padding:20px}
+.screen.open .backdrop{opacity:1;pointer-events:auto}
+
+/* iOS Alert */
+.ios-alert{width:200px;background:rgba(240,240,242,.94);backdrop-filter:blur(20px);border-radius:14px;overflow:hidden;font-family:'SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;color:#000;transform:scale(.86);opacity:0;transition:transform .3s cubic-bezier(.2,1.2,.6,1),opacity .28s ease}
+.screen.open .ios-alert{transform:scale(1);opacity:1}
+.ios-alert .body{padding:18px 16px 14px;text-align:center}
+.ios-alert .title{font-size:13.5px;font-weight:600;margin:0 0 5px}
+.ios-alert .msg{font-size:11.5px;color:#000;opacity:.7;line-height:1.35;margin:0}
+.ios-alert .btns{display:grid;grid-template-columns:1fr 1fr;border-top:.5px solid rgba(0,0,0,.15)}
+.ios-alert .btn{padding:11px 6px;font-family:'SF Pro Display',-apple-system,sans-serif;font-size:13.5px;color:#007aff;text-align:center;cursor:default;border-right:.5px solid rgba(0,0,0,.15)}
+.ios-alert .btn:last-child{border-right:0;color:#ff3b30;font-weight:600}
+
+/* Material Dialog */
+.md-dialog{width:240px;background:#fff;border-radius:20px;overflow:hidden;font-family:'Roboto',sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.16);transform:translateY(20px) scale(.96);opacity:0;transition:transform .3s cubic-bezier(.2,1.2,.6,1),opacity .28s ease}
+.screen.open .md-dialog{transform:translateY(0) scale(1);opacity:1}
+.md-dialog .icon{padding:20px 0 0;display:flex;justify-content:center}
+.md-dialog .icon .glyph{width:22px;height:22px;color:#6d28d9;display:flex;align-items:center;justify-content:center;font-size:20px}
+.md-dialog .body{padding:14px 22px 18px;text-align:center}
+.md-dialog .title{font-size:15px;font-weight:500;color:#1c1b1f;margin:0 0 8px}
+.md-dialog .msg{font-size:12.5px;color:#49454f;line-height:1.42;margin:0}
+.md-dialog .btns{padding:6px 12px 10px;display:flex;justify-content:flex-end;gap:2px}
+.md-dialog .btn{padding:8px 12px;font-family:'Roboto',sans-serif;font-size:12.5px;font-weight:500;color:#6d28d9;letter-spacing:.05em;text-transform:uppercase;border-radius:12px;cursor:default}
+
+.foot{padding:10px 16px;background:#fafaf8;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.02em}
+.ios .foot{color:#1e40af}
+.md .foot{color:#6d28d9}
+.tip{margin-top:20px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+
+.legend{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:24px;background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:16px 20px}
+@media(max-width:720px){.legend{grid-template-columns:1fr}}
+.legend h4{margin:0 0 8px;font-size:12px;font-family:'Geist Mono',monospace;letter-spacing:.04em;text-transform:uppercase;color:#6b6b62}
+.legend ul{margin:0;padding:0 0 0 18px;font-size:12.5px;line-height:1.55;color:#3a3a33}
+.legend b{color:#26261f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">iOS Alert vs Material Dialog — same "delete photo" moment</div>
+
+  <div class="trigger">
+    <span class="l">tap →</span>
+    <button id="btnBoth">Show both dialogs</button>
+    <button id="btnClose">Dismiss</button>
+  </div>
+
+  <div class="grid">
+
+    <div class="card ios">
+      <div class="head"><span class="dot"></span><span>iOS · Alert (HIG)</span></div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="notch"><span></span></div>
+          <div class="screen" id="scrIos">
+            <div class="appbg">
+              <div class="thumb">🌄</div>
+              <div class="stats"><span>IMG_2841 · 3.2 MB</span><span>Aug 24</span></div>
+              <div class="actions-row"><span>↗</span><span>❤</span><span>ℹ</span><span>🗑</span></div>
+            </div>
+            <div class="backdrop">
+              <div class="ios-alert">
+                <div class="body">
+                  <p class="title">Delete Photo?</p>
+                  <p class="msg">This photo will be deleted from all your devices.</p>
+                </div>
+                <div class="btns">
+                  <div class="btn">Cancel</div>
+                  <div class="btn">Delete</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">centered · translucent · destructive = red + bold · Cancel + Delete side-by-side</div>
+    </div>
+
+    <div class="card md">
+      <div class="head"><span class="dot"></span><span>Material · Dialog (M3)</span></div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="notch"><span></span></div>
+          <div class="screen" id="scrMd">
+            <div class="appbg">
+              <div class="thumb">🌄</div>
+              <div class="stats"><span>IMG_2841 · 3.2 MB</span><span>Aug 24</span></div>
+              <div class="actions-row"><span>↗</span><span>❤</span><span>ℹ</span><span>🗑</span></div>
+            </div>
+            <div class="backdrop">
+              <div class="md-dialog">
+                <div class="icon"><span class="glyph">⚠</span></div>
+                <div class="body">
+                  <p class="title">Delete this photo?</p>
+                  <p class="msg">You can't undo this. The photo will be removed from every synced device.</p>
+                </div>
+                <div class="btns">
+                  <div class="btn">CANCEL</div>
+                  <div class="btn">DELETE</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">rounded surface · icon + centered text · text buttons bottom-right · same visual weight</div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <div>
+      <h4>iOS (HIG) philosophy</h4>
+      <ul>
+        <li><b>Emphasis on the destructive action</b> — red + bold Delete.</li>
+        <li><b>Two side-by-side buttons</b> — Cancel on the left, action on the right, equal width.</li>
+        <li><b>Translucent surface</b> with blur behind. No icon. Copy is short.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Material 3 philosophy</h4>
+      <ul>
+        <li><b>Equal weight for both actions</b> — text buttons, no color-coding of danger.</li>
+        <li><b>Icon at the top</b> for topical context, actions grouped bottom-right.</li>
+        <li><b>Longer copy allowed</b>. The dialog is a modal surface, not a translucent overlay.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip">Same "delete photo" moment — same information, entirely different platform grammar. Copy an iOS alert onto Android and it feels foreign, and vice-versa.</div>
+</div>
+
+<script>
+var scrIos = document.getElementById('scrIos');
+var scrMd = document.getElementById('scrMd');
+function open(){ scrIos.classList.add('open'); scrMd.classList.add('open'); setTimeout(reportHeight, 50); }
+function close(){ scrIos.classList.remove('open'); scrMd.classList.remove('open'); setTimeout(reportHeight, 50); }
+document.getElementById('btnBoth').addEventListener('click', open);
+document.getElementById('btnClose').addEventListener('click', close);
+scrIos.addEventListener('click', function(e){ if (e.target.className === 'backdrop') close(); });
+scrMd.addEventListener('click', function(e){ if (e.target.className === 'backdrop') close(); });
+
+setTimeout(open, 400);
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

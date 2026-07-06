@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero — bad vs good</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:24px 28px 16px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{border:1px solid #e2e2da;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.card.bad .head{background:#fbeceb;border-bottom:1px solid #f1d8d5;color:#a33a2e}
+.card.good .head{background:#eaf3ed;border-bottom:1px solid #d4e7dc;color:#2f7350}
+.head{display:flex;align-items:center;gap:9px;padding:11px 16px;font-weight:600;font-size:14px}
+.head .dot{width:20px;height:20px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.bad .head .dot{background:#c0473b}
+.good .head .dot{background:#3f7d5a}
+.hero{padding:22px;background:#fafaf8;flex:1;display:flex;flex-direction:column}
+.browser{border:1px solid #e2e2da;border-radius:9px;overflow:hidden;background:#fff;flex:1;display:flex;flex-direction:column}
+.chrome{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#ececea;border-bottom:1px solid #ddddd6}
+.chrome span{width:8px;height:8px;border-radius:50%;background:#cfcfc8}
+.chrome .url{flex:1;height:14px;border-radius:7px;background:#e2e2dc;margin-left:6px}
+
+/* BAD hero */
+.bad-nav{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;background:#fff;border-bottom:1px solid #f0efea;font-size:11px;color:#6b6b62;font-family:'Geist Mono',monospace}
+.bad-nav .logo{width:44px;height:14px;background:#e7e5e1;border-radius:3px}
+.bad-nav .links{display:flex;gap:12px}
+.bad-hero-body{position:relative;padding:34px 22px;background:linear-gradient(135deg,#dcdad2 0%,#c9c7be 100%);flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;overflow:hidden}
+.bad-hero-body::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(255,255,255,.4) 0%,transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(255,255,255,.3) 0%,transparent 60%);opacity:.5}
+.bad-hero-body .content{position:relative;z-index:1}
+.bad-hero-body h1{font-family:'Geist',sans-serif;font-size:22px;font-weight:600;color:#3a3a33;margin:0 0 14px}
+.bad-hero-body .ctas{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.bad-hero-body .cta{appearance:none;font:inherit;font-family:'Geist',sans-serif;font-size:12px;font-weight:600;padding:8px 14px;border-radius:5px;border:1px solid #3a3a33;background:transparent;color:#3a3a33;cursor:default}
+.bad-hero-body .dots{margin-top:16px;display:flex;gap:5px;justify-content:center}
+.bad-hero-body .dots span{width:6px;height:6px;border-radius:50%;background:#8a8a83}
+
+/* GOOD hero */
+.good-nav{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;background:#fff;border-bottom:1px solid #f0efea;font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62}
+.good-nav .logo{font-weight:700;color:#26261f;font-size:12px;font-family:'Geist',sans-serif;letter-spacing:-.01em}
+.good-nav .links{display:flex;gap:14px}
+.good-nav .cta{background:#26261f;color:#fff;padding:6px 12px;border-radius:6px;font-family:'Geist',sans-serif;font-size:11.5px;font-weight:600}
+.good-hero-body{padding:26px;background:#fff;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+@media(max-width:520px){.good-hero-body{grid-template-columns:1fr}}
+.good-hero-body h1{font-family:'Geist',sans-serif;font-size:22px;font-weight:700;color:#26261f;line-height:1.2;letter-spacing:-.02em;margin:0 0 10px}
+.good-hero-body p{font-family:'Geist',sans-serif;font-size:12.5px;color:#6b6b62;line-height:1.55;margin:0 0 16px}
+.good-hero-body .cta{display:inline-flex;align-items:center;gap:6px;background:#26261f;color:#fff;padding:10px 18px;border-radius:8px;font-family:'Geist',sans-serif;font-size:13px;font-weight:600;cursor:default}
+.good-hero-body .arrow{font-size:13px}
+.good-hero-body .trust{margin-top:10px;font-family:'Geist Mono',monospace;font-size:9.5px;color:#90908a;letter-spacing:.02em}
+.mockup{background:#fafaf8;border:1px solid #efeeea;border-radius:9px;padding:11px;display:flex;flex-direction:column;gap:6px}
+.mockup .row{display:flex;gap:6px;align-items:center}
+.mockup .box{background:#e7e5e1;border-radius:3px;height:9px;flex:1}
+.mockup .box.dark{background:#26261f;width:38%;flex:none}
+.mockup .box.mid{background:#c4c4bc;width:60%;flex:none}
+.mockup .box.short{width:35%;flex:none}
+.mockup .card-mini{background:#fff;border:1px solid #efeeea;border-radius:4px;padding:6px;margin-top:4px}
+.mockup .card-mini .row+.row{margin-top:4px}
+
+.foot{padding:10px 16px;background:#fafaf8;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.02em}
+.bad .foot{color:#a33a2e}
+.good .foot{color:#2f7350}
+.tip{margin-top:20px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">Same 3-second window · two hero-section decisions</div>
+
+  <div class="grid">
+
+    <div class="card bad">
+      <div class="head"><span class="dot">✗</span><span>Weak hero — generic + 3 CTAs</span></div>
+      <div class="hero">
+        <div class="browser">
+          <div class="chrome"><span></span><span></span><span></span><div class="url"></div></div>
+          <div class="bad-nav"><div class="logo"></div><div class="links">Home · About · Blog · Pricing · Contact</div></div>
+          <div class="bad-hero-body">
+            <div class="content">
+              <h1>Welcome to our website</h1>
+              <div class="ctas">
+                <button class="cta">Sign up</button>
+                <button class="cta">Learn more</button>
+                <button class="cta">Contact us</button>
+              </div>
+              <div class="dots"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">no value prop · 3 competing CTAs · blurry stock slider · what does this app do?</div>
+    </div>
+
+    <div class="card good">
+      <div class="head"><span class="dot">✓</span><span>Strong hero — value + one CTA + proof</span></div>
+      <div class="hero">
+        <div class="browser">
+          <div class="chrome"><span></span><span></span><span></span><div class="url"></div></div>
+          <div class="good-nav">
+            <div class="logo">Kabinet</div>
+            <div class="links"><span>Features</span><span>Pricing</span><span>Docs</span><span class="cta">Start free</span></div>
+          </div>
+          <div class="good-hero-body">
+            <div>
+              <h1>Run projects without the chaos.</h1>
+              <p>One workspace for tasks, deadlines, and your team — no more 12 tabs and 6 Slack pings to know who's shipping what today.</p>
+              <span class="cta">Try free · 14 days <span class="arrow">→</span></span>
+              <div class="trust">no card · used by 8k+ teams</div>
+            </div>
+            <div class="mockup">
+              <div class="row"><div class="box dark"></div><div class="box short"></div></div>
+              <div class="row"><div class="box mid"></div></div>
+              <div class="card-mini">
+                <div class="row"><div class="box short"></div><div class="box"></div></div>
+                <div class="row"><div class="box short"></div><div class="box"></div></div>
+                <div class="row"><div class="box short"></div><div class="box mid"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">concrete value in H1 · 1 primary CTA · product screenshot · social proof</div>
+    </div>
+
+  </div>
+
+  <div class="tip">3-second test: cover the browser chrome and ask a stranger "what does this do?". If you can't say it — the hero fails.</div>
+</div>
+
+<script>
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>
