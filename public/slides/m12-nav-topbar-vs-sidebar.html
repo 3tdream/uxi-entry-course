@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Top bar vs Sidebar — pick your skeleton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:24px 28px 16px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+@media(max-width:920px){.grid{grid-template-columns:1fr}}
+.card{border:1px solid #e2e2da;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.card.tb .head{background:#eef4ff;border-bottom:1px solid #d7e3f5;color:#1e40af}
+.card.sb .head{background:#f0eefe;border-bottom:1px solid #d9d3f6;color:#6d28d9}
+.head{display:flex;align-items:center;gap:9px;padding:11px 16px;font-weight:600;font-size:14px}
+.head .dot{width:20px;height:20px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.tb .head .dot{background:#2563eb}
+.sb .head .dot{background:#6d28d9}
+.head .tag{margin-left:auto;font-family:'Geist Mono',monospace;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:11px}
+.tb .head .tag{background:#dbeafe;color:#1e40af}
+.sb .head .tag{background:#e6e1fc;color:#6d28d9}
+
+.body{padding:22px;background:#fafaf8;flex:1;display:flex;flex-direction:column;gap:16px}
+
+/* browser chrome shared */
+.browser{border:1px solid #e2e2da;border-radius:9px;overflow:hidden;background:#fff;flex:1;display:flex;flex-direction:column}
+.chrome{display:flex;align-items:center;gap:6px;padding:7px 11px;background:#ececea;border-bottom:1px solid #ddddd6}
+.chrome span{width:7px;height:7px;border-radius:50%;background:#cfcfc8}
+.chrome .url{flex:1;height:12px;border-radius:6px;background:#e2e2dc;margin-left:5px}
+
+/* ===== TOP BAR mock (Notion/Stripe/Apple style) ===== */
+.tb-nav{display:flex;align-items:center;padding:12px 18px;border-bottom:1px solid #f0efea;font-family:'Geist',sans-serif;gap:16px}
+.tb-nav .logo{font-weight:700;font-size:14px;color:#26261f;letter-spacing:-.01em}
+.tb-nav .links{display:flex;gap:14px;flex:1;font-size:12.5px;color:#3a3a33;font-weight:500}
+.tb-nav .link{cursor:pointer;position:relative;transition:color .15s ease}
+.tb-nav .link:hover{color:#26261f}
+.tb-nav .link.active{color:#2563eb}
+.tb-nav .link.active::after{content:'';position:absolute;left:0;right:0;bottom:-13px;height:2px;background:#2563eb;border-radius:2px}
+.tb-nav .cta{background:#26261f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11.5px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.tb-nav .cta:hover{opacity:.9}
+
+.tb-content{padding:26px 24px;flex:1;display:flex;flex-direction:column;gap:12px;background:#fff}
+.tb-content .eyebrow{font-family:'Geist Mono',monospace;font-size:10px;color:#2563eb;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.tb-content h2{margin:0;font-size:20px;font-weight:700;color:#26261f;letter-spacing:-.02em;line-height:1.2}
+.tb-content p{margin:0;font-size:12.5px;color:#6b6b62;line-height:1.55;max-width:340px}
+.tb-mock{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.tb-mock .cell{aspect-ratio:16/10;background:#fafaf8;border:1px solid #efeeea;border-radius:5px;display:flex;flex-direction:column;padding:6px;gap:3px}
+.tb-mock .cell .box{background:#e7e5e1;border-radius:2px;height:5px;width:70%}
+.tb-mock .cell .box.big{background:#26261f;height:7px;width:40%}
+
+/* ===== SIDEBAR mock (Figma/Slack/Jira style) ===== */
+.sb-app{display:flex;flex:1;font-family:'Geist',sans-serif;overflow:hidden}
+.sidebar{background:#fafaf8;border-right:1px solid #f0efea;padding:14px 8px;transition:width .28s cubic-bezier(.4,0,.2,1);width:170px;overflow:hidden;display:flex;flex-direction:column;gap:14px}
+.sidebar.collapsed{width:52px}
+.sidebar .brand{display:flex;align-items:center;gap:8px;padding:2px 8px;font-family:'Geist',sans-serif;color:#26261f;font-weight:700;font-size:13px}
+.sidebar .brand-dot{width:20px;height:20px;background:linear-gradient(135deg,#6d28d9,#a78bfa);border-radius:5px;flex-shrink:0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+.sidebar .brand-name{white-space:nowrap;transition:opacity .2s ease}
+.sidebar.collapsed .brand-name{opacity:0}
+.sb-collapse-btn{appearance:none;font:inherit;border:0;background:#fff;border:1px solid #e2e2da;color:#6b6b62;padding:4px 7px;border-radius:6px;font-family:'Geist Mono',monospace;font-size:10px;cursor:pointer;align-self:flex-start;margin-left:auto;transition:all .12s}
+.sidebar.collapsed .sb-collapse-btn{margin-left:0;margin:0 auto}
+.sb-collapse-btn:hover{background:#f0f0ec;border-color:#bdbdb4}
+.sb-group{display:flex;flex-direction:column;gap:1px}
+.sb-group .group-title{font-family:'Geist Mono',monospace;font-size:9.5px;color:#a8a89f;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;margin-bottom:2px;font-weight:600;white-space:nowrap;transition:opacity .2s ease}
+.sidebar.collapsed .group-title{opacity:0;height:8px;padding:0}
+.sb-item{display:flex;align-items:center;gap:9px;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:12px;color:#3a3a33;transition:all .15s;white-space:nowrap;overflow:hidden}
+.sb-item:hover{background:rgba(109,40,217,.06);color:#26261f}
+.sb-item.active{background:#e6e1fc;color:#6d28d9;font-weight:600}
+.sb-item .ico{width:18px;height:18px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#6b6b62}
+.sb-item.active .ico{color:#6d28d9}
+.sb-item .label{transition:opacity .2s ease}
+.sidebar.collapsed .sb-item .label{opacity:0}
+.sb-item .badge{margin-left:auto;background:#c0473b;color:#fff;font-family:'Geist Mono',monospace;font-size:8.5px;font-weight:700;padding:1px 5px;border-radius:8px;transition:opacity .2s ease}
+.sidebar.collapsed .sb-item .badge{opacity:0}
+.sb-nested{padding-left:14px;display:flex;flex-direction:column;gap:1px;overflow:hidden;transition:max-height .3s ease}
+.sb-nested .sb-item{font-size:11.5px;padding:5px 10px}
+.sidebar.collapsed .sb-nested{max-height:0}
+.sb-user{margin-top:auto;padding:8px 10px;display:flex;align-items:center;gap:8px;background:#fff;border-top:1px solid #f0efea;border-radius:0;color:#3a3a33;font-size:11.5px}
+.sb-user .av{width:22px;height:22px;background:linear-gradient(135deg,#f59e0b,#c0473b);border-radius:50%;color:#fff;font-size:9.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-user .name{transition:opacity .2s ease;white-space:nowrap;overflow:hidden}
+.sidebar.collapsed .sb-user .name{opacity:0}
+
+.sb-content{flex:1;background:#fff;padding:20px 22px;display:flex;flex-direction:column;gap:11px;overflow:hidden}
+.sb-content .breadcrumbs{font-family:'Geist Mono',monospace;font-size:10px;color:#6d28d9;letter-spacing:.05em}
+.sb-content h2{margin:0;font-size:17px;font-weight:700;color:#26261f;letter-spacing:-.01em}
+.sb-content p{margin:0;font-size:11.5px;color:#6b6b62;line-height:1.5}
+.sb-content .rows{margin-top:6px;display:flex;flex-direction:column;gap:6px}
+.sb-content .row{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:#fafaf8;border:1px solid #efeeea;border-radius:6px;font-size:11.5px;color:#3a3a33}
+.sb-content .row .r{font-family:'Geist Mono',monospace;color:#6b6b62;font-size:10.5px}
+
+.foot{padding:11px 16px;background:#fff;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.02em}
+.tb .foot{color:#1e40af}
+.sb .foot{color:#6d28d9}
+
+.legend{margin-top:20px;background:#fff;border:1px solid #e2e2da;border-radius:12px;overflow:hidden}
+.legend .head{padding:11px 16px;font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;letter-spacing:.05em;text-transform:uppercase;font-weight:600;border-bottom:1px solid #eee;background:#fafaf8}
+.legend .body{padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+@media(max-width:720px){.legend .body{grid-template-columns:1fr}}
+.legend .col{padding:16px 20px}
+.legend .col+.col{border-left:1px solid #eee}
+@media(max-width:720px){.legend .col+.col{border-left:0;border-top:1px solid #eee}}
+.legend h4{margin:0 0 10px;font-size:12px;font-family:'Geist Mono',monospace;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.legend.tb-l h4{color:#1e40af}
+.legend .col.sb-col h4{color:#6d28d9}
+.legend ul{margin:0 0 10px;padding:0;list-style:none;font-size:12.5px;line-height:1.55;color:#3a3a33}
+.legend ul li{padding-left:18px;position:relative;margin-bottom:4px}
+.legend ul li::before{content:'→';position:absolute;left:0;color:#a8a89f}
+.legend .examples{font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;padding-top:8px;border-top:1px solid #f0efea}
+.legend .examples b{color:#26261f;font-weight:600}
+.tip{margin-top:20px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">Click any link · watch the active state and content follow</div>
+
+  <div class="grid">
+
+    <div class="card tb">
+      <div class="head"><span class="dot">☰</span><span>Top Bar (horizontal)</span><span class="tag">MARKETING · CONTENT</span></div>
+      <div class="body">
+        <div class="browser">
+          <div class="chrome"><span></span><span></span><span></span><div class="url"></div></div>
+          <nav class="tb-nav" id="tbNav">
+            <span class="logo">Kabinet</span>
+            <div class="links">
+              <span class="link active" data-tb="Product">Product</span>
+              <span class="link" data-tb="Solutions">Solutions</span>
+              <span class="link" data-tb="Pricing">Pricing</span>
+              <span class="link" data-tb="Docs">Docs</span>
+              <span class="link" data-tb="Blog">Blog</span>
+            </div>
+            <span class="cta">Start free</span>
+          </nav>
+          <div class="tb-content" id="tbContent">
+            <span class="eyebrow" id="tbEye">PRODUCT</span>
+            <h2 id="tbTitle">All the pieces of your workflow, in one place.</h2>
+            <p id="tbSub">Docs, tasks, and databases living side by side — no more copy-paste between apps that forget each other.</p>
+            <div class="tb-mock">
+              <div class="cell"><div class="box big"></div><div class="box"></div></div>
+              <div class="cell"><div class="box big"></div><div class="box"></div></div>
+              <div class="cell"><div class="box big"></div><div class="box"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">≤ 7 items · logo left · CTA right · shallow information tree · scannable in 1s</div>
+    </div>
+
+    <div class="card sb">
+      <div class="head"><span class="dot">▤</span><span>Sidebar (vertical)</span><span class="tag">SAAS · TOOL</span></div>
+      <div class="body">
+        <div class="browser">
+          <div class="chrome"><span></span><span></span><span></span><div class="url"></div></div>
+          <div class="sb-app">
+            <div class="sidebar" id="sbSide">
+              <div class="brand"><span class="brand-dot">K</span><span class="brand-name">Kabinet</span><button class="sb-collapse-btn" id="sbToggle" title="Collapse sidebar">‹‹</button></div>
+              <div class="sb-group">
+                <div class="group-title">Workspace</div>
+                <div class="sb-item active" data-sb="Home"><span class="ico">⌂</span><span class="label">Home</span></div>
+                <div class="sb-item" data-sb="Search"><span class="ico">⌕</span><span class="label">Search</span></div>
+                <div class="sb-item" data-sb="Inbox"><span class="ico">✉</span><span class="label">Inbox</span><span class="badge">4</span></div>
+              </div>
+              <div class="sb-group">
+                <div class="group-title">Projects</div>
+                <div class="sb-item" data-sb="Roadmap"><span class="ico">🗺</span><span class="label">Roadmap</span></div>
+                <div class="sb-item" data-sb="Design"><span class="ico">▲</span><span class="label">Design system</span></div>
+                <div class="sb-nested">
+                  <div class="sb-item" data-sb="Tokens"><span class="ico">◈</span><span class="label">Tokens</span></div>
+                  <div class="sb-item" data-sb="Components"><span class="ico">▢</span><span class="label">Components</span></div>
+                </div>
+                <div class="sb-item" data-sb="Analytics"><span class="ico">📊</span><span class="label">Analytics</span></div>
+              </div>
+              <div class="sb-group">
+                <div class="group-title">Account</div>
+                <div class="sb-item" data-sb="Team"><span class="ico">👥</span><span class="label">Team</span></div>
+                <div class="sb-item" data-sb="Settings"><span class="ico">⚙</span><span class="label">Settings</span></div>
+              </div>
+              <div class="sb-user"><span class="av">AS</span><span class="name">Anna S.</span></div>
+            </div>
+            <div class="sb-content" id="sbContent">
+              <span class="breadcrumbs" id="sbCrumbs">Workspace › Home</span>
+              <h2 id="sbTitle">Home</h2>
+              <p id="sbSub">Everything happening in your workspace today.</p>
+              <div class="rows" id="sbRows">
+                <div class="row"><span>Weekly design review</span><span class="r">Today · 3:00 PM</span></div>
+                <div class="row"><span>3 tasks assigned to you</span><span class="r">2 due today</span></div>
+                <div class="row"><span>Boris shared a document</span><span class="r">7m ago</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">10+ items · groups · nested items · badges · collapsible to icon-only rail</div>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <div class="head">Which pattern fits — one glance</div>
+    <div class="body">
+      <div class="col">
+        <h4 style="color:#1e40af">Top bar wins when</h4>
+        <ul>
+          <li>Content is <b>marketing / product / docs</b> — shallow tree</li>
+          <li>You have <b>≤ 7 primary sections</b> the user needs at eye level</li>
+          <li>The reader scans horizontally, not vertically</li>
+          <li>You need a strong <b>CTA anchor</b> on the right of the bar</li>
+        </ul>
+        <div class="examples"><b>Real-world:</b> Apple.com, Stripe, Notion homepage, Vercel</div>
+      </div>
+      <div class="col sb-col">
+        <h4>Sidebar wins when</h4>
+        <ul>
+          <li>You're building a <b>tool</b> — SaaS, admin panel, dashboard</li>
+          <li>Users spend hours inside; <b>10+ destinations</b> exist</li>
+          <li>You need <b>groups / nesting / badges</b> (Inbox <b>4</b>, Design › Tokens)</li>
+          <li>Screen real estate can be reclaimed via a <b>collapse to icons</b></li>
+        </ul>
+        <div class="examples"><b>Real-world:</b> Figma, Slack, Jira, Linear, GitHub</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">The Rule of Thumb: use a top bar to sell the product, a sidebar once someone is inside it.</div>
+</div>
+
+<script>
+/* ===== TOP BAR interactions ===== */
+var tbLinks = document.querySelectorAll('.tb-nav .link');
+var tbEye = document.getElementById('tbEye');
+var tbTitle = document.getElementById('tbTitle');
+var tbSub = document.getElementById('tbSub');
+var tbData = {
+  Product:   { eye: 'PRODUCT',   title: 'All the pieces of your workflow, in one place.', sub: 'Docs, tasks, and databases living side by side — no more copy-paste between apps that forget each other.' },
+  Solutions: { eye: 'SOLUTIONS', title: 'From two-person teams to two-thousand.',           sub: 'Templates for engineering, design, marketing, and ops — hit the ground running or bring your own.' },
+  Pricing:   { eye: 'PRICING',   title: 'Free for makers. Simple for teams.',               sub: '3 plans. No seat-based surprises. Yearly saves you 20%.' },
+  Docs:      { eye: 'DOCS',      title: 'Everything the product does, written down.',       sub: 'From "hello world" to advanced automations — searchable, indexed, and updated on every release.' },
+  Blog:      { eye: 'BLOG',      title: 'What we\'re learning as we ship.',                sub: 'Engineering deep-dives, product writeups, and the occasional field report from a customer.' }
+};
+tbLinks.forEach(function(el){
+  el.addEventListener('click', function(){
+    tbLinks.forEach(function(x){ x.classList.remove('active'); });
+    el.classList.add('active');
+    var d = tbData[el.dataset.tb];
+    if (d){ tbEye.textContent = d.eye; tbTitle.textContent = d.title; tbSub.textContent = d.sub; }
+    setTimeout(reportHeight, 40);
+  });
+});
+
+/* ===== SIDEBAR interactions ===== */
+var sbItems = document.querySelectorAll('.sidebar .sb-item');
+var sbCrumbs = document.getElementById('sbCrumbs');
+var sbTitle = document.getElementById('sbTitle');
+var sbSub = document.getElementById('sbSub');
+var sbRows = document.getElementById('sbRows');
+var sbData = {
+  Home:       { crumbs: 'Workspace › Home',      title: 'Home',              sub: 'Everything happening in your workspace today.',            rows: [['Weekly design review','Today · 3:00 PM'],['3 tasks assigned to you','2 due today'],['Boris shared a document','7m ago']] },
+  Search:     { crumbs: 'Workspace › Search',    title: 'Search',            sub: 'Type across every doc, task, and comment — instantly.',    rows: [['Recent: "quarterly plan"','2h ago'],['Recent: "onboarding"','yesterday'],['Filter · type:doc','saved'] ] },
+  Inbox:      { crumbs: 'Workspace › Inbox',     title: 'Inbox',             sub: '4 unread items waiting for you.',                          rows: [['@Anna mentioned you on Roadmap','12m ago'],['Design review starts in 10 min','—'],['Boris requested review','1h ago'],['Weekly digest ready','yesterday'] ] },
+  Roadmap:    { crumbs: 'Projects › Roadmap',    title: 'Roadmap',           sub: 'Q4 plan and what\'s shipped so far.',                     rows: [['In progress · Redesign onboarding','—'],['Shipped · New pricing page','last week'],['Next up · SSO for teams','—'] ] },
+  Design:     { crumbs: 'Projects › Design system', title: 'Design system',  sub: 'The single source of truth for every screen.',            rows: [['Tokens updated','—'],['Components: 42 in prod','—'],['Contributors this month','8'] ] },
+  Tokens:     { crumbs: 'Design system › Tokens', title: 'Tokens',           sub: 'Color, spacing, radius, typography — the atoms.',          rows: [['color-primary-500','#4F46E5'],['radius-md','8px'],['space-md','16px'] ] },
+  Components: { crumbs: 'Design system › Components', title: 'Components',   sub: '42 built · 3 in review · 1 deprecating.',                  rows: [['Button','v3.2 · stable'],['Dialog','v2.1 · stable'],['TokenPreview','v0.9 · in review'] ] },
+  Analytics:  { crumbs: 'Projects › Analytics',  title: 'Analytics',         sub: 'How your team is really using the tool.',                  rows: [['DAU','1,240 (+180)'],['Feature adoption · Search','61%'],['Session length','4m 12s'] ] },
+  Team:       { crumbs: 'Account › Team',        title: 'Team',              sub: '12 seats used · 8 available.',                             rows: [['Anna S. · admin','online'],['Boris K. · editor','—'],['Carol M. · viewer','away'] ] },
+  Settings:   { crumbs: 'Account › Settings',    title: 'Settings',          sub: 'Preferences, integrations, billing.',                      rows: [['Notifications','Slack + email'],['Timezone','GMT+2'],['Billing','Team · yearly'] ] }
+};
+sbItems.forEach(function(el){
+  el.addEventListener('click', function(e){
+    e.stopPropagation();
+    sbItems.forEach(function(x){ x.classList.remove('active'); });
+    el.classList.add('active');
+    var d = sbData[el.dataset.sb];
+    if (d){
+      sbCrumbs.textContent = d.crumbs;
+      sbTitle.textContent = d.title;
+      sbSub.textContent = d.sub;
+      sbRows.innerHTML = d.rows.map(function(r){ return '<div class="row"><span>'+r[0]+'</span><span class="r">'+r[1]+'</span></div>'; }).join('');
+    }
+    setTimeout(reportHeight, 40);
+  });
+});
+
+/* Collapse toggle */
+var sbSide = document.getElementById('sbSide');
+var sbToggle = document.getElementById('sbToggle');
+sbToggle.addEventListener('click', function(e){
+  e.stopPropagation();
+  sbSide.classList.toggle('collapsed');
+  sbToggle.textContent = sbSide.classList.contains('collapsed') ? '››' : '‹‹';
+  setTimeout(reportHeight, 340);
+});
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

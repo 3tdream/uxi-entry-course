@@ -83,6 +83,13 @@ export const meeting12: Meeting = {
           ],
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-nav-topbar-vs-sidebar.html',
+          title: 'Top Bar vs Sidebar — живое демо',
+          caption: '🧭 Два реальных навигационных паттерна рядом. **Слева — Top Bar** (Notion/Stripe/Apple стиль): 5 разделов маркетингового сайта, тыкни любой — active-underline и контент справа обновляются. **Справа — Sidebar** (Figma/Slack/Jira стиль): 3 группы, badge на Inbox, вложенные Design → Tokens/Components, кнопка «‹‹» сворачивает панель в узкую полосу с иконками. Правило большого пальца: top bar — чтобы **продать** продукт, sidebar — когда пользователь уже **внутри** него.',
+          aspectRatio: '5 / 4',
+        },
+        {
           type: 'subheading' as const,
           content: 'Hero-секция',
         },
