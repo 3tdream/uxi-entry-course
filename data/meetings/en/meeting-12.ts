@@ -149,6 +149,13 @@ export const meeting12: Meeting = {
           ],
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-cards-mobile.html',
+          title: 'Cards on FHD mobile (live demo, 1080×2340)',
+          caption: '📱 A real FHD-mobile frame (1080×2340 proportions) with all three patterns from the key concepts stacked inside. **Section 1**: card grid — 4 product cards (Shopify/Etsy grammar). **Section 2**: card carousel with scroll-snap (Netflix/Spotify grammar) — swipe it. **Section 3**: elevated card with a strong box-shadow that deepens on tap. The whole thing scrolls inside the phone — like a real app.',
+          aspectRatio: '3 / 2',
+        },
+        {
           type: 'subheading' as const,
           content: 'Forms',
         },
@@ -287,6 +294,70 @@ export const meeting12: Meeting = {
           variant: 'warning' as const,
           content:
             '**Gesture trap:** Instagram removed the swipe to switch between tabs and replaced it with Reels. Millions of users accidentally ended up in Reels instead of messages. **A gesture that conflicts with an established habit is a UX catastrophe.**',
+        },
+        {
+          type: 'subheading' as const,
+          content: '🎮 Mobile game design patterns',
+        },
+        {
+          type: 'text' as const,
+          content:
+            'Mobile games are their **own UX universe**. Where SaaS optimizes for conversion, a game optimizes for **retention**. The user doesn\'t stay for 3 minutes but for 3 hours, the screen drowns in the HUD (Heads-Up Display), and the thumb never leaves the edges of the device. The rules shift: **60 FPS beats a fancy picture**, **thumb zone beats menu logic**, **feedback is instant or it doesn\'t exist**.',
+        },
+        {
+          type: 'key-concepts' as const,
+          concepts: [
+            {
+              term: 'HUD (Heads-Up Display)',
+              definition:
+                'A persistent overlay on top of gameplay: HP/MP/XP bars, minimap, objective, currency counter. Takes 15-25% of the screen. Every element has to be readable from peripheral vision while the eye is on the action.',
+            },
+            {
+              term: 'Virtual joystick + action cluster',
+              definition:
+                'Left: a translucent joystick under the left thumb. Right: a radial action cluster (primary in the center, secondaries smaller). Layout is driven by the **thumb zone** — where the finger can physically reach without a grip shift.',
+            },
+            {
+              term: 'Portrait vs Landscape',
+              definition:
+                'Casual (Match-3, gacha, hyper-casual) — portrait, one-handed. Core (MOBA, shooters, action RPGs) — landscape, two-handed. The orientation choice cascades into everything: button sizes, HUD density, session length.',
+            },
+            {
+              term: 'Modal shop / inventory sheet',
+              definition:
+                'Shop, inventory, and gacha screens ride in as bottom sheets or full-screen modals — they block the game loop so the player **can\'t miss** them. Dark backdrop, large CTAs, a badge on any new item.',
+            },
+            {
+              term: 'Progression indicators',
+              definition:
+                'XP bars, streaks, level-up animations — **fuel for the dopamine loop**. No valuable in-game action ships without a visual confirmation of progress.',
+            },
+          ],
+        },
+        {
+          type: 'callout' as const,
+          variant: 'tip' as const,
+          content:
+            '**Thumb zone decides everything.** Hold your phone with one hand and try reaching the top corner with your thumb — you can\'t. A HUD designer knows this and never places **interactive** elements in the top third of the screen. The top is for **reading** (HP, minimap, objective); the bottom is for **acting** (joystick, buttons, cooldowns).',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'warning' as const,
+          content:
+            '**HUD overload is the classic beginner mistake.** If the player sees 12 indicators, a minimap, chat, 4 quests, a leaderboard, and 2 timers at the same time — they don\'t see the game. Rule of thumb: **if the element doesn\'t change every second, move it into a modal**.',
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-mobile-gaming-hud.html',
+          title: 'Mobile game HUD — anatomy (live demo)',
+          caption: '🎮 A live mobile game HUD in landscape/portrait: top-left — HP/MP/XP bars + avatar with level; top-center — objective "Defeat the boss 1/1"; top-right — minimap with enemy dots and a coin counter; bottom-left — **the virtual joystick** (drag it — the stick follows your finger); bottom-right — an action cluster with a big Attack, plus Jump, Dodge, and cooldowns; bottom-center — a quickbar with five slots. **Toggle any element off** at the top and watch the HUD strip down. Flip Landscape ↔ Portrait — the layout rewires itself for one-handed play.',
+          aspectRatio: '5 / 4',
+        },
+        {
+          type: 'callout' as const,
+          variant: 'example' as const,
+          content:
+            '**Real-world breakdown:** *Genshin Impact* — the reference HUD for action RPG. *Clash Royale* — portrait with a centered minimap and one high-value bottom-sheet zone (the cards). *Pokémon GO* — a hybrid where the HUD almost disappears because the whole game is an AR camera. *Call of Duty Mobile* — landscape shooter with dual joysticks and a radial action cluster. Every game solves it differently, but all of them respect the thumb zone.',
         },
         {
           type: 'divider' as const,

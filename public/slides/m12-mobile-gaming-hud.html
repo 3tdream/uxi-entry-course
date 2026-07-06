@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile game HUD — anatomy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:24px 28px 16px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:14px}
+
+.toolbar{background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.toolbar .g{display:flex;align-items:center;gap:8px}
+.toolbar .l{font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase}
+.seg{display:inline-flex;border:1px solid #d4d4cc;border-radius:8px;background:#fff;overflow:hidden;font-family:'Geist Mono',monospace}
+.seg button{appearance:none;border:0;background:transparent;padding:6px 12px;font:inherit;font-size:11.5px;color:#26261f;cursor:pointer;letter-spacing:.02em}
+.seg button[aria-pressed=true]{background:#26261f;color:#fff}
+.toolbar .toggles{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.toolbar .chk{appearance:none;font:inherit;font-family:'Geist Mono',monospace;font-size:11px;padding:5px 10px;border:1px solid #d4d4cc;border-radius:7px;background:#fff;color:#26261f;cursor:pointer;transition:all .12s}
+.toolbar .chk[aria-pressed=true]{background:#0f766e;color:#fff;border-color:#0f766e}
+
+/* stage — landscape default, portrait toggle */
+.stage{display:flex;justify-content:center;padding:12px 0}
+.game-frame{position:relative;background:#1a1a17;border:9px solid #0a0a08;border-radius:32px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.18);transition:width .34s cubic-bezier(.4,0,.2,1),height .34s cubic-bezier(.4,0,.2,1)}
+.game-frame.landscape{width:720px;height:340px}
+.game-frame.portrait{width:280px;height:600px}
+@media(max-width:820px){.game-frame.landscape{width:100%;max-width:720px;height:auto;aspect-ratio:12/6}}
+
+.screen{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#1e3a2e 0%,#0e1a15 65%,#050807 100%)}
+
+/* ambient scene */
+.scene .ground{position:absolute;bottom:0;left:0;right:0;height:36%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55)),repeating-linear-gradient(90deg,#0a1310 0,#0a1310 22px,#0b1a13 22px,#0b1a13 44px)}
+.scene .tree{position:absolute;bottom:30%;width:26px;height:70px;background:linear-gradient(180deg,#0f2419 0%,#050e0a 100%);border-radius:50% 50% 6px 6px;opacity:.85}
+.scene .tree.t1{left:12%;height:64px}
+.scene .tree.t2{left:32%;height:80px}
+.scene .tree.t3{right:22%;height:72px}
+.scene .tree.t4{right:8%;height:56px}
+.scene .stars{position:absolute;top:0;left:0;right:0;height:60%;background-image:radial-gradient(circle at 15% 20%,rgba(255,255,255,.4) 0,transparent 1.5px),radial-gradient(circle at 42% 12%,rgba(255,255,255,.35) 0,transparent 1.5px),radial-gradient(circle at 65% 30%,rgba(255,255,255,.5) 0,transparent 1.5px),radial-gradient(circle at 82% 18%,rgba(255,255,255,.3) 0,transparent 1.5px),radial-gradient(circle at 25% 8%,rgba(255,255,255,.4) 0,transparent 1.5px)}
+.scene .hero{position:absolute;bottom:22%;left:50%;transform:translateX(-50%);width:24px;height:38px;background:linear-gradient(180deg,#f3b45b 0%,#d17a3b 100%);border-radius:50% 50% 6px 6px;box-shadow:0 4px 8px rgba(255,180,90,.4)}
+.scene .hero::before{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:14px;height:14px;background:#f3b45b;border-radius:50%}
+.scene .enemy{position:absolute;bottom:26%;width:20px;height:26px;background:linear-gradient(180deg,#8b1f2e 0%,#4a0f18 100%);border-radius:50% 50% 4px 4px;box-shadow:0 3px 6px rgba(139,31,46,.4);opacity:.9}
+.scene .enemy.e1{left:22%}
+.scene .enemy.e2{right:26%}
+
+/* HUD elements */
+.hud{position:absolute;inset:0;pointer-events:none}
+.hud > *{pointer-events:auto}
+
+/* top-left: HP + MP + XP + Player */
+.player-panel{position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:10px}
+.player-panel .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#4c1d95);border:2px solid #f3b45b;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Geist',sans-serif;font-weight:700;font-size:12px;flex-shrink:0}
+.player-panel .lvl{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);background:#f3b45b;color:#1a1a17;font-family:'Geist Mono',monospace;font-size:9px;font-weight:700;padding:1px 5px;border-radius:6px;line-height:1}
+.player-panel .bars{display:flex;flex-direction:column;gap:3px;min-width:120px}
+.bar{position:relative;height:9px;background:rgba(0,0,0,.55);border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.15)}
+.bar .fill{position:absolute;inset:0;border-radius:4px}
+.bar.hp .fill{background:linear-gradient(90deg,#22c55e,#65a30d);width:74%}
+.bar.mp .fill{background:linear-gradient(90deg,#3b82f6,#1d4ed8);width:52%}
+.bar.xp{height:5px}
+.bar.xp .fill{background:linear-gradient(90deg,#f59e0b,#d97706);width:38%}
+.bar .val{position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:'Geist Mono',monospace;font-size:8.5px;color:#fff;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.7);letter-spacing:.02em}
+
+/* top-center: objective */
+.objective{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:4px 12px;font-family:'Geist Mono',monospace;font-size:10px;color:#fff;letter-spacing:.03em;display:flex;align-items:center;gap:7px}
+.objective .icon{color:#f59e0b;font-size:11px}
+.objective .num{color:#f59e0b;font-weight:700}
+
+/* top-right: minimap + coins */
+.top-right{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.minimap{width:90px;height:74px;background:rgba(0,0,0,.55);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;position:relative;overflow:hidden}
+.minimap .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:12px 12px}
+.minimap .you{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:#f3b45b;border-radius:50%;box-shadow:0 0 0 3px rgba(243,180,91,.3)}
+.minimap .enemy-dot{position:absolute;width:5px;height:5px;background:#dc2626;border-radius:50%}
+.minimap .enemy-dot.d1{top:32%;left:26%}
+.minimap .enemy-dot.d2{top:38%;right:22%}
+.minimap .enemy-dot.d3{top:64%;left:56%}
+.coins{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:3px 9px;font-family:'Geist Mono',monospace;font-size:10px;color:#fff;font-weight:600;display:flex;align-items:center;gap:4px}
+.coins .c{color:#f59e0b}
+
+/* virtual joystick — bottom-left */
+.joystick{position:absolute;bottom:22px;left:22px;width:100px;height:100px;background:radial-gradient(circle,rgba(255,255,255,.12) 0%,rgba(255,255,255,.04) 60%,transparent 100%);border:1.5px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none;cursor:pointer}
+.joystick .stick{width:44px;height:44px;background:radial-gradient(circle at 30% 30%,#f3b45b,#a35d16);border-radius:50%;border:2px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.4),inset 0 -3px 6px rgba(0,0,0,.25);transition:transform .05s;pointer-events:none}
+.joystick.active{border-color:rgba(243,180,91,.6)}
+
+/* action buttons — bottom-right radial */
+.actions{position:absolute;bottom:22px;right:22px;width:130px;height:130px;pointer-events:none}
+.act-btn{position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#5a5a53,#1a1a17);color:#fff;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-family:'Geist',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:transform .1s,background .15s,box-shadow .15s;pointer-events:auto;text-shadow:0 1px 2px rgba(0,0,0,.6);box-shadow:0 3px 10px rgba(0,0,0,.35)}
+.act-btn:active,.act-btn.pressed{transform:scale(.9)}
+.act-btn.attack{bottom:0;right:0;background:radial-gradient(circle at 30% 30%,#dc2626,#7f1d1d);width:60px;height:60px;font-size:14px}
+.act-btn.jump{bottom:0;right:70px;background:radial-gradient(circle at 30% 30%,#0891b2,#164e63)}
+.act-btn.dodge{bottom:70px;right:0;background:radial-gradient(circle at 30% 30%,#7c3aed,#4c1d95)}
+.act-btn .cd{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);font-family:'Geist Mono',monospace;font-size:8.5px;color:#fff;font-weight:600;background:rgba(0,0,0,.55);padding:1px 5px;border-radius:8px;letter-spacing:.02em;white-space:nowrap}
+
+/* bottom-center: skill quickbar (portrait mode moves it up) */
+.quickbar{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;background:rgba(0,0,0,.5);padding:4px;border-radius:10px;border:1px solid rgba(255,255,255,.15)}
+.quickbar .slot{width:32px;height:32px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Geist',sans-serif;font-size:14px;color:#f3b45b;font-weight:700;position:relative}
+.quickbar .slot .k{position:absolute;top:1px;right:2px;font-family:'Geist Mono',monospace;font-size:7.5px;color:rgba(255,255,255,.5);font-weight:600}
+.quickbar .slot.ready{background:rgba(243,180,91,.15);border-color:rgba(243,180,91,.5)}
+
+/* portrait layout adjustments */
+.game-frame.portrait .player-panel{top:8px;left:8px;gap:6px}
+.game-frame.portrait .player-panel .av{width:32px;height:32px;font-size:10px}
+.game-frame.portrait .player-panel .bars{min-width:90px}
+.game-frame.portrait .objective{font-size:9px;top:56px;padding:3px 9px}
+.game-frame.portrait .top-right{top:8px;right:8px}
+.game-frame.portrait .minimap{width:70px;height:56px}
+.game-frame.portrait .joystick{width:80px;height:80px;bottom:18px;left:14px}
+.game-frame.portrait .joystick .stick{width:36px;height:36px}
+.game-frame.portrait .actions{width:110px;height:110px;bottom:18px;right:14px}
+.game-frame.portrait .act-btn.attack{width:52px;height:52px;font-size:13px}
+.game-frame.portrait .quickbar{bottom:132px;padding:3px}
+.game-frame.portrait .quickbar .slot{width:26px;height:26px;font-size:12px}
+
+/* hidden state toggle — for HUD reveal */
+.game-frame:not(.show-player) .player-panel,
+.game-frame:not(.show-objective) .objective,
+.game-frame:not(.show-minimap) .top-right,
+.game-frame:not(.show-joystick) .joystick,
+.game-frame:not(.show-actions) .actions,
+.game-frame:not(.show-quickbar) .quickbar{display:none}
+
+/* legend */
+.legend{margin-top:24px;background:#fff;border:1px solid #e2e2da;border-radius:12px;overflow:hidden}
+.legend .head{padding:12px 18px;font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;letter-spacing:.05em;text-transform:uppercase;font-weight:600;border-bottom:1px solid #eee;background:#fafaf8}
+.legend .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+@media(max-width:820px){.legend .grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.legend .grid{grid-template-columns:1fr}}
+.legend .cell{padding:14px 18px;border-right:1px solid #eee;border-bottom:1px solid #eee}
+.legend .cell:nth-child(3n){border-right:0}
+@media(max-width:820px){.legend .cell{border-right-width:1px}.legend .cell:nth-child(3n){border-right-width:1px}.legend .cell:nth-child(2n){border-right:0}}
+.legend .cell h5{margin:0 0 4px;font-family:'Geist Mono',monospace;font-size:10.5px;color:#0f766e;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+.legend .cell p{margin:0;font-size:12px;color:#3a3a33;line-height:1.5}
+.legend .cell .real{margin-top:6px;font-family:'Geist Mono',monospace;font-size:10.5px;color:#6b6b62}
+.legend .cell .real b{color:#26261f;font-weight:600}
+.tip{margin-top:20px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">A real mobile-game HUD · drag the joystick · tap the buttons · toggle any element off</div>
+
+  <div class="toolbar">
+    <div class="g">
+      <span class="l">Orientation</span>
+      <div class="seg" role="group">
+        <button data-o="landscape" aria-pressed="true">Landscape</button>
+        <button data-o="portrait" aria-pressed="false">Portrait</button>
+      </div>
+    </div>
+    <div class="toggles">
+      <button class="chk" data-t="show-player" aria-pressed="true">Player HP/MP/XP</button>
+      <button class="chk" data-t="show-objective" aria-pressed="true">Objective</button>
+      <button class="chk" data-t="show-minimap" aria-pressed="true">Minimap</button>
+      <button class="chk" data-t="show-joystick" aria-pressed="true">Joystick</button>
+      <button class="chk" data-t="show-actions" aria-pressed="true">Actions</button>
+      <button class="chk" data-t="show-quickbar" aria-pressed="true">Quickbar</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="game-frame landscape show-player show-objective show-minimap show-joystick show-actions show-quickbar" id="frame">
+      <div class="screen">
+        <div class="scene">
+          <div class="stars"></div>
+          <div class="tree t1"></div>
+          <div class="tree t2"></div>
+          <div class="tree t3"></div>
+          <div class="tree t4"></div>
+          <div class="ground"></div>
+          <div class="enemy e1"></div>
+          <div class="enemy e2"></div>
+          <div class="hero"></div>
+        </div>
+
+        <div class="hud">
+          <!-- top-left: player -->
+          <div class="player-panel">
+            <div class="av">AK<span class="lvl">27</span></div>
+            <div class="bars">
+              <div class="bar hp"><div class="fill"></div><span class="val">HP 74 / 100</span></div>
+              <div class="bar mp"><div class="fill"></div><span class="val">MP 52 / 100</span></div>
+              <div class="bar xp"><div class="fill"></div></div>
+            </div>
+          </div>
+
+          <!-- top-center: objective -->
+          <div class="objective">
+            <span class="icon">✦</span>
+            <span>Defeat the boss</span>
+            <span class="num">1/1</span>
+          </div>
+
+          <!-- top-right: minimap + coins -->
+          <div class="top-right">
+            <div class="minimap">
+              <div class="grid"></div>
+              <div class="enemy-dot d1"></div>
+              <div class="enemy-dot d2"></div>
+              <div class="enemy-dot d3"></div>
+              <div class="you"></div>
+            </div>
+            <div class="coins"><span class="c">◉</span> 1,240</div>
+          </div>
+
+          <!-- bottom-left: joystick -->
+          <div class="joystick" id="joystick">
+            <div class="stick" id="stick"></div>
+          </div>
+
+          <!-- bottom-right: action buttons -->
+          <div class="actions">
+            <button class="act-btn dodge" data-act="dodge">◐<span class="cd">2.4s</span></button>
+            <button class="act-btn jump" data-act="jump">↥<span class="cd">ready</span></button>
+            <button class="act-btn attack" data-act="attack">⚔<span class="cd">ready</span></button>
+          </div>
+
+          <!-- quickbar -->
+          <div class="quickbar">
+            <div class="slot ready">✦<span class="k">1</span></div>
+            <div class="slot ready">◈<span class="k">2</span></div>
+            <div class="slot">⚡<span class="k">3</span></div>
+            <div class="slot">◊<span class="k">4</span></div>
+            <div class="slot">◉<span class="k">Q</span></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="head">Every element on the HUD earns its rent · anatomy for a mobile game</div>
+    <div class="grid">
+      <div class="cell">
+        <h5>Player state · top-left</h5>
+        <p>Avatar + level, then HP / MP / XP bars. Always in the corner nearest the eye's default landing spot.</p>
+        <p class="real"><b>Genshin Impact</b>, <b>Diablo Immortal</b>, <b>Wild Rift</b></p>
+      </div>
+      <div class="cell">
+        <h5>Objective · top-center</h5>
+        <p>One-line "what am I doing right now?" with a progress fraction. Highest-value real estate.</p>
+        <p class="real"><b>Call of Duty Mobile</b>, <b>PUBG</b>, <b>Fortnite</b></p>
+      </div>
+      <div class="cell">
+        <h5>Minimap + resources · top-right</h5>
+        <p>Where am I, where are they, how much currency. Never centered — always a glance.</p>
+        <p class="real"><b>Clash of Clans</b>, <b>Pokémon GO</b>, <b>Fortnite</b></p>
+      </div>
+      <div class="cell">
+        <h5>Virtual joystick · thumb zone left</h5>
+        <p>Placed where the left thumb rests. Semi-transparent — the game is more important than the control.</p>
+        <p class="real"><b>Genshin Impact</b>, <b>CoD Mobile</b>, <b>Wild Rift</b></p>
+      </div>
+      <div class="cell">
+        <h5>Action cluster · thumb zone right</h5>
+        <p>Radial layout — primary action biggest, secondary smaller. Cooldowns visible under each. Fitts' Law for thumbs.</p>
+        <p class="real"><b>Wild Rift</b>, <b>Mobile Legends</b>, <b>Warframe M</b></p>
+      </div>
+      <div class="cell">
+        <h5>Quickbar · bottom-center</h5>
+        <p>Consumables and skill slots. Highlighted when ready, dimmed on cooldown. Optional — off if it clutters.</p>
+        <p class="real"><b>Diablo Immortal</b>, <b>Warframe Mobile</b>, <b>Alien Isolation</b></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">Rule for a HUD: every element must be readable at 60 fps while the eye is on the action. Toggle any of them off — the moment one feels missed, you've found what earns its rent.</div>
+</div>
+
+<script>
+var frame = document.getElementById('frame');
+
+/* orientation toggle */
+document.querySelectorAll('.seg button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.seg button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    frame.classList.remove('landscape','portrait');
+    frame.classList.add(b.dataset.o);
+    setTimeout(reportHeight, 380);
+  });
+});
+
+/* element toggles */
+document.querySelectorAll('.chk[data-t]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', on ? 'false' : 'true');
+    frame.classList.toggle(b.dataset.t, !on);
+    setTimeout(reportHeight, 40);
+  });
+});
+
+/* joystick drag */
+var joy = document.getElementById('joystick');
+var stick = document.getElementById('stick');
+function joyMove(cx, cy, active){
+  var rect = joy.getBoundingClientRect();
+  var jx = rect.left + rect.width/2;
+  var jy = rect.top + rect.height/2;
+  var dx = cx - jx, dy = cy - jy;
+  var dist = Math.min(Math.hypot(dx,dy), rect.width/2 - 22);
+  var ang = Math.atan2(dy,dx);
+  var x = Math.cos(ang)*dist, y = Math.sin(ang)*dist;
+  stick.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+  joy.classList.toggle('active', !!active);
+}
+function joyReset(){ stick.style.transform = ''; joy.classList.remove('active'); }
+joy.addEventListener('pointerdown', function(e){ joy.setPointerCapture(e.pointerId); joyMove(e.clientX, e.clientY, true); });
+joy.addEventListener('pointermove', function(e){ if (e.pressure > 0 || e.buttons > 0) joyMove(e.clientX, e.clientY, true); });
+joy.addEventListener('pointerup', joyReset);
+joy.addEventListener('pointercancel', joyReset);
+joy.addEventListener('pointerleave', function(e){ if (e.buttons === 0) joyReset(); });
+
+/* action buttons feedback */
+document.querySelectorAll('.act-btn').forEach(function(b){
+  b.addEventListener('click', function(){
+    b.classList.add('pressed');
+    setTimeout(function(){ b.classList.remove('pressed'); }, 140);
+  });
+});
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>
