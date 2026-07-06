@@ -406,8 +406,8 @@ export const meeting12: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-12-ios-vs-material.webp',
-          alt: 'Two phones side by side comparing iOS and Material Design',
-          caption: 'iOS HIG vs Material Design 3: contrasting mobile UI philosophies.',
+          alt: 'Grid Specifications Must Known infographic: two phones side by side (Apple and Android) with exact sizes for status bar, navigation/app bar, screen, tab/bottom nav bar, home indicator, 16px side margins, and a 4-column grid',
+          caption: 'Exact sizes of every system zone on iOS vs Android: **iOS** — status bar 54px, navigation 96px, screen 393×852, tab bar 56px, home indicator 34px. **Android** — status 24px, app bar 56px, screen 360×640, bottom nav 56px, system navigation 48px. Shared: margin 16px, gutter 16px, stretched over 4 columns. These are the numbers a designer works with every day.',
         },
         {
           type: 'before-after' as const,

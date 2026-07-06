@@ -406,8 +406,8 @@ export const meeting12: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-12-ios-vs-material.webp',
-          alt: 'Два телефона рядом: iOS интерфейс и Material Design интерфейс',
-          caption: 'iOS HIG vs Material Design 3: разные философии мобильного UI.',
+          alt: 'Инфографика Grid Specifications Must Known: два телефона рядом (Apple и Android) с точными размерами status bar, navigation/app bar, screen, tab/bottom nav bar, home indicator, боковыми margins 16px и grid из 4 колонок',
+          caption: 'Точные размеры системных зон iOS vs Android: **iOS** — status bar 54px, navigation 96px, screen 393×852, tab bar 56px, home indicator 34px. **Android** — status 24px, app bar 56px, screen 360×640, bottom nav 56px, system navigation 48px. Общее: margin 16px, gutter 16px, стрейч на 4 колонки. Это те цифры, с которыми дизайнер работает каждый день.',
         },
         {
           type: 'before-after' as const,
