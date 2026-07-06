@@ -942,6 +942,20 @@ export const meeting12: Meeting = {
             '**Legal risk:** In 2025, the European Accessibility Act came into force in the EU, requiring all digital services to meet accessibility standards. In the US — the ADA. An inaccessible site = **a lawsuit**.',
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-contrast-checker.html',
+          title: 'WCAG contrast checker — live tool',
+          caption: '🎨 A live contrast calculator: pick text and background colours (color picker or presets), change the font size — the contrast ratio recomputes in real time using the WCAG formula. Four checkers on the right (AA/AAA × normal/large) instantly repaint pass/fail. Below — a live preview with large / normal / small text and a button. Small copy is the first to fail.',
+          aspectRatio: '5 / 4',
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-touch-target-tester.html',
+          title: 'Touch target tester — 20/32/44px (live demo)',
+          caption: '👆 Three buttons with the same content in different sizes: 20px, 32px, 44px. Each jitters after every tap — try to hit each one 10 times. The miss-rate at the bottom of each card is the honest read on why WCAG 2.1 requires 44×44. Toggle "Show 44-px hit ring" — you\'ll see the invisible hit-area every button should have (but only the right one actually does).',
+          aspectRatio: '5 / 3',
+        },
+        {
           type: 'divider' as const,
         },
         // --- RESPONSIVE AUDIT, DARK MODE, i18n ---

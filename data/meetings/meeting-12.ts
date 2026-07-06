@@ -942,6 +942,20 @@ export const meeting12: Meeting = {
             '**Юридический риск:** В 2025 году в ЕС вступил в силу European Accessibility Act, обязывающий все цифровые сервисы соответствовать стандартам доступности. В США — ADA. Недоступный сайт = **судебный иск**.',
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-contrast-checker.html',
+          title: 'WCAG contrast checker — живой инструмент',
+          caption: '🎨 Живой контраст-калькулятор: выбери цвет текста и фона (color picker или пресеты), меняй размер шрифта — соотношение контраста считается в реальном времени по формуле WCAG. Четыре чекера справа (AA/AAA × normal/large) моментально красятся в pass/fail. Внизу — live preview с большим/обычным/мелким текстом и кнопкой. Мелкий текст падает первым.',
+          aspectRatio: '5 / 4',
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-touch-target-tester.html',
+          title: 'Touch target tester — 20/32/44px (живое демо)',
+          caption: '👆 Три кнопки одинакового содержания в разных размерах: 20px, 32px, 44px. Каждая сдвигается после каждого тапа — попробуй попасть по каждой 10 раз. Miss-rate внизу карточек — честная оценка того, почему WCAG 2.1 требует 44×44. Включи «Show 44-px hit ring» — увидишь невидимую hit-area, которую должны иметь все три (но по-настоящему имеет только правая).',
+          aspectRatio: '5 / 3',
+        },
+        {
           type: 'divider' as const,
         },
         // --- RESPONSIVE AUDIT, DARK MODE, i18n ---

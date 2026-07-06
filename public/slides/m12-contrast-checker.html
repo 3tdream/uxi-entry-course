@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WCAG contrast checker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:24px 28px 16px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+
+.grid{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:stretch}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+.controls{background:#fff;border:1px solid #e2e2da;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field .label{display:flex;justify-content:space-between;align-items:baseline}
+.field .lab{font-size:13px;font-weight:600;color:#26261f}
+.field .hex{font-family:'Geist Mono',monospace;font-size:13px;color:#0f766e;font-weight:600;background:#eaf3ed;padding:3px 10px;border-radius:6px;border:1px solid #d4e7dc;text-transform:uppercase}
+.color-row{display:flex;align-items:center;gap:12px}
+.color-row .swatch{width:44px;height:44px;border-radius:9px;border:2px solid #fff;box-shadow:0 0 0 1px #d4d4cc,0 2px 8px rgba(0,0,0,.06);flex-shrink:0}
+.color-row input[type=color]{-webkit-appearance:none;appearance:none;border:0;background:transparent;padding:0;width:44px;height:44px;cursor:pointer;position:absolute;opacity:0}
+.color-row .pick-wrap{position:relative}
+.presets{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.presets .preset{appearance:none;width:22px;height:22px;border-radius:5px;border:1px solid #d4d4cc;cursor:pointer;padding:0;transition:transform .12s}
+.presets .preset:hover{transform:scale(1.15)}
+
+.field input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:4px;background:linear-gradient(90deg,#3f7d5a var(--p,50%),#e7e5e1 var(--p,50%));outline:none}
+.field input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:#26261f;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:pointer}
+.field input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#26261f;border:3px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:pointer}
+
+.result{background:linear-gradient(135deg,#1a1a17 0%,#26261f 100%);color:#e8e8e2;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:18px;justify-content:space-between}
+.big{text-align:center}
+.big .h{font-family:'Geist Mono',monospace;font-size:11px;color:#a8a89f;letter-spacing:.06em;text-transform:uppercase}
+.big .n{font-size:56px;font-weight:700;color:#7dd3a0;line-height:1;font-feature-settings:'tnum';margin:6px 0 4px}
+.big .n.warn{color:#fca5a5}
+.big .sub{font-family:'Geist Mono',monospace;font-size:11.5px;color:#a5b4fc}
+
+.check{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-family:'Geist Mono',monospace}
+.chk .k{font-size:10.5px;color:#a8a89f;letter-spacing:.05em;text-transform:uppercase}
+.chk .v{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.chk .v .badge{font-size:9.5px;padding:2px 6px;border-radius:8px;font-weight:700;letter-spacing:.03em}
+.chk .v .badge.pass{background:#3f7d5a;color:#fff}
+.chk .v .badge.fail{background:#c0473b;color:#fff}
+.chk .v .ratio{color:#e8e8e2}
+
+.preview{background:#fff;border:1px solid #e2e2da;border-radius:12px;overflow:hidden;margin-top:22px}
+.preview .p-head{padding:11px 16px;background:#fafaf8;border-bottom:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;letter-spacing:.05em;text-transform:uppercase}
+.preview .stage{padding:26px 22px;transition:background .2s ease}
+.preview .stage p{margin:0 0 6px;font-family:'Geist',sans-serif;transition:color .2s ease}
+.preview .stage .t-large{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:12px}
+.preview .stage .t-normal{font-size:15px;line-height:1.55}
+.preview .stage .t-small{font-size:12.5px;line-height:1.55;margin-top:6px}
+.preview .stage .btn{display:inline-block;margin-top:14px;padding:8px 16px;font-family:'Geist',sans-serif;font-size:13px;font-weight:600;border-radius:7px;cursor:default;transition:background .2s ease,color .2s ease,border-color .2s ease}
+
+.tip{margin-top:20px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">Pick text + background · read the WCAG verdict live</div>
+
+  <div class="grid">
+
+    <div class="controls">
+      <div class="field">
+        <div class="label"><span class="lab">Text colour</span><span class="hex" id="hFg">#26261F</span></div>
+        <div class="color-row">
+          <div class="swatch" id="swFg" style="background:#26261F"></div>
+          <div class="pick-wrap"><input type="color" id="iFg" value="#26261F"><span style="font-family:'Geist Mono',monospace;font-size:11.5px;color:#6b6b62;cursor:pointer" onclick="document.getElementById('iFg').click()">pick →</span></div>
+        </div>
+        <div class="presets" id="presetsFg">
+          <button class="preset" data-t="fg" style="background:#000000" title="#000000"></button>
+          <button class="preset" data-t="fg" style="background:#26261F" title="Geist ink"></button>
+          <button class="preset" data-t="fg" style="background:#374151" title="Slate 700"></button>
+          <button class="preset" data-t="fg" style="background:#6b6b62" title="Mid grey"></button>
+          <button class="preset" data-t="fg" style="background:#a8a89f" title="Muted"></button>
+          <button class="preset" data-t="fg" style="background:#2563eb" title="Blue 600"></button>
+          <button class="preset" data-t="fg" style="background:#3f7d5a" title="Green 600"></button>
+          <button class="preset" data-t="fg" style="background:#c0473b" title="Red"></button>
+          <button class="preset" data-t="fg" style="background:#FFFFFF" title="#FFFFFF"></button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="label"><span class="lab">Background colour</span><span class="hex" id="hBg">#F4F4F2</span></div>
+        <div class="color-row">
+          <div class="swatch" id="swBg" style="background:#F4F4F2"></div>
+          <div class="pick-wrap"><input type="color" id="iBg" value="#F4F4F2"><span style="font-family:'Geist Mono',monospace;font-size:11.5px;color:#6b6b62;cursor:pointer" onclick="document.getElementById('iBg').click()">pick →</span></div>
+        </div>
+        <div class="presets" id="presetsBg">
+          <button class="preset" data-t="bg" style="background:#FFFFFF" title="#FFFFFF"></button>
+          <button class="preset" data-t="bg" style="background:#F4F4F2" title="Geist bg"></button>
+          <button class="preset" data-t="bg" style="background:#F3F4F6" title="Slate 100"></button>
+          <button class="preset" data-t="bg" style="background:#E5E7EB" title="Slate 200"></button>
+          <button class="preset" data-t="bg" style="background:#FEF3C7" title="Yellow 100"></button>
+          <button class="preset" data-t="bg" style="background:#DBEAFE" title="Blue 100"></button>
+          <button class="preset" data-t="bg" style="background:#0F172A" title="Ink"></button>
+          <button class="preset" data-t="bg" style="background:#000000" title="#000000"></button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="label"><span class="lab">Preview text size</span><span class="hex" id="hSz">18 px</span></div>
+        <input id="iSz" type="range" min="10" max="28" step="1" value="18">
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="big">
+        <div class="h">Contrast ratio</div>
+        <div class="n" id="rRatio">4.51</div>
+        <div class="sub">WCAG 1.4.3 — colour is not the only differentiator</div>
+      </div>
+
+      <div class="check">
+        <div class="chk">
+          <span class="k">AA · normal text · ≥ 4.5</span>
+          <span class="v"><span class="ratio" id="vRatio1">4.51</span><span class="badge pass" id="bAA">pass</span></span>
+        </div>
+        <div class="chk">
+          <span class="k">AA · large text · ≥ 3</span>
+          <span class="v"><span class="ratio" id="vRatio2">4.51</span><span class="badge pass" id="bAALg">pass</span></span>
+        </div>
+        <div class="chk">
+          <span class="k">AAA · normal text · ≥ 7</span>
+          <span class="v"><span class="ratio" id="vRatio3">4.51</span><span class="badge fail" id="bAAA">fail</span></span>
+        </div>
+        <div class="chk">
+          <span class="k">AAA · large text · ≥ 4.5</span>
+          <span class="v"><span class="ratio" id="vRatio4">4.51</span><span class="badge pass" id="bAAALg">pass</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="preview">
+    <div class="p-head">Live preview</div>
+    <div class="stage" id="stage">
+      <p class="t-large" id="tLarge">Ship with intent, not with intuition.</p>
+      <p class="t-normal" id="tNormal">Design is deciding what stays out. Every element on the screen is a bet that it earns its rent — and if it can't be read, it's a losing bet.</p>
+      <p class="t-small" id="tSmall">Small copy — footnotes, form hints, legal text. These are the first to fail contrast in real designs.</p>
+      <span class="btn" id="btn">Primary action</span>
+    </div>
+  </div>
+
+  <div class="tip">Large text = ≥ 18px normal OR ≥ 14px bold. Small text is where most designs quietly fail — check it separately.</div>
+</div>
+
+<script>
+function toRgb(hex){
+  hex = hex.replace('#','');
+  if (hex.length === 3) hex = hex.split('').map(function(c){return c+c;}).join('');
+  var r = parseInt(hex.substr(0,2),16), g = parseInt(hex.substr(2,2),16), b = parseInt(hex.substr(4,2),16);
+  return [r,g,b];
+}
+function relLum(rgb){
+  var srgb = rgb.map(function(v){
+    v /= 255;
+    return v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4);
+  });
+  return 0.2126*srgb[0] + 0.7152*srgb[1] + 0.0722*srgb[2];
+}
+function contrast(hex1, hex2){
+  var L1 = relLum(toRgb(hex1)), L2 = relLum(toRgb(hex2));
+  var hi = Math.max(L1,L2), lo = Math.min(L1,L2);
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+var iFg = document.getElementById('iFg'), iBg = document.getElementById('iBg'), iSz = document.getElementById('iSz');
+var swFg = document.getElementById('swFg'), swBg = document.getElementById('swBg');
+var hFg = document.getElementById('hFg'), hBg = document.getElementById('hBg'), hSz = document.getElementById('hSz');
+var rRatio = document.getElementById('rRatio');
+var vr = ['vRatio1','vRatio2','vRatio3','vRatio4'].map(function(id){ return document.getElementById(id); });
+var b = { AA: document.getElementById('bAA'), AALg: document.getElementById('bAALg'), AAA: document.getElementById('bAAA'), AAALg: document.getElementById('bAAALg') };
+var stage = document.getElementById('stage');
+var tLarge = document.getElementById('tLarge'), tNormal = document.getElementById('tNormal'), tSmall = document.getElementById('tSmall'), btn = document.getElementById('btn');
+
+function badge(el, pass){
+  el.className = 'badge ' + (pass ? 'pass' : 'fail');
+  el.textContent = pass ? 'pass' : 'fail';
+}
+
+function apply(){
+  var fg = iFg.value.toUpperCase(), bg = iBg.value.toUpperCase(), sz = +iSz.value;
+  swFg.style.background = fg; swBg.style.background = bg;
+  hFg.textContent = fg; hBg.textContent = bg; hSz.textContent = sz + ' px';
+  iSz.style.setProperty('--p', ((sz-10)/(28-10))*100 + '%');
+
+  var c = contrast(fg, bg);
+  var r = c.toFixed(2);
+  rRatio.textContent = r;
+  vr.forEach(function(v){ v.textContent = r; });
+  rRatio.className = c < 3 ? 'n warn' : 'n';
+
+  badge(b.AA, c >= 4.5);
+  badge(b.AALg, c >= 3);
+  badge(b.AAA, c >= 7);
+  badge(b.AAALg, c >= 4.5);
+
+  stage.style.background = bg;
+  tLarge.style.color = fg;
+  tNormal.style.color = fg;
+  tSmall.style.color = fg;
+  tSmall.style.fontSize = sz - 5 + 'px';
+  tNormal.style.fontSize = sz + 'px';
+  tLarge.style.fontSize = (sz + 6) + 'px';
+  btn.style.background = fg;
+  btn.style.color = bg;
+  btn.style.border = '1px solid ' + fg;
+
+  setTimeout(reportHeight, 30);
+}
+
+iFg.addEventListener('input', apply);
+iBg.addEventListener('input', apply);
+iSz.addEventListener('input', apply);
+
+document.querySelectorAll('.preset').forEach(function(p){
+  p.addEventListener('click', function(){
+    var col = window.getComputedStyle(p).backgroundColor;
+    var m = col.match(/\d+/g);
+    if (!m) return;
+    var hex = '#' + m.slice(0,3).map(function(x){ return ('0'+parseInt(x).toString(16)).slice(-2); }).join('').toUpperCase();
+    if (p.dataset.t === 'fg') iFg.value = hex; else iBg.value = hex;
+    apply();
+  });
+});
+
+apply();
+
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>
