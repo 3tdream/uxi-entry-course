@@ -680,6 +680,13 @@ export const meeting12: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-pricing-page.html',
+          title: 'Pricing page — bad vs good (live demo)',
+          caption: '💵 Top: 7 tiers with Alpha/Beta/Gamma/… names of equal weight, "Buy" everywhere. Bottom: 3 plans (Free / Pro / Enterprise), Pro highlighted with a border + "Most popular" + a lift, a Monthly/Yearly toggle with a green "−20%" pill — click it and Pro drops from $19 to $15/mo and a "save $48/yr" note appears. Anchoring + CTA hierarchy (get / choose / contact).',
+          aspectRatio: '5 / 4',
+        },
+        {
           type: 'subheading' as const,
           content: 'Empty States',
         },
@@ -1094,6 +1101,13 @@ export const meeting12: Meeting = {
             description:
               '4 main KPIs displayed prominently in the top row with sparklines and colored arrows. Below — 2 charts (trend + breakdown). At the bottom — a table with drill-down. Hierarchy: overview first, then details.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-dashboard-kpi.html',
+          title: 'Dashboard KPI: flat wall vs 4-2-1 hierarchy (live demo)',
+          caption: '📊 Top: 12 KPIs of equal weight, no color, no sparklines — the eye has nothing to grab onto. Bottom: the same 12 numbers packed by the **4-2-1 rule**: 4 hero KPIs with sparklines and delta pills (0.5 sec — overview), 2 charts (revenue trend + plan mix), 1 table with drill-down. The eye reads macro → micro.',
+          aspectRatio: '4 / 5',
         },
         {
           type: 'diagram' as const,

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard KPI — flat wall vs 4-2-1 hierarchy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;color:#26261f;-webkit-font-smoothing:antialiased}
+.page{max-width:1140px;margin:0 auto;padding:24px 28px 16px}
+.hint{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.06em;color:#a8a89f;text-transform:uppercase;margin-bottom:18px}
+
+.card{border:1px solid #e2e2da;border-radius:12px;overflow:hidden;background:#fff;margin-bottom:22px;display:flex;flex-direction:column}
+.card.bad .head{background:#fbeceb;border-bottom:1px solid #f1d8d5;color:#a33a2e}
+.card.good .head{background:#eaf3ed;border-bottom:1px solid #d4e7dc;color:#2f7350}
+.head{display:flex;align-items:center;gap:9px;padding:11px 16px;font-weight:600;font-size:14px}
+.head .dot{width:20px;height:20px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.bad .head .dot{background:#c0473b}
+.good .head .dot{background:#3f7d5a}
+.body{padding:20px;background:#fafaf8}
+
+/* BAD: 12 flat KPIs in 4×3 grid, all same weight */
+.bad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:820px){.bad-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.bad-grid{grid-template-columns:repeat(2,1fr)}}
+.bad-kpi{background:#fff;border:1px solid #e2e2da;border-radius:6px;padding:10px 11px}
+.bad-kpi .n{font-family:'Geist Mono',monospace;font-size:10px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase;margin-bottom:5px}
+.bad-kpi .v{font-family:'Geist',sans-serif;font-size:17px;font-weight:600;color:#26261f;letter-spacing:-.01em}
+
+/* GOOD: 4-2-1 layout — 4 hero KPIs + 2 charts + 1 detail table */
+.good-hero{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+@media(max-width:820px){.good-hero{grid-template-columns:repeat(2,1fr)}}
+.hero-kpi{background:#fff;border:1px solid #e2e2da;border-radius:11px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.hero-kpi .n{font-family:'Geist Mono',monospace;font-size:10.5px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase}
+.hero-kpi .v-row{display:flex;align-items:baseline;gap:8px}
+.hero-kpi .v{font-family:'Geist',sans-serif;font-size:26px;font-weight:700;color:#26261f;letter-spacing:-.02em;line-height:1}
+.hero-kpi .delta{font-family:'Geist Mono',monospace;font-size:11px;font-weight:600;padding:2px 7px;border-radius:11px}
+.hero-kpi .delta.up{color:#2f7350;background:#eaf3ed}
+.hero-kpi .delta.down{color:#2f7350;background:#eaf3ed}
+.hero-kpi .delta.warn{color:#a33a2e;background:#fbeceb}
+.hero-kpi svg{margin-top:4px;display:block;width:100%;height:34px}
+
+.charts{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:16px}
+@media(max-width:720px){.charts{grid-template-columns:1fr}}
+.chart{background:#fff;border:1px solid #e2e2da;border-radius:11px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.chart h4{margin:0;font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:baseline}
+.chart h4 span{color:#26261f;font-weight:600;letter-spacing:0;text-transform:none;font-family:'Geist',sans-serif;font-size:14px}
+.chart svg{width:100%;height:120px;display:block}
+
+.detail{background:#fff;border:1px solid #e2e2da;border-radius:11px;overflow:hidden}
+.detail h4{margin:0;padding:12px 16px;font-family:'Geist Mono',monospace;font-size:11px;color:#6b6b62;letter-spacing:.04em;text-transform:uppercase;background:#fafaf8;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:baseline}
+.detail h4 span{color:#26261f;font-family:'Geist',sans-serif;font-weight:600;font-size:14px;text-transform:none;letter-spacing:0}
+.detail table{width:100%;border-collapse:collapse;font-family:'Geist',sans-serif;font-size:12.5px}
+.detail th,.detail td{text-align:left;padding:9px 16px;border-bottom:1px solid #f3f3ef}
+.detail th{font-family:'Geist Mono',monospace;font-size:10.5px;color:#90908a;letter-spacing:.04em;text-transform:uppercase;font-weight:500}
+.detail td.num{text-align:right;font-family:'Geist Mono',monospace;font-size:12px;color:#26261f;font-weight:600}
+.detail td .up{color:#2f7350;font-size:10.5px;margin-left:4px}
+.detail td .down{color:#a33a2e;font-size:10.5px;margin-left:4px}
+.detail tr:last-child td{border-bottom:0}
+
+.foot{padding:10px 16px;background:#fafaf8;border-top:1px solid #eee;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.02em}
+.bad .foot{color:#a33a2e}
+.good .foot{color:#2f7350}
+.tip{margin-top:20px;font-family:'Geist Mono',monospace;font-size:11.5px;color:#a8a89f}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hint">Same 12 numbers · flat wall vs 4-2-1 information hierarchy</div>
+
+  <div class="card bad">
+    <div class="head"><span class="dot">✗</span><span>Flat wall — 12 equal KPIs, no anchor</span></div>
+    <div class="body">
+      <div class="bad-grid">
+        <div class="bad-kpi"><div class="n">Revenue</div><div class="v">$48,240</div></div>
+        <div class="bad-kpi"><div class="n">MRR</div><div class="v">$12,180</div></div>
+        <div class="bad-kpi"><div class="n">Churn</div><div class="v">2.1%</div></div>
+        <div class="bad-kpi"><div class="n">Active users</div><div class="v">1,240</div></div>
+        <div class="bad-kpi"><div class="n">Signups</div><div class="v">312</div></div>
+        <div class="bad-kpi"><div class="n">Conversion</div><div class="v">3.8%</div></div>
+        <div class="bad-kpi"><div class="n">CAC</div><div class="v">$142</div></div>
+        <div class="bad-kpi"><div class="n">LTV</div><div class="v">$1,820</div></div>
+        <div class="bad-kpi"><div class="n">Ticket load</div><div class="v">84</div></div>
+        <div class="bad-kpi"><div class="n">NPS</div><div class="v">42</div></div>
+        <div class="bad-kpi"><div class="n">Session time</div><div class="v">4m 12s</div></div>
+        <div class="bad-kpi"><div class="n">Bounce rate</div><div class="v">33%</div></div>
+      </div>
+    </div>
+    <div class="foot">12 KPIs · one weight · no colour · no sparklines · eye has no anchor</div>
+  </div>
+
+  <div class="card good">
+    <div class="head"><span class="dot">✓</span><span>4-2-1 hierarchy — 4 hero KPIs → 2 charts → 1 details table</span></div>
+    <div class="body">
+
+      <!-- 4 hero KPIs -->
+      <div class="good-hero">
+        <div class="hero-kpi">
+          <div class="n">Revenue</div>
+          <div class="v-row"><span class="v">$48.2K</span><span class="delta up">+12%</span></div>
+          <svg viewBox="0 0 100 34" preserveAspectRatio="none">
+            <polyline fill="none" stroke="#3f7d5a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              points="0,26 10,22 20,24 30,18 40,20 50,14 60,16 70,10 80,12 90,6 100,8"/>
+          </svg>
+        </div>
+        <div class="hero-kpi">
+          <div class="n">MRR</div>
+          <div class="v-row"><span class="v">$12.2K</span><span class="delta up">+3%</span></div>
+          <svg viewBox="0 0 100 34" preserveAspectRatio="none">
+            <polyline fill="none" stroke="#3f7d5a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              points="0,24 10,22 20,24 30,20 40,22 50,18 60,20 70,16 80,18 90,14 100,15"/>
+          </svg>
+        </div>
+        <div class="hero-kpi">
+          <div class="n">Churn</div>
+          <div class="v-row"><span class="v">2.1%</span><span class="delta down">−0.4pp</span></div>
+          <svg viewBox="0 0 100 34" preserveAspectRatio="none">
+            <polyline fill="none" stroke="#3f7d5a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              points="0,10 10,14 20,12 30,16 40,14 50,20 60,18 70,22 80,20 90,24 100,26"/>
+          </svg>
+        </div>
+        <div class="hero-kpi">
+          <div class="n">Active users</div>
+          <div class="v-row"><span class="v">1,240</span><span class="delta up">+180</span></div>
+          <svg viewBox="0 0 100 34" preserveAspectRatio="none">
+            <polyline fill="none" stroke="#3f7d5a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              points="0,22 10,20 20,22 30,16 40,18 50,12 60,14 70,10 80,8 90,4 100,6"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 2 charts -->
+      <div class="charts">
+        <div class="chart">
+          <h4>Revenue trend <span>Last 12 months</span></h4>
+          <svg viewBox="0 0 400 120" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3f7d5a" stop-opacity=".22"/>
+                <stop offset="1" stop-color="#3f7d5a" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#grad)" d="M0,90 L30,82 L60,86 L90,72 L120,78 L150,68 L180,60 L210,66 L240,52 L270,44 L300,50 L330,36 L360,28 L400,22 L400,120 L0,120 Z"/>
+            <polyline fill="none" stroke="#3f7d5a" stroke-width="2.4" stroke-linejoin="round"
+              points="0,90 30,82 60,86 90,72 120,78 150,68 180,60 210,66 240,52 270,44 300,50 330,36 360,28 400,22"/>
+          </svg>
+        </div>
+        <div class="chart">
+          <h4>Plan mix <span>Active seats</span></h4>
+          <svg viewBox="0 0 240 120" preserveAspectRatio="none">
+            <rect x="10" y="30" width="40" height="90" rx="4" fill="#3f7d5a" opacity=".9"/>
+            <rect x="70" y="10" width="40" height="110" rx="4" fill="#26261f"/>
+            <rect x="130" y="55" width="40" height="65" rx="4" fill="#3f7d5a" opacity=".55"/>
+            <rect x="190" y="80" width="40" height="40" rx="4" fill="#3f7d5a" opacity=".35"/>
+            <text x="30" y="12" font-family="Geist Mono, monospace" font-size="9" fill="#90908a" text-anchor="middle">Free</text>
+            <text x="90" y="4" font-family="Geist Mono, monospace" font-size="9" fill="#26261f" text-anchor="middle" font-weight="600">Pro</text>
+            <text x="150" y="49" font-family="Geist Mono, monospace" font-size="9" fill="#90908a" text-anchor="middle">Team</text>
+            <text x="210" y="74" font-family="Geist Mono, monospace" font-size="9" fill="#90908a" text-anchor="middle">Ent</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 1 detail table -->
+      <div class="detail">
+        <h4>Latest customers <span>with drill-down</span></h4>
+        <table>
+          <thead><tr><th>Customer</th><th>Plan</th><th class="num">MRR</th><th class="num">Health</th></tr></thead>
+          <tbody>
+            <tr><td>Alice · Acme</td><td>Pro</td><td class="num">$99<span class="up">↑</span></td><td class="num">🟢 92</td></tr>
+            <tr><td>Boris · Kabinet</td><td>Team</td><td class="num">$499<span class="up">↑</span></td><td class="num">🟡 74</td></tr>
+            <tr><td>Carol · Northwind</td><td>Pro</td><td class="num">$99<span class="down">↓</span></td><td class="num">🟢 88</td></tr>
+            <tr><td>Diego · Vertex</td><td>Ent</td><td class="num">$2,400<span class="up">↑</span></td><td class="num">🟢 95</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="foot">4 hero → 2 charts → 1 table · sparklines + delta pills · scan macro → drill micro</div>
+  </div>
+
+  <div class="tip">Same 12 numbers, entirely different reading experience. The eye lands on the 4 anchors first (0.5s), the trend chart second (1.5s), the table third (drill down on demand). That's information hierarchy.</div>
+</div>
+
+<script>
+function reportHeight(){
+  var h = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+  try { parent.postMessage({ type: 'wf-resize', height: h }, '*'); } catch(e){}
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reportHeight);
+setTimeout(reportHeight, 300);
+setTimeout(reportHeight, 900);
+</script>
+</body>
+</html>

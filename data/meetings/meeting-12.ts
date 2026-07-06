@@ -680,6 +680,13 @@ export const meeting12: Meeting = {
           },
         },
         {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-pricing-page.html',
+          title: 'Pricing page — bad vs good (живое демо)',
+          caption: '💵 Сверху — 7 тарифов Alpha/Beta/Gamma/… одинакового веса, кнопки «Buy» везде. Снизу — 3 плана (Free / Pro / Enterprise), Pro выделен рамкой + «Most popular» + приподнят, переключатель Monthly/Yearly с зелёным бейджем «−20%» — тыкни, увидишь как Pro падает с $19 до $15/мес и появляется «save $48/yr». Anchoring + hierarchy CTA (get / choose / contact).',
+          aspectRatio: '5 / 4',
+        },
+        {
           type: 'subheading' as const,
           content: 'Empty States',
         },
@@ -1094,6 +1101,13 @@ export const meeting12: Meeting = {
             description:
               '4 главных KPI крупно в верхнем ряду с sparklines и цветными стрелками. Под ними — 2 графика (trend + breakdown). Внизу — таблица с drill-down. Иерархия: сначала обзор, затем детали.',
           },
+        },
+        {
+          type: 'iframe-embed' as const,
+          src: '/slides/m12-dashboard-kpi.html',
+          title: 'Дашборд KPI: flat wall vs 4-2-1 иерархия (живое демо)',
+          caption: '📊 Сверху — 12 KPI одинакового веса без цвета и sparklines: глазу не за что зацепиться. Снизу — те же 12 чисел, но упакованы по правилу **4-2-1**: 4 hero-KPI с sparklines и delta-плашками (0.5 сек — обзор), 2 графика (revenue trend + plan mix), 1 таблица с drill-down. Взгляд читает macro → micro.',
+          aspectRatio: '4 / 5',
         },
         {
           type: 'diagram' as const,
