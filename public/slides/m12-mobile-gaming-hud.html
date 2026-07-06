@@ -100,19 +100,41 @@ html,body{margin:0;font-family:'Geist',system-ui,sans-serif;background:#f4f4f2;c
 .quickbar .slot .k{position:absolute;top:1px;right:2px;font-family:'Geist Mono',monospace;font-size:7.5px;color:rgba(255,255,255,.5);font-weight:600}
 .quickbar .slot.ready{background:rgba(243,180,91,.15);border-color:rgba(243,180,91,.5)}
 
-/* portrait layout adjustments */
-.game-frame.portrait .player-panel{top:8px;left:8px;gap:6px}
-.game-frame.portrait .player-panel .av{width:32px;height:32px;font-size:10px}
-.game-frame.portrait .player-panel .bars{min-width:90px}
-.game-frame.portrait .objective{font-size:9px;top:56px;padding:3px 9px}
-.game-frame.portrait .top-right{top:8px;right:8px}
-.game-frame.portrait .minimap{width:70px;height:56px}
-.game-frame.portrait .joystick{width:80px;height:80px;bottom:18px;left:14px}
-.game-frame.portrait .joystick .stick{width:36px;height:36px}
-.game-frame.portrait .actions{width:110px;height:110px;bottom:18px;right:14px}
-.game-frame.portrait .act-btn.attack{width:52px;height:52px;font-size:13px}
-.game-frame.portrait .quickbar{bottom:132px;padding:3px}
-.game-frame.portrait .quickbar .slot{width:26px;height:26px;font-size:12px}
+/* ===== PORTRAIT layout — tuned to 262px wide inner canvas ===== */
+/* Top-left player: tighter avatar + shorter bars */
+.game-frame.portrait .player-panel{top:8px;left:8px;gap:5px}
+.game-frame.portrait .player-panel .av{width:30px;height:30px;font-size:9.5px;border-width:1.5px}
+.game-frame.portrait .player-panel .av .lvl{font-size:8px;padding:0 4px}
+.game-frame.portrait .player-panel .bars{min-width:88px;max-width:100px;gap:2px}
+.game-frame.portrait .player-panel .bar{height:7px}
+.game-frame.portrait .player-panel .bar.xp{height:3.5px}
+.game-frame.portrait .player-panel .bar .val{font-size:7px;left:5px}
+
+/* Top-right minimap + coins — compact */
+.game-frame.portrait .top-right{top:8px;right:8px;gap:5px}
+.game-frame.portrait .minimap{width:62px;height:50px}
+.game-frame.portrait .coins{font-size:9px;padding:2px 7px}
+
+/* Objective — moved BELOW the top zone so it stops fighting minimap */
+.game-frame.portrait .objective{top:78px;font-size:9px;padding:3px 9px;gap:5px}
+.game-frame.portrait .objective .icon{font-size:10px}
+
+/* Joystick — trimmed, sits above the frame's very bottom */
+.game-frame.portrait .joystick{width:76px;height:76px;bottom:16px;left:12px}
+.game-frame.portrait .joystick .stick{width:34px;height:34px}
+
+/* Actions cluster — resized to 100×100, buttons re-anchored so nothing pokes above */
+.game-frame.portrait .actions{width:100px;height:100px;bottom:16px;right:12px}
+.game-frame.portrait .act-btn{width:36px;height:36px;font-size:10.5px;border-width:1.5px}
+.game-frame.portrait .act-btn.attack{width:48px;height:48px;font-size:13px}
+.game-frame.portrait .act-btn.jump{right:58px;bottom:0;width:36px;height:36px}
+.game-frame.portrait .act-btn.dodge{right:0;bottom:58px;width:36px;height:36px}
+.game-frame.portrait .act-btn .cd{font-size:7.5px;bottom:-13px;padding:1px 4px}
+
+/* Quickbar — LIFTED to sit clear of the action cluster, slim slots */
+.game-frame.portrait .quickbar{bottom:124px;padding:3px;gap:3px}
+.game-frame.portrait .quickbar .slot{width:22px;height:22px;font-size:11px}
+.game-frame.portrait .quickbar .slot .k{font-size:7px;top:0;right:1px}
 
 /* hidden state toggle — for HUD reveal */
 .game-frame:not(.show-player) .player-panel,
