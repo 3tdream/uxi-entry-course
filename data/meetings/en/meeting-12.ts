@@ -502,8 +502,8 @@ export const meeting12: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-12-platform-spectrum.webp',
-          alt: 'Six platform types from website to native application',
-          caption: 'Platform spectrum: from website to native app.',
+          alt: 'Railsware "Progressive Web Apps" illustration: one app on five devices — desktop, laptop, tablet, phone, second tablet',
+          caption: "PWAs are the bridge between a website and a native app: one codebase, one product, every screen on the platform spectrum. From a browser link they turn into a home-screen icon, work offline, send push, yet stay a web technology. Examples: Twitter Lite, Starbucks, Uber. Source: Railsware.",
         },
         {
           type: 'callout' as const,

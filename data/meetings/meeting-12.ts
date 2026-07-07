@@ -502,8 +502,8 @@ export const meeting12: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-12-platform-spectrum.webp',
-          alt: 'Шесть типов платформ от веб-сайта до нативного приложения',
-          caption: 'Спектр платформ: от сайта до нативного приложения.',
+          alt: 'Иллюстрация Railsware «Progressive Web Apps»: одно приложение на пяти устройствах — desktop, laptop, tablet, phone, второй tablet',
+          caption: 'PWA — «мост» между сайтом и нативным приложением: один код, один продукт, все экраны на спектре платформ. По ссылке-иконке в браузере превращается в иконку на домашнем экране, работает офлайн, шлёт push, но остаётся web-технологией. Пример: Twitter Lite, Starbucks, Uber. Источник: Railsware.',
         },
         {
           type: 'callout' as const,
