@@ -852,8 +852,8 @@ export const meeting12: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-12-kpi-card-anatomy.webp',
-          alt: 'KPI-карточка с подписями всех её элементов',
-          caption: 'Анатомия KPI-карточки: лейбл, значение, изменение, спарклайн.',
+          alt: 'Шпаргалка Andy Kriebel «18 Native KPI Designs» в Tableau: одно и то же число 887 (+12.7% vs 2021) в 18 разных визуальных представлениях — от голого числа до sparkline, bar chart, dot plot, waterfall и horizontal bar',
+          caption: '**18 способов показать одну и ту же метрику** (887, +12.7% vs 2021). Голое число → sparkline → bars → line + bars → dot plot → horizontal bar → waterfall. Выбирайте под задачу: голое число говорит «что», sparkline добавляет «куда движется», bar chart — «как распределено». Источник: Andy Kriebel × Nicholas Lea-Trengrouse (Tableau).',
         },
         {
           type: 'subheading' as const,

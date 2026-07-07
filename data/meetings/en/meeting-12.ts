@@ -852,8 +852,8 @@ export const meeting12: Meeting = {
         {
           type: 'image' as const,
           src: '/images/meeting-12-kpi-card-anatomy.webp',
-          alt: 'KPI card with callouts for all its elements',
-          caption: 'KPI card anatomy: label, value, change, sparkline.',
+          alt: 'Andy Kriebel "18 Native KPI Designs" Tableau cheatsheet: the same number 887 (+12.7% vs 2021) shown in 18 different visualizations — from a bare number to sparkline, bar chart, dot plot, waterfall, and horizontal bar',
+          caption: '**18 ways to show one metric** (887, +12.7% vs 2021). Bare number → sparkline → bars → line + bars → dot plot → horizontal bar → waterfall. Pick by intent: the bare number answers "what", a sparkline adds "which way it\'s moving", a bar chart shows "how it\'s distributed". Source: Andy Kriebel × Nicholas Lea-Trengrouse (Tableau).',
         },
         {
           type: 'subheading' as const,
