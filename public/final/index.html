@@ -198,6 +198,8 @@
     border-radius:6px;padding:8px 10px;color:#3a2a08;
     font-size:10.5px;line-height:1.35;font-family:'Geist',sans-serif;
   }
+  /* Real Marvel Snap card render (self-hosted ref) */
+  .real-card{display:block;width:200px;height:auto;filter:drop-shadow(0 18px 40px rgba(0,0,0,.55))}
   /* Slide-specific helpers */
   .stat-tile{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--glass)}
   .stat-tile .n{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--gold);line-height:1;margin-bottom:6px}
@@ -428,13 +430,7 @@
       <p class="lead" style="margin-bottom:24px">Snap сознательно ломает правило «max 2 шрифта». Три семейства — <strong class="em">каждое решает конкретную задачу</strong>, не пересекаясь.</p>
       <div class="row" style="grid-template-columns:200px 1fr;gap:32px;align-items:start;margin-bottom:26px">
         <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
-          <div class="snap-card">
-            <div class="cost">3</div>
-            <div class="power">5</div>
-            <div class="art">⚡</div>
-            <div class="name-band">STORM</div>
-            <div class="desc"><strong>On Reveal:</strong> Location floods after next turn.</div>
-          </div>
+          <img class="real-card" src="storm.webp" width="200" height="200" alt="Marvel Snap card — Storm · 3 cost / 1 power" loading="lazy">
           <div class="mono">Карта Storm · пример</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px">
@@ -523,7 +519,7 @@
         <div style="display:flex;justify-content:center">
           <div class="snap-card" style="width:240px">
             <div class="cost">3</div>
-            <div class="power">5</div>
+            <div class="power">1</div>
             <div class="art">⚡</div>
             <div class="name-band">STORM</div>
             <div class="desc"><strong>On Reveal:</strong> Location floods after next turn.</div>
@@ -877,13 +873,7 @@
       <h2>Card — атомарная спецификация</h2>
       <div class="row" style="grid-template-columns:240px 1fr;gap:32px;align-items:start">
         <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
-          <div class="snap-card" style="width:220px">
-            <div class="cost">3</div>
-            <div class="power">5</div>
-            <div class="art">⚡</div>
-            <div class="name-band">STORM</div>
-            <div class="desc"><strong>On Reveal:</strong> Location floods after next turn.</div>
-          </div>
+          <img class="real-card" src="storm.webp" width="220" height="220" style="width:220px" alt="Marvel Snap card — Storm · 3 cost / 1 power" loading="lazy">
           <div class="mono" style="text-align:center">Base: default · rare</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
