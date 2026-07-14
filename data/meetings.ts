@@ -15,6 +15,7 @@ import { meeting10 } from './meetings/meeting-10'
 import { meeting11 } from './meetings/meeting-11'
 import { meeting12 } from './meetings/meeting-12'
 import { meeting13 } from './meetings/meeting-13'
+import { meeting14 } from './meetings/meeting-14'
 
 // English meetings
 import { meeting01 as meeting01en } from './meetings/en/meeting-01'
@@ -30,17 +31,18 @@ import { meeting10 as meeting10en } from './meetings/en/meeting-10'
 import { meeting11 as meeting11en } from './meetings/en/meeting-11'
 import { meeting12 as meeting12en } from './meetings/en/meeting-12'
 import { meeting13 as meeting13en } from './meetings/en/meeting-13'
+import { meeting14 as meeting14en } from './meetings/en/meeting-14'
 
 const meetingsRu: Meeting[] = [
   meeting01, meeting02, meeting03, meeting04, meeting05,
   meeting06, meeting07, meeting08, meeting09, meeting10,
-  meeting11, meeting12, meeting13,
+  meeting11, meeting12, meeting13, meeting14,
 ]
 
 const meetingsEn: Meeting[] = [
   meeting01en, meeting02en, meeting03en, meeting04en, meeting05en,
   meeting06en, meeting07en, meeting08en, meeting09en, meeting10en,
-  meeting11en, meeting12en, meeting13en,
+  meeting11en, meeting12en, meeting13en, meeting14en,
 ]
 
 export function allMeetings(lang: Language = 'ru'): Meeting[] {

@@ -29,6 +29,7 @@ const meetings = {
     { id: '11', icon: 'ArrowLeftRight', title: 'Handoff и итерации', description: 'Handoff разработчику, A/B тесты, data-driven design', color: 'bg-sky-500/10 text-sky-600' },
     { id: '12', icon: 'Monitor', title: 'Платформы: Web/Mobile/SaaS/Data', description: 'Паттерны платформ, accessibility, responsive audit', color: 'bg-violet-500/10 text-violet-600' },
     { id: '13', icon: 'Trophy', title: 'Финальный проект', description: 'Обзор инструментов, чеклист, презентация проекта', color: 'bg-rose-500/10 text-rose-600' },
+    { id: '14', icon: 'Sparkles', title: 'Разбор Marvel Snap', description: 'Финальный проект — весь курс на одной мобильной игре. 36 слайдов, три языка.', color: 'bg-fuchsia-500/10 text-fuchsia-600' },
   ],
   en: [
     { id: '1', icon: 'BookOpen', title: 'Introduction to UX/UI', description: 'What is UX and UI, why it matters, good and bad design examples', color: 'bg-blue-500/10 text-blue-600' },
@@ -44,6 +45,7 @@ const meetings = {
     { id: '11', icon: 'ArrowLeftRight', title: 'Handoff & Iterations', description: 'Developer handoff, A/B tests, data-driven design', color: 'bg-sky-500/10 text-sky-600' },
     { id: '12', icon: 'Monitor', title: 'Platforms: Web/Mobile/SaaS/Data', description: 'Platform patterns, accessibility, responsive audit', color: 'bg-violet-500/10 text-violet-600' },
     { id: '13', icon: 'Trophy', title: 'Final Project', description: 'Tools overview, checklist, project presentation', color: 'bg-rose-500/10 text-rose-600' },
+    { id: '14', icon: 'Sparkles', title: 'Marvel Snap deep-dive', description: 'Final project — whole course applied to one mobile game. 36 slides, three languages.', color: 'bg-fuchsia-500/10 text-fuchsia-600' },
   ],
 }
 
