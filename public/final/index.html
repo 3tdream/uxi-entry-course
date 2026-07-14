@@ -1337,9 +1337,13 @@
     else if(e.key==='Home'){go(0)}
     else if(e.key==='End'){go(slides.length-1)}
   });
-  // Deep link
-  const m=location.hash.match(/^#s(\d+)/);
-  if(m){go(parseInt(m[1])-1)}
+  // Deep link — initial + on hash change (fixes anchor buttons like ← В начало)
+  function goFromHash(){
+    const m=location.hash.match(/^#s(\d+)/);
+    if(m)go(parseInt(m[1])-1);
+  }
+  goFromHash();
+  window.addEventListener('hashchange',goFromHash);
 
   /* ============ i18n engine (RU source in DOM · EN/HE from dict · fallback→RU) ============ */
   const SEL='h1,h2,h3,p,li,.kicker,.badge,.mono,.chip-good,.chip-bad,.section-marker,.n,.l,.logo-mark,.holo-btn,[data-t]';
