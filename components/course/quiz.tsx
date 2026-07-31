@@ -210,14 +210,9 @@ function QuizCard({
 export function QuizSection({
   quizzes,
   onAllComplete,
-  meetingId,
-  partId,
 }: {
   quizzes: Quiz[]
   onAllComplete?: () => void
-  /** Если передан — результат сохранится в БД для аналитики по студенту */
-  meetingId?: string
-  partId?: string | null
 }) {
   const { lang } = useLanguage()
   const l = quizLabels[lang]
@@ -226,27 +221,11 @@ export function QuizSection({
   const [finished, setFinished] = useState(false)
 
   function handleComplete(correct: boolean) {
-    const finalScore = correct ? score + 1 : score
     if (correct) setScore((s) => s + 1)
     if (current < quizzes.length - 1) {
       setCurrent((c) => c + 1)
     } else {
       setFinished(true)
-      // Считаем итог из finalScore, а не из score: setScore асинхронный
-      // и на последнем вопросе state ещё не обновился.
-      if (meetingId) {
-        fetch('/api/quiz', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({
-            meetingId,
-            partId: partId ?? null,
-            score: finalScore,
-            total: quizzes.length,
-          }),
-          keepalive: true,
-        }).catch(() => {})
-      }
       onAllComplete?.()
     }
   }
