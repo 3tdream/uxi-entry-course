@@ -1,5 +1,10 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
-import { NextResponse, type NextFetchEvent, type NextRequest } from 'next/server'
+import {
+  NextResponse,
+  type NextFetchEvent,
+  type NextMiddleware,
+  type NextRequest,
+} from 'next/server'
 
 /**
  * Публичное — всё, что можно смотреть без входа.
@@ -19,7 +24,10 @@ const isPublicRoute = createRouteMatcher([
 // NEXT_PUBLIC_* инлайнится на этапе сборки, так что это честная константа
 const hasClerkKeys = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)
 
-let _clerk: ReturnType<typeof clerkMiddleware> | null = null
+// Именно NextMiddleware, а не ReturnType<typeof clerkMiddleware>: функция
+// перегружена, и ReturnType берёт ПОСЛЕДНЮЮ перегрузку — та возвращает
+// результат запроса, а не сам middleware. На этом упал preview-билд.
+let _clerk: NextMiddleware | null = null
 function clerk() {
   if (!_clerk) {
     _clerk = clerkMiddleware(async (auth, req) => {
