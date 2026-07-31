@@ -1085,7 +1085,7 @@ export default function ResearchRecapPage() {
         {/* Quiz */}
         <div className="mt-12 pt-8 border-t">
           <h2 className="text-2xl font-bold mb-6">{c.quizHeading}</h2>
-          <QuizSection quizzes={c.quiz} />
+          <QuizSection quizzes={c.quiz} meetingId="recap-research" />
         </div>
 
         {/* Navigation */}

@@ -88,7 +88,7 @@ export default function PartPage() {
         {/* Quiz */}
         {part.quiz.length > 0 && (
           <div className="mt-12 pt-8 border-t">
-            <QuizSection quizzes={part.quiz} />
+            <QuizSection quizzes={part.quiz} meetingId={`meeting-${meetingId}`} partId={partId} />
           </div>
         )}
 
