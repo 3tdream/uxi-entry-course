@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { ClerkProvider } from '@clerk/nextjs'
 import { LanguageProvider } from '@/lib/language'
 import { LanguageToggle } from '@/components/ui/language-toggle'
+import { AuthWidget } from '@/components/ui/auth-widget'
+import { TrackVisit } from '@/components/course/track-visit'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 
@@ -16,7 +19,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
+  // Пока Clerk-ключей нет — рендерим курс как раньше, без провайдера.
+  // Иначе ClerkProvider бросает «Missing publishableKey» и падает весь сайт.
+  const authEnabled = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)
+
+  const tree = (
     <html lang="en" dir="ltr">
       <head>
         {/*
@@ -34,9 +41,13 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning>
         <LanguageProvider>
           <LanguageToggle />
+          {authEnabled && <AuthWidget />}
+          {authEnabled && <TrackVisit />}
           {children}
         </LanguageProvider>
       </body>
     </html>
   )
+
+  return authEnabled ? <ClerkProvider>{tree}</ClerkProvider> : tree
 }
