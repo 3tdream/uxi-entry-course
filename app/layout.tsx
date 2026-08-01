@@ -6,6 +6,7 @@ import { LanguageProvider } from '@/lib/language'
 import { LanguageToggle } from '@/components/ui/language-toggle'
 import { AuthWidget } from '@/components/ui/auth-widget'
 import { TrackVisit } from '@/components/course/track-visit'
+import { Clarity } from '@/components/analytics/clarity'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 
@@ -45,6 +46,8 @@ export default function RootLayout({
           {authEnabled && <TrackVisit />}
           {children}
         </LanguageProvider>
+        {/* Спит без NEXT_PUBLIC_CLARITY_ID; нужен и на публичных страницах */}
+        <Clarity />
       </body>
     </html>
   )

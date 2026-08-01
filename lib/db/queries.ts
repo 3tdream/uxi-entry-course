@@ -109,6 +109,21 @@ export async function getLessonTime(limit = 200): Promise<LessonTimeRow[]> {
 
 export type FunnelRow = { meetingId: string; studentsReached: number; studentsStudied: number }
 
+/**
+ * Порядок для воронки: по номеру встречи, а не по алфавиту и не по популярности.
+ * Иначе `meeting-10` встаёт между `meeting-1` и `meeting-2` (строковая
+ * сортировка), и кривая отвала перестаёт читаться.
+ */
+const PREFIX_RANK: Record<string, number> = { meeting: 0, module: 1, recap: 2 }
+
+function funnelSortKey(id: string): [number, number, string] {
+  const m = id.match(/^([a-z]+)-(.+)$/i)
+  const prefix = m?.[1]?.toLowerCase() ?? id
+  const rest = m?.[2] ?? ''
+  const num = Number.parseInt(rest, 10)
+  return [PREFIX_RANK[prefix] ?? 9, Number.isNaN(num) ? Number.MAX_SAFE_INTEGER : num, rest]
+}
+
 /** Сколько студентов открывало встречу и сколько реально на ней задержалось */
 export async function getFunnel(): Promise<FunnelRow[]> {
   const db = getDb()
@@ -118,9 +133,13 @@ export async function getFunnel(): Promise<FunnelRow[]> {
            count(distinct clerk_id) filter (where seconds >= ${STUDIED_MIN})::int as "studentsStudied"
     from progress
     group by meeting_id
-    order by count(distinct clerk_id) desc
   `)
-  return rows as unknown as FunnelRow[]
+
+  return (rows as unknown as FunnelRow[]).sort((a, b) => {
+    const ka = funnelSortKey(a.meetingId)
+    const kb = funnelSortKey(b.meetingId)
+    return ka[0] - kb[0] || ka[1] - kb[1] || ka[2].localeCompare(kb[2])
+  })
 }
 
 export type QuizStatRow = {
