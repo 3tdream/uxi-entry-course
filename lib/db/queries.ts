@@ -129,8 +129,8 @@ export async function getFunnel(): Promise<FunnelRow[]> {
   const db = getDb()
   const { rows } = await db.execute(sql`
     select meeting_id as "meetingId",
-           count(distinct clerk_id)::int as "studentsReached",
-           count(distinct clerk_id) filter (where seconds >= ${STUDIED_MIN})::int as "studentsStudied"
+           (count(distinct clerk_id))::int as "studentsReached",
+           (count(distinct clerk_id) filter (where seconds >= ${STUDIED_MIN}))::int as "studentsStudied"
     from progress
     group by meeting_id
   `)
