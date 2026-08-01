@@ -45,6 +45,10 @@ export const progress = pgTable(
     // 'part-1' | 'part-2' | null для страниц без частей
     partId: text('part_id'),
     views: integer('views').default(1).notNull(),
+    // Суммарное время с ОТКРЫТОЙ и видимой вкладкой. Открытие страницы само по
+    // себе прогрессом не считается — по этому полю отличаем «пролистал» от
+    // «изучил». Накапливается дельтами, вкладка в фоне не тикает.
+    seconds: integer('seconds').default(0).notNull(),
     firstOpenedAt: timestamp('first_opened_at', { withTimezone: true }).defaultNow().notNull(),
     lastOpenedAt: timestamp('last_opened_at', { withTimezone: true }).defaultNow().notNull(),
   },
