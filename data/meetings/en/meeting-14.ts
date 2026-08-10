@@ -81,7 +81,7 @@ export const meeting14: Meeting = {
         {
           type: 'text' as const,
           content:
-            'This order mirrors the real redesign process: **first we look at what\'s there → then we unpack why**. The deck goes M6 → M7 → M8 → M9 → M10 → M11 → M12, then M3 → M4 → M5.',
+            'It\'s the very route the course itself takes: first the visual layer (M6 → M7 → M8 → M9 → M10 → M11 → M12), then research (M3 → M4 → M5). The order mirrors the real redesign process — **first look at what\'s there → then unpack why**.',
         },
         {
           type: 'diagram' as const,
