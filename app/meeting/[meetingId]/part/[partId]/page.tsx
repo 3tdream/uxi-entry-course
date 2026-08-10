@@ -55,7 +55,7 @@ export default function PartPage() {
             className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            {ui.meeting} {meeting.number}
+            {ui.meeting} {meetingIndex + 1}
           </Link>
           <div className="flex-1" />
           <span className="text-xs text-muted-foreground">
@@ -70,7 +70,8 @@ export default function PartPage() {
         <header className="mb-8">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
             <BookOpen className="w-4 h-4" />
-            {ui.meeting} {meeting.number}, {ui.pair} {partIndex + 1}
+            {ui.meeting} {meetingIndex + 1}, {ui.pair} {partIndex + 1}
+            <span className="mx-1 font-mono text-xs text-muted-foreground/60">M{meeting.number}</span>
             <span className="mx-1">&middot;</span>
             <Clock className="w-3.5 h-3.5" />
             {part.duration}
@@ -105,7 +106,7 @@ export default function PartPage() {
             <Link href={`/meeting/${prevMeeting.id}/part/${prevMeeting.parts[prevMeeting.parts.length - 1]?.id}`}>
               <Button variant="outline" className="gap-2">
                 <ArrowLeft className="w-4 h-4" />
-                {ui.meeting} {prevMeeting.number}
+                {ui.meeting} {meetingIndex}
               </Button>
             </Link>
           ) : (
@@ -122,7 +123,7 @@ export default function PartPage() {
           ) : nextMeeting ? (
             <Link href={`/meeting/${nextMeeting.id}`}>
               <Button className="gap-2">
-                {ui.meeting} {nextMeeting.number}: {nextMeeting.title}
+                {ui.meeting} {meetingIndex + 2}: {nextMeeting.title}
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>

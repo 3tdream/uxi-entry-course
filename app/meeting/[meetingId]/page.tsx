@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
-import { getMeeting } from '@/data/meetings'
+import { allMeetings, getMeeting } from '@/data/meetings'
 import { useLanguage, useUI } from '@/lib/language'
 import {
   BookOpen, History, Users, FlaskConical, ClipboardList,
@@ -32,6 +32,8 @@ export default function MeetingPage() {
   }
 
   const Icon = iconMap[meeting.icon] || BookOpen
+  // Позиция в маршруте — не то же самое, что код урока (meeting.number)
+  const position = allMeetings(lang).findIndex((m) => m.id === meetingId) + 1
 
   return (
     <div className="min-h-screen">
@@ -47,8 +49,9 @@ export default function MeetingPage() {
               <Icon className="w-6 h-6" />
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              {ui.meeting} {meeting.number}
+              {ui.meeting} {position}
             </div>
+            <span className="text-xs font-mono text-muted-foreground/70">M{meeting.number}</span>
           </div>
           <h1 className="text-4xl font-bold mb-2">{meeting.title}</h1>
           <p className="text-lg text-muted-foreground">{meeting.description}</p>

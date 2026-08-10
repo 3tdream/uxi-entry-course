@@ -1,5 +1,6 @@
 import type { Meeting } from './types'
 import type { Language } from '@/lib/language'
+import { COURSE_ORDER } from './course-order'
 
 // Russian meetings
 import { meeting01 } from './meetings/meeting-01'
@@ -33,17 +34,29 @@ import { meeting12 as meeting12en } from './meetings/en/meeting-12'
 import { meeting13 as meeting13en } from './meetings/en/meeting-13'
 import { meeting14 as meeting14en } from './meetings/en/meeting-14'
 
-const meetingsRu: Meeting[] = [
-  meeting01, meeting02, meeting03, meeting04, meeting05,
-  meeting06, meeting07, meeting08, meeting09, meeting10,
-  meeting11, meeting12, meeting13, meeting14,
-]
+/**
+ * ПОРЯДОК ПРОХОЖДЕНИЯ ≠ КОД УРОКА.
+ * Последовательность живёт в COURSE_ORDER (единый источник, см. course-order.ts),
+ * здесь только раскладываем встречи по этому порядку — чтобы два списка
+ * не разъехались при следующей правке маршрута.
+ */
+const byIdRu: Record<string, Meeting> = Object.fromEntries(
+  [
+    meeting01, meeting02, meeting03, meeting04, meeting05, meeting06, meeting07,
+    meeting08, meeting09, meeting10, meeting11, meeting12, meeting13, meeting14,
+  ].map((m) => [m.id, m])
+)
 
-const meetingsEn: Meeting[] = [
-  meeting01en, meeting02en, meeting03en, meeting04en, meeting05en,
-  meeting06en, meeting07en, meeting08en, meeting09en, meeting10en,
-  meeting11en, meeting12en, meeting13en, meeting14en,
-]
+const byIdEn: Record<string, Meeting> = Object.fromEntries(
+  [
+    meeting01en, meeting02en, meeting03en, meeting04en, meeting05en, meeting06en,
+    meeting07en, meeting08en, meeting09en, meeting10en, meeting11en, meeting12en,
+    meeting13en, meeting14en,
+  ].map((m) => [m.id, m])
+)
+
+const meetingsRu: Meeting[] = COURSE_ORDER.map((id) => byIdRu[id]).filter(Boolean)
+const meetingsEn: Meeting[] = COURSE_ORDER.map((id) => byIdEn[id]).filter(Boolean)
 
 export function allMeetings(lang: Language = 'ru'): Meeting[] {
   return lang === 'en' ? meetingsEn : meetingsRu

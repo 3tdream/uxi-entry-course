@@ -1,5 +1,6 @@
 import { sql } from 'drizzle-orm'
 import { getDb } from './index'
+import { coursePosition } from '@/data/course-order'
 
 /**
  * Пороги вовлечённости (в секундах). Открытие страницы прогрессом не считается —
@@ -110,9 +111,10 @@ export async function getLessonTime(limit = 200): Promise<LessonTimeRow[]> {
 export type FunnelRow = { meetingId: string; studentsReached: number; studentsStudied: number }
 
 /**
- * Порядок для воронки: по номеру встречи, а не по алфавиту и не по популярности.
- * Иначе `meeting-10` встаёт между `meeting-1` и `meeting-2` (строковая
- * сортировка), и кривая отвала перестаёт читаться.
+ * Порядок для воронки — по маршруту курса (COURSE_ORDER), а не по номеру и не
+ * по популярности. Только так кривая отвала читается: «на первом уроке было 20,
+ * к пятому осталось 12». Сортировка по номеру кода после смены маршрута дала бы
+ * ложную картину, потому что M6 теперь третий, а M3 — десятый.
  */
 const PREFIX_RANK: Record<string, number> = { meeting: 0, module: 1, recap: 2 }
 
@@ -120,6 +122,13 @@ function funnelSortKey(id: string): [number, number, string] {
   const m = id.match(/^([a-z]+)-(.+)$/i)
   const prefix = m?.[1]?.toLowerCase() ?? id
   const rest = m?.[2] ?? ''
+
+  if (prefix === 'meeting') {
+    const pos = coursePosition(rest)
+    // урок вне маршрута — в конец своей группы, но перед module/recap
+    return [0, pos > 0 ? pos : Number.MAX_SAFE_INTEGER, rest]
+  }
+
   const num = Number.parseInt(rest, 10)
   return [PREFIX_RANK[prefix] ?? 9, Number.isNaN(num) ? Number.MAX_SAFE_INTEGER : num, rest]
 }

@@ -18,9 +18,6 @@ const meetings = {
   ru: [
     { id: '1', icon: 'BookOpen', title: 'Введение в UX/UI', description: 'Что такое UX и UI, зачем это нужно, примеры хорошего и плохого дизайна', color: 'bg-blue-500/10 text-blue-600' },
     { id: '2', icon: 'History', title: 'История и роли', description: 'Эволюция интерфейсов от CLI до AI, роли в команде, Double Diamond', color: 'bg-indigo-500/10 text-indigo-600' },
-    { id: '3', icon: 'Users', title: 'UX Research: основы', description: 'Персоны, Empathy Map, JTBD, User Journey Map', color: 'bg-emerald-500/10 text-emerald-600' },
-    { id: '4', icon: 'FlaskConical', title: 'UX Research: практика', description: 'Юзабилити-тестирование, эвристики Нильсена, метрики', color: 'bg-teal-500/10 text-teal-600' },
-    { id: '5', icon: 'ClipboardList', title: 'User Research методы', description: 'Интервью, опросы, Card Sorting, User Cases и Stories', color: 'bg-cyan-500/10 text-cyan-600' },
     { id: '6', icon: 'Palette', title: 'Теория цвета', description: 'Цветовой круг, гармонии, психология, палитры для web/mobile/SaaS', color: 'bg-purple-500/10 text-purple-600' },
     { id: '7', icon: 'Type', title: 'Типографика и сетки', description: 'Шрифты, модульные сетки, 8px система, responsive дизайн', color: 'bg-pink-500/10 text-pink-600' },
     { id: '8', icon: 'Eye', title: 'Визуальная иерархия', description: 'Контраст, F/Z-паттерны, иконки, иллюстрации, композиция', color: 'bg-orange-500/10 text-orange-600' },
@@ -28,15 +25,15 @@ const meetings = {
     { id: '10', icon: 'Layers', title: 'Прототипирование', description: 'Интерактивные прототипы, Figma, дизайн-системы', color: 'bg-lime-500/10 text-lime-600' },
     { id: '11', icon: 'ArrowLeftRight', title: 'Handoff и итерации', description: 'Handoff разработчику, A/B тесты, data-driven design', color: 'bg-sky-500/10 text-sky-600' },
     { id: '12', icon: 'Monitor', title: 'Платформы: Web/Mobile/SaaS/Data', description: 'Паттерны платформ, accessibility, responsive audit', color: 'bg-violet-500/10 text-violet-600' },
+    { id: '3', icon: 'Users', title: 'UX Research: основы', description: 'Персоны, Empathy Map, JTBD, User Journey Map', color: 'bg-emerald-500/10 text-emerald-600' },
+    { id: '4', icon: 'FlaskConical', title: 'UX Research: практика', description: 'Юзабилити-тестирование, эвристики Нильсена, метрики', color: 'bg-teal-500/10 text-teal-600' },
+    { id: '5', icon: 'ClipboardList', title: 'User Research методы', description: 'Интервью, опросы, Card Sorting, User Cases и Stories', color: 'bg-cyan-500/10 text-cyan-600' },
     { id: '13', icon: 'Trophy', title: 'Финальный проект', description: 'Обзор инструментов, чеклист, презентация проекта', color: 'bg-rose-500/10 text-rose-600' },
     { id: '14', icon: 'Sparkles', title: 'Разбор Marvel Snap', description: 'Финальный проект — весь курс на одной мобильной игре. 36 слайдов, три языка.', color: 'bg-fuchsia-500/10 text-fuchsia-600' },
   ],
   en: [
     { id: '1', icon: 'BookOpen', title: 'Introduction to UX/UI', description: 'What is UX and UI, why it matters, good and bad design examples', color: 'bg-blue-500/10 text-blue-600' },
     { id: '2', icon: 'History', title: 'History & Roles', description: 'Interface evolution from CLI to AI, team roles, Double Diamond', color: 'bg-indigo-500/10 text-indigo-600' },
-    { id: '3', icon: 'Users', title: 'UX Research: Fundamentals', description: 'Personas, Empathy Map, JTBD, User Journey Map', color: 'bg-emerald-500/10 text-emerald-600' },
-    { id: '4', icon: 'FlaskConical', title: 'UX Research: Practice', description: 'Usability testing, Nielsen heuristics, metrics', color: 'bg-teal-500/10 text-teal-600' },
-    { id: '5', icon: 'ClipboardList', title: 'User Research Methods', description: 'Interviews, surveys, Card Sorting, User Cases & Stories', color: 'bg-cyan-500/10 text-cyan-600' },
     { id: '6', icon: 'Palette', title: 'Color Theory', description: 'Color wheel, harmonies, psychology, palettes for web/mobile/SaaS', color: 'bg-purple-500/10 text-purple-600' },
     { id: '7', icon: 'Type', title: 'Typography & Grids', description: 'Fonts, modular grids, 8px system, responsive design', color: 'bg-pink-500/10 text-pink-600' },
     { id: '8', icon: 'Eye', title: 'Visual Hierarchy', description: 'Contrast, F/Z-patterns, icons, illustrations, composition', color: 'bg-orange-500/10 text-orange-600' },
@@ -44,6 +41,9 @@ const meetings = {
     { id: '10', icon: 'Layers', title: 'Prototyping', description: 'Interactive prototypes, Figma, design systems', color: 'bg-lime-500/10 text-lime-600' },
     { id: '11', icon: 'ArrowLeftRight', title: 'Handoff & Iterations', description: 'Developer handoff, A/B tests, data-driven design', color: 'bg-sky-500/10 text-sky-600' },
     { id: '12', icon: 'Monitor', title: 'Platforms: Web/Mobile/SaaS/Data', description: 'Platform patterns, accessibility, responsive audit', color: 'bg-violet-500/10 text-violet-600' },
+    { id: '3', icon: 'Users', title: 'UX Research: Fundamentals', description: 'Personas, Empathy Map, JTBD, User Journey Map', color: 'bg-emerald-500/10 text-emerald-600' },
+    { id: '4', icon: 'FlaskConical', title: 'UX Research: Practice', description: 'Usability testing, Nielsen heuristics, metrics', color: 'bg-teal-500/10 text-teal-600' },
+    { id: '5', icon: 'ClipboardList', title: 'User Research Methods', description: 'Interviews, surveys, Card Sorting, User Cases & Stories', color: 'bg-cyan-500/10 text-cyan-600' },
     { id: '13', icon: 'Trophy', title: 'Final Project', description: 'Tools overview, checklist, project presentation', color: 'bg-rose-500/10 text-rose-600' },
     { id: '14', icon: 'Sparkles', title: 'Marvel Snap deep-dive', description: 'Final project — whole course applied to one mobile game. 36 slides, three languages.', color: 'bg-fuchsia-500/10 text-fuchsia-600' },
   ],
@@ -80,7 +80,7 @@ export default function HomePage() {
       {/* Meetings List */}
       <main className="max-w-4xl mx-auto px-6 pb-16">
         <div className="space-y-3">
-          {list.map((m) => {
+          {list.map((m, i) => {
             const Icon = iconMap[m.icon] || BookOpen
             return (
               <Link
@@ -88,8 +88,9 @@ export default function HomePage() {
                 href={`/meeting/${m.id}`}
                 className="group flex items-start sm:items-center gap-3 sm:gap-4 p-4 rounded-xl border bg-card hover:shadow-lg hover:border-primary/30 transition-all"
               >
+                {/* Позиция в маршруте, а не id: порядок прохождения ≠ код урока */}
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-xs sm:text-sm shrink-0">
-                  {m.id}
+                  {i + 1}
                 </div>
                 <div className={`p-2 sm:p-2.5 rounded-lg ${m.color} shrink-0 hidden sm:block`}>
                   <Icon className="w-5 h-5" />
@@ -97,6 +98,10 @@ export default function HomePage() {
                 <div className="flex-1 min-w-0">
                   <h2 className="font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors">
                     {m.title}
+                    {/* Постоянный код урока — на него ссылается текст внутри курса */}
+                    <span className="ml-2 align-middle text-[10px] font-mono font-normal text-muted-foreground/70">
+                      M{m.id}
+                    </span>
                   </h2>
                   <p className="text-xs sm:text-sm text-muted-foreground truncate">{m.description}</p>
                 </div>
