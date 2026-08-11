@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { LanguageProvider } from '@/lib/language'
-import { LanguageToggle } from '@/components/ui/language-toggle'
-import { AuthWidget } from '@/components/ui/auth-widget'
+import { HeaderControls } from '@/components/ui/header-controls'
 import { TrackVisit } from '@/components/course/track-visit'
 import { Clarity } from '@/components/analytics/clarity'
 
@@ -41,8 +40,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <LanguageProvider>
-          <LanguageToggle />
-          {authEnabled && <AuthWidget />}
+          <HeaderControls showAuth={authEnabled} />
           {authEnabled && <TrackVisit />}
           {children}
         </LanguageProvider>
