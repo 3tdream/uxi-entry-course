@@ -622,9 +622,9 @@ export const meeting06: Meeting = {
                 'Not one color, **the whole spectrum**. 12 maximally-distinct hues from the Itten wheel (red, blue, green, pink, orange, yellow, black, white, purple, brown, cyan, lime). The brand = the entire palette. Rare move — it only works because the game is built around "pick your color".',
             },
             {
-              term: '🟢 Roblox — green-grey',
+              term: '🔴 Roblox — red (#E2231A)',
               definition:
-                'A platform, not a game — needs an "infrastructure" neutral tone. Green-grey = trust + growth (the educational connotation for parents). Compare with competitors: Minecraft — earthy, Fortnite — purple, Roblox holds the empty note.',
+                'Counter-intuitive for a platform: not a neutral "infrastructure" tone but a loud, saturated **red** (since 2017). It stands apart from Minecraft (earthy green) and Fortnite (purple) — three platforms, three owned hues. Bonus lesson: in February 2025 Roblox switched its icon to **blue** — even a signature color can be migrated when strategy shifts.',
             },
           ],
         },
